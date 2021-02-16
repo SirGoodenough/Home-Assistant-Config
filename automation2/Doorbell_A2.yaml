@@ -1,0 +1,83 @@
+---
+  #####################################################
+  #                                                   #
+  # Doorbells                                         #
+  #                                                   #
+  #####################################################
+
+  #####################################################
+  # Front                                             #
+  #####################################################
+  - id: 34423786-8a35-4a83-8282-ffa5afe39345
+    alias: Front Doorbell Ding
+    initial_state: on
+    trigger:
+    - platform: state
+      entity_id: binary_sensor.front_door_ding
+      from: 'off'
+      to: 'on'
+    action:
+    - service: media_player.play_media
+      data:
+        entity_id: group.intercom_stack
+        media_content_id: !secret DoorBell_Front
+        media_content_type: audio/mp3
+    - delay: 00:00:04
+    - service: tts.cloud_say
+      data:
+        entity_id: group.intercom_stack
+        message: "Someone is at the front door."
+        options:
+          gender: male
+        language: en-US
+  #####################################################
+  # Back                                              #
+  #####################################################
+  - id: 427a318d-346a-4ca5-8850-d6905440d80f
+    alias: Back Doorbell Ding
+    initial_state: on
+    trigger:
+    - platform: state
+      entity_id: binary_sensor.back_door_ding
+      from: 'off'
+      to: 'on'
+    action:
+    - service: media_player.play_media
+      data:
+        entity_id: group.intercom_stack
+        media_content_id: !secret DoorBell_Back
+        media_content_type: audio/mp3
+    - delay: 00:00:04
+    - service: tts.cloud_say
+      data:
+        entity_id: group.intercom_stack
+        message: "Someone is at the back door."
+        options:
+          gender: male
+        language: en-US
+  #####################################################
+  # Side                                              #
+  #####################################################
+  - id: e1269f8d-f87b-4990-bfdc-f7f418962985
+    alias: Side Doorbell Ding
+    initial_state: on
+    trigger:
+    - platform: state
+      entity_id: binary_sensor.side_doorbell
+      to: 'on'
+      for:
+        seconds: 2
+    action:
+    - service: media_player.play_media
+      data:
+        entity_id: group.intercom_stack
+        media_content_id: !secret DoorBell_Side
+        media_content_type: audio/mp3
+    - delay: 00:00:06
+    - service: tts.cloud_say
+      data:
+        entity_id: group.intercom_stack
+        message: "Someone is at the side door."
+        options:
+          gender: male
+        language: en-US

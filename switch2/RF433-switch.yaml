@@ -1,0 +1,240 @@
+---
+  #####################################################
+  # MQTT Plug Set B Christmas Lights                  #
+  #####################################################
+  #######
+  ## 1 ##
+  #######
+  - platform: mqtt
+    name: "Outside Christmas"
+    unique_id: 526b34ec-7e20-4d88-8a78-07a16ef84029
+    icon: mdi:candycane
+    state_topic: rf433/Out_Christmas
+    command_topic: "RFBridge2/cmnd/Backlog"
+    availability_topic: "RFBridge2/tele/LWT"
+    state_on: 'ON'
+    state_off: 'OFF'
+    payload_on: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #B94183"
+    payload_off: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #B94182"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  #######
+  ## 2 ##
+  #######
+  - platform: mqtt
+    name: "B2"
+    unique_id: 43c7a2b9-d591-4c28-8b1e-d1b081dea9b7
+    state_topic: rf433/B2
+    command_topic: "RFBridge2/cmnd/Backlog"
+    availability_topic: "RFBridge2/tele/LWT"
+    state_on: 'ON'
+    state_off: 'OFF'
+    payload_on: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #B94185"
+    payload_off: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #B94184"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  #######
+  ## 3 ## 
+  #######
+  - platform: mqtt
+    name: "B3"
+    unique_id: 09ea6e97-6cf4-4da1-a243-14881a7d5871
+    state_topic: rf433/B3
+    command_topic: "RFBridge2/cmnd/Backlog"
+    availability_topic: "RFBridge2/tele/LWT"
+    state_on: 'ON'
+    state_off: 'OFF'
+    payload_on: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #B94187"
+    payload_off: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #B94186"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  #####################################################
+  # MQTT Plug Set F Christmas Lights                  #
+  #####################################################
+  #######
+  ## 1 ##
+  #######
+  - platform: mqtt
+    name: "F1"
+    unique_id: 14e89edb-2856-484b-8ed5-c917396fbc30
+    state_topic: rf433/F1
+    command_topic: "RFBridge2/cmnd/Backlog"
+    availability_topic: "RFBridge2/tele/LWT"
+    state_on: 'ON'
+    state_off: 'OFF'
+    payload_on: "RfSync 9760; RfLow 400; RfHigh 980; RfCode #151557"
+    payload_off: "RfSync 9760; RfLow 400; RfHigh 980; RfCode #151554"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  #######
+  ## 2 ##
+  #######
+  - platform: mqtt
+    name: "F2"
+    unique_id: 0ebb4eb6-e7ed-4e61-8a49-028c378b1e9c
+    state_topic: rf433/F2
+    command_topic: "RFBridge2/cmnd/Backlog"
+    availability_topic: "RFBridge2/tele/LWT"
+    state_on: 'ON'
+    state_off: 'OFF'
+    payload_on: "RfSync 9760; RfLow 400; RfHigh 980; RfCode #154557"
+    payload_off: "RfSync 9760; RfLow 400; RfHigh 980; RfCode #154554"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  #######
+  ## 3 ##
+  #######
+  - platform: mqtt
+    name: "F3"
+    unique_id: f9c691cf-f6b2-4bcc-8011-c0c85cbe9f02
+    state_topic: rf433/F3
+    command_topic: "RFBridge2/cmnd/Backlog"
+    availability_topic: "RFBridge2/tele/LWT"
+    state_on: 'ON'
+    state_off: 'OFF'
+    payload_on: "RfSync 9760; RfLow 400; RfHigh 980; RfCode #155157"
+    payload_off: "RfSync 9760; RfLow 400; RfHigh 980; RfCode #155154"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  #####################################################
+  # MQTT Plug Set C Kitchen Down Lights               #
+  #####################################################
+#   #######
+#   ## 1 ##
+#   #######
+#   - platform: mqtt
+#     name: "C1"
+#     unique_id: e01d7541-c56d-4a46-8f4a-463e444e677e
+#     state_topic: rf433/C1
+#     command_topic: "RFBridge2/cmnd/Backlog"
+#     availability_topic: "RFBridge2/tele/LWT"
+#     state_on: 'ON'
+#     state_off: 'OFF'
+#     payload_on: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8883"
+#     payload_off: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8882"
+#     payload_available: "Online"
+#     payload_not_available: "Offline"
+
+  #######
+  ## 2 ##
+  #######
+  - platform: mqtt
+    name: "Office Monitors"
+    unique_id: 938f028a-b2ac-47f4-a39d-4bcccc2cad8d
+    state_topic: rf433/C2
+    command_topic: "RFBridge2/cmnd/Backlog"
+    availability_topic: "RFBridge2/tele/LWT"
+    state_on: 'ON'
+    state_off: 'OFF'
+    payload_on: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8885"
+    payload_off: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8884"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  #########################################################
+  ## 3 ## Controls 3 RF switches stealing #3 from D and E.#
+  #########################################################
+  - platform: mqtt
+    name: "Kitchen D Lights"
+    unique_id: 3646ca58-958f-49b1-a66a-9e01cd1a481a
+    state_topic: rf433/KitchenDownLights
+    command_topic: "RFBridge2/cmnd/Backlog"
+    availability_topic: "RFBridge2/tele/LWT"
+    state_on: 'ON'
+    state_off: 'OFF'
+    payload_on: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8887"
+    payload_off: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8886"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  #####################################################
+  # MQTT Plug Set D Lights                            #
+  #####################################################
+  #######
+  ## 1 ##
+  #######
+  - platform: mqtt
+    name: "Chromecast"
+    unique_id: 83d276c1-a7ec-49fe-b537-35c6055c7ca9
+    state_topic: rf433/Chromecast
+    command_topic: "RFBridge2/cmnd/Backlog"
+    availability_topic: "RFBridge2/tele/LWT"
+    state_on: 'ON'
+    state_off: 'OFF'
+    payload_on: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #472083"
+    payload_off: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #472082"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+#   #######
+#   ## 2 ##
+#   #######
+#   - platform: mqtt
+#     name: "D2"
+#     unique_id: feb206a5-d69d-4a14-8552-0861bb220c05
+#     state_topic: rf433/D2
+#     command_topic: "RFBridge2/cmnd/Backlog"
+#     availability_topic: "RFBridge2/tele/LWT"
+#     state_on: 'ON'
+#     state_off: 'OFF'
+#     payload_on: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #472085"
+#     payload_off: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #472084"
+#     payload_available: "Online"
+#     payload_not_available: "Offline"
+
+#   #####################################################
+#   # MQTT Plug Set E Lights                            #
+#   #####################################################
+#   #######
+#   ## 1 ##
+#   #######
+#   - platform: mqtt
+#     name: "E1"
+#     unique_id: 9b4c1849-a5b1-4fab-9f24-82d516f8223e
+#     state_topic: rf433/E1
+#     command_topic: "RFBridge2/cmnd/Backlog"
+#     availability_topic: "RFBridge2/tele/LWT"
+#     state_on: 'ON'
+#     state_off: 'OFF'
+#     payload_on: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #E8B083"
+#     payload_off: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #E8B082"
+#     payload_available: "Online"
+#     payload_not_available: "Offline"
+
+  #######
+  ## 2 ##
+  #######
+  - platform: mqtt
+    name: "E2"
+    unique_id: e85c67dc-0141-4479-acb9-a3939ebe4210
+    state_topic: rf433/E2
+    command_topic: "RFBridge2/cmnd/Backlog"
+    availability_topic: "RFBridge2/tele/LWT"
+    state_on: 'ON'
+    state_off: 'OFF'
+    payload_on: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #E8B085"
+    payload_off: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #E8B084"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  #######
+  ## 3 ##
+  #######
+  - platform: mqtt
+    name: "E3"
+    unique_id: f2391cc5-899a-4216-99e6-f87944596fca
+    state_topic: rf433/E2
+    command_topic: "RFBridge2/cmnd/Backlog"
+    availability_topic: "RFBridge2/tele/LWT"
+    state_on: 'ON'
+    state_off: 'OFF'
+    payload_on: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #E8B087"
+    payload_off: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #E8B086"
+    payload_available: "Online"
+    payload_not_available: "Offline"

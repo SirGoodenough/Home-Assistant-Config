@@ -1,0 +1,72 @@
+---
+  - id: 'fea42729-2c84-442a-9104-dbd6148c2e17'
+    mode: single
+    alias: FlushTimer
+    initial_state: on
+    trigger:
+    - platform: state
+      entity_id: input_boolean.flush2
+      from: 'off'
+      to: 'on'
+    action:
+    - service: timer.start
+      entity_id: timer.flushtime2
+    - service: media_player.volume_set
+      data_template:
+        entity_id: media_player.kitchen_display, media_player.jens_speaker
+        volume_level: .8
+    - service: tts.cloud_say
+      data:
+        entity_id: media_player.kitchen_display, media_player.jens_speaker
+        message: "We've got to hold on to what we've got"
+        options:
+          gender: female
+        language: en-US
+    - wait_for_trigger:
+      - platform: event
+        event_type: timer.finished
+        event_data:
+          entity_id: timer.flushtime2
+    - service: media_player.play_media
+      data:
+        entity_id: media_player.kitchen_display, media_player.jens_speaker
+        media_content_id: !secret Gong
+        media_content_type: audio/mp3
+
+    - delay: 00:00:57   # Delay for the second part first warning
+    - service: tts.cloud_say
+      data:
+        entity_id: media_player.kitchen_display, media_player.jens_speaker
+        message: "Woah, we're halfway there"
+        options:
+          gender: female
+        language: en-US
+    - delay: 00:01:01   # Delay for the second part rest of the delay
+
+    - service: timer.start
+      entity_id: timer.flushtime5
+    - service: tts.cloud_say
+      data:
+        entity_id: media_player.kitchen_display, media_player.jens_speaker
+        message: "Lets try some other words here"
+        options:
+          gender: female
+        language: en-US
+    - wait_for_trigger:
+      - platform: event
+        event_type: timer.finished
+        event_data:
+          entity_id: timer.flushtime5
+    - service: media_player.play_media
+      data:
+        entity_id: media_player.kitchen_display, media_player.jens_speaker
+        media_content_id: !secret Gong
+        media_content_type: audio/mp3
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.flush2
+    - service: media_player.volume_set
+      data_template:
+        entity_id: media_player.jens_speaker
+        volume_level: .4
+
+        # message: '{{ [ "Im a cowboy, on a steel horse I ride" , "Im a cowboy I got the night on my side , "Im wanted wanted dead or alive" , "I drive all night just to get back home" , "Another place where the faces are so cold" , "Everyday it seems we are wasting away" , "Its all the same only the names will change" ] |random }}'

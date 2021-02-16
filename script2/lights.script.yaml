@@ -1,0 +1,11 @@
+---
+  #####################################################
+  # Outside Lights Party Mode                         #
+  #####################################################
+  party_time:
+    alias: Party Time
+    sequence:
+    - service: mqtt.publish
+      data:
+        "topic": "Yard/cmnd/event"
+        "payload": "PARTY"

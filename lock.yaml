@@ -1,0 +1,26 @@
+---
+  - platform: mqtt
+    name: "Front Door Lock"
+    unique_id: 406570c4-e604-429d-8e97-d36f97419947
+    state_topic: "FrontLock/stat/lock"
+    command_topic: "FrontLock/cmnd/EVENT"
+    availability_topic: "FrontLock/tele/LWT"
+    qos: 1
+    retain: true
+    state_locked: LOCKED
+    state_unlocked: UNLOCKED
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Side Door Lock"
+    unique_id: 84912be5-26f5-460e-bae7-34541520430b
+    state_topic: "SideLock/stat/lock"
+    command_topic: "SideLock/cmnd/EVENT"
+    availability_topic: "SideLock/tele/LWT"
+    qos: 1
+    retain: true
+    state_locked: LOCKED
+    state_unlocked: UNLOCKED
+    payload_available: "Online"
+    payload_not_available: "Offline"

@@ -1,0 +1,44 @@
+- id: '1610170033410'
+  alias: Moms Bedtime Automation
+  description: What Mom uses when she goes to bed.
+  trigger:
+  - platform: state
+    entity_id: input_boolean.mom_bedtime
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: input_boolean.turn_off
+    data: {}
+    entity_id: input_boolean.mom_bedtime
+  - service: lock.lock
+    data: {}
+    entity_id: lock.front_door
+  - service: lock.lock
+    data: {}
+    entity_id: lock.kwikset_touchpad_electronic_deadbolt_locked
+  - service: lock.lock
+    data: {}
+    entity_id: lock.side_door
+  - service: light.turn_on
+    data: {}
+    entity_id: light.stairway_light
+  - service: light.turn_off
+    data: {}
+    entity_id: light.livingroomlight
+  - service: light.turn_off
+    data: {}
+    entity_id: light.mom_light
+  mode: single
+- id: '1610785908281'
+  alias: Hummingbird
+  description: Start Jen's timer
+  trigger:
+  - platform: webhook
+    webhook_id: This is Jens timer start called Hummingbird
+  condition: []
+  action:
+  - service: input_boolean.toggle
+    data: {}
+    entity_id: input_boolean.flush2
+  mode: single

@@ -1,0 +1,26 @@
+---
+  - platform: smtp
+    name: message_dad
+    unique_id: cc38764c-5bcf-49b5-9e89-d8241ab44c01
+    server: smtp.gmail.com
+    port: 587
+    sender: !secret ControlCentral_S
+    starttls: 1
+    username: !secret ControlCentral_L
+    password: !secret ControlCentral_P
+    recipient: !secret ControlCentral_Rd
+
+  - platform: smtp
+    name: message_mom
+    unique_id: ca4c0752-8454-4069-b7f7-f97f971dd037
+    server: smtp.gmail.com
+    port: 587
+    sender: !secret ControlCentral_S
+    starttls: 1
+    username: !secret ControlCentral_L
+    password: !secret ControlCentral_P
+    recipient: !secret ControlCentral_Rm
+
+  - platform: syslog
+    name: borusa
+    unique_id: 70a16263-f791-4cad-a464-0beb8fa7aaa1

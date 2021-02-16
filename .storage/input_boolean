@@ -1,0 +1,33 @@
+{
+    "version": 1,
+    "key": "input_boolean",
+    "data": {
+        "items": [
+            {
+                "icon": "mdi:radiator",
+                "id": "bathroom_heater_auto_mode",
+                "name": "Bathroom Heater Auto Mode"
+            },
+            {
+                "icon": "mdi:candycane",
+                "id": "christmas_2",
+                "name": "ChristmasLights"
+            },
+            {
+                "icon": "mdi:fan",
+                "id": "bedroom_auto_fan",
+                "name": "Bedroom Auto Fan"
+            },
+            {
+                "name": "Hummingbird",
+                "icon": "mdi:bird",
+                "id": "flush"
+            },
+            {
+                "name": "Mom Bedtime",
+                "icon": "mdi:flower",
+                "id": "mom_bedtime"
+            }
+        ]
+    }
+}

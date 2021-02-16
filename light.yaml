@@ -1,0 +1,92 @@
+---
+  - platform: switch
+    name: "Jims Computer Light"
+    entity_id: switch.hank_hkzwso01_smart_plug_switch_2
+
+  - platform: switch
+    name: "Jens LED"
+    entity_id: switch.jens_led_switch
+
+  - platform: switch
+    name: "Kitchen Down Lights"
+    entity_id: switch.kitchen_d_lights
+
+  - platform: switch
+    name: "Monitors"
+    entity_id: switch.office_monitors
+
+  - platform: switch
+    name: "Office Track Jim Bulb"
+    entity_id: switch.office_track_2
+
+  - platform: mqtt
+    name: "Jens Night Light"
+    unique_id: 5801636e-abf4-4720-8a5b-a4c97a46228f
+    command_topic: "JensNeb/cmnd/EVENT"
+    state_topic: "JensNeb/tele/STATE"
+    state_value_template: >-
+        {% if value_json.POWER2 == 'ON' %}
+          {% if value_json.POWER5 == 'ON' %}
+            ON
+          {% else %}
+            OFF
+          {% endif %}
+        {% else %}
+            OFF
+        {% endif %}
+    payload_on: "ON"
+    payload_off: "OFF"
+    brightness_command_topic: "JensNeb/cmnd/Dimmer"
+    brightness_state_topic: "JensNeb/tele/RESULT"
+    brightness_scale: 100
+    # brightness_value_template: "{{ value_json.Dimmer }}"
+    brightness_value_template: >-
+        {% if value_json.TuyaReceived is defined and value_json['TuyaReceived'].DpId == 108 %}
+          {{ value_json['TuyaReceived'].Type3Data[12:14]|int(base=16) }}
+        {% endif %}
+    availability_topic: "JensNeb/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    qos: 1
+    retain: false
+    # color_value_template: 
+    rgb_command_topic: "JensNeb/cmnd/tuyasend3"
+    rgb_command_template: "{% set brightness = state_attr('light.diffuser_lamp','brightness') | int %}{{ '108,%02x%02x%02x646464' | format(red, green, blue)}}{{ '%02x' | format(brightness) }}"
+    rgb_value_template: >-
+        {% if value_json.TuyaReceived is defined and value_json['TuyaReceived'].DpId == 108 %}
+          {{ (value_json['TuyaReceived'].Type3Data[0:2]|int(base=16),value_json['TuyaReceived'].Type3Data[2:4]|int(base=16),value_json['TuyaReceived'].Type3Data[4:6]|int(base=16)) | join(',')}}
+        {% endif %}
+    rgb_state_topic: "JensNeb/tele/RESULT"
+
+  - platform: mqtt
+    name: "Alarm Display"
+    unique_id: e68bc3cb-e6fe-4c5f-9da4-06427296944e
+    state_topic: "Bedroom_Fan/tele/STATE"
+    command_topic: "Bedroom_Fan/cmnd/POWER1"
+    availability_topic: "Bedroom_Fan/tele/LWT"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Jens Fan"
+    unique_id: 20001143-b688-46dd-8dda-838cf10b4c58
+    state_topic: "JensNewFan/tele/STATE"
+    command_topic: "JensNewFan/cmnd/POWER1"
+    availability_topic: "JensNewFan/tele/LWT"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+    # - platform: mqtt
+  #   name: "Office Light"
+  #   unique_id: 6434c824-87de-4cf8-96b9-15ce9c8b862f
+  #   state_topic: "Bedroom_Fan/tele/STATE"
+  #   command_topic: "Bedroom_Fan/cmnd/POWER1"
+  #   availability_topic: "Bedroom_Fan/tele/LWT"
+  #   payload_on: "ON"
+  #   payload_off: "OFF"
+  #   payload_available: "Online"
+  #   payload_not_available: "Offline"

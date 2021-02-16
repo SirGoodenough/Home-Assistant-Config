@@ -1,0 +1,35 @@
+---
+  #####################################################
+  # Garage Lights on                                  #
+  #####################################################
+  garage_lights_on:
+    alias: Outside Lights on
+    sequence:
+      - service: light.turn_on
+        data:
+          entity_id: 
+            - light.garagesidelight3_switch
+            - light.garagetop_light_switch
+
+  #####################################################
+  # Garage Lights off                                 #
+  #####################################################
+  garage_lights_off:
+    alias: Outside Lights off
+    sequence:
+      - service: light.turn_off
+        data:
+          entity_id: 
+            - light.garagesidelight3_switch
+            - light.garagetop_light_switch
+
+  #####################################################
+  # Inner Garage Lights Work Mode                     #
+  #####################################################
+  work_time:
+    alias: Work Time
+    sequence:
+    - service: mqtt.publish
+      data:
+        "topic": "Garage/cmnd/event"
+        "payload": "WORK"

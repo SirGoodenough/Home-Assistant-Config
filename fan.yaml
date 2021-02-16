@@ -1,0 +1,61 @@
+---
+  - platform: mqtt
+    name: "Jens Mist"
+    unique_id: b5f92e68-a4a8-463d-8816-26a0fa340d9b
+    availability_topic: "JensNeb/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    state_topic: "JensNeb/tele/STATE"
+    state_value_template: "{{ value_json.POWER1 }}"
+    command_topic: "JensNeb/cmnd/POWER1"
+    payload_on: "ON"
+    payload_off: "OFF"
+    speed_state_topic: "JensNeb/tele/STATE"
+    speed_value_template: "{{ value_json.POWER3 }}"
+    speed_command_topic: "JensNeb/cmnd/POWER3"
+    payload_low_speed: "OFF"
+    payload_high_speed: "ON"
+    oscillation_state_topic: "JensNeb/stat/EFFECT"
+    oscillation_command_topic: "JensNeb/cmnd/EVENT"
+    oscillation_value_template: "{{ value }}"
+    payload_oscillation_on: "rgb_cycle"
+    payload_oscillation_off: "color"
+    qos: 1
+    retain: false
+    speeds:
+      - low
+      - high
+
+#future Reference replaced by tasmota integration#
+
+  # - platform: mqtt  
+  #   name: "Office Fan"
+  #   unique_id: c527a209-dc80-4c58-b20e-c9db02a5ce0b
+  #   command_topic: "Office_Fan/cmnd/FanSpeed"
+  #   speed_command_topic: "Office_Fan/cmnd/FanSpeed"    
+  #   state_topic: "Office_Fan/stat/RESULT"
+  #   speed_state_topic: "Office_Fan/stat/RESULT"
+  #   state_value_template: >
+  #     {% if value_json.FanSpeed is defined %}
+  #       {% if value_json.FanSpeed == 0 -%}0
+  #       {%- elif value_json.FanSpeed > 0 -%}4
+  #       {%- endif %}
+  #     {% else %}
+  #       {% if states.fan.office_fan_fan_popup.state == 'off' -%}0
+  #       {%- elif states.fan.office_fan_fan_popup.state == 'on' -%}4
+  #       {%- endif %}
+  #     {% endif %}
+  #   speed_value_template: "{{ value_json.FanSpeed }}"
+  #   availability_topic: Office_Fan/tele/LWT
+  #   payload_off: "0"
+  #   payload_on: "4"
+  #   payload_low_speed: "1"
+  #   payload_medium_speed: "2"
+  #   payload_high_speed: "3"
+  #   payload_available: Online
+  #   payload_not_available: Offline
+  #   speeds:
+  #     - 'off'
+  #     - low
+  #     - medium
+  #     - high

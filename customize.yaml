@@ -1,0 +1,479 @@
+---
+  ####################################################
+  #                                                  #
+  #            Temperatures                          #
+  #                                                  #
+  ####################################################
+
+  sensor.octoprint_bed_target:
+    friendly_name: "3D Bed Target"
+    device_class: temperature
+    unit_of_measurement: 'C'
+
+  sensor.octoprint_tool_0_temperature:
+    friendly_name: "3D Extruder"
+    device_class: temperature
+    unit_of_measurement: 'C'
+
+  sensor.octoprint_bed_temperature:
+    friendly_name: "3D Bed"
+    device_class: temperature
+    unit_of_measurement: 'C'
+
+  sensor.octoprint_tool_0_target:
+    friendly_name: "3D Extruder Target"
+    device_class: temperature
+    unit_of_measurement: 'C'
+
+  sensor.octoprint_tool_0_target_2:
+    friendly_name: "3D Extruder Target"
+    device_class: temperature
+    unit_of_measurement: 'C'
+
+  sensor.octoprint_soc_temperature:
+    friendly_name: "3D PI CPU"
+    device_class: temperature
+    unit_of_measurement: 'C'
+
+  sensor.house_humidity_main:
+    friendly_name: "Main Level Humidity"
+    icon: mdi:water-percent
+    device_class: humidity
+    unit_of_measurement: '%'
+
+  switch.humidifier:
+    friendly_name: "Main Level Humidifier"
+    icon: mdi:air-humidifier
+
+  input_number.target_humidity:
+    unit_of_measurement: percent
+    icon: mdi:water-percent
+
+  ####################################################
+  #                                                  #
+  #            Miscellanous Icons                    #
+  #                                                  #
+  ####################################################
+
+  switch.office_monitors:
+    icon: hass:television
+
+  script.upstairs_bath_heater_off:
+    icon: mdi:radiator-off
+
+  script.upstairs_bath_heater_on:
+    icon: mdi:radiator
+
+  script.upstairs_bath_heater_watchdog:
+    icon: mdi:radiator-off
+
+  script.bathroom_heater_auto_on:
+    icon: mdi:radiator
+
+  script.christmas:
+    icon: mdi:toggle-switch
+
+  script.heavenly_peace:
+    icon: mdi:toggle-switch-off
+
+  script.outside_christmas_on:
+    icon: mdi:toggle-switch-outline
+
+  script.outside_christmas_off:
+    icon: mdi:toggle-switch-off-outline
+
+  script.dishwasher_on:
+    icon: mdi:dishwasher
+
+  script.dishwasher_off:
+    icon: mdi:dishwasher
+
+  script.doors_close_all:
+    icon: mdi:door-closed
+
+  script.dust_collector_on:
+    icon: mdi:silo
+
+  script.dust_collector_off:
+    icon: mdi:silo
+
+  script.dust_collector_watchdog:
+    icon: mdi:silo
+
+  script.garage_lights_on:
+    icon: mdi:garage
+
+  script.garage_lights_off:
+    icon: mdi:garage
+
+  script.garage_lights_on_lock:
+    icon: mdi:garage
+
+  script.garage_lights_on_lock_timeout:
+    icon: mdi:garage
+
+  script.garage_lights_start_timeout:
+    icon: mdi:garage
+
+  script.garage_lights_run_timeout:
+    icon: mdi:garage
+
+  script.jen_needs_help_level1:
+    icon: mdi:lifebuoy
+
+  script.jen_needs_help_level1a:
+    icon: mdi:help-rhombus
+
+  script.jen_needs_help_level2:
+    icon: mdi:help-network
+
+  script.switcha1_on:
+    icon: mdi:flash
+
+  script.switcha1_off:
+    icon: mdi:flash-off
+
+  script.switcha2_on:
+    icon: mdi:flash
+
+  script.switcha2_off:
+    icon: mdi:flash-off
+
+  script.switcha3_on:
+    icon: mdi:flash
+
+  script.switcha3_off:
+    icon: mdi:flash-off
+
+  script.switchb1_on:
+    icon: mdi:flash
+
+  script.switchb1_off:
+    icon: mdi:flash-off
+
+  script.switchb2_on:
+    icon: mdi:flash
+
+  script.switchb2_off:
+    icon: mdi:flash-off
+
+  script.switchb3_on:
+    icon: mdi:flash
+
+  script.switchb3_off:
+    icon: mdi:flash-off
+
+  switch.moms_chair:
+    icon: mdi:vibrate
+
+  timer.flushtime2:
+    friendly_name: "2 Minute Timer"
+
+  timer.flushtime5:
+    friendly_name: "5 Minute Timer"
+  ####################################################
+  #                                                  #
+  #                  Jennys TV                       #
+  #                                                  #
+  ####################################################
+
+  script.vizio_j_av:
+    friendly_name: "Jens Input AV"
+    icon: mdi:video-input-component
+
+  script.vizio_j_ch_down:
+    friendly_name: "Jens Ch Down"
+    icon: mdi:arrow-down-bold-outline
+
+  script.vizio_j_ch_up:
+    friendly_name: "Jens Ch Up"
+    icon: mdi:arrow-up-bold-outline
+
+  script.vizio_j_hdmi:
+    friendly_name: "Jens HDMI Toggle"
+    icon: mdi:video-input-hdmi
+
+  script.vizio_j_mute:
+    friendly_name: "Jens TV Mute"
+    icon: mdi:volume-off
+
+  script.vizio_j_power:
+    friendly_name: "Jens TV Power"
+    icon: mdi:power
+    assumed_state: false  
+
+  script.vizio_j_tv:
+    friendly_name: "Jens TV Toggle"
+    icon: mdi:television-box
+
+  script.vizio_j_vol_down:
+    friendly_name: "Jens Vol Down"
+    icon: mdi:volume-minus
+
+  script.vizio_j_vol_up:
+    friendly_name: "Jens Vol Up"
+    icon: mdi:volume-plus
+
+  ####################################################
+  #                                                  #
+  #               Jens Room Reciever                 #
+  #                                                  #
+  ####################################################
+
+  script.denon_blue_ray:
+    friendly_name: "Blueray Input"
+    icon: mdi:disc-player
+
+  script.denon_chromecast:
+    friendly_name: "Chromecast Input"
+    icon: mdi:cast-connected
+
+  script.denon_firetv:
+    friendly_name: "FireTV Input"
+    icon: mdi:amazon
+
+  script.denon_mecool:
+    friendly_name: "MeCool Input"
+    icon: mdi:android-debug-bridge
+
+  script.denon_mute:
+    friendly_name: "Jens Rec Mute"
+    icon: mdi:volume-off
+
+  script.denon_power:
+    friendly_name: "Jens Rec Power"
+    icon: mdi:power-plug
+
+#   script.reciever_power_off:
+#     friendly_name: "Jens reciever Power Off"
+#     icon: mdi:power-plug-off
+#     assumed_state: false  
+
+  script.denon_reciever_band:
+    friendly_name: "Tuner Band"
+    icon: mdi:radio-fm
+
+  script.denon_tune:
+    friendly_name: "Tuner Freq Up"
+    icon: mdi:arrow-up-bold-hexagon-outline
+
+#   script.reciever_tune_down:
+#     friendly_name: "Audio Tuner Freq Down"
+#     icon: mdi:arrow-down-bold-hexagon-outline
+#     assumed_state: false  
+
+  script.denon_tune_search:
+    friendly_name: "Tuner Freq Search"
+    icon: mdi:radio-tower
+
+  script.denon_tuner:
+    friendly_name: "Tuner Input Audio"
+    icon: mdi:radio
+
+  script.denon_tv_audio:
+    friendly_name: "TV Audio Input"
+    icon: mdi:television-box
+
+  script.denon_volume_down:
+    friendly_name: "Jens Rec Vol Down"
+    icon: mdi:volume-minus
+    # assumed_state: false  
+
+  script.denon_volume_up:
+    friendly_name: "Jens Rec Vol Up"
+    icon: mdi:volume-plus
+
+  ####################################################
+  #                                                  #
+  #                  Bedroom TV                      #
+  #                                                  #
+  ####################################################
+
+#   switch.bedroom_tv_power:
+#     # friendly_name: "Bedroom TV"
+#     icon: mdi:power
+
+#   switch.bedroom_tv_volume:
+#     # friendly_name: "Bedroom Volume"
+#     icon: mdi:volume-plus
+
+# #   script.bedroom_tv_volume_down:
+# #     friendly_name: "Bedroom Volume Down"
+# #     icon: mdi:volume-minus
+
+#   switch.bedroom_tv_channel:
+#     # friendly_name: "Bedroom Channel Up"
+#     icon: mdi:arrow-up-bold-outline
+
+# #   script.bedroom_tv_channel_down:
+# #     friendly_name: "Bedroom Channel Down"
+# #     icon: mdi:arrow-down-bold-outline
+
+#   switch.bedroom_tv_mute_toggle:
+#     # friendly_name: "Bedroom TV Mute"
+#     icon: mdi:volume-off
+
+#   switch.bedroom_tv_tv_toggle:
+#     # friendly_name: "Bedroom TV Toggle"
+#     icon: mdi:television-box
+
+  ####################################################
+  #                                                  #
+  #                  Jennys Heater                   #
+  #                                                  #
+  ####################################################
+
+  # switch.jennys_heater_power:
+  #   # friendly_name: "Heat Power"
+  #   icon: mdi:power
+
+  # switch.jennys_heater_temp:
+  #   # friendly_name: "Heat Up"
+  #   icon: mdi:arrow-up
+
+  ####################################################
+  #                                                  #
+  #               Jennys LED Strip                   #
+  #                                                  #
+  ####################################################
+
+#   switch.jennys_room_led_power_on:
+#     # friendly_name: "LED ON"
+#     icon: mdi:power
+
+# #   script.jennys_room_led_power_off:
+# #     friendly_name: "LED OFF"
+# #     icon: mdi:power
+# #     assumed_state: false  
+
+#   switch.jennys_room_led_brighness:
+#     # friendly_name: "LED Brightness"
+#     icon: mdi:brightness-7
+
+# #   script.jennys_room_led_darker:
+# #     friendly_name: "LED Darker"
+# #     icon: mdi:brightness-2
+# #     assumed_state: false  
+
+#   switch.jennys_room_led_flash:
+#     # friendly_name: "LED Flash"
+#     icon: mdi:flash-circle
+
+#   switch.jennys_room_led_fade:
+#     # friendly_name: "LED Fade"
+#     icon: mdi:waves
+
+#   switch.jennys_room_led_strobe:
+#     # friendly_name: "LED Strobe"
+#     icon: mdi:badminton
+
+#   switch.jennys_room_led_smooth:
+#     # friendly_name: "LED Smooth"
+#     icon: mdi:zodiac-aquarius
+
+#   switch.jennys_room_led_w:
+#     # friendly_name: "LED White"
+#     icon: mdi:alpha-w-box
+
+#   switch.jennys_room_led_r:
+#     # friendly_name: "LED Red"
+#     icon: mdi:alpha-r-box
+
+#   switch.jennys_room_led_g:
+#     # friendly_name: "LED Green"
+#     icon: mdi:alpha-g-box
+
+#   switch.jennys_room_led_b:
+#     # friendly_name: "LED Blue"
+#     icon: mdi:alpha-b-box
+
+#   switch.jennys_room_led_p:
+#     # friendly_name: "LED Pink"
+#     icon: mdi:alpha-p-circle
+
+#   switch.jennys_room_led_p1:
+#     # friendly_name: "LED Pink+1"
+#     icon: mdi:alpha-p-box-outline
+
+#   switch.jennys_room_led_p2:
+#     # friendly_name: "LED Pink+2"
+#     icon: mdi:alpha-p-circle-outline
+
+#   switch.jennys_room_led_p3:
+#     # friendly_name: "LED Pink+3"
+#     icon: mdi:alpha-p
+
+#   switch.jennys_room_led_lesserb:
+#     # friendly_name: "LED Lesser Blue"
+#     icon: mdi:alpha-b-circle
+
+#   switch.jennys_room_led_lesserb1:
+#     # friendly_name: "LED Lesser Blue1"
+#     icon: mdi:alpha-b-box-outline
+
+#   switch.jennys_room_led_lesserb2:
+#     # friendly_name: "LED Lesser Blue2"
+#     icon: mdi:alpha-b-circle-outline
+
+#   switch.jennys_room_led_lesserb3:
+#     # friendly_name: "LED Lesser Blue3"
+#     icon: mdi:alpha-b
+
+#   switch.jennys_room_led_y:
+#     # friendly_name: "LED Yellow"
+#     icon: mdi:alpha-y-circle
+
+#   switch.jennys_room_led_y1:
+#     # friendly_name: "LED Yellow1"
+#     icon: mdi:alpha-y-box-outline
+
+#   switch.jennys_room_led_y2:
+#     # friendly_name: "LED Yellow2"
+#     icon: mdi:alpha-y-circle-outline
+
+#   switch.jennys_room_led_y3:
+#     # friendly_name: "LED Yellow3"
+#     icon: mdi:alpha-y
+
+  ####################################################
+  #                                                  #
+  #                  Jennys DVD                      #
+  #                                                  #
+  ####################################################
+
+#   switch.jennys_dvd_power_toggle:
+#     # friendly_name: "Jens DVD Power"
+#     icon: mdi:power
+
+#   switch.jennys_dvd_pause:
+#     # friendly_name: "Jens DVD Pause"
+#     icon: mdi:pause
+
+#   switch.jennys_dvd_play:
+#     # friendly_name: "Jens DVD Play"
+#     icon: mdi:play
+
+#   switch.jennys_dvd_stop:
+#     # friendly_name: "Jens DVD Stop"
+#     icon: mdi:stop
+
+#   switch.jennys_dvd_home:
+#     # friendly_name: "Jens DVD Home"
+#     icon: mdi:home
+
+#   switch.jennys_dvd_left_right:
+#     # friendly_name: "Jens DVD Left Right"
+#     icon: mdi:arrow-left
+
+# #   script.jennys_dvd_right:
+# #     friendly_name: "Jens DVD Right"
+# #     icon: mdi:arrow-right
+# #     assumed_state: false  
+
+#   switch.jennys_dvd_eject:
+#     # friendly_name: "Jens DVD Eject"
+#     icon: mdi:eject
+
+#   switch.jennys_dvd_menu:
+#     # friendly_name: "Jens DVD Menu"
+#     icon: mdi:menu-open

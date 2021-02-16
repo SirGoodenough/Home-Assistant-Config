@@ -1,0 +1,18 @@
+{
+    "version": 1,
+    "key": "input_select",
+    "data": {
+        "items": [
+            {
+                "icon": "mdi:lightbulb",
+                "id": "jens_nightlight_mode",
+                "name": "Jens NightLight Mode",
+                "options": [
+                    "rgb_cycle",
+                    "color",
+                    "white"
+                ]
+            }
+        ]
+    }
+}

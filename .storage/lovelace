@@ -1,0 +1,2868 @@
+{
+    "version": 1,
+    "key": "lovelace",
+    "data": {
+        "config": {
+            "title": "Control-Central",
+            "views": [
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.kitchen_temperature"
+                                },
+                                {
+                                    "entity": "sensor.kitchen_humidity"
+                                },
+                                {
+                                    "entity": "light.jims_computer_light"
+                                },
+                                {
+                                    "entity": "light.kitchen_down_lights"
+                                },
+                                {
+                                    "entity": "light.kitchensink"
+                                },
+                                {
+                                    "entity": "light.growlight2"
+                                },
+                                {
+                                    "entity": "light.b_porch_socket"
+                                },
+                                {
+                                    "entity": "switch.kitchenfan"
+                                },
+                                {
+                                    "entity": "switch.dishwasher"
+                                },
+                                {
+                                    "entity": "media_player.kitchen_display"
+                                },
+                                {
+                                    "entity": "lock.kwikset_touchpad_electronic_deadbolt_locked"
+                                },
+                                {
+                                    "entity": "binary_sensor.back_door_open_433"
+                                },
+                                {
+                                    "entity": "binary_sensor.back_door_pir"
+                                },
+                                {
+                                    "entity": "alert.back_door_notify_low_battery"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Kitchen",
+                            "type": "entities",
+                            "state_color": true
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.sonoff_rf_bridge_2_si7021_temperature"
+                                },
+                                {
+                                    "entity": "sensor.sonoff_rf_bridge_2_si7021_humidity"
+                                },
+                                {
+                                    "entity": "climate.living_room"
+                                },
+                                {
+                                    "entity": "lock.front_door"
+                                },
+                                {
+                                    "entity": "switch.moms_chair"
+                                },
+                                {
+                                    "entity": "light.mom_light"
+                                },
+                                {
+                                    "entity": "light.livingroomlight"
+                                },
+                                {
+                                    "entity": "light.fp_socket"
+                                },
+                                {
+                                    "entity": "light.stairway_light"
+                                },
+                                {
+                                    "entity": "binary_sensor.moms_button1"
+                                },
+                                {
+                                    "entity": "binary_sensor.moms_button2"
+                                },
+                                {
+                                    "entity": "binary_sensor.front_door_open"
+                                },
+                                {
+                                    "entity": "binary_sensor.front_door_open_433"
+                                },
+                                {
+                                    "entity": "binary_sensor.upstairs_pir"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Living Room",
+                            "type": "entities",
+                            "state_color": true
+                        },
+                        {
+                            "type": "weather-forecast",
+                            "entity": "weather.home",
+                            "name": "Chaloupka Abode",
+                            "theme": "Animated Weather Card",
+                            "secondary_info_attribute": "wind_speed"
+                        },
+                        {
+                            "type": "glance",
+                            "entities": [
+                                {
+                                    "entity": "sensor.hacs"
+                                },
+                                {
+                                    "entity": "sensor.garbage_2"
+                                },
+                                {
+                                    "entity": "sensor.recycling"
+                                },
+                                {
+                                    "entity": "binary_sensor.aromatherapy_water"
+                                }
+                            ],
+                            "title": "Glance"
+                        },
+                        {
+                            "type": "glance",
+                            "entities": [
+                                {
+                                    "entity": "sensor.drain_the_compressor"
+                                },
+                                {
+                                    "entity": "sensor.water_the_plants"
+                                }
+                            ]
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "switch.aeotec_dsc26103_micro_switch_2nd_edition_switch"
+                                },
+                                {
+                                    "entity": "binary_sensor.bathroom"
+                                },
+                                {
+                                    "entity": "sensor.bathoom_si7021_temperature"
+                                },
+                                {
+                                    "entity": "sensor.bathoom_si7021_humidity"
+                                },
+                                {
+                                    "entity": "sensor.bathoom_si7021_dewpoint"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Bathroom",
+                            "type": "entities",
+                            "state_color": true
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.garagefront_light"
+                                },
+                                {
+                                    "entity": "light.garageback_light"
+                                },
+                                {
+                                    "entity": "light.garagetop_light"
+                                },
+                                {
+                                    "entity": "light.garagesidelight3"
+                                },
+                                {
+                                    "entity": "script.work_time"
+                                },
+                                {
+                                    "entity": "script.party_time"
+                                },
+                                {
+                                    "entity": "script.garage_lights_on"
+                                },
+                                {
+                                    "entity": "script.garage_lights_off"
+                                },
+                                {
+                                    "entity": "sensor.garage_door_si7021_temperature"
+                                },
+                                {
+                                    "entity": "sensor.garage_door_si7021_dewpoint"
+                                },
+                                {
+                                    "entity": "sensor.garage_door_si7021_humidity"
+                                },
+                                {
+                                    "entity": "binary_sensor.yard_light_pir"
+                                },
+                                {
+                                    "entity": "binary_sensor.garage_side_door_open"
+                                },
+                                {
+                                    "entity": "cover.garage_door"
+                                },
+                                {
+                                    "entity": "binary_sensor.garage_door_open"
+                                },
+                                {
+                                    "entity": "binary_sensor.garage_door_closed"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Garage",
+                            "type": "entities",
+                            "state_color": true
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "customIsOffColor": "#F88416",
+                                    "customIsOffSpdColor": "#F4F11B",
+                                    "customIsOnHiColor": "red",
+                                    "customIsOnLowColor": "#E78E85",
+                                    "customIsOnMedColor": "#E54234",
+                                    "customTheme": true,
+                                    "entity": "fan.office_fan",
+                                    "name": "Office Fan",
+                                    "type": "custom:fan-control-entity-row"
+                                },
+                                {
+                                    "entity": "sensor.office_fanspeed"
+                                },
+                                {
+                                    "entity": "light.plug3"
+                                },
+                                {
+                                    "entity": "light.office_track_jim_bulb"
+                                },
+                                {
+                                    "entity": "light.office_fan_light"
+                                },
+                                {
+                                    "entity": "switch.office_monitors"
+                                },
+                                {
+                                    "entity": "switch.benchstrip"
+                                },
+                                {
+                                    "entity": "switch.office_usb"
+                                },
+                                {
+                                    "entity": "switch.solder_iron"
+                                },
+                                {
+                                    "entity": "switch.power_supply"
+                                },
+                                {
+                                    "entity": "media_player.office_speaker_2"
+                                },
+                                {
+                                    "entity": "sensor.benchstrip_rssi"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Office",
+                            "state_color": true,
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "customIsOffColor": "#F88416",
+                                    "customIsOffSpdColor": "#F4F11B",
+                                    "customIsOnHiColor": "red",
+                                    "customIsOnLowColor": "#E78E85",
+                                    "customIsOnMedColor": "#E54234",
+                                    "customTheme": true,
+                                    "entity": "fan.bedroom_fan",
+                                    "name": "Bedroom Fan",
+                                    "type": "custom:fan-control-entity-row"
+                                },
+                                {
+                                    "entity": "light.bedroom_light"
+                                },
+                                {
+                                    "entity": "sensor.bedroom_fanspeed"
+                                },
+                                {
+                                    "entity": "binary_sensor.bedroom"
+                                },
+                                {
+                                    "entity": "climate.gemodule5384"
+                                },
+                                {
+                                    "entity": "input_number.bedroom_auto_temp"
+                                },
+                                {
+                                    "entity": "input_boolean.bedroom_auto_fan"
+                                },
+                                {
+                                    "entity": "media_player.bedroom_speaker"
+                                },
+                                {
+                                    "entity": "sensor.bedroom_fanspeed"
+                                },
+                                {
+                                    "entity": "sensor.bathoom_si7021_temperature"
+                                },
+                                {
+                                    "entity": "sensor.bathoom_si7021_humidity"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Bedroom",
+                            "type": "entities",
+                            "state_color": true
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "lock.side_door"
+                                },
+                                {
+                                    "entity": "binary_sensor.dust_collector_button1"
+                                },
+                                {
+                                    "entity": "switch.dust_collector"
+                                },
+                                {
+                                    "entity": "switch.sonoff_1000d4bf8f_1"
+                                },
+                                {
+                                    "entity": "binary_sensor.dryer"
+                                },
+                                {
+                                    "entity": "binary_sensor.washing_machine"
+                                },
+                                {
+                                    "entity": "light.bmt_hall_socketu"
+                                },
+                                {
+                                    "entity": "light.bmt_hall_socketd"
+                                },
+                                {
+                                    "entity": "script.dust_collector_watchdog"
+                                },
+                                {
+                                    "entity": "binary_sensor.side_door_open"
+                                },
+                                {
+                                    "entity": "binary_sensor.side_door_open_433"
+                                },
+                                {
+                                    "entity": "binary_sensor.basement_smoke_alarm"
+                                },
+                                {
+                                    "entity": "binary_sensor.basement_way_u_pir"
+                                },
+                                {
+                                    "entity": "binary_sensor.basement_way_d_pir"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Basement",
+                            "type": "entities",
+                            "state_color": true
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "script.jen_needs_help_level1"
+                                },
+                                {
+                                    "entity": "script.jen_needs_help_level1a"
+                                },
+                                {
+                                    "entity": "script.jen_needs_help_level2"
+                                },
+                                {
+                                    "entity": "script.doors_close_all"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Script",
+                            "type": "entities",
+                            "state_color": true
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.b_porch_socket"
+                                },
+                                {
+                                    "entity": "light.fp_socket"
+                                },
+                                {
+                                    "entity": "light.garagetop_light"
+                                },
+                                {
+                                    "entity": "light.garagesidelight3"
+                                },
+                                {
+                                    "entity": "binary_sensor.back_door_pir"
+                                },
+                                {
+                                    "entity": "binary_sensor.yard_light_pir"
+                                },
+                                {
+                                    "entity": "binary_sensor.back_door_motion"
+                                },
+                                {
+                                    "entity": "binary_sensor.front_door_pir"
+                                },
+                                {
+                                    "entity": "binary_sensor.front_door_motion"
+                                }
+                            ],
+                            "show_header_toggle": true,
+                            "title": "Outside",
+                            "type": "entities"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.kitchen_display"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.jens_speaker"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.jens_firestick"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.jenny_s_tv"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.living_room_speaker"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.main_level_speakers"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.workroom_speaker"
+                        },
+                        {
+                            "type": "calendar",
+                            "entities": [
+                                "calendar.garbage_collection"
+                            ]
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.office_speaker_1"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.office_speaker_2"
+                        }
+                    ],
+                    "icon": "mdi:home-automation",
+                    "id": "home",
+                    "path": "default_view",
+                    "title": "Home"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "customIsOffColor": "#2E253F",
+                                    "customIsOffSpdColor": "#3D1F74",
+                                    "customIsOnHiColor": "#D3C5EC",
+                                    "customIsOnLowColor": "#6A2FD3",
+                                    "customIsOnMedColor": "#9F7BDF",
+                                    "customTheme": true,
+                                    "entity": "fan.jens_new_fan",
+                                    "name": "JensFan",
+                                    "type": "custom:fan-control-entity-row"
+                                },
+                                {
+                                    "entity": "sensor.jennys_new_fanspeed"
+                                },
+                                {
+                                    "entity": "script.jen_needs_help_level1"
+                                },
+                                {
+                                    "entity": "script.jen_needs_help_level1a"
+                                },
+                                {
+                                    "entity": "script.jen_needs_help_level2"
+                                },
+                                {
+                                    "entity": "light.jens_fan"
+                                },
+                                {
+                                    "entity": "light.bulb1_2"
+                                },
+                                {
+                                    "entity": "input_boolean.flush2"
+                                },
+                                {
+                                    "entity": "timer.flushtime2"
+                                },
+                                {
+                                    "entity": "timer.flushtime5"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Jens Room",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "fan.jens_mist"
+                                },
+                                {
+                                    "entity": "light.jens_night_light"
+                                },
+                                {
+                                    "entity": "binary_sensor.aromatherapy_water"
+                                }
+                            ],
+                            "title": "Jens Nebulizer",
+                            "type": "entities"
+                        },
+                        {
+                            "type": "weather-forecast",
+                            "entity": "weather.home",
+                            "theme": "Animated Weather Card"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.dark_sky_apparent_temperature"
+                                },
+                                {
+                                    "entity": "sensor.dark_sky_cloud_coverage"
+                                },
+                                {
+                                    "entity": "sensor.dark_sky_temperature"
+                                },
+                                {
+                                    "entity": "sensor.dark_sky_wind_speed"
+                                },
+                                {
+                                    "entity": "binary_sensor.dark_outside"
+                                },
+                                {
+                                    "entity": "binary_sensor.dark_outside_2"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Weather",
+                            "type": "entities"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.jenny_s_tv"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.jens_speaker"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.jens_firestick"
+                        }
+                    ],
+                    "icon": "mdi:alpha-j-box",
+                    "id": "jennys_room",
+                    "path": "jennys_room",
+                    "title": "Jens Room"
+                },
+                {
+                    "title": "remotes",
+                    "path": "remotes",
+                    "panel": false,
+                    "icon": "mdi:remote",
+                    "visible": [
+                        {
+                            "user": "fbb92492100f41b58f8745f7bea065d8"
+                        },
+                        {
+                            "user": "19d8a845eec04e30ae7b4abe9ac68f40"
+                        },
+                        {
+                            "user": "3c91a64ba14c4d949d57ae414c50b922"
+                        },
+                        {
+                            "user": "b707888b479d4c3cae42e8b44d6b7259"
+                        }
+                    ],
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "script.vizio_j_power"
+                                },
+                                {
+                                    "entity": "script.vizio_j_tv"
+                                },
+                                {
+                                    "entity": "switch.chromecast"
+                                },
+                                {
+                                    "entity": "script.vizio_j_mute"
+                                },
+                                {
+                                    "entity": "script.vizio_j_ch_up"
+                                },
+                                {
+                                    "entity": "script.vizio_j_ch_down"
+                                },
+                                {
+                                    "entity": "script.vizio_j_hdmi"
+                                },
+                                {
+                                    "entity": "script.vizio_j_vol_up"
+                                },
+                                {
+                                    "entity": "script.vizio_j_vol_down"
+                                },
+                                {
+                                    "entity": "script.vizio_j_av"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "TV Menu",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "script.denon_power"
+                                },
+                                {
+                                    "entity": "script.denon_volume_up"
+                                },
+                                {
+                                    "entity": "script.denon_volume_down"
+                                },
+                                {
+                                    "entity": "script.denon_mute"
+                                },
+                                {
+                                    "entity": "script.denon_tv_audio"
+                                },
+                                {
+                                    "entity": "script.denon_firetv"
+                                },
+                                {
+                                    "entity": "script.denon_chromecast"
+                                },
+                                {
+                                    "entity": "script.denon_mecool"
+                                },
+                                {
+                                    "entity": "script.denon_blue_ray"
+                                },
+                                {
+                                    "entity": "script.denon_tuner"
+                                },
+                                {
+                                    "entity": "script.denon_reciever_band"
+                                },
+                                {
+                                    "entity": "script.denon_tune"
+                                },
+                                {
+                                    "entity": "script.denon_tune_search"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Reciever",
+                            "type": "entities"
+                        },
+                        {
+                            "type": "grid",
+                            "cards": [
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.br_eject",
+                                    "icon": "mdi:eject",
+                                    "name": "Eject",
+                                    "icon_height": "-50px",
+                                    "theme": "Dark - Blue/Purple"
+                                },
+                                {
+                                    "type": "button",
+                                    "entity": "script.br_power",
+                                    "icon": "mdi:power",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "icon_height": "-50px",
+                                    "name": "BlueRay Power",
+                                    "theme": "Dark - Blue/Purple"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.br_play",
+                                    "icon": "mdi:play",
+                                    "name": "Play",
+                                    "icon_height": "-50px",
+                                    "theme": "Dark - Blue/Purple"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.br_menu",
+                                    "icon": "mdi:menu",
+                                    "name": "Hamburger",
+                                    "icon_height": "-50px",
+                                    "theme": "Dark - Blue/Purple"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.br_stop",
+                                    "icon": "mdi:stop",
+                                    "name": "Stop",
+                                    "icon_height": "-50px",
+                                    "theme": "Dark - Blue/Purple"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.br_pause",
+                                    "name": "Pause",
+                                    "icon": "mdi:pause",
+                                    "icon_height": "-50px",
+                                    "theme": "Dark - Blue/Purple"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.br_back",
+                                    "name": "Back",
+                                    "icon": "mdi:undo",
+                                    "icon_height": "-50px",
+                                    "theme": "Dark - Blue/Purple"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.br_up",
+                                    "name": "Up",
+                                    "icon": "mdi:arrow-up",
+                                    "icon_height": "-50px",
+                                    "theme": "Dark - Blue/Purple"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.br_home",
+                                    "name": "Home",
+                                    "icon": "mdi:home",
+                                    "icon_height": "-50px",
+                                    "theme": "Dark - Blue/Purple"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "icon": "mdi:arrow-left",
+                                    "name": "Left",
+                                    "entity": "script.br_left",
+                                    "icon_height": "-50px",
+                                    "theme": "Dark - Blue/Purple"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.br_enter",
+                                    "name": "Enter",
+                                    "icon": "mdi:keyboard-return",
+                                    "icon_height": "-50px",
+                                    "theme": "Dark - Blue/Purple"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.br_right",
+                                    "name": "Right",
+                                    "icon": "mdi:arrow-right",
+                                    "icon_height": "-50px",
+                                    "theme": "Dark - Blue/Purple"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.br_skip_up",
+                                    "name": "Skip",
+                                    "icon": "mdi:skip-forward",
+                                    "icon_height": "-50px",
+                                    "theme": "Dark - Blue/Purple"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.br_down",
+                                    "name": "Down",
+                                    "icon": "mdi:arrow-down",
+                                    "icon_height": "-50px",
+                                    "theme": "Dark - Blue/Purple"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.br_scan_up",
+                                    "name": "Scan",
+                                    "icon": "mdi:fast-forward",
+                                    "icon_height": "-50px",
+                                    "theme": "Dark - Blue/Purple"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.br_skip_down",
+                                    "icon_height": "-50px",
+                                    "name": "Skip",
+                                    "icon": "mdi:skip-backward",
+                                    "theme": "Dark - Blue/Purple"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.br_repeat",
+                                    "icon_height": "-50px",
+                                    "name": " Repeat",
+                                    "icon": "mdi:repeat",
+                                    "theme": "Dark - Blue/Purple"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.br_scan_down",
+                                    "icon_height": "-50px",
+                                    "name": "Scan",
+                                    "icon": "mdi:rewind",
+                                    "theme": "Dark - Blue/Purple"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.denon_power",
+                                    "theme": "Dark - Yellow",
+                                    "name": "Reciever Power",
+                                    "icon": "mdi:audio-video"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.denon_blue_ray",
+                                    "theme": "Dark - Yellow"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.vizio_j_power",
+                                    "icon": "mdi:monitor",
+                                    "theme": "Dark - Yellow"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "grid",
+                            "cards": [
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.denon_mecool",
+                                    "icon": "mdi:android",
+                                    "icon_height": "-50px",
+                                    "theme": "Dark - Yellow",
+                                    "name": "Reciever MeCool"
+                                },
+                                {
+                                    "type": "button",
+                                    "entity": "script.mc_power",
+                                    "icon": "mdi:power",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "icon_height": "-50px",
+                                    "name": "MeCool Power",
+                                    "theme": "Dark - Red"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.denon_power",
+                                    "icon": "mdi:audio-video",
+                                    "name": "Reciever Power",
+                                    "icon_height": "-50px",
+                                    "theme": "Dark - Yellow"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.mc_skip_back",
+                                    "icon": "mdi:skip-backward",
+                                    "name": "Skip",
+                                    "icon_height": "-50px",
+                                    "theme": "Dark - Red"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.mc_e",
+                                    "icon": "mdi:alpha-e-circle-outline",
+                                    "name": "E",
+                                    "icon_height": "-50px",
+                                    "theme": "Dark - Red"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.mc_volume_up",
+                                    "name": "Vol",
+                                    "icon": "mdi:volume-plus",
+                                    "icon_height": "-50px",
+                                    "theme": "Dark - Red"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.mc_skip_back",
+                                    "icon_height": "-50px",
+                                    "name": "Skip",
+                                    "icon": "mdi:skip-forward",
+                                    "theme": "Dark - Red"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.mc_mute",
+                                    "icon_height": "-50px",
+                                    "name": " Mute",
+                                    "icon": "mdi:volume-mute",
+                                    "theme": "Dark - Red"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.mc_volume_down",
+                                    "name": "Vol",
+                                    "icon": "mdi:volume-minus",
+                                    "icon_height": "-50px",
+                                    "theme": "Dark - Red"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.mc_home",
+                                    "name": "Home",
+                                    "icon": "mdi:home",
+                                    "icon_height": "-50px",
+                                    "theme": "Dark - Red"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.mc_vert_up",
+                                    "name": "Up",
+                                    "icon": "mdi:arrow-up",
+                                    "icon_height": "-50px",
+                                    "theme": "Dark - Red"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.mc_back",
+                                    "name": "Back",
+                                    "icon": "mdi:undo",
+                                    "icon_height": "-50px",
+                                    "theme": "Dark - Red"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "icon": "mdi:arrow-left",
+                                    "name": "Left",
+                                    "entity": "script.mc_horz_left",
+                                    "icon_height": "-50px",
+                                    "theme": "Dark - Red"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.mc_ok",
+                                    "name": "OK",
+                                    "icon": "mdi:hand-okay",
+                                    "icon_height": "-50px",
+                                    "theme": "Dark - Red"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.mc_horz_right",
+                                    "name": "Right",
+                                    "icon": "mdi:arrow-right",
+                                    "icon_height": "-50px",
+                                    "theme": "Dark - Red"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.mc_hamburger",
+                                    "name": "Hamburger",
+                                    "icon_height": "-50px",
+                                    "theme": "Dark - Red",
+                                    "icon": "mdi:menu"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.mc_vert_down",
+                                    "name": "Down",
+                                    "icon": "mdi:arrow-down",
+                                    "icon_height": "-50px",
+                                    "theme": "Dark - Red"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.mc_mouse",
+                                    "icon_height": "-50px",
+                                    "name": "Mouse",
+                                    "icon": "mdi:mouse",
+                                    "theme": "Dark - Red"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "thermostat",
+                            "entity": "climate.living_room"
+                        },
+                        {
+                            "type": "thermostat",
+                            "entity": "climate.gemodule5384"
+                        },
+                        {
+                            "entity": "sensor.furnace_pellet_firebox_temp",
+                            "graph": "line",
+                            "theme": "Dark - Red",
+                            "type": "sensor",
+                            "detail": 2,
+                            "icon": "mdi:fireplace"
+                        },
+                        {
+                            "entity": "sensor.furnace_oil_firebox_temp",
+                            "graph": "line",
+                            "theme": "slate_red",
+                            "type": "sensor",
+                            "detail": 2,
+                            "icon": "mdi:temperature-fahrenheit"
+                        },
+                        {
+                            "entity": "sensor.furnace_pellet_top_temp",
+                            "graph": "line",
+                            "theme": "Dark - Red",
+                            "type": "sensor",
+                            "detail": 2,
+                            "icon": "mdi:fire"
+                        },
+                        {
+                            "entity": "sensor.furnace_oil_top_temp",
+                            "graph": "line",
+                            "theme": "slate_red",
+                            "type": "sensor",
+                            "detail": 2,
+                            "icon": "mdi:temperature-fahrenheit"
+                        },
+                        {
+                            "entity": "sensor.furnace_register_temp",
+                            "graph": "line",
+                            "theme": "Dark - Green",
+                            "type": "sensor",
+                            "detail": 2,
+                            "icon": "mdi:temperature-fahrenheit"
+                        },
+                        {
+                            "entity": "sensor.furnace_return_temp",
+                            "graph": "line",
+                            "theme": "Dark - Green",
+                            "type": "sensor",
+                            "detail": 2,
+                            "icon": "mdi:temperature-fahrenheit"
+                        },
+                        {
+                            "entity": "sensor.kitchen_temp",
+                            "graph": "line",
+                            "type": "sensor",
+                            "detail": 2,
+                            "icon": "mdi:stove"
+                        },
+                        {
+                            "entity": "sensor.sonoff_rf_bridge_2_si7021_temperature",
+                            "graph": "line",
+                            "type": "sensor",
+                            "detail": 2,
+                            "icon": "mdi:seat"
+                        },
+                        {
+                            "entity": "sensor.bathoom_si7021_temperature",
+                            "graph": "line",
+                            "name": "Server Room Temperature",
+                            "type": "sensor",
+                            "detail": 2,
+                            "icon": "hass:server"
+                        },
+                        {
+                            "entity": "sensor.dust_collector_si7021_temperature",
+                            "graph": "line",
+                            "type": "sensor",
+                            "detail": 2,
+                            "icon": "mdi:stairs-down"
+                        },
+                        {
+                            "entity": "sensor.garage_door_si7021_temperature",
+                            "graph": "line",
+                            "theme": "sundown",
+                            "type": "sensor",
+                            "detail": 2,
+                            "icon": "mdi:garage"
+                        },
+                        {
+                            "entity": "sensor.bedroom_fan_si7021_temperature",
+                            "graph": "line",
+                            "type": "sensor",
+                            "detail": 2,
+                            "icon": "hass:bed"
+                        },
+                        {
+                            "entity": "sensor.dryer3_si7021_temperature",
+                            "graph": "line",
+                            "type": "sensor",
+                            "detail": 2,
+                            "icon": "mdi:washing-machine"
+                        }
+                    ],
+                    "icon": "mdi:thermometer-lines",
+                    "path": "temp-central",
+                    "theme": "midnight_blue",
+                    "title": "Temp Central"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "input_number.target_humidity"
+                                },
+                                {
+                                    "entity": "switch.humidifier"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Main Control",
+                            "type": "entities"
+                        },
+                        {
+                            "entity": "sensor.kitchen_humid",
+                            "graph": "line",
+                            "type": "sensor",
+                            "detail": 2
+                        },
+                        {
+                            "entity": "sensor.house_humidity_main",
+                            "graph": "line",
+                            "name": "Main Level Mean Humidity",
+                            "type": "sensor",
+                            "detail": 2
+                        },
+                        {
+                            "entity": "sensor.furnace_oil_top_humid",
+                            "graph": "line",
+                            "type": "sensor",
+                            "detail": 2
+                        },
+                        {
+                            "entity": "sensor.sonoff_rf_bridge_2_si7021_humidity",
+                            "graph": "line",
+                            "type": "sensor",
+                            "detail": 2
+                        },
+                        {
+                            "entity": "sensor.furnace_return_humid",
+                            "graph": "line",
+                            "type": "sensor",
+                            "detail": 2
+                        },
+                        {
+                            "entity": "sensor.bathoom_si7021_humidity",
+                            "graph": "line",
+                            "type": "sensor",
+                            "detail": 2
+                        },
+                        {
+                            "entity": "sensor.dust_collector_si7021_humidity",
+                            "graph": "line",
+                            "type": "sensor",
+                            "detail": 2
+                        },
+                        {
+                            "entity": "sensor.garage_door_si7021_humidity",
+                            "graph": "line",
+                            "type": "sensor",
+                            "detail": 2
+                        },
+                        {
+                            "entity": "sensor.bedroom_fan_si7021_humidity",
+                            "graph": "line",
+                            "type": "sensor",
+                            "detail": 2
+                        },
+                        {
+                            "entity": "sensor.dryer3_si7021_humidity",
+                            "graph": "line",
+                            "type": "sensor",
+                            "detail": 2
+                        },
+                        {
+                            "entity": "sensor.garage_door_si7021_dewpoint",
+                            "graph": "line",
+                            "type": "sensor",
+                            "detail": 2
+                        }
+                    ],
+                    "icon": "mdi:water-percent",
+                    "theme": "slate",
+                    "title": "Humidity"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.jims_computer_light"
+                                },
+                                {
+                                    "entity": "light.kitchen_down_lights"
+                                },
+                                {
+                                    "entity": "light.kitchensink"
+                                },
+                                {
+                                    "entity": "light.growlight2"
+                                }
+                            ],
+                            "show_header_toggle": true,
+                            "theme": "darkish",
+                            "title": "Kitchen",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.garageback_light"
+                                },
+                                {
+                                    "entity": "light.garagefront_light"
+                                }
+                            ],
+                            "show_header_toggle": true,
+                            "theme": "darkish",
+                            "title": "Garage",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.mom_light"
+                                },
+                                {
+                                    "entity": "light.livingroomlight"
+                                }
+                            ],
+                            "show_header_toggle": true,
+                            "theme": "darkish",
+                            "title": "Living Room",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.b_porch_socket"
+                                },
+                                {
+                                    "entity": "light.fp_socket"
+                                },
+                                {
+                                    "entity": "light.garagetop_light"
+                                },
+                                {
+                                    "entity": "light.garagesidelight3"
+                                },
+                                {
+                                    "entity": "binary_sensor.back_door_pir"
+                                },
+                                {
+                                    "entity": "binary_sensor.yard_light_pir"
+                                },
+                                {
+                                    "entity": "binary_sensor.back_door_motion"
+                                },
+                                {
+                                    "entity": "binary_sensor.front_door_pir"
+                                },
+                                {
+                                    "entity": "binary_sensor.front_door_motion"
+                                }
+                            ],
+                            "show_header_toggle": true,
+                            "theme": "darkish",
+                            "title": "Outside",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.bmt_hall_socketu"
+                                },
+                                {
+                                    "entity": "light.bmt_hall_socketd"
+                                }
+                            ],
+                            "show_header_toggle": true,
+                            "theme": "darkish",
+                            "title": "Basement",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.jens_light"
+                                },
+                                {
+                                    "entity": "light.jens_led"
+                                },
+                                {
+                                    "entity": "light.bulb1_2"
+                                },
+                                {
+                                    "entity": "fan.jens_new_fan"
+                                },
+                                {
+                                    "entity": "sensor.jennys_new_fanspeed"
+                                }
+                            ],
+                            "theme": "darkish",
+                            "title": "Jens Room",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.bedroom_light"
+                                },
+                                {
+                                    "entity": "light.stairway_light"
+                                },
+                                {
+                                    "entity": "binary_sensor.upstairs_pir"
+                                },
+                                {
+                                    "entity": "binary_sensor.stairs_down"
+                                }
+                            ],
+                            "theme": "darkish",
+                            "title": "Upstairs",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "input_boolean.christmas"
+                                },
+                                {
+                                    "entity": "switch.outside_christmas"
+                                },
+                                {
+                                    "entity": "script.inside_christmas"
+                                },
+                                {
+                                    "entity": "script.heavenly_peace"
+                                },
+                                {
+                                    "entity": "light.christmastree"
+                                },
+                                {
+                                    "entity": "sensor.christmastree_wi_fi_rssi"
+                                }
+                            ],
+                            "show_header_toggle": true,
+                            "theme": "christmas",
+                            "title": "Christmas Lights",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.plug3"
+                                },
+                                {
+                                    "entity": "light.office_track_jim_bulb"
+                                },
+                                {
+                                    "entity": "switch.office_monitors"
+                                },
+                                {
+                                    "entity": "light.office_fan_light"
+                                },
+                                {
+                                    "entity": "fan.office_fan"
+                                },
+                                {
+                                    "entity": "sensor.office_fanspeed"
+                                }
+                            ],
+                            "title": "Office",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "fan.jens_mist"
+                                },
+                                {
+                                    "entity": "light.jens_night_light"
+                                },
+                                {
+                                    "entity": "binary_sensor.aromatherapy_water"
+                                }
+                            ],
+                            "theme": "Dark - Blue/Purple",
+                            "title": "Jens Nebulizer",
+                            "type": "entities"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "light.bedroom_light"
+                                },
+                                {
+                                    "entity": "fan.bedroom_fan"
+                                },
+                                {
+                                    "entity": "sensor.bedroom_fanspeed"
+                                }
+                            ],
+                            "title": "Bedroom"
+                        }
+                    ],
+                    "icon": "mdi:lightbulb-outline",
+                    "id": "lights",
+                    "path": "lights",
+                    "title": "Lights"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "lock.kwikset_touchpad_electronic_deadbolt_locked"
+                                },
+                                {
+                                    "entity": "light.b_porch_socket"
+                                },
+                                {
+                                    "entity": "sensor.lock_back_door_mode"
+                                },
+                                {
+                                    "entity": "sensor.lock_backdoor_bat_level"
+                                },
+                                {
+                                    "entity": "sensor.kwikset_touchpad_electronic_deadbolt_alarm_type"
+                                },
+                                {
+                                    "entity": "sensor.kwikset_touchpad_electronic_deadbolt_alarm_level"
+                                },
+                                {
+                                    "entity": "zwave.kwikset_touchpad_electronic_deadbolt"
+                                },
+                                {
+                                    "entity": "binary_sensor.back_door_pir"
+                                },
+                                {
+                                    "entity": "binary_sensor.back_door_ding"
+                                },
+                                {
+                                    "entity": "binary_sensor.back_door_motion"
+                                },
+                                {
+                                    "entity": "alert.back_door_notify_low_battery"
+                                },
+                                {
+                                    "entity": "alert.lock_back_door_notify_low_battery"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Back Door",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "lock.front_door"
+                                },
+                                {
+                                    "entity": "light.fp_socket"
+                                },
+                                {
+                                    "entity": "binary_sensor.front_door_pir"
+                                },
+                                {
+                                    "entity": "binary_sensor.front_door_ding"
+                                },
+                                {
+                                    "entity": "binary_sensor.front_door_motion"
+                                },
+                                {
+                                    "entity": "alert.front_door_notify_low_battery"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Front Door",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "lock.side_door"
+                                },
+                                {
+                                    "entity": "light.bmt_hall_rf_socket_u"
+                                },
+                                {
+                                    "entity": "light.bmt_hall_rf_socket_d"
+                                },
+                                {
+                                    "entity": "binary_sensor.basement_way_u_pir"
+                                },
+                                {
+                                    "entity": "binary_sensor.basement_way_d_pir"
+                                },
+                                {
+                                    "entity": "binary_sensor.side_doorbell"
+                                },
+                                {
+                                    "entity": "alert.side_door_notify_low_battery"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Side Door",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.back_door_open_433"
+                                },
+                                {
+                                    "entity": "binary_sensor.front_door_open"
+                                },
+                                {
+                                    "entity": "binary_sensor.front_door_open_433"
+                                },
+                                {
+                                    "entity": "binary_sensor.garage_door_open"
+                                },
+                                {
+                                    "entity": "binary_sensor.garage_side_door_open"
+                                },
+                                {
+                                    "entity": "binary_sensor.side_door_open"
+                                },
+                                {
+                                    "entity": "binary_sensor.side_door_open_433"
+                                },
+                                {
+                                    "entity": "binary_sensor.bathroom"
+                                },
+                                {
+                                    "entity": "binary_sensor.bedroom"
+                                }
+                            ],
+                            "title": "House Door Status",
+                            "type": "entities"
+                        },
+                        {
+                            "type": "glance",
+                            "entities": [
+                                "sensor.back_door_battery",
+                                "binary_sensor.back_door_ding",
+                                "binary_sensor.back_door_motion",
+                                "sensor.back_door_wifi_signal_category",
+                                "sensor.back_door_wifi_signal_strength"
+                            ],
+                            "title": "Back Door"
+                        },
+                        {
+                            "type": "glance",
+                            "entities": [
+                                "camera.front_door",
+                                "sensor.front_door_battery",
+                                "binary_sensor.front_door_ding",
+                                "binary_sensor.front_door_motion",
+                                "sensor.front_door_wifi_signal_category",
+                                "sensor.front_door_wifi_signal_strength"
+                            ],
+                            "title": "Front Door"
+                        }
+                    ],
+                    "icon": "mdi:lock-question",
+                    "id": "locks",
+                    "path": "locks",
+                    "title": "Locks"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "aspect_ratio": "250%",
+                            "type": "iframe",
+                            "url": "https://www.home-assistant.io"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "device_tracker.life360_supreme_leader_chaloupka"
+                                },
+                                {
+                                    "entity": "device_tracker.life360_jen_chaloupka"
+                                },
+                                {
+                                    "entity": "device_tracker.life360_sirius_goodenough"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "People"
+                        }
+                    ],
+                    "icon": "mdi:human-greeting",
+                    "id": "whos_home",
+                    "path": "whos_home",
+                    "title": "Whos Home"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "cards": [
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "sensor.192_168_108_21_01_status",
+                                            "name": "Eldrad CPU FAH",
+                                            "type": "entity"
+                                        },
+                                        {
+                                            "entity": "sensor.192_168_108_21_00_percentdone",
+                                            "name": "Eldrad CPU FAH",
+                                            "type": "entity"
+                                        },
+                                        {
+                                            "entity": "sensor.192_168_108_21_00_points_per_day",
+                                            "max": 15000,
+                                            "min": 0,
+                                            "name": "Eldrad CPU Rate",
+                                            "severity": {
+                                                "green": 8000,
+                                                "red": 1000,
+                                                "yellow": 5000
+                                            },
+                                            "type": "gauge",
+                                            "unit": "."
+                                        },
+                                        {
+                                            "entities": [
+                                                {
+                                                    "entity": "script.eldrad_pause"
+                                                },
+                                                {
+                                                    "entity": "script.eldrad_unpause"
+                                                }
+                                            ],
+                                            "title": "Eldrad Pause Buttons",
+                                            "type": "entities"
+                                        }
+                                    ],
+                                    "type": "vertical-stack"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "sensor.192_168_108_21_01_status",
+                                            "name": "Eldrad GPU1 FAH",
+                                            "type": "entity"
+                                        },
+                                        {
+                                            "entity": "sensor.192_168_108_21_01_percentdone",
+                                            "name": "Eldrad GPU1 FAH",
+                                            "type": "entity"
+                                        },
+                                        {
+                                            "entity": "sensor.192_168_108_21_01_points_per_day",
+                                            "max": 100000,
+                                            "min": 0,
+                                            "name": "Eldrad GPU1 Rate",
+                                            "severity": {
+                                                "green": 50000,
+                                                "red": 20000,
+                                                "yellow": 40000
+                                            },
+                                            "type": "gauge",
+                                            "unit": "."
+                                        }
+                                    ],
+                                    "type": "vertical-stack"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "sensor.192_168_108_34_01_status",
+                                            "name": "Vashta-Nerada GPU FAH",
+                                            "type": "entity"
+                                        },
+                                        {
+                                            "entity": "sensor.192_168_108_34_01_percentdone",
+                                            "name": "Vashta-Nerada GPU FAH",
+                                            "type": "entity"
+                                        },
+                                        {
+                                            "entity": "sensor.192_168_108_34_01_points_per_day",
+                                            "max": 700000,
+                                            "min": 0,
+                                            "name": "Vashta-Nerada Rate",
+                                            "severity": {
+                                                "green": 400000,
+                                                "red": 150000,
+                                                "yellow": 300000
+                                            },
+                                            "type": "gauge",
+                                            "unit": "."
+                                        },
+                                        {
+                                            "entities": [
+                                                {
+                                                    "entity": "script.vashta_nerada_pause"
+                                                },
+                                                {
+                                                    "entity": "script.vashta_nerada_unpause"
+                                                }
+                                            ],
+                                            "show_header_toggle": false,
+                                            "title": "Vashta-Nerada Pause Button",
+                                            "type": "entities"
+                                        }
+                                    ],
+                                    "type": "vertical-stack"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "sensor.192_168_108_44_00_status",
+                                            "name": "Garrote CPU FAH",
+                                            "type": "entity"
+                                        },
+                                        {
+                                            "entity": "sensor.192_168_108_44_00_percentdone",
+                                            "name": " Garrote CPU FAH",
+                                            "type": "entity"
+                                        },
+                                        {
+                                            "entity": "sensor.192_168_108_44_00_points_per_day",
+                                            "max": 4000,
+                                            "min": 0,
+                                            "name": "Garrote CPU Rate",
+                                            "severity": {
+                                                "green": 2000,
+                                                "red": 800,
+                                                "yellow": 1000
+                                            },
+                                            "type": "gauge",
+                                            "unit": "."
+                                        },
+                                        {
+                                            "entities": [
+                                                {
+                                                    "entity": "script.garrote_pause"
+                                                },
+                                                {
+                                                    "entity": "script.garrote_unpause"
+                                                }
+                                            ],
+                                            "show_header_toggle": false,
+                                            "title": "Garrote Pause Button",
+                                            "type": "entities"
+                                        }
+                                    ],
+                                    "type": "vertical-stack"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "sensor.192_168_108_44_01_status",
+                                            "name": "Garrote GPU FAH",
+                                            "type": "entity"
+                                        },
+                                        {
+                                            "entity": "sensor.192_168_108_44_01_percentdone",
+                                            "name": "Garrote GPU FAH",
+                                            "type": "entity"
+                                        },
+                                        {
+                                            "entity": "sensor.192_168_108_44_01_points_per_day",
+                                            "max": 6000,
+                                            "min": 0,
+                                            "name": "Garrote GPU Rate",
+                                            "severity": {
+                                                "green": 3000,
+                                                "red": 1000,
+                                                "yellow": 2000
+                                            },
+                                            "type": "gauge",
+                                            "unit": "."
+                                        }
+                                    ],
+                                    "type": "vertical-stack"
+                                }
+                            ],
+                            "type": "horizontal-stack"
+                        }
+                    ],
+                    "panel": true,
+                    "path": "fah",
+                    "theme": "Orange Dark",
+                    "title": "FAH"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "entity",
+                            "entity": "sensor.octoprint_print_file"
+                        },
+                        {
+                            "aspect_ratio": "0%",
+                            "camera_image": "camera.octoprint",
+                            "camera_view": "live",
+                            "entities": [
+                                {
+                                    "entity": "sensor.octoprint_print_progress"
+                                }
+                            ],
+                            "entity": "script.show_tarantula_home_hub_video",
+                            "image": "http://192.168.57.2:8080/?action=snapshot",
+                            "tap_action": {
+                                "action": "toggle"
+                            },
+                            "title": "Tarantula",
+                            "type": "picture-glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.octoprint_bed_temperature"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_tool_0_temperature"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_soc_temperature"
+                                }
+                            ],
+                            "hours_to_show": 12,
+                            "refresh_interval": 1,
+                            "title": "Temperature Display",
+                            "type": "history-graph"
+                        },
+                        {
+                            "entity": "switch.tarantula_power",
+                            "hold_action": {
+                                "action": "call-service",
+                                "service": "switch.turn_off",
+                                "service_data": {
+                                    "entity_id": "switch.tarantula_power"
+                                }
+                            },
+                            "icon": "mdi:printer-3d",
+                            "icon_height": "70px",
+                            "name": "Turn Printer ON",
+                            "show_icon": true,
+                            "show_name": true,
+                            "tap_action": {
+                                "action": "call-service",
+                                "service": "switch.turn_on",
+                                "service_data": {
+                                    "entity_id": "switch.tarantula_power"
+                                }
+                            },
+                            "type": "button"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.octoprint_printing"
+                                },
+                                {
+                                    "entity": "switch.octoprint_emergency_stop"
+                                },
+                                {
+                                    "entity": "switch.octoprint_pause_print"
+                                },
+                                {
+                                    "entity": "switch.octoprint_cancel_print"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_last_event"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_print_progress"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_print_time_left"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_soc_temperature"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_bed_temperature"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_bed_target"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_tool_0_temperature"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_tool_0_target"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_tool_0_target_2"
+                                },
+                                {
+                                    "entity": "binary_sensor.octoprint_connected"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_current_z"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_print_estimated_time"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_print_file"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_print_status"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_print_time"
+                                },
+                                {
+                                    "entity": "switch.octoprint_shutdown_system"
+                                }
+                            ],
+                            "title": "Tarantula Pro Status",
+                            "show_header_toggle": false,
+                            "state_color": true
+                        },
+                        {
+                            "entity": "sensor.octoprint_bed_temperature",
+                            "theme": "Dark - Green",
+                            "type": "sensor",
+                            "unit": "\u00b0C"
+                        },
+                        {
+                            "entity": "sensor.octoprint_tool_0_temperature",
+                            "theme": "Dark - Green",
+                            "type": "sensor",
+                            "unit": "\u00b0C"
+                        }
+                    ],
+                    "path": "3d",
+                    "title": "3D"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "zwave.aeotec_dsc26103_micro_switch_2nd_edition",
+                                "switch.aeotec_dsc26103_micro_switch_2nd_edition_switch"
+                            ]
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "zwave.hank_hkzwso01_smart_plug",
+                                "switch.hank_hkzwso01_smart_plug_switch"
+                            ]
+                        },
+                        {
+                            "type": "entity",
+                            "entity": "zwave.aeotec_zw090_zstick_gen5_us"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "zwave.hank_hkzwso01_smart_plug_2",
+                                "switch.hank_hkzwso01_smart_plug_switch_2"
+                            ]
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.kwikset_touchpad_electronic_deadbolt_alarm_level"
+                                },
+                                {
+                                    "entity": "zwave.kwikset_touchpad_electronic_deadbolt"
+                                },
+                                {
+                                    "entity": "sensor.kwikset_touchpad_electronic_deadbolt_alarm_type"
+                                },
+                                {
+                                    "entity": "lock.kwikset_touchpad_electronic_deadbolt_locked"
+                                },
+                                {
+                                    "entity": "sensor.lock_backdoor_bat_level"
+                                }
+                            ],
+                            "title": "Back Door Lock",
+                            "show_header_toggle": false
+                        }
+                    ],
+                    "icon": "mdi:z-wave",
+                    "id": "zwave",
+                    "path": "zwave",
+                    "title": "Zwave"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.dark_sky_apparent_temperature"
+                                },
+                                {
+                                    "entity": "sensor.dark_sky_cloud_coverage"
+                                },
+                                {
+                                    "entity": "sensor.dark_sky_temperature"
+                                },
+                                {
+                                    "entity": "sensor.dark_sky_wind_speed"
+                                },
+                                {
+                                    "entity": "binary_sensor.dark_outside"
+                                },
+                                {
+                                    "entity": "sensor.sun_state"
+                                },
+                                {
+                                    "entity": "sun.sun"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Weather",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.mailbox"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Mailbox",
+                            "type": "entities"
+                        },
+                        {
+                            "type": "weather-forecast",
+                            "entity": "weather.home",
+                            "show_forecast": false
+                        },
+                        {
+                            "type": "weather-forecast",
+                            "entity": "weather.home_hourly",
+                            "show_forecast": false
+                        }
+                    ],
+                    "icon": "mdi:weather-lightning",
+                    "id": "exterior",
+                    "path": "exterior",
+                    "title": "Exterior"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.lock_backdoor_bat_level"
+                                },
+                                {
+                                    "entity": "binary_sensor.battery_low_lock_back_door"
+                                },
+                                {
+                                    "entity": "binary_sensor.battery_low_mailbox"
+                                },
+                                {
+                                    "entity": "binary_sensor.battery_low_bathroom"
+                                },
+                                {
+                                    "entity": "binary_sensor.battery_low_front_door_inside"
+                                },
+                                {
+                                    "entity": "binary_sensor.battery_low_back_door_inside"
+                                },
+                                {
+                                    "entity": "binary_sensor.battery_low_side_door_inside"
+                                },
+                                {
+                                    "entity": "binary_sensor.battery_garage_door"
+                                },
+                                {
+                                    "entity": "binary_sensor.battery_garage_side_door"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Battery",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "alert.back_door_notify_low_battery"
+                                },
+                                {
+                                    "entity": "sensor.lock_backdoor_bat_level"
+                                },
+                                {
+                                    "entity": "binary_sensor.battery_low_mailbox"
+                                },
+                                {
+                                    "entity": "binary_sensor.battery_low_bathroom"
+                                },
+                                {
+                                    "entity": "binary_sensor.battery_low_front_door_inside"
+                                },
+                                {
+                                    "entity": "binary_sensor.battery_low_garage_side_door"
+                                },
+                                {
+                                    "entity": "binary_sensor.battery_low_side_door_inside"
+                                },
+                                {
+                                    "entity": "binary_sensor.battery_low_garage_door"
+                                },
+                                {
+                                    "entity": "binary_sensor.battery_low_bedroom_door"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "theme": "dark_mint",
+                            "title": "Battery",
+                            "type": "entities"
+                        }
+                    ],
+                    "icon": "mdi:battery-alert",
+                    "id": "batteries",
+                    "path": "batteries",
+                    "title": "Batteries"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entity": "media_player.kitchen_display",
+                            "type": "media-control"
+                        },
+                        {
+                            "entity": "media_player.basement_speaker",
+                            "type": "media-control"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.bedroom_speaker"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.garage_speaker"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.jenny_s_tv"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.jens_firestick"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.jens_speaker"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.living_room_speaker"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.aftbamr311_200"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.office_firestick"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.workroom_speaker"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.office_speaker_2"
+                        }
+                    ],
+                    "icon": "mdi:speaker",
+                    "id": "intercom",
+                    "path": "intercom",
+                    "title": "Intercom"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entity": "sensor.b_porch_socket_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "type": "gauge",
+                            "entity": "sensor.garagesidelight3_rssi",
+                            "min": 0,
+                            "max": 100,
+                            "severity": {
+                                "green": 70,
+                                "yellow": 50,
+                                "red": 30
+                            }
+                        },
+                        {
+                            "type": "gauge",
+                            "entity": "sensor.christmastree_wi_fi_rssi",
+                            "severity": {
+                                "green": -70,
+                                "yellow": -50,
+                                "red": -30
+                            },
+                            "min": -100,
+                            "max": 1
+                        },
+                        {
+                            "entity": "sensor.sidelock_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "entity": "sensor.bmt_hall_rf_socket_d_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "entity": "sensor.bedroom_fan_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "entity": "sensor.wash_machine_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "type": "gauge",
+                            "entity": "sensor.plug3_rssi",
+                            "min": 0,
+                            "max": 100,
+                            "severity": {
+                                "green": 70,
+                                "yellow": 50,
+                                "red": 30
+                            },
+                            "name": "Office Light Mom RSSI"
+                        },
+                        {
+                            "entity": "sensor.plug3_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge",
+                            "name": "Tarantula RSSI"
+                        },
+                        {
+                            "entity": "sensor.garagetop_light_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "entity": "sensor.garageback_light_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "entity": "sensor.bathroom_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 0,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "entity": "sensor.garagefront_light_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "entity": "sensor.dust_collector_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "entity": "sensor.dishwasher_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "entity": "sensor.fp_rf_relay_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "entity": "sensor.sonoff_rf_bridge_1_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "entity": "sensor.kitchenfan_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "entity": "sensor.jens_new_fan_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "entity": "sensor.kitchensink_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "type": "gauge",
+                            "entity": "sensor.sonoff_rf_bridge_1_rssi",
+                            "min": 0,
+                            "max": 100,
+                            "name": "Garage Bridge RSSI",
+                            "severity": {
+                                "green": 70,
+                                "yellow": 50,
+                                "red": 30
+                            }
+                        },
+                        {
+                            "entity": "sensor.sonoff_rf_bridge_2_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "entity": "sensor.jensneb_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "entity": "sensor.frontlock_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "entity": "sensor.humidifier_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "entity": "sensor.bmt_hall_rf_socket_u_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "entity": "sensor.serverstrip_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "entity": "sensor.bulb1_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge",
+                            "name": "Jens TV Light RSSI"
+                        },
+                        {
+                            "entity": "sensor.dryer3_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "entity": "sensor.livingroomlight_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 3330,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "entity": "sensor.mom_light_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "entity": "sensor.garage_door_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "type": "gauge",
+                            "entity": "sensor.benchstrip_rssi",
+                            "min": 0,
+                            "max": 100,
+                            "severity": {
+                                "green": 70,
+                                "yellow": 50,
+                                "red": 30
+                            }
+                        }
+                    ],
+                    "icon": "mdi:signal-variant",
+                    "panel": false,
+                    "path": "signals",
+                    "title": "Signals"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entity": "sensor.sun_state",
+                            "hours_to_show": 36,
+                            "type": "sensor"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.bathoom_si7021_temperature"
+                                },
+                                {
+                                    "entity": "sensor.bathoom_si7021_humidity"
+                                },
+                                {
+                                    "entity": "switch.bathoom_2"
+                                },
+                                {
+                                    "entity": "switch.hank_hkzwso01_smart_plug_switch"
+                                },
+                                {
+                                    "entity": "switch.sonoff_1000d4bf8f_1"
+                                },
+                                {
+                                    "entity": "switch.eldrad"
+                                },
+                                {
+                                    "entity": "switch.rassillon"
+                                },
+                                {
+                                    "entity": "switch.serverusb_2"
+                                },
+                                {
+                                    "entity": "switch.switchhub"
+                                },
+                                {
+                                    "entity": "switch.serverstrip"
+                                }
+                            ],
+                            "show_header_toggle": true,
+                            "title": "Server Room",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "automation.in_christmas"
+                                },
+                                {
+                                    "entity": "automation.dust_collector_button_turn_on"
+                                },
+                                {
+                                    "entity": "automation.dust_collector_failsafe"
+                                },
+                                {
+                                    "entity": "automation.bathroom_is_overheated"
+                                },
+                                {
+                                    "entity": "automation.bathroom_door_is_open"
+                                },
+                                {
+                                    "entity": "automation.you_ve_got_mail"
+                                },
+                                {
+                                    "entity": "automation.side_doorbell_ding"
+                                },
+                                {
+                                    "entity": "automation.back_doorbell_ding"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Automation",
+                            "type": "entities"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.freebsd_router_b_received"
+                                },
+                                {
+                                    "entity": "sensor.freebsd_router_b_sent"
+                                },
+                                {
+                                    "entity": "sensor.freebsd_router_kib_s_received"
+                                },
+                                {
+                                    "entity": "sensor.freebsd_router_kib_s_sent"
+                                },
+                                {
+                                    "entity": "sensor.freebsd_router_packets_received"
+                                },
+                                {
+                                    "entity": "sensor.freebsd_router_packets_sent"
+                                },
+                                {
+                                    "entity": "sensor.freebsd_router_packets_s_received"
+                                },
+                                {
+                                    "entity": "sensor.freebsd_router_packets_s_sent"
+                                }
+                            ],
+                            "title": "Rassillon",
+                            "show_header_toggle": false
+                        }
+                    ],
+                    "icon": "mdi:brain",
+                    "id": "system",
+                    "path": "system",
+                    "title": "System"
+                },
+                {
+                    "badges": [],
+                    "cards": [],
+                    "icon": "mdi:calendar-check",
+                    "path": "calendar",
+                    "theme": "dark_orange",
+                    "title": "Calendar"
+                }
+            ]
+        }
+    }
+}

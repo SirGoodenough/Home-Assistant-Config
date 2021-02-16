@@ -1,0 +1,44 @@
+---
+  #####################################################
+  #                                                   #
+  # Bathroom                                          #
+  #                                                   #
+  #####################################################
+  #####################################################
+  # Turn on Upstairs Bathroom Heater                  #
+  #####################################################
+  upstairs_bath_heater_on:
+    alias: Turn on Upstairs Bathroom Heater
+    sequence:
+      - service: switch.turn_on
+        data:
+          entity_id: switch.aeotec_dsc26103_micro_switch_2nd_edition_switch
+      - delay:
+          seconds: 1
+
+  #####################################################
+  # Turn off Upstairs Bathroom Heater                 #
+  #####################################################
+  upstairs_bath_heater_off:
+    alias: Turn off Upstairs Bathroom Heater
+    sequence:
+      - service: input_boolean.turn_off
+        data:
+          entity_id: input_boolean.bathroom_heater_auto_on
+      - service: switch.turn_off
+        data:
+          entity_id: switch.aeotec_dsc26103_micro_switch_2nd_edition_switch
+      - delay:
+          seconds: 1
+
+  #####################################################
+  # Bathroom Heater watchdog                          #
+  #####################################################
+  upstairs_bath_heater_watchdog:
+    alias: Bathroom Heater watchdog
+    sequence:
+      - delay:
+          minutes: 180
+      - service: script.turn_on
+        data:
+          entity_id: script.upstairs_bath_heater_off

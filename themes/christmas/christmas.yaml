@@ -1,0 +1,24 @@
+---
+#
+# Christmas Theme
+#
+christmas:
+  dark-primary-color: "#000000"
+  disabled-text-color: "#1e7d1e"
+  divider-color: "#1e7d1e"
+  light-primary-color: "#B71515"
+  paper-card-background-color: "#B71515"
+  paper-grey-200: "#1e7d1e"
+  paper-item-icon-color: "#1e7d1e"
+  paper-listbox-background-color: "#B71515"
+  paper-listbox-color: "#1e7d1e"
+  paper-slider-active-color: "#DCD736"
+  paper-slider-knob-color: "#DCD736"
+  paper-toggle-button-checked-bar-color: "#DCD736"
+  paper-toggle-button-checked-button-color: "#dcd736"
+  primary-background-color: "#1e7d1e"
+  primary-color: "#B71515"
+  primary-text-color: "#FFFFFF"
+  secondary-background-color: "#1e7d1e"
+  secondary-text-color: "#000000"
+  text-primary-color: "#FFFFFF"

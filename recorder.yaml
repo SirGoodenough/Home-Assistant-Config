@@ -1,0 +1,49 @@
+---
+  # db_url: !secret MariaDB_Path
+  purge_keep_days: 3
+  include:
+    domains:
+      # - automation # Flip on automations for troubleshooting
+      - alert
+      - binary_sensor
+      - cover
+      - climate
+      - fan
+      - known_devices
+      - light
+      - lock
+      - notify
+      - person
+      - sensor
+      - sonoff
+      - switch
+      - rest_command
+      - ring
+  exclude:
+    domains:
+      # - automation # Don't keep automations normally
+      - group
+      - camera
+      - cloud
+      - counter
+      - device_tracker
+      - hacs
+      - life360
+      - mqtt
+      - media_player
+      - octoprint
+      - script
+      - timer
+      - updater # Don't save updater
+      - weather
+    entities:
+      - automation.humidity_control # Very noisy if automations are on
+      - automation.rfbridge_1_demultiplexer # Very noisy if automations are on
+      - automation.rfbridge_2_demultiplexer # Very noisy if automations are on
+      - group.weather # Don't save weather
+      - sensor.date # Don't record date and time
+      - sensor.time # Don't care time
+      - sensor.date_time_iso # Noisy
+      - sensor.time_formatted # Noisy
+      - sensor.sun_state # Don't Need it either
+      - sun.sun # Don't do sun data

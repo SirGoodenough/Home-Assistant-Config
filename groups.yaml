@@ -1,0 +1,26 @@
+---
+  intercom_stack:
+    name: Intercom
+    entities:
+    - media_player.basement_speaker
+    - media_player.garage_speaker
+    - media_player.kitchen_display
+    - media_player.living_room_speaker
+    - media_player.office_speaker_2
+    - media_player.workroom_speaker
+
+  people_stack:
+    name: People
+    entities:
+    - device_tracker.life360_sirius_goodenough
+    - device_tracker.life360_supreme_leader_chaloupka
+    - device_tracker.life360_jen_chaloupka
+
+  Christmas Enable:
+    name: Xmas
+    entities:
+    - automation.in_christmas
+    - automation.power_state_on_ha_start_up_outside_christmas_day
+    - automation.power_state_on_ha_start_up_outside_christmas_dark
+    - automation.turn_off_christmas_lights_at_dawn
+    - automation.turn_on_christmas_lights_at_dark

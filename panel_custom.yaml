@@ -1,0 +1,10 @@
+---
+  - name: ha_server_con
+    sidebar_title: ServerControl
+    sidebar_icon: mdi:cog-transfer
+    js_url: /api/hassio/app/entrypoint.js
+    url_path: 'config/server_control'
+    embed_iframe: true
+    require_admin: true
+    config:
+      ingress: core_configurator

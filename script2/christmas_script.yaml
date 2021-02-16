@@ -1,0 +1,114 @@
+---
+  #####################################################
+  # Christmas Lights on                               #
+  #####################################################
+  inside_christmas:
+    alias: "ChristmasTime On"
+    sequence:
+      - service: switch.turn_on
+        entity_id: switch.b2
+      - delay:
+          seconds: 1
+      - service: switch.turn_on
+        entity_id: switch.b3
+      - delay:
+          seconds: 1
+      - service: switch.turn_on
+        entity_id: switch.e2
+      - delay:
+          seconds: 1
+      - service: switch.turn_on
+        entity_id: switch.e3
+      - delay:
+          seconds: 1
+      - service: switch.turn_on
+        entity_id: switch.f2
+      - delay:
+          seconds: 1
+      - service: switch.turn_on
+        entity_id: switch.f3
+      - delay:
+          seconds: 1
+      - service: switch.turn_on
+        entity_id: switch.b2
+      - delay:
+          seconds: 1
+      - service: switch.turn_on
+        entity_id: switch.b3
+      - delay:
+          seconds: 1
+      - service: switch.turn_on
+        entity_id: switch.e2
+      - delay:
+          seconds: 1
+      - service: switch.turn_on
+        entity_id: switch.e3
+      - delay:
+          seconds: 1
+      - service: switch.turn_on
+        entity_id: switch.f2
+      - delay:
+          seconds: 1
+      - service: switch.turn_on
+        entity_id: switch.f3
+      - delay:
+          seconds: 1
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.christmas
+
+  #####################################################
+  # Christmas Lights off                              #
+  #####################################################
+  heavenly_peace:
+    alias: "Heavenly Peace"
+    sequence:
+      - service: switch.turn_off
+        entity_id: switch.b2
+      - delay:
+          seconds: 1
+      - service: switch.turn_off
+        entity_id: switch.b3
+      - delay:
+          seconds: 1
+      - service: switch.turn_off
+        entity_id: switch.e2
+      - delay:
+          seconds: 1
+      - service: switch.turn_off
+        entity_id: switch.e3
+      - delay:
+          seconds: 1
+      - service: switch.turn_off
+        entity_id: switch.f2
+      - delay:
+          seconds: 1
+      - service: switch.turn_off
+        entity_id: switch.f3
+      - delay:
+          seconds: 1
+      - service: switch.turn_off
+        entity_id: switch.b2
+      - delay:
+          seconds: 1
+      - service: switch.turn_off
+        entity_id: switch.b3
+      - delay:
+          seconds: 1
+      - service: switch.turn_off
+        entity_id: switch.e2
+      - delay:
+          seconds: 1
+      - service: switch.turn_off
+        entity_id: switch.e3
+      - delay:
+          seconds: 1
+      - service: switch.turn_off
+        entity_id: switch.f2
+      - delay:
+          seconds: 1
+      - service: switch.turn_off
+        entity_id: switch.f3
+      - delay:
+          seconds: 1
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.christmas

@@ -1,0 +1,143 @@
+---
+  #####################################################
+  # Dishwasher Switch                                 #
+  #####################################################
+  - platform: mqtt
+    name: "Dishwasher"
+    unique_id: fe58ab7e-11e3-4174-8d02-e68aafe60e56
+    state_topic: "Dishwasher/stat/POWER"
+    command_topic: "Dishwasher/cmnd/POWER"
+    availability_topic: "Dishwasher/tele/LWT"
+    state_on: "ON"
+    state_off: "OFF"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  #####################################################
+  # Dust Collector Switch                             #
+  #####################################################
+  - platform: mqtt
+    name: "Dust Collector"
+    unique_id: cebdf7b2-fc9a-4c8c-95a7-b0adddfeab2c
+    state_topic: "Dust_Collector/stat/POWER"
+    command_topic: "Dust_Collector/cmnd/POWER"
+    availability_topic: "Dust_Collector/tele/LWT"
+    state_on: "ON"
+    state_off: "OFF"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  #####################################################
+  # Humidifier Switch                                 #
+  #####################################################
+  - platform: mqtt
+    name: "Humidifier"
+    unique_id: 8caf65e5-2c50-4a17-970a-7b93c5ab8277
+    state_topic: "humidifier/stat/POWER"
+    command_topic: "humidifier/cmnd/POWER"
+    availability_topic: "humidifier/tele/LWT"
+    state_on: "ON"
+    state_off: "OFF"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  #####################################################
+  # Jens NightLight Mode Switch                       #
+  #####################################################
+  - platform: mqtt
+    name: "Jens Nightlight Color Mode"
+    unique_id: 8077276a-656e-49f6-ab58-bd77f2a7d274
+    state_topic: "JensNeb/stat/EFFECT"
+    command_topic: "JensNeb/cmnd/EVENT"
+    availability_topic: "JensNeb/tele/LWT"
+    state_on: "color"
+    state_off: "rgb_cycle"
+    payload_on: "color"
+    payload_off: "rgb_cycle"
+    payload_available: "Online"
+    payload_not_available: "Offline" 
+    qos: 1
+    retain: false
+
+  #####################################################
+  # Kitchen                                           #
+  #####################################################
+  - platform: mqtt
+    name: "Kitchen Fan"
+    unique_id: 581c6958-b090-4678-b37f-9ca64e3e0dfd
+    state_topic: "KitchenFan/stat/POWER"
+    command_topic: "KitchenFan/cmnd/POWER"
+    availability_topic: "KitchenFan/tele/LWT"
+    state_on: "ON"
+    state_off: "OFF"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  #####################################################
+  # Mom's Switch                                      #
+  #####################################################
+  - platform: mqtt
+    name: "Moms Chair"
+    unique_id: 2d953304-e288-4db8-9876-0edc7a59aad6
+    state_topic: "mom/stat/POWER2"
+    command_topic: "mom/cmnd/POWER2"
+    availability_topic: "mom/tele/LWT"
+    state_on: "ON"
+    state_off: "OFF"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  #####################################################
+  # 3D Printer switch                                 #
+  #####################################################
+  - platform: mqtt
+    name: "Tarantula Power"
+    unique_id: eab2eee7-39c4-4881-ab1d-342d64ca2c23
+    state_topic: "plug2/stat/POWER1"
+    command_topic: "plug2/cmnd/POWER1"
+    availability_topic: "plug2/tele/LWT"
+    state_on: "ON"
+    state_off: "OFF"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  #####################################################
+  # Server Room switch     (Bathroom)                 #
+  #####################################################
+  - platform: mqtt
+    name: "Server Room"
+    unique_id: a3952c7c-e4e9-4858-8f53-c4e26072b90e
+    state_topic: "Server_Room/stat/POWER"
+    command_topic: "Server_Room/cmnd/POWER"
+    availability_topic: "Server_Room/tele/LWT"
+    state_on: "ON"
+    state_off: "OFF"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "V8"
+    unique_id: 7a60a92e-bb31-40ce-97ce-32f9645cdae7
+    command_topic: "garage_door/cmnd/EVENT"
+    payload_on: "0a904dd0-eda7-4b57-90b3-bafd6b32def3"
+    payload_off: "0a904dd0-eda7-4b57-90b3-bafd6b32def3"    
+
+  #####################################################
+  # Jens Heater Switch                                #
+  #####################################################
+  - platform: switchbot_press
+    mac: 'C7:32:D9:03:10:8E'

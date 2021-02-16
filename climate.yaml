@@ -1,0 +1,4 @@
+---
+  - platform: honeywell
+    username: !secret ring_login
+    password: !secret ring_honeywell

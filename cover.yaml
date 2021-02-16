@@ -1,0 +1,23 @@
+---
+  #####################################################
+  # Garage Door                                       #
+  #####################################################
+
+  - platform: mqtt
+    name: "Garage Door"
+    unique_id: 8470c4a0-4d48-45a4-af76-ecc569fc13a3
+    device_class: garage
+    optimistic: false
+    state_topic: garage_door/stat/STATE
+    state_open: 'OPEN'
+    state_closed: 'CLOSE'
+    state_opening: 'OPENING'
+    state_closing: 'CLOSING'
+    command_topic: garage_door/cmnd/EVENT
+    payload_open: 'OPEN'
+    payload_close: 'CLOSE'
+    payload_stop: 'STOP'
+    availability_topic: garage_door/tele/LWT
+    payload_available: 'Online'
+    payload_not_available: 'Offline'
+    tilt_opened_value: 100

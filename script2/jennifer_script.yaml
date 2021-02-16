@@ -1,0 +1,78 @@
+---
+  #####################################################
+  #                                                   #
+  #                                                   #
+  #               Panic Button                        #
+  #                                                   #
+  #                                                   #
+  #####################################################
+  #####################################################
+  # Jen Level 1                                       #
+  #####################################################
+  jen_needs_help_level1:
+    alias: Help L1
+    sequence: 
+      - service: tts.cloud_say
+        data:
+          entity_id: media_player.intercom
+          message: "Jennifer is asking for help!"
+          options:
+            gender: female
+          language: en-US
+      - delay:
+          seconds: 5
+      - service: media_player.play_media
+        data_template:
+          entity_id: media_player.intercom
+          media_content_id: !secret Jen_Buzzer
+          media_content_type: audio/mp3
+      - delay:
+          seconds: 5
+      - service: tts.cloud_say
+        data:
+          entity_id: group.intercom_stack
+          message: "Jennifer is asking for help!"
+          options:
+            gender: female
+          language: en-US
+      - delay:
+          seconds: 5
+      - service: media_player.play_media
+        data_template:
+          entity_id: media_player.bedroom_speaker
+          media_content_id: !secret Jen_Buzzer
+          media_content_type: audio/mp3
+
+  #####################################################
+  # Jen Level 1a                                      #
+  #####################################################
+  jen_needs_help_level1a:
+    alias: Help No Bedroom L1A
+    sequence: 
+      - service: tts.cloud_say
+        data:
+          entity_id: media_player.intercom
+          message: "Jennifer is asking for help!"
+          options:
+            gender: female
+          language: en-US
+      - delay:
+          seconds: 5
+      - service: media_player.play_media
+        data_template:
+          entity_id: media_player.intercom
+          media_content_id: !secret Jen_Buzzer
+          media_content_type: audio/mp3
+
+  #####################################################
+  # Jen Level 2                                       #
+  #####################################################
+  jen_needs_help_level2:
+    alias: Help L2 Text
+    sequence:
+      - service: notify.message_dad
+        data:
+          message: 'Jennifer is asking for help!'
+      - service: notify.message_mom
+        data:
+          message: 'Jennifer is asking for help!'

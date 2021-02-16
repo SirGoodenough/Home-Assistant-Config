@@ -1,0 +1,8 @@
+---
+  flushtime2:
+    duration: '00:02:00'
+    icon: mdi:paper-roll
+
+  flushtime5:
+    duration: '00:05:00'
+    icon: mdi:paper-roll

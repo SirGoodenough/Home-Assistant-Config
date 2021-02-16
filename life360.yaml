@@ -1,0 +1,18 @@
+---
+  # accounts:   #(Now set in GUI)
+  #   username: !secret Life360_Login
+  #   password: !secret Life360_Password
+  # MPH, assuming imperial units.
+  driving_speed: 18
+  interval_seconds: 10
+  max_gps_accuracy: 180
+  max_update_wait:
+    minutes: 45
+  show_as_state:
+    - driving
+    - moving
+  # Set comm error thresholds so first 4 are not logged,
+  # fifth is logged as a WARNING, and 6th and so fourth
+  # are logged as ERRORs.
+  warning_threshold: 4
+  error_threshold: 6

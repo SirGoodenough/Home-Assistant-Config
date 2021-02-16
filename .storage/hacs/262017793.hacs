@@ -1,0 +1,58 @@
+{
+    "version": "6",
+    "key": "hacs/262017793.hacs",
+    "data": {
+        "archived": false,
+        "authors": [
+            "@cagnulein"
+        ],
+        "category": "integration",
+        "content_in_root": false,
+        "country": [],
+        "config_flow": false,
+        "default_branch": "master",
+        "description": "This is a simple project that manage the Switchbot ( https://amzn.to/3dnliBD ) that has only the \"press\" ability in Home Assistant.",
+        "domain": "switchbot_press",
+        "domains": [
+            "switch"
+        ],
+        "downloads": 0,
+        "etag_repository": "W/\"1671bb8213299a5b795aea5b9a5a24bbff62a86da519cee9f1400ae61d29c38f\"",
+        "file_name": "",
+        "filename": "",
+        "first_install": false,
+        "fork": false,
+        "full_name": "cagnulein/switchbot_press",
+        "hacs": null,
+        "hide": false,
+        "hide_default_branch": false,
+        "homeassistant": null,
+        "id": "262017793",
+        "iot_class": null,
+        "installed": true,
+        "installed_commit": "a7aedf5",
+        "installed_version": null,
+        "open_issues": 2,
+        "last_commit": "a7aedf5",
+        "last_version": null,
+        "last_updated": "2020-05-07T10:35:37Z",
+        "manifest_name": "SwitchBot_press",
+        "new": false,
+        "persistent_directory": null,
+        "pushed_at": "2020-05-07T10:35:37",
+        "releases": false,
+        "render_readme": true,
+        "published_tags": [],
+        "selected_tag": null,
+        "show_beta": false,
+        "stargazers_count": 1,
+        "topics": [
+            "home-assistant",
+            "homeassistant",
+            "integration",
+            "python3",
+            "switchbot"
+        ],
+        "zip_release": false
+    }
+}

@@ -1,0 +1,107 @@
+---
+  #####################################################
+  #                                                   #
+  # System                                            #
+  #                                                   #
+  #####################################################
+
+  ####################################################
+  # Sonoff Bridge Demultiplexer                      #
+  ####################################################
+  - id: f3929029-243f-447d-ba20-f6e39f158cad
+    initial_state: on
+    alias: rfbridge_1_demultiplexer
+    trigger:
+      - platform: mqtt
+        topic: RFBridge2/tele/RESULT
+      - platform: mqtt
+        topic: RFBridge/tele/RESULT
+    action:
+      service: python_script.rfbridge2_demux
+      data_template:
+        payload: '{{trigger.payload_json.RfReceived.Data}}'
+
+  - id: f8f44f15-75ae-48c1-9b17-2ab6447bb922
+    initial_state: on
+    alias: rfbridge_2_demultiplexer
+    trigger:
+      - platform: mqtt
+        topic: RFBridge2/tele/RESULT
+      - platform: mqtt
+        topic: RFBridge/tele/RESULT
+    action:
+      service: python_script.rfbridge2_demux
+      data_template:
+        payload: '{{trigger.payload_json.RfCode}}'
+
+  ####################################################
+  # Dark out?                                        #
+  ####################################################
+  - id: c4d89216-e97a-470b-82e9-cb9e4e66e601
+    initial_state: on
+    alias: MQTT Dark Switch
+    trigger:
+    - platform: state
+      entity_id: binary_sensor.dark_outside
+    action:
+    - service: mqtt.publish
+      data_template:
+        retain: true
+        topic: "Outside/cmnd/EVENT"
+        payload: >-
+          {% if trigger.to_state.state == 'on' %}
+            DARK
+          {% else %}
+            DAY
+          {% endif %}
+
+  ####################################################
+  # Daily Back-up                                    #
+  ####################################################
+  - id: ea70e8a8-45bf-4adb-b1cf-85b12dd5129e
+    alias: Daily Backup
+    initial_state: on
+    trigger:
+      - platform: time
+        at: 06:18:14
+    action:
+      - service: rest_command.tasmoadmin_backup
+      - service: tts.clear_cache
+      - service: hassio.addon_start
+        data:
+          addon: 3490a758_remote_backup
+
+  ####################################################
+  # MQTT Restart Tasmota                             #
+  ####################################################
+  ####    Use this automation to get all your devices in sync, including
+  ####     power state, immediately after Home Assistant is (re)started.
+  ####    Also taking this opportunity to start other things up for a clean 
+  ####     restart.
+  - id: c9484bd1-6c87-4cfc-a018-1572be06d402
+    alias: Power state on HA start-up
+    initial_state: on
+    trigger:
+      - platform: homeassistant
+        event: start
+    action:
+      - delay: 00:00:20
+      - service: switch.turn_on
+        entity_id: switch.chromecast
+      - service: switch.turn_off
+        entity_id: switch.dust_collector
+      - service: light.turn_off
+        entity_id: light.top_garage_light
+      - service: mqtt.publish
+        data:
+          topic: "tasmotas/cmnd/backlog"
+          payload: "power1 ;power2 ;power3 ;power4 ;power5; power6 ;power7 ;power8; dimmer; state "
+      - service: mqtt.publish
+        data:
+          topic: tasmotas/cmnd/state
+          payload: ''
+      - service: mqtt.publish
+        data:
+          topic: Outside/cmnd/EVENT
+          payload: 'DARK'
+          retain: true
