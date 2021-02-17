@@ -2847,6 +2847,61 @@
                             ],
                             "title": "Rassillon",
                             "show_header_toggle": false
+                        },
+                        {
+                            "type": "grid",
+                            "cards": [
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.automation_count",
+                                    "graph": "line"
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.binary_sensor_count",
+                                    "graph": "line"
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.camera_count",
+                                    "graph": "line"
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.entities_count",
+                                    "graph": "line"
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.group_count",
+                                    "graph": "line"
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.lights_count",
+                                    "graph": "line"
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.media_player_count",
+                                    "graph": "line"
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.script_count",
+                                    "graph": "line"
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.sensor_count",
+                                    "graph": "line"
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.switch_count",
+                                    "graph": "line"
+                                }
+                            ]
                         }
                     ],
                     "icon": "mdi:brain",
