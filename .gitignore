@@ -17,8 +17,6 @@
 !/.storage/image
 !/.storage/input_*
 !/.storage/lovelace*
-!/.storage/hacs
-!/.storage/hacs/*.hacs
 
 ## Allow files
 !alert.yaml
@@ -81,6 +79,7 @@ deps**
 /.storage/auth*
 /.storage/cloud*
 /.storage/core*
+/.storage/hacs**
 
 # Ignore files created by IDE's
 .vscode
