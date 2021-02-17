@@ -2902,6 +2902,15 @@
                                     "graph": "line"
                                 }
                             ]
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.thermalpi"
+                                }
+                            ],
+                            "title": "GitHub"
                         }
                     ],
                     "icon": "mdi:brain",
