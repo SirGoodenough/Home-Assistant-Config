@@ -75,6 +75,7 @@ __pycache__
 
 # Directory (contents) ignores
 deps**
+themes**
 /.storage/auth*
 /.storage/cloud*
 /.storage/core*
