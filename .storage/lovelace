@@ -571,15 +571,18 @@
                         },
                         {
                             "type": "media-control",
-                            "entity": "media_player.jenny_s_tv"
+                            "entity": "media_player.jenny_s_tv",
+                            "theme": "material_dark_pink"
                         },
                         {
                             "type": "media-control",
-                            "entity": "media_player.jens_speaker"
+                            "entity": "media_player.jens_firestick",
+                            "theme": "material_dark_pink"
                         },
                         {
                             "type": "media-control",
-                            "entity": "media_player.jens_firestick"
+                            "entity": "media_player.nesthub0502",
+                            "theme": "material_dark_pink"
                         }
                     ],
                     "icon": "mdi:alpha-j-box",
@@ -2330,6 +2333,10 @@
                         {
                             "type": "media-control",
                             "entity": "media_player.office_speaker_2"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.nesthub0502"
                         }
                     ],
                     "icon": "mdi:speaker",
