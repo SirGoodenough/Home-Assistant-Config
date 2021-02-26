@@ -6,8 +6,16 @@
     - media_player.garage_speaker
     - media_player.kitchen_display
     - media_player.living_room_speaker
-    - media_player.office_speaker_2
+    - media_player.office_speaker1
+    - media_player.office_speaker
     - media_player.workroom_speaker
+    - media_player.nesthub0502
+
+  studio_stack:
+    name: Studio
+    entities:
+    - media_player.office_speaker1
+    - media_player.office_speaker
 
   people_stack:
     name: People

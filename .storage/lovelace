@@ -264,7 +264,10 @@
                                     "entity": "switch.power_supply"
                                 },
                                 {
-                                    "entity": "media_player.office_speaker_2"
+                                    "entity": "media_player.office_speaker"
+                                },
+                                {
+                                    "entity": "media_player.office_speaker1"
                                 },
                                 {
                                     "entity": "sensor.benchstrip_rssi"
@@ -430,19 +433,27 @@
                         },
                         {
                             "type": "media-control",
+                            "entity": "media_player.nesthub0502",
+                            "theme": "material_dark_pink"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.jenny_s_tv",
+                            "theme": "material_dark_pink"
+                        },
+                        {
+                            "type": "media-control",
                             "entity": "media_player.kitchen_display"
                         },
                         {
                             "type": "media-control",
-                            "entity": "media_player.jens_speaker"
+                            "entity": "media_player.office_jamz",
+                            "theme": "christmas"
                         },
                         {
                             "type": "media-control",
-                            "entity": "media_player.jens_firestick"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.jenny_s_tv"
+                            "entity": "media_player.office_speaker",
+                            "theme": "christmas"
                         },
                         {
                             "type": "media-control",
@@ -450,11 +461,22 @@
                         },
                         {
                             "type": "media-control",
-                            "entity": "media_player.main_level_speakers"
+                            "entity": "media_player.main_level_speakers",
+                            "theme": "Dark - Purple"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.office_speaker1",
+                            "theme": "christmas"
                         },
                         {
                             "type": "media-control",
                             "entity": "media_player.workroom_speaker"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.intercom",
+                            "theme": "Dark - Purple"
                         },
                         {
                             "type": "calendar",
@@ -464,11 +486,8 @@
                         },
                         {
                             "type": "media-control",
-                            "entity": "media_player.office_speaker_1"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.office_speaker_2"
+                            "entity": "media_player.jens_firestick",
+                            "theme": "material_dark_pink"
                         }
                     ],
                     "icon": "mdi:home-automation",
