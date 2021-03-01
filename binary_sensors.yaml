@@ -288,6 +288,19 @@
     payload_not_available: Offline
 
   - platform: mqtt
+    name: "Moms Call Button"
+    unique_id: d7af1a98-cf9c-47ca-8fa8-110444e448ed
+    device_class: safety
+    state_topic: rf433/Mom-C
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 2
+    force_update: false
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
     name: "Dust Collector Button1"
     unique_id: f51d992a-f161-4b0a-b366-2926120b7acb
     device_class: opening
