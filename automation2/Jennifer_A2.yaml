@@ -18,7 +18,7 @@
     - service: tts.cloud_say
       data:
         entity_id: media_player.kitchen_display, media_player.nesthub0502
-        message: "We've got to hold on to what we've got"
+        message: "Im a cowboy I got the night on my side"
         options:
           gender: female
         language: en-US
@@ -37,7 +37,7 @@
     - service: tts.cloud_say
       data:
         entity_id: media_player.kitchen_display, media_player.nesthub0502
-        message: "Woah, we're halfway there"
+        message: "Woah, we're halfway there.  Woah, livin' on a prayer"
         options:
           gender: female
         language: en-US
@@ -48,7 +48,7 @@
     - service: tts.cloud_say
       data:
         entity_id: media_player.kitchen_display, media_player.nesthub0502
-        message: "Blue on black, Match on a Fire"
+        message: "Im a cowboy, on a steel horse I ride"
         options:
           gender: female
         language: en-US
@@ -64,6 +64,7 @@
         media_content_type: audio/mp3
     - service: input_boolean.turn_off
       entity_id: input_boolean.flush2
+    - delay: 00:00:04
     - service: media_player.volume_set
       data_template:
         entity_id: media_player.nesthub0502
