@@ -175,7 +175,6 @@
     action:
     - service: light.toggle
       entity_id: 
-        - light.monitors
         - light.office_track_jim_bulb
 
   ####################################################

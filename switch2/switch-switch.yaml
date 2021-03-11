@@ -135,9 +135,3 @@
     command_topic: "garage_door/cmnd/EVENT"
     payload_on: "0a904dd0-eda7-4b57-90b3-bafd6b32def3"
     payload_off: "0a904dd0-eda7-4b57-90b3-bafd6b32def3"    
-
-  #####################################################
-  # Jens Heater Switch                                #
-  #####################################################
-  - platform: switchbot_press
-    mac: 'C7:32:D9:03:10:8E'
