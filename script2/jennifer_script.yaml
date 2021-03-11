@@ -10,18 +10,11 @@
   # Jen Level 1                                       #
   #####################################################
   jen_needs_help_level1:
-    alias: Help L1
+    alias: All Help
     sequence:
       - service: tts.cloud_say
         data:
-          entity_id: group.intercom_stack
-          message: "Jennifer is asking for help!"
-          options:
-            gender: female
-          language: en-US
-      - service: tts.cloud_say
-        data:
-          entity_id: media_player.bedroom_speaker
+          entity_id: group.intercom_stack, media_player.bedroom_speaker
           message: "Jennifer is asking for help!"
           options:
             gender: female
@@ -30,12 +23,7 @@
           seconds: 5
       - service: media_player.play_media
         data_template:
-          entity_id: group.intercom_stack
-          media_content_id: !secret Jen_Buzzer
-          media_content_type: audio/mp3
-      - service: media_player.bedroom_speaker
-        data_template:
-          entity_id: group.intercom_stack
+          entity_id: group.intercom_stack, media_player.bedroom_speaker
           media_content_id: !secret Jen_Buzzer
           media_content_type: audio/mp3
 
@@ -43,7 +31,7 @@
   # Jen Level 1a                                      #
   #####################################################
   jen_needs_help_level1a:
-    alias: Help No Bedroom L1A
+    alias: No Bedroom Help
     sequence:
       - service: tts.cloud_say
         data:
@@ -64,7 +52,7 @@
   # Jen Level 2                                       #
   #####################################################
   jen_needs_help_level2:
-    alias: Help L2 Text
+    alias: Phone Help
     sequence:
       - service: notify.message_dad
         data:

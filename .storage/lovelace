@@ -564,31 +564,6 @@
                             "theme": "Animated Weather Card"
                         },
                         {
-                            "entities": [
-                                {
-                                    "entity": "sensor.dark_sky_apparent_temperature"
-                                },
-                                {
-                                    "entity": "sensor.dark_sky_cloud_coverage"
-                                },
-                                {
-                                    "entity": "sensor.dark_sky_temperature"
-                                },
-                                {
-                                    "entity": "sensor.dark_sky_wind_speed"
-                                },
-                                {
-                                    "entity": "binary_sensor.dark_outside"
-                                },
-                                {
-                                    "entity": "binary_sensor.dark_outside_2"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Weather",
-                            "type": "entities"
-                        },
-                        {
                             "type": "media-control",
                             "entity": "media_player.jenny_s_tv",
                             "theme": "material_dark_pink"
