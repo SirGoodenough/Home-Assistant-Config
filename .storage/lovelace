@@ -2942,6 +2942,20 @@
                     "path": "calendar",
                     "theme": "dark_orange",
                     "title": "Calendar"
+                },
+                {
+                    "title": "YouTube",
+                    "path": "YouTube",
+                    "icon": "mdi:youtube",
+                    "theme": "dark_red",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "weather-forecast",
+                            "entity": "weather.home",
+                            "theme": "Animated Weather Card"
+                        }
+                    ]
                 }
             ]
         }
