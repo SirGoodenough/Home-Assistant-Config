@@ -1,7 +1,21 @@
 ---
-  intercom_stack:
-    name: Intercom
-    entities:
+grandma_stack:
+  # no livingroom
+  name: Intercom
+  entities:
+    - media_player.basement_speaker
+    - media_player.bedroom_speaker
+    - media_player.garage_speaker
+    - media_player.kitchen_display
+    - media_player.office_speaker1
+    - media_player.office_speaker
+    - media_player.workroom_speaker
+    - media_player.nesthub0502
+
+intercom_stack:
+  # no bedroom
+  name: Intercom
+  entities:
     - media_player.basement_speaker
     - media_player.garage_speaker
     - media_player.kitchen_display
@@ -11,22 +25,22 @@
     - media_player.workroom_speaker
     - media_player.nesthub0502
 
-  studio_stack:
-    name: Studio
-    entities:
+studio_stack:
+  name: Studio
+  entities:
     - media_player.office_speaker1
     - media_player.office_speaker
 
-  people_stack:
-    name: People
-    entities:
+people_stack:
+  name: People
+  entities:
     - device_tracker.life360_sirius_goodenough
     - device_tracker.life360_supreme_leader_chaloupka
     - device_tracker.life360_jen_chaloupka
 
-  Christmas Enable:
-    name: Xmas
-    entities:
+Christmas Enable:
+  name: Xmas
+  entities:
     - automation.in_christmas
     - automation.power_state_on_ha_start_up_outside_christmas_day
     - automation.power_state_on_ha_start_up_outside_christmas_dark
