@@ -16,17 +16,16 @@
         entity_id: media_player.kitchen_display, media_player.nesthub0502
         volume_level: .8
     - service: tts.cloud_say
-      data:
+      data_template:
         entity_id: media_player.kitchen_display, media_player.nesthub0502
-        data_template:
-          message: >
-            {{ ("I'm a cowboy, on a steel horse I ride",
-                "I'm a cowboy, I got the night on my side", 
-                "I'm wanted, wanted. Dead or alive", 
-                "I drive all night just to get back home", 
-                "Another place, where the faces are so cold", 
-                "Everyday it seems we are wasting away", 
-                "Its all the same. Only the names will change"
+        message: >
+          {{ ("I'm a cowboy, on a steel horse I ride",
+              "I'm a cowboy, I got the night on my side", 
+              "I'm wanted, wanted. Dead or alive", 
+              "I drive all night just to get back home", 
+              "Another place, where the faces are so cold", 
+              "Everyday it seems we are wasting away", 
+              "Its all the same. Only the names will change"
               ) |random }}
         options:
           gender: female
@@ -55,14 +54,13 @@
     - service: timer.start
       entity_id: timer.flushtime5
     - service: tts.cloud_say
-      data:
+      data_template:
         entity_id: media_player.kitchen_display, media_player.nesthub0502
-        data_template:
-          message: >
-            {{ ("This ain't a song for the broken-hearted",
-                "No silent prayer for faith-departed",
-                "And I ain't gonna be just a face in the crowd",
-                "You're gonna hear my voice when I shout it out loud"
+        message: >
+          {{ ("This ain't a song for the broken-hearted",
+              "No silent prayer for faith-departed",
+              "And I ain't gonna be just a face in the crowd",
+              "You're gonna hear my voice when I shout it out loud"
               ) |random }}
         options:
           gender: female
