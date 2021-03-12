@@ -188,6 +188,9 @@
                                     "entity": "script.party_time"
                                 },
                                 {
+                                    "entity": "script.chill_time"
+                                },
+                                {
                                     "entity": "script.garage_lights_on"
                                 },
                                 {

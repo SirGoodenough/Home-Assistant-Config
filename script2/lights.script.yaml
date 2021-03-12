@@ -9,3 +9,14 @@
       data:
         "topic": "Yard/cmnd/event"
         "payload": "PARTY"
+
+  #####################################################
+  # Outside Lights Chill Mode                         #
+  #####################################################
+  chill_time:
+    alias: Chill Time
+    sequence:
+    - service: mqtt.publish
+      data:
+        "topic": "Yard/cmnd/event"
+        "payload": "CHILL"
