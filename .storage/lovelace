@@ -176,19 +176,7 @@
                                     "entity": "light.garageback_light"
                                 },
                                 {
-                                    "entity": "light.garagetop_light"
-                                },
-                                {
-                                    "entity": "light.garagesidelight3"
-                                },
-                                {
                                     "entity": "script.work_time"
-                                },
-                                {
-                                    "entity": "script.party_time"
-                                },
-                                {
-                                    "entity": "script.chill_time"
                                 },
                                 {
                                     "entity": "script.garage_lights_on"
@@ -413,6 +401,12 @@
                                 },
                                 {
                                     "entity": "light.garagesidelight3"
+                                },
+                                {
+                                    "entity": "script.chill_time"
+                                },
+                                {
+                                    "entity": "script.party_time"
                                 },
                                 {
                                     "entity": "binary_sensor.back_door_pir"

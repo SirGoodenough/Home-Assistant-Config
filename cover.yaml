@@ -8,7 +8,7 @@
     unique_id: 8470c4a0-4d48-45a4-af76-ecc569fc13a3
     device_class: garage
     optimistic: false
-    state_topic: garage_door/stat/STATE
+    state_topic: garage_door/stat/STATUS
     state_open: 'OPEN'
     state_closed: 'CLOSE'
     state_opening: 'OPENING'
