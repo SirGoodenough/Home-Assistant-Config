@@ -11,6 +11,7 @@ grandma_stack:
     - media_player.office_speaker
     - media_player.workroom_speaker
     - media_player.nesthub0502
+    - media_player.bathroom_speaker
 
 intercom_stack:
   # no bedroom
@@ -24,6 +25,8 @@ intercom_stack:
     - media_player.office_speaker
     - media_player.workroom_speaker
     - media_player.nesthub0502
+    - media_player.bathroom_speaker
+
 
 studio_stack:
   name: Studio
