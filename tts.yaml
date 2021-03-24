@@ -2,22 +2,4 @@
   - platform: google_translate
     service_name: google_translate_say
     language: 'en'
-    # base_url: !secret HA_Base
 
-  # - platform: reversotts
-  #   service_name: dad_reversotts_say
-  #   language: 'Rod-US-English'
-  #   pitch: "100"
-  #   bitrate: "128k"
-  #   # Heather-US-English
-  #   # Karen-US-English
-  #   # Laura-US-English
-  #   # Nelly-US-English
-  #   # Sharon-US-English
-  #   # Tracy-US-English
-  #   # Kenny-US-English
-  #   # Micah-US-English
-  #   # Rod-US-English
-  #   # Ryan-US-English
-  #   # Saul-US-English
-  #   # Will-US-English

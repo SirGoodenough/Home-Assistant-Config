@@ -189,20 +189,6 @@
     - sensor.kitchen_humidity
 
 ####################################################
-#  SSH Sensors                                     #
-####################################################
-# - platform: ssh
-#     host: !secret proxmox_host
-#     name: 'NUC CPU Temp'
-#     username: !secret proxmox_user
-#     password: !secret proxmox_pass
-#     command: "sensors | grep 'Package id 0:' | cut -c17-20"
-#     value_template: >-
-#       {%- set line = value.split("\r\n") -%}
-#       {{ line[1] }}
-#     unit_of_measurement: "ºC"
-
-####################################################
 #  Locks                                           #
 ####################################################
 #        entity_id: sensor.kwikset_touchpad_electronic_deadbolt_alarm_type
