@@ -19,13 +19,23 @@
       data_template:
         entity_id: media_player.kitchen_display, media_player.nesthub0502
         message: >
-          {{ ("I'm a cowboy, on a steel horse I ride",
-              "I'm a cowboy, I got the night on my side", 
-              "I'm wanted, wanted. Dead or alive", 
-              "I drive all night just to get back home", 
+          {{ ("It's all the same, only the names will change",
+              "Every day, it seems we're wastin' away", 
               "Another place, where the faces are so cold", 
-              "Everyday it seems we are wasting away", 
-              "Its all the same. Only the names will change"
+              "I'd drive all night just to get back home", 
+              "I'm a cowboy. On a steel horse I ride. I'm wanted. Dead or alive", 
+              "Sometimes I sleep, sometimes it's not for days", 
+              "The people I meet always go their separate ways",
+              "Sometimes you tell the day by the bottle that you drink",
+              "And times when you're alone, well, all you do is think",
+              "Oh, and I ride.  Yeah.",
+              "And I walk these streets. A loaded six-string on my back",
+              "I play for keeps. 'Cause I might not make it back",
+              "I've been everywhere. Still I'm standing tall",
+              "I've seen a million faces and I've rocked them all",
+              "And I'm wanted. (wanted). dead or alive",
+              "And I ride. (and I ride). dead or alive",
+              "I still drive. (I still drive). dead or alive"
               ) |random }}
         options:
           gender: female
@@ -45,9 +55,9 @@
     - service: tts.cloud_say
       data:
         entity_id: media_player.kitchen_display, media_player.nesthub0502
-        message: "Woah, we're halfway there.  Woah, livin' on a prayer"
+        message: "Woah, we're halfway there.  Woah, oh, livin' on a prayer"
         options:
-          gender: female
+          gender: male
         language: en-US
     - delay: 00:01:01 # Delay for the second part rest of the delay
 
@@ -60,7 +70,17 @@
           {{ ("This ain't a song for the broken-hearted",
               "No silent prayer for faith-departed",
               "And I ain't gonna be just a face in the crowd",
-              "You're gonna hear my voice when I shout it out loud"
+              "You're gonna hear my voice when I shout it out loud",
+              "It's my life.",
+              "But I ain't gonna live forever.",
+              "I just want to live while I'm alive",
+              "My heart is like an open highway",
+              "Like Frankie said, I did it my way",
+              "It's now or never.",
+              "Yeah, this is for the ones who stood their ground",
+              "For Tommy and Gina, who never backed down",
+              "Tomorrow's getting harder, make no mistake",
+              "Luck ain't even lucky, got to make your own breaks"
               ) |random }}
         options:
           gender: female
