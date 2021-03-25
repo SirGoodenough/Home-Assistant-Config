@@ -17,4 +17,3 @@ Let me know if you have a suggestion.
 * [PayPal one-off donation link](https://www.paypal.me/SirGoodenough)
 * [Cash App \$CASHTAG](https://cash.me/$SirGoodenough)
 * [Venmo cash link](https://venmo.com/SirGoodenough)
-
