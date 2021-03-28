@@ -11,10 +11,12 @@
   action:
     - service: timer.start
       entity_id: timer.flushtime2
+
     - service: media_player.volume_set
       data_template:
         entity_id: media_player.kitchen_display, media_player.nesthub0502
         volume_level: .8
+
     - service: tts.cloud_say
       data_template:
         entity_id: media_player.kitchen_display, media_player.nesthub0502
@@ -24,7 +26,7 @@
               "Another place, where the faces are so cold", 
               "I'd drive all night just to get back home", 
               "I'm a cowboy. On a steel horse I ride. I'm wanted. Dead or alive", 
-              "Sometimes I sleep, sometimes it's not for days", 
+              "Sometimes I sleep, sometimes, it's not for days", 
               "The people I meet always go their separate ways",
               "Sometimes you tell the day by the bottle that you drink",
               "And times when you're alone, well, all you do is think",
@@ -40,11 +42,13 @@
         options:
           gender: female
         language: en-US
+
     - wait_for_trigger:
         - platform: event
           event_type: timer.finished
           event_data:
             entity_id: timer.flushtime2
+
     - service: media_player.play_media
       data:
         entity_id: media_player.kitchen_display, media_player.nesthub0502
@@ -52,17 +56,43 @@
         media_content_type: audio/mp3
 
     - delay: 00:00:57 # Delay for the second part first warning
+
     - service: tts.cloud_say
-      data:
+      data_template:
         entity_id: media_player.kitchen_display, media_player.nesthub0502
-        message: "Woah, we're halfway there.  Woah, oh, livin' on a prayer"
+        message: >
+          {{ ("So close, no matter how far",
+              "Couldn't be much more from the heart",
+              "Forever trusting who we are",
+              "And nothing else matters",
+              "Never opened myself this way",
+              "Life is ours, we live it our way",
+              "All these words, I don't just say",
+              "Trust I seek and I find in you",
+              "Every day for us something new",
+              "Open mind for a different view",
+              "Never cared for what they do",
+              "Never cared for what they know",
+              "But I know",
+              "It couldn't be much more from the heart",
+              "I never opened myself this way",
+              "Never cared for what they say",
+              "Never cared for games they play",
+              "And I know, yeah, yeah"
+              ) |random }}
         options:
           gender: male
-        language: en-US
+        language: >
+          {{ ("en-GB",
+              "en-US",
+              "en-AU"
+              ) |random }}
+
     - delay: 00:01:01 # Delay for the second part rest of the delay
 
     - service: timer.start
       entity_id: timer.flushtime5
+
     - service: tts.cloud_say
       data_template:
         entity_id: media_player.kitchen_display, media_player.nesthub0502
@@ -85,19 +115,24 @@
         options:
           gender: female
         language: en-US
+
     - wait_for_trigger:
         - platform: event
           event_type: timer.finished
           event_data:
             entity_id: timer.flushtime5
+
     - service: media_player.play_media
       data:
         entity_id: media_player.kitchen_display, media_player.nesthub0502
         media_content_id: !secret Gong
         media_content_type: audio/mp3
+
     - service: input_boolean.turn_off
       entity_id: input_boolean.flush2
+
     - delay: 00:00:04
+
     - service: media_player.volume_set
       data_template:
         entity_id: media_player.nesthub0502
