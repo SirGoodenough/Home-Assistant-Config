@@ -53,7 +53,7 @@
                                     "entity": "alert.back_door_notify_low_battery"
                                 }
                             ],
-                            "show_header_toggle": false,
+                            "show_header_toggle": true,
                             "title": "Kitchen",
                             "type": "entities",
                             "state_color": true
@@ -103,7 +103,7 @@
                                     "entity": "binary_sensor.upstairs_pir"
                                 }
                             ],
-                            "show_header_toggle": false,
+                            "show_header_toggle": true,
                             "title": "Living Room",
                             "type": "entities",
                             "state_color": true

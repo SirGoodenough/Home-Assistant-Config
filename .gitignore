@@ -33,10 +33,11 @@
 !frontend.yaml
 !groups.yaml
 !hacs.yaml
-!history.yaml
-!homeassistant.yaml
 !life360.yaml
 !light.yaml
+!history.yaml
+!homeassistant.yaml
+!http.yaml
 !lock.yaml
 !logger.yaml
 !media_player.yaml
