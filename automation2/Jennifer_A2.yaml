@@ -1,139 +1,170 @@
 ---
-- id: "fea42729-2c84-442a-9104-dbd6148c2e17"
-  mode: single
-  alias: FlushTimer
-  initial_state: on
-  trigger:
+  #####################################################
+  # Jens Flush Automation                             #
+  #####################################################
+  - id: "fea42729-2c84-442a-9104-dbd6148c2e17"
+    mode: single
+    alias: FlushTimer
+    initial_state: on
+    trigger:
+      - platform: state
+        entity_id: input_boolean.flush2
+        from: "off"
+        to: "on"
+    action:
+      - service: timer.start
+        entity_id: timer.flushtime2
+
+      - service: media_player.volume_set
+        data_template:
+          entity_id: media_player.kitchen_display, media_player.nesthub0502
+          volume_level: .8
+
+      - service: tts.cloud_say
+        data_template:
+          entity_id: media_player.kitchen_display, media_player.nesthub0502
+          message: >
+            {{ ("It's all the same, only the names will change",
+                "Every day, it seems we're wastin' away", 
+                "Another place, where the faces are so cold", 
+                "I'd drive all night just to get back home", 
+                "I'm a cowboy. On a steel horse I ride. I'm wanted. Dead or alive", 
+                "Sometimes I sleep, sometimes, it's not for days", 
+                "The people I meet always go their separate ways",
+                "Sometimes you tell the day by the bottle that you drink",
+                "And times when you're alone, well, all you do is think",
+                "Oh, and I ride.  Yeah.",
+                "And I walk these streets. A loaded six-string on my back",
+                "I play for keeps. 'Cause I might not make it back",
+                "I've been everywhere. Still I'm standing tall",
+                "I've seen a million faces and I've rocked them all",
+                "And I'm wanted. (wanted). dead or alive",
+                "And I ride. (and I ride). dead or alive",
+                "I still drive. (I still drive). dead or alive"
+                ) |random }}
+          options:
+            gender: female
+          language: en-US
+
+      - wait_for_trigger:
+          - platform: event
+            event_type: timer.finished
+            event_data:
+              entity_id: timer.flushtime2
+
+      - service: media_player.play_media
+        data:
+          entity_id: media_player.kitchen_display, media_player.nesthub0502
+          media_content_id: !secret Gong
+          media_content_type: audio/mp3
+
+      - delay: 00:00:57 # Delay for the second part first warning
+
+      - service: tts.cloud_say
+        data_template:
+          entity_id: media_player.kitchen_display, media_player.nesthub0502
+          message: >
+            {{ ("So close, no matter how far",
+                "Couldn't be much more from the heart",
+                "Forever trusting who we are",
+                "And nothing else matters",
+                "Never opened myself this way",
+                "Life is ours, we live it our way",
+                "All these words, I don't just say",
+                "Trust I seek and I find in you",
+                "Every day for us something new",
+                "Open mind for a different view",
+                "Never cared for what they do",
+                "Never cared for what they know",
+                "But I know",
+                "It couldn't be much more from the heart",
+                "I never opened myself this way",
+                "Never cared for what they say",
+                "Never cared for games they play",
+                "And I know, yeah, yeah"
+                ) |random }}
+          options:
+            gender: male
+          language: >
+            {{ ("en-GB",
+                "en-US",
+                "en-AU"
+                ) |random }}
+
+      - delay: 00:01:01 # Delay for the second part rest of the delay
+
+      - service: timer.start
+        entity_id: timer.flushtime5
+
+      - service: tts.cloud_say
+        data_template:
+          entity_id: media_player.kitchen_display, media_player.nesthub0502
+          message: >
+            {{ ("This ain't a song for the broken-hearted",
+                "No silent prayer for faith-departed",
+                "And I ain't gonna be just a face in the crowd",
+                "You're gonna hear my voice when I shout it out loud",
+                "It's my life.",
+                "But I ain't gonna live forever.",
+                "I just want to live while I'm alive",
+                "My heart is like an open highway",
+                "Like Frankie said, I did it my way",
+                "It's now or never.",
+                "Yeah, this is for the ones who stood their ground",
+                "For Tommy and Gina, who never backed down",
+                "Tomorrow's getting harder, make no mistake",
+                "Luck ain't even lucky, got to make your own breaks"
+                ) |random }}
+          options:
+            gender: female
+          language: en-US
+
+      - wait_for_trigger:
+          - platform: event
+            event_type: timer.finished
+            event_data:
+              entity_id: timer.flushtime5
+
+      - service: media_player.play_media
+        data:
+          entity_id: media_player.kitchen_display, media_player.nesthub0502
+          media_content_id: !secret Gong
+          media_content_type: audio/mp3
+
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.flush2
+
+      - delay: 00:00:04
+
+      - service: media_player.volume_set
+        data_template:
+          entity_id: media_player.nesthub0502
+          volume_level: .5
+
+
+  #####################################################
+  # Jens Mister                                       #
+  #####################################################
+  - id: 188ccb1a-9ab3-453e-8910-7d6f7a7ca9ea
+        # Let everyone know a refill is required.
+    alias: Jens Neb Announcement
+    initial_state: on
+    trigger:
     - platform: state
-      entity_id: input_boolean.flush2
-      from: "off"
-      to: "on"
-  action:
-    - service: timer.start
-      entity_id: timer.flushtime2
-
-    - service: media_player.volume_set
-      data_template:
-        entity_id: media_player.kitchen_display, media_player.nesthub0502
-        volume_level: .8
-
+      entity_id: binary_sensor.aromatherapy_water
+      from: 'off'
+      to: 'on'
+    action:
     - service: tts.cloud_say
-      data_template:
-        entity_id: media_player.kitchen_display, media_player.nesthub0502
-        message: >
-          {{ ("It's all the same, only the names will change",
-              "Every day, it seems we're wastin' away", 
-              "Another place, where the faces are so cold", 
-              "I'd drive all night just to get back home", 
-              "I'm a cowboy. On a steel horse I ride. I'm wanted. Dead or alive", 
-              "Sometimes I sleep, sometimes, it's not for days", 
-              "The people I meet always go their separate ways",
-              "Sometimes you tell the day by the bottle that you drink",
-              "And times when you're alone, well, all you do is think",
-              "Oh, and I ride.  Yeah.",
-              "And I walk these streets. A loaded six-string on my back",
-              "I play for keeps. 'Cause I might not make it back",
-              "I've been everywhere. Still I'm standing tall",
-              "I've seen a million faces and I've rocked them all",
-              "And I'm wanted. (wanted). dead or alive",
-              "And I ride. (and I ride). dead or alive",
-              "I still drive. (I still drive). dead or alive"
-              ) |random }}
-        options:
-          gender: female
-        language: en-US
-
-    - wait_for_trigger:
-        - platform: event
-          event_type: timer.finished
-          event_data:
-            entity_id: timer.flushtime2
-
-    - service: media_player.play_media
       data:
-        entity_id: media_player.kitchen_display, media_player.nesthub0502
-        media_content_id: !secret Gong
-        media_content_type: audio/mp3
-
-    - delay: 00:00:57 # Delay for the second part first warning
-
-    - service: tts.cloud_say
-      data_template:
-        entity_id: media_player.kitchen_display, media_player.nesthub0502
-        message: >
-          {{ ("So close, no matter how far",
-              "Couldn't be much more from the heart",
-              "Forever trusting who we are",
-              "And nothing else matters",
-              "Never opened myself this way",
-              "Life is ours, we live it our way",
-              "All these words, I don't just say",
-              "Trust I seek and I find in you",
-              "Every day for us something new",
-              "Open mind for a different view",
-              "Never cared for what they do",
-              "Never cared for what they know",
-              "But I know",
-              "It couldn't be much more from the heart",
-              "I never opened myself this way",
-              "Never cared for what they say",
-              "Never cared for games they play",
-              "And I know, yeah, yeah"
-              ) |random }}
+        entity_id: media_player.kitchen_display, media_player.living_room_speaker
+        message: "J's Mister's got no juice."
         options:
           gender: male
-        language: >
-          {{ ("en-GB",
-              "en-US",
-              "en-AU"
-              ) |random }}
-
-    - delay: 00:01:01 # Delay for the second part rest of the delay
-
-    - service: timer.start
-      entity_id: timer.flushtime5
-
-    - service: tts.cloud_say
-      data_template:
-        entity_id: media_player.kitchen_display, media_player.nesthub0502
-        message: >
-          {{ ("This ain't a song for the broken-hearted",
-              "No silent prayer for faith-departed",
-              "And I ain't gonna be just a face in the crowd",
-              "You're gonna hear my voice when I shout it out loud",
-              "It's my life.",
-              "But I ain't gonna live forever.",
-              "I just want to live while I'm alive",
-              "My heart is like an open highway",
-              "Like Frankie said, I did it my way",
-              "It's now or never.",
-              "Yeah, this is for the ones who stood their ground",
-              "For Tommy and Gina, who never backed down",
-              "Tomorrow's getting harder, make no mistake",
-              "Luck ain't even lucky, got to make your own breaks"
-              ) |random }}
-        options:
-          gender: female
         language: en-US
-
-    - wait_for_trigger:
-        - platform: event
-          event_type: timer.finished
-          event_data:
-            entity_id: timer.flushtime5
-
+    - delay: 00:00:05
     - service: media_player.play_media
       data:
-        entity_id: media_player.kitchen_display, media_player.nesthub0502
-        media_content_id: !secret Gong
+        entity_id: media_player.kitchen_display
+        media_content_id: !secret Mister
         media_content_type: audio/mp3
-
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.flush2
-
-    - delay: 00:00:04
-
-    - service: media_player.volume_set
-      data_template:
-        entity_id: media_player.nesthub0502
-        volume_level: .5

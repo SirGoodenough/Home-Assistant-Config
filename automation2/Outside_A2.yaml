@@ -1,0 +1,26 @@
+---
+  #####################################################
+  # Mailbox                                           #
+  #####################################################
+  - id: 9ba99be0-57e0-4232-b746-936bc339e64f
+    alias: You've Got Mail
+    initial_state: on
+    trigger:
+    - platform: state
+      entity_id: binary_sensor.mailbox
+      from: 'off'
+      to: 'on'
+      for:
+        seconds: 15
+    - platform: state
+      entity_id: binary_sensor.mailbox
+      from: 'on'
+      to: 'off'
+      for:
+        seconds: 15
+    action:
+    - service: media_player.play_media
+      data:
+        entity_id: group.intercom_stack
+        media_content_id: !secret Mail_Call
+        media_content_type: audio/mp3
