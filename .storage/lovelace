@@ -1845,7 +1845,19 @@
                                             },
                                             "type": "gauge",
                                             "unit": "."
-                                            }
+                                        }
+                                    ],
+                                        {
+                                            "type": "entities",
+                                            "entities": [
+                                                {
+                                                    "entity": "script.darkel_pause"
+                                                },
+                                                {
+                                                    "entity": "script.darkel_unpause"
+                                                }
+                                            ],
+                                            "title": "Darkel Pause Button"
                                         }
                                     ]
                                 },
@@ -1873,19 +1885,6 @@
                                             },
                                             "type": "gauge",
                                             "unit": "."
-                                        },
-                                        {
-                                            "entities": [
-                                                {
-                                                    "entity": "script.darkel_pause"
-                                                },
-                                                {
-                                                    "entity": "script.darkel_unpause"
-                                                }
-                                            ],
-                                            "show_header_toggle": false,
-                                            "title": "Darkel Pause Button",
-                                            "type": "entities"
                                         }
                                     ],
                                     "type": "vertical-stack"
