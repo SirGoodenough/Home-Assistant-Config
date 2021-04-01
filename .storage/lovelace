@@ -1751,7 +1751,7 @@
                                 {
                                     "cards": [
                                         {
-                                            "entity": "sensor.192_168_108_21_01_status",
+                                            "entity": "sensor.192_168_108_21_00_status",
                                             "name": "Eldrad CPU FAH",
                                             "type": "entity"
                                         },
@@ -1817,26 +1817,59 @@
                                     "type": "vertical-stack"
                                 },
                                 {
+                                    "type": "vertical-stack",
                                     "cards": [
                                         {
-                                            "entity": "sensor.192_168_108_34_01_status",
-                                            "name": "Vashta-Nerada GPU FAH",
-                                            "type": "entity"
+                                            "type": "entity",
+                                            "entity": "sensor.192_168_108_24_00_status",
+                                            "name": "Darkel CPU FAH",
+                                            "icon": "mdi:state-machine"
                                         },
                                         {
-                                            "entity": "sensor.192_168_108_34_01_percentdone",
-                                            "name": "Vashta-Nerada GPU FAH",
-                                            "type": "entity"
+                                            "type": "entity",
+                                            "entity": "sensor.192_168_108_24_00_percentdone",
+                                            "icon": "mdi:state-machine",
+                                            "name": "Darkel CPU FAH",
+                                            "unit": "%"
                                         },
                                         {
-                                            "entity": "sensor.192_168_108_34_01_points_per_day",
-                                            "max": 700000,
+                                            "type": "gauge",
+                                            "entity": "sensor.192_168_108_24_00_points_per_day",
                                             "min": 0,
-                                            "name": "Vashta-Nerada Rate",
+                                            "max": 130000,
+                                            "name": "Darkel GPU Rate",
                                             "severity": {
-                                                "green": 400000,
-                                                "red": 150000,
-                                                "yellow": 300000
+                                                "green": 80000,
+                                                "yellow": 58000,
+                                                "red": 24000
+                                            },
+                                            "type": "gauge",
+                                            "unit": "."
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "sensor.192_168_108_24_01_status",
+                                            "name": "Darkel GPU FAH",
+                                            "type": "entity"
+                                        },
+                                        {
+                                            "entity": "sensor.192_168_108_24_01_percentdone",
+                                            "name": "Darkel GPU FAH",
+                                            "type": "entity"
+                                        },
+                                        {
+                                            "entity": "sensor.192_168_108_24_01_points_per_day",
+                                            "max": 1200000,
+                                            "min": 0,
+                                            "name": "Darkel GPU Rate",
+                                            "severity": {
+                                                "green": 800000,
+                                                "red": 350000,
+                                                "yellow": 500000
                                             },
                                             "type": "gauge",
                                             "unit": "."
@@ -1844,14 +1877,14 @@
                                         {
                                             "entities": [
                                                 {
-                                                    "entity": "script.vashta_nerada_pause"
+                                                    "entity": "script.darkel_pause"
                                                 },
                                                 {
-                                                    "entity": "script.vashta_nerada_unpause"
+                                                    "entity": "script.darkel_unpause"
                                                 }
                                             ],
                                             "show_header_toggle": false,
-                                            "title": "Vashta-Nerada Pause Button",
+                                            "title": "Darkel Pause Button",
                                             "type": "entities"
                                         }
                                     ],
@@ -1871,13 +1904,13 @@
                                         },
                                         {
                                             "entity": "sensor.192_168_108_44_00_points_per_day",
-                                            "max": 4000,
+                                            "max": 8000,
                                             "min": 0,
                                             "name": "Garrote CPU Rate",
                                             "severity": {
-                                                "green": 2000,
-                                                "red": 800,
-                                                "yellow": 1000
+                                                "green": 4000,
+                                                "red": 1200,
+                                                "yellow": 2000
                                             },
                                             "type": "gauge",
                                             "unit": "."
@@ -1894,34 +1927,6 @@
                                             "show_header_toggle": false,
                                             "title": "Garrote Pause Button",
                                             "type": "entities"
-                                        }
-                                    ],
-                                    "type": "vertical-stack"
-                                },
-                                {
-                                    "cards": [
-                                        {
-                                            "entity": "sensor.192_168_108_44_01_status",
-                                            "name": "Garrote GPU FAH",
-                                            "type": "entity"
-                                        },
-                                        {
-                                            "entity": "sensor.192_168_108_44_01_percentdone",
-                                            "name": "Garrote GPU FAH",
-                                            "type": "entity"
-                                        },
-                                        {
-                                            "entity": "sensor.192_168_108_44_01_points_per_day",
-                                            "max": 6000,
-                                            "min": 0,
-                                            "name": "Garrote GPU Rate",
-                                            "severity": {
-                                                "green": 3000,
-                                                "red": 1000,
-                                                "yellow": 2000
-                                            },
-                                            "type": "gauge",
-                                            "unit": "."
                                         }
                                     ],
                                     "type": "vertical-stack"

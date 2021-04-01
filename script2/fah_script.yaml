@@ -1,94 +1,94 @@
 ---
-  #####################################################
-  #                                                   #
-  # Folding at Home                                   #
-  #                                                   #
-  #####################################################
-  #####################################################
-  #  Eldrad                                           #
-  #####################################################
-  eldrad_pause:
-    alias: Pause Eldrad
-    sequence:
-      - service: foldingathomecontrol.pause
-        data:
-          address: !secret Eldrad
-      #     slot: '00'
-      # - service: foldingathomecontrol.pause
-      #   data:
-      #     address: !secret Eldrad
-      #     slot: '01'
-      # - service: foldingathomecontrol.pause
-      #   data:
-      #     address: !secret Eldrad
-      #     slot: '02'
+#####################################################
+#                                                   #
+# Folding at Home                                   #
+#                                                   #
+#####################################################
+#####################################################
+#  Eldrad                                           #
+#####################################################
+eldrad_pause:
+  alias: Pause Eldrad
+  sequence:
+    - service: foldingathomecontrol.pause
+      data:
+        address: !secret Eldrad
+        slot: "00"
+    - service: foldingathomecontrol.pause
+      data:
+        address: !secret Eldrad
+        slot: "01"
+    # - service: foldingathomecontrol.pause
+    #   data:
+    #     address: !secret Eldrad
+    #     slot: '02'
 
-  eldrad_unpause:
-    alias: UNPause Eldrad
-    sequence:
-      - service: foldingathomecontrol.unpause
-        data:
-          address: !secret Eldrad
-      #     slot: '00'
-      # - service: foldingathomecontrol.unpause
-      #   data:
-      #     address: !secret Eldrad
-      #     slot: '01'
-      # - service: foldingathomecontrol.unpause
-      #   data:
-      #     address: !secret Eldrad
-      #     slot: '03'
+eldrad_unpause:
+  alias: UNPause Eldrad
+  sequence:
+    - service: foldingathomecontrol.unpause
+      data:
+        address: !secret Eldrad
+        slot: "00"
+    - service: foldingathomecontrol.unpause
+      data:
+        address: !secret Eldrad
+        slot: "01"
+    # - service: foldingathomecontrol.unpause
+    #   data:
+    #     address: !secret Eldrad
+    #     slot: '03'
 
-  #####################################################
-  #  Vashta-Nerada                                    #
-  #####################################################
-  vashta_nerada_pause:
-    alias: Pause Vashta-Nerada 
-    sequence:
-      - service: foldingathomecontrol.pause
-        data:
-          address: !secret Vashta_Nerada
-      #     slot: '00'
-      # - service: foldingathomecontrol.pause
-      #   data:
-      #     address: !secret Vashta_Nerada
-      #     slot: '01'
+#####################################################
+#  Darkel                                           #
+#####################################################
+darkel_pause:
+  alias: Pause Darkel
+  sequence:
+    - service: foldingathomecontrol.pause
+      data:
+        address: !secret Darkel
+        slot: "00"
+    - service: foldingathomecontrol.pause
+      data:
+        address: !secret Darkel
+        slot: "01"
 
-  vashta_nerada_unpause:
-    alias: UNPause Vashta-Nerada 
-    sequence:
-      - service: foldingathomecontrol.unpause
-        data:
-          address: !secret Vashta_Nerada
-          # slot: '00'
-      # - service: foldingathomecontrol.unpause
-      #   data:
-      #     address: !secret Vashta_Nerada
-      #     slot: '01'
+darkel_unpause:
+  alias: UNPause Darkel
+  sequence:
+    - service: foldingathomecontrol.unpause
+      data:
+        address: !secret Darkel
+        slot: "00"
+    - service: foldingathomecontrol.unpause
+      data:
+        address: !secret Darkel
+        slot: "01"
 
-  #####################################################
-  #  Garrote                                          #
-  #####################################################
-  garrote_pause:
-    alias: Pause Garrote
-    sequence:
-      - service: foldingathomecontrol.pause
-        data:
-          address: !secret Garrote
-      # slot: '00'
-      # - service: foldingathomecontrol.pause
-      #   data:
-      #     address: !secret Garrote
-      #     slot: '01'
-  
-  garrote_unpause:
-    alias: UNPause Garrote
-    sequence:
-      - service: foldingathomecontrol.unpause
-        data:
-          address: !secret Garrote
-      #     slot: '00'
-      # - service: foldingathomecontrol.unpause
-      #   data:
-      #     address: !secret Garrote
-      #     slot: '01'
+#####################################################
+#  Garrote                                          #
+#####################################################
+garrote_pause:
+  alias: Pause Garrote
+  sequence:
+    - service: foldingathomecontrol.pause
+      data:
+        address: !secret Garrote
+        slot: "00"
+    # - service: foldingathomecontrol.pause
+    #   data:
+    #     address: !secret Garrote
+    #     slot: '01'
+
+garrote_unpause:
+  alias: UNPause Garrote
+  sequence:
+    - service: foldingathomecontrol.unpause
+      data:
+        address: !secret Garrote
+        slot: "00"
+    # - service: foldingathomecontrol.unpause
+    #   data:
+    #     address: !secret Garrote
+    #     slot: '01'
