@@ -1817,7 +1817,6 @@
                                     "type": "vertical-stack"
                                 },
                                 {
-                                    "type": "vertical-stack",
                                     "cards": [
                                         {
                                             "type": "entity",
@@ -1845,8 +1844,7 @@
                                             },
                                             "type": "gauge",
                                             "unit": "."
-                                        }
-                                    ],
+                                        },
                                         {
                                             "type": "entities",
                                             "entities": [
@@ -1859,7 +1857,8 @@
                                             ],
                                             "title": "Darkel Pause Button"
                                         }
-                                    ]
+                                    ],
+                                    "type": "vertical-stack"
                                 },
                                 {
                                     "cards": [
