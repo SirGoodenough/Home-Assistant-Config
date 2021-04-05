@@ -1827,7 +1827,7 @@
                                         {
                                             "type": "entity",
                                             "entity": "sensor.192_168_108_24_00_percentdone",
-                                            "icon": "mdi:state-machine",
+                                            "icon": "mdi:percent",
                                             "name": "Darkel CPU FAH",
                                             "unit": "%"
                                         },
@@ -1835,14 +1835,13 @@
                                             "type": "gauge",
                                             "entity": "sensor.192_168_108_24_00_points_per_day",
                                             "min": 0,
-                                            "max": 130000,
+                                            "max": 180000,
                                             "name": "Darkel GPU Rate",
                                             "severity": {
-                                                "green": 80000,
-                                                "yellow": 58000,
-                                                "red": 24000
+                                                "green": 120000,
+                                                "yellow": 98000,
+                                                "red": 64000
                                             },
-                                            "type": "gauge",
                                             "unit": "."
                                         },
                                         {
@@ -1874,13 +1873,13 @@
                                         },
                                         {
                                             "entity": "sensor.192_168_108_24_01_points_per_day",
-                                            "max": 1200000,
+                                            "max": 1400000,
                                             "min": 0,
                                             "name": "Darkel GPU Rate",
                                             "severity": {
-                                                "green": 800000,
-                                                "red": 350000,
-                                                "yellow": 500000
+                                                "green": 1000000,
+                                                "red": 550000,
+                                                "yellow": 800000
                                             },
                                             "type": "gauge",
                                             "unit": "."
