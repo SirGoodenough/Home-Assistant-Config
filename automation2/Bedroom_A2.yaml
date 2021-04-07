@@ -61,9 +61,9 @@
           {% set bat = states('input_number.bedroom_auto_temp') | float %}
           {% if bte < bat %}
             0
-          {% elif bte < (bat + 3.5) %}
+          {% elif bte < (bat + 5.5) %}
             1
-          {% elif bte < (bat + 5.5) %} 
+          {% elif bte < (bat + 8.5) %} 
             2
           {% else %} 
             3
