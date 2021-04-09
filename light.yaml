@@ -4,16 +4,8 @@
     entity_id: switch.hank_hkzwso01_smart_plug_switch_2
 
   - platform: switch
-    name: "Jens LED"
-    entity_id: switch.jens_led_switch
-
-  - platform: switch
     name: "Kitchen Down Lights"
     entity_id: switch.kitchen_d_lights
-
-  - platform: switch
-    name: "Monitors"
-    entity_id: switch.office_monitors
 
   - platform: switch
     name: "Office Track Jim Bulb"
@@ -79,14 +71,3 @@
     payload_off: "OFF"
     payload_available: "Online"
     payload_not_available: "Offline"
-
-    # - platform: mqtt
-  #   name: "Office Light"
-  #   unique_id: 6434c824-87de-4cf8-96b9-15ce9c8b862f
-  #   state_topic: "Bedroom_Fan/tele/STATE"
-  #   command_topic: "Bedroom_Fan/cmnd/POWER1"
-  #   availability_topic: "Bedroom_Fan/tele/LWT"
-  #   payload_on: "ON"
-  #   payload_off: "OFF"
-  #   payload_available: "Online"
-  #   payload_not_available: "Offline"
