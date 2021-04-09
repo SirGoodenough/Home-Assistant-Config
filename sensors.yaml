@@ -450,8 +450,8 @@
 ####################################################
 #  Other                                           #
 ####################################################
-- platform: socialblade
-  channel_id: !secret SB_API
+# - platform: socialblade
+#   channel_id: !secret SB_API
 # - platform: command_line
 #   name: HA_Version
 #   command: "cat /home/homeassistant/.homeassistant/.HA_VERSION"
