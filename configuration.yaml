@@ -32,6 +32,7 @@ lock: !include lock.yaml
 logbook:
 logger: !include logger.yaml
 map:
+my:
 notify: !include notify.yaml
 octoprint: !include octoprint.yaml
 person: !include person.yaml
@@ -52,4 +53,4 @@ switch two: !include_dir_merge_list ./switch2
 timer: !include timer.yaml
 tts: !include tts.yaml
 updater: !include updater.yaml
-zwave:  !include zwave.yaml
+zwave: !include zwave.yaml

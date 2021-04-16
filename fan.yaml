@@ -26,6 +26,17 @@
       - low
       - high
 
+
+
+
+
+
+
+
+
+
+
+
 #future Reference replaced by tasmota integration#
 
   # - platform: mqtt  

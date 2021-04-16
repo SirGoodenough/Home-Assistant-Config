@@ -1859,24 +1859,24 @@
                                 {
                                     "cards": [
                                         {
-                                            "entity": "sensor.192_168_108_24_01_status",
+                                            "entity": "sensor.192_168_108_24_02_status",
                                             "name": "Darkel GPU FAH",
                                             "type": "entity"
                                         },
                                         {
-                                            "entity": "sensor.192_168_108_24_01_percentdone",
+                                            "entity": "sensor.192_168_108_24_02_percentdone",
                                             "name": "Darkel GPU FAH",
                                             "type": "entity"
                                         },
                                         {
-                                            "entity": "sensor.192_168_108_24_01_points_per_day",
+                                            "entity": "sensor.192_168_108_24_02_points_per_day",
                                             "max": 1400000,
                                             "min": 0,
                                             "name": "Darkel GPU Rate",
                                             "severity": {
                                                 "green": 1000000,
                                                 "red": 550000,
-                                                "yellow": 800000
+                                                "yellow": 700000
                                             },
                                             "type": "gauge",
                                             "unit": "."
