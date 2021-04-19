@@ -38,7 +38,7 @@
 
   # - platform: mqtt
   #   name: "Jens Mist"
-  #   unique_id: b5f92e68-a4a8-463d-8816-26a0fa340d9b
+  #   unique_id: b5f92e68-a4a8-463d-8816-26a0fa340d9ba
   #   availability_topic: "JensNeb/tele/LWT"
   #   payload_available: "Online"
   #   payload_not_available: "Offline"
@@ -71,7 +71,7 @@
 
   # - platform: mqtt  
   #   name: "Office Fan"
-  #   unique_id: c527a209-dc80-4c58-b20e-c9db02a5ce0b
+  #   unique_id: c527a209-dc80-4c58-b20e-c9db02a5ce0ba
   #   command_topic: "Office_Fan/cmnd/FanSpeed"
   #   speed_command_topic: "Office_Fan/cmnd/FanSpeed"    
   #   state_topic: "Office_Fan/stat/RESULT"
