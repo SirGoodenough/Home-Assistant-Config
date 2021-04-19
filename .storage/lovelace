@@ -217,15 +217,16 @@
                         {
                             "entities": [
                                 {
+                                    "entity": "fan.office_fan",
                                     "customIsOffColor": "#F88416",
-                                    "customIsOffSpdColor": "#F4F11B",
-                                    "customIsOnHiColor": "red",
                                     "customIsOnLowColor": "#E78E85",
                                     "customIsOnMedColor": "#E54234",
+                                    "customIsOnHiColor": "red",
                                     "customTheme": true,
-                                    "entity": "fan.office_fan",
+                                    "customSetpoints": true,
+                                    "hiPercentage": 100,
                                     "name": "Office Fan",
-                                    "type": "custom:fan-control-entity-row"
+                                    "type": "custom:fan-percent-button-row"
                                 },
                                 {
                                     "entity": "sensor.office_fanspeed"
@@ -272,15 +273,16 @@
                         {
                             "entities": [
                                 {
+                                    "entity": "fan.bedroom_fan",
                                     "customIsOffColor": "#F88416",
-                                    "customIsOffSpdColor": "#F4F11B",
-                                    "customIsOnHiColor": "red",
                                     "customIsOnLowColor": "#E78E85",
                                     "customIsOnMedColor": "#E54234",
+                                    "customIsOnHiColor": "red",
                                     "customTheme": true,
-                                    "entity": "fan.bedroom_fan",
+                                    "customSetpoints": true,
+                                    "hiPercentage": 100,
                                     "name": "Bedroom Fan",
-                                    "type": "custom:fan-control-entity-row"
+                                    "type": "custom:fan-percent-button-row"
                                 },
                                 {
                                     "entity": "light.bedroom_light"
@@ -495,15 +497,16 @@
                         {
                             "entities": [
                                 {
+                                    "entity": "fan.jens_new_fan",
                                     "customIsOffColor": "#2E253F",
-                                    "customIsOffSpdColor": "#3D1F74",
                                     "customIsOnHiColor": "#D3C5EC",
                                     "customIsOnLowColor": "#6A2FD3",
                                     "customIsOnMedColor": "#9F7BDF",
                                     "customTheme": true,
-                                    "entity": "fan.jens_new_fan",
-                                    "name": "JensFan",
-                                    "type": "custom:fan-control-entity-row"
+                                    "customSetpoints": true,
+                                    "hiPercentage": 100,
+                                    "name": "Bedroom Fan",
+                                    "type": "custom:fan-percent-button-row"
                                 },
                                 {
                                     "entity": "sensor.jennys_new_fanspeed"

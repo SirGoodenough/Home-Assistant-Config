@@ -4,11 +4,6 @@
     "data": {
         "items": [
             {
-                "id": "7cbdc3eb31f541949a7025875c14665f",
-                "type": "js",
-                "url": "/hacsfiles/fan-control-entity-row/fan-control-entity-row.js"
-            },
-            {
                 "id": "aef2939fe061412cb050d85c5e5db530",
                 "type": "module",
                 "url": "/hacsfiles/garbage-collection-card/garbage-collection-card.js"
@@ -27,6 +22,11 @@
                 "url": "/hacsfiles/kb-better-graph-colors/kb-better-graph-colors.js",
                 "type": "module",
                 "id": "80ae2b3b66034601a14b4db72642103d"
+            },
+            {
+                "url": "/hacsfiles/fan-percent-button-row/fan-percent-button-row.js",
+                "type": "module",
+                "id": "94e1ad9512ec41f1a5e027107929dac2"
             }
         ]
     }
