@@ -218,10 +218,10 @@
                             "entities": [
                                 {
                                     "entity": "fan.office_fan",
-                                    "customIsOffColor": "#F88416",
-                                    "customIsOnLowColor": "#E78E85",
-                                    "customIsOnMedColor": "#E54234",
-                                    "customIsOnHiColor": "red",
+                                    "IsOffColor": "#F88416",
+                                    "IsOnLowColor": "#E78E85",
+                                    "IsOnMedColor": "#E54234",
+                                    "IsOnHiColor": "red",
                                     "customTheme": true,
                                     "customSetpoints": true,
                                     "hiPercentage": 100,
@@ -274,10 +274,10 @@
                             "entities": [
                                 {
                                     "entity": "fan.bedroom_fan",
-                                    "customIsOffColor": "#F88416",
-                                    "customIsOnLowColor": "#E78E85",
-                                    "customIsOnMedColor": "#E54234",
-                                    "customIsOnHiColor": "red",
+                                    "IsOffColor": "#F88416",
+                                    "IsOnLowColor": "#E78E85",
+                                    "IsOnMedColor": "#E54234",
+                                    "IsOnHiColor": "red",
                                     "customTheme": true,
                                     "customSetpoints": true,
                                     "hiPercentage": 100,
@@ -498,10 +498,10 @@
                             "entities": [
                                 {
                                     "entity": "fan.jens_new_fan",
-                                    "customIsOffColor": "#2E253F",
-                                    "customIsOnHiColor": "#D3C5EC",
-                                    "customIsOnLowColor": "#6A2FD3",
-                                    "customIsOnMedColor": "#9F7BDF",
+                                    "IsOffColor": "#2E253F",
+                                    "IsOnHiColor": "#D3C5EC",
+                                    "IsOnLowColor": "#6A2FD3",
+                                    "IsOnMedColor": "#9F7BDF",
                                     "customTheme": true,
                                     "customSetpoints": true,
                                     "hiPercentage": 100,
@@ -542,6 +542,23 @@
                         },
                         {
                             "entities": [
+                                {
+                                    "entity": "fan.jens_mist",
+                                    "IsOffColor": "#2E253F",
+                                    "IsOnHiColor": "orange",
+                                    "IsOnLowColor": "orange",
+                                    "IsOnMedColor": "orange",
+                                    "buttonInactiveColor": "#050505",
+                                    "reverseButtons": true,
+                                    "customTheme": true,
+                                    "customMedText": "X",
+                                    "customSetpoints": true,
+                                    "lowPercentage": 50,
+                                    "medPercentage": 50,
+                                    "hiPercentage": 100,
+                                    "name": "Jens Mist",
+                                    "type": "custom:fan-percent-button-row"
+                                },
                                 {
                                     "entity": "fan.jens_mist"
                                 },
