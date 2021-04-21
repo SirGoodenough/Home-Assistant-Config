@@ -133,7 +133,8 @@ d = { '00550C':['SideDoorBell','ON','false'],
       'E9BF8E':['UpstairsPIR','ON','false'],
       'EA284E':['BasementWayDPIR','ON','false'],
       'F949D2':['StairUP','ON','false'],
-      'F949D4':['StairDN','ON','false']
+      'F949D4':['StairDN','ON','false'],
+      'FFFFFF':['NoOp','OFF','false']
     }
 
 p = data.get('payload')
@@ -144,6 +145,7 @@ if p is not None:
     # logger.warning('<rfbridge2_demux> Received known RF command: {}'.format(p))
     hass.services.call('mqtt', 'publish', service_data, True)  
   else:
-    service_data = {'topic':'rf433/unknown/2', 'payload':'{}'.format(p), 'qos':0, 'retain':'false'}
+    service_data = {'topic':'rf433/unknown/house2', 'payload':'{}'.format(p), 'qos':0, 'retain':'false'}
     hass.services.call('mqtt', 'publish', service_data, False)  
     logger.warning('<rfbridge2_demux> Received unknown RF command: {}'.format(p))
+z

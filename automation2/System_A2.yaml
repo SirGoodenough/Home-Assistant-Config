@@ -8,27 +8,46 @@
   ####################################################
   # Sonoff Bridge Demultiplexer                      #
   ####################################################
-  - id: f3929029-243f-447d-ba20-f6e39f158cad
+
+  - id: 8df7a000-4755-4e47-bdf7-f58284f10f99
     initial_state: on
-    alias: rfbridge_1_demultiplexer
+    alias: rfbridge1_RfReceived_demultiplexer
+    trigger:
+      - platform: mqtt
+        topic: RFBridge/tele/RESULT
+    action:
+      service: python_script.rfbridge1_demux
+      data_template:
+        payload: '{{trigger.payload_json.RfReceived.Data}}'
+
+  - id: 11b2988b-3d5b-4232-b7e6-4fbb521a522a
+    initial_state: on
+    alias: rfbridge1_RfCode_demultiplexer
+    trigger:
+      - platform: mqtt
+        topic: RFBridge/tele/RESULT
+    action:
+      service: python_script.rfbridge1_demux
+      data_template:
+        payload: '{{trigger.payload_json.RfCode}}'
+
+  - id: 4d44b110-7e45-4cf2-a04f-24a474d97110
+    initial_state: on
+    alias: rfbridge2_RfReceived_demultiplexer
     trigger:
       - platform: mqtt
         topic: RFBridge2/tele/RESULT
-      - platform: mqtt
-        topic: RFBridge/tele/RESULT
     action:
       service: python_script.rfbridge2_demux
       data_template:
         payload: '{{trigger.payload_json.RfReceived.Data}}'
 
-  - id: f8f44f15-75ae-48c1-9b17-2ab6447bb922
+  - id: 1ee20c8f-588a-4c51-b92f-4aba200d352f
     initial_state: on
-    alias: rfbridge_2_demultiplexer
+    alias: rfbridge2_RfCode_demultiplexer
     trigger:
       - platform: mqtt
         topic: RFBridge2/tele/RESULT
-      - platform: mqtt
-        topic: RFBridge/tele/RESULT
     action:
       service: python_script.rfbridge2_demux
       data_template:
