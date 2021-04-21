@@ -19,11 +19,6 @@
                 "url": "/hacsfiles/firetv-card/firetv-card.js"
             },
             {
-                "url": "/hacsfiles/kb-better-graph-colors/kb-better-graph-colors.js",
-                "type": "module",
-                "id": "80ae2b3b66034601a14b4db72642103d"
-            },
-            {
                 "url": "/hacsfiles/fan-percent-button-row/fan-percent-button-row.js",
                 "type": "module",
                 "id": "94e1ad9512ec41f1a5e027107929dac2"
