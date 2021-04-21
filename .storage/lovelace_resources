@@ -22,6 +22,11 @@
                 "url": "/hacsfiles/fan-percent-button-row/fan-percent-button-row.js",
                 "type": "module",
                 "id": "94e1ad9512ec41f1a5e027107929dac2"
+            },
+            {
+                "url": "/hacsfiles/toggle-control-button-row/toggle-control-button-row.js",
+                "type": "module",
+                "id": "f530518701524e73aca62a65d74ae8d8"
             }
         ]
     }

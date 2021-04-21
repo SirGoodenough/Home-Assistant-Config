@@ -543,31 +543,41 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "fan.jens_mist",
-                                    "IsOffColor": "#2E253F",
-                                    "IsOnHiColor": "#ff8500",
-                                    "IsOnLowColor": "#ffb500",
-                                    "buttonInactiveColor": "#050505",
-                                    "isTwoSpeedFan": true,
-                                    "reverseButtons": true,
-                                    "customTheme": true,
-                                    "customMedText": "X",
-                                    "customSetpoints": true,
-                                    "lowPercentage": 50,
-                                    "hiPercentage": 100,
-                                    "name": "Jens Mist",
-                                    "type": "custom:fan-percent-button-row"
-                                },
-                                {
                                     "entity": "fan.jens_mist"
                                 },
                                 {
-                                    "entity": "light.jens_night_light"
+                                    "entity": "switch.jensneb_light"
+                                },
+                                {
+                                    "entity": "fan.jens_mist",
+                                    "isTwoSpeedFan": true,
+                                    "reverseButtons": true,
+                                    "customTheme": true,
+                                    "isOffColor": "#2E252F",
+                                    "isOnHiColor": "#ff8500",
+                                    "isOnLowColor": "#ff6500",
+                                    "buttonInactiveColor": "#050505",
+                                    "customSetpoints": true,
+                                    "lowPercentage": 50,
+                                    "hiPercentage": 100,
+                                    "name": "Jens Mist speed",
+                                    "type": "custom:fan-percent-button-row"
+                                },
+                                {
+                                    "entity": "light.jensneb_light_mode",
+                                    "customOnText": "cycle",
+                                    "customOffText": "lock",
+                                    "isOnColor": "#ff6500",
+                                    "isOffColor": "#050505",
+                                    "name": "NightLite Mode",
+                                    "type": "custom:toggle-control-button-row",
+                                    "customTheme": true
                                 },
                                 {
                                     "entity": "binary_sensor.aromatherapy_water"
                                 }
                             ],
+                            "show_header_toggle": false,
                             "title": "Jens Nebulizer",
                             "type": "entities"
                         },
