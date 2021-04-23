@@ -565,8 +565,8 @@
                                 },
                                 {
                                     "entity": "light.jensneb_light_mode",
-                                    "customOnText": "cycle",
-                                    "customOffText": "lock",
+                                    "customOnText": "lock",
+                                    "customOffText": "cycle",
                                     "isOnColor": "#ff6500",
                                     "isOffColor": "#050505",
                                     "name": "NightLite Mode",

@@ -17,15 +17,15 @@
     command_topic: "JensNeb/cmnd/EVENT"
     state_topic: "JensNeb/tele/STATE"
     state_value_template: >-
-        {% if value_json.POWER2 == 'ON' %}
-          {% if value_json.POWER5 == 'ON' %}
-            ON
-          {% else %}
-            OFF
-          {% endif %}
+      {% if value_json.POWER2 == 'ON' %}
+        {% if value_json.POWER5 == 'ON' %}
+          ON
         {% else %}
-            OFF
+          OFF
         {% endif %}
+      {% else %}
+          OFF
+      {% endif %}
     payload_on: "ON"
     payload_off: "OFF"
     brightness_command_topic: "JensNeb/cmnd/Dimmer"
@@ -44,7 +44,7 @@
     # color_value_template: 
     rgb_command_topic: "JensNeb/cmnd/tuyasend3"
     rgb_command_template: >-
-        {% set brightness = state_attr('light.diffuser_lamp','brightness') | int %}
+        {% set brightness = state_attr('light.jensneb_light_mode','brightness') | int %}
           {{ '108,%02x%02x%02x646464' | format(red, green, blue)}}
           {{ '%02x' | format(brightness) }}
     rgb_value_template: >-
