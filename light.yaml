@@ -14,17 +14,13 @@
   - platform: mqtt
     name: "Jens Night Light"
     unique_id: 5801636e-abf4-4720-8a5b-a4c97a46228f
-    command_topic: "JensNeb/cmnd/EVENT"
+    command_topic: "JensNeb/cmnd/power2"
     state_topic: "JensNeb/tele/STATE"
     state_value_template: >-
       {% if value_json.POWER2 == 'ON' %}
-        {% if value_json.POWER5 == 'ON' %}
-          ON
-        {% else %}
-          OFF
-        {% endif %}
+        ON
       {% else %}
-          OFF
+        OFF
       {% endif %}
     payload_on: "ON"
     payload_off: "OFF"
