@@ -17,7 +17,7 @@
           entity_id: binary_sensor.bedroom
           state: 'on'
         - condition: numeric_state
-          entity_id: sensor.bedroom_temperature
+          entity_id: sensor.bedroom_fan_si7021_temperature
           above: input_number.bedroom_auto_temp
         - condition: state
           entity_id: input_boolean.bedroom_auto_fan
@@ -37,7 +37,7 @@
     initial_state: on
     trigger:
       - platform: state
-        entity_id: sensor.bedroom_temperature
+        entity_id: sensor.bedroom_fan_si7021_temperature
       - platform: state
         entity_id: input_boolean.bedroom_auto_fan
         to: 'on'
@@ -57,7 +57,7 @@
       data_template:
         topic: "Bedroom_Fan/cmnd/FanSpeed"
         payload: >
-          {% set bte = states('sensor.bedroom_temperature') | float %}
+          {% set bte = states('sensor.bedroom_fan_si7021_temperature') | float %}
           {% set bat = states('input_number.bedroom_auto_temp') | float %}
           {% if bte < bat %}
             0
