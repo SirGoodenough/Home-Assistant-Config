@@ -484,6 +484,24 @@
                             "type": "media-control",
                             "entity": "media_player.jens_firestick",
                             "theme": "material_dark_pink"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "switch.kitchen_display_do_not_disturb",
+                                "sensor.kitchen_display_alarms",
+                                "sensor.kitchen_display_device",
+                                "sensor.kitchen_display_timers"
+                            ]
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "switch.bedroom_speaker_do_not_disturb",
+                                "sensor.bedroom_speaker_alarms",
+                                "sensor.bedroom_speaker_device",
+                                "sensor.bedroom_speaker_timers"
+                            ]
                         }
                     ],
                     "icon": "mdi:home-automation",
@@ -600,6 +618,15 @@
                             "type": "media-control",
                             "entity": "media_player.nesthub0502",
                             "theme": "material_dark_pink"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "switch.jennys_room_display_do_not_disturb",
+                                "sensor.jennys_room_display_alarms",
+                                "sensor.jennys_room_display_device",
+                                "sensor.jennys_room_display_timers"
+                            ]
                         }
                     ],
                     "icon": "mdi:alpha-j-box",

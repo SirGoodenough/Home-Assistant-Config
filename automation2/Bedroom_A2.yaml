@@ -6,7 +6,7 @@
       # Complain if the bedroom door is still open shortly 
       #   before the Bedroom AC is scheduled to turn on
     alias: Bedroom Door is Open
-    initial_state: off
+    initial_state: on
     trigger:
       - platform: time
         at: '19:34:06'
@@ -30,6 +30,32 @@
           options:
             gender: female
           language: en-US
+
+  - id: 66849a21-2bb7-4a68-9795-38e9a1c475f1
+      # start Bedroom ac
+    alias: Bedroom AC Control
+    initial_state: on
+    trigger:
+      - platform: time
+        at: '20:34:06'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: binary_sensor.bedroom
+          state: 'on'
+        - condition: numeric_state
+          entity_id: sensor.bedroom_fan_si7021_temperature
+          above: input_number.bedroom_auto_temp
+    action:
+      - service: climate.turn_on
+        target:
+          device_id: 0ca739cff0bf4cf29082e209e5bd03b6
+      - service: climate.set_temperature
+        data:
+          temperature: states.input_number.bedroom_auto_temp
+        target:
+          device_id: 0ca739cff0bf4cf29082e209e5bd03b6
 
   - id: 92fa7b06-d6d5-426e-a197-15cafdce4d6b
       # Set the fan speed based on Temperature
@@ -94,7 +120,12 @@
           entity_id: fan.bedroom_fan
           state: 'off'
     action:
+    # Stop fan
     - service: mqtt.publish
       data:
         topic: "Bedroom_Fan/cmnd/FanSpeed"
         payload: 0
+    # Stop AC  
+    - service: climate.turn_off
+      target:
+        device_id: 0ca739cff0bf4cf29082e209e5bd03b6
