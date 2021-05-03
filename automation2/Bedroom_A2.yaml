@@ -39,14 +39,9 @@
       - platform: time
         at: '20:34:06'
     condition:
-      condition: and
-      conditions:
-        - condition: state
-          entity_id: binary_sensor.bedroom
-          state: 'on'
-        - condition: numeric_state
-          entity_id: sensor.bedroom_fan_si7021_temperature
-          above: input_number.bedroom_auto_temp
+      - condition: state
+        entity_id: binary_sensor.bedroom
+        state: 'on'
     action:
       - service: climate.turn_on
         target:
@@ -54,6 +49,24 @@
       - service: climate.set_temperature
         data:
           temperature: states.input_number.bedroom_auto_temp
+        target:
+          device_id: 0ca739cff0bf4cf29082e209e5bd03b6
+
+  - id: 7a06edf5-cd41-43f7-8fff-15ae61551090
+      # set Bedroom ac temp
+    alias: Bedroom AC Temp
+    initial_state: on
+    trigger:
+      - platform: state
+        entity_id: input_number.bedroom_auto_temp
+    condition:
+      - condition: state
+        entity_id: binary_sensor.bedroom
+        state: 'on'
+    action:
+      - service: climate.set_temperature
+        data:
+          temperature: states.input_number.bedroom_auto_temp | float
         target:
           device_id: 0ca739cff0bf4cf29082e209e5bd03b6
 
