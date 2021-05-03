@@ -37,20 +37,27 @@
     initial_state: on
     trigger:
       - platform: time
-        at: '20:34:06'
+        at: '20:34:06'    
     condition:
-      - condition: state
-        entity_id: binary_sensor.bedroom
-        state: 'on'
+      condition: and
+      conditions:
+        - condition: time
+          after: '19:59:57'
+          before: '09:12:53'
+        - condition: state
+          entity_id: input_boolean.bedroom_auto_fan
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.bedroom
+          state: 'off'
     action:
       - service: climate.turn_on
         target:
           device_id: 0ca739cff0bf4cf29082e209e5bd03b6
       - service: climate.set_temperature
-        data:
-          temperature: states.input_number.bedroom_auto_temp
-        target:
-          device_id: 0ca739cff0bf4cf29082e209e5bd03b6
+        data_template:
+          entity_id: climate.gemodule5384
+          temperature: "{{ states.input_number.bedroom_auto_temp.state | float }}"
 
   - id: 7a06edf5-cd41-43f7-8fff-15ae61551090
       # set Bedroom ac temp
@@ -60,15 +67,22 @@
       - platform: state
         entity_id: input_number.bedroom_auto_temp
     condition:
-      - condition: state
-        entity_id: binary_sensor.bedroom
-        state: 'on'
+      condition: and
+      conditions:
+        - condition: time
+          after: '19:59:57'
+          before: '09:12:53'
+        - condition: state
+          entity_id: input_boolean.bedroom_auto_fan
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.bedroom
+          state: 'off'
     action:
       - service: climate.set_temperature
-        data:
-          temperature: states.input_number.bedroom_auto_temp | float
-        target:
-          device_id: 0ca739cff0bf4cf29082e209e5bd03b6
+        data_template:
+          entity_id: climate.gemodule5384
+          temperature: "{{ states.input_number.bedroom_auto_temp.state | float }}"
 
   - id: 92fa7b06-d6d5-426e-a197-15cafdce4d6b
       # Set the fan speed based on Temperature
@@ -100,9 +114,9 @@
           {% set bat = states('input_number.bedroom_auto_temp') | float %}
           {% if bte < bat %}
             0
-          {% elif bte < (bat + 5.5) %}
+          {% elif bte < (bat + 4.5) %}
             1
-          {% elif bte < (bat + 8.5) %} 
+          {% elif bte < (bat + 6.5) %} 
             2
           {% else %} 
             3
