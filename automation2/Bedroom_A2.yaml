@@ -10,6 +10,10 @@
     trigger:
       - platform: time
         at: '19:34:06'
+      - platform: time
+        at: '19:44:08'
+      - platform: time
+        at: '19:54:21'
     condition:
       condition: and
       conditions:
@@ -32,12 +36,15 @@
           language: en-US
 
   - id: 66849a21-2bb7-4a68-9795-38e9a1c475f1
-      # start Bedroom ac
+      # start Bedroom ac at a time
     alias: Bedroom AC Control
     initial_state: on
     trigger:
       - platform: time
         at: '20:34:06'    
+      - platform: state
+        entity_id: input_boolean.bedroom_auto_fan
+        to: 'on'
     condition:
       condition: and
       conditions:
@@ -60,7 +67,7 @@
           temperature: "{{ states.input_number.bedroom_auto_temp.state | float }}"
 
   - id: 7a06edf5-cd41-43f7-8fff-15ae61551090
-      # set Bedroom ac temp
+      # set Bedroom ac temp from the input slider
     alias: Bedroom AC Temp
     initial_state: on
     trigger:
@@ -85,7 +92,7 @@
           temperature: "{{ states.input_number.bedroom_auto_temp.state | float }}"
 
   - id: 92fa7b06-d6d5-426e-a197-15cafdce4d6b
-      # Set the fan speed based on Temperature
+      # Set the fan speed based on room Temperature
     alias: Bedroom Fan Auto Mode
     initial_state: on
     trigger:
