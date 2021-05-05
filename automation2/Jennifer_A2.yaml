@@ -162,7 +162,7 @@
         options:
           gender: male
         language: en-AU
-    - delay: 00:00:05
+    - delay: 00:00:07
     - service: media_player.play_media
       data:
         entity_id: media_player.kitchen_display
