@@ -488,19 +488,29 @@
                         {
                             "type": "entities",
                             "entities": [
-                                "switch.kitchen_display_do_not_disturb",
-                                "sensor.kitchen_display_alarms",
-                                "sensor.kitchen_display_device",
-                                "sensor.kitchen_display_timers"
+                                {
+                                    "entity": "switch.kitchen_display_do_not_disturb"
+                                },
+                                {
+                                    "entity": "sensor.kitchen_display_alarms"
+                                },
+                                {
+                                    "entity": "sensor.kitchen_display_timers"
+                                }
                             ]
                         },
                         {
                             "type": "entities",
                             "entities": [
-                                "switch.bedroom_speaker_do_not_disturb",
-                                "sensor.bedroom_speaker_alarms",
-                                "sensor.bedroom_speaker_device",
-                                "sensor.bedroom_speaker_timers"
+                                {
+                                    "entity": "switch.bedroom_speaker_do_not_disturb"
+                                },
+                                {
+                                    "entity": "sensor.bedroom_speaker_alarms"
+                                },
+                                {
+                                    "entity": "sensor.bedroom_speaker_timers"
+                                }
                             ]
                         }
                     ],
@@ -622,10 +632,15 @@
                         {
                             "type": "entities",
                             "entities": [
-                                "switch.jennys_room_display_do_not_disturb",
-                                "sensor.jennys_room_display_alarms",
-                                "sensor.jennys_room_display_device",
-                                "sensor.jennys_room_display_timers"
+                                {
+                                    "entity": "switch.jennys_room_display_do_not_disturb"
+                                },
+                                {
+                                    "entity": "sensor.jennys_room_display_alarms"
+                                },
+                                {
+                                    "entity": "sensor.jennys_room_display_timers"
+                                }
                             ]
                         }
                     ],
