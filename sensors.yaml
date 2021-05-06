@@ -239,79 +239,61 @@
 - platform: mqtt
   unique_id: 47058f65-ca94-4c2c-aaf4-4589ec759eab
   name: "Office FanSpeed"
-  state_topic: "Office_Fan/stat/STATUS11"
+  state_topic: "Office_Fan/stat/RESULT"
   unit_of_measurement: "%"
   value_template: >-
-    {% if value_json.StatusSTS is defined %}
-      {% if value_json.StatusSTS.FanSpeed is defined %}
-        {% if value_json.StatusSTS.FanSpeed == 1 -%}
-          33
-        {%- elif value_json.StatusSTS.FanSpeed == 2 -%}
-          66
-        {%- elif value_json.StatusSTS.FanSpeed == 3 -%}
-          100
-        {%- else -%}
-          0
-        {%- endif %}
+    {% if value_json.FanSpeed is defined %}
+      {% if value_json.FanSpeed == 1 -%}
+        33
+      {%- elif value_json.FanSpeed == 2 -%}
+        66
+      {%- elif value_json.FanSpeed == 3 -%}
+        100
+      {%- else -%}
+        0
       {%- endif %}
     {% else %}
-      {% if is_state('fan.office_fan', 'off') %}
-        0
-      {%- elif is_state('fan.office_fan', 'on') %}
-        75
-      {%- endif %}
+      {{ states(sensor.office_fanspeed) }}
     {% endif %}
 
 - platform: mqtt
   unique_id: faa2f0c9-58d5-4054-bbf2-8d2a0d1684d7
   name: "Jennys New FanSpeed"
-  state_topic: "JensNewFan/stat/STATUS11"
+  state_topic: "JensNewFan/stat/RESULT"
   unit_of_measurement: "%"
   value_template: >-
-    {% if value_json.StatusSTS is defined %}
-      {% if value_json.StatusSTS.FanSpeed is defined %}
-        {% if value_json.StatusSTS.FanSpeed == 1 -%}
-          33
-        {%- elif value_json.StatusSTS.FanSpeed == 2 -%}
-          66
-        {%- elif value_json.StatusSTS.FanSpeed == 3 -%}
-          100
-        {%- else -%}
-          0
-        {%- endif %}
+    {% if value_json.FanSpeed is defined %}
+      {% if value_json.FanSpeed == 1 -%}
+        33
+      {%- elif value_json.FanSpeed == 2 -%}
+        66
+      {%- elif value_json.FanSpeed == 3 -%}
+        100
+      {%- else -%}
+        0
       {%- endif %}
     {% else %}
-      {% if is_state('fan.jens_new_fan', 'off') %}
-        0
-      {%- elif is_state('fan.jens_new_fan', 'on') %}
-        75
-      {%- endif %}
+      {{ states(sensor.jennys_new_fanspeed) }}
     {% endif %}
 
 - platform: mqtt
   unique_id: 9ca6ee3b-88ba-4d3e-bce4-94e937b3c7a1
   name: "Bedroom FanSpeed"
-  state_topic: "Bedroom_Fan/stat/STATUS11"
+  state_topic: "Bedroom_Fan/stat/RESULT"
   unit_of_measurement: "%"
   value_template: >-
-    {% if value_json.StatusSTS is defined %}
-      {% if value_json.StatusSTS.FanSpeed is defined %}
-        {% if value_json.StatusSTS.FanSpeed == 1 -%}
-          33
-        {%- elif value_json.StatusSTS.FanSpeed == 2 -%}
-          66
-        {%- elif value_json.StatusSTS.FanSpeed == 3 -%}
-          100
-        {%- else -%}
-          0
-        {%- endif %}
+    {% if value_json.FanSpeed is defined %}
+      {% if value_json.FanSpeed == 1 -%}
+        33
+      {%- elif value_json.FanSpeed == 2 -%}
+        66
+      {%- elif value_json.FanSpeed == 3 -%}
+        100
+      {%- else -%}
+        0
       {%- endif %}
     {% else %}
-      {% if is_state('fan.bedroom_fan ', 'off') %}
-        0
-      {%- elif is_state('fan.bedroom_fan ', 'on') %}
-        75
-      {%- endif %}
+      {{ states(sensor.bedroom_fanspeed) }}
     {% endif %}
 
 ####################################################
@@ -330,15 +312,15 @@
 ####################################################
 #  Weather                                         #
 ####################################################
-- platform: darksky
-  api_key: 8b50a9ef74a06ef730f7a14b116adb0f
-  scan_interval:
-    minutes: 5
-  monitored_conditions:
-    - temperature
-    - cloud_cover
-    - apparent_temperature
-    - wind_speed
+# - platform: darksky
+#   api_key: 8b50a9ef74a06ef730f7a14b116adb0f
+#   scan_interval:
+#     minutes: 5
+#   monitored_conditions:
+#     - temperature
+#     - cloud_cover
+#     - apparent_temperature
+#     - wind_speed
 
 # Minimal configuration of the standard time and date sensor
 - platform: time_date
@@ -346,6 +328,7 @@
     - "date_time_iso"
     - date
     - time
+
 # Build on the standard sensor to produce one that can be customized
 - platform: template
   sensors:
@@ -353,6 +336,7 @@
       friendly_name: "Date and time"
       value_template: "{{ as_timestamp(states('sensor.date_time_iso')) | timestamp_custom('%A %B %-m, %I:%M %p') }}"
       icon_template: mdi:calendar-clock
+
 - platform: template
   sensors:
     sun_state:
@@ -363,8 +347,6 @@
 ####################################################
 #  Battery                                         #
 ####################################################
-#        entity_id: zwave.kwikset_touchpad_electronic_deadbolt
-
 - platform: template
   sensors:
     lock_backdoor_bat_level:
@@ -458,8 +440,3 @@
 ####################################################
 # - platform: socialblade
 #   channel_id: !secret SB_API
-# - platform: command_line
-#   name: HA_Version
-#   command: "cat /home/homeassistant/.homeassistant/.HA_VERSION"
-- platform: version
-  name: HA_Version
