@@ -148,4 +148,3 @@ if p is not None:
     service_data = {'topic':'rf433/unknown/house2', 'payload':'{}'.format(p), 'qos':0, 'retain':'false'}
     hass.services.call('mqtt', 'publish', service_data, False)  
     logger.warning('<rfbridge2_demux> Received unknown RF command: {}'.format(p))
-z
