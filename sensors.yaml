@@ -191,7 +191,6 @@
 ####################################################
 #  Locks                                           #
 ####################################################
-#        entity_id: sensor.kwikset_touchpad_electronic_deadbolt_alarm_type
 - platform: template
   sensors:
     lock_back_door_mode:
@@ -253,7 +252,7 @@
         0
       {%- endif %}
     {% else %}
-      {{ states(sensor.office_fanspeed) }}
+      {{ states('sensor.office_fanspeed') }}
     {% endif %}
 
 - platform: mqtt
@@ -273,7 +272,7 @@
         0
       {%- endif %}
     {% else %}
-      {{ states(sensor.jennys_new_fanspeed) }}
+      {{ states('sensor.jennys_new_fanspeed') }}
     {% endif %}
 
 - platform: mqtt
@@ -293,7 +292,7 @@
         0
       {%- endif %}
     {% else %}
-      {{ states(sensor.bedroom_fanspeed) }}
+      {{ states('sensor.bedroom_fanspeed') }}
     {% endif %}
 
 ####################################################
