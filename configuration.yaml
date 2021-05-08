@@ -52,5 +52,5 @@ switch: !include switch.yaml
 switch two: !include_dir_merge_list ./switch2
 timer: !include timer.yaml
 tts: !include tts.yaml
-updater: !include updater.yaml
+#updater: !include updater.yaml
 zwave: !include zwave.yaml
