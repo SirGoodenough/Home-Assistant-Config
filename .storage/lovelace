@@ -256,10 +256,7 @@
                                     "entity": "switch.power_supply"
                                 },
                                 {
-                                    "entity": "media_player.office_speaker"
-                                },
-                                {
-                                    "entity": "media_player.office_speaker1"
+                                    "entity": "media_player.office_jamz"
                                 },
                                 {
                                     "entity": "sensor.benchstrip_rssi"
@@ -436,6 +433,11 @@
                             "type": "media-control",
                             "entity": "media_player.jenny_s_tv",
                             "theme": "material_dark_pink"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.hismart_tv",
+                            "theme": "Dark - Blue"
                         },
                         {
                             "type": "media-control",
@@ -617,11 +619,6 @@
                         {
                             "type": "media-control",
                             "entity": "media_player.jenny_s_tv",
-                            "theme": "material_dark_pink"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.jens_firestick",
                             "theme": "material_dark_pink"
                         },
                         {

@@ -21,9 +21,9 @@
     speed_range_max: 2
     qos: 1
     retain: false
-    speeds:
-      - low
-      - high
+    # speeds:
+    #   - low
+    #   - high
 
 
 
