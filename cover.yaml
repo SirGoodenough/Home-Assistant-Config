@@ -21,3 +21,10 @@
     payload_available: 'Online'
     payload_not_available: 'Offline'
     tilt_opened_value: 100
+
+  # Logger: homeassistant.components.mqtt.cover
+  # Source: components/mqtt/cover.py:328
+  # Integration: MQTT (documentation, issues)
+  # First occurred: 12:49:31 AM (2 occurrences)
+  # Last logged: 12:57:23 AM
+  # Payload is not supported (e.g. open, closed, opening, closing, stopped): STOP

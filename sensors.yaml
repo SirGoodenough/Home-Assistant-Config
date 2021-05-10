@@ -295,6 +295,21 @@
       {{ states('sensor.bedroom_fanspeed') }}
     {% endif %}
 
+# Minimal configuration of the standard time and date sensor
+- platform: time_date
+  display_options:
+    - "date_time_iso"
+    - date
+    - time
+
+# Build on the standard sensor to produce one that can be customized
+- platform: template
+  sensors:
+    time_formatted:
+      friendly_name: "Date and time"
+      value_template: "{{ as_timestamp(states('sensor.date_time_iso')) | timestamp_custom('%A %B %-m, %I:%M %p') }}"
+      icon_template: mdi:calendar-clock
+
 ####################################################
 #  Lights                                          #
 ####################################################
@@ -320,21 +335,6 @@
 #     - cloud_cover
 #     - apparent_temperature
 #     - wind_speed
-
-# Minimal configuration of the standard time and date sensor
-- platform: time_date
-  display_options:
-    - "date_time_iso"
-    - date
-    - time
-
-# Build on the standard sensor to produce one that can be customized
-- platform: template
-  sensors:
-    time_formatted:
-      friendly_name: "Date and time"
-      value_template: "{{ as_timestamp(states('sensor.date_time_iso')) | timestamp_custom('%A %B %-m, %I:%M %p') }}"
-      icon_template: mdi:calendar-clock
 
 - platform: template
   sensors:
@@ -433,9 +433,3 @@
     switch_count:
       friendly_name: "Swt"
       value_template: "{{ states.switch | count }}"
-
-####################################################
-#  Other                                           #
-####################################################
-# - platform: socialblade
-#   channel_id: !secret SB_API
