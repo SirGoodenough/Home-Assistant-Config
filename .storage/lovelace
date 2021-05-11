@@ -639,6 +639,27 @@
                                     "entity": "sensor.jennys_room_display_timers"
                                 }
                             ]
+                        },
+                        {
+                            "type": "button",
+                            "tap_action": {
+                                "action": "call-service",
+                                "service": "input_boolean.turn_on",
+                                "service_data": {},
+                                "target": {
+                                    "entity_id": "input_boolean.mist_button"
+                                }
+                            },
+                            "entity": "input_boolean.mist_button",
+                            "name": "More Mist!",
+                            "hold_action": {
+                                "action": "call-service",
+                                "service": "input_boolean.turn_off",
+                                "service_data": {},
+                                "target": {
+                                    "entity_id": "input_boolean.mist_button"
+                                }
+                            }
                         }
                     ],
                     "icon": "mdi:alpha-j-box",

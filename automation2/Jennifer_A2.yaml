@@ -141,7 +141,6 @@
           entity_id: media_player.nesthub0502
           volume_level: .5
 
-
   #####################################################
   # Jens Mister                                       #
   #####################################################
@@ -152,6 +151,10 @@
     trigger:
     - platform: state
       entity_id: binary_sensor.aromatherapy_water
+      from: 'off'
+      to: 'on'
+    - platform: state
+      entity_id: input_boolean.mist_button
       from: 'off'
       to: 'on'
     action:
@@ -168,3 +171,5 @@
         entity_id: media_player.kitchen_display
         media_content_id: !secret Mister
         media_content_type: audio/mp3
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.mist_button
