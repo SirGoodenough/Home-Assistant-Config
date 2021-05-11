@@ -659,7 +659,8 @@
                                 "target": {
                                     "entity_id": "input_boolean.mist_button"
                                 }
-                            }
+                            },
+                            "theme": "Dark Soft UI Violet"
                         }
                     ],
                     "icon": "mdi:alpha-j-box",
