@@ -660,7 +660,7 @@
                                     "entity_id": "input_boolean.mist_button"
                                 }
                             },
-                            "theme": "Dark Soft UI Violet"
+                            "theme": "blue_night"
                         }
                     ],
                     "icon": "mdi:alpha-j-box",
