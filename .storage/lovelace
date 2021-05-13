@@ -535,7 +535,7 @@
                                     "customTheme": true,
                                     "customSetpoints": true,
                                     "hiPercentage": 100,
-                                    "name": "Bedroom Fan",
+                                    "name": "Jens Fan",
                                     "type": "custom:fan-percent-button-row"
                                 },
                                 {
@@ -660,7 +660,7 @@
                                     "entity_id": "input_boolean.mist_button"
                                 }
                             },
-                            "theme": "blue_night"
+                            "theme": "Dark Soft UI Violet"
                         }
                     ],
                     "icon": "mdi:alpha-j-box",
