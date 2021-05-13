@@ -16,7 +16,7 @@
     command_topic: garage_door/cmnd/EVENT
     payload_open: 'OPEN'
     payload_close: 'CLOSE'
-    payload_stop: 'STOP'
+    payload_stop: 'STOPPED'
     availability_topic: garage_door/tele/LWT
     payload_available: 'Online'
     payload_not_available: 'Offline'
