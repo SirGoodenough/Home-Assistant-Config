@@ -17,8 +17,6 @@
   #     state: 'on'
   #   action:
   #   - service: lights.turn_on
-  #     entity_id: light.top_garage_light
-  #   - service: lights.turn_on
   #     entity_id: light.front_porch_light
   #   - service: lights.turn_on
   #     entity_id: light.back_porch_light

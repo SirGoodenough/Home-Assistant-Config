@@ -148,8 +148,6 @@
         entity_id: switch.chromecast
       - service: switch.turn_off
         entity_id: switch.dust_collector
-      - service: light.turn_off
-        entity_id: light.top_garage_light
       - service: mqtt.publish
         data:
           topic: "tasmotas/cmnd/backlog"
