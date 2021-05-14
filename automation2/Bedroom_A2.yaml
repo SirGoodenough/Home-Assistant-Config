@@ -38,7 +38,7 @@
 
   - id: 92fa7b06-d6d5-426e-a197-15cafdce4d6b
       # Set the fan speed based on room Temperature
-    mode: queued
+    mode: restart
     alias: Bedroom Fan Auto Mode
     initial_state: on
     trigger:
