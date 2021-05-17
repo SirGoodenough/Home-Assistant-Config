@@ -1960,13 +1960,13 @@
                                         },
                                         {
                                             "entity": "sensor.192_168_108_24_02_points_per_day",
-                                            "max": 1400000,
+                                            "max": 2000000,
                                             "min": 0,
                                             "name": "Darkel GPU Rate",
                                             "severity": {
                                                 "green": 1000000,
-                                                "red": 550000,
-                                                "yellow": 700000
+                                                "red": 649995,
+                                                "yellow": 800000
                                             },
                                             "type": "gauge",
                                             "unit": "."
