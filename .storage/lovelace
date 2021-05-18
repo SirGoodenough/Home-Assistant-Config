@@ -145,6 +145,10 @@
                             ]
                         },
                         {
+                            "type": "thermostat",
+                            "entity": "climate.gemodule5384"
+                        },
+                        {
                             "entities": [
                                 {
                                     "entity": "switch.aeotec_dsc26103_micro_switch_2nd_edition_switch"
@@ -164,6 +168,53 @@
                             ],
                             "show_header_toggle": false,
                             "title": "Bathroom",
+                            "type": "entities",
+                            "state_color": true
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "fan.bedroom_fan",
+                                    "IsOffColor": "#F88416",
+                                    "IsOnLowColor": "#E78E85",
+                                    "IsOnMedColor": "#E54234",
+                                    "IsOnHiColor": "red",
+                                    "customTheme": true,
+                                    "customSetpoints": true,
+                                    "hiPercentage": 100,
+                                    "name": "Bedroom Fan",
+                                    "type": "custom:fan-percent-button-row"
+                                },
+                                {
+                                    "entity": "light.bedroom_light"
+                                },
+                                {
+                                    "entity": "sensor.bedroom_fanspeed"
+                                },
+                                {
+                                    "entity": "binary_sensor.bedroom"
+                                },
+                                {
+                                    "entity": "climate.gemodule5384"
+                                },
+                                {
+                                    "entity": "input_number.bedroom_auto_temp"
+                                },
+                                {
+                                    "entity": "input_boolean.bedroom_auto_fan"
+                                },
+                                {
+                                    "entity": "media_player.bedroom_speaker"
+                                },
+                                {
+                                    "entity": "sensor.bedroom_fan_si7021_temperature"
+                                },
+                                {
+                                    "entity": "sensor.bedroom_fan_si7021_humidity"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Bedroom",
                             "type": "entities",
                             "state_color": true
                         },
@@ -266,53 +317,6 @@
                             "title": "Office",
                             "state_color": true,
                             "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "fan.bedroom_fan",
-                                    "IsOffColor": "#F88416",
-                                    "IsOnLowColor": "#E78E85",
-                                    "IsOnMedColor": "#E54234",
-                                    "IsOnHiColor": "red",
-                                    "customTheme": true,
-                                    "customSetpoints": true,
-                                    "hiPercentage": 100,
-                                    "name": "Bedroom Fan",
-                                    "type": "custom:fan-percent-button-row"
-                                },
-                                {
-                                    "entity": "light.bedroom_light"
-                                },
-                                {
-                                    "entity": "sensor.bedroom_fanspeed"
-                                },
-                                {
-                                    "entity": "binary_sensor.bedroom"
-                                },
-                                {
-                                    "entity": "climate.gemodule5384"
-                                },
-                                {
-                                    "entity": "input_number.bedroom_auto_temp"
-                                },
-                                {
-                                    "entity": "input_boolean.bedroom_auto_fan"
-                                },
-                                {
-                                    "entity": "media_player.bedroom_speaker"
-                                },
-                                {
-                                    "entity": "sensor.bedroom_fan_si7021_temperature"
-                                },
-                                {
-                                    "entity": "sensor.bedroom_fan_si7021_humidity"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Bedroom",
-                            "type": "entities",
-                            "state_color": true
                         },
                         {
                             "entities": [
@@ -2279,19 +2283,13 @@
                                     "entity": "sensor.lock_backdoor_bat_level"
                                 },
                                 {
-                                    "entity": "binary_sensor.battery_low_lock_back_door"
+                                    "entity": "alert.lock_back_door_notify_low_battery"
                                 },
                                 {
-                                    "entity": "binary_sensor.battery_low_mailbox"
-                                },
-                                {
-                                    "entity": "binary_sensor.battery_low_bathroom"
+                                    "entity": "binary_sensor.battery_back_front_door_inside"
                                 },
                                 {
                                     "entity": "binary_sensor.battery_low_front_door_inside"
-                                },
-                                {
-                                    "entity": "binary_sensor.battery_low_back_door_inside"
                                 },
                                 {
                                     "entity": "binary_sensor.battery_low_side_door_inside"
@@ -2301,44 +2299,18 @@
                                 },
                                 {
                                     "entity": "binary_sensor.battery_low_garage_side_door"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Battery",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "alert.back_door_notify_low_battery"
-                                },
-                                {
-                                    "entity": "sensor.lock_backdoor_bat_level"
-                                },
-                                {
-                                    "entity": "binary_sensor.battery_low_mailbox"
                                 },
                                 {
                                     "entity": "binary_sensor.battery_low_bathroom"
-                                },
-                                {
-                                    "entity": "binary_sensor.battery_low_front_door_inside"
-                                },
-                                {
-                                    "entity": "binary_sensor.battery_low_garage_side_door"
-                                },
-                                {
-                                    "entity": "binary_sensor.battery_low_side_door_inside"
-                                },
-                                {
-                                    "entity": "binary_sensor.battery_low_garage_door"
                                 },
                                 {
                                     "entity": "binary_sensor.battery_low_bedroom_door"
+                                },
+                                {
+                                    "entity": "binary_sensor.battery_low_mailbox"
                                 }
                             ],
                             "show_header_toggle": false,
-                            "theme": "dark_mint",
                             "title": "Battery",
                             "type": "entities"
                         }
@@ -2436,29 +2408,6 @@
                             }
                         },
                         {
-                            "type": "gauge",
-                            "entity": "sensor.christmastree_wi_fi_rssi",
-                            "severity": {
-                                "green": -70,
-                                "yellow": -50,
-                                "red": -30
-                            },
-                            "min": -100,
-                            "max": 1
-                        },
-                        {
-                            "entity": "sensor.sidelock_rssi",
-                            "max": 100,
-                            "min": 0,
-                            "severity": {
-                                "green": 70,
-                                "red": 30,
-                                "yellow": 50
-                            },
-                            "theme": "default",
-                            "type": "gauge"
-                        },
-                        {
                             "entity": "sensor.bmt_hall_rf_socket_d_rssi",
                             "max": 100,
                             "min": 0,
@@ -2483,7 +2432,66 @@
                             "type": "gauge"
                         },
                         {
-                            "entity": "sensor.wash_machine_rssi",
+                            "entity": "sensor.dishwasher_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "entity": "sensor.garagefront_light_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "entity": "sensor.bmt_hall_rf_socket_u_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "entity": "sensor.fp_rf_relay_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "type": "gauge",
+                            "entity": "sensor.christmastree_wi_fi_rssi",
+                            "severity": {
+                                "green": -70,
+                                "yellow": -50,
+                                "red": -30
+                            },
+                            "min": -100,
+                            "max": 1
+                        },
+                        {
+                            "entity": "sensor.sidelock_rssi",
                             "max": 100,
                             "min": 0,
                             "severity": {
@@ -2505,6 +2513,30 @@
                                 "red": 30
                             },
                             "name": "Office Light Mom RSSI"
+                        },
+                        {
+                            "entity": "sensor.frontlock_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
+                        },
+                        {
+                            "entity": "sensor.wash_machine_rssi",
+                            "max": 100,
+                            "min": 0,
+                            "severity": {
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
+                            },
+                            "theme": "default",
+                            "type": "gauge"
                         },
                         {
                             "entity": "sensor.plug3_rssi",
@@ -2556,43 +2588,7 @@
                             "type": "gauge"
                         },
                         {
-                            "entity": "sensor.garagefront_light_rssi",
-                            "max": 100,
-                            "min": 0,
-                            "severity": {
-                                "green": 70,
-                                "red": 30,
-                                "yellow": 50
-                            },
-                            "theme": "default",
-                            "type": "gauge"
-                        },
-                        {
                             "entity": "sensor.dust_collector_rssi",
-                            "max": 100,
-                            "min": 0,
-                            "severity": {
-                                "green": 70,
-                                "red": 30,
-                                "yellow": 50
-                            },
-                            "theme": "default",
-                            "type": "gauge"
-                        },
-                        {
-                            "entity": "sensor.dishwasher_rssi",
-                            "max": 100,
-                            "min": 0,
-                            "severity": {
-                                "green": 70,
-                                "red": 30,
-                                "yellow": 50
-                            },
-                            "theme": "default",
-                            "type": "gauge"
-                        },
-                        {
-                            "entity": "sensor.fp_rf_relay_rssi",
                             "max": 100,
                             "min": 0,
                             "severity": {
@@ -2688,31 +2684,7 @@
                             "type": "gauge"
                         },
                         {
-                            "entity": "sensor.frontlock_rssi",
-                            "max": 100,
-                            "min": 0,
-                            "severity": {
-                                "green": 70,
-                                "red": 30,
-                                "yellow": 50
-                            },
-                            "theme": "default",
-                            "type": "gauge"
-                        },
-                        {
                             "entity": "sensor.humidifier_rssi",
-                            "max": 100,
-                            "min": 0,
-                            "severity": {
-                                "green": 70,
-                                "red": 30,
-                                "yellow": 50
-                            },
-                            "theme": "default",
-                            "type": "gauge"
-                        },
-                        {
-                            "entity": "sensor.bmt_hall_rf_socket_u_rssi",
                             "max": 100,
                             "min": 0,
                             "severity": {
