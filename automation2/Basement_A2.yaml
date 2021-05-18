@@ -79,9 +79,9 @@
         {% elif humidity < lo %}
           switch.turn_on
         {% else %}
-          switch.turn_{{states('switch.humidifier') | lower}}
+          switch.turn_{{states('switch.humidifier_2') | lower}}
         {% endif %}
-      entity_id: switch.humidifier
+      entity_id: switch.humidifier_2
 
   ####################################################
   # Wash Machine                                     #
