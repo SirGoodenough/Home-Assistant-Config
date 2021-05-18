@@ -213,23 +213,23 @@
         {%- endif -%}
       value_template: >-
         {%- if is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "19") -%}
-          {%- if is_state("sensor.lock_back_door_mode", "Unlocked with Keypad by user 1") -%}
-            Unlocked by House
-          {%- elif is_state("sensor.lock_back_door_mode", "Unlocked with Keypad by user 2") -%}
-            Unlocked by Dad
-          {%- elif is_state("sensor.lock_back_door_mode", "Unlocked with Keypad by user 3") -%}
-            Unlocked by Mom
-          {%- elif is_state("sensor.lock_back_door_mode", "Unlocked with Keypad by user 4") -%}
-            Unlocked by Carol
-          {%- elif is_state("sensor.lock_back_door_mode", "Unlocked with Keypad by user 5") -%}
-            Unlocked by Bill        
+          {%- if is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 1) -%}
+            "Unlocked by House"
+          {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 2) -%}
+            "Unlocked by Dad"
+          {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 3) -%}
+            "Unlocked by Mom"
+          {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 4) -%}
+            "Unlocked by Carol"
+          {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 5) -%}
+            "Unlocked by Bill"       
           {%- else -%}
-            Unknown Code Unlock
+            "Unknown Code Unlock"
           {%- endif -%}
         {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "23") -%}
-          Deadbolt Jammed
+          "Deadbolt Jammed"
         {%- else -%}
-          {{ states.lock.kwikset_touchpad_electronic_deadbolt_locked.attributes.lock_status }} 
+          {{ states.sensor.kwikset_touchpad_electronic_deadbolt_alarm_type.state }} 
         {%- endif -%}
 
 ####################################################
