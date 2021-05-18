@@ -1,6 +1,6 @@
 ---
   #####################################################
-  # DoorBell  (Ring and 433mhz)                       #
+  # DoorBell                                          #
   #####################################################
   # - platform: ring
 
@@ -582,11 +582,9 @@
     payload_available: Online
     payload_not_available: Offline
 
-
   #####################################################
   # Batteries                                         #
   #####################################################
-
   - platform: mqtt
     name: "Battery Back Front Door Inside"
     unique_id: 848d9a20-9360-445e-b087-0c17cacb0e0f
