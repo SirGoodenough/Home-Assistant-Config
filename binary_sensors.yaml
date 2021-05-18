@@ -571,6 +571,18 @@
     payload_not_available: Offline
 
   - platform: mqtt
+    name: "Side Door Open"
+    unique_id: ff1346e5-f767-4da5-9868-c663e7c02413
+    device_class: door
+    state_topic: SideLock/stat/door
+    payload_on: 'OPEN'
+    payload_off: 'CLOSED'
+    force_update: false
+    availability_topic: "SideLock/tele/LWT"
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
     name: "Side Door Open 433"
     unique_id: 97d7853b-d2d8-4403-8a5e-cb5b65d15345
     device_class: door
