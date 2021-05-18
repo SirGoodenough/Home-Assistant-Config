@@ -35,7 +35,7 @@
                                     "entity": "switch.kitchenfan"
                                 },
                                 {
-                                    "entity": "switch.dishwasher"
+                                    "entity": "switch.dishwasher_2"
                                 },
                                 {
                                     "entity": "media_player.kitchen_display"
@@ -73,7 +73,7 @@
                                     "entity": "lock.front_door"
                                 },
                                 {
-                                    "entity": "switch.moms_chair"
+                                    "entity": "light.mom_chair"
                                 },
                                 {
                                     "entity": "light.mom_light"
@@ -323,7 +323,7 @@
                                     "entity": "binary_sensor.dust_collector_button1"
                                 },
                                 {
-                                    "entity": "switch.dust_collector"
+                                    "entity": "switch.dust_collector_2"
                                 },
                                 {
                                     "entity": "switch.sonoff_1000d4bf8f_1"
@@ -1332,7 +1332,7 @@
                                     "entity": "input_number.target_humidity"
                                 },
                                 {
-                                    "entity": "switch.humidifier"
+                                    "entity": "switch.humidifier_2"
                                 }
                             ],
                             "show_header_toggle": false,
@@ -1515,9 +1515,6 @@
                             "entities": [
                                 {
                                     "entity": "light.jens_light"
-                                },
-                                {
-                                    "entity": "light.jens_led"
                                 },
                                 {
                                     "entity": "light.bulb1_2"
@@ -2234,18 +2231,6 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "sensor.dark_sky_apparent_temperature"
-                                },
-                                {
-                                    "entity": "sensor.dark_sky_cloud_coverage"
-                                },
-                                {
-                                    "entity": "sensor.dark_sky_temperature"
-                                },
-                                {
-                                    "entity": "sensor.dark_sky_wind_speed"
-                                },
-                                {
                                     "entity": "binary_sensor.dark_outside"
                                 },
                                 {
@@ -2312,10 +2297,10 @@
                                     "entity": "binary_sensor.battery_low_side_door_inside"
                                 },
                                 {
-                                    "entity": "binary_sensor.battery_garage_door"
+                                    "entity": "binary_sensor.battery_low_garage_door"
                                 },
                                 {
-                                    "entity": "binary_sensor.battery_garage_side_door"
+                                    "entity": "binary_sensor.battery_low_garage_side_door"
                                 }
                             ],
                             "show_header_toggle": false,

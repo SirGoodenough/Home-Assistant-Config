@@ -586,6 +586,19 @@
   #####################################################
   # Batteries                                         #
   #####################################################
+
+  - platform: mqtt
+    name: "Battery Back Front Door Inside"
+    unique_id: 848d9a20-9360-445e-b087-0c17cacb0e0f
+    device_class: battery
+    state_topic: rf433/BatteryLowBackDoorI
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    force_update: false
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
   - platform: mqtt
     name: "Battery Low Bathroom"
     unique_id: 800cefaf-fa24-41c6-94b5-8694e9a22fe9

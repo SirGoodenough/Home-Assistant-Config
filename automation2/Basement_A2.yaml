@@ -34,14 +34,14 @@
       to: 'on'
     action:
     - service: switch.toggle
-      entity_id: switch.dust_collector
+      entity_id: switch.dust_collector_2
 
   - id: d15eac53-31d8-4112-bd37-b96a46710366
     alias: Dust Collector Failsafe
     initial_state: on
     trigger:
     - platform: state
-      entity_id: switch.dust_collector
+      entity_id: switch.dust_collector_2
       to: 'on'
     action:
     - service: script.turn_on
@@ -52,7 +52,7 @@
     initial_state: on
     trigger:
     - platform: state
-      entity_id: switch.dust_collector
+      entity_id: switch.dust_collector_2
       to: 'off'
     action:
     - service: automation.turn_off

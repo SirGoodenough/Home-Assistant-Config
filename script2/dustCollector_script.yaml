@@ -14,4 +14,4 @@
           minutes: 60
       - service: switch.turn_off
         data:
-          entity_id: switch.dust_collector
+          entity_id: switch.dust_collector_2
