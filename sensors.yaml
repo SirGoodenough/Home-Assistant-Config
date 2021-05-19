@@ -351,7 +351,12 @@
     lock_backdoor_bat_level:
       friendly_name: "Lock BackDoor Battery Level"
       device_class: battery
-      value_template: "{{ states.zwave.kwikset_touchpad_electronic_deadbolt.attributes.battery_level }}"
+      value_template: >-
+        {% if states.zwave.kwikset_touchpad_electronic_deadbolt.attributes.battery_level is defined %}
+          {{ states.zwave.kwikset_touchpad_electronic_deadbolt.attributes.battery_level }}
+        {% else %}
+          "-1"
+        {% endif %}
       unit_of_measurement: "%"
 
 ####################################################

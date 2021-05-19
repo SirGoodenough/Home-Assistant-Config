@@ -348,7 +348,7 @@
                                     "entity": "script.dust_collector_watchdog"
                                 },
                                 {
-                                    "entity": "binary_sensor.side_door_open"
+                                    "entity": "binary_sensor.side_door_open_2"
                                 },
                                 {
                                     "entity": "binary_sensor.side_door_open_433"
