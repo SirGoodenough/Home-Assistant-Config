@@ -54,6 +54,8 @@
   - id: c4d89216-e97a-470b-82e9-cb9e4e66e601
     initial_state: on
     alias: MQTT Dark Switch
+    mode: single            # Part of delay
+    max_exceeded: silent    # Part of delay
     trigger:
     - platform: state
       entity_id: binary_sensor.dark_outside
@@ -68,6 +70,7 @@
           {% else %}
             DAY
           {% endif %}
+    - delay: 1800  # Was triggering every 2 mins.  Change to 30 mins.
 
   ####################################################
   # Daily Back-up                                    #
@@ -102,8 +105,8 @@
       - delay: 00:00:39
       - service: mqtt.publish
         data:
-          topic: tasmotas/cmnd/state
-          payload: ''
+          topic: tasmotas/cmnd/backlog
+          payload: 'state; status11'
       - service: mqtt.publish
         data:
           topic: Outside/cmnd/EVENT
