@@ -14,8 +14,8 @@
     alias: rfbridge_RfReceived_demultiplexer
     mode: queued
     # Gets info from RF-Bridges and sends them to the python script to generate
-    #  individual MQTT topics for them.
-    # Codes revieved from room devices.
+    #   individual MQTT topics for them.
+    #  Codes recieved from room devices.
     trigger:
       - platform: mqtt
         topic: RFBridge/tele/RESULT
@@ -37,8 +37,8 @@
     alias: rfbridge_RfCode_demultiplexer
     mode: queued
     # Gets info from RF-Bridges and sends them to the python script to generate
-    #  individual MQTT topics for them.
-    # Codes generated from RF-Bridges.
+    #   individual MQTT topics for them.
+    #  Codes generated from RF-Bridges.
     trigger:
       - platform: mqtt
         topic: RFBridge/tele/RESULT
@@ -114,13 +114,14 @@
         data:
           topic: tasmotas/cmnd/backlog
           payload: 'state; status 8; status 11'
-      # Assume it's dark, then the lights will work.  Prevents 'IDK' state and lights not working.
+      # Assume it's dark, then the lights will work.
+      #  Prevents 'IDK' state and lights not working.
       - service: mqtt.publish
         data:
           topic: Outside/cmnd/EVENT
           payload: 'DARK'
           retain: true
-      # Add extra delay so the python script is running when this trys to access it.
+      # Add extra delay so python script is running when this trys to access it.
       - delay: 00:04:14
       - service: switch.turn_on
         entity_id: switch.chromecast
