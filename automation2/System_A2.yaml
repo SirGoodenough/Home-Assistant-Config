@@ -106,17 +106,12 @@
       - service: mqtt.publish
         data:
           topic: tasmotas/cmnd/backlog
-          payload: 'state; status11'
+          payload: 'state; status 8; status 11'
       - service: mqtt.publish
         data:
           topic: Outside/cmnd/EVENT
           payload: 'DARK'
           retain: true
-      # - service: mqtt.publish
-      #   data:
-      #     topic: "tasmotas/cmnd/backlog"
-      #     payload: "power1 ;power2 ;power3 ;power4 ;power5; power6 ;power7 ;power8; dimmer; state "
-      #
       # Add extra delay so the python script is running when this trys to access it.
       - delay: 00:04:14
       - service: switch.turn_on
