@@ -9,7 +9,11 @@
     trigger:
       platform: numeric_state
       entity_id: sensor.bathoom_si7021_temperature
-      above: 80
+      above: 85
+    condition:
+      condition: state
+      entity_id: switch.aeotec_dsc26103_micro_switch_2nd_edition_switch
+      state: 'on'
     action:
     - service: script.turn_on
       entity_id: 
@@ -17,10 +21,10 @@
     - service: tts.cloud_say
       data:
         entity_id: group.intercom_stack
-        message: "The Upstairs Bathroom is over heated."
+        message: "The Upstairs Bathroom is over heated.  I'm turning the Bathroom Heater off."
         options:
-          gender: female
-        language: en-US
+          gender: male
+        language: en-AU
 
   - id: bd61ef61-ae56-47ae-9902-6166657aceac
     alias: Bathroom Door is Open
