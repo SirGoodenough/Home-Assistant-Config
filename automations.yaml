@@ -42,3 +42,11 @@
     data: {}
     entity_id: input_boolean.flush2
   mode: single
+- id: '1621915606596'
+  alias: MQTTCarPresence
+  description: Test version using switch and lighta
+  use_blueprint:
+    path: aderusha/MQTTCarTest.yaml
+    input:
+      garage_door: light.livingroomlight
+      car_presence: switch.tasmotatest
