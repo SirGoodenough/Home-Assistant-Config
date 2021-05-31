@@ -141,6 +141,12 @@
                                 },
                                 {
                                     "entity": "sensor.water_the_plants"
+                                },
+                                {
+                                    "entity": "sensor.latest_backup"
+                                },
+                                {
+                                    "entity": "binary_sensor.snapshots_stale"
                                 }
                             ]
                         },
