@@ -446,11 +446,11 @@
   sensors:
     latest_backup:
       value_template: >-
-        {% set found=namespace(snapshot=None,time=0) %}
-        {% for snapshot in state_attr('sensor.snapshot_backup', 'snapshots') %}
-          {% if as_timestamp(snapshot.date) > found.time and snapshot.state == "Backed Up" %}
-            {% set found.time = as_timestamp(snapshot.date) %}
-            {% set found.snapshot = snapshot %}
+        {% set found=namespace(snap=None,time=0) %}
+        {% for snap in state_attr('sensor.snapshot_backup', 'snapshots') %}
+          {% if as_timestamp(snap.date) > found.time and snap.state == "Backed Up" %}
+            {% set found.time = as_timestamp(snap.date) %}
+            {% set found.snap = snap %}
           {% endif %}
         {% endfor %}
-        {{ found.snapshot.name }} ({{ found.snapshot.size}})
+        {{ found.snap.name }} ({{ found.snap.size}})
