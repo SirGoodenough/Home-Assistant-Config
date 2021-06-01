@@ -27,7 +27,7 @@
       state: 'on'
     action:
       - service: script.turn_on
-        entity_id: script.garage_lights_on
+        entity_id: script.garage_outside_lights_on
 
   - id: c0193815-32b4-4f26-b2a0-a6cafa05de2f
     alias: Garage Inside Auto Light
@@ -35,14 +35,10 @@
     trigger:
     - entity_id: binary_sensor.garage_side_door_open
       platform: state
-      from: 'off'
-      to: 'on'
     - entity_id: binary_sensor.garage_door_open
       platform: state
       from: 'off'
       to: 'on'
     action:
-    - service: light.turn_on
-      entity_id: 
-        - light.garagefront_light
-        - light.garageback_light
+    - service: script.turn_on
+      entity_id: script.garage_inside_lights_on
