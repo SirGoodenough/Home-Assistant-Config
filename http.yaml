@@ -3,8 +3,8 @@
   #  base_url: !secret HA_Base_External  
   #  ssl_certificate: /ssl/fullchain.pem  
   #  ssl_key: /ssl/privkey.pem  
-  # cors_allowed_origins:  
-  #  - https://google.com  
-  #  - https://home-assistant.io  
+  cors_allowed_origins:  
+    - https://google.com  
+    - https://home-assistant.io  
   ip_ban_enabled: True  
   login_attempts_threshold: 5

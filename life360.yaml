@@ -14,5 +14,5 @@
   # Set comm error thresholds so first 4 are not logged,
   # fifth is logged as a WARNING, and 6th and so fourth
   # are logged as ERRORs.
-  warning_threshold: 4
-  error_threshold: 6
+  warning_threshold: 6
+  error_threshold: 10
