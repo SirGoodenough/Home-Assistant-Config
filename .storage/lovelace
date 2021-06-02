@@ -236,10 +236,10 @@
                                     "entity": "script.work_time"
                                 },
                                 {
-                                    "entity": "script.garage_lights_on"
+                                    "entity": "script.garage_outside_lights_on"
                                 },
                                 {
-                                    "entity": "script.garage_lights_off"
+                                    "entity": "script.garage_outside_lights_off"
                                 },
                                 {
                                     "entity": "sensor.garage_door_si7021_temperature"
