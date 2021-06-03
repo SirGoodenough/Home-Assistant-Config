@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "key": "http",
+    "data": {
+        "server_port": 8123,
+        "cors_allowed_origins": [
+            "https://google.com",
+            "https://home-assistant.io"
+        ],
+        "ip_ban_enabled": true,
+        "login_attempts_threshold": 5,
+        "ssl_profile": "modern"
+    }
+}

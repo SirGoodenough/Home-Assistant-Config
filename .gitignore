@@ -13,6 +13,7 @@
 !/scripts**
 !/.storage
 !/.storage/broadlink_remote_*_codes
+!/.storage/http
 !/.storage/image
 !/.storage/input_*
 !/.storage/lovelace*
