@@ -141,10 +141,10 @@ p = data.get('payload')
 
 if p is not None:
   if p in d.keys():
-    service_data = {'topic':'rf433/{}'.format(d[p][0]), 'payload':'{}'.format(d[p][1]), 'qos':0, 'retain':'{}'.format(d[p][2])}
+    service_data = {'topic':'rf433/{}'.format(d[p][0]), 'payload':'{}'.format(d[p][1]), 'qos':1, 'retain':'{}'.format(d[p][2])}
     # logger.warning('<rfbridge2_demux> Received known RF command: {}'.format(p))
     hass.services.call('mqtt', 'publish', service_data, True)  
   else:
-    service_data = {'topic':'rf433/unknown/house2', 'payload':'{}'.format(p), 'qos':0, 'retain':'false'}
+    service_data = {'topic':'rf433/unknown/house2', 'payload':'{}'.format(p), 'qos':1, 'retain':'false'}
     hass.services.call('mqtt', 'publish', service_data, False)  
     logger.warning('<rfbridge2_demux> Received unknown RF command: {}'.format(p))
