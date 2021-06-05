@@ -11,10 +11,6 @@
     trigger:
       - platform: time
         at: '19:34:06'
-      - platform: time
-        at: '19:44:08'
-      - platform: time
-        at: '19:54:21'
     condition:
       condition: and
       conditions:
@@ -35,6 +31,14 @@
           options:
             gender: female
           language: en-US
+          # Send Warning...
+      - service: mqtt.publish
+        data:
+          topic: rf433/Bedroom
+          payload: 'OFF'
+          retain: true
+          # Force the switch closed.
+          #  Assume someone checked the door.
 
   - id: 92fa7b06-d6d5-426e-a197-15cafdce4d6b
       # Set the fan speed based on room Temperature
