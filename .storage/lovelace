@@ -436,7 +436,7 @@
                         },
                         {
                             "type": "media-control",
-                            "entity": "media_player.nesthub0502",
+                            "entity": "media_player.nesthub8286",
                             "theme": "material_dark_pink"
                         },
                         {
@@ -633,20 +633,20 @@
                         },
                         {
                             "type": "media-control",
-                            "entity": "media_player.nesthub0502",
+                            "entity": "media_player.nesthub8286",
                             "theme": "material_dark_pink"
                         },
                         {
                             "type": "entities",
                             "entities": [
                                 {
-                                    "entity": "switch.jennys_room_display_do_not_disturb"
+                                    "entity": "switch.jennys_hub_do_not_disturb"
                                 },
                                 {
-                                    "entity": "sensor.jennys_room_display_alarms"
+                                    "entity": "sensor.jennys_hub_alarms"
                                 },
                                 {
-                                    "entity": "sensor.jennys_room_display_timers"
+                                    "entity": "sensor.jennys_hub_timers"
                                 }
                             ]
                         },
@@ -2355,10 +2355,6 @@
                         },
                         {
                             "type": "media-control",
-                            "entity": "media_player.jens_speaker"
-                        },
-                        {
-                            "type": "media-control",
                             "entity": "media_player.living_room_speaker"
                         },
                         {
@@ -2375,11 +2371,15 @@
                         },
                         {
                             "type": "media-control",
-                            "entity": "media_player.office_speaker_2"
+                            "entity": "media_player.office_speaker"
                         },
                         {
                             "type": "media-control",
-                            "entity": "media_player.nesthub0502"
+                            "entity": "media_player.office_speaker1"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.nesthub8286"
                         }
                     ],
                     "icon": "mdi:speaker",
