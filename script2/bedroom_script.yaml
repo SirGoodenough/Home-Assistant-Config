@@ -1,0 +1,36 @@
+---
+  #####################################################
+  # Bedroom Temp Control                              #
+  #####################################################
+  bedroom_temp_control:
+    alias: Bedroom Temperature Control
+    sequence:
+    - service: mqtt.publish
+      data_template:
+        topic: "Bedroom_Fan/cmnd/FanSpeed"
+        payload: >
+          {% set bte = states('sensor.bedroom_fan_si7021_temperature') | float %}
+          {% set bat = (states('input_number.bedroom_auto_temp') | float) -1.3 %}
+          {% if bte < bat %}
+            0
+          {% elif bte < (bat + 5.8) %}
+            1
+          {% elif bte < (bat + 7.8) %} 
+            2
+          {% else %} 
+            3
+          {% endif %}
+
+  #####################################################
+  # Bedroom AC Start                                  #
+  #####################################################
+  bedroom_ac_start:
+    alias: Bedroom AC Start
+    sequence:
+    - service: climate.turn_on
+      target:
+        entity_id: climate.gemodule5384
+    - service: climate.set_temperature
+      data_template:
+        entity_id: climate.gemodule5384
+        temperature: "{{ states.input_number.bedroom_auto_temp.state | float }}"
