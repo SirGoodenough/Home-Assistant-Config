@@ -96,20 +96,8 @@
     trigger:
       - platform: state
         entity_id: input_number.bedroom_auto_temp
-    # condition:
-    #   condition: and
-    #   conditions:
-    #     - condition: time
-    #       after: '19:59:57'
-    #       before: '09:12:53'
-    #     - condition: state
-    #       entity_id: input_boolean.bedroom_auto_fan
-    #       state: 'on'
     action:
-      - service: climate.set_temperature
-        data_template:
-          entity_id: climate.gemodule5384
-          temperature: "{{ states.input_number.bedroom_auto_temp.state | float }}"
+      - service: script.bedroom_temp_control
 
   - id: 15aa3b87-2173-4d8b-aa63-4ee259fda5b0
       # Turn the fan off in the morning to wake my ass up.
