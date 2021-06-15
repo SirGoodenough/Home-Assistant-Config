@@ -97,7 +97,10 @@
       - platform: state
         entity_id: input_number.bedroom_auto_temp
     action:
-      - service: script.bedroom_temp_control
+      - service: climate.set_temperature
+        data_template:
+          entity_id: climate.gemodule5384
+          temperature: "{{ states.input_number.bedroom_auto_temp.state | float }}"
 
   - id: 15aa3b87-2173-4d8b-aa63-4ee259fda5b0
       # Turn the fan off in the morning to wake my ass up.
