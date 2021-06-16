@@ -1,0 +1,59 @@
+blueprint:
+  name: Door open TTS announcer
+  domain: automation
+  input:
+    door_entity:
+      name: Door Sensor
+      description: Entity that causes announcement
+      selector:
+        entity:
+          domain: binary_sensor
+          device_class: door
+    speaker_target:
+      name: Speaker
+      description: Entity to announce event on
+      selector:
+        target:
+          entity:
+            domain: media_player
+    announcement_message:
+      name: Announcement message
+      description: What to say when door is opened
+    final_message:
+      name: Final message
+      description: What to say when door is closed  
+    cooldown:
+      name: Announcement cooldown
+      description: The minimum time needed in between announcements
+      default: 10
+      selector:
+        number:
+          min: 0
+          max: 600
+          unit_of_measurement: seconds
+
+mode: single
+
+trigger:
+  platform: state
+  entity_id: !input door_entity
+  from: "off"
+  to: "on"
+
+action:
+  - alias: Repeat the sequence UNTIL the door is closed
+    repeat:
+      sequence:
+        - delay: !input cooldown 
+        - service: tts.google_translate_say
+          target: !input speaker_target
+          data:
+            message: !input announcement_message
+      until:
+        - condition: state
+          entity_id: !input door_entity
+          state: 'off'
+  - service: tts.google_translate_say
+    target: !input speaker_target
+    data:
+      message: !input final_message          
