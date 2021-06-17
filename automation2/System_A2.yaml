@@ -1,73 +1,73 @@
 ---
-  #####################################################
-  #                                                   #
-  # System                                            #
-  #                                                   #
-  #####################################################
+#####################################################
+#                                                   #
+# System                                            #
+#                                                   #
+#####################################################
 
-  ####################################################
-  # Sonoff Bridge Demultiplexer                      #
-  ####################################################
+####################################################
+# Sonoff Bridge Demultiplexer                      #
+####################################################
 
-  - id: cef2adcb-a4fc-4205-8c13-e3416847bf7b
-    initial_state: on
-    alias: rfbridge_RfReceived_demultiplexer
-    mode: queued
-    # Gets info from RF-Bridges and sends them to the python script to generate
-    #   individual MQTT topics for them.
-    #  Codes recieved from room devices.
-    trigger:
-      - platform: mqtt
-        topic: RFBridge/tele/RESULT
-      - platform: mqtt
-        topic: RFBridge2/tele/RESULT
-    condition:
-      - condition: template
-        value_template: >
-          {{ trigger.payload_json is defined and
-            trigger.payload_json.RfReceived is defined and 
-            trigger.payload_json.RfReceived.Data is defined }}
-    action:
-      service: python_script.rfbridge2_demux
-      data_template:
-        payload: '{{trigger.payload_json.RfReceived.Data}}'
+- id: cef2adcb-a4fc-4205-8c13-e3416847bf7b
+  initial_state: on
+  alias: rfbridge_RfReceived_demultiplexer
+  mode: queued
+  # Gets info from RF-Bridges and sends them to the python script to generate
+  #   individual MQTT topics for them.
+  #  Codes recieved from room devices.
+  trigger:
+    - platform: mqtt
+      topic: RFBridge/tele/RESULT
+    - platform: mqtt
+      topic: RFBridge2/tele/RESULT
+  condition:
+    - condition: template
+      value_template: >
+        {{ trigger.payload_json is defined and
+          trigger.payload_json.RfReceived is defined and 
+          trigger.payload_json.RfReceived.Data is defined }}
+  action:
+    service: python_script.rfbridge2_demux
+    data:
+      payload: "{{trigger.payload_json.RfReceived.Data}}"
 
-  - id: d6ad7aff-f806-4c75-ab1e-886cba8ef2f9
-    initial_state: on
-    alias: rfbridge_RfCode_demultiplexer
-    mode: queued
-    # Gets info from RF-Bridges and sends them to the python script to generate
-    #   individual MQTT topics for them.
-    #  Codes generated from RF-Bridges.
-    trigger:
-      - platform: mqtt
-        topic: RFBridge/tele/RESULT
-      - platform: mqtt
-        topic: RFBridge2/tele/RESULT
-    condition:
-      - condition: template
-        value_template: >
-          {{ trigger.payload_json is defined and
-            trigger.payload_json.RfCode is defined }}
-    action:
-      service: python_script.rfbridge2_demux
-      data_template:
-        payload: '{{trigger.payload_json.RfCode}}'
+- id: d6ad7aff-f806-4c75-ab1e-886cba8ef2f9
+  initial_state: on
+  alias: rfbridge_RfCode_demultiplexer
+  mode: queued
+  # Gets info from RF-Bridges and sends them to the python script to generate
+  #   individual MQTT topics for them.
+  #  Codes generated from RF-Bridges.
+  trigger:
+    - platform: mqtt
+      topic: RFBridge/tele/RESULT
+    - platform: mqtt
+      topic: RFBridge2/tele/RESULT
+  condition:
+    - condition: template
+      value_template: >
+        {{ trigger.payload_json is defined and
+          trigger.payload_json.RfCode is defined }}
+  action:
+    service: python_script.rfbridge2_demux
+    data:
+      payload: "{{trigger.payload_json.RfCode}}"
 
-  ####################################################
-  # Dark out?                                        #
-  ####################################################
-  - id: c4d89216-e97a-470b-82e9-cb9e4e66e601
-    initial_state: on
-    alias: MQTT Dark Switch
-    mode: single            # Part of delay
-    max_exceeded: silent    # Part of delay
-    trigger:
+####################################################
+# Dark out?                                        #
+####################################################
+- id: c4d89216-e97a-470b-82e9-cb9e4e66e601
+  initial_state: on
+  alias: MQTT Dark Switch
+  mode: single # Part of delay
+  max_exceeded: silent # Part of delay
+  trigger:
     - platform: state
       entity_id: binary_sensor.dark_outside
-    action:
+  action:
     - service: mqtt.publish
-      data_template:
+      data:
         retain: true
         topic: "Outside/cmnd/EVENT"
         payload: >-
@@ -76,54 +76,54 @@
           {% else %}
             DAY
           {% endif %}
-    - delay: 1800  # Was triggering every 2 mins.  Change to 30 mins.
+    - delay: 1800 # Was triggering every 2 mins.  Change to 30 mins.
 
-  ####################################################
-  # Daily Back-up                                    #
-  ####################################################
-  - id: ea70e8a8-45bf-4adb-b1cf-85b12dd5129e
-    alias: Daily Backup
-    initial_state: on
-    trigger:
-      - platform: time
-        at: 06:18:14
-    action:
-      - service: rest_command.tasmoadmin_backup
-      - service: tts.clear_cache
-      - service: hassio.addon_start
-        data:
-          addon: 3490a758_remote_backup
+####################################################
+# Daily Back-up                                    #
+####################################################
+- id: ea70e8a8-45bf-4adb-b1cf-85b12dd5129e
+  alias: Daily Backup
+  initial_state: on
+  trigger:
+    - platform: time
+      at: 06:18:14
+  action:
+    - service: rest_command.tasmoadmin_backup
+    - service: tts.clear_cache
+    - service: hassio.addon_start
+      data:
+        addon: 3490a758_remote_backup
 
-  ####################################################
-  # MQTT Restart Tasmota                             #
-  ####################################################
-  ####    Use this automation to get all your devices in sync, including
-  ####     power state, immediately after Home Assistant is (re)started.
-  ####    Also taking this opportunity to start other things up for a clean 
-  ####     restart.
-  - id: c9484bd1-6c87-4cfc-a018-1572be06d402
-    alias: Power state on HA start-up
-    initial_state: on
-    trigger:
-      - platform: homeassistant
-        event: start
-    action:
-      - delay: 00:00:39
-      # Tell the tasmota's to report home after boot so the sensors are updated.
-      - service: mqtt.publish
-        data:
-          topic: tasmotas/cmnd/backlog
-          payload: 'state; status 8; status 11'
-      # Assume it's dark, then the lights will work.
-      #  Prevents 'IDK' state and lights not working.
-      - service: mqtt.publish
-        data:
-          topic: Outside/cmnd/EVENT
-          payload: 'DARK'
-          retain: true
-      # Add extra delay so python script is running when this trys to access it.
-      - delay: 00:04:14
-      - service: switch.turn_on
-        entity_id: switch.chromecast
-      - service: switch.turn_off
-        entity_id: switch.dust_collector_2
+####################################################
+# MQTT Restart Tasmota                             #
+####################################################
+####    Use this automation to get all your devices in sync, including
+####     power state, immediately after Home Assistant is (re)started.
+####    Also taking this opportunity to start other things up for a clean
+####     restart.
+- id: c9484bd1-6c87-4cfc-a018-1572be06d402
+  alias: Power state on HA start-up
+  initial_state: on
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+    - delay: 00:00:39
+    # Tell the tasmota's to report home after boot so the sensors are updated.
+    - service: mqtt.publish
+      data:
+        topic: tasmotas/cmnd/backlog
+        payload: "state; status 8; status 11"
+    # Assume it's dark, then the lights will work.
+    #  Prevents 'IDK' state and lights not working.
+    - service: mqtt.publish
+      data:
+        topic: Outside/cmnd/EVENT
+        payload: "DARK"
+        retain: true
+    # Add extra delay so python script is running when this trys to access it.
+    - delay: 00:04:14
+    - service: switch.turn_on
+      entity_id: switch.chromecast
+    - service: switch.turn_off
+      entity_id: switch.dust_collector_2

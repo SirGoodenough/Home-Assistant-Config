@@ -16,12 +16,12 @@
       entity_id: timer.flushtime2
 
     - service: media_player.volume_set
-      data_template:
+      data:
         entity_id: media_player.kitchen_display, media_player.nesthub4245
         volume_level: .8
 
     - service: tts.cloud_say
-      data_template:
+      data:
         entity_id: media_player.kitchen_display, media_player.nesthub4245
         message: >
           {{ ("It's all the same, only the names will change",
@@ -61,7 +61,7 @@
     - delay: 00:00:57 # Delay for the second part first warning
 
     - service: tts.cloud_say
-      data_template:
+      data:
         entity_id: media_player.kitchen_display, media_player.nesthub4245
         message: >
           {{ ("So close, no matter how far",
@@ -97,7 +97,7 @@
       entity_id: timer.flushtime5
 
     - service: tts.cloud_say
-      data_template:
+      data:
         entity_id: media_player.kitchen_display, media_player.nesthub4245
         message: >
           {{ ("This ain't a song for the broken-hearted",
@@ -137,7 +137,7 @@
     - delay: 00:00:04
 
     - service: media_player.volume_set
-      data_template:
+      data:
         entity_id: media_player.nesthub4245
         volume_level: .5
 
