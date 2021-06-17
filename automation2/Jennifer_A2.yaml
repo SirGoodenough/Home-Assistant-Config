@@ -17,12 +17,12 @@
 
     - service: media_player.volume_set
       data_template:
-        entity_id: media_player.kitchen_display, media_player.nesthub5153
+        entity_id: media_player.kitchen_display, media_player.nesthub4245
         volume_level: .8
 
     - service: tts.cloud_say
       data_template:
-        entity_id: media_player.kitchen_display, media_player.nesthub5153
+        entity_id: media_player.kitchen_display, media_player.nesthub4245
         message: >
           {{ ("It's all the same, only the names will change",
               "Every day, it seems we're wastin' away", 
@@ -54,7 +54,7 @@
 
     - service: media_player.play_media
       data:
-        entity_id: media_player.kitchen_display, media_player.nesthub5153
+        entity_id: media_player.kitchen_display, media_player.nesthub4245
         media_content_id: !secret Gong
         media_content_type: audio/mp3
 
@@ -62,7 +62,7 @@
 
     - service: tts.cloud_say
       data_template:
-        entity_id: media_player.kitchen_display, media_player.nesthub5153
+        entity_id: media_player.kitchen_display, media_player.nesthub4245
         message: >
           {{ ("So close, no matter how far",
               "Couldn't be much more from the heart",
@@ -98,7 +98,7 @@
 
     - service: tts.cloud_say
       data_template:
-        entity_id: media_player.kitchen_display, media_player.nesthub5153
+        entity_id: media_player.kitchen_display, media_player.nesthub4245
         message: >
           {{ ("This ain't a song for the broken-hearted",
               "No silent prayer for faith-departed",
@@ -127,7 +127,7 @@
 
     - service: media_player.play_media
       data:
-        entity_id: media_player.kitchen_display, media_player.nesthub5153
+        entity_id: media_player.kitchen_display, media_player.nesthub4245
         media_content_id: !secret Gong
         media_content_type: audio/mp3
 
@@ -138,7 +138,7 @@
 
     - service: media_player.volume_set
       data_template:
-        entity_id: media_player.nesthub5153
+        entity_id: media_player.nesthub4245
         volume_level: .5
 
 #####################################################
@@ -163,7 +163,7 @@
       entity_id: input_boolean.mist_button
     - service: tts.cloud_say
       data:
-        entity_id: media_player.kitchen_display, media_player.living_room_speaker, media_player.nesthub5153
+        entity_id: media_player.kitchen_display, media_player.living_room_speaker, media_player.nesthub4245
         message: "Mister J, no juice does he have.  Sad he is."
         options:
           gender: male
@@ -171,6 +171,6 @@
     - delay: 00:00:07
     - service: media_player.play_media
       data:
-        entity_id: media_player.kitchen_display, media_player.nesthub5153
+        entity_id: media_player.kitchen_display, media_player.nesthub4245
         media_content_id: !secret Mister
         media_content_type: audio/mp3

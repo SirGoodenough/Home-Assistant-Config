@@ -10,7 +10,7 @@ grandma_stack:
     - media_player.office_speaker1
     - media_player.office_speaker
     - media_player.workroom_speaker
-    - media_player.nesthub5153
+    - media_player.nesthub4245
     - media_player.bathroom_speaker
 
 intercom_stack:
@@ -24,7 +24,7 @@ intercom_stack:
     - media_player.office_speaker1
     - media_player.office_speaker
     - media_player.workroom_speaker
-    - media_player.nesthub5153
+    - media_player.nesthub4245
     - media_player.bathroom_speaker
 
 studio_stack:

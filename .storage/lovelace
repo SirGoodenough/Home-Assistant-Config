@@ -436,7 +436,7 @@
                         },
                         {
                             "type": "media-control",
-                            "entity": "media_player.nesthub5153",
+                            "entity": "media_player.nesthub4245",
                             "theme": "material_dark_pink"
                         },
                         {
@@ -633,7 +633,7 @@
                         },
                         {
                             "type": "media-control",
-                            "entity": "media_player.nesthub5153",
+                            "entity": "media_player.nesthub4245",
                             "theme": "material_dark_pink"
                         },
                         {
@@ -2379,7 +2379,7 @@
                         },
                         {
                             "type": "media-control",
-                            "entity": "media_player.nesthub5153"
+                            "entity": "media_player.nesthub4245"
                         }
                     ],
                     "icon": "mdi:speaker",
