@@ -1,0 +1,17 @@
+---
+####################################################
+# Tasmota Firsts Update                            #
+#  These are the first devices to update when      #
+#   a new version of Tasmota is available.  These  #
+#   are the canarys in the coal mine sample.       #
+####################################################
+  tasmota_firsts_update:
+    alias: Tasmota Update
+    sequence:
+    - service: mqtt.publish
+      data:
+        "topic": "firsts/cmnd/upgrade"
+        "payload": 1
+          # List of firsts GroupTopic:
+          #  BenchStrip, Bulb1, Garageback_Light, Humidifer, 
+          #  Jens_Neb, Office_Fan, Sonoff Bridge 1
