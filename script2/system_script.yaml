@@ -6,7 +6,7 @@
 #   are the canarys in the coal mine sample.       #
 ####################################################
   tasmota_firsts_update:
-    alias: Tasmota Update
+    alias: Tasmota Firsts Update
     sequence:
     - service: mqtt.publish
       data:
@@ -15,3 +15,14 @@
           # List of firsts GroupTopic:
           #  BenchStrip, Bulb1, Garageback_Light, Humidifer, 
           #  Jens_Neb, Office_Fan, Sonoff Bridge 1
+
+####################################################
+# Tasmota Update All                               #
+####################################################
+  tasmota_all_update:
+    alias: Tasmota All Update
+    sequence:
+    - service: mqtt.publish
+      data:
+        "topic": "tasmotas/cmnd/upgrade"
+        "payload": 1
