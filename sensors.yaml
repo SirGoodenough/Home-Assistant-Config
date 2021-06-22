@@ -1,456 +1,456 @@
 ---
-####################################################
-#  Temperature                                     #
-####################################################
-- platform: mqtt
-  unique_id: 63392afc-4441-44bf-903a-481f80b56cb8
-  name: Kitchen Temperature
-  device_class: temperature
-  unit_of_measurement: "°F"
-  state_topic: "HUDU/temperature1"
+  ####################################################
+  #  Temperature                                     #
+  ####################################################
+  - platform: mqtt
+    unique_id: 63392afc-4441-44bf-903a-481f80b56cb8
+    name: Kitchen Temperature
+    device_class: temperature
+    unit_of_measurement: "°F"
+    state_topic: "HUDU/temperature1"
 
-- platform: filter
-  name: "Kitchen Temp"
-  entity_id: sensor.kitchen_temperature
-  filters:
-    - filter: outlier
-      window_size: 4 # Number of states in filter
-      radius: 5.0 # Difference from mean
+  - platform: filter
+    name: "Kitchen Temp"
+    entity_id: sensor.kitchen_temperature
+    filters:
+      - filter: outlier
+        window_size: 4 # Number of states in filter
+        radius: 5.0 # Difference from mean
 
-- platform: mqtt
-  unique_id: 8b19d341-7211-4598-abca-babf0d29af13
-  name: Kitchen Humidity
-  device_class: humidity
-  unit_of_measurement: "%"
-  state_topic: "HUDU/humidity1"
+  - platform: mqtt
+    unique_id: 8b19d341-7211-4598-abca-babf0d29af13
+    name: Kitchen Humidity
+    device_class: humidity
+    unit_of_measurement: "%"
+    state_topic: "HUDU/humidity1"
 
-- platform: filter
-  name: "Kitchen Humid"
-  entity_id: sensor.kitchen_humidity
-  filters:
-    - filter: outlier
-      window_size: 4 # Number of states in filter
-      radius: 2.0 # Difference from mean
+  - platform: filter
+    name: "Kitchen Humid"
+    entity_id: sensor.kitchen_humidity
+    filters:
+      - filter: outlier
+        window_size: 4 # Number of states in filter
+        radius: 2.0 # Difference from mean
 
-- platform: mqtt
-  unique_id: e8f70f47-5224-42ae-a67b-dd5bf553297c
-  name: Furnace Oil Top Temperature
-  device_class: temperature
-  unit_of_measurement: "°F"
-  state_topic: "furnacepi/temperature1"
-  availability_topic: "furnacepi/lwt"
-  payload_available: "Online"
-  payload_not_available: "Offline"
+  - platform: mqtt
+    unique_id: e8f70f47-5224-42ae-a67b-dd5bf553297c
+    name: Furnace Oil Top Temperature
+    device_class: temperature
+    unit_of_measurement: "°F"
+    state_topic: "furnacepi/temperature1"
+    availability_topic: "furnacepi/lwt"
+    payload_available: "Online"
+    payload_not_available: "Offline"
 
-- platform: filter
-  name: "Furnace Oil Top Temp"
-  entity_id: sensor.furnace_oil_top_temperature
-  filters:
-    - filter: outlier
-      window_size: 4 # Number of states in filter
-      radius: 10.0 # Difference from mean
+  - platform: filter
+    name: "Furnace Oil Top Temp"
+    entity_id: sensor.furnace_oil_top_temperature
+    filters:
+      - filter: outlier
+        window_size: 4 # Number of states in filter
+        radius: 10.0 # Difference from mean
 
-- platform: mqtt
-  unique_id: c27ba8f6-6c96-4cc9-8ba6-89a9cdc5a8d2
-  name: Furnace Oil Top Humidity
-  device_class: humidity
-  unit_of_measurement: "%"
-  state_topic: "furnacepi/humidity1"
-  availability_topic: "furnacepi/lwt"
-  payload_available: "Online"
-  payload_not_available: "Offline"
+  - platform: mqtt
+    unique_id: c27ba8f6-6c96-4cc9-8ba6-89a9cdc5a8d2
+    name: Furnace Oil Top Humidity
+    device_class: humidity
+    unit_of_measurement: "%"
+    state_topic: "furnacepi/humidity1"
+    availability_topic: "furnacepi/lwt"
+    payload_available: "Online"
+    payload_not_available: "Offline"
 
-- platform: filter
-  name: "Furnace Oil Top Humid"
-  entity_id: sensor.furnace_oil_top_humidity
-  filters:
-    - filter: outlier
-      window_size: 4 # Number of states in filter
-      radius: 5.0 # Difference from mean
+  - platform: filter
+    name: "Furnace Oil Top Humid"
+    entity_id: sensor.furnace_oil_top_humidity
+    filters:
+      - filter: outlier
+        window_size: 4 # Number of states in filter
+        radius: 5.0 # Difference from mean
 
-- platform: mqtt
-  unique_id: 5c74e6b2-c88c-43c7-a555-ce5eb057a85c
-  name: Furnace Return Temperature
-  device_class: temperature
-  unit_of_measurement: "°F"
-  state_topic: "furnacepi/temperature2"
-  availability_topic: "furnacepi/lwt"
-  payload_available: "Online"
-  payload_not_available: "Offline"
+  - platform: mqtt
+    unique_id: 5c74e6b2-c88c-43c7-a555-ce5eb057a85c
+    name: Furnace Return Temperature
+    device_class: temperature
+    unit_of_measurement: "°F"
+    state_topic: "furnacepi/temperature2"
+    availability_topic: "furnacepi/lwt"
+    payload_available: "Online"
+    payload_not_available: "Offline"
 
-- platform: filter
-  name: "Furnace Return Temp"
-  entity_id: sensor.furnace_return_temperature
-  filters:
-    - filter: outlier
-      window_size: 4 # Number of states in filter
-      radius: 10.0 # Difference from mean
+  - platform: filter
+    name: "Furnace Return Temp"
+    entity_id: sensor.furnace_return_temperature
+    filters:
+      - filter: outlier
+        window_size: 4 # Number of states in filter
+        radius: 10.0 # Difference from mean
 
-- platform: mqtt
-  unique_id: 86cc8420-d9b6-45a7-bc03-c97ad10b62d2
-  name: Furnace Return Humidity
-  device_class: humidity
-  unit_of_measurement: "%"
-  state_topic: "furnacepi/humidity2"
-  availability_topic: "furnacepi/lwt"
-  payload_available: "Online"
-  payload_not_available: "Offline"
+  - platform: mqtt
+    unique_id: 86cc8420-d9b6-45a7-bc03-c97ad10b62d2
+    name: Furnace Return Humidity
+    device_class: humidity
+    unit_of_measurement: "%"
+    state_topic: "furnacepi/humidity2"
+    availability_topic: "furnacepi/lwt"
+    payload_available: "Online"
+    payload_not_available: "Offline"
 
-- platform: filter
-  name: "Furnace Return Humid"
-  entity_id: sensor.furnace_return_humidity
-  filters:
-    - filter: outlier
-      window_size: 4 # Number of states in filter
-      radius: 5.0 # Difference from mean
+  - platform: filter
+    name: "Furnace Return Humid"
+    entity_id: sensor.furnace_return_humidity
+    filters:
+      - filter: outlier
+        window_size: 4 # Number of states in filter
+        radius: 5.0 # Difference from mean
 
-- platform: mqtt
-  unique_id: 64638bee-1daa-4d2d-9d15-630fdc3c7b69
-  name: Furnace Register Temperature
-  device_class: temperature
-  unit_of_measurement: "°F"
-  state_topic: "furnacepi/temperature3"
-  availability_topic: "furnacepi/lwt"
-  payload_available: "Online"
-  payload_not_available: "Offline"
+  - platform: mqtt
+    unique_id: 64638bee-1daa-4d2d-9d15-630fdc3c7b69
+    name: Furnace Register Temperature
+    device_class: temperature
+    unit_of_measurement: "°F"
+    state_topic: "furnacepi/temperature3"
+    availability_topic: "furnacepi/lwt"
+    payload_available: "Online"
+    payload_not_available: "Offline"
 
-- platform: filter
-  name: "Furnace Register Temp"
-  entity_id: sensor.furnace_register_temperature
-  filters:
-    - filter: outlier
-      window_size: 4 # Number of states in filter
-      radius: 10.0 # Difference from mean
+  - platform: filter
+    name: "Furnace Register Temp"
+    entity_id: sensor.furnace_register_temperature
+    filters:
+      - filter: outlier
+        window_size: 4 # Number of states in filter
+        radius: 10.0 # Difference from mean
 
-- platform: mqtt
-  unique_id: 674c8985-8822-41e9-8100-f953c0dbdbe4
-  name: Furnace Pellet Top Temperature
-  device_class: temperature
-  unit_of_measurement: "°F"
-  state_topic: "furnacepi/temperature4"
-  availability_topic: "furnacepi/lwt"
-  payload_available: "Online"
-  payload_not_available: "Offline"
+  - platform: mqtt
+    unique_id: 674c8985-8822-41e9-8100-f953c0dbdbe4
+    name: Furnace Pellet Top Temperature
+    device_class: temperature
+    unit_of_measurement: "°F"
+    state_topic: "furnacepi/temperature4"
+    availability_topic: "furnacepi/lwt"
+    payload_available: "Online"
+    payload_not_available: "Offline"
 
-- platform: filter
-  name: "Furnace Pellet Top Temp"
-  entity_id: sensor.furnace_pellet_top_temperature
-  filters:
-    - filter: outlier
-      window_size: 4 # Number of states in filter
-      radius: 10.0 # Difference from mean
+  - platform: filter
+    name: "Furnace Pellet Top Temp"
+    entity_id: sensor.furnace_pellet_top_temperature
+    filters:
+      - filter: outlier
+        window_size: 4 # Number of states in filter
+        radius: 10.0 # Difference from mean
 
-- platform: mqtt
-  unique_id: 30a8f87f-20a7-49c5-abcb-0ab5ec18c4d2
-  name: Furnace Oil Firebox Temperature
-  device_class: temperature
-  unit_of_measurement: "°F"
-  state_topic: "furnacepi/temperature5"
-  availability_topic: "furnacepi/lwt"
-  payload_available: "Online"
-  payload_not_available: "Offline"
+  - platform: mqtt
+    unique_id: 30a8f87f-20a7-49c5-abcb-0ab5ec18c4d2
+    name: Furnace Oil Firebox Temperature
+    device_class: temperature
+    unit_of_measurement: "°F"
+    state_topic: "furnacepi/temperature5"
+    availability_topic: "furnacepi/lwt"
+    payload_available: "Online"
+    payload_not_available: "Offline"
 
-- platform: filter
-  name: "Furnace Oil Firebox Temp"
-  entity_id: sensor.furnace_oil_firebox_temperature
-  filters:
-    - filter: outlier
-      window_size: 4 # Number of states in filter
-      radius: 20.0 # Difference from mean
+  - platform: filter
+    name: "Furnace Oil Firebox Temp"
+    entity_id: sensor.furnace_oil_firebox_temperature
+    filters:
+      - filter: outlier
+        window_size: 4 # Number of states in filter
+        radius: 20.0 # Difference from mean
 
-- platform: mqtt
-  unique_id: 774597a7-5f4d-4094-b22b-e049076d3e47
-  name: Furnace Pellet Firebox Temperature
-  device_class: temperature
-  unit_of_measurement: "°F"
-  state_topic: "furnacepi/temperature6"
-  availability_topic: "furnacepi/lwt"
-  payload_available: "Online"
-  payload_not_available: "Offline"
+  - platform: mqtt
+    unique_id: 774597a7-5f4d-4094-b22b-e049076d3e47
+    name: Furnace Pellet Firebox Temperature
+    device_class: temperature
+    unit_of_measurement: "°F"
+    state_topic: "furnacepi/temperature6"
+    availability_topic: "furnacepi/lwt"
+    payload_available: "Online"
+    payload_not_available: "Offline"
 
-- platform: filter
-  name: "Furnace Pellet Firebox Temp"
-  entity_id: sensor.furnace_pellet_firebox_temperature
-  filters:
-    - filter: outlier
-      window_size: 4 # Number of states in filter
-      radius: 90.0 # Difference from mean
+  - platform: filter
+    name: "Furnace Pellet Firebox Temp"
+    entity_id: sensor.furnace_pellet_firebox_temperature
+    filters:
+      - filter: outlier
+        window_size: 4 # Number of states in filter
+        radius: 90.0 # Difference from mean
 
-####################################################
-#  Min/Max Sensors                                 #
-####################################################
-- platform: min_max
-  name: "House Humidity Main"
-  type: mean
-  round_digits: 0
-  entity_ids:
-    - sensor.furnace_oil_top_humidity
-    - sensor.living_room_humidity
-    - sensor.kitchen_humidity
+  ####################################################
+  #  Min/Max Sensors                                 #
+  ####################################################
+  - platform: min_max
+    name: "House Humidity Main"
+    type: mean
+    round_digits: 0
+    entity_ids:
+      - sensor.furnace_oil_top_humidity
+      - sensor.living_room_humidity
+      - sensor.kitchen_humidity
 
-####################################################
-#  Locks                                           #
-####################################################
-- platform: template
-  sensors:
-    lock_back_door_mode:
-      friendly_name: "Lock Back Door Mode"
-      icon_template: >-
-        {%- if is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "19") -%}
-          mdi:lock-open-outline
-        {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "21") -%}
-          mdi:lock-outline
-        {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "22") -%}
-          mdi:lock-open-outline
-        {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "23") -%}
-          mdi:emoticon-dead
-        {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "24") -%}
-          mdi:lock
-        {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "25") -%}
-          mdi:lock-open
-        {%- else -%}
-          mdi:cancel
-        {%- endif -%}
-      value_template: >-
-        {%- if is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "19") -%}
-          {%- if is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 1) -%}
-            "Unlocked by House"
-          {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 2) -%}
-            "Unlocked by Dad"
-          {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 3) -%}
-            "Unlocked by Mom"
-          {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 4) -%}
-            "Unlocked by Carol"
-          {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 5) -%}
-            "Unlocked by Bill"       
+  ####################################################
+  #  Locks                                           #
+  ####################################################
+  - platform: template
+    sensors:
+      lock_back_door_mode:
+        friendly_name: "Lock Back Door Mode"
+        icon_template: >-
+          {%- if is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "19") -%}
+            mdi:lock-open-outline
+          {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "21") -%}
+            mdi:lock-outline
+          {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "22") -%}
+            mdi:lock-open-outline
+          {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "23") -%}
+            mdi:emoticon-dead
+          {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "24") -%}
+            mdi:lock
+          {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "25") -%}
+            mdi:lock-open
           {%- else -%}
-            "Unknown Code Unlock"
+            mdi:cancel
           {%- endif -%}
-        {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "23") -%}
-          "Deadbolt Jammed"
+        value_template: >-
+          {%- if is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "19") -%}
+            {%- if is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 1) -%}
+              "Unlocked by House"
+            {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 2) -%}
+              "Unlocked by Dad"
+            {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 3) -%}
+              "Unlocked by Mom"
+            {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 4) -%}
+              "Unlocked by Carol"
+            {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 5) -%}
+              "Unlocked by Bill"       
+            {%- else -%}
+              "Unknown Code Unlock"
+            {%- endif -%}
+          {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "23") -%}
+            "Deadbolt Jammed"
+          {%- else -%}
+            {{ states.sensor.kwikset_touchpad_electronic_deadbolt_alarm_type.state }} 
+          {%- endif -%}
+
+  ####################################################
+  #  Fans                                            #
+  ####################################################
+  - platform: mqtt
+    unique_id: 47058f65-ca94-4c2c-aaf4-4589ec759eab
+    name: "Office FanSpeed"
+    state_topic: "Office_Fan/stat/RESULT"
+    unit_of_measurement: "%"
+    value_template: >-
+      {% if value_json.FanSpeed is defined %}
+        {% if value_json.FanSpeed == 1 -%}
+          33
+        {%- elif value_json.FanSpeed == 2 -%}
+          66
+        {%- elif value_json.FanSpeed == 3 -%}
+          100
         {%- else -%}
-          {{ states.sensor.kwikset_touchpad_electronic_deadbolt_alarm_type.state }} 
-        {%- endif -%}
+          0
+        {%- endif %}
+      {% else %}
+        {{ states('sensor.office_fanspeed') }}
+      {% endif %}
 
-####################################################
-#  Fans                                            #
-####################################################
-- platform: mqtt
-  unique_id: 47058f65-ca94-4c2c-aaf4-4589ec759eab
-  name: "Office FanSpeed"
-  state_topic: "Office_Fan/stat/RESULT"
-  unit_of_measurement: "%"
-  value_template: >-
-    {% if value_json.FanSpeed is defined %}
-      {% if value_json.FanSpeed == 1 -%}
-        33
-      {%- elif value_json.FanSpeed == 2 -%}
-        66
-      {%- elif value_json.FanSpeed == 3 -%}
-        100
-      {%- else -%}
-        0
-      {%- endif %}
-    {% else %}
-      {{ states('sensor.office_fanspeed') }}
-    {% endif %}
+  - platform: mqtt
+    unique_id: faa2f0c9-58d5-4054-bbf2-8d2a0d1684d7
+    name: "Jennys New FanSpeed"
+    state_topic: "JensNewFan/stat/RESULT"
+    unit_of_measurement: "%"
+    value_template: >-
+      {% if value_json.FanSpeed is defined %}
+        {% if value_json.FanSpeed == 1 -%}
+          33
+        {%- elif value_json.FanSpeed == 2 -%}
+          66
+        {%- elif value_json.FanSpeed == 3 -%}
+          100
+        {%- else -%}
+          0
+        {%- endif %}
+      {% else %}
+        {{ states('sensor.jennys_new_fanspeed') }}
+      {% endif %}
 
-- platform: mqtt
-  unique_id: faa2f0c9-58d5-4054-bbf2-8d2a0d1684d7
-  name: "Jennys New FanSpeed"
-  state_topic: "JensNewFan/stat/RESULT"
-  unit_of_measurement: "%"
-  value_template: >-
-    {% if value_json.FanSpeed is defined %}
-      {% if value_json.FanSpeed == 1 -%}
-        33
-      {%- elif value_json.FanSpeed == 2 -%}
-        66
-      {%- elif value_json.FanSpeed == 3 -%}
-        100
-      {%- else -%}
-        0
-      {%- endif %}
-    {% else %}
-      {{ states('sensor.jennys_new_fanspeed') }}
-    {% endif %}
+  - platform: mqtt
+    unique_id: 9ca6ee3b-88ba-4d3e-bce4-94e937b3c7a1
+    name: "Bedroom FanSpeed"
+    state_topic: "Bedroom_Fan/stat/RESULT"
+    unit_of_measurement: "%"
+    value_template: >-
+      {% if value_json.FanSpeed is defined %}
+        {% if value_json.FanSpeed == 1 -%}
+          33
+        {%- elif value_json.FanSpeed == 2 -%}
+          66
+        {%- elif value_json.FanSpeed == 3 -%}
+          100
+        {%- else -%}
+          0
+        {%- endif %}
+      {% else %}
+        {{ states('sensor.bedroom_fanspeed') }}
+      {% endif %}
 
-- platform: mqtt
-  unique_id: 9ca6ee3b-88ba-4d3e-bce4-94e937b3c7a1
-  name: "Bedroom FanSpeed"
-  state_topic: "Bedroom_Fan/stat/RESULT"
-  unit_of_measurement: "%"
-  value_template: >-
-    {% if value_json.FanSpeed is defined %}
-      {% if value_json.FanSpeed == 1 -%}
-        33
-      {%- elif value_json.FanSpeed == 2 -%}
-        66
-      {%- elif value_json.FanSpeed == 3 -%}
-        100
-      {%- else -%}
-        0
-      {%- endif %}
-    {% else %}
-      {{ states('sensor.bedroom_fanspeed') }}
-    {% endif %}
+  # Minimal configuration of the standard time and date sensor
+  - platform: time_date
+    display_options:
+      - "date_time_iso"
+      - date
+      - time
 
-# Minimal configuration of the standard time and date sensor
-- platform: time_date
-  display_options:
-    - "date_time_iso"
-    - date
-    - time
+  # Build on the standard sensor to produce one that can be customized
+  - platform: template
+    sensors:
+      time_formatted:
+        friendly_name: "Date and time"
+        value_template: "{{ as_timestamp(states('sensor.date_time_iso')) | timestamp_custom('%A %B %-m, %I:%M %p') }}"
+        icon_template: mdi:calendar-clock
 
-# Build on the standard sensor to produce one that can be customized
-- platform: template
-  sensors:
-    time_formatted:
-      friendly_name: "Date and time"
-      value_template: "{{ as_timestamp(states('sensor.date_time_iso')) | timestamp_custom('%A %B %-m, %I:%M %p') }}"
-      icon_template: mdi:calendar-clock
+  ####################################################
+  #  Lights                                          #
+  ####################################################
+  - platform: template
+    sensors:
+      allow_xmas_lights:
+        value_template: >
+          {% set today = states('sensor.date').split('-') %}
+          {% set month = today[1]|int %}
+          {% set day = today[2]|int %}
+          {{ month > 10 or
+              month == 1 and day <= 5 }}
 
-####################################################
-#  Lights                                          #
-####################################################
-- platform: template
-  sensors:
-    allow_xmas_lights:
-      value_template: >
-        {% set today = states('sensor.date').split('-') %}
-        {% set month = today[1]|int %}
-        {% set day = today[2]|int %}
-        {{ month > 10 or
-            month == 1 and day <= 5 }}
+  ####################################################
+  #  Weather                                         #
+  ####################################################
+  - platform: darksky
+    api_key: 8b50a9ef74a06ef730f7a14b116adb0f
+    scan_interval:
+      minutes: 5
+    monitored_conditions:
+      - temperature
+      - cloud_cover
+      - apparent_temperature
+      - wind_speed
 
-####################################################
-#  Weather                                         #
-####################################################
-- platform: darksky
-  api_key: 8b50a9ef74a06ef730f7a14b116adb0f
-  scan_interval:
-    minutes: 5
-  monitored_conditions:
-    - temperature
-    - cloud_cover
-    - apparent_temperature
-    - wind_speed
+  - platform: template
+    sensors:
+      sun_state:
+        friendly_name: "Sun State"
+        value_template: >-
+          {% if is_state('sun.sun', 'above_horizon') %}up{% else %}down{% endif %}
 
-- platform: template
-  sensors:
-    sun_state:
-      friendly_name: "Sun State"
-      value_template: >-
-        {% if is_state('sun.sun', 'above_horizon') %}up{% else %}down{% endif %}
-
-####################################################
-#  Battery                                         #
-####################################################
-- platform: template
-  sensors:
-    lock_backdoor_bat_level:
-      friendly_name: "Lock BackDoor Battery Level"
-      device_class: battery
-      value_template: >-
-        {% if states.zwave.kwikset_touchpad_electronic_deadbolt.attributes.battery_level is defined %}
-          {{ states.zwave.kwikset_touchpad_electronic_deadbolt.attributes.battery_level }}
-        {% else %}
-          "-1"
-        {% endif %}
-      unit_of_measurement: "%"
-
-####################################################
-#  3D Printer                                      #
-####################################################
-- platform: template
-  sensors:
-    octoprint_time_elapsed_format:
-      friendly_name: "Printing Time Elapsed"
-      value_template: "{{ states('sensor.tarantula_time_elapsed') | int | timestamp_custom('%H:%M:%S', 0) }}"
-    octoprint_time_remaining_format:
-      friendly_name: "Printing Time Remaining"
-      value_template: "{{ states('sensor.tarantula_time_remaining') | int | timestamp_custom('%H:%M:%S', 0) }}"
-
-####################################################
-#  pfSense                                         #
-####################################################
-- platform: template
-  sensors:
-    bytes_received:
-      friendly_name: "MB Received"
-      unit_of_measurement: "MB/s"
-      value_template: "{{ (states('sensor.freebsd_router_kib_s_received') | int / 1024) | round(1) }}"
-    bytes_sent:
-      friendly_name: "MB Sent"
-      unit_of_measurement: "MB/s"
-      value_template: "{{ (states('sensor.freebsd_router_kib_s_sent') | int / 1024) | round(1) }}"
-
-####################################################
-#  GitHub                                          #
-####################################################
-- platform: github
-  access_token: !secret GIT_API
-  repositories:
-    - path: "SirGoodenough/Home-Assistant-Config"
-      name: "HA Config Repo"
-    - path: "SirGoodenough/HIVE-RefData"
-      name: "HIVE Local Repo"
-    - path: "SirGoodenough/ThermoPI"
-      name: "ThermoPI Repo"
-    - path: "SirGoodenough/ThermoPI-Furnace"
-      name: "ThermoPI-Furnace Repo"
-
-####################################################
-#  HA Sensors courtesy Thanasis:                   #
-####################################################
-- platform: template
-  sensors:
-    automation_count:
-      friendly_name: "Aut"
-      value_template: "{{ states.automation | count }}"
-    binary_sensor_count:
-      friendly_name: "BiSn"
-      value_template: "{{ states.binary_sensor | count }}"
-    camera_count:
-      friendly_name: "Cam"
-      value_template: "{{ states.camera | count }}"
-    entities_count:
-      friendly_name: "Ent"
-      value_template: "{{ states | map(attribute='entity_id') | list | count}}"
-    group_count:
-      friendly_name: "Grp"
-      value_template: "{{ states.group | count }}"
-    inputs_count:
-      friendly_name: "Inpt"
-      value_template: "{{ states | map(attribute='entity_id') | map('regex_search','^input') | select('true') | list | count}}"
-    lights_count:
-      friendly_name: "Lte"
-      value_template: "{{ states.light | count }}"
-    media_player_count:
-      friendly_name: "MPly"
-      value_template: "{{ states.media_player | count }}"
-    script_count:
-      friendly_name: "Scpt"
-      value_template: "{{ states.script | count }}"
-    sensor_count:
-      friendly_name: "Sen"
-      value_template: "{{ states.sensor | count }}"
-    switch_count:
-      friendly_name: "Swt"
-      value_template: "{{ states.switch | count }}"
-
-####################################################
-#  Snapshot                                        #
-####################################################
-- platform: template
-  sensors:
-    latest_backup:
-      value_template: >-
-        {% set found=namespace(snap=None,time=0) %}
-        {% for snap in state_attr('sensor.snapshot_backup', 'snapshots') %}
-          {% if as_timestamp(snap.date) > found.time and snap.state == "Backed Up" %}
-            {% set found.time = as_timestamp(snap.date) %}
-            {% set found.snap = snap %}
+  ####################################################
+  #  Battery                                         #
+  ####################################################
+  - platform: template
+    sensors:
+      lock_backdoor_bat_level:
+        friendly_name: "Lock BackDoor Battery Level"
+        device_class: battery
+        value_template: >-
+          {% if states.zwave.kwikset_touchpad_electronic_deadbolt.attributes.battery_level is defined %}
+            {{ states.zwave.kwikset_touchpad_electronic_deadbolt.attributes.battery_level }}
+          {% else %}
+            "-1"
           {% endif %}
-        {% endfor %}
-        {{ found.snap.name }} ({{ found.snap.size}})
+        unit_of_measurement: "%"
+
+  ####################################################
+  #  3D Printer                                      #
+  ####################################################
+  - platform: template
+    sensors:
+      octoprint_time_elapsed_format:
+        friendly_name: "Printing Time Elapsed"
+        value_template: "{{ states('sensor.tarantula_time_elapsed') | int | timestamp_custom('%H:%M:%S', 0) }}"
+      octoprint_time_remaining_format:
+        friendly_name: "Printing Time Remaining"
+        value_template: "{{ states('sensor.tarantula_time_remaining') | int | timestamp_custom('%H:%M:%S', 0) }}"
+
+  ####################################################
+  #  pfSense                                         #
+  ####################################################
+  - platform: template
+    sensors:
+      bytes_received:
+        friendly_name: "MB Received"
+        unit_of_measurement: "MB/s"
+        value_template: "{{ (states('sensor.freebsd_router_kib_s_received') | int / 1024) | round(1) }}"
+      bytes_sent:
+        friendly_name: "MB Sent"
+        unit_of_measurement: "MB/s"
+        value_template: "{{ (states('sensor.freebsd_router_kib_s_sent') | int / 1024) | round(1) }}"
+
+  ####################################################
+  #  GitHub                                          #
+  ####################################################
+  - platform: github
+    access_token: !secret GIT_API
+    repositories:
+      - path: "SirGoodenough/Home-Assistant-Config"
+        name: "HA Config Repo"
+      - path: "SirGoodenough/HIVE-RefData"
+        name: "HIVE Local Repo"
+      - path: "SirGoodenough/ThermoPI"
+        name: "ThermoPI Repo"
+      - path: "SirGoodenough/ThermoPI-Furnace"
+        name: "ThermoPI-Furnace Repo"
+
+  ####################################################
+  #  HA Sensors courtesy Thanasis:                   #
+  ####################################################
+  - platform: template
+    sensors:
+      automation_count:
+        friendly_name: "Aut"
+        value_template: "{{ states.automation | count }}"
+      binary_sensor_count:
+        friendly_name: "BiSn"
+        value_template: "{{ states.binary_sensor | count }}"
+      camera_count:
+        friendly_name: "Cam"
+        value_template: "{{ states.camera | count }}"
+      entities_count:
+        friendly_name: "Ent"
+        value_template: "{{ states | map(attribute='entity_id') | list | count}}"
+      group_count:
+        friendly_name: "Grp"
+        value_template: "{{ states.group | count }}"
+      inputs_count:
+        friendly_name: "Inpt"
+        value_template: "{{ states | map(attribute='entity_id') | map('regex_search','^input') | select('true') | list | count}}"
+      lights_count:
+        friendly_name: "Lte"
+        value_template: "{{ states.light | count }}"
+      media_player_count:
+        friendly_name: "MPly"
+        value_template: "{{ states.media_player | count }}"
+      script_count:
+        friendly_name: "Scpt"
+        value_template: "{{ states.script | count }}"
+      sensor_count:
+        friendly_name: "Sen"
+        value_template: "{{ states.sensor | count }}"
+      switch_count:
+        friendly_name: "Swt"
+        value_template: "{{ states.switch | count }}"
+
+  ####################################################
+  #  Snapshot                                        #
+  ####################################################
+  - platform: template
+    sensors:
+      latest_backup:
+        value_template: >-
+          {% set found=namespace(snap=None,time=0) %}
+          {% for snap in state_attr('sensor.snapshot_backup', 'snapshots') %}
+            {% if as_timestamp(snap.date) > found.time and snap.state == "Backed Up" %}
+              {% set found.time = as_timestamp(snap.date) %}
+              {% set found.snap = snap %}
+            {% endif %}
+          {% endfor %}
+          {{ found.snap.name }} ({{ found.snap.size}})
