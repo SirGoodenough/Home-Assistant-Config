@@ -152,7 +152,8 @@
                         },
                         {
                             "type": "thermostat",
-                            "entity": "climate.gemodule5384"
+                            "entity": "climate.gemodule5384",
+                            "theme": "Dark - Light Red"
                         },
                         {
                             "entities": [
@@ -210,13 +211,16 @@
                                     "entity": "input_boolean.bedroom_auto_fan"
                                 },
                                 {
-                                    "entity": "media_player.bedroom_speaker"
+                                    "entity": "input_boolean.bedroom_cool"
                                 },
                                 {
                                     "entity": "sensor.bedroom_fan_si7021_temperature"
                                 },
                                 {
                                     "entity": "sensor.bedroom_fan_si7021_humidity"
+                                },
+                                {
+                                    "entity": "media_player.bedroom_speaker"
                                 }
                             ],
                             "show_header_toggle": false,

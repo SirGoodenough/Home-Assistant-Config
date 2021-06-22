@@ -22,7 +22,7 @@ bedroom_temp_control:
           {% endif %}
 
 #####################################################
-# Bedroom AC Start                                  #
+# Bedroom AC Start                                  # 
 #####################################################
 bedroom_ac_start:
   alias: Bedroom AC Start
@@ -34,3 +34,19 @@ bedroom_ac_start:
       data:
         entity_id: climate.gemodule5384
         temperature: "{{ states.input_number.bedroom_auto_temp.state | float }}"
+
+#####################################################
+# Bedroom Cooling Off                               # 
+#####################################################
+bedroom_cooling_off:
+  alias: Bedroom Cooling OFF
+  sequence:
+    # Stop fan
+    - service: mqtt.publish
+      data:
+        topic: "Bedroom_Fan/cmnd/FanSpeed"
+        payload: 0
+    # Stop AC
+    - service: climate.turn_off
+      target:
+        entity_id: climate.gemodule5384

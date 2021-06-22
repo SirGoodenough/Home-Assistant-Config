@@ -32,6 +32,11 @@
                 "name": "Mist Button",
                 "icon": "mdi:pot-steam-outline",
                 "id": "mist_button"
+            },
+            {
+                "name": "Bedroom Cool",
+                "icon": "mdi:snowflake",
+                "id": "bedroom_cool"
             }
         ]
     }
