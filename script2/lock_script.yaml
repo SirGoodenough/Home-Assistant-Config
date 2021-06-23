@@ -1,0 +1,16 @@
+---
+  clear_lock_pad:
+    alias: Reset the keypad entries
+    sequence:
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.pad_enable
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.pad1
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.pad2
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.pad3
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.pad4
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.pad5

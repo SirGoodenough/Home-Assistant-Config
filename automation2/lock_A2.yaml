@@ -1,0 +1,93 @@
+---
+  - id: 80a0cffb-c1a5-43ce-b768-a002cadc19e1
+    alias: Auto Pad 5 button sequence code
+    initial_state: "on"
+    trigger:
+    - platform: state
+      entity_id: binary_sensor.pad_1
+      from: "off"
+      to: "on"
+
+    variables:
+      # Set the timeout between button presses
+      timeout: "00:00:45"
+
+    action:
+    - alias: Ack for Button 1
+      service: input_boolean.turn_on
+      entity_id: input_boolean.pad1
+
+    - alias: Watch for Button 2
+      wait_for_trigger:
+        - platform: state
+          entity_id: binary_sensor.pad_2
+          from: "off"
+          to: "on"
+      timeout:
+        minutes: "{{ timeout }}"
+      continue_on_timeout: false
+    - alias: Ack for Button 2
+      service: input_boolean.turn_on
+      entity_id: input_boolean.pad2
+
+    - alias: Watch for Button 3
+      wait_for_trigger:
+        - platform: state
+          entity_id: binary_sensor.pad_3
+          from: "off"
+          to: "on"
+      timeout:
+        minutes: "{{ timeout }}"
+      continue_on_timeout: false
+    - alias: Ack for Button 3
+      service: input_boolean.turn_on
+      entity_id: input_boolean.pad3
+
+    - alias: Watch for Button 4
+      wait_for_trigger:
+        - platform: state
+          entity_id: binary_sensor.pad_4
+          from: "off"
+          to: "on"
+      timeout:
+        minutes: "{{ timeout }}"
+      continue_on_timeout: false
+    - alias: Ack for Button 4
+      service: input_boolean.turn_on
+      entity_id: input_boolean.pad4
+
+    - alias: Watch for Button 5
+      wait_for_trigger:
+        - platform: state
+          entity_id: binary_sensor.pad_5
+          from: "off"
+          to: "on"
+      timeout:
+        minutes: "{{ timeout }}"
+      continue_on_timeout: false
+    - alias: Ack for Button 5
+      service: input_boolean.turn_on
+      entity_id: input_boolean.pad5
+
+    - alias: Set the OK and wait
+      service: input_boolean.turn_on
+      entity_id: input_boolean.pad_enable
+    - delay:  "{{ timeout }}"
+    - alias: Shut them all down
+      service: script.clear_lock_pad
+
+
+  - id: 650573d6-09ba-4089-9022-6bfbc77e7563
+    alias: Auto Pad Clear Watchdog
+    # This will watch for the 1st digit of the keypad and after a delay
+    #   make certain the pad is cleared (in case of sequence abort).
+    initial_state: "on"
+    trigger:
+    - platform: state
+      entity_id: input_boolean.pad1
+      to: "on"
+    action:
+    - alias: Watchdog Delay
+      delay: "00:05:00"
+    - alias: Shut it all down
+      service: script.clear_lock_pad
