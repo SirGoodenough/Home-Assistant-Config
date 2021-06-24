@@ -1,0 +1,164 @@
+blueprint:
+  name: Door open tts.cloud_say announcer (Nabu-Casa required)
+#  source_url: https://community.home-assistant.io/t/door-open-tts-cloud-say-announcer-nabu-casa-required/316046
+  domain: automation
+  input:
+    button_one:
+      name: Button Press One
+      description: Binary Sensor for First Button Pressed
+      selector:
+        entity:
+          domain: binary_sensor
+    button_two:
+      name: Button Press Two
+      description: Binary Sensor for Second Button Pressed
+      selector:
+        entity:
+          domain: binary_sensor
+    button_three:
+      name: Button Press Three
+      description: Binary Sensor for Third Button Pressed
+      selector:
+        entity:
+          domain: binary_sensor
+    button_four:
+      name: Button Press Four
+      description: Binary Sensor for Forth Button Pressed
+      selector:
+        entity:
+          domain: binary_sensor
+    button_five:
+      name: Button Press Five
+      description: Binary Sensor for Fifth Button Pressed
+      selector:
+        entity:
+          domain: binary_sensor
+    code_one_buffer:
+      name: Code One Buffer
+      description: input_boolean - Buffer for First Button Pressed
+      selector:
+        entity:
+          domain: input_boolean
+    code_two_buffer:
+      name: Code Two Buffer
+      description: input_boolean - Buffer for Second Button Pressed
+      selector:
+        entity:
+          domain: input_boolean
+    code_three_buffer:
+      name: Code Three Buffer
+      description: input_boolean - Buffer for Third Button Pressed
+      selector:
+        entity:
+          domain: input_boolean
+    code_four_buffer:
+      name: Code Four Buffer
+      description: input_boolean - Buffer for Forth Button Pressed
+      selector:
+        entity:
+          domain: input_boolean
+    code_five_buffer:
+      name: Code Five Buffer
+      description: input_boolean - Buffer for Fifth Button Pressed
+      selector:
+        entity:
+          domain: input_boolean
+    lock_control:
+      name: Buffer for the Final Lock Enable
+      description: input_boolean - Final Lock Enable
+      selector:
+        entity:
+          domain: input_boolean
+    keyclick_timer:
+      name: Key Click Timer
+      description: Time allowed between keypresses
+      default: 45
+      selector:
+        number:
+          min: 0
+          max: 100
+          unit_of_measurement: "seconds"
+          mode: slider
+
+mode: single
+
+trigger:
+  - platform: state
+    entity_id: !input button_one
+    from: "off"
+    to: "on"
+
+variables:
+  abort:
+    - !input lock_control
+    - !input code_one_buffer
+    - !input code_two_buffer
+    - !input code_three_buffer
+    - !input code_four_buffer
+    - !input code_five_buffer
+
+action:
+  - alias: Ack for Button 1
+    service: input_boolean.turn_on
+    entity_id: !input code_one_buffer
+
+  - alias: Watch for Button 2
+    wait_for_trigger:
+      - platform: state
+        entity_id: !input button_two
+        from: "off"
+        to: "on"
+    timeout:
+      seconds: !input keyclick_timer
+    continue_on_timeout: false
+  - alias: Ack for Button 2
+    service: input_boolean.turn_on
+    entity_id: !input code_two_buffer
+
+  - alias: Watch for Button 3
+    wait_for_trigger:
+      - platform: state
+        entity_id: !input button_three
+        from: "off"
+        to: "on"
+    timeout:
+      seconds: !input keyclick_timer
+    continue_on_timeout: false
+  - alias: Ack for Button 3
+    service: input_boolean.turn_on
+    entity_id: !input code_three_buffer
+
+  - alias: Watch for Button 4
+    wait_for_trigger:
+      - platform: state
+        entity_id: !input button_four
+        from: "off"
+        to: "on"
+    timeout:
+      seconds: !input keyclick_timer
+    continue_on_timeout: false
+  - alias: Ack for Button 4
+    service: input_boolean.turn_on
+    entity_id: !input code_four_buffer
+
+  - alias: Watch for Button 5
+    wait_for_trigger:
+      - platform: state
+        entity_id: !input button_five
+        from: "off"
+        to: "on"
+    timeout:
+      seconds: !input keyclick_timer
+    continue_on_timeout: false
+  - alias: Ack for Button 5
+    service: input_boolean.turn_on
+    entity_id: !input code_five_buffer
+
+  - alias: Set the OK and wait
+    service: input_boolean.turn_on
+    entity_id: !input lock_control
+  - alias: This is the time the output is enabled
+    delay: !input keyclick_timer
+  - alias: Shut them all down
+    service: input_boolean.turn_off
+    entity_id: "{{ abort }}"
