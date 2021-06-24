@@ -9,8 +9,15 @@
       to: "on"
 
     variables:
-      # Set the timeout between button presses
-      timeout: "00:00:45"
+      # Set the timeout seconds between button presses
+      timeout: 45
+      closing:
+        - input_boolean.pad_enable
+        - input_boolean.pad1
+        - input_boolean.pad2
+        - input_boolean.pad3
+        - input_boolean.pad4
+        - input_boolean.pad5
 
     action:
     - alias: Ack for Button 1
@@ -24,7 +31,7 @@
           from: "off"
           to: "on"
       timeout:
-        minutes: "{{ timeout }}"
+        seconds: "{{ timeout }}"
       continue_on_timeout: false
     - alias: Ack for Button 2
       service: input_boolean.turn_on
@@ -37,7 +44,7 @@
           from: "off"
           to: "on"
       timeout:
-        minutes: "{{ timeout }}"
+        seconds: "{{ timeout }}"
       continue_on_timeout: false
     - alias: Ack for Button 3
       service: input_boolean.turn_on
@@ -50,7 +57,7 @@
           from: "off"
           to: "on"
       timeout:
-        minutes: "{{ timeout }}"
+        seconds: "{{ timeout }}"
       continue_on_timeout: false
     - alias: Ack for Button 4
       service: input_boolean.turn_on
@@ -63,7 +70,7 @@
           from: "off"
           to: "on"
       timeout:
-        minutes: "{{ timeout }}"
+        seconds: "{{ timeout }}"
       continue_on_timeout: false
     - alias: Ack for Button 5
       service: input_boolean.turn_on
@@ -74,8 +81,8 @@
       entity_id: input_boolean.pad_enable
     - delay:  "{{ timeout }}"
     - alias: Shut them all down
-      service: script.clear_lock_pad
-
+      service: input_boolean.turn_off
+      entity_id: "{{ closing }}"
 
   - id: 650573d6-09ba-4089-9022-6bfbc77e7563
     alias: Auto Pad Clear Watchdog
@@ -86,8 +93,19 @@
     - platform: state
       entity_id: input_boolean.pad1
       to: "on"
+
+    variables:
+      closing:
+        - input_boolean.pad_enable
+        - input_boolean.pad1
+        - input_boolean.pad2
+        - input_boolean.pad3
+        - input_boolean.pad4
+        - input_boolean.pad5
+
     action:
     - alias: Watchdog Delay
       delay: "00:05:00"
-    - alias: Shut it all down
-      service: script.clear_lock_pad
+    - alias: Shut them all down
+      service: input_boolean.turn_off
+      entity_id: "{{ closing }}"
