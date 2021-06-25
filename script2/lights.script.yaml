@@ -38,15 +38,22 @@
         - script.garage_outside_lights_on
 
   #####################################################
-  # Outside Lights Chill Mode                         #
+  # Outside & Garage Lights Chill Mode                #
   #####################################################
   chill_time:
     alias: Chill Time
     sequence:
-    - service: mqtt.publish
+    - alias: Outside Lights to normal mode
+      service: mqtt.publish
       data:
         "topic": "Yard/cmnd/event"
         "payload": "CHILL"
-    - service: script.turn_on
+    - alias: Inside Garage Lights to normal mode
+      service: mqtt.publish
+      data:
+        "topic": "Garage/cmnd/event"
+        "payload": "CHILL"
+    - alias: Outside Lights off
+      service: script.turn_on
       entity_id:
         - script.garage_outside_lights_off
