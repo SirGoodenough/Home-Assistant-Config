@@ -1449,6 +1449,9 @@
                                 },
                                 {
                                     "entity": "light.garagefront_light"
+                                },
+                                {
+                                    "entity": "script.chill_time"
                                 }
                             ],
                             "show_header_toggle": true,
