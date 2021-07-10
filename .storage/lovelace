@@ -35,7 +35,7 @@
                                     "entity": "switch.kitchenfan"
                                 },
                                 {
-                                    "entity": "switch.dishwasher_2"
+                                    "entity": "switch.dishwasher"
                                 },
                                 {
                                     "entity": "media_player.kitchen_display"
