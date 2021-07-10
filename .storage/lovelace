@@ -1537,9 +1537,6 @@
                                     "entity": "light.bulb1_2"
                                 },
                                 {
-                                    "entity": "fan.jens_new_fan"
-                                },
-                                {
                                     "entity": "sensor.jennys_new_fanspeed"
                                 }
                             ],
@@ -1601,13 +1598,10 @@
                                     "entity": "light.office_track_jim_bulb"
                                 },
                                 {
-                                    "entity": "switch.office_monitors"
-                                },
-                                {
                                     "entity": "light.office_fan_light"
                                 },
                                 {
-                                    "entity": "fan.office_fan"
+                                    "entity": "switch.tarantula_power"
                                 },
                                 {
                                     "entity": "sensor.office_fanspeed"
@@ -1639,10 +1633,10 @@
                                     "entity": "light.bedroom_light"
                                 },
                                 {
-                                    "entity": "fan.bedroom_fan"
+                                    "entity": "sensor.bedroom_fanspeed"
                                 },
                                 {
-                                    "entity": "sensor.bedroom_fanspeed"
+                                    "entity": "climate.gemodule5384"
                                 }
                             ],
                             "title": "Bedroom"
