@@ -174,3 +174,17 @@
           entity_id: media_player.kitchen_display, media_player.nesthub4245
           media_content_id: !secret Mister
           media_content_type: audio/mp3
+
+### From UI Creation --->
+  - id: '1610785908281'
+    alias: Hummingbird
+    description: Start Jen's timer
+    trigger:
+    - platform: webhook
+      webhook_id: This is Jens timer start called Hummingbird
+    condition: []
+    action:
+    - service: input_boolean.toggle
+      data: {}
+      entity_id: input_boolean.flush2
+    mode: single
