@@ -42,15 +42,3 @@
     data: {}
     entity_id: input_boolean.flush2
   mode: single
-- id: '1623818884337'
-  alias: Back Door Open
-  description: Back Door Open
-  use_blueprint:
-    path: homeassistant/tts.cloud_say_door_announcer.yaml
-    input:
-      speaker_language: en-AU
-      speaker_gender: male
-      door_entity: binary_sensor.back_door_open_433
-      announcement_message: Open
-      final_message: Closed
-      speaker_target: media_player.kitchen_display
