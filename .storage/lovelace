@@ -1831,6 +1831,33 @@
                             ],
                             "show_header_toggle": false,
                             "title": "People"
+                        },
+                        {
+                            "type": "glance",
+                            "entities": [
+                                {
+                                    "entity": "sensor.jen_food"
+                                },
+                                {
+                                    "entity": "sensor.jen_food_2"
+                                },
+                                {
+                                    "entity": "sensor.jim_sat"
+                                },
+                                {
+                                    "entity": "sensor.jim_sun"
+                                },
+                                {
+                                    "entity": "sensor.julie_food"
+                                },
+                                {
+                                    "entity": "sensor.julie_food_2"
+                                }
+                            ],
+                            "state_color": true,
+                            "columns": 6,
+                            "theme": "Dark - Red",
+                            "title": "Take-Out Schedule"
                         }
                     ],
                     "icon": "mdi:human-greeting",
@@ -2967,14 +2994,6 @@
                     "title": "System"
                 },
                 {
-                    "badges": [],
-                    "cards": [],
-                    "icon": "mdi:calendar-check",
-                    "path": "calendar",
-                    "theme": "dark_orange",
-                    "title": "Calendar"
-                },
-                {
                     "title": "YouTube",
                     "path": "YouTube",
                     "icon": "mdi:youtube",
@@ -2982,11 +3001,41 @@
                     "badges": [],
                     "cards": [
                         {
-                            "type": "weather-forecast",
-                            "entity": "weather.home",
-                            "theme": "Animated Weather Card"
+                            "type": "glance",
+                            "entities": [
+                                {
+                                    "entity": "sensor.jen_food"
+                                },
+                                {
+                                    "entity": "sensor.jen_food_2"
+                                },
+                                {
+                                    "entity": "sensor.jim_sat"
+                                },
+                                {
+                                    "entity": "sensor.jim_sun"
+                                },
+                                {
+                                    "entity": "sensor.julie_food"
+                                },
+                                {
+                                    "entity": "sensor.julie_food_2"
+                                }
+                            ],
+                            "state_color": true,
+                            "columns": 6,
+                            "theme": "Dark - Red",
+                            "title": "Take-Out Schedule"
                         }
                     ]
+                },
+                {
+                    "badges": [],
+                    "cards": [],
+                    "icon": "mdi:calendar-check",
+                    "path": "calendar",
+                    "theme": "dark_orange",
+                    "title": "Calendar"
                 }
             ]
         }
