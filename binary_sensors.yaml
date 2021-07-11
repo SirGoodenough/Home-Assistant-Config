@@ -471,7 +471,7 @@
     state_topic: rf433/Pad1
     payload_on: 'ON'
     payload_off: 'OFF'
-    off_delay: 200
+    off_delay: 5
     force_update: false
     availability_topic: RFBridge2/tele/LWT
     payload_available: Online
@@ -484,7 +484,7 @@
     state_topic: rf433/Pad2
     payload_on: 'ON'
     payload_off: 'OFF'
-    off_delay: 200
+    off_delay: 5
     force_update: false
     availability_topic: RFBridge2/tele/LWT
     payload_available: Online
@@ -497,7 +497,7 @@
     state_topic: rf433/Pad3
     payload_on: 'ON'
     payload_off: 'OFF'
-    off_delay: 200
+    off_delay: 5
     force_update: false
     availability_topic: RFBridge2/tele/LWT
     payload_available: Online
@@ -510,7 +510,7 @@
     state_topic: rf433/Pad4
     payload_on: 'ON'
     payload_off: 'OFF'
-    off_delay: 200
+    off_delay: 5
     force_update: false
     availability_topic: RFBridge2/tele/LWT
     payload_available: Online
@@ -523,7 +523,7 @@
     state_topic: rf433/Pad5
     payload_on: 'ON'
     payload_off: 'OFF'
-    off_delay: 200
+    off_delay: 5
     force_update: false
     availability_topic: RFBridge2/tele/LWT
     payload_available: Online

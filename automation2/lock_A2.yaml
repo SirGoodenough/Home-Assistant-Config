@@ -5,19 +5,19 @@
     mode: single
     max_exceeded: silent
 
-    variables:
-      # Set the timeout seconds between button presses
-      timeout: 45
-      # List of all to close
-      closing:
-        - input_boolean.pad_enable
-        - input_boolean.pad1
-        - input_boolean.pad2
-        - input_boolean.pad3
-        - input_boolean.pad4
-        - input_boolean.pad5
-      # time pad is live after cypher is completed
-      pad_live_time: "00:01:00"
+    # variables:
+    #   # Set the timeout seconds between button presses
+    #   timeout: 45
+    #   # List of all to close
+    #   closing:
+    #     - input_boolean.pad_enable
+    #     - input_boolean.pad1
+    #     - input_boolean.pad2
+    #     - input_boolean.pad3
+    #     - input_boolean.pad4
+    #     - input_boolean.pad5
+    #   # time pad is live after cypher is completed
+    #   pad_live_time: "00:01:00"
 
     trigger:
     - platform: state
@@ -37,7 +37,8 @@
           from: "off"
           to: "on"
       timeout:
-        seconds: "{{ timeout }}"
+        seconds: 45
+        # seconds: "{{ timeout }}"
       continue_on_timeout: false
     - alias: Ack for Button 2
       service: input_boolean.turn_on
@@ -50,7 +51,8 @@
           from: "off"
           to: "on"
       timeout:
-        seconds: "{{ timeout }}"
+        seconds: 45
+        # seconds: "{{ timeout }}"
       continue_on_timeout: false
     - alias: Ack for Button 3
       service: input_boolean.turn_on
@@ -63,7 +65,8 @@
           from: "off"
           to: "on"
       timeout:
-        seconds: "{{ timeout }}"
+        seconds: 45
+        # seconds: "{{ timeout }}"
       continue_on_timeout: false
     - alias: Ack for Button 4
       service: input_boolean.turn_on
@@ -76,7 +79,8 @@
           from: "off"
           to: "on"
       timeout:
-        seconds: "{{ timeout }}"
+        seconds: 45
+        # seconds: "{{ timeout }}"
       continue_on_timeout: false
     - alias: Ack for Button 5
       service: input_boolean.turn_on
@@ -85,10 +89,13 @@
     - alias: Set the OK and wait
       service: input_boolean.turn_on
       entity_id: input_boolean.pad_enable
-    - delay: "{{ pad_live_time }}"
+    - delay: "00:01:00"
+    # - delay: "{{ pad_live_time }}"
     - alias: Shut them all down
       service: input_boolean.turn_off
-      entity_id: "{{ closing }}"
+      entity_id: input_boolean.pad_enable,input_boolean.pad1,input_boolean.pad2,input_boolean.pad3,input_boolean.pad4,input_boolean.pad5
+      # entity_id: "{{ closing }}"
+
 
   - id: 650573d6-09ba-4089-9022-6bfbc77e7563
     alias: Auto Pad Clear Watchdog
@@ -98,26 +105,29 @@
     mode: single
     max_exceeded: silent
 
-    variables:
-      # List of all to close
-      closing:
-        - input_boolean.pad_enable
-        - input_boolean.pad1
-        - input_boolean.pad2
-        - input_boolean.pad3
-        - input_boolean.pad4
-        - input_boolean.pad5
-      # Watchdog time pad is live after 1st code is engaged.
-      pad_kill_time: "00:05:00"
+    # variables:
+    #   # List of all to close
+    #   closing:
+    #     - input_boolean.pad_enable
+    #     - input_boolean.pad1
+    #     - input_boolean.pad2
+    #     - input_boolean.pad3
+    #     - input_boolean.pad4
+    #     - input_boolean.pad5
+    #   # Watchdog time pad is live after 1st code is engaged.
+    #   pad_kill_time: "00:05:00"
 
     trigger:
     - platform: state
-      entity_id: "{{ closing }}"
+      entity_id: input_boolean.pad_enable,input_boolean.pad1,input_boolean.pad2,input_boolean.pad3,input_boolean.pad4,input_boolean.pad5
+      # entity_id: "{{ closing }}"
       to: "on"
 
     action:
     - alias: Watchdog Delay
-      delay: "{{ pad_live_time }}"
+      delay: "00:05:00"
+      # delay: "{{ pad_live_time }}"
     - alias: Shut them all down
       service: input_boolean.turn_off
-      entity_id: "{{ closing }}"
+      entity_id: input_boolean.pad_enable,input_boolean.pad1,input_boolean.pad2,input_boolean.pad3,input_boolean.pad4,input_boolean.pad5
+      # entity_id: "{{ closing }}"
