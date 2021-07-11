@@ -3026,6 +3026,44 @@
                             "columns": 6,
                             "theme": "Dark - Red",
                             "title": "Take-Out Schedule"
+                        },
+                        {
+                            "type": "glance",
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.pad_1"
+                                },
+                                {
+                                    "entity": "binary_sensor.pad_2"
+                                },
+                                {
+                                    "entity": "binary_sensor.pad_3"
+                                },
+                                {
+                                    "entity": "binary_sensor.pad_4"
+                                },
+                                {
+                                    "entity": "binary_sensor.pad_5"
+                                },
+                                {
+                                    "entity": "input_boolean.pad1"
+                                },
+                                {
+                                    "entity": "input_boolean.pad2"
+                                },
+                                {
+                                    "entity": "input_boolean.pad3"
+                                },
+                                {
+                                    "entity": "input_boolean.pad4"
+                                },
+                                {
+                                    "entity": "input_boolean.pad5"
+                                },
+                                {
+                                    "entity": "input_boolean.pad_enable"
+                                }
+                            ]
                         }
                     ]
                 },
