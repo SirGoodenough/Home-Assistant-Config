@@ -39,31 +39,6 @@
                 "id": "bedroom_cool"
             },
             {
-                "name": "pad1",
-                "icon": "mdi:bullseye",
-                "id": "pad1"
-            },
-            {
-                "name": "pad2",
-                "icon": "mdi:bullseye",
-                "id": "pad2"
-            },
-            {
-                "name": "pad3",
-                "icon": "mdi:bullseye",
-                "id": "pad3"
-            },
-            {
-                "name": "pad4",
-                "icon": "mdi:bullseye",
-                "id": "pad4"
-            },
-            {
-                "name": "pad5",
-                "icon": "mdi:bullseye",
-                "id": "pad5"
-            },
-            {
                 "name": "pad_enable",
                 "icon": "mdi:check",
                 "id": "pad_enable"

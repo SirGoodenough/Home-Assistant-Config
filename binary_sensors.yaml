@@ -529,6 +529,45 @@
     payload_available: Online
     payload_not_available: Offline
 
+  - platform: mqtt
+    name: "Pad 8"
+    unique_id: 2ba48223-bafa-4664-8413-083500163b9f
+    device_class: motion
+    state_topic: rf433/Pad8
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 5
+    force_update: false
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
+    name: "Pad 9"
+    unique_id: 63c372bc-a9a8-4d8c-b84f-af3d4bcaad6e
+    device_class: motion
+    state_topic: rf433/Pad9
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 5
+    force_update: false
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
+    name: "Pad C"
+    unique_id: 73994347-9e83-4876-a3ce-b42e5dcdf11f
+    device_class: motion
+    state_topic: rf433/PadC
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 5
+    force_update: false
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
   #####################################################
   # Door Switches (433mhz)                            #
   #####################################################

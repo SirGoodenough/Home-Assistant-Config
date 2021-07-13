@@ -3046,6 +3046,9 @@
                                     "entity": "binary_sensor.pad_5"
                                 },
                                 {
+                                    "entity": "binary_sensor.pad_c"
+                                },
+                                {
                                     "entity": "input_boolean.pad_enable"
                                 },
                                 {
