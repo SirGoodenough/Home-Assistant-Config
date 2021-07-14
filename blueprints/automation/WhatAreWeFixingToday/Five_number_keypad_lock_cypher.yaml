@@ -1,5 +1,5 @@
 blueprint:
-  name: Keypad 5 button cypher to turn something on
+  name: Keypad 5 button cypher to turn on something
 #  source_url: https://community.home-assistant.io/t/door-open-tts-cloud-say-announcer-nabu-casa-required/316046
   domain: automation
   input:
@@ -35,18 +35,18 @@ blueprint:
           domain: binary_sensor
     lock_control:
       name: Buffer for the Final Lock Enable
-      description: input_boolean - Final Lock Enable to trigger your lock or action
+      description: input_boolean - Final Enable to trigger your lock or action
       selector:
         entity:
           domain: input_boolean
     seq_status:
-      name: Control Sequence Status Number
-      description: input_number - The lock sequence number (set range to 0 to 32)
+      name: Control Sequence Status Placeholder
+      description: input_number - The internal use lock sequence number (set range to 0 to 32)
       selector:
         entity:
           domain: input_number
     on_timer:
-      name: Lock on Time in Seconds
+      name: Lock On Time in Seconds
       description: Time output signal is on in seconds
       default: 60
       selector:
@@ -56,10 +56,16 @@ blueprint:
           unit_of_measurement: "seconds"
           mode: slider
 
-mode: single
+variables:
+    # Need this in order to put the input entity name into a template -->
+  seq_status_var: !input seq_status
+
+    # Parse only 1 button at a time
+  mode: single
 max_exceeded: silent
 
 trigger:
+    # Activate all the button triggers.  Save the Trigger ID for sorting below.
   - platform: state
     entity_id: !input button_one
     id: pad1
@@ -85,29 +91,27 @@ trigger:
     id: pad5
     from: "off"
     to: "on"
-  # NOTE:   Condition Templates with variables below do not work.
-  #           This blueprint does not work as is because of this.
-  #           Check Lock_A2.yaml for the Automation that DOES work!
+
 action:
   - choose:
     - alias: Somebody pushed the first button
       conditions:
         - condition: trigger
-          id: 'pad1'
+          id: pad1
       sequence:
         - alias: Set seq number to 1
           service: input_number.set_value
           data:
             entity_id: !input seq_status
             value: 1
-    - alias: Button 2 pushed in correct order
+    - alias: Button 2 pushed in correct sequence number order
       conditions:
         - condition: and
           conditions:
             - condition: trigger
-              id: 'pad2'
+              id: pad2
             - condition: template 
-              value_template: "{{ is_state('!input seq_status', '1.0') }}"
+              value_template: "{{ is_state( seq_status_var, '1.0') }}"
       sequence:
         - alias: Set seq number to 3
           service: input_number.set_value
@@ -115,14 +119,14 @@ action:
             value: 3
           target:
             entity_id: !input seq_status
-    - alias: Button 3 pushed in correct order
+    - alias: Button 3 pushed in correct sequence number order
       conditions:
         - condition: and
           conditions:
             - condition: trigger
-              id: 'pad3'
+              id: pad3
             - condition: template 
-              value_template: "{{ is_state('!input seq_status', '3.0') }}"
+              value_template: "{{ is_state( seq_status_var, '3.0') }}"
       sequence:
         - alias: Set seq number to 7
           service: input_number.set_value
@@ -130,14 +134,14 @@ action:
             value: 7
           target:
             entity_id: !input seq_status
-    - alias: Button 4 pushed in correct order
+    - alias: Button 4 pushed in correct sequence number order
       conditions:
         - condition: and
           conditions:
             - condition: trigger
-              id: 'pad4'
+              id: pad4
             - condition: template 
-              value_template: "{{ is_state('!input seq_status', '7.0') }}"
+              value_template: "{{ is_state( seq_status_var, '7.0') }}"
       sequence:
         - alias: Set seq number to 15
           service: input_number.set_value
@@ -145,14 +149,14 @@ action:
             value: 15
           target:
             entity_id: !input seq_status
-    - alias: Button 5 pushed in correct order
+    - alias: Button 5 pushed in correct sequence number order
       conditions:
         - condition: and
           conditions:
             - condition: trigger
-              id: 'pad5'
+              id: pad5
             - condition: template 
-              value_template: "{{ is_state('!input seq_status', '15.0') }}"
+              value_template: "{{ is_state( seq_status_var, '15.0') }}"
       sequence:
         - alias: Set seq number to 31
           service: input_number.set_value
