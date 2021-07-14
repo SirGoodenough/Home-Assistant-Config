@@ -1,0 +1,13 @@
+- id: '1626218817709'
+  alias: Keypad 5 button cypher to turn something on
+  description: Keypad sequence to turn on Kitchen Down Lights
+  use_blueprint:
+    path: WhatAreWeFixingToday/Five_number_keypad_lock_cypher.yaml
+    input:
+      button_one: binary_sensor.pad_1
+      button_two: binary_sensor.pad_2
+      button_three: binary_sensor.pad_3
+      button_four: binary_sensor.pad_4
+      button_five: binary_sensor.pad_5
+      lock_control: input_boolean.pad_enable
+      seq_status: input_number.lock_state

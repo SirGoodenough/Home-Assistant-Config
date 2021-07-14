@@ -46,8 +46,8 @@ blueprint:
         entity:
           domain: input_number
     on_timer:
-      name: Key Click Timer
-      description: Time output signal is on
+      name: Lock on Time in Seconds
+      description: Time output signal is on in seconds
       default: 60
       selector:
         number:
