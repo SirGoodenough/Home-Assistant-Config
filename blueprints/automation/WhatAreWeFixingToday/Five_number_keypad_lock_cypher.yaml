@@ -85,10 +85,12 @@ trigger:
     id: pad5
     from: "off"
     to: "on"
-
+  # NOTE:   Condition Templates with variables below do not work.
+  #           This blueprint does not work as is because of this.
+  #           Check Lock_A2.yaml for the Automation that DOES work!
 action:
   - choose:
-    - alias: somebody pushed the first button
+    - alias: Somebody pushed the first button
       conditions:
         - condition: trigger
           id: 'pad1'
