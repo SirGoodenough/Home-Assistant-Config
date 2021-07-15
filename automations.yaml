@@ -1,10 +1,10 @@
-- id: '1626276890613'
-  alias: Keypad 5 button cypher to turn something on
-  description: 'test2 '
+- id: '1626335294896'
+  alias: Keypad 5 button cypher to turn on something
+  description: AAAaaa  Test 44 KeyPad
   use_blueprint:
-    path: WhatAreWeFixingToday/Five_number_keypad_lock_cypher.yaml
+    path: Sir_Goodenough/keypad-cypher-code-for-5-button-presses-before-you-turn-on-an-input-boolean.yaml
     input:
-      button_one: binary_sensor.pad_8
+      button_one: binary_sensor.pad_1
       button_two: binary_sensor.pad_2
       button_three: binary_sensor.pad_3
       button_four: binary_sensor.pad_4
