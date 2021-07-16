@@ -3004,33 +3004,6 @@
                             "type": "glance",
                             "entities": [
                                 {
-                                    "entity": "sensor.jen_food"
-                                },
-                                {
-                                    "entity": "sensor.jen_food_2"
-                                },
-                                {
-                                    "entity": "sensor.jim_sat"
-                                },
-                                {
-                                    "entity": "sensor.jim_sun"
-                                },
-                                {
-                                    "entity": "sensor.julie_food"
-                                },
-                                {
-                                    "entity": "sensor.julie_food_2"
-                                }
-                            ],
-                            "state_color": true,
-                            "columns": 6,
-                            "theme": "Dark - Red",
-                            "title": "Take-Out Schedule"
-                        },
-                        {
-                            "type": "glance",
-                            "entities": [
-                                {
                                     "entity": "binary_sensor.pad_1"
                                 },
                                 {
