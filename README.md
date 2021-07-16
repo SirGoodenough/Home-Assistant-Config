@@ -4,6 +4,8 @@ Let me know if you have a suggestion.
 
 **If you have any questions, comments or additions be sure to add an issue and bring them up on my Discord Server:** 
 
+Also feel free to check out the code segments and Blueprints that I have on my Gist here:  https://gist.github.com/SirGoodenough
+
 ### Contact Links:
 * [Discord WhatAreWeFixingToday](https://discord.gg/Uhmhu3B)
 * [What are we Fixing Today Homepage](https://www.WhatAreWeFixing.Today/)
