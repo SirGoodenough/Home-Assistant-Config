@@ -3,7 +3,7 @@
   purge_keep_days: 3
   include:
     domains:
-      # - automation # Flip on automations for troubleshooting
+      - automation # Flip on automations for troubleshooting
       - alert
       - binary_sensor
       - cover
@@ -15,6 +15,7 @@
       - notify
       - octoprint
       - person
+      - script
       - sensor
       - sonoff
       - switch
@@ -32,14 +33,12 @@
       - life360
       - mqtt
       - media_player
-      - script
       - timer
       - updater # Don't save updater
       - weather
     entities:
       - automation.humidity_control # Very noisy if automations are on
       - automation.rfbridge_1_demultiplexer # Very noisy if automations are on
-      - automation.rfbridge_2_demultiplexer # Very noisy if automations are on
       - group.weather # Don't save weather
       - sensor.date # Don't record date and time
       - sensor.time # Don't care time
