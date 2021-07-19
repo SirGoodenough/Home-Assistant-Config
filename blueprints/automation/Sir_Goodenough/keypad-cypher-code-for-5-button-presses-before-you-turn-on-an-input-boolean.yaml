@@ -90,7 +90,7 @@ trigger:
   id: pad5
   from: 'off'
   to: 'on'
-  
+
 action:
 - choose:
   - alias: Somebody pushed the first button
