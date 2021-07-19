@@ -128,7 +128,7 @@
   #           entity_id: input_boolean.pad_enable
 
 
-  - id: 0b408ade-16fd-42fc-8333-518660b421ae
+  - id: 5602f45c-dbe8-4874-a806-f30e119962f5
     alias: test lock
     initial_state: on
     trigger:
