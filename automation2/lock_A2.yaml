@@ -128,15 +128,15 @@
   #           entity_id: input_boolean.pad_enable
 
 
-  - id: 5602f45c-dbe8-4874-a806-f30e119962f5
-    alias: test lock
-    initial_state: on
-    trigger:
-      - platform: state
-        entity_id: input_boolean.pad_enable
-    action:
-      - service: light.toggle
-        entity_id: light.kitchen_down_lights
+  # - id: 5602f45c-dbe8-4874-a806-f30e119962f5
+  #   alias: test lock
+  #   initial_state: on
+  #   trigger:
+  #     - platform: state
+  #       entity_id: input_boolean.pad_enable
+  #   action:
+  #     - service: light.toggle
+  #       entity_id: light.kitchen_down_lights
 
 
   # - id: 650573d6-09ba-4089-9022-6bfbc77e7563
@@ -220,3 +220,15 @@
   #       sequence:
   #         - service: light.turn_off
   #           entity_id: light.kitchen_down_lights
+
+
+  # - id: 3e309378-0532-4922-b0c7-aad34bd6810b
+  #   alias: test lock 2
+  #   initial_state: on
+  #   trigger:
+  #     - platform: state
+  #       entity_id: input_boolean.pad_enable2
+  #   action:
+  #     - service: switch.toggle
+  #       entity_id: switch.tarantula_power
+

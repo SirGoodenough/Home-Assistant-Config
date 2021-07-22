@@ -1,6 +1,6 @@
 blueprint:
   name: Keypad 5 button cypher to turn on something
-  source_url: https://community.home-assistant.io/t/keypad-cypher-code-for-5-button-presses-before-you-turn-on-an-input-boolean/322385
+  source_url: https://gist.github.com/SirGoodenough/fbd552e2c93ebaa5c9b3d2b4ebff3297
   domain: automation
   input:
     button_one:
@@ -57,13 +57,17 @@ blueprint:
           unit_of_measurement: seconds
           mode: slider
           step: 1.0
-
 variables:
-  seq_status_var: !input 'seq_status'
+  seq_status_ent: !input 'seq_status'
+  seq_status_last: '{{ expand(seq_status_ent)[0].last_changed | as_timestamp }}
 
+    '
+  seq_status_val: '{{ expand(seq_status_ent)[0].state }}
+
+    '
+  tnow: '{{ as_timestamp(now()) }}'
 mode: single
 max_exceeded: silent
-
 trigger:
 - platform: state
   entity_id: !input 'button_one'
@@ -90,8 +94,13 @@ trigger:
   id: pad5
   from: 'off'
   to: 'on'
-
 action:
+- alias: Reset seq number to 99 if timeout occurred
+  service: input_number.set_value
+  data:
+    entity_id: !input 'seq_status'
+    value: "{% if seq_status_last < tnow - (5*60) %}\n  99\n{% else %} \n  {{ seq_status_val\
+      \ }}\n{% endif %}\n"
 - choose:
   - alias: Somebody pushed the first button
     conditions:
@@ -110,7 +119,7 @@ action:
       - condition: trigger
         id: pad2
       - condition: template
-        value_template: '{{ is_state( seq_status_var, ''1.0'') }}'
+        value_template: '{{ is_state( seq_status_ent, ''1.0'') }}'
     sequence:
     - alias: Set seq number to 3
       service: input_number.set_value
@@ -125,7 +134,7 @@ action:
       - condition: trigger
         id: pad3
       - condition: template
-        value_template: '{{ is_state( seq_status_var, ''3.0'') }}'
+        value_template: '{{ is_state( seq_status_ent, ''3.0'') }}'
     sequence:
     - alias: Set seq number to 7
       service: input_number.set_value
@@ -140,7 +149,7 @@ action:
       - condition: trigger
         id: pad4
       - condition: template
-        value_template: '{{ is_state( seq_status_var, ''7.0'') }}'
+        value_template: '{{ is_state( seq_status_ent, ''7.0'') }}'
     sequence:
     - alias: Set seq number to 15
       service: input_number.set_value
@@ -155,7 +164,7 @@ action:
       - condition: trigger
         id: pad5
       - condition: template
-        value_template: '{{ is_state( seq_status_var, ''15.0'') }}'
+        value_template: '{{ is_state( seq_status_ent, ''15.0'') }}'
     sequence:
     - alias: Set seq number to 31
       service: input_number.set_value

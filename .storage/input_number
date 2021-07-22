@@ -25,12 +25,20 @@
             },
             {
                 "min": 0.0,
-                "max": 31.0,
+                "max": 100.0,
                 "name": "Lock State",
                 "mode": "box",
                 "icon": "mdi:lock",
                 "step": 1.0,
                 "id": "lock_state"
+            },
+            {
+                "min": 0.0,
+                "max": 100.0,
+                "name": "lock_state2",
+                "mode": "box",
+                "step": 1.0,
+                "id": "lock_state2"
             }
         ]
     }

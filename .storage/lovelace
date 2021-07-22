@@ -3019,16 +3019,13 @@
                                     "entity": "binary_sensor.pad_5"
                                 },
                                 {
-                                    "entity": "binary_sensor.pad_c"
+                                    "entity": "input_boolean.pad_enable2"
                                 },
                                 {
-                                    "entity": "input_boolean.pad_enable"
+                                    "entity": "switch.tarantula_power"
                                 },
                                 {
-                                    "entity": "light.kitchen_down_lights"
-                                },
-                                {
-                                    "entity": "input_number.lock_state"
+                                    "entity": "input_number.lock_state2"
                                 }
                             ]
                         }
