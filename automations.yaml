@@ -1,14 +1,1 @@
-- id: '1626982352098'
-  alias: Keypad 5 button cypher to turn on something
-  description: Test2 video
-  use_blueprint:
-    path: SirGoodenough/keypad_5_button_cipher_to_turn_on_something.yaml
-    input:
-      button_one: binary_sensor.pad_1
-      button_two: binary_sensor.pad_2
-      button_three: binary_sensor.pad_3
-      button_four: binary_sensor.pad_4
-      button_five: binary_sensor.pad_5
-      lock_control: input_boolean.pad_enable2
-      seq_status: input_number.lock_state2
-      on_timer: 9
+

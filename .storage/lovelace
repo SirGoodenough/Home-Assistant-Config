@@ -240,6 +240,9 @@
                                     "entity": "script.work_time"
                                 },
                                 {
+                                    "entity": "script.chill_time"
+                                },
+                                {
                                     "entity": "script.garage_outside_lights_on"
                                 },
                                 {
@@ -426,6 +429,12 @@
                                 },
                                 {
                                     "entity": "binary_sensor.front_door_motion"
+                                },
+                                {
+                                    "entity": "script.chill_time"
+                                },
+                                {
+                                    "entity": "script.party_time"
                                 }
                             ],
                             "show_header_toggle": true,
@@ -3019,13 +3028,13 @@
                                     "entity": "binary_sensor.pad_5"
                                 },
                                 {
-                                    "entity": "input_boolean.pad_enable2"
+                                    "entity": "input_boolean.pad_enable"
                                 },
                                 {
-                                    "entity": "switch.tarantula_power"
+                                    "entity": "light.kitchen_down_lights"
                                 },
                                 {
-                                    "entity": "input_number.lock_state2"
+                                    "entity": "input_number.lock_state"
                                 }
                             ]
                         }
