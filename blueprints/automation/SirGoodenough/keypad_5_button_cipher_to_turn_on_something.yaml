@@ -59,15 +59,13 @@ blueprint:
           step: 1.0
 variables:
   seq_status_ent: !input 'seq_status'
-  seq_status_last: '{{ expand(seq_status_ent)[0].last_changed | as_timestamp }}
-
-    '
-  seq_status_val: '{{ expand(seq_status_ent)[0].state }}
-
-    '
+  seq_status_last: '{{ expand(seq_status_ent)[0].last_changed | as_timestamp }}'
+  seq_status_val: '{{ expand(seq_status_ent)[0].state }}'
   tnow: '{{ as_timestamp(now()) }}'
+
 mode: single
 max_exceeded: silent
+
 trigger:
 - platform: state
   entity_id: !input 'button_one'
