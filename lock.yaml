@@ -6,7 +6,7 @@
     command_topic: "FrontLock/cmnd/EVENT"
     availability_topic: "FrontLock/tele/LWT"
     qos: 1
-    retain: true
+    retain: false
     state_locked: LOCKED
     state_unlocked: UNLOCKED
     payload_available: "Online"
@@ -19,7 +19,7 @@
     command_topic: "SideLock/cmnd/EVENT"
     availability_topic: "SideLock/tele/LWT"
     qos: 1
-    retain: true
+    retain: false
     state_locked: LOCKED
     state_unlocked: UNLOCKED
     payload_available: "Online"

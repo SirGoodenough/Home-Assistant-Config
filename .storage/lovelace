@@ -1810,6 +1810,69 @@
                                 "sensor.front_door_wifi_signal_strength"
                             ],
                             "title": "Front Door"
+                        },
+                        {
+                            "type": "glance",
+                            "entities": [
+                                {
+                                    "entity": "lock.front_door"
+                                },
+                                {
+                                    "entity": "lock.side_door"
+                                },
+                                {
+                                    "entity": "lock.kwikset_touchpad_electronic_deadbolt_locked"
+                                },
+                                {
+                                    "entity": "input_boolean.pad_enable"
+                                },
+                                {
+                                    "entity": "input_number.lock_state"
+                                },
+                                {
+                                    "entity": "input_boolean.pad_enable2"
+                                },
+                                {
+                                    "entity": "input_number.lock_state2"
+                                },
+                                {
+                                    "entity": "input_boolean.pad_enable3"
+                                },
+                                {
+                                    "entity": "input_number.lock_state3"
+                                }
+                            ],
+                            "columns": 3
+                        },
+                        {
+                            "type": "glance",
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.pad_8"
+                                },
+                                {
+                                    "entity": "binary_sensor.pad_c"
+                                },
+                                {
+                                    "entity": "binary_sensor.pad_4"
+                                },
+                                {
+                                    "entity": "binary_sensor.pad_9"
+                                },
+                                {
+                                    "entity": "binary_sensor.pad_2"
+                                },
+                                {
+                                    "entity": "binary_sensor.pad_5"
+                                },
+                                {
+                                    "entity": "binary_sensor.pad_1"
+                                },
+                                {
+                                    "entity": "binary_sensor.pad_3"
+                                }
+                            ],
+                            "columns": 2
                         }
                     ],
                     "icon": "mdi:lock-question",
@@ -3008,37 +3071,7 @@
                     "icon": "mdi:youtube",
                     "theme": "dark_red",
                     "badges": [],
-                    "cards": [
-                        {
-                            "type": "glance",
-                            "entities": [
-                                {
-                                    "entity": "binary_sensor.pad_1"
-                                },
-                                {
-                                    "entity": "binary_sensor.pad_2"
-                                },
-                                {
-                                    "entity": "binary_sensor.pad_3"
-                                },
-                                {
-                                    "entity": "binary_sensor.pad_4"
-                                },
-                                {
-                                    "entity": "binary_sensor.pad_5"
-                                },
-                                {
-                                    "entity": "input_boolean.pad_enable"
-                                },
-                                {
-                                    "entity": "light.kitchen_down_lights"
-                                },
-                                {
-                                    "entity": "input_number.lock_state"
-                                }
-                            ]
-                        }
-                    ]
+                    "cards": []
                 },
                 {
                     "badges": [],

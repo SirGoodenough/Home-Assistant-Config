@@ -1,2 +1,89 @@
 ---
-  
+  - id: 38174225-1d9d-48df-82a4-c8bccbf2ce0a
+    alias: Front Door Keypad Unlock
+    description: Front Door Unlock Keypad from Blueprint
+    use_blueprint:
+      path: SirGoodenough/keypad_5_button_cipher_to_turn_on_something.yaml
+      input:
+        button_one: binary_sensor.pad_1
+        button_two: binary_sensor.pad_2
+        button_three: binary_sensor.pad_3
+        button_four: binary_sensor.pad_4
+        button_five: binary_sensor.pad_5
+        lock_control: input_boolean.pad_enable
+        seq_status: input_number.lock_state
+        on_timer: 5
+
+      # Front Door Lock Open from keypad
+  - id: 003bbdba-55c4-495f-aee7-98202a0cbd88
+    alias: Front Door Keypad Lock Activation
+    initial_state: on
+    trigger:
+      - platform: state
+        entity_id: input_boolean.pad_enable
+        from: "off"
+        to: "on"
+    action:
+      - service: lock.unlock
+        target:
+          entity_id: lock.front_door
+
+
+  - id: a23d5785-5c46-420a-815e-7e9e5f34fb01
+    alias: All Door Keypad Unlock
+    description: All Door Unlock Keypad from Blueprint
+    use_blueprint:
+      path: SirGoodenough/keypad_5_button_cipher_to_turn_on_something.yaml
+      input:
+        button_one: binary_sensor.pad_2
+        button_two: binary_sensor.pad_1
+        button_three: binary_sensor.pad_3
+        button_four: binary_sensor.pad_4
+        button_five: binary_sensor.pad_5
+        lock_control: input_boolean.pad_enable2
+        seq_status: input_number.lock_state2
+        on_timer: 5
+
+# All Doors Lock Open from keypad
+  - id: 89a976e9-4efe-471d-bb95-4ebfc4cf4bd6
+    alias: All Door Keypad Lock Unlock Activation
+    initial_state: on
+    trigger:
+      - platform: state
+        entity_id: input_boolean.pad_enable2
+        from: "off"
+        to: "on"
+    action:
+      - service: lock.unlock
+        target:
+          entity_id: all
+
+
+  - id: 3b0e159e-ba03-449d-a07c-40d9a09f7cbe
+    alias: All Door Keypad Lock
+    description: All Door Lock Down Keypad from Blueprint
+    use_blueprint:
+      path: SirGoodenough/keypad_5_button_cipher_to_turn_on_something.yaml
+      input:
+        button_one: binary_sensor.pad_8
+        button_two: binary_sensor.pad_4
+        button_three: binary_sensor.pad_2
+        button_four: binary_sensor.pad_1
+        button_five: binary_sensor.pad_3
+        lock_control: input_boolean.pad_enable3
+        seq_status: input_number.lock_state3
+        on_timer: 5
+
+# All Doors Lock Down from keypad
+  - id: c8685271-9e83-4a56-80ae-38d3fc45dd12
+    alias: All Door Keypad Lock Down Activation
+    initial_state: on
+    trigger:
+      - platform: state
+        entity_id: input_boolean.pad_enable3
+        from: "off"
+        to: "on"
+    action:
+      - service: lock.lock
+        target:
+          entity_id: all

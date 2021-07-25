@@ -45,7 +45,13 @@
             },
             {
                 "name": "pad_enable2",
-                "id": "pad_enable2"
+                "id": "pad_enable2",
+                "icon": "mdi:check"
+            },
+            {
+                "name": "pad_enable3",
+                "icon": "mdi:check",
+                "id": "pad_enable3"
             }
         ]
     }
