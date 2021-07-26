@@ -129,9 +129,19 @@
                                 },
                                 {
                                     "entity": "binary_sensor.aromatherapy_water"
+                                },
+                                {
+                                    "entity": "lock.front_door"
+                                },
+                                {
+                                    "entity": "lock.kwikset_touchpad_electronic_deadbolt_locked"
+                                },
+                                {
+                                    "entity": "lock.side_door"
                                 }
                             ],
-                            "title": "Glance"
+                            "title": "Glance",
+                            "columns": 4
                         },
                         {
                             "type": "button",
