@@ -1228,6 +1228,230 @@
                     "badges": [],
                     "cards": [
                         {
+                            "entities": [
+                                {
+                                    "entity": "lock.kwikset_touchpad_electronic_deadbolt_locked"
+                                },
+                                {
+                                    "entity": "light.b_porch_socket"
+                                },
+                                {
+                                    "entity": "sensor.lock_back_door_mode"
+                                },
+                                {
+                                    "entity": "sensor.lock_backdoor_bat_level"
+                                },
+                                {
+                                    "entity": "sensor.kwikset_touchpad_electronic_deadbolt_alarm_type"
+                                },
+                                {
+                                    "entity": "sensor.kwikset_touchpad_electronic_deadbolt_alarm_level"
+                                },
+                                {
+                                    "entity": "zwave.kwikset_touchpad_electronic_deadbolt"
+                                },
+                                {
+                                    "entity": "binary_sensor.back_door_pir"
+                                },
+                                {
+                                    "entity": "binary_sensor.back_door_ding"
+                                },
+                                {
+                                    "entity": "binary_sensor.back_door_motion"
+                                },
+                                {
+                                    "entity": "alert.back_door_notify_low_battery"
+                                },
+                                {
+                                    "entity": "alert.lock_back_door_notify_low_battery"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Back Door",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "lock.front_door"
+                                },
+                                {
+                                    "entity": "light.fp_socket"
+                                },
+                                {
+                                    "entity": "binary_sensor.front_door_pir"
+                                },
+                                {
+                                    "entity": "binary_sensor.front_door_ding"
+                                },
+                                {
+                                    "entity": "binary_sensor.front_door_motion"
+                                },
+                                {
+                                    "entity": "alert.front_door_notify_low_battery"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Front Door",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "lock.side_door"
+                                },
+                                {
+                                    "entity": "light.bmt_hall_rf_socket_u"
+                                },
+                                {
+                                    "entity": "light.bmt_hall_rf_socket_d"
+                                },
+                                {
+                                    "entity": "binary_sensor.basement_way_u_pir"
+                                },
+                                {
+                                    "entity": "binary_sensor.basement_way_d_pir"
+                                },
+                                {
+                                    "entity": "binary_sensor.side_doorbell"
+                                },
+                                {
+                                    "entity": "alert.side_door_notify_low_battery"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Side Door",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.back_door_open_433"
+                                },
+                                {
+                                    "entity": "binary_sensor.front_door_open"
+                                },
+                                {
+                                    "entity": "binary_sensor.front_door_open_433"
+                                },
+                                {
+                                    "entity": "binary_sensor.garage_door_open"
+                                },
+                                {
+                                    "entity": "binary_sensor.garage_side_door_open"
+                                },
+                                {
+                                    "entity": "binary_sensor.side_door_open"
+                                },
+                                {
+                                    "entity": "binary_sensor.side_door_open_433"
+                                },
+                                {
+                                    "entity": "binary_sensor.bathroom"
+                                },
+                                {
+                                    "entity": "binary_sensor.bedroom"
+                                }
+                            ],
+                            "title": "House Door Status",
+                            "type": "entities"
+                        },
+                        {
+                            "type": "glance",
+                            "entities": [
+                                "sensor.back_door_battery",
+                                "binary_sensor.back_door_ding",
+                                "binary_sensor.back_door_motion",
+                                "sensor.back_door_wifi_signal_category",
+                                "sensor.back_door_wifi_signal_strength"
+                            ],
+                            "title": "Back Door"
+                        },
+                        {
+                            "type": "glance",
+                            "entities": [
+                                "camera.front_door",
+                                "sensor.front_door_battery",
+                                "binary_sensor.front_door_ding",
+                                "binary_sensor.front_door_motion",
+                                "sensor.front_door_wifi_signal_category",
+                                "sensor.front_door_wifi_signal_strength"
+                            ],
+                            "title": "Front Door"
+                        },
+                        {
+                            "type": "glance",
+                            "entities": [
+                                {
+                                    "entity": "lock.front_door"
+                                },
+                                {
+                                    "entity": "lock.side_door"
+                                },
+                                {
+                                    "entity": "lock.kwikset_touchpad_electronic_deadbolt_locked"
+                                },
+                                {
+                                    "entity": "input_boolean.pad_enable"
+                                },
+                                {
+                                    "entity": "input_number.lock_state"
+                                },
+                                {
+                                    "entity": "input_boolean.pad_enable2"
+                                },
+                                {
+                                    "entity": "input_number.lock_state2"
+                                },
+                                {
+                                    "entity": "input_boolean.pad_enable3"
+                                },
+                                {
+                                    "entity": "input_number.lock_state3"
+                                }
+                            ],
+                            "columns": 3
+                        },
+                        {
+                            "type": "glance",
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.pad_8"
+                                },
+                                {
+                                    "entity": "binary_sensor.pad_c"
+                                },
+                                {
+                                    "entity": "binary_sensor.pad_4"
+                                },
+                                {
+                                    "entity": "binary_sensor.pad_9"
+                                },
+                                {
+                                    "entity": "binary_sensor.pad_2"
+                                },
+                                {
+                                    "entity": "binary_sensor.pad_5"
+                                },
+                                {
+                                    "entity": "binary_sensor.pad_1"
+                                },
+                                {
+                                    "entity": "binary_sensor.pad_3"
+                                }
+                            ],
+                            "columns": 2
+                        }
+                    ],
+                    "icon": "mdi:lock-question",
+                    "id": "locks",
+                    "path": "locks",
+                    "title": "Locks"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
                             "type": "thermostat",
                             "entity": "climate.living_room"
                         },
@@ -1655,230 +1879,6 @@
                     "id": "lights",
                     "path": "lights",
                     "title": "Lights"
-                },
-                {
-                    "badges": [],
-                    "cards": [
-                        {
-                            "entities": [
-                                {
-                                    "entity": "lock.kwikset_touchpad_electronic_deadbolt_locked"
-                                },
-                                {
-                                    "entity": "light.b_porch_socket"
-                                },
-                                {
-                                    "entity": "sensor.lock_back_door_mode"
-                                },
-                                {
-                                    "entity": "sensor.lock_backdoor_bat_level"
-                                },
-                                {
-                                    "entity": "sensor.kwikset_touchpad_electronic_deadbolt_alarm_type"
-                                },
-                                {
-                                    "entity": "sensor.kwikset_touchpad_electronic_deadbolt_alarm_level"
-                                },
-                                {
-                                    "entity": "zwave.kwikset_touchpad_electronic_deadbolt"
-                                },
-                                {
-                                    "entity": "binary_sensor.back_door_pir"
-                                },
-                                {
-                                    "entity": "binary_sensor.back_door_ding"
-                                },
-                                {
-                                    "entity": "binary_sensor.back_door_motion"
-                                },
-                                {
-                                    "entity": "alert.back_door_notify_low_battery"
-                                },
-                                {
-                                    "entity": "alert.lock_back_door_notify_low_battery"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Back Door",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "lock.front_door"
-                                },
-                                {
-                                    "entity": "light.fp_socket"
-                                },
-                                {
-                                    "entity": "binary_sensor.front_door_pir"
-                                },
-                                {
-                                    "entity": "binary_sensor.front_door_ding"
-                                },
-                                {
-                                    "entity": "binary_sensor.front_door_motion"
-                                },
-                                {
-                                    "entity": "alert.front_door_notify_low_battery"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Front Door",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "lock.side_door"
-                                },
-                                {
-                                    "entity": "light.bmt_hall_rf_socket_u"
-                                },
-                                {
-                                    "entity": "light.bmt_hall_rf_socket_d"
-                                },
-                                {
-                                    "entity": "binary_sensor.basement_way_u_pir"
-                                },
-                                {
-                                    "entity": "binary_sensor.basement_way_d_pir"
-                                },
-                                {
-                                    "entity": "binary_sensor.side_doorbell"
-                                },
-                                {
-                                    "entity": "alert.side_door_notify_low_battery"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Side Door",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "binary_sensor.back_door_open_433"
-                                },
-                                {
-                                    "entity": "binary_sensor.front_door_open"
-                                },
-                                {
-                                    "entity": "binary_sensor.front_door_open_433"
-                                },
-                                {
-                                    "entity": "binary_sensor.garage_door_open"
-                                },
-                                {
-                                    "entity": "binary_sensor.garage_side_door_open"
-                                },
-                                {
-                                    "entity": "binary_sensor.side_door_open"
-                                },
-                                {
-                                    "entity": "binary_sensor.side_door_open_433"
-                                },
-                                {
-                                    "entity": "binary_sensor.bathroom"
-                                },
-                                {
-                                    "entity": "binary_sensor.bedroom"
-                                }
-                            ],
-                            "title": "House Door Status",
-                            "type": "entities"
-                        },
-                        {
-                            "type": "glance",
-                            "entities": [
-                                "sensor.back_door_battery",
-                                "binary_sensor.back_door_ding",
-                                "binary_sensor.back_door_motion",
-                                "sensor.back_door_wifi_signal_category",
-                                "sensor.back_door_wifi_signal_strength"
-                            ],
-                            "title": "Back Door"
-                        },
-                        {
-                            "type": "glance",
-                            "entities": [
-                                "camera.front_door",
-                                "sensor.front_door_battery",
-                                "binary_sensor.front_door_ding",
-                                "binary_sensor.front_door_motion",
-                                "sensor.front_door_wifi_signal_category",
-                                "sensor.front_door_wifi_signal_strength"
-                            ],
-                            "title": "Front Door"
-                        },
-                        {
-                            "type": "glance",
-                            "entities": [
-                                {
-                                    "entity": "lock.front_door"
-                                },
-                                {
-                                    "entity": "lock.side_door"
-                                },
-                                {
-                                    "entity": "lock.kwikset_touchpad_electronic_deadbolt_locked"
-                                },
-                                {
-                                    "entity": "input_boolean.pad_enable"
-                                },
-                                {
-                                    "entity": "input_number.lock_state"
-                                },
-                                {
-                                    "entity": "input_boolean.pad_enable2"
-                                },
-                                {
-                                    "entity": "input_number.lock_state2"
-                                },
-                                {
-                                    "entity": "input_boolean.pad_enable3"
-                                },
-                                {
-                                    "entity": "input_number.lock_state3"
-                                }
-                            ],
-                            "columns": 3
-                        },
-                        {
-                            "type": "glance",
-                            "entities": [
-                                {
-                                    "entity": "binary_sensor.pad_8"
-                                },
-                                {
-                                    "entity": "binary_sensor.pad_c"
-                                },
-                                {
-                                    "entity": "binary_sensor.pad_4"
-                                },
-                                {
-                                    "entity": "binary_sensor.pad_9"
-                                },
-                                {
-                                    "entity": "binary_sensor.pad_2"
-                                },
-                                {
-                                    "entity": "binary_sensor.pad_5"
-                                },
-                                {
-                                    "entity": "binary_sensor.pad_1"
-                                },
-                                {
-                                    "entity": "binary_sensor.pad_3"
-                                }
-                            ],
-                            "columns": 2
-                        }
-                    ],
-                    "icon": "mdi:lock-question",
-                    "id": "locks",
-                    "path": "locks",
-                    "title": "Locks"
                 },
                 {
                     "badges": [],
