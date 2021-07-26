@@ -26,9 +26,9 @@
   #       seq_status: input_number.lock_state2
   #       on_timer: 9
   
-  
+  #################3
   # Now using the Blueprint.  This is here for reference
-
+  #################3
   # - id: fcd51418-e5d1-4673-9643-8c25f75a8c3f
   #   alias: Auto Pad 5 button sequence code yaml
   #   initial_state: "on"
@@ -180,4 +180,3 @@
   #   action:
   #     - service: light.toggle
   #       entity_id: light.kitchen_down_lights
-
