@@ -57,6 +57,7 @@
       - service: lock.unlock
         target:
           entity_id: all
+      - delay: 5
       - service: input_boolean.turn_off
         target:
           entity_id: input_boolean.pad_enable2
@@ -89,6 +90,7 @@
       - service: lock.lock
         target:
           entity_id: all
+      - delay: 5
       - service: input_boolean.turn_off
         target:
           entity_id: input_boolean.pad_enable3
