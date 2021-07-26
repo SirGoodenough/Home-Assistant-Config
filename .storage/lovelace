@@ -138,6 +138,9 @@
                                 },
                                 {
                                     "entity": "lock.side_door"
+                                },
+                                {
+                                    "entity": "binary_sensor.garage_side_door_open"
                                 }
                             ],
                             "title": "Glance",
