@@ -44,7 +44,7 @@
         seq_status: input_number.lock_state2
         on_timer: 5
 
-# All Doors Lock Open from keypad
+# All Doors Lock Open from keypad &
   - id: 89a976e9-4efe-471d-bb95-4ebfc4cf4bd6
     alias: All Door Keypad Lock Unlock Activation
     initial_state: on
@@ -57,7 +57,9 @@
       - service: lock.unlock
         target:
           entity_id: all
-
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.pad_enable2
 
   - id: 3b0e159e-ba03-449d-a07c-40d9a09f7cbe
     alias: All Door Keypad Lock
@@ -74,7 +76,7 @@
         seq_status: input_number.lock_state3
         on_timer: 5
 
-# All Doors Lock Down from keypad
+# All Doors Lock Down from keypad & Manual
   - id: c8685271-9e83-4a56-80ae-38d3fc45dd12
     alias: All Door Keypad Lock Down Activation
     initial_state: on
@@ -87,3 +89,6 @@
       - service: lock.lock
         target:
           entity_id: all
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.pad_enable3

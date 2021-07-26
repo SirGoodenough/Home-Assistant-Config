@@ -134,6 +134,32 @@
                             "title": "Glance"
                         },
                         {
+                            "type": "button",
+                            "tap_action": {
+                                "action": "call-service",
+                                "service": "input_boolean.turn_on",
+                                "service_data": {},
+                                "target": {
+                                    "entity_id": [
+                                        "input_boolean.pad_enable3"
+                                    ]
+                                }
+                            },
+                            "entity": "switch.v8",
+                            "name": "All Locks - Tap Lock / Hold Unlock",
+                            "icon": "mdi:lock",
+                            "show_state": false,
+                            "icon_height": "80px",
+                            "hold_action": {
+                                "action": "call-service",
+                                "service": "input_boolean.turn_on",
+                                "service_data": {},
+                                "target": {
+                                    "entity_id": "input_boolean.pad_enable2"
+                                }
+                            }
+                        },
+                        {
                             "type": "glance",
                             "entities": [
                                 {
@@ -1441,6 +1467,32 @@
                                 }
                             ],
                             "columns": 2
+                        },
+                        {
+                            "type": "button",
+                            "tap_action": {
+                                "action": "call-service",
+                                "service": "input_boolean.turn_on",
+                                "service_data": {},
+                                "target": {
+                                    "entity_id": [
+                                        "input_boolean.pad_enable3"
+                                    ]
+                                }
+                            },
+                            "entity": "switch.v8",
+                            "name": "All Locks - Tap Lock / Hold Unlock",
+                            "icon": "mdi:lock",
+                            "show_state": false,
+                            "icon_height": "80px",
+                            "hold_action": {
+                                "action": "call-service",
+                                "service": "input_boolean.turn_on",
+                                "service_data": {},
+                                "target": {
+                                    "entity_id": "input_boolean.pad_enable2"
+                                }
+                            }
                         }
                     ],
                     "icon": "mdi:lock-question",
