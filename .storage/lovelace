@@ -1995,6 +1995,13 @@
                             "columns": 6,
                             "theme": "Dark - Red",
                             "title": "Take-Out Schedule"
+                        },
+                        {
+                            "type": "calendar",
+                            "entities": [
+                                "calendar.garbage_collection"
+                            ],
+                            "initial_view": "dayGridMonth"
                         }
                     ],
                     "icon": "mdi:human-greeting",
