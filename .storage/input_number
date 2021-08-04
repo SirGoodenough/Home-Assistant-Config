@@ -49,6 +49,16 @@
                 "step": 1.0,
                 "id": "lock_state3",
                 "icon": "mdi:lock"
+            },
+            {
+                "min": 1.0,
+                "max": 100.0,
+                "name": "test target temp",
+                "icon": "mdi:thermometer",
+                "unit_of_measurement": " Degrees",
+                "step": 1.0,
+                "mode": "slider",
+                "id": "test_target_temp"
             }
         ]
     }

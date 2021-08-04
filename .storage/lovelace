@@ -332,6 +332,12 @@
                                     "type": "custom:fan-percent-button-row"
                                 },
                                 {
+                                    "entity": "input_boolean.fan_test"
+                                },
+                                {
+                                    "entity": "input_number.test_target_temp"
+                                },
+                                {
                                     "entity": "sensor.office_fanspeed"
                                 },
                                 {
@@ -413,6 +419,15 @@
                                 },
                                 {
                                     "entity": "binary_sensor.basement_way_d_pir"
+                                },
+                                {
+                                    "entity": "binary_sensor.washing_machine"
+                                },
+                                {
+                                    "entity": "sensor.wash_machine_energy_current"
+                                },
+                                {
+                                    "entity": "sensor.wash_machine_energy_voltage"
                                 }
                             ],
                             "show_header_toggle": false,

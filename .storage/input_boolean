@@ -52,6 +52,11 @@
                 "name": "pad_enable3",
                 "icon": "mdi:check",
                 "id": "pad_enable3"
+            },
+            {
+                "name": "fan_test",
+                "icon": "mdi:fan",
+                "id": "fan_test"
             }
         ]
     }
