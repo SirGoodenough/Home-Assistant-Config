@@ -1,5 +1,7 @@
 blueprint:
   name: Door open tts.cloud_say announcer (Nabu-Casa required)
+  # Community link for blueprint:  source_url:
+  # https://community.home-assistant.io/t/door-open-tts-cloud-say-announcer-nabu-casa-required/316046
   source_url: https://gist.github.com/SirGoodenough/ed99bd75a65088f4a41c46d1ce19f103
   domain: automation
   input:

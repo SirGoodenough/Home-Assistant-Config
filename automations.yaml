@@ -1,0 +1,12 @@
+- id: '1628068337890'
+  alias: Auto_Fan_Temperature_Control_for_3-Speed_Fan
+  description: test import
+  use_blueprint:
+    path: SirGoodenough/AutoFanControl.yaml
+    input:
+      fan_control: input_boolean.fan_test
+      room_temp_now: sensor.garage_door_si7021_temperature
+      room_set_temp: input_number.test_target_temp
+      fan_on_time: 0:00:01
+      fan_off_time: '23:59:59'
+      mqtt_fan_topic: Office_Fan/cmnd/FanSpeed

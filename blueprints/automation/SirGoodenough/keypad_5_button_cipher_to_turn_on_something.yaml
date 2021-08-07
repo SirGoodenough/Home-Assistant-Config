@@ -1,5 +1,7 @@
 blueprint:
   name: Keypad 5 button cypher to turn on something
+  # Community link for blueprint:  source_url: 
+  # https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-before-you-turn-on-an-input-boolean/322385
   source_url: https://gist.github.com/SirGoodenough/fbd552e2c93ebaa5c9b3d2b4ebff3297
   domain: automation
   input:
@@ -42,13 +44,15 @@ blueprint:
     seq_status:
       name: Control Sequence Status Placeholder
       description: input_number - The internal use lock sequence number (set range
-        to 0 to 32)
+        to 0 to 100) You will need one of these for every copy of this automation,  IE
+        one for every lock code.
       selector:
         entity:
           domain: input_number
     on_timer:
       name: Lock On Time in Seconds
-      description: Time output signal is on in seconds
+      description: Time output signal is on in seconds.  Generally 5 seconds is good
+        here.
       default: 60
       selector:
         number:
@@ -62,10 +66,8 @@ variables:
   seq_status_last: '{{ expand(seq_status_ent)[0].last_changed | as_timestamp }}'
   seq_status_val: '{{ expand(seq_status_ent)[0].state }}'
   tnow: '{{ as_timestamp(now()) }}'
-
 mode: single
 max_exceeded: silent
-
 trigger:
 - platform: state
   entity_id: !input 'button_one'
@@ -97,8 +99,9 @@ action:
   service: input_number.set_value
   data:
     entity_id: !input 'seq_status'
-    value: "{% if seq_status_last < tnow - (5*60) %}\n  99\n{% else %} \n  {{ seq_status_val\
-      \ }}\n{% endif %}\n"
+    value: "{% if seq_status_last < tnow - (5*60) %}\n  {# It's been too long so reset\
+      \ the sequence #}\n  99\n{% else %} \n  {# Timing is good, so accept the value\
+      \ set #}\n  {{ seq_status_val }}\n{% endif %}\n"
 - choose:
   - alias: Somebody pushed the first button
     conditions:

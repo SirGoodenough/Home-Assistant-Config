@@ -1,5 +1,5 @@
 ---
-  - id: 38174225-1d9d-48df-82a4-c8bccbf2ce0a
+  - id: d358ec17-07bb-403a-a9fa-79e228dc1777
     alias: Front Door Keypad Unlock
     description: Front Door Unlock Keypad from Blueprint
     use_blueprint:
@@ -29,7 +29,7 @@
           entity_id: lock.front_door
 
 
-  - id: a23d5785-5c46-420a-815e-7e9e5f34fb01
+  - id: b193fbf4-4b43-4fa1-942e-9d31a2b47fc1
     alias: All Door Keypad Unlock
     description: All Door Unlock Keypad from Blueprint
     use_blueprint:
@@ -62,7 +62,7 @@
         target:
           entity_id: input_boolean.pad_enable2
 
-  - id: 3b0e159e-ba03-449d-a07c-40d9a09f7cbe
+  - id: 63dcb68f-1a77-42ff-ada2-b934b0f2ae71
     alias: All Door Keypad Lock
     description: All Door Lock Down Keypad from Blueprint
     use_blueprint:
