@@ -22,8 +22,8 @@
       - condition: time
         after: "19:59:57"
         before: "09:12:53"
-        # This is turned off in the fall / winter to disable everything
-      - condition: state
+      - alias: This is turned off in the fall winter to disable everything
+        condition: state
         entity_id: input_boolean.bedroom_auto_fan
         state: "on"
   action:
@@ -42,18 +42,30 @@
       entity_id: input_boolean.bedroom_cool
       to: "on"
   condition:
-    condition: and
-    conditions:
-      # Daytime as needed control
-      - condition: state
-        entity_id: input_boolean.bedroom_cool
-        state: "on"
-        # This is turned off in the fall / winter to disable everything
-      - condition: state
-        entity_id: input_boolean.bedroom_auto_fan
-        state: "on"
+    - alias: Daytime as needed control
+      condition: state
+      entity_id: input_boolean.bedroom_cool
+      state: "on"
   action:
     - service: script.bedroom_temp_control
+
+- id:
+    bc3cbabb-f2e5-4959-816a-26942b894dd6
+    # Bedroom Cool Daytime Control Reset
+  mode: queued
+  alias: Bedroom As Needed Auto Mode OFF
+  initial_state: on
+  trigger:
+    - platform: time
+      at: "19:00:26"
+  condition:
+    - alias: Daytime as needed control
+      condition: state
+      entity_id: input_boolean.bedroom_cool
+      state: "on"
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.bedroom_cool
 
 - id:
     66849a21-2bb7-4a68-9795-38e9a1c475f1
@@ -73,8 +85,8 @@
       - condition: time
         after: "19:59:57"
         before: "09:12:53"
-        # This is turned off in the fall / winter to disable everything
-      - condition: state
+      - alias: This is turned off in the fall winter to disable everything
+        condition: state
         entity_id: input_boolean.bedroom_auto_fan
         state: "on"
   action:
@@ -91,8 +103,8 @@
       entity_id: input_boolean.bedroom_cool
       to: "on"
   condition:
-    # This is turned off in the fall / winter to disable everything
-    - condition: state
+    - alias: This is turned off in the fall winter to disable everything
+      condition: state
       entity_id: input_boolean.bedroom_auto_fan
       state: "on"
   action:
@@ -108,8 +120,8 @@
     - platform: state
       entity_id: input_number.bedroom_auto_temp
   condition:
-    # This is turned off in the fall / winter to disable everything
-    - condition: state
+    - alias: This is turned off in the fall winter to disable everything
+      condition: state
       entity_id: input_boolean.bedroom_auto_fan
       state: "on"
   action:
@@ -131,12 +143,12 @@
     - platform: state
       entity_id: input_boolean.bedroom_cool
       to: "off"
-    # Morning off -->
-    - platform: time
+    - alias: Morning off
+      platform: time
       at: "09:12:58"
   condition:
-    # This is turned off in the fall / winter to disable everything
-    - condition: state
+    - alias: This is turned off in the fall winter to disable everything
+      condition: state
       entity_id: input_boolean.bedroom_auto_fan
       state: "on"
   action:
@@ -161,8 +173,8 @@
       - condition: numeric_state
         entity_id: sensor.bedroom_fan_si7021_temperature
         above: input_number.bedroom_auto_temp
-        # This is turned off in the fall / winter to disable everything
-      - condition: state
+      - alias: This is turned off in the fall winter to disable everything
+        condition: state
         entity_id: input_boolean.bedroom_auto_fan
         state: "on"
   action:
