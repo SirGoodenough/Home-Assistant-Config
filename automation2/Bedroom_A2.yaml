@@ -9,25 +9,30 @@
   alias: Bedroom Fan Auto Mode
   initial_state: on
   trigger:
-    - platform: state
+    - id: room_temp_change
+      platform: state
       entity_id: sensor.bedroom_fan_si7021_temperature
-    - platform: state
+    - id: enable_on
+      platform: state
       entity_id: input_boolean.bedroom_auto_fan
       to: "on"
-    - platform: time
+    - id: time_trigger
+      platform: time
       at: "20:00:04"
   condition:
     condition: and
     conditions:
-      - condition: time
+      - alias: Its within the time allowed
+        condition: time
         after: "19:59:57"
         before: "09:12:53"
-      # This is turned off in the fall winter to disable everything
-      - condition: state
+      - alias: This is turned off in the fall winter to disable everything
+        condition: state
         entity_id: input_boolean.bedroom_auto_fan
         state: "on"
   action:
-    - service: script.bedroom_temp_control
+    - alias: call bedroom control script
+      service: script.bedroom_temp_control
 
 - id:
     33679c7e-d77a-4aa4-9bdc-f9e2c46d9153
@@ -36,18 +41,21 @@
   alias: Bedroom As Needed Auto Mode
   initial_state: on
   trigger:
-    - platform: state
+    - id: temperature_trigger
+      platform: state
       entity_id: sensor.bedroom_fan_si7021_temperature
-    - platform: state
+    - id: enable_2_on
+      platform: state
       entity_id: input_boolean.bedroom_cool
       to: "on"
   condition:
-    # Daytime as needed control
-    - condition: state
+    - alias: Daytime as needed control
+      condition: state
       entity_id: input_boolean.bedroom_cool
       state: "on"
   action:
-    - service: script.bedroom_temp_control
+    - alias: call bedroom control script
+      service: script.bedroom_temp_control
 
 - id:
     bc3cbabb-f2e5-4959-816a-26942b894dd6
@@ -56,15 +64,17 @@
   alias: Bedroom As Needed Auto Mode OFF
   initial_state: on
   trigger:
-    - platform: time
+    - id: off_time
+      platform: time
       at: "19:00:26"
   condition:
-    # Daytime as needed control
-    - condition: state
+    - alias: Daytime as needed control
+      condition: state
       entity_id: input_boolean.bedroom_cool
       state: "on"
   action:
-    - service: input_boolean.turn_off
+    - alias: Shut it script.br_down 
+      service: input_boolean.turn_off
       entity_id: input_boolean.bedroom_cool
 
 - id:
@@ -74,23 +84,27 @@
   alias: Bedroom AC Control
   initial_state: on
   trigger:
-    - platform: time
+    - id: time_hit
+      platform: time
       at: "20:34:06"
-    - platform: state
+    - id: enable_on
+      platform: state
       entity_id: input_boolean.bedroom_auto_fan
       to: "on"
   condition:
     condition: and
     conditions:
-      - condition: time
+      - alias: Its within the time allowed
+        condition: time
         after: "19:59:57"
         before: "09:12:53"
-      # This is turned off in the fall winter to disable everything
-      - condition: state
+      - alias: This is turned off in the fall winter to disable everything
+        condition: state
         entity_id: input_boolean.bedroom_auto_fan
         state: "on"
   action:
-    - service: script.bedroom_ac_start
+    - alias: call bedroom ac start script
+      service: script.bedroom_ac_start
 
 - id:
     48bc08a6-0808-4fc8-9a7c-8290fa14795a
@@ -99,16 +113,18 @@
   alias: Bedroom AC Control
   initial_state: on
   trigger:
-    - platform: state
+    - id: enable_on
+      platform: state
       entity_id: input_boolean.bedroom_cool
       to: "on"
   condition:
-    # This is turned off in the fall winter to disable everything
-    - condition: state
+    - alias: This is turned off in the fall winter to disable everything
+      condition: state
       entity_id: input_boolean.bedroom_auto_fan
       state: "on"
   action:
-    - service: script.bedroom_ac_start
+    - alias: call bedroom ac start script
+      service: script.bedroom_ac_start
 
 - id:
     7a06edf5-cd41-43f7-8fff-15ae61551090
@@ -117,15 +133,17 @@
   alias: Bedroom AC Temp
   initial_state: on
   trigger:
-    - platform: state
+    - id: set_number_changed
+      platform: state
       entity_id: input_number.bedroom_auto_temp
   condition:
-    # This is turned off in the fall winter to disable everything
-    - condition: state
+    - alias: This is turned off in the fall winter to disable everything
+      condition: state
       entity_id: input_boolean.bedroom_auto_fan
       state: "on"
   action:
-    - service: climate.set_temperature
+    - alias: set the climate temp
+      service: climate.set_temperature
       data:
         entity_id: climate.gemodule5384
         temperature: "{{ states.input_number.bedroom_auto_temp.state | float }}"
@@ -134,25 +152,29 @@
     d3edc532-448c-432c-84c7-b2a0dc32fd84
     # turn off the stuff when you turn the automation triggers off.
     # Turn the fan off in the morning to wake my ass up.  mode: queued
+  mode: queued
   alias: Bedroom Fan bedroom_auto_temp Off Mode
   initial_state: on
   trigger:
-    - platform: state
+    - id: auto-fan_off
+      platform: state
       entity_id: input_boolean.bedroom_auto_fan
       to: "off"
-    - platform: state
+    - id: bedroom_cool_off
+      platform: state
       entity_id: input_boolean.bedroom_cool
       to: "off"
-    - alias: Morning off
+    - id: morning_off
       platform: time
       at: "09:12:58"
   condition:
-    # This is turned off in the fall winter to disable everything
-    - condition: state
+    - alias: This is turned off in the fall winter to disable everything
+      condition: state
       entity_id: input_boolean.bedroom_auto_fan
       state: "on"
   action:
-    - service: script.bedroom_cooling_off
+    - alias: call shut it down script
+      service: script.bedroom_cooling_off
 
 - id:
     1a863145-656e-4dd6-8cbf-1de4bc3665f3
@@ -162,35 +184,35 @@
   alias: Bedroom Door is Open
   initial_state: on
   trigger:
-    - platform: time
+    - id: check_time
+      platform: time
       at: "19:34:06"
   condition:
     condition: and
     conditions:
-      - condition: state
+      - alias: The door is closed
+        condition: state
         entity_id: binary_sensor.bedroom
         state: "on"
-      - condition: numeric_state
+      - alias: Its warmer than the room setting
+        condition: numeric_state
         entity_id: sensor.bedroom_fan_si7021_temperature
         above: input_number.bedroom_auto_temp
-      # This is turned off in the fall winter to disable everything
-      - condition: state
+      - alias: This is turned off in the fall winter to disable everything
+        condition: state
         entity_id: input_boolean.bedroom_auto_fan
         state: "on"
   action:
-    - service:
-        tts.cloud_say
-        # Send Warning...
+    - alias: Send Warning
+      service: tts.cloud_say
       data:
         entity_id: media_player.kitchen_hub, media_player.living_room_speaker
         message: "The Bedroom door is open."
         options:
           gender: female
         language: en-US
-    - service:
-        mqtt.publish
-        # Force the switch closed.
-        #  Assume someone checked the door.
+    - alias: Force the switch closed and assume someone checked the door
+      service: mqtt.publish
       data:
         topic: rf433/Bedroom
         payload: "OFF"
