@@ -107,7 +107,7 @@
       from: 'on'
       to: 'off'
       for:
-        seconds: 30
+        minutes: 5
     action:
     - service: tts.cloud_say
       data:
