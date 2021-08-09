@@ -1,7 +1,7 @@
 blueprint:
   name: Auto_Fan_Temperature_Control_for_3-Speed_Fan
   # Community link for blueprint:  source_url: 
-  # https://community.home-assistant.io/t/door-open-tts-cloud-say-announcer-nabu-casa-required/316046
+  # https://community.home-assistant.io/t/auto-fan-temperature-control-for-3-speed-fan-ifanxx-tasmota/326419
   source_url: https://gist.github.com/SirGoodenough/15003002fc5409f029f38914876fa728
   domain: automation
   input:
