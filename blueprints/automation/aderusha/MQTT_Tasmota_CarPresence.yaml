@@ -1,9 +1,6 @@
 blueprint:
   name: MQTT_Tasmota_CarPresence
   description: Open garage door when car connects to Wi-Fi
-  # Community link for blueprint:  source_url: 
-  # https://community.home-assistant.io/t/ha-blueprint-to-use-tasmota-updated-esps-to-do-the-luma-car-presence-in-home-assistant-see-https-github-com-aderusha-mqttcarpresence-for-the-full-story/327717
-  source_url: https://gist.github.com/SirGoodenough/f2fb094c399a2a308bc74938cb428716
   domain: automation
   input:
     garage_door:
@@ -18,6 +15,7 @@ blueprint:
       selector:
         entity:
           domain: switch
+  source_url: https://github.com/aderusha/MQTTCarPresence/blob/master/MQTT_Tasmota_CarPresence.yaml
 mode: single
 trigger:
 - platform: state
