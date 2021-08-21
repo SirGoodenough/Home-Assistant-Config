@@ -89,7 +89,6 @@
     - platform: time
       at: 06:18:14
   action:
-    - service: rest_command.tasmoadmin_backup
     - service: tts.clear_cache
     - service: hassio.addon_start
       data:
@@ -110,20 +109,19 @@
       event: start
   action:
     - delay: 00:00:39
-    # Tell the tasmota's to report home after boot so the sensors are updated.
-    - service: mqtt.publish
+    - alias: Tell the tasmotas to report home after boot so the sensors are updated
+      service: mqtt.publish
       data:
         topic: tasmotas/cmnd/backlog
         payload: "state; status 8; status 11"
-    # Assume it's dark, then the lights will work.
-    #  Prevents 'IDK' state and lights not working.
-    - service: mqtt.publish
+    - alias: Assume its dark then the lights will work to revents IDK state and lights not working
+      service: mqtt.publish
       data:
         topic: Outside/cmnd/EVENT
         payload: "DARK"
         retain: true
-    # Add extra delay so python script is running when this trys to access it.
-    - delay: 00:04:14
+    - alias: Add extra delay so is running when accessed
+      delay: 00:04:14
     - service: switch.turn_on
       entity_id: switch.chromecast
     - service: switch.turn_off
