@@ -24,11 +24,6 @@
                 "id": "flush"
             },
             {
-                "name": "Mom Bedtime",
-                "icon": "mdi:flower",
-                "id": "mom_bedtime"
-            },
-            {
                 "name": "Mist Button",
                 "icon": "mdi:pot-steam-outline",
                 "id": "mist_button"

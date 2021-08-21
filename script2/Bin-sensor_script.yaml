@@ -58,6 +58,19 @@
   bedtime_button_mom:
     alias: Bedtime Button Mom
     sequence:
-      - service: input_boolean.turn_on
-        data: 
-          entity_id: input_boolean.mom_bedtime
+      - service: input_boolean.turn_off
+        data: {}
+        entity_id: input_boolean.mom_bedtime
+      - service: lock.lock
+        target:
+          entity_id: all
+      - service: light.turn_on
+        data: {}
+        entity_id: light.stairway_light
+      - delay: 00:02:00
+      - service: light.turn_off
+        data: {}
+        entity_id: light.livingroomlight
+      - service: light.turn_off
+        data: {}
+        entity_id: light.mom_light
