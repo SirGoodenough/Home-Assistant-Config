@@ -82,6 +82,9 @@
                                     "entity": "light.livingroomlight"
                                 },
                                 {
+                                    "entity": "script.bedtime_button_mom"
+                                },
+                                {
                                     "entity": "light.fp_socket"
                                 },
                                 {

@@ -34,8 +34,7 @@
         entity_id: binary_sensor.moms_button1
         to: "on"
     action:
-      - service: light.toggle
-        entity_id: light.mom_light
+      - service: script.bedtime_button_mom
 
   - id: b3a7f7fe-0a9f-4e69-9762-2d067fecb225
     alias: Toggle Moms Work Light
@@ -46,4 +45,4 @@
         to: "on"
     action:
       - service: light.toggle
-        entity_id: light.livingroomlight
+        entity_id: light.livingroomlight, light.mom_light
