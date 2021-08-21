@@ -4,7 +4,7 @@ automation manual: !include_dir_merge_list ./automation2
 automation dev: !include_dir_merge_list ./automationDev
 binary_sensor: !include binary_sensors.yaml
 camera: !include camera.yaml
-climate: !include climate.yaml
+# climate: !include climate.yaml
 cloud: !include cloud.yaml
 config:
 conversation:
