@@ -76,7 +76,8 @@
           {% else %}
             DAY
           {% endif %}
-    - delay: 1800 # Was triggering every 2 mins.  Change to 30 mins.
+    - alias: Was triggering every 2 mins so changed to 30 mins
+      delay: 1800
 
 ####################################################
 # Daily Back-up                                    #
