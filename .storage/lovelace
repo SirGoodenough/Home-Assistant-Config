@@ -2587,7 +2587,8 @@
                                 "yellow": 50
                             },
                             "theme": "default",
-                            "type": "gauge"
+                            "type": "gauge",
+                            "needle": true
                         },
                         {
                             "type": "gauge",
@@ -2598,7 +2599,8 @@
                                 "green": 70,
                                 "yellow": 50,
                                 "red": 30
-                            }
+                            },
+                            "needle": true
                         },
                         {
                             "entity": "sensor.bmt_hall_rf_socket_d_rssi",
@@ -2610,7 +2612,8 @@
                                 "yellow": 50
                             },
                             "theme": "default",
-                            "type": "gauge"
+                            "type": "gauge",
+                            "needle": true
                         },
                         {
                             "entity": "sensor.bedroom_fan_rssi",
@@ -2622,7 +2625,8 @@
                                 "yellow": 50
                             },
                             "theme": "default",
-                            "type": "gauge"
+                            "type": "gauge",
+                            "needle": true
                         },
                         {
                             "entity": "sensor.dishwasher_rssi",
@@ -2634,7 +2638,8 @@
                                 "yellow": 50
                             },
                             "theme": "default",
-                            "type": "gauge"
+                            "type": "gauge",
+                            "needle": true
                         },
                         {
                             "entity": "sensor.garagefront_light_rssi",
@@ -2646,7 +2651,8 @@
                                 "yellow": 50
                             },
                             "theme": "default",
-                            "type": "gauge"
+                            "type": "gauge",
+                            "needle": true
                         },
                         {
                             "entity": "sensor.bmt_hall_rf_socket_u_rssi",
@@ -2658,7 +2664,8 @@
                                 "yellow": 50
                             },
                             "theme": "default",
-                            "type": "gauge"
+                            "type": "gauge",
+                            "needle": true
                         },
                         {
                             "entity": "sensor.fp_rf_relay_rssi",
@@ -2670,7 +2677,8 @@
                                 "yellow": 50
                             },
                             "theme": "default",
-                            "type": "gauge"
+                            "type": "gauge",
+                            "needle": true
                         },
                         {
                             "type": "gauge",
@@ -2681,7 +2689,8 @@
                                 "red": -30
                             },
                             "min": -100,
-                            "max": 1
+                            "max": 1,
+                            "needle": true
                         },
                         {
                             "entity": "sensor.sidelock_rssi",
@@ -2693,7 +2702,8 @@
                                 "yellow": 50
                             },
                             "theme": "default",
-                            "type": "gauge"
+                            "type": "gauge",
+                            "needle": true
                         },
                         {
                             "type": "gauge",
@@ -2705,7 +2715,8 @@
                                 "yellow": 50,
                                 "red": 30
                             },
-                            "name": "Office Light Mom RSSI"
+                            "name": "Office Light Mom RSSI",
+                            "needle": true
                         },
                         {
                             "entity": "sensor.frontlock_rssi",
@@ -2717,7 +2728,8 @@
                                 "yellow": 50
                             },
                             "theme": "default",
-                            "type": "gauge"
+                            "type": "gauge",
+                            "needle": true
                         },
                         {
                             "entity": "sensor.wash_machine_rssi",
@@ -2729,20 +2741,8 @@
                                 "yellow": 50
                             },
                             "theme": "default",
-                            "type": "gauge"
-                        },
-                        {
-                            "entity": "sensor.plug3_rssi",
-                            "max": 100,
-                            "min": 0,
-                            "severity": {
-                                "green": 70,
-                                "red": 30,
-                                "yellow": 50
-                            },
-                            "theme": "default",
                             "type": "gauge",
-                            "name": "Tarantula RSSI"
+                            "needle": true
                         },
                         {
                             "entity": "sensor.garagetop_light_rssi",
@@ -2754,7 +2754,8 @@
                                 "yellow": 50
                             },
                             "theme": "default",
-                            "type": "gauge"
+                            "type": "gauge",
+                            "needle": true
                         },
                         {
                             "entity": "sensor.garageback_light_rssi",
@@ -2766,7 +2767,8 @@
                                 "yellow": 50
                             },
                             "theme": "default",
-                            "type": "gauge"
+                            "type": "gauge",
+                            "needle": true
                         },
                         {
                             "entity": "sensor.bathroom_rssi",
@@ -2778,7 +2780,8 @@
                                 "yellow": 50
                             },
                             "theme": "default",
-                            "type": "gauge"
+                            "type": "gauge",
+                            "needle": true
                         },
                         {
                             "entity": "sensor.dust_collector_rssi",
@@ -2790,7 +2793,8 @@
                                 "yellow": 50
                             },
                             "theme": "default",
-                            "type": "gauge"
+                            "type": "gauge",
+                            "needle": true
                         },
                         {
                             "entity": "sensor.sonoff_rf_bridge_1_rssi",
@@ -2802,7 +2806,8 @@
                                 "yellow": 50
                             },
                             "theme": "default",
-                            "type": "gauge"
+                            "type": "gauge",
+                            "needle": true
                         },
                         {
                             "entity": "sensor.kitchenfan_rssi",
@@ -2814,7 +2819,8 @@
                                 "yellow": 50
                             },
                             "theme": "default",
-                            "type": "gauge"
+                            "type": "gauge",
+                            "needle": true
                         },
                         {
                             "entity": "sensor.jens_new_fan_rssi",
@@ -2826,7 +2832,8 @@
                                 "yellow": 50
                             },
                             "theme": "default",
-                            "type": "gauge"
+                            "type": "gauge",
+                            "needle": true
                         },
                         {
                             "entity": "sensor.kitchensink_rssi",
@@ -2838,7 +2845,8 @@
                                 "yellow": 50
                             },
                             "theme": "default",
-                            "type": "gauge"
+                            "type": "gauge",
+                            "needle": true
                         },
                         {
                             "type": "gauge",
@@ -2850,7 +2858,8 @@
                                 "green": 70,
                                 "yellow": 50,
                                 "red": 30
-                            }
+                            },
+                            "needle": true
                         },
                         {
                             "entity": "sensor.sonoff_rf_bridge_2_rssi",
@@ -2862,7 +2871,8 @@
                                 "yellow": 50
                             },
                             "theme": "default",
-                            "type": "gauge"
+                            "type": "gauge",
+                            "needle": true
                         },
                         {
                             "entity": "sensor.jensneb_rssi",
@@ -2874,7 +2884,8 @@
                                 "yellow": 50
                             },
                             "theme": "default",
-                            "type": "gauge"
+                            "type": "gauge",
+                            "needle": true
                         },
                         {
                             "entity": "sensor.humidifier_rssi",
@@ -2886,7 +2897,8 @@
                                 "yellow": 50
                             },
                             "theme": "default",
-                            "type": "gauge"
+                            "type": "gauge",
+                            "needle": true
                         },
                         {
                             "entity": "sensor.serverstrip_rssi",
@@ -2898,7 +2910,8 @@
                                 "yellow": 50
                             },
                             "theme": "default",
-                            "type": "gauge"
+                            "type": "gauge",
+                            "needle": true
                         },
                         {
                             "entity": "sensor.bulb1_rssi",
@@ -2911,7 +2924,8 @@
                             },
                             "theme": "default",
                             "type": "gauge",
-                            "name": "Jens TV Light RSSI"
+                            "name": "Jens TV Light RSSI",
+                            "needle": true
                         },
                         {
                             "entity": "sensor.dryer3_rssi",
@@ -2923,7 +2937,8 @@
                                 "yellow": 50
                             },
                             "theme": "default",
-                            "type": "gauge"
+                            "type": "gauge",
+                            "needle": true
                         },
                         {
                             "entity": "sensor.livingroomlight_rssi",
@@ -2931,11 +2946,12 @@
                             "min": 0,
                             "severity": {
                                 "green": 70,
-                                "red": 3330,
+                                "red": 30,
                                 "yellow": 50
                             },
                             "theme": "default",
-                            "type": "gauge"
+                            "type": "gauge",
+                            "needle": true
                         },
                         {
                             "entity": "sensor.mom_light_rssi",
@@ -2947,7 +2963,8 @@
                                 "yellow": 50
                             },
                             "theme": "default",
-                            "type": "gauge"
+                            "type": "gauge",
+                            "needle": true
                         },
                         {
                             "entity": "sensor.garage_door_rssi",
@@ -2959,7 +2976,8 @@
                                 "yellow": 50
                             },
                             "theme": "default",
-                            "type": "gauge"
+                            "type": "gauge",
+                            "needle": true
                         },
                         {
                             "type": "gauge",
@@ -2970,7 +2988,8 @@
                                 "green": 70,
                                 "yellow": 50,
                                 "red": 30
-                            }
+                            },
+                            "needle": true
                         }
                     ],
                     "icon": "mdi:signal-variant",
