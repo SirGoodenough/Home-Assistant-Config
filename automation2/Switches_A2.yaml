@@ -109,55 +109,6 @@
       entity_id: light.kitchen_down_lights
 
 ####################################################
-# Mom's Light                                      #
-####################################################
-- id: 4e6e270a-24bc-497e-ae34-a6b6bee86eda
-  alias: Toggle Moms Light
-  initial_state: on
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.moms_button1
-      to: "on"
-  action:
-    - service: light.toggle
-      entity_id: light.mom_light
-
-- id: b3a7f7fe-0a9f-4e69-9762-2d067fecb225
-  alias: Toggle Moms Work Light
-  initial_state: on
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.moms_button2
-      to: "on"
-  action:
-    - service: light.toggle
-      entity_id: light.livingroomlight
-
-- id: d8bd66aa-690f-47f2-9763-4a7131de93ae
-  alias: Moms Call Button
-  mode: queued
-  initial_state: on
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.moms_call_button
-      to: "on"
-  action:
-    - service: tts.cloud_say
-      data:
-        entity_id: group.grandma_stack
-        message: "Grandma in need."
-        options:
-          gender: female
-        language: >
-          {{ ("en-US",
-              "en-GB", 
-              "en-AU", 
-              "en-IN", 
-              "en-IE", 
-              "en-CA"
-            ) |random }}
-
-####################################################
 # Office Light Button                              #
 ####################################################
 - id: 0dc42e48-54d5-435b-9e07-b9df9f2cb491
@@ -245,9 +196,9 @@
     - platform: state
       entity_id: binary_sensor.stairs_down
       to: "on"
-    - platform: state
-      entity_id: binary_sensor.upstairs_pir
-      to: "on"
+    # - platform: state
+    #   entity_id: binary_sensor.upstairs_pir
+    #   to: "on"
   action:
     - service: light.toggle
       entity_id: light.stairway_light
