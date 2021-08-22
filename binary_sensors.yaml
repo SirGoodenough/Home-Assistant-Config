@@ -414,6 +414,18 @@
     payload_not_available: Offline
 
   - platform: mqtt
+    name: "Moms button3"
+    unique_id: 23a137d4-4af6-4acd-b12f-a3f76d0024cb
+    device_class: light
+    state_topic: rf433/MomsButton3
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 2
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
     name: "Office Light 1"
     unique_id: 1326d133-8823-4eca-b48a-28670644bac4
     device_class: light
