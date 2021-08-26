@@ -10,3 +10,15 @@
       fan_on_time: 0:00:01
       fan_off_time: '23:59:59'
       mqtt_fan_topic: Office_Fan/cmnd/FanSpeed
+- id: '1629965506803'
+  alias: Door open tts.cloud_say announcer (Nabu-Casa required)
+  description: ''
+  use_blueprint:
+    path: SirGoodenough/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml
+    input:
+      speaker_language: en-AU
+      speaker_gender: male
+      door_entity: binary_sensor.back_door_open_433
+      speaker_target: media_player.living_room_speaker
+      announcement_message: It matters not what I say.
+      final_message: It matters only what I do.
