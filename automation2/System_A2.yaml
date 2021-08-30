@@ -60,8 +60,7 @@
 - id: c4d89216-e97a-470b-82e9-cb9e4e66e601
   initial_state: on
   alias: MQTT Dark Switch
-  mode: single # Part of delay
-  max_exceeded: silent # Part of delay
+  mode: queued
   trigger:
     - platform: state
       entity_id: binary_sensor.dark_outside
@@ -76,8 +75,6 @@
           {% else %}
             DAY
           {% endif %}
-    - alias: Was triggering every 2 mins so changed to 30 mins
-      delay: 1800
 
 ####################################################
 # Daily Back-up                                    #
