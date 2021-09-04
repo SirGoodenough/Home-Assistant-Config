@@ -137,13 +137,31 @@
                                     "entity": "lock.front_door"
                                 },
                                 {
-                                    "entity": "lock.kwikset_touchpad_electronic_deadbolt_locked"
-                                },
-                                {
                                     "entity": "lock.side_door"
                                 },
                                 {
+                                    "entity": "lock.kwikset_touchpad_electronic_deadbolt_locked"
+                                },
+                                {
+                                    "entity": "cover.garage_door"
+                                },
+                                {
+                                    "entity": "binary_sensor.front_door_open"
+                                },
+                                {
+                                    "entity": "binary_sensor.side_door_open_2"
+                                },
+                                {
+                                    "entity": "binary_sensor.back_door_open_433"
+                                },
+                                {
                                     "entity": "binary_sensor.garage_side_door_open"
+                                },
+                                {
+                                    "entity": "binary_sensor.front_door_open_433"
+                                },
+                                {
+                                    "entity": "binary_sensor.side_door_open_433"
                                 }
                             ],
                             "title": "Glance",
