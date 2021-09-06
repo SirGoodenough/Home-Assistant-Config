@@ -779,6 +779,43 @@
                                     "entity_id": "input_boolean.pad_enable2"
                                 }
                             }
+                        },
+                        {
+                            "type": "glance",
+                            "entities": [
+                                {
+                                    "entity": "lock.front_door"
+                                },
+                                {
+                                    "entity": "lock.side_door"
+                                },
+                                {
+                                    "entity": "lock.kwikset_touchpad_electronic_deadbolt_locked"
+                                },
+                                {
+                                    "entity": "cover.garage_door"
+                                },
+                                {
+                                    "entity": "binary_sensor.front_door_open"
+                                },
+                                {
+                                    "entity": "binary_sensor.side_door_open_2"
+                                },
+                                {
+                                    "entity": "binary_sensor.back_door_open_433"
+                                },
+                                {
+                                    "entity": "binary_sensor.garage_side_door_open"
+                                },
+                                {
+                                    "entity": "binary_sensor.front_door_open_433"
+                                },
+                                {
+                                    "entity": "binary_sensor.side_door_open_433"
+                                }
+                            ],
+                            "title": "Glance",
+                            "columns": 4
                         }
                     ],
                     "icon": "mdi:alpha-j-box",
