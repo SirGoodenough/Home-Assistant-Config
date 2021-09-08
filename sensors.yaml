@@ -438,19 +438,3 @@
       switch_count:
         friendly_name: "Swt"
         value_template: "{{ states.switch | count }}"
-
-  ####################################################
-  #  Snapshot                                        #
-  ####################################################
-  - platform: template
-    sensors:
-      latest_backup:
-        value_template: >-
-          {% set found=namespace(snap=None,time=0) %}
-          {% for snap in state_attr('sensor.snapshot_backup', 'snapshots') %}
-            {% if as_timestamp(snap.date) > found.time and snap.state == "Backed Up" %}
-              {% set found.time = as_timestamp(snap.date) %}
-              {% set found.snap = snap %}
-            {% endif %}
-          {% endfor %}
-          {{ found.snap.name }} ({{ found.snap.size}})
