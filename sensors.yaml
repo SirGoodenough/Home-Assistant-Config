@@ -299,8 +299,11 @@
   - platform: time_date
     display_options:
       - "date_time_iso"
-      - date
-      - time
+      - "date_time_utc"
+      - "date"
+      - "time"
+      - "time_utc"
+      - "beat"
 
   # Build on the standard sensor to produce one that can be customized
   - platform: template
