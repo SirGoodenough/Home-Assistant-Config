@@ -3245,6 +3245,19 @@
                                     "graph": "line"
                                 }
                             ]
+                        },
+                        {
+                            "type": "button",
+                            "tap_action": {
+                                "action": "call-service",
+                                "service": "script.page_drzzs",
+                                "service_data": {},
+                                "target": {}
+                            },
+                            "entity": "switch.b2",
+                            "name": "Page DrZzs JIM ONLY",
+                            "icon": "mdi:youtube",
+                            "icon_height": "40px"
                         }
                     ],
                     "icon": "mdi:brain",

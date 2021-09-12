@@ -26,3 +26,14 @@
       data:
         "topic": "tasmotas/cmnd/upgrade"
         "payload": 1
+
+####################################################
+# Page DrZzs                                       #
+####################################################
+  page_drzzs:
+    alias: Page DrZzs
+    sequence:
+    - service: webhook_service.basic_webhook
+      data:
+        webhook: !secret DrZzsPage
+        json: '1'
