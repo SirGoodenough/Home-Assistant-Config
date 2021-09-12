@@ -53,4 +53,5 @@ switch two: !include_dir_merge_list ./switch2
 timer: !include timer.yaml
 tts: !include tts.yaml
 #updater: !include updater.yaml
+webhook_service:
 zwave: !include zwave.yaml
