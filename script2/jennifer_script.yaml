@@ -66,6 +66,9 @@
   #####################################################
   chromecast_on_sequence:
     sequence:
+      - service: switch.turn_on
+        target:
+          entity_id: switch.chromecast
       - service: script.turn_on
         target:
           entity_id: script.denon_power
@@ -94,6 +97,9 @@
   #####################################################
   firetv_on_sequence:
     sequence:
+      - service: switch.turn_on
+        target:
+          entity_id: switch.chromecast
       - service: script.turn_on
         target:
           entity_id: script.denon_power
