@@ -243,6 +243,55 @@
           entity_id: remote.downstairs_mini_remote
           device: Reciever
           command: volume_up
+  denon_multeq:
+    sequence:
+      - service: remote.send_command
+        data:
+          entity_id: remote.downstairs_mini_remote
+          device: Reciever
+          command: multeq
+  denon_dvneq:
+    sequence:
+      - service: remote.send_command
+        data:
+          entity_id: remote.downstairs_mini_remote
+          device: Reciever
+          command: dvneq
+  denon_a-dsx:
+    sequence:
+      - service: remote.send_command
+        data:
+          entity_id: remote.downstairs_mini_remote
+          device: Reciever
+          command: a-dsx
+  denon_standard:
+    sequence:
+      - service: remote.send_command
+        data:
+          entity_id: remote.downstairs_mini_remote
+          device: Reciever
+          command: standard
+  denon_d-st:
+    sequence:
+      - service: remote.send_command
+        data:
+          entity_id: remote.downstairs_mini_remote
+          device: Reciever
+          command: d-st
+  denon_simulation:
+    sequence:
+      - service: remote.send_command
+        data:
+          entity_id: remote.downstairs_mini_remote
+          device: Reciever
+          command: simulation
+  denon_pure:
+    sequence:
+      - service: remote.send_command
+        data:
+          entity_id: remote.downstairs_mini_remote
+          device: Reciever
+          command: pure
 
   #####################################
   ## Jens BD                         ##
