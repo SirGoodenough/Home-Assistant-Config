@@ -918,6 +918,27 @@
                                 },
                                 {
                                     "entity": "script.denon_tune_search"
+                                },
+                                {
+                                    "entity": "script.denon_multeq_out"
+                                },
+                                {
+                                    "entity": "script.denon_dvneq_out"
+                                },
+                                {
+                                    "entity": "script.denon_a_dsx_out"
+                                },
+                                {
+                                    "entity": "script.denon_simulation_out"
+                                },
+                                {
+                                    "entity": "script.denon_d_st_out"
+                                },
+                                {
+                                    "entity": "script.denon_pure_out"
+                                },
+                                {
+                                    "entity": "script.denon_standard_out"
                                 }
                             ],
                             "show_header_toggle": false,

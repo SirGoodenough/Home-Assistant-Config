@@ -243,49 +243,49 @@
           entity_id: remote.downstairs_mini_remote
           device: Reciever
           command: volume_up
-  denon_multeq:
+  denon_multeq_out:
     sequence:
       - service: remote.send_command
         data:
           entity_id: remote.downstairs_mini_remote
           device: Reciever
           command: multeq
-  denon_dvneq:
+  denon_dvneq_out:
     sequence:
       - service: remote.send_command
         data:
           entity_id: remote.downstairs_mini_remote
           device: Reciever
           command: dvneq
-  denon_a-dsx:
+  denon_a_dsx_out:
     sequence:
       - service: remote.send_command
         data:
           entity_id: remote.downstairs_mini_remote
           device: Reciever
           command: a-dsx
-  denon_standard:
+  denon_standard_out:
     sequence:
       - service: remote.send_command
         data:
           entity_id: remote.downstairs_mini_remote
           device: Reciever
           command: standard
-  denon_d-st:
+  denon_d_st_out:
     sequence:
       - service: remote.send_command
         data:
           entity_id: remote.downstairs_mini_remote
           device: Reciever
           command: d-st
-  denon_simulation:
+  denon_simulation_out:
     sequence:
       - service: remote.send_command
         data:
           entity_id: remote.downstairs_mini_remote
           device: Reciever
           command: simulation
-  denon_pure:
+  denon_pure_out:
     sequence:
       - service: remote.send_command
         data:

@@ -277,8 +277,35 @@
   script.denon_volume_down:
     friendly_name: "Jens Rec Vol Down"
     icon: mdi:volume-minus
-    # assumed_state: false  
 
   script.denon_volume_up:
     friendly_name: "Jens Rec Vol Up"
     icon: mdi:volume-plus
+
+  script.denon_multeq_out:
+    friendly_name: "Multi CH Out"
+    icon: mdi:speaker-multiple
+
+  script.denon_dvneq_out:
+    friendly_name: "DV-EQ Out "
+    icon: mdi:speaker-multiple
+
+  script.denon_a_dsx_out:
+    friendly_name: "A-DSX Out"
+    icon: mdi:speaker-multiple
+
+  script.denon_standard_out:
+    friendly_name: "Standard Out"
+    icon: mdi:speaker
+
+  script.denon_d_st_out:
+    friendly_name: "D-ST Out"
+    icon: mdi:speaker-multiple
+
+  script.denon_simulation_out:
+    friendly_name: "Simulation Out"
+    icon: mdi:speaker-multiple
+
+  script.denon_pure_out:
+    friendly_name: "Pure Stereo Out"
+    icon: mdi:speaker
