@@ -842,6 +842,61 @@
                     "badges": [],
                     "cards": [
                         {
+                            "type": "grid",
+                            "cards": [
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.chromecast_on_sequence",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.chromecast_on_sequence",
+                                    "name": "Chromecast ON",
+                                    "show_icon": false
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.chromecast_off_sequence",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.chromecast_on_sequence",
+                                    "show_icon": false,
+                                    "name": "Chromecast OFF"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.firetv_on_sequence",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.firetv_on_sequence",
+                                    "name": "FireTV ON",
+                                    "show_icon": false
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.firetv_off_sequence",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.firetv_off_sequence",
+                                    "show_icon": false,
+                                    "name": "FireTV OFF"
+                                }
+                            ],
+                            "square": false,
+                            "columns": 2
+                        },
+                        {
                             "entities": [
                                 {
                                     "entity": "script.vizio_j_power"
