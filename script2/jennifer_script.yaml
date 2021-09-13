@@ -93,7 +93,7 @@
           entity_id: script.vizio_j_power
 
   #####################################################
-  # FireTV                                        #
+  # FireTV                                            #
   #####################################################
   firetv_on_sequence:
     sequence:
