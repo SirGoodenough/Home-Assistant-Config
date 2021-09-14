@@ -530,10 +530,6 @@
                         },
                         {
                             "type": "media-control",
-                            "entity": "media_player.nesthub9894"
-                        },
-                        {
-                            "type": "media-control",
                             "entity": "media_player.office_jamz",
                             "theme": "christmas"
                         },
@@ -860,11 +856,11 @@
                                     "type": "button",
                                     "tap_action": {
                                         "action": "call-service",
-                                        "service": "script.chromecast_off_sequence",
+                                        "service": "script.tv_off_sequence",
                                         "service_data": {},
                                         "target": {}
                                     },
-                                    "entity": "script.chromecast_on_sequence",
+                                    "entity": "script.tv_off_sequence",
                                     "show_icon": false,
                                     "name": "Chromecast OFF"
                                 },
@@ -884,13 +880,37 @@
                                     "type": "button",
                                     "tap_action": {
                                         "action": "call-service",
-                                        "service": "script.firetv_off_sequence",
+                                        "service": "script.tv_off_sequence",
                                         "service_data": {},
                                         "target": {}
                                     },
-                                    "entity": "script.firetv_off_sequence",
+                                    "entity": "script.tv_off_sequence",
                                     "show_icon": false,
                                     "name": "FireTV OFF"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.ota_tv_on_sequence",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.ota_tv_on_sequence",
+                                    "name": "OverTheAir ON",
+                                    "show_icon": false
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.tv_off_sequence",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.tv_off_sequence",
+                                    "show_icon": false,
+                                    "name": "OverTheAir OFF"
                                 }
                             ],
                             "square": false,
@@ -902,10 +922,10 @@
                                     "entity": "script.vizio_j_power"
                                 },
                                 {
-                                    "entity": "script.vizio_j_tv"
+                                    "entity": "script.vizio_j_vol_up"
                                 },
                                 {
-                                    "entity": "switch.chromecast"
+                                    "entity": "script.vizio_j_vol_down"
                                 },
                                 {
                                     "entity": "script.vizio_j_mute"
@@ -917,16 +937,16 @@
                                     "entity": "script.vizio_j_ch_down"
                                 },
                                 {
+                                    "entity": "script.vizio_j_tv"
+                                },
+                                {
                                     "entity": "script.vizio_j_hdmi"
                                 },
                                 {
-                                    "entity": "script.vizio_j_vol_up"
-                                },
-                                {
-                                    "entity": "script.vizio_j_vol_down"
-                                },
-                                {
                                     "entity": "script.vizio_j_av"
+                                },
+                                {
+                                    "entity": "switch.chromecast"
                                 }
                             ],
                             "show_header_toggle": false,
@@ -948,10 +968,10 @@
                                     "entity": "script.denon_mute"
                                 },
                                 {
-                                    "entity": "script.denon_tv_audio"
+                                    "entity": "script.denon_firetv"
                                 },
                                 {
-                                    "entity": "script.denon_firetv"
+                                    "entity": "script.denon_tv_audio"
                                 },
                                 {
                                     "entity": "script.denon_chromecast"

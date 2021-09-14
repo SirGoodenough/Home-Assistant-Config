@@ -62,63 +62,64 @@
           message: "Jennifer is asking for help!"
 
   #####################################################
-  # Chromecast                                        #
+  # TV Control                                        #
   #####################################################
+  tv_off_sequence:
+    sequence:
+      - service: script.turn_on
+        target:
+          entity_id: script.denon_power
+      - service: script.turn_on
+        target:
+          entity_id: script.vizio_j_power
+
   chromecast_on_sequence:
-    sequence:
-      - service: switch.turn_on
-        target:
-          entity_id: switch.chromecast
-      - service: script.turn_on
-        target:
-          entity_id: script.denon_power
-      - service: script.turn_on
-        target:
-          entity_id: script.vizio_j_power
-      - service: script.turn_on
-        target:
-          entity_id: script.denon_chromecast
-      - delay: 00:00:05
-      - service: script.turn_on
-        target:
-          entity_id: script.denon_multeq_out
+    alias: Turn the Chromecast on on Jennys TV
+    description: 'Runs the sequence to turn on Jennys TV in Chromecast Mode'
+    use_blueprint:
+      path: /config/blueprints/script/SirGoodenough/Broadlink_ON_script.yaml
+      input:
+        reciever_input: script.denon_chromecast
+        tv_mode: script.vizio_j_hdmi
 
-  chromecast_off_sequence:
-    sequence:
-      - service: script.turn_off
-        target:
-          entity_id: script.denon_power
-      - service: script.turn_off
-        target:
-          entity_id: script.vizio_j_power
-
-  #####################################################
-  # FireTV                                            #
-  #####################################################
   firetv_on_sequence:
-    sequence:
-      - service: switch.turn_on
-        target:
-          entity_id: switch.chromecast
-      - service: script.turn_on
-        target:
-          entity_id: script.denon_power
-      - service: script.turn_on
-        target:
-          entity_id: script.vizio_j_power
-      - service: script.turn_on
-        target:
-          entity_id: script.denon_firetv
-      - delay: 00:00:05
-      - service: script.turn_on
-        target:
-          entity_id: script.denon_multeq_out
+    alias: Turn the FireTV on on Jennys TV
+    description: 'Runs the sequence to turn on Jennys TV in FireTV Mode'
+    use_blueprint:
+      path: /config/blueprints/script/SirGoodenough/Broadlink_ON_script.yaml
+      input:
+        reciever_input: script.denon_firetv
+        tv_mode: script.vizio_j_hdmi
 
-  firetv_off_sequence:
-    sequence:
-      - service: script.turn_off
-        target:
-          entity_id: script.denon_power
-      - service: script.turn_off
-        target:
-          entity_id: script.vizio_j_power
+  ota_tv_on_sequence:
+    alias: Turn the Over-The-Air TV on on Jennys TV
+    description: 'Runs the sequence to turn on Jennys TV in FireTV Mode'
+    use_blueprint:
+      path: /config/blueprints/script/SirGoodenough/Broadlink_ON_script.yaml
+      input:
+        reciever_input: script.denon_tv_audio
+        tv_mode: script.vizio_j_tv
+
+
+
+
+  # chromecast_on_sequence:
+  #   sequence:
+  #     - service: switch.turn_on
+  #       target:
+  #         entity_id: switch.chromecast
+  #     - service: script.turn_on
+  #       target:
+  #         entity_id: script.denon_power
+  #     - delay: 00:00:03
+  #     - service: script.turn_on
+  #       target:
+  #         entity_id: script.vizio_j_power
+  #     - delay: 00:00:03
+  #     - service: script.turn_on
+  #       target:
+  #         entity_id: script.denon_chromecast
+  #     - delay: 00:00:03
+  #     - service: script.turn_on
+  #       target:
+  #         entity_id: script.denon_multeq_out
