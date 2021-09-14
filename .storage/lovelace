@@ -38,9 +38,6 @@
                                     "entity": "switch.dishwasher"
                                 },
                                 {
-                                    "entity": "media_player.kitchen_display"
-                                },
-                                {
                                     "entity": "lock.kwikset_touchpad_electronic_deadbolt_locked"
                                 },
                                 {
@@ -238,56 +235,6 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "fan.bedroom_fan",
-                                    "IsOffColor": "#F88416",
-                                    "IsOnLowColor": "#E78E85",
-                                    "IsOnMedColor": "#E54234",
-                                    "IsOnHiColor": "red",
-                                    "customTheme": true,
-                                    "customSetpoints": true,
-                                    "hiPercentage": 100,
-                                    "name": "Bedroom Fan",
-                                    "type": "custom:fan-percent-button-row"
-                                },
-                                {
-                                    "entity": "light.bedroom_light"
-                                },
-                                {
-                                    "entity": "sensor.bedroom_fanspeed"
-                                },
-                                {
-                                    "entity": "binary_sensor.bedroom"
-                                },
-                                {
-                                    "entity": "climate.gemodule5384"
-                                },
-                                {
-                                    "entity": "input_number.bedroom_auto_temp"
-                                },
-                                {
-                                    "entity": "input_boolean.bedroom_auto_fan"
-                                },
-                                {
-                                    "entity": "input_boolean.bedroom_cool"
-                                },
-                                {
-                                    "entity": "sensor.bedroom_fan_si7021_temperature"
-                                },
-                                {
-                                    "entity": "sensor.bedroom_fan_si7021_humidity"
-                                },
-                                {
-                                    "entity": "media_player.bedroom_speaker"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Bedroom",
-                            "type": "entities",
-                            "state_color": true
-                        },
-                        {
-                            "entities": [
-                                {
                                     "entity": "light.garagefront_light"
                                 },
                                 {
@@ -381,9 +328,6 @@
                                 },
                                 {
                                     "entity": "switch.power_supply"
-                                },
-                                {
-                                    "entity": "media_player.office_jamz"
                                 },
                                 {
                                     "entity": "sensor.benchstrip_rssi"
@@ -514,54 +458,6 @@
                             "type": "entities"
                         },
                         {
-                            "type": "media-control",
-                            "entity": "media_player.nesthub4245",
-                            "theme": "material_dark_pink"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.jenny_s_tv",
-                            "theme": "material_dark_pink"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.hismart_tv",
-                            "theme": "Dark - Blue"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.office_jamz",
-                            "theme": "christmas"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.office_speaker",
-                            "theme": "christmas"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.living_room_speaker"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.main_level_speakers",
-                            "theme": "Dark - Purple"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.office_speaker1",
-                            "theme": "christmas"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.workroom_speaker"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.intercom",
-                            "theme": "Dark - Purple"
-                        },
-                        {
                             "type": "calendar",
                             "entities": [
                                 "calendar.garbage_collection"
@@ -569,36 +465,67 @@
                         },
                         {
                             "type": "media-control",
-                            "entity": "media_player.jens_firestick",
-                            "theme": "material_dark_pink"
+                            "entity": "media_player.basement_speaker"
                         },
                         {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "switch.kitchen_display_do_not_disturb"
-                                },
-                                {
-                                    "entity": "sensor.kitchen_display_alarms"
-                                },
-                                {
-                                    "entity": "sensor.kitchen_display_timers"
-                                }
-                            ]
+                            "type": "media-control",
+                            "entity": "media_player.bathroom_speaker"
                         },
                         {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "switch.bedroom_speaker_do_not_disturb"
-                                },
-                                {
-                                    "entity": "sensor.bedroom_speaker_alarms"
-                                },
-                                {
-                                    "entity": "sensor.bedroom_speaker_timers"
-                                }
-                            ]
+                            "type": "media-control",
+                            "entity": "media_player.bedroom_firestick_air"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.bedroom_speaker"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.farg"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.garage_speaker"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.intercom"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.jenny_s_tv"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.jennys_room_display"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.kitchen_speaker"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.living_room_speaker"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.main_level_speakers"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.office_jamz"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.office_speaker_1"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.office_speaker_2"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.workroom_speaker"
                         }
                     ],
                     "icon": "mdi:home-automation",
@@ -702,30 +629,6 @@
                             "theme": "Animated Weather Card"
                         },
                         {
-                            "type": "media-control",
-                            "entity": "media_player.jenny_s_tv",
-                            "theme": "material_dark_pink"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.nesthub4245",
-                            "theme": "material_dark_pink"
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "switch.jennys_hub_do_not_disturb"
-                                },
-                                {
-                                    "entity": "sensor.jennys_hub_alarms"
-                                },
-                                {
-                                    "entity": "sensor.jennys_hub_timers"
-                                }
-                            ]
-                        },
-                        {
                             "type": "button",
                             "tap_action": {
                                 "action": "call-service",
@@ -809,6 +712,18 @@
                             ],
                             "title": "Glance",
                             "columns": 4
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.jennys_room_display"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.jenny_s_tv"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.farg"
                         }
                     ],
                     "icon": "mdi:alpha-j-box",
