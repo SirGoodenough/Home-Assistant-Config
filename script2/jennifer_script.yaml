@@ -73,6 +73,30 @@
         target:
           entity_id: script.vizio_j_power
 
+  blueray_off_sequence:
+    sequence:
+      - service: script.turn_on
+        target:
+          entity_id: script.denon_power
+      - service: script.turn_on
+        target:
+          entity_id: script.vizio_j_power
+      - service: script.turn_on
+        target:
+          entity_id: script.br_power
+
+  mecool_off_sequence:
+    sequence:
+      - service: script.turn_on
+        target:
+          entity_id: script.mc_power
+      - service: script.turn_on
+        target:
+          entity_id: script.vizio_j_power
+      - service: script.turn_on
+        target:
+          entity_id: script.denon_power
+
   chromecast_on_sequence:
     alias: Turn the Chromecast on on Jennys TV
     description: 'Runs the sequence to turn on Jennys TV in Chromecast Mode'
@@ -99,6 +123,39 @@
       input:
         reciever_input: script.denon_tv_audio
         tv_mode: script.vizio_j_tv
+
+  blueray_on_sequence:
+    alias: Turn the BlueRay on on Jennys TV
+    description: 'Runs the sequence to turn on Jennys TV in BlueRay Mode'
+    use_blueprint:
+      path: /config/blueprints/script/SirGoodenough/Broadlink_ON_script.yaml
+      input:
+        reciever_input: script.denon_blue_ray
+          # \|/  Using this to turn the BlueRay ON  \|/
+        tv_ota_mode: script.br_power
+          # \|/  Using this to open the drive tray  \|/
+        tv_mode: script.br_eject
+
+  mecool_on_sequence:
+    alias: Turn the Mecool on on Jennys TV
+    description: 'Runs the sequence to turn on Jennys TV in Mecool Mode'
+    use_blueprint:
+      path: /config/blueprints/script/SirGoodenough/Broadlink_ON_script.yaml
+      input:
+        reciever_input: script.denon_mecool
+          # \|/  Using this to turn MeCool ON  \|/
+        tv_ota_mode: script.mc_power
+          # \|/  Using this as a no-op command  \|/
+        tv_mode: script.mc_home
+
+  audio_tuner_on_sequence:
+    alias: Turn the Audio Tuner on on Jennys TV
+    description: 'Runs the sequence to turn on Jennys TV in Audio Tuner Mode'
+    use_blueprint:
+      path: /config/blueprints/script/SirGoodenough/Broadlink_ON_script.yaml
+      input:
+        reciever_input: script.denon_tuner
+        tv_mode: script.vizio_j_power
 
 
 

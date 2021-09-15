@@ -826,114 +826,82 @@
                                     "entity": "script.tv_off_sequence",
                                     "show_icon": false,
                                     "name": "OverTheAir OFF"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.blueray_on_sequence",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.blueray_on_sequence",
+                                    "name": "BlueRay ON",
+                                    "show_icon": false
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.blueray_off_sequence",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.tv_off_sequence",
+                                    "name": "BlueRay OFF",
+                                    "show_icon": false
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.mecool_on_sequence",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.mecool_on_sequence",
+                                    "name": "Mecool ON",
+                                    "show_icon": false
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.mecool_off_sequence",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.tv_off_sequence",
+                                    "show_icon": false,
+                                    "name": "Mecool OFF"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.audio_tuner_on_sequence",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.audio_tuner_on_sequence",
+                                    "show_icon": false,
+                                    "name": "Audio Tuner ON"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.tv_off_sequence",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.tv_off_sequence",
+                                    "show_icon": false,
+                                    "name": "Audio Tuner OFF"
                                 }
                             ],
                             "square": false,
                             "columns": 2
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "script.vizio_j_power"
-                                },
-                                {
-                                    "entity": "script.vizio_j_vol_up"
-                                },
-                                {
-                                    "entity": "script.vizio_j_vol_down"
-                                },
-                                {
-                                    "entity": "script.vizio_j_mute"
-                                },
-                                {
-                                    "entity": "script.vizio_j_ch_up"
-                                },
-                                {
-                                    "entity": "script.vizio_j_ch_down"
-                                },
-                                {
-                                    "entity": "script.vizio_j_tv"
-                                },
-                                {
-                                    "entity": "script.vizio_j_hdmi"
-                                },
-                                {
-                                    "entity": "script.vizio_j_av"
-                                },
-                                {
-                                    "entity": "switch.chromecast"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "TV Menu",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "script.denon_power"
-                                },
-                                {
-                                    "entity": "script.denon_volume_up"
-                                },
-                                {
-                                    "entity": "script.denon_volume_down"
-                                },
-                                {
-                                    "entity": "script.denon_mute"
-                                },
-                                {
-                                    "entity": "script.denon_firetv"
-                                },
-                                {
-                                    "entity": "script.denon_tv_audio"
-                                },
-                                {
-                                    "entity": "script.denon_chromecast"
-                                },
-                                {
-                                    "entity": "script.denon_mecool"
-                                },
-                                {
-                                    "entity": "script.denon_blue_ray"
-                                },
-                                {
-                                    "entity": "script.denon_tuner"
-                                },
-                                {
-                                    "entity": "script.denon_reciever_band"
-                                },
-                                {
-                                    "entity": "script.denon_tune"
-                                },
-                                {
-                                    "entity": "script.denon_tune_search"
-                                },
-                                {
-                                    "entity": "script.denon_multeq_out"
-                                },
-                                {
-                                    "entity": "script.denon_dvneq_out"
-                                },
-                                {
-                                    "entity": "script.denon_a_dsx_out"
-                                },
-                                {
-                                    "entity": "script.denon_simulation_out"
-                                },
-                                {
-                                    "entity": "script.denon_d_st_out"
-                                },
-                                {
-                                    "entity": "script.denon_pure_out"
-                                },
-                                {
-                                    "entity": "script.denon_standard_out"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Reciever",
-                            "type": "entities"
                         },
                         {
                             "type": "grid",
@@ -941,23 +909,167 @@
                                 {
                                     "type": "button",
                                     "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.vizio_j_vol_up",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "icon_height": "50px",
+                                    "theme": "Dark - Orange",
+                                    "entity": "script.vizio_j_vol_up"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
                                         "action": "toggle"
                                     },
-                                    "entity": "script.br_eject",
-                                    "icon": "mdi:eject",
-                                    "name": "Eject",
+                                    "name": "Jens TV Panel"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.vizio_j_ch_up",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.vizio_j_ch_up",
+                                    "icon_height": "50px",
+                                    "theme": "Dark - Orange"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.vizio_j_mute",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.vizio_j_mute",
+                                    "icon_height": "50px",
+                                    "theme": "Dark - Orange"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.vizio_j_power",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.vizio_j_power",
+                                    "icon_height": "50px",
+                                    "theme": "Dark - Red"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.vizio_j_vol_down",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.vizio_j_vol_down",
+                                    "icon_height": "50px",
+                                    "theme": "Dark - Orange"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.vizio_j_ch_down",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.vizio_j_ch_down",
+                                    "icon_height": "50px",
+                                    "theme": "Dark - Orange"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.vizio_j_hdmi",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.vizio_j_hdmi",
+                                    "icon_height": "50px",
+                                    "theme": "Dark - Orange"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.vizio_j_tv",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.vizio_j_tv",
+                                    "icon_height": "50px",
+                                    "theme": "Dark - Orange"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.vizio_j_input",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.vizio_j_input",
+                                    "icon_height": "50px",
+                                    "theme": "Dark - Orange"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "switch.chromecast",
+                                    "icon_height": "50px",
+                                    "theme": "Dark - Light Red"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.vizio_j_av",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.vizio_j_av",
+                                    "icon_height": "50px",
+                                    "theme": "Dark - Orange"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "grid",
+                            "cards": [
+                                {
+                                    "type": "button",
+                                    "entity": "script.br_power",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
                                     "icon_height": "-50px",
                                     "theme": "Dark - Blue/Purple"
                                 },
                                 {
                                     "type": "button",
-                                    "entity": "script.br_power",
-                                    "icon": "mdi:power",
                                     "tap_action": {
                                         "action": "toggle"
                                     },
+                                    "name": "BlueRay Panel"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.br_eject",
                                     "icon_height": "-50px",
-                                    "name": "BlueRay Power",
                                     "theme": "Dark - Blue/Purple"
                                 },
                                 {
@@ -966,8 +1078,6 @@
                                         "action": "toggle"
                                     },
                                     "entity": "script.br_play",
-                                    "icon": "mdi:play",
-                                    "name": "Play",
                                     "icon_height": "-50px",
                                     "theme": "Dark - Blue/Purple"
                                 },
@@ -977,8 +1087,6 @@
                                         "action": "toggle"
                                     },
                                     "entity": "script.br_menu",
-                                    "icon": "mdi:menu",
-                                    "name": "Hamburger",
                                     "icon_height": "-50px",
                                     "theme": "Dark - Blue/Purple"
                                 },
@@ -988,19 +1096,6 @@
                                         "action": "toggle"
                                     },
                                     "entity": "script.br_stop",
-                                    "icon": "mdi:stop",
-                                    "name": "Stop",
-                                    "icon_height": "-50px",
-                                    "theme": "Dark - Blue/Purple"
-                                },
-                                {
-                                    "type": "button",
-                                    "tap_action": {
-                                        "action": "toggle"
-                                    },
-                                    "entity": "script.br_pause",
-                                    "name": "Pause",
-                                    "icon": "mdi:pause",
                                     "icon_height": "-50px",
                                     "theme": "Dark - Blue/Purple"
                                 },
@@ -1010,8 +1105,6 @@
                                         "action": "toggle"
                                     },
                                     "entity": "script.br_back",
-                                    "name": "Back",
-                                    "icon": "mdi:undo",
                                     "icon_height": "-50px",
                                     "theme": "Dark - Blue/Purple"
                                 },
@@ -1020,11 +1113,9 @@
                                     "tap_action": {
                                         "action": "toggle"
                                     },
-                                    "entity": "script.br_up",
-                                    "name": "Up",
-                                    "icon": "mdi:arrow-up",
                                     "icon_height": "-50px",
-                                    "theme": "Dark - Blue/Purple"
+                                    "theme": "Dark - Blue/Purple",
+                                    "entity": "script.br_up"
                                 },
                                 {
                                     "type": "button",
@@ -1032,8 +1123,6 @@
                                         "action": "toggle"
                                     },
                                     "entity": "script.br_home",
-                                    "name": "Home",
-                                    "icon": "mdi:home",
                                     "icon_height": "-50px",
                                     "theme": "Dark - Blue/Purple"
                                 },
@@ -1042,8 +1131,6 @@
                                     "tap_action": {
                                         "action": "toggle"
                                     },
-                                    "icon": "mdi:arrow-left",
-                                    "name": "Left",
                                     "entity": "script.br_left",
                                     "icon_height": "-50px",
                                     "theme": "Dark - Blue/Purple"
@@ -1054,8 +1141,6 @@
                                         "action": "toggle"
                                     },
                                     "entity": "script.br_enter",
-                                    "name": "Enter",
-                                    "icon": "mdi:keyboard-return",
                                     "icon_height": "-50px",
                                     "theme": "Dark - Blue/Purple"
                                 },
@@ -1065,8 +1150,6 @@
                                         "action": "toggle"
                                     },
                                     "entity": "script.br_right",
-                                    "name": "Right",
-                                    "icon": "mdi:arrow-right",
                                     "icon_height": "-50px",
                                     "theme": "Dark - Blue/Purple"
                                 },
@@ -1076,8 +1159,6 @@
                                         "action": "toggle"
                                     },
                                     "entity": "script.br_skip_up",
-                                    "name": "Skip",
-                                    "icon": "mdi:skip-forward",
                                     "icon_height": "-50px",
                                     "theme": "Dark - Blue/Purple"
                                 },
@@ -1087,8 +1168,15 @@
                                         "action": "toggle"
                                     },
                                     "entity": "script.br_down",
-                                    "name": "Down",
-                                    "icon": "mdi:arrow-down",
+                                    "icon_height": "-50px",
+                                    "theme": "Dark - Blue/Purple"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.br_pause",
                                     "icon_height": "-50px",
                                     "theme": "Dark - Blue/Purple"
                                 },
@@ -1098,8 +1186,6 @@
                                         "action": "toggle"
                                     },
                                     "entity": "script.br_scan_up",
-                                    "name": "Scan",
-                                    "icon": "mdi:fast-forward",
                                     "icon_height": "-50px",
                                     "theme": "Dark - Blue/Purple"
                                 },
@@ -1110,8 +1196,6 @@
                                     },
                                     "entity": "script.br_skip_down",
                                     "icon_height": "-50px",
-                                    "name": "Skip",
-                                    "icon": "mdi:skip-backward",
                                     "theme": "Dark - Blue/Purple"
                                 },
                                 {
@@ -1121,8 +1205,6 @@
                                     },
                                     "entity": "script.br_repeat",
                                     "icon_height": "-50px",
-                                    "name": " Repeat",
-                                    "icon": "mdi:repeat",
                                     "theme": "Dark - Blue/Purple"
                                 },
                                 {
@@ -1132,8 +1214,6 @@
                                     },
                                     "entity": "script.br_scan_down",
                                     "icon_height": "-50px",
-                                    "name": "Scan",
-                                    "icon": "mdi:rewind",
                                     "theme": "Dark - Blue/Purple"
                                 },
                                 {
@@ -1141,10 +1221,148 @@
                                     "tap_action": {
                                         "action": "toggle"
                                     },
-                                    "entity": "script.denon_power",
                                     "theme": "Dark - Yellow",
-                                    "name": "Reciever Power",
-                                    "icon": "mdi:audio-video"
+                                    "icon_height": "50px"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.denon_power",
+                                    "theme": "Navy Blue & Yellow"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "grid",
+                            "cards": [
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.denon_power",
+                                    "theme": "Navy Blue & Yellow",
+                                    "icon_height": "50px"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "name": "Denon Reciever Panel",
+                                    "theme": "Navy Blue & Yellow",
+                                    "icon_height": "50px",
+                                    "show_icon": false
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.denon_mute",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.denon_mute",
+                                    "icon_height": "50px",
+                                    "theme": "Navy Blue & Yellow"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.denon_volume_up",
+                                    "theme": "Navy Blue & Yellow",
+                                    "icon_height": "50px"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.denon_tuner",
+                                    "icon_height": "50px",
+                                    "theme": "Navy Blue & Yellow"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.denon_tune",
+                                    "icon_height": "50px",
+                                    "theme": "Navy Blue & Yellow"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.denon_volume_down",
+                                    "icon_height": "50px",
+                                    "theme": "Navy Blue & Yellow"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.denon_firetv",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.denon_tune_search",
+                                    "icon_height": "50px",
+                                    "theme": "Navy Blue & Yellow"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.denon_blue_ray",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.denon_reciever_band",
+                                    "icon_height": "50px",
+                                    "theme": "Navy Blue & Yellow"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.denon_tv_audio",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.denon_tv_audio",
+                                    "icon_height": "50px",
+                                    "theme": "Navy Blue & Yellow"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.denon_firetv",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.denon_firetv",
+                                    "icon_height": "50px",
+                                    "theme": "Navy Blue & Yellow"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.denon_chromecast",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.denon_chromecast",
+                                    "icon_height": "50px",
+                                    "theme": "Navy Blue & Yellow"
                                 },
                                 {
                                     "type": "button",
@@ -1152,16 +1370,98 @@
                                         "action": "toggle"
                                     },
                                     "entity": "script.denon_blue_ray",
-                                    "theme": "Dark - Yellow"
+                                    "icon_height": "50px",
+                                    "theme": "Navy Blue & Yellow"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.denon_mecool",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.denon_mecool",
+                                    "icon_height": "50px",
+                                    "theme": "Navy Blue & Yellow"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.denon_multeq_out",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.denon_multeq_out",
+                                    "icon_height": "50px",
+                                    "theme": "Navy Blue & Yellow"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.denon_d_st_out",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.denon_d_st_out",
+                                    "icon_height": "50px",
+                                    "theme": "Navy Blue & Yellow"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.denon_a_dsx_out",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.denon_a_dsx_out",
+                                    "icon_height": "50px",
+                                    "theme": "Navy Blue & Yellow"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.denon_simulation_out",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.denon_simulation_out",
+                                    "icon_height": "50px",
+                                    "theme": "Navy Blue & Yellow"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.denon_standard_out",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.denon_standard_out",
+                                    "icon_height": "50px",
+                                    "theme": "Navy Blue & Yellow"
                                 },
                                 {
                                     "type": "button",
                                     "tap_action": {
                                         "action": "toggle"
+                                    }
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.denon_pure_out",
+                                        "service_data": {},
+                                        "target": {}
                                     },
-                                    "entity": "script.vizio_j_power",
-                                    "icon": "mdi:monitor",
-                                    "theme": "Dark - Yellow"
+                                    "entity": "script.denon_pure_out",
+                                    "icon_height": "50px",
+                                    "theme": "Navy Blue & Yellow"
                                 }
                             ]
                         },
@@ -1174,32 +1474,26 @@
                                         "action": "toggle"
                                     },
                                     "entity": "script.denon_mecool",
-                                    "icon": "mdi:android",
                                     "icon_height": "-50px",
-                                    "theme": "Dark - Yellow",
-                                    "name": "Reciever MeCool"
+                                    "theme": "material_dark_green"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "name": "MeCool Panel",
+                                    "icon_height": "-50px",
+                                    "theme": "material_dark_green"
                                 },
                                 {
                                     "type": "button",
                                     "entity": "script.mc_power",
-                                    "icon": "mdi:power",
                                     "tap_action": {
                                         "action": "toggle"
                                     },
                                     "icon_height": "-50px",
-                                    "name": "MeCool Power",
-                                    "theme": "Dark - Red"
-                                },
-                                {
-                                    "type": "button",
-                                    "tap_action": {
-                                        "action": "toggle"
-                                    },
-                                    "entity": "script.denon_power",
-                                    "icon": "mdi:audio-video",
-                                    "name": "Reciever Power",
-                                    "icon_height": "-50px",
-                                    "theme": "Dark - Yellow"
+                                    "theme": "material_dark_green"
                                 },
                                 {
                                     "type": "button",
@@ -1207,10 +1501,8 @@
                                         "action": "toggle"
                                     },
                                     "entity": "script.mc_skip_back",
-                                    "icon": "mdi:skip-backward",
-                                    "name": "Skip",
                                     "icon_height": "-50px",
-                                    "theme": "Dark - Red"
+                                    "theme": "material_dark_green"
                                 },
                                 {
                                     "type": "button",
@@ -1218,10 +1510,8 @@
                                         "action": "toggle"
                                     },
                                     "entity": "script.mc_e",
-                                    "icon": "mdi:alpha-e-circle-outline",
-                                    "name": "E",
                                     "icon_height": "-50px",
-                                    "theme": "Dark - Red"
+                                    "theme": "material_dark_green"
                                 },
                                 {
                                     "type": "button",
@@ -1229,21 +1519,17 @@
                                         "action": "toggle"
                                     },
                                     "entity": "script.mc_volume_up",
-                                    "name": "Vol",
-                                    "icon": "mdi:volume-plus",
                                     "icon_height": "-50px",
-                                    "theme": "Dark - Red"
+                                    "theme": "material_dark_green"
                                 },
                                 {
                                     "type": "button",
                                     "tap_action": {
                                         "action": "toggle"
                                     },
-                                    "entity": "script.mc_skip_back",
+                                    "entity": "script.mc_skip_forward",
                                     "icon_height": "-50px",
-                                    "name": "Skip",
-                                    "icon": "mdi:skip-forward",
-                                    "theme": "Dark - Red"
+                                    "theme": "material_dark_green"
                                 },
                                 {
                                     "type": "button",
@@ -1252,9 +1538,7 @@
                                     },
                                     "entity": "script.mc_mute",
                                     "icon_height": "-50px",
-                                    "name": " Mute",
-                                    "icon": "mdi:volume-mute",
-                                    "theme": "Dark - Red"
+                                    "theme": "material_dark_green"
                                 },
                                 {
                                     "type": "button",
@@ -1262,10 +1546,8 @@
                                         "action": "toggle"
                                     },
                                     "entity": "script.mc_volume_down",
-                                    "name": "Vol",
-                                    "icon": "mdi:volume-minus",
                                     "icon_height": "-50px",
-                                    "theme": "Dark - Red"
+                                    "theme": "material_dark_green"
                                 },
                                 {
                                     "type": "button",
@@ -1273,10 +1555,8 @@
                                         "action": "toggle"
                                     },
                                     "entity": "script.mc_home",
-                                    "name": "Home",
-                                    "icon": "mdi:home",
                                     "icon_height": "-50px",
-                                    "theme": "Dark - Red"
+                                    "theme": "material_dark_green"
                                 },
                                 {
                                     "type": "button",
@@ -1284,10 +1564,8 @@
                                         "action": "toggle"
                                     },
                                     "entity": "script.mc_vert_up",
-                                    "name": "Up",
-                                    "icon": "mdi:arrow-up",
                                     "icon_height": "-50px",
-                                    "theme": "Dark - Red"
+                                    "theme": "material_dark_green"
                                 },
                                 {
                                     "type": "button",
@@ -1295,21 +1573,17 @@
                                         "action": "toggle"
                                     },
                                     "entity": "script.mc_back",
-                                    "name": "Back",
-                                    "icon": "mdi:undo",
                                     "icon_height": "-50px",
-                                    "theme": "Dark - Red"
+                                    "theme": "material_dark_green"
                                 },
                                 {
                                     "type": "button",
                                     "tap_action": {
                                         "action": "toggle"
                                     },
-                                    "icon": "mdi:arrow-left",
-                                    "name": "Left",
                                     "entity": "script.mc_horz_left",
                                     "icon_height": "-50px",
-                                    "theme": "Dark - Red"
+                                    "theme": "material_dark_green"
                                 },
                                 {
                                     "type": "button",
@@ -1320,7 +1594,7 @@
                                     "name": "OK",
                                     "icon": "mdi:hand-okay",
                                     "icon_height": "-50px",
-                                    "theme": "Dark - Red"
+                                    "theme": "material_dark_green"
                                 },
                                 {
                                     "type": "button",
@@ -1328,10 +1602,8 @@
                                         "action": "toggle"
                                     },
                                     "entity": "script.mc_horz_right",
-                                    "name": "Right",
-                                    "icon": "mdi:arrow-right",
                                     "icon_height": "-50px",
-                                    "theme": "Dark - Red"
+                                    "theme": "material_dark_green"
                                 },
                                 {
                                     "type": "button",
@@ -1339,10 +1611,8 @@
                                         "action": "toggle"
                                     },
                                     "entity": "script.mc_hamburger",
-                                    "name": "Hamburger",
                                     "icon_height": "-50px",
-                                    "theme": "Dark - Red",
-                                    "icon": "mdi:menu"
+                                    "theme": "material_dark_green"
                                 },
                                 {
                                     "type": "button",
@@ -1350,10 +1620,8 @@
                                         "action": "toggle"
                                     },
                                     "entity": "script.mc_vert_down",
-                                    "name": "Down",
-                                    "icon": "mdi:arrow-down",
                                     "icon_height": "-50px",
-                                    "theme": "Dark - Red"
+                                    "theme": "material_dark_green"
                                 },
                                 {
                                     "type": "button",
@@ -1362,9 +1630,7 @@
                                     },
                                     "entity": "script.mc_mouse",
                                     "icon_height": "-50px",
-                                    "name": "Mouse",
-                                    "icon": "mdi:mouse",
-                                    "theme": "Dark - Red"
+                                    "theme": "material_dark_green"
                                 }
                             ]
                         }

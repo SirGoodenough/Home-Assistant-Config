@@ -208,7 +208,7 @@
           entity_id: remote.downstairs_mini_remote
           device: Reciever
           command: tune_search
-  denon_tuner:
+  denon_tuner: 
     sequence:
       - service: remote.send_command
         data:
