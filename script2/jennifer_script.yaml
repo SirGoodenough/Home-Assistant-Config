@@ -157,26 +157,3 @@
         reciever_input: script.denon_tuner
         tv_mode: script.vizio_j_power
 
-
-
-
-  # chromecast_on_sequence:
-  #   sequence:
-  #     - service: switch.turn_on
-  #       target:
-  #         entity_id: switch.chromecast
-  #     - service: script.turn_on
-  #       target:
-  #         entity_id: script.denon_power
-  #     - delay: 00:00:03
-  #     - service: script.turn_on
-  #       target:
-  #         entity_id: script.vizio_j_power
-  #     - delay: 00:00:03
-  #     - service: script.turn_on
-  #       target:
-  #         entity_id: script.denon_chromecast
-  #     - delay: 00:00:03
-  #     - service: script.turn_on
-  #       target:
-  #         entity_id: script.denon_multeq_out
