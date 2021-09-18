@@ -247,12 +247,6 @@
                                     "entity": "script.chill_time"
                                 },
                                 {
-                                    "entity": "script.garage_outside_lights_on"
-                                },
-                                {
-                                    "entity": "script.garage_outside_lights_off"
-                                },
-                                {
                                     "entity": "sensor.garage_door_si7021_temperature"
                                 },
                                 {
@@ -432,6 +426,12 @@
                                     "entity": "light.garagesidelight3"
                                 },
                                 {
+                                    "entity": "script.garage_outside_lights_on"
+                                },
+                                {
+                                    "entity": "script.garage_outside_lights_off"
+                                },
+                                {
                                     "entity": "binary_sensor.back_door_pir"
                                 },
                                 {
@@ -451,6 +451,9 @@
                                 },
                                 {
                                     "entity": "script.party_time"
+                                },
+                                {
+                                    "entity": "binary_sensor.dark_outside"
                                 }
                             ],
                             "show_header_toggle": true,
@@ -489,7 +492,7 @@
                         },
                         {
                             "type": "media-control",
-                            "entity": "media_player.intercom"
+                            "entity": "media_player.intercom_2"
                         },
                         {
                             "type": "media-control",
