@@ -163,15 +163,15 @@
       entity_id: input_boolean.mist_button
     - service: tts.cloud_say
       data:
-        entity_id: media_player.kitchen_hub, media_player.living_room_speaker, media_player.nesthub4245
-        message: "Mister J, no juice does he have.  Sad he is."
+        entity_id: media_player.kitchen_speaker, media_player.living_room_speaker, media_player.jennys_room_display
+        message: "No juice in the Bucket, mate.  Time to add the Vegemite."
         options:
           gender: male
         language: en-AU
-    - delay: 00:00:07
+    - delay: 00:00:08
     - service: media_player.play_media
       data:
-        entity_id: media_player.kitchen_hub, media_player.nesthub4245
+        entity_id: media_player.kitchen_speaker, media_player.jennys_room_display, media_player.office_jamz, media_player.garage_speaker, media_player.basement_speaker
         media_content_id: !secret Mister
         media_content_type: audio/mp3
 
