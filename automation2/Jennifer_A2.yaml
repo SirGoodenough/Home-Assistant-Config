@@ -17,12 +17,12 @@
 
     - service: media_player.volume_set
       data:
-        entity_id: media_player.kitchen_hub, media_player.nesthub4245
+        entity_id: media_player.kitchen_speaker, media_player.jennys_room_display
         volume_level: .8
 
     - service: tts.cloud_say
       data:
-        entity_id: media_player.kitchen_hub, media_player.nesthub4245
+        entity_id: media_player.kitchen_speaker, media_player.jennys_room_display
         message: >
           {{ ("It's all the same, only the names will change",
               "Every day, it seems we're wastin' away", 
@@ -54,7 +54,7 @@
 
     - service: media_player.play_media
       data:
-        entity_id: media_player.kitchen_hub, media_player.nesthub4245
+        entity_id: media_player.kitchen_speaker, media_player.jennys_room_display
         media_content_id: !secret Gong
         media_content_type: audio/mp3
 
@@ -62,7 +62,7 @@
 
     - service: tts.cloud_say
       data:
-        entity_id: media_player.kitchen_hub, media_player.nesthub4245
+        entity_id: media_player.kitchen_speaker, media_player.jennys_room_display
         message: >
           {{ ("So close, no matter how far",
               "Couldn't be much more from the heart",
@@ -98,7 +98,7 @@
 
     - service: tts.cloud_say
       data:
-        entity_id: media_player.kitchen_hub, media_player.nesthub4245
+        entity_id: media_player.kitchen_speaker, media_player.jennys_room_display
         message: >
           {{ ("This ain't a song for the broken-hearted",
               "No silent prayer for faith-departed",
@@ -127,7 +127,7 @@
 
     - service: media_player.play_media
       data:
-        entity_id: media_player.kitchen_hub, media_player.nesthub4245
+        entity_id: media_player.kitchen_speaker, media_player.jennys_room_display
         media_content_id: !secret Gong
         media_content_type: audio/mp3
 
@@ -138,7 +138,7 @@
 
     - service: media_player.volume_set
       data:
-        entity_id: media_player.nesthub4245
+        entity_id: media_player.jennys_room_display
         volume_level: .5
 
 #####################################################
