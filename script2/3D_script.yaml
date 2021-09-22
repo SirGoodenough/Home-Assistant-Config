@@ -12,7 +12,7 @@ show_tarantula_home_hub_video:
   sequence:
     - service: media_player.play_media
       data:
-        entity_id: media_player.kitchen_hub
+        entity_id: media_player.kitchen_speaker
         media_content_id: !secret 3D_Stream
         media_content_type: "image/jpg"
 
@@ -21,6 +21,6 @@ show_tarantula_home_hub_image:
   sequence:
     - service: media_player.play_media
       data:
-        entity_id: media_player.kitchen_hub
+        entity_id: media_player.kitchen_speaker
         media_content_id: !secret 3D_Static
         media_content_type: "image/jpg"

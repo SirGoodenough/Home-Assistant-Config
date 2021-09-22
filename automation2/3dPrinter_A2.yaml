@@ -13,7 +13,7 @@
   action:
     - service: tts.cloud_say
       data:
-        entity_id: media_player.kitchen_hub
+        entity_id: media_player.kitchen_speaker
         message: "The Forge is ready for more work."
         options:
           gender: male
@@ -32,7 +32,7 @@
   action:
     - service: tts.cloud_say
       data:
-        entity_id: media_player.kitchen_hub
+        entity_id: media_player.kitchen_speaker
         message: "The Forge has been disabled."
         options:
           gender: male
