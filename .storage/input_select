@@ -12,6 +12,21 @@
                     "color",
                     "white"
                 ]
+            },
+            {
+                "name": "Jens Alert",
+                "icon": "mdi:alert",
+                "options": [
+                    "Vent is Alarming",
+                    "Feeding Pump is Beeping",
+                    "I Need Suction",
+                    "My Bag Has Broken",
+                    "Bed Won't Work",
+                    "I Hear a Noise",
+                    "I'm Lonely",
+                    "I have a Random Problem"
+                ],
+                "id": "jens_alert"
             }
         ]
     }
