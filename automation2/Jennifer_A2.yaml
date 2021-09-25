@@ -175,16 +175,25 @@
         media_content_id: !secret Mister
         media_content_type: audio/mp3
 
-### From UI Creation --->
-- id: "1610785908281"
-  alias: Hummingbird
-  description: Start Jen's timer
-  trigger:
-    - platform: webhook
-      webhook_id: This is Jens timer start called Hummingbird
-  condition: []
-  action:
-    - service: input_boolean.toggle
-      data: {}
-      entity_id: input_boolean.flush2
+- id: bc67a0b5-846f-41df-b0fb-cc1c8a8b714b
+  alias: Jen Message List
   mode: single
+  initial_state: on
+  trigger:
+    - platform: state
+      entity_id: input_select.jens_alert
+  action:
+    - service: input_select.select_option
+      target:
+        entity_id: input_select.jens_alert
+      data:
+        option: "off"
+    - service: script.turn_on
+      target:
+        entity_id: script.jen_needs_help
+      data:
+        variables:
+          entities:
+            - group.intercom_stack
+            - media_player.kitchen_speaker
+          message: "{{ trigger.to_state.state }}"

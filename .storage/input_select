@@ -14,7 +14,7 @@
                 ]
             },
             {
-                "name": "Jens Alert",
+                "name": "All Help",
                 "icon": "mdi:alert",
                 "options": [
                     "Vent is Alarming",
@@ -24,7 +24,9 @@
                     "Bed Won't Work",
                     "I Hear a Noise",
                     "I'm Lonely",
-                    "I have a Random Problem"
+                    "I have a Random Problem",
+                    "off",
+                    "Catheter Problem"
                 ],
                 "id": "jens_alert"
             }

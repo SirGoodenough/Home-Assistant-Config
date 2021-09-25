@@ -557,6 +557,9 @@
                                     "entity": "sensor.jennys_new_fanspeed"
                                 },
                                 {
+                                    "entity": "input_select.jens_alert"
+                                },
+                                {
                                     "entity": "script.jen_needs_help_level1"
                                 },
                                 {
