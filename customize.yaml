@@ -179,8 +179,8 @@
   timer.flushtime2:
     friendly_name: "2 Minute Timer"
 
-  timer.flushtime5:
-    friendly_name: "5 Minute Timer"
+  timer.flushtime10:
+    friendly_name: "10 Minute Timer"
 
 
   ####################################################

@@ -3,6 +3,6 @@
     duration: '00:02:00'
     icon: mdi:needle
 
-  flushtime5:
-    duration: '00:05:00'
+  flushtime10:
+    duration: '00:10:00'
     icon: mdi:needle

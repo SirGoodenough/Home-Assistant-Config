@@ -94,7 +94,7 @@
     - delay: 00:01:01 # Delay for the second part rest of the delay
 
     - service: timer.start
-      entity_id: timer.flushtime5
+      entity_id: timer.flushtime10
 
     - service: tts.cloud_say
       data:
@@ -112,8 +112,8 @@
               "It's now or never.",
               "Yeah, this is for the ones who stood their ground",
               "For Tommy and Gina, who never backed down",
-              "Tomorrow's getting harder, make no mistake",
-              "Luck ain't even lucky, got to make your own breaks"
+              "Tomorrow's getting harder, make no mistakeings",
+              "Luck ain't even lucky, got to make your own breakings"
               ) |random }}
         options:
           gender: female
@@ -123,7 +123,7 @@
         - platform: event
           event_type: timer.finished
           event_data:
-            entity_id: timer.flushtime5
+            entity_id: timer.flushtime10
 
     - service: media_player.play_media
       data:
