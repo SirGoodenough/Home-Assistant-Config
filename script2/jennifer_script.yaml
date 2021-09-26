@@ -41,10 +41,10 @@ jen_needs_help_level2_template:
   sequence:
     - service: notify.message_dad
       data:
-        message: "{{ message }}"
+        message: "  {{ message }}"
     - service: notify.message_mom
       data:
-        message: "{{ message }}"
+        message: "  {{ message }}"
 
 ##
   ##
