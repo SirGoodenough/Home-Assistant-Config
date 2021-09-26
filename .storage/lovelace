@@ -557,16 +557,13 @@
                                     "entity": "sensor.jennys_new_fanspeed"
                                 },
                                 {
-                                    "entity": "input_select.jens_alert"
+                                    "entity": "input_select.no_bedroom_help"
                                 },
                                 {
-                                    "entity": "script.jen_needs_help_level1"
+                                    "entity": "input_select.jens_alert_list_1"
                                 },
                                 {
-                                    "entity": "script.jen_needs_help_level1a"
-                                },
-                                {
-                                    "entity": "script.jen_needs_help_level2"
+                                    "entity": "input_select.phone_help"
                                 },
                                 {
                                     "entity": "light.jens_light"
@@ -582,6 +579,15 @@
                                 },
                                 {
                                     "entity": "timer.flushtime5"
+                                },
+                                {
+                                    "entity": "script.jen_needs_help_level1"
+                                },
+                                {
+                                    "entity": "script.jen_needs_help_level1a"
+                                },
+                                {
+                                    "entity": "script.jen_needs_help_level2"
                                 }
                             ],
                             "show_header_toggle": false,

@@ -181,19 +181,54 @@
   initial_state: on
   trigger:
     - platform: state
-      entity_id: input_select.jens_alert
+      entity_id: input_select.jens_alert_list_1
+      id: all
+    - platform: state
+      entity_id: input_select.no_bedroom_help
+      id: no_bedroom
+    - platform: state
+      entity_id: input_select.phone_help
+      id: phone
+  condition:
+    condition: or
+    conditions:
+      - "{{ trigger.to_state.state != '' }}"
+      - "{{ trigger.to_state.state != 'off' }}"
   action:
     - service: input_select.select_option
       target:
-        entity_id: input_select.jens_alert
+        entity_id:
+          - input_select.jens_alert_list_1
+          - input_select.no_bedroom_help
+          - input_select.phone_help
       data:
         option: "off"
-    - service: script.turn_on
-      target:
-        entity_id: script.jen_needs_help
-      data:
-        variables:
-          entities:
-            - group.intercom_stack
-            - media_player.kitchen_speaker
-          message: "{{ trigger.to_state.state }}"
+    - choose:
+        - alias: Message to all speakers
+          conditions:
+            - condition: trigger
+              id: all
+          sequence:
+            service: script.jen_needs_help
+            data:
+              message: "{{ trigger.to_state.state }}"
+              entities:
+                - group.intercom_stack
+                - media_player.bedroom_speaker
+        - alias: Message to all speakers except bedroom
+          conditions:
+            - condition: trigger
+              id: no_bedroom
+          sequence:
+            service: script.jen_needs_help
+            data:
+              message: "{{ trigger.to_state.state }}"
+              entities: group.intercom_stack
+        - alias: Message to Mom & Dads Phone
+          conditions:
+            - condition: trigger
+              id: phone
+          sequence:
+            service: script.jen_needs_help_level2_template
+            data:
+              message: "{{ trigger.to_state.state }}"

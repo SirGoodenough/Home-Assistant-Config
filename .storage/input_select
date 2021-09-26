@@ -17,18 +17,52 @@
                 "name": "All Help",
                 "icon": "mdi:alert",
                 "options": [
+                    "I Need Suction",
                     "Vent is Alarming",
                     "Feeding Pump is Beeping",
-                    "I Need Suction",
+                    "Catheter Problem",
                     "My Bag Has Broken",
                     "Bed Won't Work",
                     "I Hear a Noise",
                     "I'm Lonely",
                     "I have a Random Problem",
-                    "off",
-                    "Catheter Problem"
+                    "off"
                 ],
-                "id": "jens_alert"
+                "id": "jens_alert_list_1"
+            },
+            {
+                "name": "No Bedroom Help",
+                "icon": "mdi:alert",
+                "options": [
+                    "I Need Suction",
+                    "Vent is Alarming",
+                    "Feeding Pump is Beeping",
+                    "Catheter Problem",
+                    "My Bag Has Broken",
+                    "Bed Won't Work",
+                    "I Hear a Noise",
+                    "I'm Lonely",
+                    "I have a Random Problem",
+                    "off"
+                ],
+                "id": "jens_alert_list_2"
+            },
+            {
+                "name": "Phone Help",
+                "icon": "mdi:alert",
+                "options": [
+                    "I Need Suction",
+                    "Vent is Alarming",
+                    "Feeding Pump is Beeping",
+                    "Catheter Problem",
+                    "My Bag Has Broken",
+                    "Bed Won't Work",
+                    "I Hear a Noise",
+                    "I'm Lonely",
+                    "I have a Random Problem",
+                    "off"
+                ],
+                "id": "jens_alert_list_3"
             }
         ]
     }

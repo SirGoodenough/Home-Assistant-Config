@@ -7,27 +7,6 @@
 #                                                   #
 #####################################################
 #####################################################
-# Jen Level 1                                       #
-#####################################################
-jen_needs_help_level1:
-  alias: All Help
-  sequence:
-    - service: tts.cloud_say
-      data:
-        entity_id: group.intercom_stack, media_player.bedroom_speaker
-        message: "Unicorn is asking for help with Her horn!"
-        options:
-          gender: female
-        language: en-US
-    - delay:
-        seconds: 5
-    - service: media_player.play_media
-      data:
-        entity_id: group.intercom_stack, media_player.bedroom_speaker
-        media_content_id: !secret Jen_Buzzer
-        media_content_type: audio/mp3
-
-#####################################################
 # Jen Level 1.1                                     #
 #####################################################
 jen_needs_help:
@@ -48,6 +27,48 @@ jen_needs_help:
     - service: media_player.play_media
       data:
         entity_id: "{{ entities }}"
+        media_content_id: !secret Jen_Buzzer
+        media_content_type: audio/mp3
+
+#####################################################
+# Jen Level 2.1                                     #
+#####################################################
+jen_needs_help_level2_template:
+  alias: Phone Help
+  description: "Texting Template message center for Jen"
+  variables:
+    message:
+  sequence:
+    - service: notify.message_dad
+      data:
+        message: "{{ message }}"
+    - service: notify.message_mom
+      data:
+        message: "{{ message }}"
+
+##
+  ##
+  ##--> Depricated NEXT 3 SCRIPTS
+  ##
+##
+#####################################################
+# Jen Level 1                                       #
+#####################################################
+jen_needs_help_level1:
+  alias: All Help
+  sequence:
+    - service: tts.cloud_say
+      data:
+        entity_id: group.intercom_stack, media_player.bedroom_speaker
+        message: "Unicorn is asking for help with Her horn!"
+        options:
+          gender: female
+        language: en-US
+    - delay:
+        seconds: 5
+    - service: media_player.play_media
+      data:
+        entity_id: group.intercom_stack, media_player.bedroom_speaker
         media_content_id: !secret Jen_Buzzer
         media_content_type: audio/mp3
 
@@ -84,6 +105,11 @@ jen_needs_help_level2:
     - service: notify.message_mom
       data:
         message: "Jennifer is asking for help!"
+##
+  ##
+  ##--> Depricated PRIOR 3 SCRIPTS
+  ##
+##
 
 #####################################################
 # TV Control                                        #
