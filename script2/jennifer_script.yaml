@@ -39,12 +39,9 @@ jen_needs_help_level2_template:
   variables:
     message:
   sequence:
-    - service: notify.message_dad
+    - service: notify.message_house
       data:
-        message: "  {{ message }}"
-    - service: notify.message_mom
-      data:
-        message: "  {{ message }}"
+        message: "{{ message }}"
 
 ##
   ##

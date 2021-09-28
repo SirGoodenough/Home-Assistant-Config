@@ -5,6 +5,7 @@
     server: smtp.gmail.com
     port: 587
     sender: !secret ControlCentral_S
+    sender_name: "ChaloupkaAbode "
     starttls: 1
     username: !secret ControlCentral_L
     password: !secret ControlCentral_P
@@ -16,11 +17,54 @@
     server: smtp.gmail.com
     port: 587
     sender: !secret ControlCentral_S
+    sender_name: "ChaloupkaAbode "
     starttls: 1
     username: !secret ControlCentral_L
     password: !secret ControlCentral_P
     recipient: !secret ControlCentral_Rm
 
+  - platform: smtp
+    name: message_mom
+    unique_id: 3452de30-172c-4e0e-826a-5143dec62341
+    server: smtp.gmail.com
+    port: 587
+    sender: !secret ControlCentral_S
+    sender_name: "ChaloupkaAbode "
+    starttls: 1
+    username: !secret ControlCentral_L
+    password: !secret ControlCentral_P
+    recipient: !secret ControlCentral_Rj
+
+  - platform: smtp
+    name: message_house
+    unique_id: 15d99d2d-1033-4e6a-a26f-9940f50b45b9
+    server: smtp.gmail.com
+    port: 587
+    sender: !secret ControlCentral_S
+    sender_name: "ChaloupkaAbode "
+    starttls: 1
+    username: !secret ControlCentral_L
+    password: !secret ControlCentral_P
+    recipient:
+      - !secret ControlCentral_Rm
+      - !secret ControlCentral_Rj
+      - !secret ControlCentral_Rd
+      - !secret ControlCentral_Ra
+
   - platform: syslog
     name: borusa
     unique_id: 70a16263-f791-4cad-a464-0beb8fa7aaa1
+
+  # - name: "NOTIFIER_NAME"
+  #   platform: smtp
+  #   server: "smtp.gmail.com"
+  #   port: 587
+  #   timeout: 15
+  #   sender: "YOUR_USERNAME@gmail.com"
+  #   encryption: starttls
+  #   username: "YOUR_USERNAME@gmail.com"
+  #   password: "YOUR_PASSWORD"
+  #   recipient:
+  #     - "RECIPIENT_1@example.com"
+  #     - "RECIPIENT_N@example.com"
+  #   sender_name: "SENDER_NAME"
