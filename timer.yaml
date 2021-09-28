@@ -1,6 +1,6 @@
 ---
   flushtime2:
-    duration: '00:02:00'
+    duration: '00:01:00'
     icon: mdi:needle
 
   flushtime10:
