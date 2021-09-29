@@ -215,6 +215,9 @@
                                     "entity": "switch.aeotec_dsc26103_micro_switch_2nd_edition_switch"
                                 },
                                 {
+                                    "entity": "input_boolean.bathroom_heater_auto_on"
+                                },
+                                {
                                     "entity": "binary_sensor.bathroom"
                                 },
                                 {
@@ -224,13 +227,63 @@
                                     "entity": "sensor.bathoom_si7021_humidity"
                                 },
                                 {
-                                    "entity": "sensor.bathoom_si7021_dewpoint"
+                                    "entity": "binary_sensor.battery_low_bathroom"
                                 }
                             ],
                             "show_header_toggle": false,
                             "title": "Bathroom",
                             "type": "entities",
                             "state_color": true
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "fan.bedroom_fan",
+                                    "IsOffColor": "#F88416",
+                                    "IsOnLowColor": "#E78E85",
+                                    "IsOnMedColor": "#E54234",
+                                    "IsOnHiColor": "red",
+                                    "customTheme": true,
+                                    "customSetpoints": true,
+                                    "hiPercentage": 100,
+                                    "name": "Office Fan",
+                                    "type": "custom:fan-percent-button-row"
+                                },
+                                {
+                                    "entity": "light.bedroom_light"
+                                },
+                                {
+                                    "entity": "input_boolean.bedroom_cool"
+                                },
+                                {
+                                    "entity": "input_boolean.bedroom_auto_fan"
+                                },
+                                {
+                                    "entity": "sensor.bedroom_fanspeed"
+                                },
+                                {
+                                    "entity": "input_number.bedroom_auto_temp"
+                                },
+                                {
+                                    "entity": "sensor.bedroom_fan_si7021_temperature"
+                                },
+                                {
+                                    "entity": "sensor.bedroom_fan_si7021_humidity"
+                                },
+                                {
+                                    "entity": "binary_sensor.bedroom"
+                                },
+                                {
+                                    "entity": "sensor.bedroom_speaker_alarms"
+                                },
+                                {
+                                    "entity": "alert.bedroom_door_notify_low_battery"
+                                }
+                            ],
+                            "title": "Bedroom",
+                            "state_color": true,
+                            "show_header_toggle": false
                         },
                         {
                             "entities": [
