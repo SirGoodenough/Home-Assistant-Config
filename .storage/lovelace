@@ -2387,25 +2387,143 @@
                     "badges": [],
                     "cards": [
                         {
-                            "aspect_ratio": "250%",
-                            "type": "iframe",
-                            "url": "https://www.home-assistant.io"
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
+                            "type": "conditional",
+                            "conditions": [
                                 {
-                                    "entity": "device_tracker.life360_supreme_leader_chaloupka"
-                                },
-                                {
-                                    "entity": "device_tracker.life360_jen_chaloupka"
-                                },
-                                {
-                                    "entity": "device_tracker.life360_sirius_goodenough"
+                                    "entity": "sensor.jim_sun",
+                                    "state": "0"
                                 }
                             ],
-                            "show_header_toggle": false,
-                            "title": "People"
+                            "card": {
+                                "type": "picture",
+                                "image": "http://10.10.100.8:8123/local/images/GoofyJim.gif",
+                                "tap_action": {
+                                    "action": "call-service",
+                                    "service": "script.sg_food_say",
+                                    "service_data": {},
+                                    "target": {}
+                                },
+                                "hold_action": {
+                                    "action": "none"
+                                }
+                            }
+                        },
+                        {
+                            "type": "conditional",
+                            "conditions": [
+                                {
+                                    "entity": "sensor.jen_food_2",
+                                    "state": "0"
+                                }
+                            ],
+                            "card": {
+                                "type": "picture",
+                                "image": "http://10.10.100.8:8123/local/images/UnicomJennifer.gif",
+                                "tap_action": {
+                                    "action": "call-service",
+                                    "service": "script.julie_food_say",
+                                    "service_data": {},
+                                    "target": {}
+                                },
+                                "hold_action": {
+                                    "action": "none"
+                                }
+                            }
+                        },
+                        {
+                            "type": "conditional",
+                            "conditions": [
+                                {
+                                    "entity": "sensor.julie_food",
+                                    "state": "0"
+                                }
+                            ],
+                            "card": {
+                                "type": "picture",
+                                "image": "http://10.10.100.8:8123/local/images/QueenJulie.gif",
+                                "tap_action": {
+                                    "action": "call-service",
+                                    "service": "script.jen_food_say",
+                                    "service_data": {},
+                                    "target": {}
+                                },
+                                "hold_action": {
+                                    "action": "none"
+                                }
+                            }
+                        },
+                        {
+                            "type": "conditional",
+                            "conditions": [
+                                {
+                                    "entity": "sensor.jim_sat",
+                                    "state": "0"
+                                }
+                            ],
+                            "card": {
+                                "type": "picture",
+                                "image": "http://10.10.100.8:8123/local/images/GoofyJim.gif",
+                                "tap_action": {
+                                    "action": "call-service",
+                                    "service": "script.sg_food_say",
+                                    "service_data": {},
+                                    "target": {}
+                                },
+                                "hold_action": {
+                                    "action": "none"
+                                }
+                            }
+                        },
+                        {
+                            "type": "conditional",
+                            "conditions": [
+                                {
+                                    "entity": "sensor.jen_food",
+                                    "state": "0"
+                                }
+                            ],
+                            "card": {
+                                "type": "picture",
+                                "image": "http://10.10.100.8:8123/local/images/UnicomJennifer.gif",
+                                "tap_action": {
+                                    "action": "call-service",
+                                    "service": "script.julie_food_say",
+                                    "service_data": {},
+                                    "target": {}
+                                },
+                                "hold_action": {
+                                    "action": "none"
+                                }
+                            }
+                        },
+                        {
+                            "type": "conditional",
+                            "conditions": [
+                                {
+                                    "entity": "sensor.julie_food_2",
+                                    "state": "0"
+                                }
+                            ],
+                            "card": {
+                                "type": "picture",
+                                "image": "http://10.10.100.8:8123/local/images/QueenJulie.gif",
+                                "tap_action": {
+                                    "action": "call-service",
+                                    "service": "script.jen_food_say",
+                                    "service_data": {},
+                                    "target": {}
+                                },
+                                "hold_action": {
+                                    "action": "none"
+                                }
+                            }
+                        },
+                        {
+                            "type": "calendar",
+                            "entities": [
+                                "calendar.garbage_collection"
+                            ],
+                            "initial_view": "dayGridMonth"
                         },
                         {
                             "type": "glance",
@@ -2435,11 +2553,20 @@
                             "title": "Take-Out Schedule"
                         },
                         {
-                            "type": "calendar",
+                            "type": "entities",
                             "entities": [
-                                "calendar.garbage_collection"
+                                {
+                                    "entity": "device_tracker.life360_supreme_leader_chaloupka"
+                                },
+                                {
+                                    "entity": "device_tracker.life360_jen_chaloupka"
+                                },
+                                {
+                                    "entity": "device_tracker.life360_sirius_goodenough"
+                                }
                             ],
-                            "initial_view": "dayGridMonth"
+                            "show_header_toggle": false,
+                            "title": "People"
                         }
                     ],
                     "icon": "mdi:human-greeting",

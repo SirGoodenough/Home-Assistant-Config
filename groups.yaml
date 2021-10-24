@@ -1,7 +1,7 @@
 ---
 grandma_stack:
   # no livingroom
-  name: Intercom
+  name: no_livingroom
   entities:
     - media_player.basement_speaker
     - media_player.bathroom_speaker
