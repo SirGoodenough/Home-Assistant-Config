@@ -64,7 +64,7 @@
                                     "entity": "sensor.sonoff_rf_bridge_2_si7021_humidity"
                                 },
                                 {
-                                    "entity": "climate.living_room"
+                                    "entity": "climate.living_room_2"
                                 },
                                 {
                                     "entity": "lock.front_door"
