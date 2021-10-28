@@ -21,64 +21,65 @@ blueprint_test2:
 
 sg_food_say:
   alias: Announce Dads Food Day
-  description: "Dad's lets have fun with food day"
+  description: Dads lets have fun with food day
   use_blueprint:
     path: /config/blueprints/script/SirGoodenough/tts_cloud_message_script.yaml
     input:
       speaker_language: en-AU
       speaker_gender: male
       speaker_target: group.intercom_stack
-      announcement_message: "Dad's food day.  Lets get Jimmy Johns!"
+      announcement_message: "Dad's food day. Lets get Jimmy John's!"
 
 jen_food_say:
   alias: Announce Jens Food Day
-  description: "Jen's lets have fun with food day"  use_blueprint:
+  description: Jens lets have fun with food day
+  use_blueprint:
     path: /config/blueprints/script/SirGoodenough/tts_cloud_message_script.yaml
     input:
       speaker_language: en-GB
       speaker_gender: male
       speaker_target: group.intercom_stack
-      announcement_message: "Jen's food day.  Lets get extra ranch from Dennys!"
+      announcement_message: "Jen's food day. Lets get extra ranch from Denny's!"
 
 julie_food_say:
   alias: Announce Julies Food Day
-  description: "Mom's lets have fun with food day"
+  description: Moms lets have fun with food day
   use_blueprint:
     path: /config/blueprints/script/SirGoodenough/tts_cloud_message_script.yaml
     input:
       speaker_language: en-US
       speaker_gender: female
       speaker_target: group.intercom_stack
-      announcement_message: "Julie's food day.  Cheese Curds over easy, please."
+      announcement_message: "Julie's food day. Cheese Curds over easy, please."
 sg_food_say2:
   alias: Announce Dads Food Day
-  description: "Dad's lets have fun with food day"
+  description: Dads lets have fun with food day
   use_blueprint:
     path: /config/blueprints/script/SirGoodenough/tts_cloud_message_script.yaml
     input:
       speaker_language: en-AU
       speaker_gender: male
       speaker_target: group.intercom_stack
-      announcement_message: "Dad's food day.  It's Happy Family for a Happy Family!"
+      announcement_message: "Dad's food day. It's Happy Family for a Happy Family!"
 
 jen_food_say2:
   alias: Announce Jens Food Day
-  description: "Jen's lets have fun with food day"
+  description: Jens lets have fun with food day
   use_blueprint:
     path: /config/blueprints/script/SirGoodenough/tts_cloud_message_script.yaml
     input:
       speaker_language: en-GB
       speaker_gender: male
       speaker_target: group.intercom_stack
-      announcement_message: "Jen's food day.  Panera is my fave!!!"
+      announcement_message: "Jen's food day. Panera is my fave!!!"
 
 julie_food_say2:
   alias: Announce Julies Food Day
-  description: "Mom's lets have fun with food day"
+  description: Moms lets have fun with food day
   use_blueprint:
     path: /config/blueprints/script/SirGoodenough/tts_cloud_message_script.yaml
     input:
       speaker_language: en-US
       speaker_gender: female
       speaker_target: group.intercom_stack
-      announcement_message: "Julie's food day.  If it ain't Wendy's, I ain't eatin'"
+      announcement_message: "Julie's food day. If it ain't Wendy's, I ain't eatin'"
