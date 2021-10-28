@@ -2404,7 +2404,10 @@
                                     "target": {}
                                 },
                                 "hold_action": {
-                                    "action": "none"
+                                    "action": "call-service",
+                                    "service": "script.sg_food_say2",
+                                    "service_data": {},
+                                    "target": {}
                                 }
                             }
                         },
@@ -2426,7 +2429,10 @@
                                     "target": {}
                                 },
                                 "hold_action": {
-                                    "action": "none"
+                                    "action": "call-service",
+                                    "service": "script.julie_food_say2",
+                                    "service_data": {},
+                                    "target": {}
                                 }
                             }
                         },
@@ -2448,7 +2454,10 @@
                                     "target": {}
                                 },
                                 "hold_action": {
-                                    "action": "none"
+                                    "action": "call-service",
+                                    "service": "script.jen_food_say2",
+                                    "service_data": {},
+                                    "target": {}
                                 }
                             }
                         },
@@ -2470,7 +2479,10 @@
                                     "target": {}
                                 },
                                 "hold_action": {
-                                    "action": "none"
+                                    "action": "call-service",
+                                    "service": "script.sg_food_say2",
+                                    "service_data": {},
+                                    "target": {}
                                 }
                             }
                         },
@@ -2492,7 +2504,10 @@
                                     "target": {}
                                 },
                                 "hold_action": {
-                                    "action": "none"
+                                    "action": "call-service",
+                                    "service": "script.julie_food_say2",
+                                    "service_data": {},
+                                    "target": {}
                                 }
                             }
                         },
@@ -2514,7 +2529,10 @@
                                     "target": {}
                                 },
                                 "hold_action": {
-                                    "action": "none"
+                                    "action": "call-service",
+                                    "service": "script.jen_food_say2",
+                                    "service_data": {},
+                                    "target": {}
                                 }
                             }
                         },
