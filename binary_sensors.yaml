@@ -318,6 +318,18 @@
     payload_not_available: Offline
 
   - platform: mqtt
+    name: "DnRemote1"
+    unique_id: f508360b-d0f1-4949-ab14-9953d9d11564
+    device_class: opening
+    state_topic: rf433/DnRemote1
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 2
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
     name: "DnRemote2"
     unique_id: 42f3825a-5726-43f2-8c5d-cdaa86232bdc
     device_class: opening
