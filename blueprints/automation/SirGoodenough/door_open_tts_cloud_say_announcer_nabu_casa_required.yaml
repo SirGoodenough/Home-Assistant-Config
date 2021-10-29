@@ -1,7 +1,7 @@
 blueprint:
-  name: Door open tts.cloud_say announcer (Nabu-Casa required)
-  # Community link for blueprint:  source_url:
-  # https://community.home-assistant.io/t/door-open-tts-cloud-say-announcer-nabu-casa-required/316046
+  name: Door open tts.cloud_say announcer (Nabu-Casa required) 2021-10-29
+  description: This uses tts.cloud_say from Nabu-Casa to tell you a door is open too
+    long and a door has been closed.
   source_url: https://gist.github.com/SirGoodenough/ed99bd75a65088f4a41c46d1ce19f103
   domain: automation
   input:
@@ -12,6 +12,24 @@ blueprint:
         entity:
           domain: binary_sensor
           device_class: door
+    start_time:
+      name: StartTime
+      description: 'Time of day you want to enable the announcement each day.  Leave
+        at 12:00:00 if you want it to always be on.
+
+        '
+      selector:
+        time: {}
+      default: 00:00:00
+    end_time:
+      name: EndTime
+      description: 'Time of day you want to disable the announcement each day.  Leave
+        at 12:00:00 if you want it to always be on.
+
+        '
+      selector:
+        time: {}
+      default: 00:00:00
     speaker_target:
       name: Speaker
       description: Entity to announce event on
@@ -55,6 +73,11 @@ trigger:
   entity_id: !input 'door_entity'
   from: 'off'
   to: 'on'
+condition:
+  alias: Active time for the announcement
+  condition: time
+  after: !input 'start_time'
+  before: !input 'end_time'
 action:
 - alias: Repeat the sequence UNTIL the door is closed
   repeat:
