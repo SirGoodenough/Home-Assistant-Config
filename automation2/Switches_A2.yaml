@@ -29,6 +29,17 @@
 ####################################################
 # DnRemote                                         #
 ####################################################
+- id: 666506a1-81d8-4db3-b735-c8e6cb888c33
+  alias: KitchenDown Toggle button_dnremote1
+  initial_state: on
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.dnremote1
+      to: "on"
+  action:
+    - service: light.toggle
+      entity_id: light.stairway_light
+
 - id: d82bf999-0a81-4761-8192-c1d4fe6a7b1c
   alias: KitchenDown Toggle button_dnremote2
   initial_state: on
