@@ -53,6 +53,44 @@
         {% endif %}
     rgb_state_topic: "JensNeb/tele/RESULT"
 
+  - platform: mqtt
+    name: "Alarm Display"
+    unique_id: e68bc3cb-e6fe-4c5f-9da4-06427296944e
+    state_topic: "Bedroom_Fan/tele/STATE"
+    command_topic: "Bedroom_Fan/cmnd/POWER1"
+    availability_topic: "Bedroom_Fan/tele/LWT"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: group
+    name: Main Lights
+    unique_id: 3503acba-9956-4951-b651-6385024ba170
+    entities:
+      - light.cabinetlight
+      - light.jens_light
+      - light.jims_computer_light
+      - light.mom_light
+      - light.livingroomlight
+      - light.kitchensink
+      - light.kitchen_down_lights
+      - light.b_porch_socket
+      - light.fp_socket
+      - light.stairway_light
+
+    # Depricated for reference...
+  # - platform: mqtt
+  #   name: "Jens Fan"
+  #   unique_id: 20001143-b688-46dd-8dda-838cf10b4c58
+  #   state_topic: "JensNewFan/tele/STATE"
+  #   command_topic: "JensNewFan/cmnd/POWER1"
+  #   availability_topic: "JensNewFan/tele/LWT"
+  #   payload_on: "ON"
+  #   payload_off: "OFF"
+  #   payload_available: "Online"
+  #   payload_not_available: "Offline"
+
     # Depricated for reference...
   # - platform: mqtt
   #   name: "Jens Night Light"
@@ -92,26 +130,3 @@
   #         {{ (value_json['TuyaReceived'].Type3Data[0:2]|int(base=16),value_json['TuyaReceived'].Type3Data[2:4]|int(base=16),value_json['TuyaReceived'].Type3Data[4:6]|int(base=16)) | join(',')}}
   #       {% endif %}
   #   rgb_state_topic: "JensNeb/tele/RESULT"
-
-
-  - platform: mqtt
-    name: "Alarm Display"
-    unique_id: e68bc3cb-e6fe-4c5f-9da4-06427296944e
-    state_topic: "Bedroom_Fan/tele/STATE"
-    command_topic: "Bedroom_Fan/cmnd/POWER1"
-    availability_topic: "Bedroom_Fan/tele/LWT"
-    payload_on: "ON"
-    payload_off: "OFF"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  # - platform: mqtt
-  #   name: "Jens Fan"
-  #   unique_id: 20001143-b688-46dd-8dda-838cf10b4c58
-  #   state_topic: "JensNewFan/tele/STATE"
-  #   command_topic: "JensNewFan/cmnd/POWER1"
-  #   availability_topic: "JensNewFan/tele/LWT"
-  #   payload_on: "ON"
-  #   payload_off: "OFF"
-  #   payload_available: "Online"
-  #   payload_not_available: "Offline"
