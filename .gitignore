@@ -34,7 +34,7 @@
 !frontend.yaml
 !groups.yaml
 !hacs.yaml
-!humidifer,yaml
+!humidifer.yaml
 !life360.yaml
 !light.yaml
 !history.yaml

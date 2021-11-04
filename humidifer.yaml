@@ -1,0 +1,19 @@
+---
+  - name: House Humidity
+    humidifier: switch.dryer3
+    # humidifier: switch.humidifier_2
+    target_sensor: sensor.house_humidity_main
+    min_humidity: 30
+    max_humidity: 55
+    target_humidity: 40
+    dry_tolerance: 3
+    wet_tolerance: 0
+    device_class: "humidifier"
+    min_cycle_duration:
+      seconds: 5
+    keep_alive:
+      minutes: 3
+    initial_state: true
+    # away_humidity: 35
+    # away_fixed: True
+    sensor_stale_duration: 00:15:00
