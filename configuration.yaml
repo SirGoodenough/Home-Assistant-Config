@@ -15,6 +15,7 @@ dhcp:
 fan: !include fan.yaml
 ffmpeg: !include ffmpeg.yaml
 frontend: !include frontend.yaml
+generic_hygrostat: !include humidifer.yaml
 group: !include groups.yaml
 hacs: !include hacs.yaml
 homeassistant: !include homeassistant.yaml

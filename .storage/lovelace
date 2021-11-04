@@ -2103,7 +2103,7 @@
                             "detail": 2
                         },
                         {
-                            "entity": "sensor.sonoff_rf_bridge_2_si7021_humidity",
+                            "entity": "sensor.livingroom_humid",
                             "graph": "line",
                             "type": "sensor",
                             "detail": 2
@@ -2115,13 +2115,13 @@
                             "detail": 2
                         },
                         {
-                            "entity": "sensor.bathoom_si7021_humidity",
+                            "entity": "sensor.bathroom_humid",
                             "graph": "line",
                             "type": "sensor",
                             "detail": 2
                         },
                         {
-                            "entity": "sensor.dust_collector_si7021_humidity",
+                            "entity": "sensor.basement_humid",
                             "graph": "line",
                             "type": "sensor",
                             "detail": 2
@@ -2133,13 +2133,13 @@
                             "detail": 2
                         },
                         {
-                            "entity": "sensor.bedroom_fan_si7021_humidity",
+                            "entity": "sensor.bathroom_humid",
                             "graph": "line",
                             "type": "sensor",
                             "detail": 2
                         },
                         {
-                            "entity": "sensor.dryer3_si7021_humidity",
+                            "entity": "sensor.dryer_humid",
                             "graph": "line",
                             "type": "sensor",
                             "detail": 2

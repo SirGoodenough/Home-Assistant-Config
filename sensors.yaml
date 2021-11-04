@@ -176,17 +176,58 @@
         window_size: 4 # Number of states in filter
         radius: 90.0 # Difference from mean
 
+  - platform: filter
+    name: "Livingroom Humid"
+    entity_id: sensor.sonoff_rf_bridge_2_si7021_humidity
+    filters:
+      - filter: outlier
+        window_size: 4 # Number of states in filter
+        radius: 5.0 # Difference from mean
+
+  - platform: filter
+    name: "Bedroom Humid"
+    entity_id: sensor.bedroom_fan_si7021_humidity
+    filters:
+      - filter: outlier
+        window_size: 4 # Number of states in filter
+        radius: 5.0 # Difference from mean
+
+  - platform: filter
+    name: "Dryer Humid"
+    entity_id: sensor.dryer3_si7021_humidity
+    filters:
+      - filter: outlier
+        window_size: 4 # Number of states in filter
+        radius: 5.0 # Difference from mean
+
+  - platform: filter
+    name: "Basement Humid"
+    entity_id: sensor.dust_collector_si7021_humidity
+    filters:
+      - filter: outlier
+        window_size: 4 # Number of states in filter
+        radius: 5.0 # Difference from mean
+
+  - platform: filter
+    name: "Bathroom Humid"
+    entity_id: sensor.bathoom_si7021_humidity
+    filters:
+      - filter: outlier
+        window_size: 4 # Number of states in filter
+        radius: 5.0 # Difference from mean
+
   ####################################################
   #  Min/Max Sensors                                 #
   ####################################################
   - platform: min_max
     name: "House Humidity Main"
     type: mean
-    round_digits: 0
+    round_digits: 1
     entity_ids:
-      - sensor.furnace_oil_top_humidity
-      - sensor.living_room_humidity
-      - sensor.kitchen_humidity
+      - sensor.furnace_oil_top_humid
+      - sensor.furnace_return_humid
+      - sensor.livingroom_humid
+      - sensor.kitchen_humid
 
   ####################################################
   #  Locks                                           #
