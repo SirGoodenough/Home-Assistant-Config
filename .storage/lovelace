@@ -350,12 +350,6 @@
                                     "type": "custom:fan-percent-button-row"
                                 },
                                 {
-                                    "entity": "input_boolean.fan_test"
-                                },
-                                {
-                                    "entity": "input_number.test_target_temp"
-                                },
-                                {
                                     "entity": "sensor.office_fanspeed"
                                 },
                                 {
