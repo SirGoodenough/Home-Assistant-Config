@@ -1,7 +1,6 @@
 ---
   - name: House Humidity
-    humidifier: switch.dryer3
-    # humidifier: switch.humidifier_2
+    humidifier: switch.humidifier_2
     target_sensor: sensor.house_humidity_main
     min_humidity: 30
     max_humidity: 55

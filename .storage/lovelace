@@ -197,6 +197,19 @@
                             }
                         },
                         {
+                            "type": "humidifier",
+                            "entity": "humidifier.house_humidity"
+                        },
+                        {
+                            "type": "thermostat",
+                            "entity": "climate.living_room_2"
+                        },
+                        {
+                            "type": "thermostat",
+                            "entity": "climate.gemodule5384",
+                            "theme": "Dark - Light Red"
+                        },
+                        {
                             "type": "glance",
                             "entities": [
                                 {
@@ -209,11 +222,6 @@
                                     "entity": "binary_sensor.snapshots_stale"
                                 }
                             ]
-                        },
-                        {
-                            "type": "thermostat",
-                            "entity": "climate.gemodule5384",
-                            "theme": "Dark - Light Red"
                         },
                         {
                             "entities": [
@@ -1956,7 +1964,7 @@
                     "cards": [
                         {
                             "type": "thermostat",
-                            "entity": "climate.living_room"
+                            "entity": "climate.living_room_2"
                         },
                         {
                             "type": "thermostat",
@@ -2070,6 +2078,10 @@
                 {
                     "badges": [],
                     "cards": [
+                        {
+                            "type": "humidifier",
+                            "entity": "humidifier.house_humidity"
+                        },
                         {
                             "entities": [
                                 {
