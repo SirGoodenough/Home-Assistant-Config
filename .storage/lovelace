@@ -2083,17 +2083,11 @@
                             "entity": "humidifier.house_humidity"
                         },
                         {
-                            "entities": [
-                                {
-                                    "entity": "input_number.target_humidity"
-                                },
-                                {
-                                    "entity": "switch.humidifier_2"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Main Control",
-                            "type": "entities"
+                            "entity": "sensor.house_humidity_main",
+                            "graph": "line",
+                            "name": "Main Level Mean Humidity",
+                            "type": "sensor",
+                            "detail": 2
                         },
                         {
                             "entity": "sensor.kitchen_humid",
@@ -2102,11 +2096,14 @@
                             "detail": 2
                         },
                         {
-                            "entity": "sensor.house_humidity_main",
-                            "graph": "line",
-                            "name": "Main Level Mean Humidity",
-                            "type": "sensor",
-                            "detail": 2
+                            "type": "button",
+                            "tap_action": {
+                                "action": "toggle"
+                            },
+                            "entity": "switch.humidifier_2",
+                            "name": "Humidifer Power",
+                            "icon": "mdi:air-humidifier",
+                            "icon_height": "50px"
                         },
                         {
                             "entity": "sensor.furnace_oil_top_humid",
@@ -2139,13 +2136,13 @@
                             "detail": 2
                         },
                         {
-                            "entity": "sensor.garage_door_si7021_humidity",
+                            "entity": "sensor.bathroom_humid",
                             "graph": "line",
                             "type": "sensor",
                             "detail": 2
                         },
                         {
-                            "entity": "sensor.bathroom_humid",
+                            "entity": "sensor.garage_door_si7021_humidity",
                             "graph": "line",
                             "type": "sensor",
                             "detail": 2
@@ -2723,17 +2720,17 @@
                                 {
                                     "cards": [
                                         {
-                                            "entity": "sensor.192_168_108_24_02_status",
+                                            "entity": "sensor.192_168_108_24_01_status",
                                             "name": "Darkel GPU FAH",
                                             "type": "entity"
                                         },
                                         {
-                                            "entity": "sensor.192_168_108_24_02_percentdone",
+                                            "entity": "sensor.192_168_108_24_01_percentdone",
                                             "name": "Darkel GPU FAH",
                                             "type": "entity"
                                         },
                                         {
-                                            "entity": "sensor.192_168_108_24_02_points_per_day",
+                                            "entity": "sensor.192_168_108_24_01_points_per_day",
                                             "max": 2000000,
                                             "min": 0,
                                             "name": "Darkel GPU Rate",
@@ -2941,6 +2938,52 @@
                             "theme": "Dark - Green",
                             "type": "sensor",
                             "unit": "\u00b0C"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.octoprint_current_state",
+                                    "name": "Current State"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_estimated_finish_time",
+                                    "name": "Estimated Finish Time"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_job_percentage",
+                                    "name": "Job Percentage"
+                                },
+                                {
+                                    "entity": "binary_sensor.octoprint_printing_2",
+                                    "name": "Printing"
+                                },
+                                {
+                                    "entity": "binary_sensor.octoprint_printing_error",
+                                    "name": "Printing Error"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_start_time",
+                                    "name": "Start Time"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_actual_bed_temp",
+                                    "name": "Actual bed temp"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_actual_tool0_temp",
+                                    "name": "Actual tool0 temp"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_target_bed_temp",
+                                    "name": "Target bed temp"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_target_tool0_temp",
+                                    "name": "Target tool0 temp"
+                                }
+                            ],
+                            "title": "OctoPrint"
                         }
                     ],
                     "path": "3d",
