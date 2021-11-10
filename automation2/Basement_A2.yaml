@@ -55,7 +55,7 @@
       entity_id: switch.dust_collector_2
       to: 'off'
     action:
-    - service: automation.turn_off
+    - service: homeassistant.turn_off
       entity_id: automation.dust_collector_failsafe
 
   # #####################################################

@@ -515,6 +515,9 @@
                                 },
                                 {
                                     "entity": "binary_sensor.dark_outside"
+                                },
+                                {
+                                    "entity": "light.christmastree"
                                 }
                             ],
                             "show_header_toggle": true,
@@ -2079,6 +2082,16 @@
                     "badges": [],
                     "cards": [
                         {
+                            "type": "button",
+                            "tap_action": {
+                                "action": "toggle"
+                            },
+                            "entity": "switch.humidifier_2",
+                            "name": "Humidifer Power",
+                            "icon": "mdi:air-humidifier",
+                            "icon_height": "50px"
+                        },
+                        {
                             "type": "humidifier",
                             "entity": "humidifier.house_humidity"
                         },
@@ -2094,16 +2107,6 @@
                             "graph": "line",
                             "type": "sensor",
                             "detail": 2
-                        },
-                        {
-                            "type": "button",
-                            "tap_action": {
-                                "action": "toggle"
-                            },
-                            "entity": "switch.humidifier_2",
-                            "name": "Humidifer Power",
-                            "icon": "mdi:air-humidifier",
-                            "icon_height": "50px"
                         },
                         {
                             "entity": "sensor.furnace_oil_top_humid",
@@ -2327,6 +2330,9 @@
                                 },
                                 {
                                     "entity": "sensor.christmastree_wi_fi_rssi"
+                                },
+                                {
+                                    "entity": "number.christmastree_intensity"
                                 }
                             ],
                             "show_header_toggle": true,
@@ -3083,6 +3089,11 @@
                             "type": "weather-forecast",
                             "entity": "weather.home_hourly",
                             "show_forecast": false
+                        },
+                        {
+                            "type": "iframe",
+                            "url": "https://www.home-assistant.io",
+                            "aspect_ratio": "50%"
                         }
                     ],
                     "icon": "mdi:weather-lightning",
@@ -3135,67 +3146,6 @@
                     "id": "batteries",
                     "path": "batteries",
                     "title": "Batteries"
-                },
-                {
-                    "badges": [],
-                    "cards": [
-                        {
-                            "entity": "media_player.kitchen_display",
-                            "type": "media-control"
-                        },
-                        {
-                            "entity": "media_player.basement_speaker",
-                            "type": "media-control"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.bedroom_speaker"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.garage_speaker"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.jenny_s_tv"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.jens_firestick"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.living_room_speaker"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.aftbamr311_200"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.office_firestick"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.workroom_speaker"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.office_speaker"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.office_speaker1"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.nesthub4245"
-                        }
-                    ],
-                    "icon": "mdi:speaker",
-                    "id": "intercom",
-                    "path": "intercom",
-                    "title": "Intercom"
                 },
                 {
                     "badges": [],
