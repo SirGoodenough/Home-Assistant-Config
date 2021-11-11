@@ -517,7 +517,7 @@
                                     "entity": "binary_sensor.dark_outside"
                                 },
                                 {
-                                    "entity": "light.christmastree"
+                                    "entity": "light.christmas_tree"
                                 }
                             ],
                             "show_header_toggle": true,
@@ -2324,15 +2324,6 @@
                                 },
                                 {
                                     "entity": "script.heavenly_peace"
-                                },
-                                {
-                                    "entity": "light.christmastree"
-                                },
-                                {
-                                    "entity": "sensor.christmastree_wi_fi_rssi"
-                                },
-                                {
-                                    "entity": "number.christmastree_intensity"
                                 }
                             ],
                             "show_header_toggle": true,
@@ -2360,6 +2351,28 @@
                             ],
                             "title": "Office",
                             "type": "entities"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "light.christmas_tree"
+                                },
+                                {
+                                    "entity": "select.christmas_tree_preset",
+                                    "name": "Preset"
+                                },
+                                {
+                                    "entity": "sensor.christmas_tree_wi_fi_signal"
+                                },
+                                {
+                                    "entity": "select.christmas_tree_color_palette"
+                                },
+                                {
+                                    "entity": "number.christmas_tree_intensity"
+                                }
+                            ],
+                            "title": "Christmas_Tree"
                         },
                         {
                             "entities": [
