@@ -84,7 +84,7 @@
         device_class: power
         delay_off:
           minutes: 7
-        value_template: {{ states('sensor.wash_machine_energy_current') > 0.085 }}
+        value_template: "{{ states('sensor.wash_machine_energy_current') | float > 0.085 }}"
 
   #####################################################
   # PIR Sensors (MQTT)                                #
