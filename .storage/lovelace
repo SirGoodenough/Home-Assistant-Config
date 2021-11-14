@@ -3241,6 +3241,18 @@
                             "needle": true
                         },
                         {
+                            "type": "gauge",
+                            "entity": "sensor.christmas_tree_wi_fi_signal",
+                            "severity": {
+                                "green": -70,
+                                "yellow": -50,
+                                "red": -30
+                            },
+                            "min": -100,
+                            "max": 1,
+                            "needle": true
+                        },
+                        {
                             "entity": "sensor.bmt_hall_rf_socket_u_rssi",
                             "max": 100,
                             "min": 0,
@@ -3267,15 +3279,16 @@
                             "needle": true
                         },
                         {
-                            "type": "gauge",
-                            "entity": "sensor.christmastree_wi_fi_rssi",
+                            "entity": "sensor.frontlock_rssi",
+                            "max": 100,
+                            "min": 0,
                             "severity": {
-                                "green": -70,
-                                "yellow": -50,
-                                "red": -30
+                                "green": 70,
+                                "red": 30,
+                                "yellow": 50
                             },
-                            "min": -100,
-                            "max": 1,
+                            "theme": "default",
+                            "type": "gauge",
                             "needle": true
                         },
                         {
@@ -3292,20 +3305,7 @@
                             "needle": true
                         },
                         {
-                            "type": "gauge",
-                            "entity": "sensor.plug3_rssi",
-                            "min": 0,
-                            "max": 100,
-                            "severity": {
-                                "green": 70,
-                                "yellow": 50,
-                                "red": 30
-                            },
-                            "name": "Office Light Mom RSSI",
-                            "needle": true
-                        },
-                        {
-                            "entity": "sensor.frontlock_rssi",
+                            "entity": "sensor.garageback_light_rssi",
                             "max": 100,
                             "min": 0,
                             "severity": {
@@ -3344,16 +3344,16 @@
                             "needle": true
                         },
                         {
-                            "entity": "sensor.garageback_light_rssi",
-                            "max": 100,
+                            "type": "gauge",
+                            "entity": "sensor.plug3_rssi",
                             "min": 0,
+                            "max": 100,
                             "severity": {
                                 "green": 70,
-                                "red": 30,
-                                "yellow": 50
+                                "yellow": 50,
+                                "red": 30
                             },
-                            "theme": "default",
-                            "type": "gauge",
+                            "name": "Office Light Mom RSSI",
                             "needle": true
                         },
                         {
