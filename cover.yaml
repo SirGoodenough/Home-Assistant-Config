@@ -23,5 +23,5 @@
     payload_not_available: 'Offline'
     tilt_opened_value: 100
 
-    
-    # open, closed, opening, closing, stopped
+    # HA States so it doesn't warn in the logs (case matters)
+    #   open, closed, opening, closing, stopped
