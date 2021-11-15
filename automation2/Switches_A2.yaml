@@ -160,9 +160,6 @@
     - platform: state
       entity_id: binary_sensor.front_door_open_433
       to: "on"
-    - platform: state
-      entity_id: binary_sensor.front_door_pir
-      to: "on"
   action:
     - service: light.turn_on
       entity_id: light.fp_socket
@@ -173,9 +170,6 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.back_door_open_433
-      to: "on"
-    - platform: state
-      entity_id: binary_sensor.back_door_pir
       to: "on"
   action:
     - service: light.turn_on
@@ -207,9 +201,6 @@
     - platform: state
       entity_id: binary_sensor.stairs_down
       to: "on"
-    # - platform: state
-    #   entity_id: binary_sensor.upstairs_pir
-    #   to: "on"
   action:
     - service: light.toggle
       entity_id: light.stairway_light
