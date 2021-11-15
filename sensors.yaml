@@ -8,6 +8,8 @@
     device_class: temperature
     unit_of_measurement: "°F"
     state_topic: "HUDU/temperature1"
+    expire_after: 300
+    force_update: true
 
   - platform: filter
     name: "Kitchen Temp"
@@ -23,6 +25,8 @@
     device_class: humidity
     unit_of_measurement: "%"
     state_topic: "HUDU/humidity1"
+    expire_after: 300
+    force_update: true
 
   - platform: filter
     name: "Kitchen Humid"
@@ -41,6 +45,8 @@
     availability_topic: "furnacepi/lwt"
     payload_available: "Online"
     payload_not_available: "Offline"
+    expire_after: 300
+    force_update: true
 
   - platform: filter
     name: "Furnace Oil Top Temp"
@@ -59,6 +65,8 @@
     availability_topic: "furnacepi/lwt"
     payload_available: "Online"
     payload_not_available: "Offline"
+    expire_after: 300
+    force_update: true
 
   - platform: filter
     name: "Furnace Oil Top Humid"
@@ -77,6 +85,8 @@
     availability_topic: "furnacepi/lwt"
     payload_available: "Online"
     payload_not_available: "Offline"
+    expire_after: 300
+    force_update: true
 
   - platform: filter
     name: "Furnace Return Temp"
@@ -95,6 +105,8 @@
     availability_topic: "furnacepi/lwt"
     payload_available: "Online"
     payload_not_available: "Offline"
+    expire_after: 300
+    force_update: true
 
   - platform: filter
     name: "Furnace Return Humid"
@@ -113,6 +125,8 @@
     availability_topic: "furnacepi/lwt"
     payload_available: "Online"
     payload_not_available: "Offline"
+    expire_after: 300
+    force_update: true
 
   - platform: filter
     name: "Furnace Register Temp"
@@ -131,6 +145,8 @@
     availability_topic: "furnacepi/lwt"
     payload_available: "Online"
     payload_not_available: "Offline"
+    expire_after: 300
+    force_update: true
 
   - platform: filter
     name: "Furnace Pellet Top Temp"
@@ -149,6 +165,8 @@
     availability_topic: "furnacepi/lwt"
     payload_available: "Online"
     payload_not_available: "Offline"
+    expire_after: 300
+    force_update: true
 
   - platform: filter
     name: "Furnace Oil Firebox Temp"
@@ -167,6 +185,8 @@
     availability_topic: "furnacepi/lwt"
     payload_available: "Online"
     payload_not_available: "Offline"
+    expire_after: 300
+    force_update: true
 
   - platform: filter
     name: "Furnace Pellet Firebox Temp"
@@ -336,7 +356,7 @@
         {{ states('sensor.bedroom_fanspeed') }}
       {% endif %}
 
-  # Minimal configuration of the standard time and date sensor
+  # Configuration of the standard time and date sensor
   - platform: time_date
     display_options:
       - "date_time_iso"
