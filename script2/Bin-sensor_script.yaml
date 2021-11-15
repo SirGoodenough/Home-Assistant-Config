@@ -31,11 +31,11 @@
         data:
           "topic": "rf433/FrontDoorI"
           "payload": "OFF"
-  # Garage Door
-      - service: mqtt.publish
-        data:
-          "topic": "rf433/Garage"
-          "payload": "OFF"
+  # # Garage Door
+  #     - service: mqtt.publish
+  #       data:
+  #         "topic": "rf433/Garage"
+  #         "payload": "OFF"
   # Garage Side Door
       - service: mqtt.publish
         data:
