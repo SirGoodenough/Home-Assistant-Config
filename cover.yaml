@@ -9,15 +9,17 @@
     device_class: garage
     optimistic: false
     state_topic: garage_door/stat/DOOR
-    state_open: 'OPEN'
-    state_closed: 'CLOSE'
-    state_opening: 'OPENING'
-    state_closing: 'CLOSING'
+    state_open: 'open'
+    state_closed: 'closed'
+    state_opening: 'opening'
+    state_closing: 'closing'
     command_topic: garage_door/cmnd/EVENT
-    payload_open: 'OPEN'
-    payload_close: 'CLOSE'
-    payload_stop: 'STOPPED'
+    payload_open: 'open'
+    payload_close: 'closed'
+    payload_stop: 'stopped'
     availability_topic: garage_door/tele/LWT
     payload_available: 'Online'
     payload_not_available: 'Offline'
     tilt_opened_value: 100
+
+    # open, closed, opening, closing, stopped
