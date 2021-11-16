@@ -2324,32 +2324,29 @@
                                 },
                                 {
                                     "entity": "script.heavenly_peace"
+                                },
+                                {
+                                    "entity": "automation.in_christmas"
+                                },
+                                {
+                                    "entity": "automation.christmas_enable"
+                                },
+                                {
+                                    "entity": "automation.turn_off_christmas_lights_at_dawn"
+                                },
+                                {
+                                    "entity": "automation.turn_off_inside_christmas"
+                                },
+                                {
+                                    "entity": "automation.turn_on_christmas_lights_at_dark"
+                                },
+                                {
+                                    "entity": "automation.turn_on_inside_christmas"
                                 }
                             ],
                             "show_header_toggle": true,
                             "theme": "christmas",
                             "title": "Christmas Lights",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "light.plug3"
-                                },
-                                {
-                                    "entity": "light.office_track_jim_bulb"
-                                },
-                                {
-                                    "entity": "light.office_fan_light"
-                                },
-                                {
-                                    "entity": "switch.tarantula_power"
-                                },
-                                {
-                                    "entity": "sensor.office_fanspeed"
-                                }
-                            ],
-                            "title": "Office",
                             "type": "entities"
                         },
                         {
@@ -2373,6 +2370,27 @@
                                 }
                             ],
                             "title": "Christmas_Tree"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.plug3"
+                                },
+                                {
+                                    "entity": "light.office_track_jim_bulb"
+                                },
+                                {
+                                    "entity": "light.office_fan_light"
+                                },
+                                {
+                                    "entity": "switch.tarantula_power"
+                                },
+                                {
+                                    "entity": "sensor.office_fanspeed"
+                                }
+                            ],
+                            "title": "Office",
+                            "type": "entities"
                         },
                         {
                             "entities": [
