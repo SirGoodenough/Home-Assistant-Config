@@ -2127,7 +2127,7 @@
                             "detail": 2
                         },
                         {
-                            "entity": "sensor.bathroom_humid",
+                            "entity": "sensor.bedroom_humid",
                             "graph": "line",
                             "type": "sensor",
                             "detail": 2
