@@ -52,6 +52,91 @@
                 "name": "fan_test",
                 "icon": "mdi:fan",
                 "id": "fan_test"
+            },
+            {
+                "name": "Bed restart",
+                "icon": "mdi:restart-alert",
+                "id": "bed_restart"
+            },
+            {
+                "name": "Bed Head Up 1",
+                "icon": "mdi:head-plus",
+                "id": "bed_head_up_1"
+            },
+            {
+                "name": "Bed Head Down 1",
+                "icon": "mdi:head-minus",
+                "id": "bed_head_down_1"
+            },
+            {
+                "name": "Bed Head Down 5",
+                "icon": "mdi:head-minus",
+                "id": "bed_head_down_5"
+            },
+            {
+                "name": "Bed Head Down 10",
+                "icon": "mdi:head-minus",
+                "id": "bed_head_down_10"
+            },
+            {
+                "name": "Bed Head Up 5",
+                "icon": "mdi:head-plus",
+                "id": "bed_head_up_5"
+            },
+            {
+                "name": "Bed Head Up 10",
+                "icon": "mdi:head-plus",
+                "id": "bed_head_up_10"
+            },
+            {
+                "name": "Bed Foot Up 1",
+                "icon": "mdi:foot-print",
+                "id": "bed_foot_up_1"
+            },
+            {
+                "name": "Bed Foot Down 1",
+                "icon": "mdi:foot-print",
+                "id": "bed_foot_down_1"
+            },
+            {
+                "name": "Bed Foot Down 5",
+                "icon": "mdi:foot-print",
+                "id": "bed_foot_down_5"
+            },
+            {
+                "name": "Bed Foot Down 10",
+                "icon": "mdi:foot-print",
+                "id": "bed_foot_down_10"
+            },
+            {
+                "name": "Bed Foot Up 5",
+                "icon": "mdi:foot-print",
+                "id": "bed_foot_up_5"
+            },
+            {
+                "name": "Bed Foot Up 10",
+                "icon": "mdi:foot-print",
+                "id": "bed_foot_up_10"
+            },
+            {
+                "name": "Bed Down 5",
+                "icon": "mdi:bed-empty",
+                "id": "bed__down_5"
+            },
+            {
+                "name": "Bed flat",
+                "icon": "mdi:trending-neutral",
+                "id": "bed_flat"
+            },
+            {
+                "name": "Bed Up 5",
+                "icon": "mdi:bed",
+                "id": "bed_up_5"
+            },
+            {
+                "name": "Bed sit",
+                "icon": "mdi:table-chair",
+                "id": "bed_sit"
             }
         ]
     }

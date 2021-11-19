@@ -1,0 +1,2 @@
+---
+bed: "curl {{ url }}{{ cmnd }}"
