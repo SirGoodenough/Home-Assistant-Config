@@ -54,87 +54,87 @@
                 "id": "fan_test"
             },
             {
-                "name": "Bed restart",
+                "name": "Bed Restart",
                 "icon": "mdi:restart-alert",
                 "id": "bed_restart"
             },
             {
-                "name": "Bed Head Up 1",
+                "name": "Bed Head Up One",
                 "icon": "mdi:head-plus",
                 "id": "bed_head_up_1"
             },
             {
-                "name": "Bed Head Down 1",
+                "name": "Bed Head Down One",
                 "icon": "mdi:head-minus",
                 "id": "bed_head_down_1"
             },
             {
-                "name": "Bed Head Down 5",
+                "name": "Bed Head Down Five",
                 "icon": "mdi:head-minus",
                 "id": "bed_head_down_5"
             },
             {
-                "name": "Bed Head Down 10",
+                "name": "Bed Head Down Ten",
                 "icon": "mdi:head-minus",
                 "id": "bed_head_down_10"
             },
             {
-                "name": "Bed Head Up 5",
+                "name": "Bed Head Up Five",
                 "icon": "mdi:head-plus",
                 "id": "bed_head_up_5"
             },
             {
-                "name": "Bed Head Up 10",
+                "name": "Bed Head Up Ten",
                 "icon": "mdi:head-plus",
                 "id": "bed_head_up_10"
             },
             {
-                "name": "Bed Foot Up 1",
+                "name": "Bed Knee Up One",
                 "icon": "mdi:foot-print",
                 "id": "bed_foot_up_1"
             },
             {
-                "name": "Bed Foot Down 1",
+                "name": "Bed Knee Down One",
                 "icon": "mdi:foot-print",
                 "id": "bed_foot_down_1"
             },
             {
-                "name": "Bed Foot Down 5",
+                "name": "Bed Knee Down Five",
                 "icon": "mdi:foot-print",
                 "id": "bed_foot_down_5"
             },
             {
-                "name": "Bed Foot Down 10",
+                "name": "Bed Knee Down Ten",
                 "icon": "mdi:foot-print",
                 "id": "bed_foot_down_10"
             },
             {
-                "name": "Bed Foot Up 5",
+                "name": "Bed Knee Up Five",
                 "icon": "mdi:foot-print",
                 "id": "bed_foot_up_5"
             },
             {
-                "name": "Bed Foot Up 10",
+                "name": "Bed Knee Up Ten",
                 "icon": "mdi:foot-print",
                 "id": "bed_foot_up_10"
             },
             {
-                "name": "Bed Down 5",
+                "name": "Bed Down Five",
                 "icon": "mdi:bed-empty",
                 "id": "bed__down_5"
             },
             {
-                "name": "Bed flat",
+                "name": "Bed Flat",
                 "icon": "mdi:trending-neutral",
                 "id": "bed_flat"
             },
             {
-                "name": "Bed Up 5",
+                "name": "Bed Up Five",
                 "icon": "mdi:bed",
                 "id": "bed_up_5"
             },
             {
-                "name": "Bed sit",
+                "name": "Bed Sit",
                 "icon": "mdi:table-chair",
                 "id": "bed_sit"
             }
