@@ -247,7 +247,7 @@
 
   script.denon_firetv:
     friendly_name: "FireTV Input"
-    icon: mdi:amazon
+    icon: mdi:remote-tv
 
   script.denon_mecool:
     friendly_name: "MeCool Input"
