@@ -1,0 +1,35 @@
+---
+  #####################################################
+  # Turn off All SmartBed Buttons                     #
+  #####################################################
+  smartbed_buttons_off:
+    alias: Turn off all the smartbed buttons
+    sequence: 
+      - service: input_boolean.turn_off
+        data: 
+          area_id: smartbed
+
+  # smartbed_buttons_off:
+  #   alias: Turn off all the smartbed buttons
+  #   sequence:
+  #     - service: input_boolean.turn_off
+  #       data:
+  #         entity_id: 
+  #           - input_boolean.bed_flat
+  #           - input_boolean.bed_sit
+  #           - input_boolean.bed_restart
+  #           - input_boolean.bed_up_5
+  #           - input_boolean.bed_down_5
+  #           - input_boolean.bed_head_up_1
+  #           - input_boolean.bed_head_up_5
+  #           - input_boolean.bed_head_up_10
+  #           - input_boolean.bed_head_down_1
+  #           - input_boolean.bed_head_down_5
+  #           - input_boolean.bed_head_down_10
+  #           - input_boolean.bed_foot_up_1
+  #           - input_boolean.bed_foot_up_5
+  #           - input_boolean.bed_foot_up_10
+  #           - input_boolean.bed_foot_down_1
+  #           - input_boolean.bed_foot_down_5
+  #           - input_boolean.bed_foot_down_10
+

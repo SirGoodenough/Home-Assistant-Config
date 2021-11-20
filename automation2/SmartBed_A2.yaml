@@ -91,10 +91,9 @@
         from: "off"
         to: "on"
     action:
-      - alias: Reset the input_boolean
-        service: input_boolean.turn_off
-        target:
-          entity_id: "{{ trigger.entity_id }}"
+      - alias: Turn off all the smartbed buttons
+        sequence: 
+          - service: script.smartbed_buttons_off
       - choose:
         - alias: bed_down_5 sent
           conditions:
