@@ -155,9 +155,6 @@
   initial_state: on
   trigger:
     - platform: state
-      entity_id: binary_sensor.front_door_open
-      to: "on"
-    - platform: state
       entity_id: binary_sensor.front_door_open_433
       to: "on"
   action:
