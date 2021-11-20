@@ -92,8 +92,7 @@
         to: "on"
     action:
       - alias: Turn off all the smartbed buttons
-        sequence: 
-          - service: script.smartbed_buttons_off
+        service: script.smartbed_buttons_off
       - choose:
         - alias: bed_down_5 sent
           conditions:
