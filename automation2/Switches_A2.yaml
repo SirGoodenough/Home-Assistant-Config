@@ -179,9 +179,6 @@
     - platform: state
       entity_id: binary_sensor.side_door_open_433
       to: "on"
-    - platform: state
-      entity_id: binary_sensor.side_door_open
-      to: "on"
   action:
     - service: light.turn_on
       entity_id:
