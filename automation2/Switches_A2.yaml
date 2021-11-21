@@ -130,7 +130,14 @@
       entity_id: binary_sensor.office_light_1
       to: "on"
   action:
-    - service: light.toggle
+    - service: >-
+        {% if is_state('light.office_fan_light', 'on') %}
+          switch.turn_off
+        {% elif is_state('light.plug3', 'on') %}
+          switch.turn_off
+        {% else %}
+          switch.turn_on
+        {% endif %}
       entity_id:
         - light.plug3
         - light.office_fan_light
