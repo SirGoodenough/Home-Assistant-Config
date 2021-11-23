@@ -103,7 +103,7 @@
       entity_id: switch.aeotec_dsc26103_micro_switch_2nd_edition_switch
       to: "off"
   action:
-    - service: automation.turn_off
+    - service: homeassistant.turn_off
       entity_id: automation.bathroom_heat_failsafe
     - service: input_boolean.turn_off
       entity_id: input_boolean.bathroom_heater_auto_on
