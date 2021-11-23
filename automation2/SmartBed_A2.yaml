@@ -6,13 +6,13 @@
     max_exceeded: silent
     trigger:
       - platform: state
-        entity_id: input_boolean.bed_down_5
-        id: bed_down_5
+        entity_id: input_boolean.bed_down_6
+        id: bed_down_6
         from: "off"
         to: "on"
       - platform: state
-        entity_id: input_boolean.bed_up_5
-        id: bed_up_5
+        entity_id: input_boolean.bed_up_6
+        id: bed_up_6
         from: "off"
         to: "on"
       - platform: state
@@ -94,173 +94,179 @@
       - alias: Turn off all the smartbed buttons
         service: script.smartbed_buttons_off
       - choose:
-        - alias: bed_down_5 sent
+        - alias: bed_down_6 sent
           conditions:
           - condition: trigger
-            id: bed_down_5
-          sequence:
-            alias: Send the curl command
-            service: shell_command.bed
-            data:
-              url: !secret SmartBed_URL
-              cmnd: 'button/5?timeout=5'
-        - alias: bed_up_5 sent
+            id: bed_down_6
+        - sequence:
+            - alias: Send the curl command
+              service: shell_command.bed
+              data:
+                url: !secret SmartBed_URL
+                cmnd: 'button/5?timeout=6'
+        - alias: bed_up_6 sent
           conditions:
           - condition: trigger
-            id: bed_up_5
+            id: bed_up_6
           sequence:
-            alias: Send the curl command
-            service: shell_command.bed
-            data:
-              url: !secret SmartBed_URL
-              cmnd: 'button/4?timeout=5'
+            - alias: Send the curl command
+              service: shell_command.bed
+              data:
+                url: !secret SmartBed_URL
+                cmnd: 'button/4?timeout=6'
         - alias: bed_flat sent
           conditions:
           - condition: trigger
             id: bed_flat
           sequence:
-            alias: Send the curl command
-            service: shell_command.bed
-            data:
-              url: !secret SmartBed_URL
-              cmnd: 'button/8?timeout=20'
+            - alias: Send the curl command
+              service: shell_command.bed
+              data:
+                url: !secret SmartBed_URL
+                cmnd: 'button/8?timeout=20'
         - alias: bed_restart sent
           conditions:
           - condition: trigger
             id: bed_restart
           sequence:
-            alias: Send the curl command
-            service: shell_command.bed
-            data:
-              url: !secret SmartBed_URL
-              cmnd: 'reboot'
+            - alias: Send the curl command
+              service: shell_command.bed
+              data:
+                url: !secret SmartBed_URL
+                cmnd: 'reboot'
         - alias: bed_sit sent
           conditions:
           - condition: trigger
             id: bed_sit
           sequence:
-            alias: Send the curl command
+          - alias: Send the curl command
             service: shell_command.bed
             data:
               url: !secret SmartBed_URL
               cmnd: 'button/6?timeout=15'
+          - alias: delay and send the head up more
+            delay: 00:00:16
+          - service: shell_command.bed
+            data:
+              url: !secret SmartBed_URL
+              cmnd: 'button/0?timeout=6'
         - alias: bed_foot_down_1 sent
           conditions:
           - condition: trigger
             id: bed_foot_down_1
           sequence:
-            alias: Send the curl command
-            service: shell_command.bed
-            data:
-              url: !secret SmartBed_URL
-              cmnd: 'button/3?timeout=1'
+            - alias: Send the curl command
+              service: shell_command.bed
+              data:
+                url: !secret SmartBed_URL
+                cmnd: 'button/3?timeout=1'
         - alias: bed_foot_down_5 sent
           conditions:
           - condition: trigger
             id: bed_foot_down_5
           sequence:
-            alias: Send the curl command
-            service: shell_command.bed
-            data:
-              url: !secret SmartBed_URL
-              cmnd: 'button/3?timeout=5'
+            - alias: Send the curl command
+              service: shell_command.bed
+              data:
+                url: !secret SmartBed_URL
+                cmnd: 'button/3?timeout=5'
         - alias: bed_foot_down_10 sent
           conditions:
           - condition: trigger
             id: bed_foot_down_10
           sequence:
-            alias: Send the curl command
-            service: shell_command.bed
-            data:
-              url: !secret SmartBed_URL
-              cmnd: 'button/3?timeout=10'
+            - alias: Send the curl command
+              service: shell_command.bed
+              data:
+                url: !secret SmartBed_URL
+                cmnd: 'button/3?timeout=10'
         - alias: bed_foot_up_1 sent
           conditions:
           - condition: trigger
             id: bed_foot_up_1
           sequence:
-            alias: Send the curl command
-            service: shell_command.bed
-            data:
-              url: !secret SmartBed_URL
-              cmnd: 'button/1?timeout=1'
+            - alias: Send the curl command
+              service: shell_command.bed
+              data:
+                url: !secret SmartBed_URL
+                cmnd: 'button/1?timeout=1'
         - alias: bed_foot_up_5 sent
           conditions:
           - condition: trigger
             id: bed_foot_up_5
           sequence:
-            alias: Send the curl command
-            service: shell_command.bed
-            data:
-              url: !secret SmartBed_URL
-              cmnd: 'button/1?timeout=5'
+            - alias: Send the curl command
+              service: shell_command.bed
+              data:
+                url: !secret SmartBed_URL
+                cmnd: 'button/1?timeout=5'
         - alias: bed_foot_up_10 sent
           conditions:
           - condition: trigger
             id: bed_foot_up_10
           sequence:
-            alias: Send the curl command
-            service: shell_command.bed
-            data:
-              url: !secret SmartBed_URL
-              cmnd: 'button/1?timeout=10'
+            - alias: Send the curl command
+              service: shell_command.bed
+              data:
+                url: !secret SmartBed_URL
+                cmnd: 'button/1?timeout=10'
         - alias: bed_head_down_1 sent
           conditions:
           - condition: trigger
             id: bed_head_down_1
           sequence:
-            alias: Send the curl command
-            service: shell_command.bed
-            data:
-              url: !secret SmartBed_URL
-              cmnd: 'button/2?timeout=1'
+            - alias: Send the curl command
+              service: shell_command.bed
+              data:
+                url: !secret SmartBed_URL
+                cmnd: 'button/2?timeout=1'
         - alias: bed_head_down_5 sent
           conditions:
           - condition: trigger
             id: bed_head_down_5
           sequence:
-            alias: Send the curl command
-            service: shell_command.bed
-            data:
-              url: !secret SmartBed_URL
-              cmnd: 'button/2?timeout=5'
+            - alias: Send the curl command
+              service: shell_command.bed
+              data:
+                url: !secret SmartBed_URL
+                cmnd: 'button/2?timeout=5'
         - alias: bed_head_down_10 sent
           conditions:
           - condition: trigger
             id: bed_head_down_10
           sequence:
-            alias: Send the curl command
-            service: shell_command.bed
-            data:
-              url: !secret SmartBed_URL
-              cmnd: 'button/2?timeout=10'
+            - alias: Send the curl command
+              service: shell_command.bed
+              data:
+                url: !secret SmartBed_URL
+                cmnd: 'button/2?timeout=10'
         - alias: bed_head_up_1 sent
           conditions:
           - condition: trigger
             id: bed_head_up_1
           sequence:
-            alias: Send the curl command
-            service: shell_command.bed
-            data:
-              url: !secret SmartBed_URL
-              cmnd: 'button/0?timeout=1'
+            - alias: Send the curl command
+              service: shell_command.bed
+              data:
+                url: !secret SmartBed_URL
+                cmnd: 'button/0?timeout=1'
         - alias: bed_head_up_5 sent
           conditions:
           - condition: trigger
             id: bed_head_up_5
           sequence:
-            alias: Send the curl command
-            service: shell_command.bed
-            data:
-              url: !secret SmartBed_URL
-              cmnd: 'button/0?timeout=5'
+            - alias: Send the curl command
+              service: shell_command.bed
+              data:
+                url: !secret SmartBed_URL
+                cmnd: 'button/0?timeout=5'
         - alias: bed_head_up_10 sent
           conditions:
           - condition: trigger
             id: bed_head_up_10
           sequence:
-            alias: Send the curl command
-            service: shell_command.bed
-            data:
-              url: !secret SmartBed_URL
-              cmnd: 'button/0?timeout=10'
+            - alias: Send the curl command
+              service: shell_command.bed
+              data:
+                url: !secret SmartBed_URL
+                cmnd: 'button/0?timeout=10'

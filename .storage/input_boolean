@@ -119,7 +119,7 @@
                 "id": "bed_foot_up_10"
             },
             {
-                "name": "Bed Down Five",
+                "name": "Bed Down Six",
                 "icon": "mdi:bed-empty",
                 "id": "bed__down_5"
             },
@@ -129,7 +129,7 @@
                 "id": "bed_flat"
             },
             {
-                "name": "Bed Up Five",
+                "name": "Bed Up Six",
                 "icon": "mdi:bed",
                 "id": "bed_up_5"
             },
