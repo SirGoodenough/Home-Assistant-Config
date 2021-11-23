@@ -98,7 +98,7 @@
           conditions:
           - condition: trigger
             id: bed_down_6
-        - sequence:
+          sequence:
           - alias: Send the bed_down_6 command
             service: shell_command.bed
             data:
