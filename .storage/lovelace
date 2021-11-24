@@ -9,6 +9,46 @@
                     "badges": [],
                     "cards": [
                         {
+                            "type": "conditional",
+                            "conditions": [
+                                {
+                                    "entity": "sensor.water_the_plants",
+                                    "state": "0"
+                                }
+                            ],
+                            "card": {
+                                "type": "picture",
+                                "image": "/local/images/hoya_carnosa_crinkle_8.webp",
+                                "tap_action": {
+                                    "action": "none"
+                                },
+                                "hold_action": {
+                                    "action": "none"
+                                },
+                                "theme": "Dark - Red"
+                            }
+                        },
+                        {
+                            "type": "conditional",
+                            "conditions": [
+                                {
+                                    "entity": "sensor.drain_the_compressor",
+                                    "state": "0"
+                                }
+                            ],
+                            "card": {
+                                "type": "picture",
+                                "image": "/local/images/compressor.webp",
+                                "tap_action": {
+                                    "action": "none"
+                                },
+                                "hold_action": {
+                                    "action": "none"
+                                },
+                                "theme": "Dark - Light Red"
+                            }
+                        },
+                        {
                             "entities": [
                                 {
                                     "entity": "sensor.kitchen_temperature"
