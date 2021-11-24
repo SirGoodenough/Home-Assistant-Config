@@ -3820,6 +3820,96 @@
                             "card": {
                                 "type": "entities"
                             }
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_cpu_load_average_five_minute",
+                                    "name": "CPU Load Average Five Minute"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_cpu_usage",
+                                    "name": "CPU Usage"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_gateway_01wan_dhcp_loss",
+                                    "name": "Gateway 01WAN_DHCP loss"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_gateway_01wan_dhcp_status",
+                                    "name": "Gateway 01WAN_DHCP status"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_gateway_01wan_dhcp6_loss",
+                                    "name": "Gateway 01WAN_DHCP6 loss"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_gateway_01wan_dhcp6_status",
+                                    "name": "Gateway 01WAN_DHCP6 status"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_01wan_inbytes_kilobytes_per_second",
+                                    "name": "Interface 01WAN inbytes_kilobytes_per_second"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_01wan_outbytes_kilobytes_per_second",
+                                    "name": "Interface 01WAN outbytes_kilobytes_per_second"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_01wan_status",
+                                    "name": "Interface 01WAN status"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_02homeassistant_status",
+                                    "name": "Interface 02HOMEASSISTANT status"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_03housenetwork_status",
+                                    "name": "Interface 03HOUSENETWORK status"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_06counter_status",
+                                    "name": "Interface 06COUNTER status"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_07veeda_status",
+                                    "name": "Interface 07VEEDA status"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_08switch_0_storage_status",
+                                    "name": "Interface 08SWITCH_0_STORAGE status"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_09switch_1_status",
+                                    "name": "Interface 09SWITCH_1 status"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_10switch_2_status",
+                                    "name": "Interface 10SWITCH_2 status"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_11switch_3_upstairs_status",
+                                    "name": "Interface 11SWITCH_3_UPSTAIRS status"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_12garagetherani_status",
+                                    "name": "Interface 12GARAGETHERANI status"
+                                },
+                                {
+                                    "entity": "binary_sensor.rassilon_mountcadon_duckdns_org_pending_notices_present",
+                                    "name": "Pending Notices Present"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_system_boottime",
+                                    "name": "System Boottime"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_system_temperature",
+                                    "name": "System Temperature"
+                                }
+                            ],
+                            "title": "rassilon.mountcadon.duckdns.org"
                         }
                     ],
                     "icon": "mdi:brain",
