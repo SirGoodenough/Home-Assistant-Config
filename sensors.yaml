@@ -446,20 +446,6 @@
           {% endif %}
 
   ####################################################
-  #  pfSense                                         #
-  ####################################################
-  - platform: template
-    sensors:
-      bytes_received:
-        friendly_name: "MB Received"
-        unit_of_measurement: "MB/s"
-        value_template: "{{ (states('sensor.freebsd_router_kib_s_received') | int / 1024) | round(1) }}"
-      bytes_sent:
-        friendly_name: "MB Sent"
-        unit_of_measurement: "MB/s"
-        value_template: "{{ (states('sensor.freebsd_router_kib_s_sent') | int / 1024) | round(1) }}"
-
-  ####################################################
   #  GitHub                                          #
   ####################################################
   - platform: github
