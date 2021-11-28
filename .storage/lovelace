@@ -116,7 +116,7 @@
                             "conditions": [
                                 {
                                     "entity": "sensor.water_the_plants",
-                                    "state": "0"
+                                    "state": "today"
                                 }
                             ],
                             "card": {
@@ -136,7 +136,7 @@
                             "conditions": [
                                 {
                                     "entity": "sensor.drain_the_compressor",
-                                    "state": "0"
+                                    "state": "today"
                                 }
                             ],
                             "card": {
@@ -2623,13 +2623,6 @@
                             }
                         },
                         {
-                            "type": "calendar",
-                            "entities": [
-                                "calendar.garbage_collection"
-                            ],
-                            "initial_view": "dayGridMonth"
-                        },
-                        {
                             "type": "glance",
                             "entities": [
                                 {
@@ -2655,6 +2648,13 @@
                             "columns": 6,
                             "theme": "Dark - Red",
                             "title": "Take-Out Schedule"
+                        },
+                        {
+                            "type": "calendar",
+                            "entities": [
+                                "calendar.garbage_collection"
+                            ],
+                            "initial_view": "dayGridMonth"
                         },
                         {
                             "type": "entities",
