@@ -38,24 +38,3 @@
         webhook: !secret DrZzsPage
         json: '1'
 
-#   just_say_no:
-#     sequence:
-#     - alias: "Turn off all the bed buttons"
-#       repeat:
-#         while:
-#           - condition: state
-#             entity_id: input_boolean.do_something
-#             state: "on"
-#           # Don't do it too many times
-#           - condition: template
-#             value_template: "{{ repeat.index <= 20 }}"
-#         sequence:
-#           - service: script.something
-
-# {%- for state in states.input_boolean -%}
-# {%- if state.state == "on" -%}
-# {%- if 'bed_' in state.entity_id -%}
-# {{ state.entity_id }} is {{ state.state }}
-# {% endif -%}
-# {% endif -%}
-# {% endfor %}
