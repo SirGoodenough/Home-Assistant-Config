@@ -2,35 +2,18 @@
   ####################################################
   #  Temperature                                     #
   ####################################################
-  - platform: mqtt
-    unique_id: 63392afc-4441-44bf-903a-481f80b56cb8
-    name: Kitchen Temperature
-    device_class: temperature
-    unit_of_measurement: "°F"
-    state_topic: "HUDU/temperature1"
-    expire_after: 300
-    force_update: true
 
   - platform: filter
     name: "Kitchen Temp"
-    entity_id: sensor.kitchen_temperature
+    entity_id: sensor.kitchen_temperature_3
     filters:
       - filter: outlier
         window_size: 4 # Number of states in filter
         radius: 5.0 # Difference from mean
 
-  - platform: mqtt
-    unique_id: 8b19d341-7211-4598-abca-babf0d29af13
-    name: Kitchen Humidity
-    device_class: humidity
-    unit_of_measurement: "%"
-    state_topic: "HUDU/humidity1"
-    expire_after: 300
-    force_update: true
-
   - platform: filter
     name: "Kitchen Humid"
-    entity_id: sensor.kitchen_humidity
+    entity_id: sensor.kitchen_humidity_3
     filters:
       - filter: outlier
         window_size: 4 # Number of states in filter
