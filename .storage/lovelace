@@ -88,6 +88,9 @@
                                     "entity": "light.fp_socket"
                                 },
                                 {
+                                    "entity": "light.stairway_switch"
+                                },
+                                {
                                     "entity": "light.stairway_light"
                                 },
                                 {
