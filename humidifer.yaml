@@ -1,6 +1,7 @@
 ---
   - name: House Humidity
     humidifier: switch.humidifier_2
+    #unique_id: 82969b7d-9ea0-446e-aa80-dfd296d9266e
     target_sensor: sensor.house_humidity_main
     min_humidity: 30
     max_humidity: 55

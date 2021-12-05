@@ -11,10 +11,10 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "sensor.kitchen_temperature"
+                                    "entity": "sensor.kitchen_temperature_3"
                                 },
                                 {
-                                    "entity": "sensor.kitchen_humidity"
+                                    "entity": "sensor.kitchen_humidity_3"
                                 },
                                 {
                                     "entity": "light.jims_computer_light"

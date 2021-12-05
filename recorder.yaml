@@ -3,13 +3,13 @@
   purge_keep_days: 3
   include:
     domains:
-      - automation # Flip on automations for troubleshooting
+      - automation
       - alert
       - binary_sensor
       - cover
       - climate
       - fan
-      - known_devices
+      - generic_hygrostat
       - light
       - lock
       - notify
@@ -17,18 +17,17 @@
       - person
       - script
       - sensor
+      - shell_command
       - sonoff
       - switch
       - rest_command
       - ring
   exclude:
     domains:
-      # - automation # Don't keep automations normally
       - group
       - camera
       - cloud
       - counter
-      - device_tracker
       - hacs
       - life360
       - mqtt
@@ -37,7 +36,6 @@
       - updater # Don't save updater
       - weather
     entities:
-      - automation.humidity_control # Very noisy if automations are on
       - automation.rfbridge_1_demultiplexer # Very noisy if automations are on
       - group.weather # Don't save weather
       - sensor.date # Don't record date and time
