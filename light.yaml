@@ -10,7 +10,7 @@
   - platform: switch
     name: "Office Track Jim Bulb"
     entity_id: switch.office_track_2
-
+ 
   - platform: mqtt
     name: "Jens Night Light"
     unique_id: 5801636e-abf4-4720-8a5b-a4c97a46228f

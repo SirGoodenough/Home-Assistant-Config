@@ -132,11 +132,11 @@
   action:
     - service: >-
         {% if is_state('light.office_fan_light', 'on') %}
-          switch.turn_off
+          light.turn_off
         {% elif is_state('light.plug3', 'on') %}
-          switch.turn_off
+          light.turn_off
         {% else %}
-          switch.turn_on
+          light.turn_on
         {% endif %}
       entity_id:
         - light.plug3
