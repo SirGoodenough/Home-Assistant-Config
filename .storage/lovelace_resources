@@ -27,6 +27,16 @@
                 "url": "/hacsfiles/toggle-control-button-row/toggle-control-button-row.js",
                 "type": "module",
                 "id": "f530518701524e73aca62a65d74ae8d8"
+            },
+            {
+                "url": "/hacsfiles/flipdown-timer-card/flipdown-timer-card.js?hacstag=42308207102",
+                "type": "module",
+                "id": "100030eacb97436d84827f45f928c46d"
+            },
+            {
+                "url": "/hacsfiles/surveillance-card/surveillance-card.js?hacstag=147764937005",
+                "type": "module",
+                "id": "06b60c42860d464486a390cee5c2f1de"
             }
         ]
     }
