@@ -1,59 +1,78 @@
-alert: !include alert.yaml
+# Configure a default setup of Home Assistant (frontend, api, etc)
+#default_config:
+
+# Individual options represented by default_config
 automation: !include automations.yaml
 automation manual: !include_dir_merge_list ./automation2
 automation dev: !include_dir_merge_list ./automationDev
-binary_sensor: !include binary_sensors.yaml
-camera: !include camera.yaml
-# climate: !include climate.yaml
 cloud: !include cloud.yaml
 config:
-conversation:
 counter: !include counter.yaml
-cover: !include cover.yaml
-device_tracker: !include device_tracker.yaml
 dhcp:
-fan: !include fan.yaml
-ffmpeg: !include ffmpeg.yaml
+# energy
 frontend: !include frontend.yaml
-generic_hygrostat: !include humidifer.yaml
-group: !include groups.yaml
-hacs: !include hacs.yaml
-homeassistant: !include homeassistant.yaml
 history: !include history.yaml
-http: !include http.yaml
+image:
 input_boolean:
 input_datetime:
 input_number:
 input_select:
 input_text:
+logbook:
+map:
+media_source:
+# mobile_app:
+my:
+person: !include person.yaml
+# scene:
+# script: !include scripts.yaml
+script: !include_dir_merge_named ./script2
+ssdp:
+stream:
+sun:
+system_health:
+# tag:
+timer: !include timer.yaml
+updater:
+usb:
+webhook:
+zeroconf:
+zone:
+
+# All the other stuff not covered in the default_config:
+
+alert: !include alert.yaml
+binary_sensor: !include binary_sensors.yaml
+camera: !include camera.yaml
+# climate: !include climate.yaml
+conversation:
+cover: !include cover.yaml
+device_tracker: !include device_tracker.yaml
+fan: !include fan.yaml
+ffmpeg: !include ffmpeg.yaml
+generic_hygrostat: !include humidifer.yaml
+group: !include groups.yaml
+hacs: !include hacs.yaml
+homeassistant: !include homeassistant.yaml
+http: !include http.yaml
 # introduction:
 life360: !include life360.yaml
 light: !include light.yaml
 lock: !include lock.yaml
-logbook:
 logger: !include logger.yaml
-map:
-my:
 notify: !include notify.yaml
 octoprint: !include octoprint.yaml
-person: !include person.yaml
 panel_custom: !include panel_custom.yaml
 panel_iframe: !include panel_iframe.yaml
 python_script:
 recorder: !include recorder.yaml
 rest_command: !include rest_command.yaml
 ring: !include ring.yaml
-# script: !include scripts.yaml
-script: !include_dir_merge_named ./script2
 sensor: !include sensors.yaml
 shell_command: !include shell_command.yaml
 sonoff: !include sonoff.yaml
-sun:
-system_health:
 switch: !include switch.yaml
 switch two: !include_dir_merge_list ./switch2
-timer: !include timer.yaml
 tts: !include tts.yaml
-#updater: !include updater.yaml
 webhook_service:
 zwave: !include zwave.yaml
