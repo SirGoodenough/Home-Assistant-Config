@@ -44,8 +44,20 @@
         entity_id: binary_sensor.moms_button2
         to: "on"
     action:
-      - service: light.toggle
-        entity_id: light.livingroomlight, light.mom_light
+      - service: >-
+          {% if is_state('light.livingroomlight', 'on') %}
+            homeassistant.turn_off
+          {% elif is_state('light.mom_light', 'on') %}
+            homeassistant.turn_off
+          {% elif is_state('input_boolean.christmas', 'on') %}
+            homeassistant.turn_off
+          {% else %}
+            homeassistant.turn_on
+          {% endif %}
+        entity_id:
+          - light.livingroomlight
+          - light.mom_light
+          - input_boolean.christmas
 
   - id: caa154ed-f3e4-4c88-9ddb-6fb1d9448623
     alias: Toggle Moms Work Light
