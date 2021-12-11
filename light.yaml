@@ -79,6 +79,15 @@
       - light.fp_socket
       - light.stairway_light
 
+  - platform: group
+    name: Dad Lights
+    unique_id: d6e23f4b-a9cf-4b11-bac4-77bfc9a5d82a
+    entities:
+      - light.jims_computer_light
+      - light.cabinetlight
+      - light.kitchen_down_lights
+      - light.kitchensink
+
     # Depricated for reference...
   # - platform: mqtt
   #   name: "Jens Fan"
