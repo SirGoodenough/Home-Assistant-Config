@@ -73,6 +73,9 @@
                                     "entity": "lock.front_door"
                                 },
                                 {
+                                    "entity": "input_boolean.christmas"
+                                },
+                                {
                                     "entity": "light.mom_chair"
                                 },
                                 {
@@ -1758,8 +1761,8 @@
                 {
                     "title": "Ring",
                     "path": "ring",
-                    "icon": "mdi:camera-outline",
-                    "theme": "Dark - Purple",
+                    "icon": "mdi:cctv",
+                    "theme": "dark_mint",
                     "type": "panel",
                     "badges": [],
                     "cards": [
@@ -1769,6 +1772,7 @@
                             "update_interval": 2,
                             "recording_duration": 10,
                             "focus_motion": true,
+                            "camera_view": "live",
                             "show_capture_buttons": true,
                             "cameras": [
                                 {
