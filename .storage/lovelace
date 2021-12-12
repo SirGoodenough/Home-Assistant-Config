@@ -17,6 +17,9 @@
                                     "entity": "sensor.kitchen_humidity_3"
                                 },
                                 {
+                                    "entity": "light.dad_lights"
+                                },
+                                {
                                     "entity": "light.jims_computer_light"
                                 },
                                 {
