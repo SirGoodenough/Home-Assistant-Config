@@ -27,7 +27,7 @@
   # Mom's Light                                      #
   ####################################################
   - id: 4e6e270a-24bc-497e-ae34-a6b6bee86eda
-    alias: Toggle Moms Bed Routine
+    alias: Toggle Moms Bed Routine Button A
     initial_state: on
     trigger:
       - platform: state
@@ -37,7 +37,7 @@
       - service: script.bedtime_button_mom
 
   - id: b3a7f7fe-0a9f-4e69-9762-2d067fecb225
-    alias: Toggle Moms Livingroom Lights
+    alias: Toggle Moms Livingroom Lights Button B
     initial_state: on
     trigger:
       - platform: state
@@ -60,7 +60,7 @@
           - input_boolean.christmas
 
   - id: caa154ed-f3e4-4c88-9ddb-6fb1d9448623
-    alias: Toggle Moms Work Light
+    alias: Toggle Moms Work Light Button D
     initial_state: on
     trigger:
       - platform: state

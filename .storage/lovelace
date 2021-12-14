@@ -643,21 +643,6 @@
                         {
                             "type": "media-control",
                             "entity": "media_player.workroom_speaker"
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                "light.wled",
-                                {
-                                    "entity": "select.wled_playlist",
-                                    "name": "Playlist"
-                                },
-                                {
-                                    "entity": "select.wled_preset",
-                                    "name": "Preset"
-                                }
-                            ],
-                            "title": "In_Tree"
                         }
                     ],
                     "icon": "mdi:home-automation",
@@ -2452,11 +2437,11 @@
                                     "entity": "light.christmas_tree"
                                 },
                                 {
-                                    "entity": "select.christmas_tree_preset",
-                                    "name": "Preset"
+                                    "entity": "sensor.christmas_tree_wi_fi_signal"
                                 },
                                 {
-                                    "entity": "sensor.christmas_tree_wi_fi_signal"
+                                    "entity": "select.christmas_tree_preset",
+                                    "name": "Preset"
                                 },
                                 {
                                     "entity": "select.christmas_tree_color_palette"
@@ -2470,14 +2455,21 @@
                         {
                             "type": "entities",
                             "entities": [
-                                "light.wled",
                                 {
-                                    "entity": "select.wled_playlist",
-                                    "name": "Playlist"
+                                    "entity": "light.wled"
+                                },
+                                {
+                                    "entity": "sensor.wled_wi_fi_signal"
                                 },
                                 {
                                     "entity": "select.wled_preset",
                                     "name": "Preset"
+                                },
+                                {
+                                    "entity": "select.wled_color_palette"
+                                },
+                                {
+                                    "entity": "number.wled_intensity"
                                 }
                             ],
                             "title": "In_Tree"

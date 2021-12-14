@@ -3,58 +3,58 @@
   # Christmas Lights on                               #
   #####################################################
   inside_christmas:
-    alias: "ChristmasTime On"
+    alias: "Holly Holly Joy Joy"
     sequence:
+      - service: switch.turn_on
+        entity_id: switch.b2
+      - delay:
+          seconds: 1
+      - service: switch.turn_on
+        entity_id: switch.b3
+      - delay:
+          seconds: 1
+      - service: switch.turn_on
+        entity_id: switch.e2
+      - delay:
+          seconds: 1
+      - service: switch.turn_on
+        entity_id: switch.e3
+      - delay:
+          seconds: 1
+      - service: switch.turn_on
+        entity_id: switch.f2
+      - delay:
+          seconds: 1
+      - service: switch.turn_on
+        entity_id: switch.f3
+      - delay:
+          seconds: 1
+      - service: switch.turn_on
+        entity_id: switch.b2
+      - delay:
+          seconds: 1
+      - service: switch.turn_on
+        entity_id: switch.b3
+      - delay:
+          seconds: 1
+      - service: switch.turn_on
+        entity_id: switch.e2
+      - delay:
+          seconds: 1
+      - service: switch.turn_on
+        entity_id: switch.e3
+      - delay:
+          seconds: 1
+      - service: switch.turn_on
+        entity_id: switch.f2
+      - delay:
+          seconds: 1
+      - service: switch.turn_on
+        entity_id: switch.f3
+      - delay:
+          seconds: 1
       - service: light.turn_on
         entity_id: light.wled
-      - service: switch.turn_on
-        entity_id: switch.b2
-      - delay:
-          seconds: 1
-      - service: switch.turn_on
-        entity_id: switch.b3
-      - delay:
-          seconds: 1
-      - service: switch.turn_on
-        entity_id: switch.e2
-      - delay:
-          seconds: 1
-      - service: switch.turn_on
-        entity_id: switch.e3
-      - delay:
-          seconds: 1
-      - service: switch.turn_on
-        entity_id: switch.f2
-      - delay:
-          seconds: 1
-      - service: switch.turn_on
-        entity_id: switch.f3
-      - delay:
-          seconds: 1
-      - service: switch.turn_on
-        entity_id: switch.b2
-      - delay:
-          seconds: 1
-      - service: switch.turn_on
-        entity_id: switch.b3
-      - delay:
-          seconds: 1
-      - service: switch.turn_on
-        entity_id: switch.e2
-      - delay:
-          seconds: 1
-      - service: switch.turn_on
-        entity_id: switch.e3
-      - delay:
-          seconds: 1
-      - service: switch.turn_on
-        entity_id: switch.f2
-      - delay:
-          seconds: 1
-      - service: switch.turn_on
-        entity_id: switch.f3
-      - delay:
-          seconds: 1
       - service: input_boolean.turn_on
         entity_id: input_boolean.christmas
 
@@ -66,6 +66,8 @@
     sequence:
       - service: light.turn_off
         entity_id: light.wled
+      - delay:
+          seconds: 2
       - service: switch.turn_off
         entity_id: switch.b2
       - delay:
