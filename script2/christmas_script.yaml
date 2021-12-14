@@ -5,6 +5,8 @@
   inside_christmas:
     alias: "ChristmasTime On"
     sequence:
+      - service: light.turn_on
+        entity_id: light.wled
       - service: switch.turn_on
         entity_id: switch.b2
       - delay:
@@ -62,6 +64,8 @@
   heavenly_peace:
     alias: "Heavenly Peace"
     sequence:
+      - service: light.turn_off
+        entity_id: light.wled
       - service: switch.turn_off
         entity_id: switch.b2
       - delay:
