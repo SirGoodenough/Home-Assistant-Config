@@ -1,5 +1,6 @@
 {
     "version": 1,
+    "minor_version": 1,
     "key": "lovelace",
     "data": {
         "config": {
@@ -642,6 +643,21 @@
                         {
                             "type": "media-control",
                             "entity": "media_player.workroom_speaker"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "light.wled",
+                                {
+                                    "entity": "select.wled_playlist",
+                                    "name": "Playlist"
+                                },
+                                {
+                                    "entity": "select.wled_preset",
+                                    "name": "Preset"
+                                }
+                            ],
+                            "title": "In_Tree"
                         }
                     ],
                     "icon": "mdi:home-automation",
@@ -2247,6 +2263,9 @@
                         {
                             "entities": [
                                 {
+                                    "entity": "light.dad_lights"
+                                },
+                                {
                                     "entity": "light.jims_computer_light"
                                 },
                                 {
@@ -2254,6 +2273,9 @@
                                 },
                                 {
                                     "entity": "light.kitchensink"
+                                },
+                                {
+                                    "entity": "light.cabinetlight"
                                 },
                                 {
                                     "entity": "light.growlight2"
@@ -2444,6 +2466,21 @@
                                 }
                             ],
                             "title": "Christmas_Tree"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "light.wled",
+                                {
+                                    "entity": "select.wled_playlist",
+                                    "name": "Playlist"
+                                },
+                                {
+                                    "entity": "select.wled_preset",
+                                    "name": "Preset"
+                                }
+                            ],
+                            "title": "In_Tree"
                         },
                         {
                             "entities": [
