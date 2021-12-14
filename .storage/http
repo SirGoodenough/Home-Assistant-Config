@@ -1,5 +1,6 @@
 {
     "version": 1,
+    "minor_version": 1,
     "key": "http",
     "data": {
         "server_port": 8123,
