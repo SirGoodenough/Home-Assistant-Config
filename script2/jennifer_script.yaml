@@ -23,7 +23,7 @@ jen_needs_help:
           gender: female
         language: en-US
     - delay:
-        seconds: 5
+        seconds: 7
     - service: media_player.play_media
       data:
         entity_id: "{{ entities }}"

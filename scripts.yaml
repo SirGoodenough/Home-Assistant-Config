@@ -1,5 +1,5 @@
-blueprint_test:
-  alias: Test message Blueprint tts_cloud_say using Nabu-Casa
+blueprint_test1_message_nabu_cloud:
+  alias: Test1 message Blueprint tts_cloud_say using Nabu-Casa
   description: Blah Blah
   use_blueprint:
     path: /config/blueprints/script/SirGoodenough/tts_cloud_message_script.yaml
@@ -8,8 +8,9 @@ blueprint_test:
       speaker_gender: male
       speaker_target: media_player.living_room_speaker
       announcement_message: It matters not what I say.
+  icon: mdi:car-brake-fluid-level
 blueprint_test2:
-  alias: Test message Blueprint google_translate_say
+  alias: Test2 message Blueprint google_translate_say
   description: Blah Blah
   use_blueprint:
     path: /config/blueprints/script/SirGoodenough/tts_google_translate_say_message_script.yaml
@@ -17,6 +18,42 @@ blueprint_test2:
       speaker_target: media_player.living_room_speaker
       speaker_language: es
       announcement_message: No importa lo que diga.
+  icon: mdi:phone-in-talk-outline
+blueprint_test3_message_google_translate:
+  alias: Test3 message Blueprint google_translate_say
+  description: Blah Blah
+  use_blueprint:
+    path: SirGoodenough/tts_google_translate_say_message_script.yaml
+    input:
+      speaker_language: '{{ ("en", "uk","th") |random }}'
+      speaker_target: media_player.kitchen_speaker
+      announcement_message: '{{ ("So close, no matter how far","Couldn''t be much
+        more from the heart","Forever trusting who we are","And nothing else matters","Never
+        opened myself this way","Life is ours, we live it our way","All these words,
+        I don''t just say","Trust I seek and I find in you","Every day for us something
+        new","Open mind for a different view","Never cared for what they do","Never
+        cared for what they know","But I know","It couldn''t be much more from the
+        heart","I never opened myself this way","Never cared for what they say","Never
+        cared for games they play","And I know, yeah, yeah") |random }}'
+  icon: mdi:alarm-light-off
+blueprint_test4_message_nabu_cloud:
+  alias: Test4 message Blueprint tts_cloud_say using Nabu-Casa
+  description: Blah Blah
+  use_blueprint:
+    path: SirGoodenough/tts_cloud_message_script.yaml
+    input:
+      speaker_language: '{{ ("en-GB", "en-US","en-AU") |random }}'
+      speaker_gender: male
+      speaker_target: media_player.kitchen_speaker
+      announcement_message: '{{ ("So close, no matter how far","Couldn''t be much
+        more from the heart","Forever trusting who we are","And nothing else matters","Never
+        opened myself this way","Life is ours, we live it our way","All these words,
+        I don''t just say","Trust I seek and I find in you","Every day for us something
+        new","Open mind for a different view","Never cared for what they do","Never
+        cared for what they know","But I know","It couldn''t be much more from the
+        heart","I never opened myself this way","Never cared for what they say","Never
+        cared for games they play","And I know, yeah, yeah") |random }}'
+  icon: mdi:alarm-bell
 sg_food_say:
   alias: Announce Dads Food Day
   description: Dads lets have fun with food day
@@ -27,6 +64,7 @@ sg_food_say:
       speaker_gender: male
       speaker_target: group.intercom_stack
       announcement_message: Dad's food day. Lets get Jimmy John's!
+  icon: mdi:food-hot-dog
 jen_food_say:
   alias: Announce Jens Food Day
   description: Jens lets have fun with food day
@@ -37,6 +75,7 @@ jen_food_say:
       speaker_gender: male
       speaker_target: group.intercom_stack
       announcement_message: Jen's food day. Lets get extra ranch from Denny's!
+  icon: mdi:noodles
 julie_food_say:
   alias: Announce Julies Food Day
   description: Moms lets have fun with food day
@@ -47,6 +86,7 @@ julie_food_say:
       speaker_gender: female
       speaker_target: group.intercom_stack
       announcement_message: Julie's food day. Cheese Curds over easy, please.
+  icon: mdi:food-takeout-box
 sg_food_say2:
   alias: Announce Dads Food Day
   description: Dads lets have fun with food day
@@ -57,6 +97,7 @@ sg_food_say2:
       speaker_gender: male
       speaker_target: group.intercom_stack
       announcement_message: Dad's food day. It's Happy Family for a Happy Family!
+  icon: mdi:peanut
 jen_food_say2:
   alias: Announce Jens Food Day
   description: Jens lets have fun with food day
@@ -67,6 +108,7 @@ jen_food_say2:
       speaker_gender: male
       speaker_target: group.intercom_stack
       announcement_message: Jen's food day. Panera is my fave!!!
+  icon: mdi:blender
 julie_food_say2:
   alias: Announce Julies Food Day
   description: Moms lets have fun with food day
@@ -77,6 +119,7 @@ julie_food_say2:
       speaker_gender: female
       speaker_target: group.intercom_stack
       announcement_message: Julie's food day. If it ain't Wendy's, I ain't eatin'
+  icon: mdi:food-croissant
 tts_for_bathroom_overheat:
   alias: TTS for Bathroom overheat
   use_blueprint:
@@ -134,6 +177,7 @@ tts_middle_flush:
   use_blueprint:
     path: SirGoodenough/tts_cloud_message_script.yaml
     input:
+      speaker_language: '{{ ("en-GB", "en-US","en-AU") |random }}'
       speaker_gender: male
       speaker_target: media_player.jen_group
       announcement_message: '{{ ("So close, no matter how far","Couldn''t be much
@@ -144,7 +188,6 @@ tts_middle_flush:
         cared for what they know","But I know","It couldn''t be much more from the
         heart","I never opened myself this way","Never cared for what they say","Never
         cared for games they play","And I know, yeah, yeah") |random }}'
-      speaker_language: '{{ ("en-GB", "en-US","en-AU") |random }}'
   icon: mdi:paper-roll
 tts_final_flush:
   alias: TTS Final Flush
@@ -163,22 +206,6 @@ tts_final_flush:
         Tommy and Gina, who never backed down","Tomorrow''s getting harder, make no
         mistake","Luck ain''t even lucky, got to make your own break") |random }}'
   icon: mdi:paper-roll-outline
-tts_test_message:
-  alias: TTS test message
-  use_blueprint:
-    path: SirGoodenough/tts_google_translate_say_message_script.yaml
-    input:
-      speaker_language: '{{ ("en", "uk","th") |random }}'
-      speaker_target: media_player.kitchen_speaker
-      announcement_message: '{{ ("So close, no matter how far","Couldn''t be much
-        more from the heart","Forever trusting who we are","And nothing else matters","Never
-        opened myself this way","Life is ours, we live it our way","All these words,
-        I don''t just say","Trust I seek and I find in you","Every day for us something
-        new","Open mind for a different view","Never cared for what they do","Never
-        cared for what they know","But I know","It couldn''t be much more from the
-        heart","I never opened myself this way","Never cared for what they say","Never
-        cared for games they play","And I know, yeah, yeah") |random }}'
-  icon: mdi:alarm-light-off
 tts_mister_message:
   alias: TTS Mister Message
   use_blueprint:
