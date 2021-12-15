@@ -14,16 +14,8 @@
     entity_id: switch.aeotec_dsc26103_micro_switch_2nd_edition_switch
     state: "on"
   action:
-    - service: script.turn_on
-      entity_id:
-        - script.upstairs_bath_heater_off
-    - service: tts.cloud_say
-      data:
-        entity_id: group.intercom_stack
-        message: "The Upstairs Bathroom is over heated.  I'm turning the Bathroom Heater off."
-        options:
-          gender: male
-        language: en-AU
+    - service: script.upstairs_bath_heater_off
+    - service: script.tts_for_bathroom_overheat
 
 - id: bd61ef61-ae56-47ae-9902-6166657aceac
   alias: Bathroom Door is Open
@@ -39,18 +31,8 @@
     entity_id: binary_sensor.bathroom
     state: "on"
   action:
-    - service: script.turn_on
-      entity_id: script.upstairs_bath_heater_off
-    - service: tts.cloud_say
-      data:
-        entity_id: media_player.bathroom_speaker,
-          media_player.office_jamz,
-          media_player.kitchen_speaker,
-          media_player.living_room_speaker
-        message: "The Bathroom door is open."
-        options:
-          gender: female
-        language: en-US
+    - service: script.upstairs_bath_heater_off
+    - service: script.tts_bathroom_door_is_open
 
 - id: 4d6bdbcb-b71d-4d3a-b52e-19ab077b9585
   alias: Bathroom Heater Auto Mode
@@ -69,8 +51,8 @@
         entity_id: sensor.garage_door_si7021_temperature
         below: 50
   action:
-    - service: script.turn_on
-      entity_id: script.upstairs_bath_heater_on
+    - service: script.upstairs_bath_heater_on
+    - service: script.tts_bathroom_heat_on
     - service: input_boolean.turn_off
       entity_id: input_boolean.bathroom_heater_auto_on
 
@@ -79,7 +61,7 @@
   initial_state: on
   trigger:
     - platform: time
-      at: "20:49:37"
+      at: "21:22:37"
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.bathroom_heater_auto_on
@@ -92,8 +74,7 @@
       entity_id: switch.aeotec_dsc26103_micro_switch_2nd_edition_switch
       to: "on"
   action:
-    - service: script.turn_on
-      entity_id: script.upstairs_bath_heater_watchdog
+    - service: script.upstairs_bath_heater_watchdog
 
 - id: 3a744c0e-bf38-4f0b-bfd4-e75528754a0a
   alias: Bathroom Heat Failsafe Cancel

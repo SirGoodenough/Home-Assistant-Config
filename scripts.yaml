@@ -1,6 +1,6 @@
 blueprint_test:
   alias: Test message Blueprint tts_cloud_say using Nabu-Casa
-  description: 'Blah Blah'
+  description: Blah Blah
   use_blueprint:
     path: /config/blueprints/script/SirGoodenough/tts_cloud_message_script.yaml
     input:
@@ -8,17 +8,15 @@ blueprint_test:
       speaker_gender: male
       speaker_target: media_player.living_room_speaker
       announcement_message: It matters not what I say.
-
 blueprint_test2:
   alias: Test message Blueprint google_translate_say
-  description: 'Blah Blah'
+  description: Blah Blah
   use_blueprint:
     path: /config/blueprints/script/SirGoodenough/tts_google_translate_say_message_script.yaml
     input:
       speaker_target: media_player.living_room_speaker
       speaker_language: es
       announcement_message: No importa lo que diga.
-
 sg_food_say:
   alias: Announce Dads Food Day
   description: Dads lets have fun with food day
@@ -28,8 +26,7 @@ sg_food_say:
       speaker_language: en-AU
       speaker_gender: male
       speaker_target: group.intercom_stack
-      announcement_message: "Dad's food day. Lets get Jimmy John's!"
-
+      announcement_message: Dad's food day. Lets get Jimmy John's!
 jen_food_say:
   alias: Announce Jens Food Day
   description: Jens lets have fun with food day
@@ -39,8 +36,7 @@ jen_food_say:
       speaker_language: en-GB
       speaker_gender: male
       speaker_target: group.intercom_stack
-      announcement_message: "Jen's food day. Lets get extra ranch from Denny's!"
-
+      announcement_message: Jen's food day. Lets get extra ranch from Denny's!
 julie_food_say:
   alias: Announce Julies Food Day
   description: Moms lets have fun with food day
@@ -50,8 +46,7 @@ julie_food_say:
       speaker_language: en-US
       speaker_gender: female
       speaker_target: group.intercom_stack
-      announcement_message: "Julie's food day. Cheese Curds over easy, please."
-
+      announcement_message: Julie's food day. Cheese Curds over easy, please.
 sg_food_say2:
   alias: Announce Dads Food Day
   description: Dads lets have fun with food day
@@ -61,8 +56,7 @@ sg_food_say2:
       speaker_language: en-AU
       speaker_gender: male
       speaker_target: group.intercom_stack
-      announcement_message: "Dad's food day. It's Happy Family for a Happy Family!"
-
+      announcement_message: Dad's food day. It's Happy Family for a Happy Family!
 jen_food_say2:
   alias: Announce Jens Food Day
   description: Jens lets have fun with food day
@@ -72,8 +66,7 @@ jen_food_say2:
       speaker_language: en-GB
       speaker_gender: male
       speaker_target: group.intercom_stack
-      announcement_message: "Jen's food day. Panera is my fave!!!"
-
+      announcement_message: Jen's food day. Panera is my fave!!!
 julie_food_say2:
   alias: Announce Julies Food Day
   description: Moms lets have fun with food day
@@ -83,4 +76,35 @@ julie_food_say2:
       speaker_language: en-US
       speaker_gender: female
       speaker_target: group.intercom_stack
-      announcement_message: "Julie's food day. If it ain't Wendy's, I ain't eatin'"
+      announcement_message: Julie's food day. If it ain't Wendy's, I ain't eatin'
+tts_for_bathroom_overheat:
+  alias: TTS for Bathroom overheat
+  use_blueprint:
+    path: SirGoodenough/tts_cloud_message_script.yaml
+    input:
+      speaker_language: en-AU
+      speaker_gender: male
+      announcement_message: The Upstairs Bathroom is over heated.  I'm turning the
+        Bathroom Heater off.
+      speaker_target: media_player.intercom_2
+  icon: mdi:radiator-off
+tts_bathroom_door_is_open:
+  alias: TTS Bathroom Door is open
+  use_blueprint:
+    path: SirGoodenough/tts_cloud_message_script.yaml
+    input:
+      speaker_language: en-AU
+      speaker_gender: male
+      announcement_message: The Bathroom door is open
+      speaker_target: media_player.bathroom_speaker, media_player.office_jamz,media_player.kitchen_speaker,media_player.living_room_speaker
+  icon: mdi:door-open
+tts_bathroom_heat_on:
+  alias: TTS Bathroom Heat on
+  use_blueprint:
+    path: SirGoodenough/tts_cloud_message_script.yaml
+    input:
+      speaker_language: en-US
+      speaker_gender: female
+      speaker_target: media_player.living_room_speaker
+      announcement_message: Bathroom Heater on
+  icon: mdi:radiator

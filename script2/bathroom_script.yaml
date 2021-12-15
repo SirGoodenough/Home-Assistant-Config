@@ -13,8 +13,6 @@
       - service: switch.turn_on
         data:
           entity_id: switch.aeotec_dsc26103_micro_switch_2nd_edition_switch
-      - delay:
-          seconds: 1
 
   #####################################################
   # Turn off Upstairs Bathroom Heater                 #
@@ -28,8 +26,6 @@
       - service: switch.turn_off
         data:
           entity_id: switch.aeotec_dsc26103_micro_switch_2nd_edition_switch
-      - delay:
-          seconds: 1
 
   #####################################################
   # Bathroom Heater watchdog                          #
@@ -38,7 +34,7 @@
     alias: Bathroom Heater watchdog
     sequence:
       - delay:
-          minutes: 180
+          minutes: 90
       - service: script.turn_on
         data:
           entity_id: script.upstairs_bath_heater_off
