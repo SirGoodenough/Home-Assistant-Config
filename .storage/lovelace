@@ -80,6 +80,9 @@
                                     "entity": "input_boolean.christmas"
                                 },
                                 {
+                                    "entity": "switch.outside_christmas"
+                                },
+                                {
                                     "entity": "light.mom_chair"
                                 },
                                 {
@@ -269,7 +272,7 @@
                                     "entity": "sensor.water_the_plants"
                                 },
                                 {
-                                    "entity": "binary_sensor.snapshots_stale"
+                                    "entity": "binary_sensor.backups_stale"
                                 }
                             ]
                         },
