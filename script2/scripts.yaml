@@ -51,6 +51,7 @@ julie_food_say:
       speaker_gender: female
       speaker_target: group.intercom_stack
       announcement_message: "Julie's food day. Cheese Curds over easy, please."
+
 sg_food_say2:
   alias: Announce Dads Food Day
   description: Dads lets have fun with food day
