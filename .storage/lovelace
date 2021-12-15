@@ -712,45 +712,30 @@
                             "type": "entities"
                         },
                         {
-                            "entities": [
-                                {
-                                    "entity": "fan.jens_mist"
-                                },
-                                {
-                                    "entity": "switch.jensneb_light"
-                                },
-                                {
-                                    "entity": "fan.jens_mist",
-                                    "isTwoSpeedFan": true,
-                                    "reverseButtons": true,
-                                    "customTheme": true,
-                                    "isOffColor": "#2E252F",
-                                    "isOnHiColor": "#ff8500",
-                                    "isOnLowColor": "#ff6500",
-                                    "buttonInactiveColor": "#050505",
-                                    "customSetpoints": true,
-                                    "lowPercentage": 50,
-                                    "hiPercentage": 100,
-                                    "name": "Jens Mist speed",
-                                    "type": "custom:fan-percent-button-row"
-                                },
-                                {
-                                    "entity": "light.jensneb_light_mode",
-                                    "customOnText": "lock",
-                                    "customOffText": "cycle",
-                                    "isOnColor": "#ff6500",
-                                    "isOffColor": "#050505",
-                                    "name": "NightLite Mode",
-                                    "type": "custom:toggle-control-button-row",
-                                    "customTheme": true
-                                },
-                                {
-                                    "entity": "binary_sensor.aromatherapy_water"
+                            "type": "custom:flipdown-timer-card",
+                            "name": "Timer 1",
+                            "entity": "timer.flushtime2",
+                            "show_error": false,
+                            "show_title": true,
+                            "duration": "00:01:00",
+                            "styles": {
+                                "button": {
+                                    "location": "hide"
                                 }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Jens Nebulizer",
-                            "type": "entities"
+                            }
+                        },
+                        {
+                            "type": "custom:flipdown-timer-card",
+                            "name": "Timer 10",
+                            "show_error": false,
+                            "show_title": true,
+                            "duration": "00:10:00",
+                            "styles": {
+                                "button": {
+                                    "location": "hide"
+                                }
+                            },
+                            "entity": "timer.flushtime10"
                         },
                         {
                             "type": "weather-forecast",
@@ -844,15 +829,56 @@
                         },
                         {
                             "type": "media-control",
-                            "entity": "media_player.jennys_room_display"
-                        },
-                        {
-                            "type": "media-control",
                             "entity": "media_player.jenny_s_tv"
                         },
                         {
                             "type": "media-control",
+                            "entity": "media_player.jennys_room_display"
+                        },
+                        {
+                            "type": "media-control",
                             "entity": "media_player.farg"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "fan.jens_mist"
+                                },
+                                {
+                                    "entity": "switch.jensneb_light"
+                                },
+                                {
+                                    "entity": "fan.jens_mist",
+                                    "isTwoSpeedFan": true,
+                                    "reverseButtons": true,
+                                    "customTheme": true,
+                                    "isOffColor": "#2E252F",
+                                    "isOnHiColor": "#ff8500",
+                                    "isOnLowColor": "#ff6500",
+                                    "buttonInactiveColor": "#050505",
+                                    "customSetpoints": true,
+                                    "lowPercentage": 50,
+                                    "hiPercentage": 100,
+                                    "name": "Jens Mist speed",
+                                    "type": "custom:fan-percent-button-row"
+                                },
+                                {
+                                    "entity": "light.jensneb_light_mode",
+                                    "customOnText": "lock",
+                                    "customOffText": "cycle",
+                                    "isOnColor": "#ff6500",
+                                    "isOffColor": "#050505",
+                                    "name": "NightLite Mode",
+                                    "type": "custom:toggle-control-button-row",
+                                    "customTheme": true
+                                },
+                                {
+                                    "entity": "binary_sensor.aromatherapy_water"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Jens Nebulizer",
+                            "type": "entities"
                         }
                     ],
                     "icon": "mdi:alpha-j-box",

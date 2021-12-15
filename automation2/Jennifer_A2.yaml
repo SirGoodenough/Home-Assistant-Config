@@ -58,7 +58,7 @@
         media_content_type: audio/mp3
     - service: input_boolean.turn_off
       entity_id: input_boolean.flush2
-    - delay: 00:00:04
+    - delay: 00:00:06
     - alias: Reset jens speaker to volume 5
       service: media_player.volume_set
       data:
@@ -87,7 +87,7 @@
       service: input_boolean.turn_off
       entity_id: input_boolean.mist_button
     - service: script.tts_mister_message
-    - delay: 00:00:08
+    - delay: 00:00:10
     - service: media_player.play_media
       data:
         entity_id: media_player.kitchen_speaker
