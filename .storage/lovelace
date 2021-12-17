@@ -279,6 +279,9 @@
                         {
                             "entities": [
                                 {
+                                    "entity": "switch.bathroom_speaker_do_not_disturb"
+                                },
+                                {
                                     "entity": "switch.aeotec_dsc26103_micro_switch_2nd_edition_switch"
                                 },
                                 {
@@ -3985,7 +3988,30 @@
                     "icon": "mdi:youtube",
                     "theme": "dark_red",
                     "badges": [],
-                    "cards": []
+                    "cards": [
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "sensor.kitchen_speaker_device"
+                            ],
+                            "title": "Google Home Kitchen speaker"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "switch.kitchen_speaker_do_not_disturb",
+                                "number.kitchen_speaker_alarm_volume"
+                            ],
+                            "title": "Google Home Kitchen speaker"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "sensor.kitchen_speaker_device"
+                            ],
+                            "title": "Google Home Kitchen speaker"
+                        }
+                    ]
                 },
                 {
                     "badges": [],
