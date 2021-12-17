@@ -13,14 +13,8 @@
       for:
         seconds: 30
     action:
-    - service: tts.cloud_say
-      data:
-        entity_id: group.intercom_stack
-        message: "The clothes are dry."
-        options:
-          gender: female
-        language: en-US
-
+    - service: script.tts_dryer_done
+    
   #####################################################
   # Dust Collector                                    #
   #####################################################
@@ -109,10 +103,4 @@
       for:
         minutes: 5
     action:
-    - service: tts.cloud_say
-      data:
-        entity_id: group.intercom_stack
-        message: "Washing Cycle Has Completed."
-        options:
-          gender: female
-        language: en-US
+    - service: script.tts_wash_machine_done

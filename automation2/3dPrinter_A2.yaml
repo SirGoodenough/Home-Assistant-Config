@@ -11,15 +11,9 @@
     from: "on"
     to: "off"
   action:
-    - service: tts.cloud_say
-      data:
-        entity_id: media_player.kitchen_speaker
-        message: "The Forge is ready for more work."
-        options:
-          gender: male
-        language: en-US
-    - delay: 00:00:10
-    - service: script.show_tarantula_home_hub_image
+    - service: script.tts_tarantula_print_complete
+    # - delay: 00:00:10
+    # - service: script.show_tarantula_home_hub_image
 
 - id: 3d719dec-78b6-407c-9a65-953ba05a41d3
   alias: Tarantula Off Announcement
@@ -30,10 +24,4 @@
     from: "on"
     to: "off"
   action:
-    - service: tts.cloud_say
-      data:
-        entity_id: media_player.kitchen_speaker
-        message: "The Forge has been disabled."
-        options:
-          gender: male
-        language: en-US
+    - service: script.tts_tarantula_off

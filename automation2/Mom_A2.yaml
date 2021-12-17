@@ -8,20 +8,7 @@
         entity_id: binary_sensor.moms_call_button
         to: "on"
     action:
-      - service: tts.cloud_say
-        data:
-          entity_id: group.grandma_stack
-          message: "Grandma in need."
-          options:
-            gender: female
-          language: >
-            {{ ("en-US",
-                "en-GB", 
-                "en-AU", 
-                "en-IN", 
-                "en-IE", 
-                "en-CA"
-              ) |random }}
+      - service: script.tts_grandma_in_need
 
   ####################################################
   # Mom's Light                                      #

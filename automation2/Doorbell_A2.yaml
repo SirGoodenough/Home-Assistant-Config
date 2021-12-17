@@ -23,13 +23,8 @@
         media_content_id: !secret DoorBell_Front
         media_content_type: audio/mp3
     - delay: 00:00:04
-    - service: tts.cloud_say
-      data:
-        entity_id: group.intercom_stack
-        message: "Someone is at the front door."
-        options:
-          gender: male
-        language: en-US
+    - service: script.tts_front_doorbell
+
   #####################################################
   # Back                                              #
   #####################################################
@@ -48,13 +43,8 @@
         media_content_id: !secret DoorBell_Back
         media_content_type: audio/mp3
     - delay: 00:00:04
-    - service: tts.cloud_say
-      data:
-        entity_id: group.intercom_stack
-        message: "Someone is at the back door."
-        options:
-          gender: male
-        language: en-US
+    - service: script.tts_back_doorbell
+
   #####################################################
   # Side                                              #
   #####################################################
@@ -74,10 +64,4 @@
         media_content_id: !secret DoorBell_Side
         media_content_type: audio/mp3
     - delay: 00:00:06
-    - service: tts.cloud_say
-      data:
-        entity_id: group.intercom_stack
-        message: "Someone is at the side door."
-        options:
-          gender: male
-        language: en-US
+    - service: script.tts_side_doorbell
