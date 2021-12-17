@@ -649,6 +649,16 @@
                         {
                             "type": "media-control",
                             "entity": "media_player.workroom_speaker"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.kitchen_speaker",
+                            "theme": "Dark Orange"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.common_group",
+                            "theme": "Dark - Blue"
                         }
                     ],
                     "icon": "mdi:home-automation",
