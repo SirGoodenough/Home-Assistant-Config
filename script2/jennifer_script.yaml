@@ -27,7 +27,8 @@ jen_needs_help:
     - service: media_player.play_media
       data:
         entity_id: "{{ entities }}"
-        media_content_id: !secret Jen_Buzzer
+        media_content_id: 
+          "media-source://media_source/local/mp3/Buzzer.mp3"
         media_content_type: audio/mp3
 
 #####################################################
