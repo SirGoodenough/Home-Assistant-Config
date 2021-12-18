@@ -20,9 +20,10 @@
     - service: media_player.play_media
       data:
         entity_id: group.intercom_stack
-        media_content_id: !secret DoorBell_Front
+        media_content_id: 
+          "media-source://media_source/local/mp3/doorbell-1.mp3"
         media_content_type: audio/mp3
-    - delay: 00:00:04
+    - delay: 00:00:05
     - service: script.tts_front_doorbell
 
   - id: 6e98f4dc-b148-459a-b93f-06b39ffc23f7
@@ -36,10 +37,10 @@
     action:
     - service: media_player.play_media
       data:
-        entity_id: group.house_stack
-        media_content_id: /media/mp3/steps.mp3
+        entity_id: group.intercom_stack
+        media_content_id: 
+          "media-source://media_source/local/mp3/Ring_-_Windchimes.mp3"
         media_content_type: audio/mp3
-
 
   #####################################################
   # Back                                              #
@@ -56,10 +57,29 @@
     - service: media_player.play_media
       data:
         entity_id: group.intercom_stack
-        media_content_id: !secret DoorBell_Back
+        media_content_id: 
+          "media-source://media_source/local/mp3/doorbell-2.mp3"
         media_content_type: audio/mp3
-    - delay: 00:00:04
+    - delay: 00:00:05
     - service: script.tts_back_doorbell
+
+  - id: 0d60fba9-431d-4022-864e-7381d6a7d8fc
+    alias: Back Doorbell Motion
+    initial_state: on
+    trigger:
+    - platform: state
+      entity_id: binary_sensor.back_door_motion
+      from: 'off'
+      to: 'on'
+    action:
+    - service: media_player.play_media
+      data:
+        entity_id: group.intercom_stack
+        media_content_id: >-
+          '{{ ("media-source://media_source/local/mp3/jaws_x.mp3",
+            "media-source://media_source/local/mp3/steps.mp3")
+            |random }}'
+        media_content_type: audio/mp3
 
   #####################################################
   # Side                                              #
@@ -77,7 +97,8 @@
     - service: media_player.play_media
       data:
         entity_id: group.intercom_stack
-        media_content_id: !secret DoorBell_Side
+        media_content_id: 
+          "media-source://media_source/local/mp3/Door-chime-sound.mp3"
         media_content_type: audio/mp3
     - delay: 00:00:06
     - service: script.tts_side_doorbell

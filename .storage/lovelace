@@ -709,15 +709,6 @@
                                 },
                                 {
                                     "entity": "timer.flushtime10"
-                                },
-                                {
-                                    "entity": "script.jen_needs_help_level1"
-                                },
-                                {
-                                    "entity": "script.jen_needs_help_level1a"
-                                },
-                                {
-                                    "entity": "script.jen_needs_help_level2"
                                 }
                             ],
                             "show_header_toggle": false,

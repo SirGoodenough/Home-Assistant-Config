@@ -30,7 +30,8 @@
       service: media_player.play_media
       data:
         entity_id: media_player.jen_group
-        media_content_id: !secret Gong
+        media_content_id: 
+          "media-source://media_source/local/mp3/Metal_Gong-Dianakc-109711828.mp3"
         media_content_type: audio/mp3
 
     - delay: 00:00:57 # Delay for the second part first warning
@@ -54,7 +55,8 @@
       service: media_player.play_media
       data:
         entity_id: media_player.jen_group
-        media_content_id: !secret Gong
+        media_content_id: 
+          "media-source://media_source/local/mp3/Metal_Gong-Dianakc-109711828.mp3"
         media_content_type: audio/mp3
     - service: input_boolean.turn_off
       entity_id: input_boolean.flush2
@@ -91,7 +93,8 @@
     - service: media_player.play_media
       data:
         entity_id: media_player.kitchen_speaker
-        media_content_id: !secret Mister
+        media_content_id: 
+          "media-source://media_source/local/mp3/Mister.mp3"
         media_content_type: audio/mp3
 
 - id: bc67a0b5-846f-41df-b0fb-cc1c8a8b714b
@@ -154,85 +157,3 @@
             service: script.jen_needs_help_level2_template
             data:
               message: "{{ trigger.to_state.state }}"
-
-# Future reference:
-
-    # - service: tts.cloud_say
-    #   data:
-    #     entity_id: media_player.jen_group
-    #     message: >
-    #       {{ ("It's all the same, only the names will change",
-    #           "Every day, it seems we're wastin' away", 
-    #           "Another place, where the faces are so cold", 
-    #           "I'd drive all night just to get back home", 
-    #           "I'm a cowboy. On a steel horse I ride. I'm wanted. Dead or alive", 
-    #           "Sometimes I sleep, sometimes, it's not for days", 
-    #           "The people I meet always go their separate ways",
-    #           "Sometimes you tell the day by the bottle that you drink",
-    #           "And times when you're alone, well, all you do is think",
-    #           "Oh, and I ride.  Yeah.",
-    #           "And I walk these streets. A loaded six-string on my back",
-    #           "I play for keeps. 'Cause I might not make it back",
-    #           "I've been everywhere. Still I'm standing tall",
-    #           "I've seen a million faces and I've rocked them all",
-    #           "And I'm wanted. (wanted). dead or alive",
-    #           "And I ride. (and I ride). dead or alive",
-    #           "I still drive. (I still drive). dead or alive"
-    #           ) |random }}
-    #     options:
-    #       gender: female
-    #     language: en-US
-
-    # - service: tts.cloud_say
-    #   data:
-    #     entity_id: media_player.jen_group
-    #     message: >
-    #       {{ ("So close, no matter how far",
-    #           "Couldn't be much more from the heart",
-    #           "Forever trusting who we are",
-    #           "And nothing else matters",
-    #           "Never opened myself this way",
-    #           "Life is ours, we live it our way",
-    #           "All these words, I don't just say",
-    #           "Trust I seek and I find in you",
-    #           "Every day for us something new",
-    #           "Open mind for a different view",
-    #           "Never cared for what they do",
-    #           "Never cared for what they know",
-    #           "But I know",
-    #           "It couldn't be much more from the heart",
-    #           "I never opened myself this way",
-    #           "Never cared for what they say",
-    #           "Never cared for games they play",
-    #           "And I know, yeah, yeah"
-    #           ) |random }}
-    #     options:
-    #       gender: male
-    #     language: >
-    #       {{ ("en-GB",
-    #           "en-US",
-    #           "en-AU"
-    #           ) |random }}
-
-    # - service: tts.cloud_say
-    #   data:
-    #     entity_id: media_player.jen_group
-    #     message: >
-    #       {{ ("This ain't a song for the broken-hearted",
-    #           "No silent prayer for faith-departed",
-    #           "And I ain't gonna be just a face in the crowd",
-    #           "You're gonna hear my voice when I shout it out loud",
-    #           "It's my life.",
-    #           "But I ain't gonna live forever.",
-    #           "I just want to live while I'm alive",
-    #           "My heart is like an open highway",
-    #           "Like Frankie said, I did it my way",
-    #           "It's now or never.",
-    #           "Yeah, this is for the ones who stood their ground",
-    #           "For Tommy and Gina, who never backed down",
-    #           "Tomorrow's getting harder, make no mistakeings",
-    #           "Luck ain't even lucky, got to make your own breakings"
-    #           ) |random }}
-    #     options:
-    #       gender: female
-    #     language: en-US

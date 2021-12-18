@@ -204,13 +204,14 @@
         state: "on"
   action:
     - alias: Send Warning
-      service: tts.cloud_say
+    - service: media_player.play_media
       data:
-        entity_id: media_player.kitchen_speaker, media_player.living_room_speaker
-        message: "The Bedroom door is open."
-        options:
-          gender: female
-        language: en-US
+        entity_id: group.intercom_stack
+        media_content_id: 
+          "media-source://media_source/local/mp3/Bathroom.mp3"
+        media_content_type: audio/mp3
+    - delay: 00:00:06
+      service: script.tts_bedroom_door
     - alias: Force the switch closed and assume someone checked the door
       service: mqtt.publish
       data:

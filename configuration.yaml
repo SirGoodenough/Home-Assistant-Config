@@ -20,7 +20,7 @@ input_select:
 input_text:
 logbook:
 map:
-media_source:
+media_source: !include media.yaml
 # mobile_app:
 my:
 person: !include person.yaml
