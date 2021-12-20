@@ -134,10 +134,7 @@
             service: script.jen_needs_help
             data:
               message: "{{ trigger.to_state.state }}"
-              entities:
-                - media_player.common_group
-                - media_player.living_room_speaker
-                - media_player.bedroom_speaker
+              entities: group.house_stack
         - alias: Message to all speakers except bedroom
           conditions:
             - condition: trigger
@@ -146,9 +143,7 @@
             service: script.jen_needs_help
             data:
               message: "{{ trigger.to_state.state }}"
-              entities: 
-                - media_player.common_group
-                - media_player.living_room_speaker
+              entities: group.intercom_stack
         - alias: Message to Mom & Dads Phone
           conditions:
             - condition: trigger

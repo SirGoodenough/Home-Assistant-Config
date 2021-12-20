@@ -5,24 +5,24 @@
     "data": {
         "items": [
             {
-                "name": "Jens NightLight Mode",
                 "icon": "mdi:lightbulb",
+                "id": "jens_nightlight_mode",
+                "name": "Jens NightLight Mode",
                 "options": [
                     "rgb_cycle",
                     "color",
                     "white"
-                ],
-                "id": "jens_nightlight_mode"
+                ]
             },
             {
                 "name": "All Help",
                 "icon": "mdi:alert",
                 "options": [
                     "I Need Suction",
-                    "Mouth Suction Please",
-                    "I am cold or warm.  Please fix my blanket".
                     "Vent is Alarming",
                     "Feeding Pump is Beeping",
+                    "Mouth Suction Please",
+                    "Please fix my blanket",
                     "Catheter Problem",
                     "My Bag Has Broken",
                     "Bed Won't Work",
@@ -37,10 +37,10 @@
                 "icon": "mdi:alert",
                 "options": [
                     "I Need Suction",
-                    "Mouth Suction Please",
-                    "I am cold or warm.  Please fix my blanket".
                     "Vent is Alarming",
                     "Feeding Pump is Beeping",
+                    "Mouth Suction Please",
+                    "Please fix my blanket",
                     "Catheter Problem",
                     "My Bag Has Broken",
                     "Bed Won't Work",
@@ -55,10 +55,10 @@
                 "icon": "mdi:alert",
                 "options": [
                     "I Need Suction",
-                    "Mouth Suction Please",
-                    "I am cold or warm.  Please fix my blanket".
                     "Vent is Alarming",
                     "Feeding Pump is Beeping",
+                    "Mouth Suction Please",
+                    "Please fix my blanket",
                     "Catheter Problem",
                     "My Bag Has Broken",
                     "Bed Won't Work",
