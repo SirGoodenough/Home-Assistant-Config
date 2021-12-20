@@ -30,8 +30,8 @@
     availability_topic: "RFBridge2/tele/LWT"
     state_on: 'ON'
     state_off: 'OFF'
-    payload_on: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #B94185"
-    payload_off: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #B94184"
+    payload_on: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #B94185,RfSync 9540; RfLow 310; RfHigh 920; RfCode #B94185"
+    payload_off: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #B94184,RfSync 9540; RfLow 310; RfHigh 920; RfCode #B94184"
     payload_available: "Online"
     payload_not_available: "Offline"
 
@@ -46,8 +46,8 @@
     availability_topic: "RFBridge2/tele/LWT"
     state_on: 'ON'
     state_off: 'OFF'
-    payload_on: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #B94187"
-    payload_off: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #B94186"
+    payload_on: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #B94187,RfSync 9540; RfLow 310; RfHigh 920; RfCode #B94187"
+    payload_off: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #B94186,RfSync 9540; RfLow 310; RfHigh 920; RfCode #B94186"
     payload_available: "Online"
     payload_not_available: "Offline"
 
@@ -65,8 +65,8 @@
     availability_topic: "RFBridge2/tele/LWT"
     state_on: 'ON'
     state_off: 'OFF'
-    payload_on: "RfSync 9760; RfLow 400; RfHigh 980; RfCode #151557"
-    payload_off: "RfSync 9760; RfLow 400; RfHigh 980; RfCode #151554"
+    payload_on: "RfSync 9760; RfLow 400; RfHigh 980; RfCode #151557,RfSync 9760; RfLow 400; RfHigh 980; RfCode #151557"
+    payload_off: "RfSync 9760; RfLow 400; RfHigh 980; RfCode #151554,RfSync 9760; RfLow 400; RfHigh 980; RfCode #151554"
     payload_available: "Online"
     payload_not_available: "Offline"
 
@@ -81,8 +81,8 @@
     availability_topic: "RFBridge2/tele/LWT"
     state_on: 'ON'
     state_off: 'OFF'
-    payload_on: "RfSync 9760; RfLow 400; RfHigh 980; RfCode #154557"
-    payload_off: "RfSync 9760; RfLow 400; RfHigh 980; RfCode #154554"
+    payload_on: "RfSync 9760; RfLow 400; RfHigh 980; RfCode #154557,RfSync 9760; RfLow 400; RfHigh 980; RfCode #154557"
+    payload_off: "RfSync 9760; RfLow 400; RfHigh 980; RfCode #154554,RfSync 9760; RfLow 400; RfHigh 980; RfCode #154554"
     payload_available: "Online"
     payload_not_available: "Offline"
 
@@ -97,8 +97,8 @@
     availability_topic: "RFBridge2/tele/LWT"
     state_on: 'ON'
     state_off: 'OFF'
-    payload_on: "RfSync 9760; RfLow 400; RfHigh 980; RfCode #155157"
-    payload_off: "RfSync 9760; RfLow 400; RfHigh 980; RfCode #155154"
+    payload_on: "RfSync 9760; RfLow 400; RfHigh 980; RfCode #155157,RfSync 9760; RfLow 400; RfHigh 980; RfCode #155157"
+    payload_off: "RfSync 9760; RfLow 400; RfHigh 980; RfCode #155154,RfSync 9760; RfLow 400; RfHigh 980; RfCode #155154"
     payload_available: "Online"
     payload_not_available: "Offline"
 
@@ -132,8 +132,8 @@
     availability_topic: "RFBridge2/tele/LWT"
     state_on: 'ON'
     state_off: 'OFF'
-    payload_on: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8885"
-    payload_off: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8884"
+    payload_on: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8885,RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8885"
+    payload_off: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8884,RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8884"
     payload_available: "Online"
     payload_not_available: "Offline"
 
@@ -148,8 +148,8 @@
     availability_topic: "RFBridge2/tele/LWT"
     state_on: 'ON'
     state_off: 'OFF'
-    payload_on: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8887"
-    payload_off: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8886"
+    payload_on: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8887;RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8887"
+    payload_off: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8886;RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8886"
     payload_available: "Online"
     payload_not_available: "Offline"
 
@@ -167,8 +167,8 @@
     availability_topic: "RFBridge2/tele/LWT"
     state_on: 'ON'
     state_off: 'OFF'
-    payload_on: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #472083"
-    payload_off: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #472082"
+    payload_on: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #472083,RfSync 9540; RfLow 310; RfHigh 920; RfCode #472083"
+    payload_off: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #472082,RfSync 9540; RfLow 310; RfHigh 920; RfCode #472082"
     payload_available: "Online"
     payload_not_available: "Offline"
 
@@ -218,8 +218,8 @@
     availability_topic: "RFBridge2/tele/LWT"
     state_on: 'ON'
     state_off: 'OFF'
-    payload_on: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #E8B085"
-    payload_off: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #E8B084"
+    payload_on: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #E8B085,RfSync 9540; RfLow 310; RfHigh 920; RfCode #E8B085"
+    payload_off: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #E8B084,RfSync 9540; RfLow 310; RfHigh 920; RfCode #E8B084"
     payload_available: "Online"
     payload_not_available: "Offline"
 
@@ -234,7 +234,7 @@
     availability_topic: "RFBridge2/tele/LWT"
     state_on: 'ON'
     state_off: 'OFF'
-    payload_on: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #E8B087"
-    payload_off: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #E8B086"
+    payload_on: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #E8B087RfSync 9540; RfLow 310; RfHigh 920; RfCode #E8B087"
+    payload_off: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #E8B086RfSync 9540; RfLow 310; RfHigh 920; RfCode #E8B086"
     payload_available: "Online"
     payload_not_available: "Offline"
