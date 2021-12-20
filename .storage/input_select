@@ -1,23 +1,25 @@
 {
     "version": 1,
+    "minor_version": 1,
     "key": "input_select",
     "data": {
         "items": [
             {
-                "icon": "mdi:lightbulb",
-                "id": "jens_nightlight_mode",
                 "name": "Jens NightLight Mode",
+                "icon": "mdi:lightbulb",
                 "options": [
                     "rgb_cycle",
                     "color",
                     "white"
-                ]
+                ],
+                "id": "jens_nightlight_mode"
             },
             {
                 "name": "All Help",
                 "icon": "mdi:alert",
                 "options": [
                     "I Need Suction",
+                    "Mouth Suction Please",
                     "Vent is Alarming",
                     "Feeding Pump is Beeping",
                     "Catheter Problem",
@@ -35,6 +37,7 @@
                 "icon": "mdi:alert",
                 "options": [
                     "I Need Suction",
+                    "Mouth Suction Please",
                     "Vent is Alarming",
                     "Feeding Pump is Beeping",
                     "Catheter Problem",
@@ -52,6 +55,7 @@
                 "icon": "mdi:alert",
                 "options": [
                     "I Need Suction",
+                    "Mouth Suction Please",
                     "Vent is Alarming",
                     "Feeding Pump is Beeping",
                     "Catheter Problem",
