@@ -270,9 +270,6 @@
                                 },
                                 {
                                     "entity": "sensor.water_the_plants"
-                                },
-                                {
-                                    "entity": "binary_sensor.backups_stale"
                                 }
                             ]
                         },
@@ -510,15 +507,6 @@
                         },
                         {
                             "entities": [
-                                {
-                                    "entity": "script.jen_needs_help_level1"
-                                },
-                                {
-                                    "entity": "script.jen_needs_help_level1a"
-                                },
-                                {
-                                    "entity": "script.jen_needs_help_level2"
-                                },
                                 {
                                     "entity": "script.doors_close_all"
                                 }

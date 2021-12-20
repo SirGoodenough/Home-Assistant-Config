@@ -51,7 +51,7 @@ device_tracker: !include device_tracker.yaml
 fan: !include fan.yaml
 ffmpeg: !include ffmpeg.yaml
 generic_hygrostat: !include humidifer.yaml
-google: include google.yaml
+#google: include google.yaml
 group: !include groups.yaml
 hacs: !include hacs.yaml
 homeassistant: !include homeassistant.yaml

@@ -123,3 +123,8 @@
       entity_id: switch.chromecast
     - service: switch.turn_off
       entity_id: switch.dust_collector_2
+
+#####################
+## mount music
+#####################
+ 

@@ -53,7 +53,6 @@
 !ring.yaml
 !scripts.yaml
 !sensors.yaml
-!shell_command.yaml
 !sonoff.yaml
 !switch.yaml
 !timer.yaml

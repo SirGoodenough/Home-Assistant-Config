@@ -1,2 +1,4 @@
 ---
 bed: "curl {{ url }}{{ cmnd }}"
+
+music_cifs_mount: docker exec -it homeassistant mount -t cifs -o "domain=homeassistant,username=off,password=off" //10.10.100.8/music /media/music
