@@ -60,7 +60,8 @@
                             "show_header_toggle": true,
                             "title": "Kitchen",
                             "type": "entities",
-                            "state_color": true
+                            "state_color": true,
+                            "theme": "3ative_blue"
                         },
                         {
                             "entities": [
@@ -508,17 +509,6 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "script.doors_close_all"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Script",
-                            "type": "entities",
-                            "state_color": true
-                        },
-                        {
-                            "entities": [
-                                {
                                     "entity": "light.b_porch_socket"
                                 },
                                 {
@@ -569,84 +559,100 @@
                             "type": "entities"
                         },
                         {
-                            "type": "calendar",
-                            "entities": [
-                                "calendar.garbage_collection"
-                            ]
+                            "type": "grid",
+                            "cards": [
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.intercom_2"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.jen_group"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.main_level_speakers"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.common_group"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.office_jamz"
+                                }
+                            ],
+                            "columns": 2,
+                            "square": false
                         },
                         {
-                            "type": "media-control",
-                            "entity": "media_player.basement_speaker"
+                            "type": "grid",
+                            "cards": [
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.momsairplay"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.jenny_s_tv"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.farg"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.kitchen_speaker"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.living_room_speaker"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.workroom_speaker"
+                                }
+                            ],
+                            "columns": 2,
+                            "square": false
                         },
                         {
-                            "type": "media-control",
-                            "entity": "media_player.bathroom_speaker"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.bedroom_firestick_air"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.bedroom_speaker"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.farg"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.garage_speaker"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.intercom_2"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.jenny_s_tv"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.jennys_room_display"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.kitchen_speaker"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.living_room_speaker"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.main_level_speakers"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.office_jamz"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.office_speaker_1"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.office_speaker_2"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.workroom_speaker"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.kitchen_speaker",
-                            "theme": "Dark Orange"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.common_group",
-                            "theme": "Dark - Blue"
+                            "type": "grid",
+                            "cards": [
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.basement_speaker"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.bathroom_speaker"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.bedroom_firestick_air"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.bedroom_speaker"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.garage_speaker"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.office_speaker_1"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.office_speaker_2"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.momsairplay"
+                                }
+                            ],
+                            "square": false
                         }
                     ],
                     "icon": "mdi:home-automation",
@@ -1070,7 +1076,8 @@
                                     "tap_action": {
                                         "action": "toggle"
                                     },
-                                    "name": "Jens TV Panel"
+                                    "name": "Jens TV Panel",
+                                    "theme": "Dark - Orange"
                                 },
                                 {
                                     "type": "button",
@@ -1189,7 +1196,8 @@
                                     "icon_height": "50px",
                                     "theme": "Dark - Orange"
                                 }
-                            ]
+                            ],
+                            "square": false
                         },
                         {
                             "type": "grid",
@@ -1201,7 +1209,7 @@
                                         "action": "toggle"
                                     },
                                     "icon_height": "-50px",
-                                    "theme": "Dark - Blue/Purple"
+                                    "theme": "Dark - Red"
                                 },
                                 {
                                     "type": "button",
@@ -1368,7 +1376,7 @@
                                     "tap_action": {
                                         "action": "toggle"
                                     },
-                                    "theme": "Dark - Yellow",
+                                    "theme": "Dark - Blue/Purple",
                                     "icon_height": "50px"
                                 },
                                 {
@@ -1377,9 +1385,10 @@
                                         "action": "toggle"
                                     },
                                     "entity": "script.denon_power",
-                                    "theme": "Navy Blue & Yellow"
+                                    "theme": "Dark - Red"
                                 }
-                            ]
+                            ],
+                            "square": false
                         },
                         {
                             "type": "grid",
@@ -1390,7 +1399,7 @@
                                         "action": "toggle"
                                     },
                                     "entity": "script.denon_power",
-                                    "theme": "Navy Blue & Yellow",
+                                    "theme": "Dark - Red",
                                     "icon_height": "50px"
                                 },
                                 {
@@ -1596,7 +1605,8 @@
                                     "type": "button",
                                     "tap_action": {
                                         "action": "toggle"
-                                    }
+                                    },
+                                    "theme": "Navy Blue & Yellow"
                                 },
                                 {
                                     "type": "button",
@@ -1610,7 +1620,8 @@
                                     "icon_height": "50px",
                                     "theme": "Navy Blue & Yellow"
                                 }
-                            ]
+                            ],
+                            "square": false
                         },
                         {
                             "type": "grid",
@@ -1640,7 +1651,7 @@
                                         "action": "toggle"
                                     },
                                     "icon_height": "-50px",
-                                    "theme": "material_dark_green"
+                                    "theme": "Dark - Red"
                                 },
                                 {
                                     "type": "button",
@@ -1779,7 +1790,8 @@
                                     "icon_height": "-50px",
                                     "theme": "material_dark_green"
                                 }
-                            ]
+                            ],
+                            "square": false
                         }
                     ]
                 },
@@ -2447,7 +2459,7 @@
                                 }
                             ],
                             "show_header_toggle": true,
-                            "theme": "christmas",
+                            "theme": "uglychristmas",
                             "title": "Christmas Lights",
                             "type": "entities"
                         },
@@ -2471,7 +2483,8 @@
                                     "entity": "number.christmas_tree_intensity"
                                 }
                             ],
-                            "title": "Christmas_Tree"
+                            "title": "Christmas_Tree",
+                            "theme": "uglychristmas"
                         },
                         {
                             "type": "entities",
@@ -2493,7 +2506,8 @@
                                     "entity": "number.wled_intensity"
                                 }
                             ],
-                            "title": "In_Tree"
+                            "title": "In_Tree",
+                            "theme": "uglychristmas"
                         },
                         {
                             "entities": [
@@ -3306,6 +3320,252 @@
                     "badges": [],
                     "cards": [
                         {
+                            "entity": "sensor.sun_state",
+                            "hours_to_show": 36,
+                            "type": "sensor"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.bathoom_si7021_temperature"
+                                },
+                                {
+                                    "entity": "sensor.bathoom_si7021_humidity"
+                                },
+                                {
+                                    "entity": "switch.bathoom_2"
+                                },
+                                {
+                                    "entity": "switch.hank_hkzwso01_smart_plug_switch"
+                                },
+                                {
+                                    "entity": "switch.sonoff_1000d4bf8f_1"
+                                },
+                                {
+                                    "entity": "switch.eldrad"
+                                },
+                                {
+                                    "entity": "switch.rassillon"
+                                },
+                                {
+                                    "entity": "switch.serverusb_2"
+                                },
+                                {
+                                    "entity": "switch.switchhub"
+                                },
+                                {
+                                    "entity": "switch.serverstrip"
+                                },
+                                {
+                                    "entity": "script.tasmota_firsts_update"
+                                },
+                                {
+                                    "entity": "script.tasmota_all_update"
+                                }
+                            ],
+                            "show_header_toggle": true,
+                            "title": "Server Room",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "automation.in_christmas"
+                                },
+                                {
+                                    "entity": "automation.dust_collector_button_turn_on"
+                                },
+                                {
+                                    "entity": "automation.dust_collector_failsafe"
+                                },
+                                {
+                                    "entity": "automation.bathroom_is_overheated"
+                                },
+                                {
+                                    "entity": "automation.bathroom_door_is_open"
+                                },
+                                {
+                                    "entity": "automation.you_ve_got_mail"
+                                },
+                                {
+                                    "entity": "automation.side_doorbell_ding"
+                                },
+                                {
+                                    "entity": "automation.back_doorbell_ding"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Automation",
+                            "type": "entities"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_cpu_load_average_five_minute",
+                                    "name": "CPU Load Average Five Minute"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_cpu_usage",
+                                    "name": "CPU Usage"
+                                },
+                                {
+                                    "entity": "binary_sensor.rassilon_mountcadon_duckdns_org_pending_notices_present",
+                                    "name": "Pending Notices Present"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_01wan_outbytes_kilobytes_per_second",
+                                    "name": "Interface 01WAN outbytes_kilobytes_per_second"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_01wan_inbytes_kilobytes_per_second",
+                                    "name": "Interface 01WAN inbytes_kilobytes_per_second"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_01wan_status",
+                                    "name": "Interface 01WAN status"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_02homeassistant_status",
+                                    "name": "Interface 02HOMEASSISTANT status"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_03housenetwork_status",
+                                    "name": "Interface 03HOUSENETWORK status"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_06counter_status",
+                                    "name": "Interface 06COUNTER status"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_07veeda_status",
+                                    "name": "Interface 07VEEDA status"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_08switch_0_storage_status",
+                                    "name": "Interface 08SWITCH_0_STORAGE status"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_09switch_1_status",
+                                    "name": "Interface 09SWITCH_1 status"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_10switch_2_status",
+                                    "name": "Interface 10SWITCH_2 status"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_11switch_3_upstairs_status",
+                                    "name": "Interface 11SWITCH_3_UPSTAIRS status"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_12garagetherani_status",
+                                    "name": "Interface 12GARAGETHERANI status"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_system_boottime",
+                                    "name": "System Boottime"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_system_temperature",
+                                    "name": "System Temperature"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_gateway_01wan_dhcp_loss",
+                                    "name": "Gateway 01WAN_DHCP loss"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_gateway_01wan_dhcp_status",
+                                    "name": "Gateway 01WAN_DHCP status"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_gateway_01wan_dhcp6_loss",
+                                    "name": "Gateway 01WAN_DHCP6 loss"
+                                },
+                                {
+                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_gateway_01wan_dhcp6_status",
+                                    "name": "Gateway 01WAN_DHCP6 status"
+                                }
+                            ],
+                            "title": "rassilon.mountcadon.duckdns.org"
+                        },
+                        {
+                            "type": "grid",
+                            "cards": [
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.automation_count",
+                                    "graph": "line"
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.binary_sensor_count",
+                                    "graph": "line"
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.camera_count",
+                                    "graph": "line"
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.entities_count",
+                                    "graph": "line"
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.group_count",
+                                    "graph": "line"
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.lights_count",
+                                    "graph": "line"
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.media_player_count",
+                                    "graph": "line"
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.script_count",
+                                    "graph": "line"
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.sensor_count",
+                                    "graph": "line"
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.switch_count",
+                                    "graph": "line"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "button",
+                            "tap_action": {
+                                "action": "call-service",
+                                "service": "script.page_drzzs",
+                                "service_data": {},
+                                "target": {}
+                            },
+                            "entity": "switch.b2",
+                            "name": "Page DrZzs JIM ONLY",
+                            "icon": "mdi:youtube",
+                            "icon_height": "40px"
+                        }
+                    ],
+                    "icon": "mdi:brain",
+                    "id": "system",
+                    "path": "system",
+                    "title": "System"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
                             "entity": "sensor.b_porch_socket_rssi",
                             "max": 100,
                             "min": 0,
@@ -3384,6 +3644,18 @@
                         },
                         {
                             "type": "gauge",
+                            "entity": "sensor.wled_wi_fi_signal",
+                            "min": 0,
+                            "max": 100,
+                            "needle": true,
+                            "severity": {
+                                "green": 70,
+                                "yellow": 50,
+                                "red": 30
+                            }
+                        },
+                        {
+                            "type": "gauge",
                             "entity": "sensor.christmas_tree_wi_fi_signal",
                             "severity": {
                                 "green": -70,
@@ -3395,7 +3667,7 @@
                             "needle": true
                         },
                         {
-                            "entity": "sensor.bmt_hall_rf_socket_u_rssi",
+                            "entity": "sensor.fp_rf_relay_rssi",
                             "max": 100,
                             "min": 0,
                             "severity": {
@@ -3408,7 +3680,7 @@
                             "needle": true
                         },
                         {
-                            "entity": "sensor.fp_rf_relay_rssi",
+                            "entity": "sensor.bmt_hall_rf_socket_u_rssi",
                             "max": 100,
                             "min": 0,
                             "severity": {
@@ -3718,6 +3990,18 @@
                                 "red": 30
                             },
                             "needle": true
+                        },
+                        {
+                            "type": "gauge",
+                            "entity": "sensor.cabinetlight_rssi",
+                            "min": 0,
+                            "max": 100,
+                            "needle": true,
+                            "severity": {
+                                "green": 70,
+                                "yellow": 50,
+                                "red": 30
+                            }
                         }
                     ],
                     "icon": "mdi:signal-variant",
@@ -3726,265 +4010,12 @@
                     "title": "Signals"
                 },
                 {
-                    "badges": [],
-                    "cards": [
-                        {
-                            "entity": "sensor.sun_state",
-                            "hours_to_show": 36,
-                            "type": "sensor"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "sensor.bathoom_si7021_temperature"
-                                },
-                                {
-                                    "entity": "sensor.bathoom_si7021_humidity"
-                                },
-                                {
-                                    "entity": "switch.bathoom_2"
-                                },
-                                {
-                                    "entity": "switch.hank_hkzwso01_smart_plug_switch"
-                                },
-                                {
-                                    "entity": "switch.sonoff_1000d4bf8f_1"
-                                },
-                                {
-                                    "entity": "switch.eldrad"
-                                },
-                                {
-                                    "entity": "switch.rassillon"
-                                },
-                                {
-                                    "entity": "switch.serverusb_2"
-                                },
-                                {
-                                    "entity": "switch.switchhub"
-                                },
-                                {
-                                    "entity": "switch.serverstrip"
-                                },
-                                {
-                                    "entity": "script.tasmota_firsts_update"
-                                },
-                                {
-                                    "entity": "script.tasmota_all_update"
-                                }
-                            ],
-                            "show_header_toggle": true,
-                            "title": "Server Room",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "automation.in_christmas"
-                                },
-                                {
-                                    "entity": "automation.dust_collector_button_turn_on"
-                                },
-                                {
-                                    "entity": "automation.dust_collector_failsafe"
-                                },
-                                {
-                                    "entity": "automation.bathroom_is_overheated"
-                                },
-                                {
-                                    "entity": "automation.bathroom_door_is_open"
-                                },
-                                {
-                                    "entity": "automation.you_ve_got_mail"
-                                },
-                                {
-                                    "entity": "automation.side_doorbell_ding"
-                                },
-                                {
-                                    "entity": "automation.back_doorbell_ding"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Automation",
-                            "type": "entities"
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_cpu_load_average_five_minute",
-                                    "name": "CPU Load Average Five Minute"
-                                },
-                                {
-                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_cpu_usage",
-                                    "name": "CPU Usage"
-                                },
-                                {
-                                    "entity": "binary_sensor.rassilon_mountcadon_duckdns_org_pending_notices_present",
-                                    "name": "Pending Notices Present"
-                                },
-                                {
-                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_01wan_outbytes_kilobytes_per_second",
-                                    "name": "Interface 01WAN outbytes_kilobytes_per_second"
-                                },
-                                {
-                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_01wan_inbytes_kilobytes_per_second",
-                                    "name": "Interface 01WAN inbytes_kilobytes_per_second"
-                                },
-                                {
-                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_01wan_status",
-                                    "name": "Interface 01WAN status"
-                                },
-                                {
-                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_02homeassistant_status",
-                                    "name": "Interface 02HOMEASSISTANT status"
-                                },
-                                {
-                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_03housenetwork_status",
-                                    "name": "Interface 03HOUSENETWORK status"
-                                },
-                                {
-                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_06counter_status",
-                                    "name": "Interface 06COUNTER status"
-                                },
-                                {
-                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_07veeda_status",
-                                    "name": "Interface 07VEEDA status"
-                                },
-                                {
-                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_08switch_0_storage_status",
-                                    "name": "Interface 08SWITCH_0_STORAGE status"
-                                },
-                                {
-                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_09switch_1_status",
-                                    "name": "Interface 09SWITCH_1 status"
-                                },
-                                {
-                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_10switch_2_status",
-                                    "name": "Interface 10SWITCH_2 status"
-                                },
-                                {
-                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_11switch_3_upstairs_status",
-                                    "name": "Interface 11SWITCH_3_UPSTAIRS status"
-                                },
-                                {
-                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_interface_12garagetherani_status",
-                                    "name": "Interface 12GARAGETHERANI status"
-                                },
-                                {
-                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_system_boottime",
-                                    "name": "System Boottime"
-                                },
-                                {
-                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_system_temperature",
-                                    "name": "System Temperature"
-                                },
-                                {
-                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_gateway_01wan_dhcp_loss",
-                                    "name": "Gateway 01WAN_DHCP loss"
-                                },
-                                {
-                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_gateway_01wan_dhcp_status",
-                                    "name": "Gateway 01WAN_DHCP status"
-                                },
-                                {
-                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_gateway_01wan_dhcp6_loss",
-                                    "name": "Gateway 01WAN_DHCP6 loss"
-                                },
-                                {
-                                    "entity": "sensor.rassilon_mountcadon_duckdns_org_gateway_01wan_dhcp6_status",
-                                    "name": "Gateway 01WAN_DHCP6 status"
-                                }
-                            ],
-                            "title": "rassilon.mountcadon.duckdns.org"
-                        },
-                        {
-                            "type": "grid",
-                            "cards": [
-                                {
-                                    "type": "sensor",
-                                    "entity": "sensor.automation_count",
-                                    "graph": "line"
-                                },
-                                {
-                                    "type": "sensor",
-                                    "entity": "sensor.binary_sensor_count",
-                                    "graph": "line"
-                                },
-                                {
-                                    "type": "sensor",
-                                    "entity": "sensor.camera_count",
-                                    "graph": "line"
-                                },
-                                {
-                                    "type": "sensor",
-                                    "entity": "sensor.entities_count",
-                                    "graph": "line"
-                                },
-                                {
-                                    "type": "sensor",
-                                    "entity": "sensor.group_count",
-                                    "graph": "line"
-                                },
-                                {
-                                    "type": "sensor",
-                                    "entity": "sensor.lights_count",
-                                    "graph": "line"
-                                },
-                                {
-                                    "type": "sensor",
-                                    "entity": "sensor.media_player_count",
-                                    "graph": "line"
-                                },
-                                {
-                                    "type": "sensor",
-                                    "entity": "sensor.script_count",
-                                    "graph": "line"
-                                },
-                                {
-                                    "type": "sensor",
-                                    "entity": "sensor.sensor_count",
-                                    "graph": "line"
-                                },
-                                {
-                                    "type": "sensor",
-                                    "entity": "sensor.switch_count",
-                                    "graph": "line"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "button",
-                            "tap_action": {
-                                "action": "call-service",
-                                "service": "script.page_drzzs",
-                                "service_data": {},
-                                "target": {}
-                            },
-                            "entity": "switch.b2",
-                            "name": "Page DrZzs JIM ONLY",
-                            "icon": "mdi:youtube",
-                            "icon_height": "40px"
-                        }
-                    ],
-                    "icon": "mdi:brain",
-                    "id": "system",
-                    "path": "system",
-                    "title": "System"
-                },
-                {
                     "title": "YouTube",
                     "path": "YouTube",
                     "icon": "mdi:youtube",
                     "theme": "dark_red",
                     "badges": [],
                     "cards": [
-                        {
-                            "type": "entities",
-                            "entities": [
-                                "sensor.kitchen_speaker_device"
-                            ],
-                            "title": "Google Home Kitchen speaker"
-                        },
                         {
                             "type": "entities",
                             "entities": [
