@@ -122,7 +122,7 @@
 ####################################################
 # Office Light Button                              #
 ####################################################
-- id: 0dc42e48-54d5-435b-9e07-b9df9f2cb491
+- id: 36d673e0-6732-4c89-9c05-e99ec815b58d
   alias: Toggle Office Light 1
   initial_state: on
   trigger:
@@ -130,9 +130,9 @@
       entity_id: binary_sensor.office_light_1
       to: "on"
   action:
-    - service: >-
+    - service: >
         {% if is_state('light.office_fan_light', 'on') %}
-          light.turn_off
+          light.turn_off 
         {% elif is_state('light.plug3', 'on') %}
           light.turn_off
         {% else %}
