@@ -12,6 +12,7 @@
       - generic_hygrostat
       - light
       - lock
+      - media_player
       - notify
       - octoprint
       - person
@@ -31,7 +32,6 @@
       - hacs
       - life360
       - mqtt
-      - media_player
       - timer
       - updater # Don't save updater
       - weather
