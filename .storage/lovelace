@@ -589,8 +589,95 @@
                             "type": "grid",
                             "cards": [
                                 {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "switch.basement_speaker_do_not_disturb",
+                                    "icon": "mdi:speaker-off"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "switch.bathroom_speaker_do_not_disturb",
+                                    "icon": "mdi:speaker-off"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "switch.bedroom_speaker_do_not_disturb",
+                                    "icon": "mdi:speaker-off"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "switch.garage_speaker_do_not_disturb",
+                                    "icon": "mdi:speaker-off"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "switch.jennys_room_display_do_not_disturb",
+                                    "icon": "mdi:speaker-off"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "switch.kitchen_speaker_do_not_disturb",
+                                    "icon": "mdi:speaker-off"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "switch.living_room_speaker_do_not_disturb",
+                                    "icon": "mdi:speaker-off"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "switch.office_speaker_1_do_not_disturb",
+                                    "icon": "mdi:speaker-off"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "switch.office_speaker_2_do_not_disturb",
+                                    "icon": "mdi:speaker-off"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "switch.workroom_speaker_do_not_disturb",
+                                    "icon": "mdi:speaker-off"
+                                }
+                            ],
+                            "square": false,
+                            "columns": 5
+                        },
+                        {
+                            "type": "grid",
+                            "cards": [
+                                {
                                     "type": "media-control",
-                                    "entity": "media_player.momsairplay"
+                                    "entity": "media_player.farg"
                                 },
                                 {
                                     "type": "media-control",
@@ -598,7 +685,7 @@
                                 },
                                 {
                                     "type": "media-control",
-                                    "entity": "media_player.farg"
+                                    "entity": "media_player.momsairplay"
                                 },
                                 {
                                     "type": "media-control",
