@@ -22,10 +22,7 @@ jen_needs_help:
         options:
           gender: female
         language: en-US
-    # - delay:
-    #     seconds: 7
-    - wait_template: '{{ is_state(expand( entities )[0].state, "idle") }}'
-      timeout: 00:00:07
+    - delay: 00:00:04
     - service: media_player.play_media
       data:
         entity_id: "{{ entities }}"

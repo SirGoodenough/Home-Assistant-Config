@@ -94,9 +94,11 @@ variables:
 sequence:
   - choose:
       - conditions:
-        - condition: state
-          entity_id: !input 'speaker_target'
-          state: 'off'
+          condition: not
+          conditions:
+            - condition: state
+              entity_id: !input 'speaker_target'
+              state: 'Playing'
         sequence:
           - service: media_player.volume_mute
             data:
@@ -106,8 +108,6 @@ sequence:
             target:
               entity_id: !input 'speaker_target'
     default:
-      - wait_template: '{{ is_state(expand(speaker_target_ent)[0].state, "idle") }}'
-        timeout: 00:00:05
       - service: media_player.volume_mute
         data:
           entity_id: !input 'speaker_target'
