@@ -120,7 +120,7 @@
       entity_id: light.kitchen_down_lights
 
 ####################################################
-# Office Light Button                              #
+# Office Light Button      Causing errors?         #
 ####################################################
 - id: 36d673e0-6732-4c89-9c05-e99ec815b58d
   alias: Toggle Office Light 1
