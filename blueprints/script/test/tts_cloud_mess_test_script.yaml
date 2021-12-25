@@ -94,28 +94,29 @@ variables:
 sequence:
   - choose:
       - conditions:
-          condition: not
-          conditions:
-            - condition: state
-              entity_id: !input 'speaker_target'
-              state: 'Playing'
+        - condition: state
+          entity_id: !input 'speaker_target'
+          state: 'off'
         sequence:
           - service: media_player.volume_mute
             data:
               entity_id: !input 'speaker_target'
               is_volume_muted: true
-          - service: media_player.turn_on
-            target:
+          - delay: 0.1
+          - service: media_player.play_media
+            data:
               entity_id: !input 'speaker_target'
-    default:
-      - service: media_player.volume_mute
-        data:
-          entity_id: !input 'speaker_target'
-          is_volume_muted: false
-      - service: tts.cloud_say
-        data:
-          entity_id: !input 'speaker_target'
-          message: !input 'announcement_message'
-          options:
-            gender: !input 'speaker_gender'
-          language: !input 'speaker_language'
+              media_content_id: 
+                "media-source://media_source/local/mp3/1sec.mp3"
+              media_content_type: audio/mp3
+          - service: media_player.volume_mute
+            data:
+              entity_id: !input 'speaker_target'
+              is_volume_muted: false
+  - service: tts.cloud_say
+    data:
+      entity_id: !input 'speaker_target'
+      message: !input 'announcement_message'
+      options:
+        gender: !input 'speaker_gender'
+      language: !input 'speaker_language'
