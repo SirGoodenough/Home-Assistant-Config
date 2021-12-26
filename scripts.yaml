@@ -307,12 +307,3 @@ tts_bedroom_door:
       speaker_target: media_player.kitchen_speaker, media_player.living_room_speaker
       announcement_message: The Bedroom door is open
   icon: mdi:bunk-bed-outline
-tts_experimental:
-  alias: TTS experimental
-  use_blueprint:
-    path: test/tts_cloud_mess_test_script.yaml
-    input:
-      speaker_language: hu-HU
-      speaker_gender: male
-      speaker_target: media_player.kitchen_speaker
-  icon: mdi:skull-crossbones-outline
