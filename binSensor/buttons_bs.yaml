@@ -1,0 +1,298 @@
+---
+  #####################################################
+  # Buttons (433mhz)                                  #
+  #####################################################
+  # - platform: mqtt
+  #   name: "A1"
+  #   unique_id: 56bb38a6-2671-41b3-a495-367e10d55f79
+  #   device_class: light
+  #   off_delay: 2
+  #   state_topic: rf433/A1
+  #   payload_on: 'ON'
+  #   payload_off: 'OFF'
+  #   availability_topic: RFBridge2/tele/LWT
+  #   payload_available: Online
+  #   payload_not_available: Offline
+
+  # - platform: mqtt
+  #   name: "A2"
+  #   unique_id: e5573155-fe5b-4c2e-a587-bcb4d01cef52
+  #   device_class: light
+  #   off_delay: 2
+  #   state_topic: rf433/A2
+  #   payload_on: 'ON'
+  #   payload_off: 'OFF'
+  #   availability_topic: RFBridge2/tele/LWT
+  #   payload_available: Online
+  #   payload_not_available: Offline
+
+  # - platform: mqtt
+  #   name: "A3"
+  #   unique_id: 222ca754-eaf9-46ea-aa67-d33d9fcccd19
+  #   device_class: light
+  #   off_delay: 2
+  #   state_topic: rf433/A3
+  #   payload_on: 'ON'
+  #   payload_off: 'OFF'
+  #   availability_topic: RFBridge2/tele/LWT
+  #   payload_available: Online
+  #   payload_not_available: Offline
+
+  - platform: mqtt
+    name: "Blue Remote A"
+    unique_id: 5eb7fa64-629e-48bf-b1d9-9ae5d5e4772f
+    device_class: safety
+    state_topic: rf433/Blue-A
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 2
+    force_update: false
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
+    name: "Blue Remote B"
+    unique_id: 8b7d1a4c-1801-40b8-b25a-79174f93e67d
+    device_class: safety
+    state_topic: rf433/Blue-B
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 2
+    force_update: false
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
+    name: "Blue Remote C"
+    unique_id: 6e87f028-ef24-4b9c-9cf3-c1606a98d1f6
+    device_class: safety
+    state_topic: rf433/Blue-C
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 2
+    force_update: false
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
+    name: "Blue Remote D"
+    unique_id: a6c69987-9f80-4fd6-9910-9e51be5ba638
+    device_class: safety
+    state_topic: rf433/Blue-D
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 2
+    force_update: false
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
+    name: "Moms Call Button"
+    unique_id: d7af1a98-cf9c-47ca-8fa8-110444e448ed
+    device_class: safety
+    state_topic: rf433/Mom-C
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 2
+    force_update: false
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
+    name: "Dust Collector Button1"
+    unique_id: f51d992a-f161-4b0a-b366-2926120b7acb
+    device_class: opening
+    state_topic: rf433/DustCollectorButton1
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 2
+    force_update: false
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
+    name: "Dust Collector Button2"
+    unique_id: cf2cda4c-0b64-4ffb-8d0e-852bf2a09cba
+    device_class: opening
+    state_topic: rf433/DustCollectorButton2
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 2
+    force_update: false
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
+    name: "DnRemote1"
+    unique_id: f508360b-d0f1-4949-ab14-9953d9d11564
+    device_class: opening
+    state_topic: rf433/DnRemote1
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 2
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
+    name: "DnRemote2"
+    unique_id: 42f3825a-5726-43f2-8c5d-cdaa86232bdc
+    device_class: opening
+    state_topic: rf433/DnRemote2
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 2
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
+    name: "DnRemote4"
+    unique_id: 31501885-cd65-4e37-9d9d-f630348ad477
+    device_class: opening
+    state_topic: rf433/DnRemote4
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 2
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
+    name: "DnRemote5"
+    unique_id: f646ffe5-39af-4820-ab4b-09115e745ba4
+    device_class: opening
+    state_topic: rf433/DnRemote5
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 2
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
+    name: "DnRemote8"
+    unique_id: ba7b98a3-dc2d-4bd2-b0b4-eedb2673c444
+    device_class: opening
+    state_topic: rf433/DnRemote8
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 2
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
+    name: "DnRemote9"
+    unique_id: 3f4fec4a-fba9-461c-b67a-e73358bc5bdd
+    device_class: opening
+    state_topic: rf433/DnRemote9
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 2
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
+    name: "DnRemoteC"
+    unique_id: ea3f2123-ad04-407e-a9ba-004957674224
+    device_class: opening
+    state_topic: rf433/DnRemoteC
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 2
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
+    name: "Moms button1"
+    unique_id: 0f04986a-3f83-45a1-923b-28cb9a779825
+    device_class: light
+    state_topic: rf433/MomsButton1
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 2
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
+    name: "Moms button2"
+    unique_id: 8924393f-ac14-452a-a049-1720aee00eb2
+    device_class: light
+    state_topic: rf433/MomsButton2
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 2
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
+    name: "Moms button3"
+    unique_id: 23a137d4-4af6-4acd-b12f-a3f76d0024cb
+    device_class: light
+    state_topic: rf433/MomsButton3
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 2
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
+    name: "Office Light 1"
+    unique_id: 1326d133-8823-4eca-b48a-28670644bac4
+    device_class: light
+    state_topic: rf433/OfficeLight1
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 2
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
+    name: "Office Light 2"
+    unique_id: c17bfcaf-8947-4a4a-90ed-84ca11e08a64
+    device_class: light
+    state_topic: rf433/OfficeLight2
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 2
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
+    name: "Stairs UP"
+    unique_id: 186b3fdf-3d8d-4392-8e27-f9269c147431
+    device_class: light
+    state_topic: rf433/StairUP
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 2
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
+    name: "Stairs Down"
+    unique_id: c3a28db4-2510-454b-938e-d93a29a1d9b1
+    device_class: light
+    state_topic: rf433/StairDN
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 2
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline

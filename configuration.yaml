@@ -42,7 +42,8 @@ zone:
 # All the other stuff not covered in the default_config:
 
 alert: !include alert.yaml
-binary_sensor: !include binary_sensors.yaml
+# binary_sensor: !include binary_sensors.yaml
+binary_sensor: !include_dir_merge_list ./binSensor
 camera: !include camera.yaml
 # climate: !include climate.yaml
 conversation:

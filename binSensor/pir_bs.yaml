@@ -1,0 +1,84 @@
+---
+  #####################################################
+  # PIR Sensors (MQTT)                                #
+  #####################################################
+  - platform: mqtt
+    name: "Yard Light PIR"
+    unique_id: d67138ce-91f4-4721-8560-34c4652b284b
+    device_class: motion
+    state_topic: garage_door/stat/POWER2
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 600
+    force_update: false
+    availability_topic: garage_door/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  #####################################################
+  # PIR Sensors (433mhz)                              #
+  #####################################################
+  - platform: mqtt
+    name: "Back Door PIR"
+    unique_id: df6256df-173a-43fe-9df8-1d553540ad74
+    device_class: motion
+    state_topic: rf433/BackDoorPIR
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 200
+    force_update: false
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
+    name: "Basement Way D PIR"
+    unique_id: 1d544738-e018-42fc-8b18-298eb71e2d6a
+    device_class: motion
+    state_topic: rf433/BasementWayDPIR
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 200
+    force_update: false
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
+    name: "Basement Way U PIR"
+    unique_id: 1a697efc-c211-4b7f-8ce3-b7fea0fc8c29
+    device_class: motion
+    state_topic: rf433/BasementWayUPIR
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 200
+    force_update: false
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
+    name: "Front Door PIR"
+    unique_id: 85ec8ff9-07f6-4088-b095-3bbb7a75400b
+    device_class: motion
+    state_topic: rf433/FrontDoorPIR
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 200
+    force_update: false
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - platform: mqtt
+    name: "Upstairs PIR"
+    unique_id: 9797bab1-f821-42ed-9414-f4f5e46836bc
+    device_class: motion
+    state_topic: rf433/UpstairsPIR
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 200
+    force_update: false
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline

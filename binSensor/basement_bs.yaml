@@ -1,0 +1,30 @@
+---
+  ####################################################
+  # Wash Machine sensor                              #
+  ####################################################
+  - platform: template
+    sensors:
+      washing_machine:
+        unique_id: 6912d239-6454-44bc-85a2-b46054b0b33a
+        friendly_name: "Washing Machine"
+        device_class: power
+        delay_off:
+          minutes: 7
+        value_template: >-
+          {% if states('sensor.wash_machine_energy_current') != "unavailable" %}
+            {{ states('sensor.wash_machine_energy_current') | float > 0.085 }}
+          {% endif %}
+
+  #####################################################
+  # Dryer Complete Signal                             #
+  #####################################################
+  - platform: mqtt
+    name: "Dryer"
+    unique_id: 1f3bc54d-b40d-400a-812a-bcfc828fbac2
+    device_class: power
+    state_topic: Dryer3/stat/POWER2
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    availability_topic: Dryer3/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline

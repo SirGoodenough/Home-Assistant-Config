@@ -1,0 +1,19 @@
+---
+  #####################################################
+  # Weather                                           #
+  #####################################################
+  - platform: template
+    sensors:
+      dark_outside:
+        unique_id: 05836502-ee80-4449-8497-6f20350c6642
+        friendly_name: 'Is it Dark outside'
+        value_template: >-
+          {% if (states.sun.sun.attributes.elevation | int < 5) %}
+            true
+          {% elif (is_state('weather.home', 'cloudy')) %}
+            true
+          {% elif ( (states.sun.sun.attributes.elevation | int < 15) and (is_state('weather.home', 'partlycloudy')) ) %}
+            true
+          {% else %} 
+            false
+          {% endif %}

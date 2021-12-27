@@ -5,6 +5,7 @@
 ## Allow folders
 !/automation2**
 !/automationDev**
+!/binSensor**
 !/blueprints**
 !/image**
 !/python_scripts**
