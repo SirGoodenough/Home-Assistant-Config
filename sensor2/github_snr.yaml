@@ -1,0 +1,15 @@
+---
+  ####################################################
+  #  GitHub                                          #
+  ####################################################
+  - platform: github
+    access_token: !secret GIT_API
+    repositories:
+      - path: "SirGoodenough/Home-Assistant-Config"
+        name: "HA Config Repo"
+      - path: "SirGoodenough/HIVE-RefData"
+        name: "HIVE Local Repo"
+      - path: "SirGoodenough/ThermoPI"
+        name: "ThermoPI Repo"
+      - path: "SirGoodenough/ThermoPI-Furnace"
+        name: "ThermoPI-Furnace Repo"

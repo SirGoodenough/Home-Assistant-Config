@@ -1,0 +1,20 @@
+---
+  ####################################################
+  #  Weather                                         #
+  ####################################################
+  - platform: darksky
+    api_key: 8b50a9ef74a06ef730f7a14b116adb0f
+    scan_interval:
+      minutes: 5
+    monitored_conditions:
+      - temperature
+      - cloud_cover
+      - apparent_temperature
+      - wind_speed
+
+  - platform: template
+    sensors:
+      sun_state:
+        friendly_name: "Sun State"
+        value_template: >-
+          {% if is_state('sun.sun', 'above_horizon') %}up{% else %}down{% endif %}

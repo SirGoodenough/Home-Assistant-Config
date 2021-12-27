@@ -1,0 +1,13 @@
+---
+  ####################################################
+  #  Min/Max Sensors                                 #
+  ####################################################
+  - platform: min_max
+    name: "House Humidity Main"
+    type: mean
+    round_digits: 1
+    entity_ids:
+      - sensor.furnace_oil_top_humid
+      - sensor.furnace_return_humid
+      - sensor.livingroom_humid
+      - sensor.kitchen_humid
