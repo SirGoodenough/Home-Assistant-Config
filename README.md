@@ -18,7 +18,7 @@ and in configuration.yaml do this:
 
 Then put your split folders here for scripts.
 
-This creates a symbolic link from the main script.yaml located in the subfolder.  The UI editor can destroy and create the one in the main filder on UI edits, and the one looked for in creating the system workings is in the dub folder as wel via a sym link.
+This creates a symbolic link from the main scripts.yaml file to the one located in the subfolder (config/#path_to_your_subfolder).  The UI editor can destroy and create the one in the main folder on UI edits, and the one looked for in creating the system workings is in the sub folder via a symbolic link.
 
 Let me know if you have a suggestion.
 
