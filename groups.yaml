@@ -14,6 +14,7 @@
       - automation.power_state_on_ha_start_up_outside_christmas_dark
       - automation.turn_off_christmas_lights_at_dawn
       - automation.turn_on_christmas_lights_at_dark
+
   # grandma_stack:
   #   # no livingroom
   #   name: no_livingroom
