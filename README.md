@@ -1,6 +1,6 @@
 # Welcome to my Home Assistant Configuration
 
-For those that have asked, here is how I split out my scripts file and still use the UI to do editing and making blueprints:
+For those that have asked, here is how I split out my configuration.yaml file and still use the UI to do editing and making blueprints:
 
 🔀 [Split Configuration HA Official Instructions](https://home-assistant.io/docs/configuration/splitting_configuration/)
 
