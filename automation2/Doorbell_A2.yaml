@@ -19,7 +19,7 @@
     action:
     - service: media_player.play_media
       data:
-        entity_id: group.intercom_stack
+        entity_id: media_player.intercom_group
         media_content_id: 
           "media-source://media_source/local/mp3/doorbell-1.mp3"
         media_content_type: audio/mp3
@@ -37,7 +37,7 @@
     action:
     - service: media_player.play_media
       data:
-        entity_id: group.intercom_stack
+        entity_id: media_player.intercom_group
         media_content_id: 
           "media-source://media_source/local/mp3/Ring_-_Windchimes.mp3"
         media_content_type: audio/mp3
@@ -56,7 +56,7 @@
     action:
     - service: media_player.play_media
       data:
-        entity_id: group.intercom_stack
+        entity_id: media_player.intercom_group
         media_content_id: 
           "media-source://media_source/local/mp3/doorbell-2.mp3"
         media_content_type: audio/mp3
@@ -74,7 +74,7 @@
     action:
     - service: media_player.play_media
       data:
-        entity_id: group.intercom_stack
+        entity_id: media_player.intercom_group
         media_content_id: 
           '{{ ("media-source://media_source/local/mp3/jaws_x.mp3","media-source://media_source/local/mp3/steps.mp3")|random }}'
         media_content_type: audio/mp3
@@ -94,7 +94,7 @@
     action:
     - service: media_player.play_media
       data:
-        entity_id: group.intercom_stack
+        entity_id: media_player.intercom_group
         media_content_id: 
           "media-source://media_source/local/mp3/Door-chime-sound.mp3"
         media_content_type: audio/mp3

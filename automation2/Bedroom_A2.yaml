@@ -206,7 +206,7 @@
     - alias: Send Warning
     - service: media_player.play_media
       data:
-        entity_id: group.intercom_stack
+        entity_id: media_player.intercom_group
         media_content_id: 
           "media-source://media_source/local/mp3/Bathroom.mp3"
         media_content_type: audio/mp3

@@ -56,7 +56,7 @@ jen_needs_help_level2_template:
 #   sequence:
 #     - service: tts.cloud_say
 #       data:
-#         entity_id: group.intercom_stack, media_player.bedroom_speaker
+#         entity_id: media_player.intercom_group, media_player.bedroom_speaker
 #         message: "Unicorn is asking for help with Her horn!"
 #         options:
 #           gender: female
@@ -65,7 +65,7 @@ jen_needs_help_level2_template:
 #         seconds: 5
 #     - service: media_player.play_media
 #       data:
-#         entity_id: group.intercom_stack, media_player.bedroom_speaker
+#         entity_id: media_player.intercom_group, media_player.bedroom_speaker
 #         media_content_id: !secret Jen_Buzzer
 #         media_content_type: audio/mp3
 
@@ -77,7 +77,7 @@ jen_needs_help_level2_template:
 #   sequence:
 #     - service: tts.cloud_say
 #       data:
-#         entity_id: group.intercom_stack
+#         entity_id: media_player.intercom_group
 #         message: "Jennifer is asking for help!"
 #         options:
 #           gender: female
@@ -86,7 +86,7 @@ jen_needs_help_level2_template:
 #         seconds: 5
 #     - service: media_player.play_media
 #       data:
-#         entity_id: group.intercom_stack
+#         entity_id: media_player.intercom_group
 #         media_content_id: !secret Jen_Buzzer
 #         media_content_type: audio/mp3
 
