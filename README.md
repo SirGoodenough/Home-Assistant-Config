@@ -1,5 +1,10 @@
 # Welcome to my Home Assistant Configuration
 
+For those that hav asked, here is how I split out my scripts file and still use the UI to do editing and making blueprints:
+
+	🔀 [Split Configuration HA Official Instructions](https://home-assistant.io/docs/configuration/splitting_configuration/)  \n\n🔀 [Doc and Frenck with a live Demo](https://youtu.be/FfjSA2o_0KA) \n\nAND if you want to split your scripts up so that the script UI editor works and your files are split, [look here](https://community.home-assistant.io/t/script-editor-and-split-up-files/40459/20) or go into a terminal in HA and do this: ```ln -f /config/scripts.yaml /config/#path_to_your_subfolder ``` and in configuration.yaml do this: ```script: !include_dir_merge_named /config/#path_to_your_subfolder```.  Then put your split folders here for scripts.",
+
+
 Let me know if you have a suggestion.
 
 **If you have any questions, comments or additions be sure to add an issue and bring them up on my Discord Server:** 
