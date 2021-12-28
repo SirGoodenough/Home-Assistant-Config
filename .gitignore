@@ -68,6 +68,7 @@
 
 ############# Failsafe  \/ \/ \/ \/ \/ #############
 secrets.yaml
+shell_command.yaml
 
 # Generic ignores
 *.log

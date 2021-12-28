@@ -42,7 +42,6 @@ zone:
 # All the other stuff not covered in the default_config:
 
 alert: !include alert.yaml
-# binary_sensor: !include binary_sensors.yaml
 binary_sensor: !include_dir_merge_list ./binSensor
 camera: !include camera.yaml
 # climate: !include climate.yaml
@@ -70,7 +69,6 @@ python_script:
 recorder: !include recorder.yaml
 rest_command: !include rest_command.yaml
 ring: !include ring.yaml
-# sensor: !include sensors.yaml
 sensor: !include_dir_merge_list ./sensor2
 shell_command: !include shell_command.yaml
 sonoff: !include sonoff.yaml
