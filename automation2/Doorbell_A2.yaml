@@ -17,12 +17,7 @@
       from: 'off'
       to: 'on'
     action:
-    - service: media_player.play_media
-      data:
-        entity_id: media_player.intercom_group
-        media_content_id: 
-          "media-source://media_source/local/mp3/doorbell-1.mp3"
-        media_content_type: audio/mp3
+    - service: script.media_player_front_doorbell_ding
     - delay: 00:00:05
     - service: script.tts_front_doorbell
 
@@ -35,12 +30,8 @@
       from: 'off'
       to: 'on'
     action:
-    - service: media_player.play_media
-      data:
-        entity_id: media_player.intercom_group
-        media_content_id: 
-          "media-source://media_source/local/mp3/Ring_-_Windchimes.mp3"
-        media_content_type: audio/mp3
+    - service: script.media_player_back_doorbell_motion
+
 
   #####################################################
   # Back                                              #
@@ -54,12 +45,7 @@
       from: 'off'
       to: 'on'
     action:
-    - service: media_player.play_media
-      data:
-        entity_id: media_player.intercom_group
-        media_content_id: 
-          "media-source://media_source/local/mp3/doorbell-2.mp3"
-        media_content_type: audio/mp3
+    - service: script.media_player_back_doorbell_ding
     - delay: 00:00:05
     - service: script.tts_back_doorbell
 
@@ -72,12 +58,7 @@
       from: 'off'
       to: 'on'
     action:
-    - service: media_player.play_media
-      data:
-        entity_id: media_player.intercom_group
-        media_content_id: 
-          '{{ ("media-source://media_source/local/mp3/jaws_x.mp3","media-source://media_source/local/mp3/steps.mp3")|random }}'
-        media_content_type: audio/mp3
+    - service: script.media_player_back_doorbell_motion
 
   #####################################################
   # Side                                              #
@@ -90,13 +71,8 @@
       entity_id: binary_sensor.side_doorbell
       to: 'on'
       for:
-        seconds: 2
+        seconds: 1
     action:
-    - service: media_player.play_media
-      data:
-        entity_id: media_player.intercom_group
-        media_content_id: 
-          "media-source://media_source/local/mp3/Door-chime-sound.mp3"
-        media_content_type: audio/mp3
+    - service: script.media_player_side_doorbell
     - delay: 00:00:06
     - service: script.tts_side_doorbell
