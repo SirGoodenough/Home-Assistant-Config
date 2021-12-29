@@ -1,19 +1,19 @@
 ---
-  ####################################################
-  # Wash Machine sensor                              #
-  ####################################################
-  - platform: template
-    sensors:
-      washing_machine:
-        unique_id: 6912d239-6454-44bc-85a2-b46054b0b33a
-        friendly_name: "Washing Machine"
-        device_class: power
-        delay_off:
-          minutes: 7
-        value_template: >-
-          {% if states('sensor.wash_machine_energy_current') != "unavailable" %}
-            {{ states('sensor.wash_machine_energy_current') | float > 0.085 }}
-          {% endif %}
+  # ####################################################
+  # # Wash Machine sensor                              #
+  # ####################################################
+  # - platform: template
+  #   sensors:
+  #     washing_machine:
+  #       unique_id: 6912d239-6454-44bc-85a2-b46054b0b33a
+  #       friendly_name: "Washing Machine"
+  #       device_class: power
+  #       delay_off:
+  #         minutes: 7
+  #       value_template: >-
+  #         {% if states('sensor.wash_machine_energy_current') != "unavailable" %}
+  #           {{ states('sensor.wash_machine_energy_current') | float > 0.085 }}
+  #         {% endif %}
 
   #####################################################
   # Dryer Complete Signal                             #
