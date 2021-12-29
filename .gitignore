@@ -57,6 +57,7 @@
 !sensors.yaml
 !sonoff.yaml
 !switch.yaml
+!template.yaml
 !timer.yaml
 !tts.yaml
 !updater.yaml
