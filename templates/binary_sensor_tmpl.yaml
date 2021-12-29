@@ -1,18 +1,6 @@
 - binary_sensor:
-  - unique_id: 6250436e-044d-4bc9-8d44-5ebd67831251
-    name: "Bathroom Speaker On"
-    device_class: sound
-    trigger:
-      - platform: template
-        value_template: "{{ state_attr('media_player.bathroom_speaker', 'is_volume_muted') }}"
-    state: "{{ state_attr('media_player.bathroom_speaker', 'is_volume_muted') == false }}"
   - unique_id: ce7cb6b7-c666-494b-aa3c-4ed79b2f1092
     name: 'Dark Outside'
-    trigger:
-      - platform: template
-        value_template: "{{ states.sun.sun.attributes.elevation }}"
-      - platform: template
-        value_template: "{{ states.weather.home }}"
     state: >
       {% if (states.sun.sun.attributes.elevation | int < 5) %}
         true
@@ -26,9 +14,6 @@
   - unique_id: 0f504a93-327b-4a03-ab93-4fc6aaaecbae
     name: "Washing Machine"
     device_class: power
-    trigger:
-      - platform: template
-        value_template: "{{ states('sensor.wash_machine_energy_current') }}"
     delay_off:
       minutes: 7
     state: >

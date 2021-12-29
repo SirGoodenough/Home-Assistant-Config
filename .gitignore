@@ -19,6 +19,7 @@
 !/.storage/image
 !/.storage/input_*
 !/.storage/lovelace*
+!/templates**
 
 ## Allow files
 !alert.yaml
@@ -57,7 +58,6 @@
 !sensors.yaml
 !sonoff.yaml
 !switch.yaml
-!template.yaml
 !timer.yaml
 !tts.yaml
 !updater.yaml
