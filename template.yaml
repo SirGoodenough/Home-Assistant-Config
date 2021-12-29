@@ -1,0 +1,29 @@
+- binary_sensor:
+  - unique_id: 1b4bf487-385b-44bc-b81b-d9cf1c73b551
+    name: "Bathroom Speaker On"
+    device_class: sound
+    trigger:
+      - platform: template
+        value_template: "{{ state_attr('media_player.bathroom_speaker', 'is_volume_muted') }}"
+    state: "{{ state_attr('media_player.bathroom_speaker', 'is_volume_muted') == false }}"
+  - unique_id: ce7cb6b7-c666-494b-aa3c-4ed79b2f1092
+    name: 'Dark Outside'
+    state: >
+      {% if (states.sun.sun.attributes.elevation | int < 5) %}
+        true
+      {% elif (is_state('weather.home', 'cloudy')) %}
+        true
+      {% elif ( (states.sun.sun.attributes.elevation | int < 15) and (is_state('weather.home', 'partlycloudy')) ) %}
+        true
+      {% else %}
+        false
+      {% endif %}
+  - unique_id: 02dd3cf4-8170-49f9-9e29-b69767465abe
+    name: "Washing Machine"
+    device_class: power
+    delay_off:
+      minutes: 7
+    state: >
+      {% if states('sensor.wash_machine_energy_current') != "unavailable" %}
+        {{ states('sensor.wash_machine_energy_current') | float > 0.085 }}
+      {% endif %}
