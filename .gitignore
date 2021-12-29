@@ -35,6 +35,7 @@
 !fan.yaml
 !ffmpeg.yaml
 !frontend.yaml
+!google.yaml
 !groups.yaml
 !hacs.yaml
 !humidifer.yaml
