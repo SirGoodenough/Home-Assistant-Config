@@ -111,7 +111,7 @@
       data:
         topic: tasmotas/cmnd/backlog
         payload: "state; status 8; status 11"
-    - alias: Assume its dark then the lights will work to revents IDK state and lights not working
+    - alias: "Assume its dark- Prevents IDK state and lights not working"
       service: mqtt.publish
       data:
         topic: Outside/cmnd/EVENT
@@ -119,10 +119,21 @@
         retain: true
     - alias: Add extra delay so is running when accessed
       delay: 00:04:14
-    - service: switch.turn_on
+    - alias: Make sure chromcast is on
+      service: switch.turn_on
       entity_id: switch.chromecast
-    - service: switch.turn_off
+    - alias: Make sure Dust Collector is off
+      service: switch.turn_off
       entity_id: switch.dust_collector_2
+    - alias: Make sure bathroom speaker is unmuted pt 1
+      service: script.media_player_bathroom_silence
+    - alias: Make sure bathroom speaker is unmuted pt 2
+      service: media_player.volume_mute
+      target:
+        entity_id: media_player.bathroom_speaker
+      data:
+        is_volume_muted: false
+
 
 #####################
 ## mount music

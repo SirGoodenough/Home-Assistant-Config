@@ -296,9 +296,6 @@
                                 },
                                 {
                                     "entity": "binary_sensor.battery_low_bathroom"
-                                },
-                                {
-                                    "entity": "binary_sensor.bathroom_speaker_on"
                                 }
                             ],
                             "show_header_toggle": false,
@@ -548,7 +545,7 @@
                                     "entity": "script.party_time"
                                 },
                                 {
-                                    "entity": "binary_sensor.is_it_dark_outside"
+                                    "entity": "binary_sensor.dark_outside"
                                 },
                                 {
                                     "entity": "light.christmas_tree"

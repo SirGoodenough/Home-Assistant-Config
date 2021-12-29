@@ -106,7 +106,7 @@
         entity_id: media_player.bathroom_speaker
       data:
         is_volume_muted: true
-    - delay: 00:02:00
+    - delay: 04:00:00
     - service: script.media_player_bathroom_silence
     - service: media_player.volume_mute
       target:
