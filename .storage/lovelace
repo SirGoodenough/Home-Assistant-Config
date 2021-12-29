@@ -296,6 +296,9 @@
                                 },
                                 {
                                     "entity": "binary_sensor.battery_low_bathroom"
+                                },
+                                {
+                                    "entity": "binary_sensor.bathroom_speaker_on"
                                 }
                             ],
                             "show_header_toggle": false,
@@ -465,9 +468,6 @@
                                     "entity": "binary_sensor.dryer"
                                 },
                                 {
-                                    "entity": "binary_sensor.washing_machine"
-                                },
-                                {
                                     "entity": "light.bmt_hall_socketu"
                                 },
                                 {
@@ -548,7 +548,7 @@
                                     "entity": "script.party_time"
                                 },
                                 {
-                                    "entity": "binary_sensor.dark_outside"
+                                    "entity": "binary_sensor.is_it_dark_outside"
                                 },
                                 {
                                     "entity": "light.christmas_tree"
@@ -563,15 +563,7 @@
                             "cards": [
                                 {
                                     "type": "media-control",
-                                    "entity": "media_player.intercom_2"
-                                },
-                                {
-                                    "type": "media-control",
                                     "entity": "media_player.jen_group"
-                                },
-                                {
-                                    "type": "media-control",
-                                    "entity": "media_player.main_level_speakers"
                                 },
                                 {
                                     "type": "media-control",
@@ -580,6 +572,18 @@
                                 {
                                     "type": "media-control",
                                     "entity": "media_player.office_jamz"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.grandma_group"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.intercom_group"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.home_group"
                                 }
                             ],
                             "columns": 2,
@@ -733,10 +737,6 @@
                                 {
                                     "type": "media-control",
                                     "entity": "media_player.office_speaker_2"
-                                },
-                                {
-                                    "type": "media-control",
-                                    "entity": "media_player.momsairplay"
                                 }
                             ],
                             "square": false
