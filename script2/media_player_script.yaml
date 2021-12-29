@@ -1,0 +1,40 @@
+media_player_side_doorbell:
+  alias: Media Player Side DoorBell
+  use_blueprint:
+    path: SirGoodenough/play_media_file_script.yaml
+    input:
+      speaker_target: media_player.intercom_group
+  icon: mdi:bell-circle
+media_player_back_doorbell_motion:
+  alias: Media Player Back DoorBell Motion
+  use_blueprint:
+    path: SirGoodenough/play_media_file_script.yaml
+    input:
+      file_2_play: '{{ ("media-source://media_source/local/mp3/jaws_x.mp3","media-source://media_source/local/mp3/steps.mp3")|random
+        }}'
+      speaker_target: media_player.intercom_group
+  icon: mdi:motion-sensor
+media_player_back_doorbell_ding:
+  alias: Media Player Back DoorBell Ding
+  use_blueprint:
+    path: SirGoodenough/play_media_file_script.yaml
+    input:
+      speaker_target: media_player.intercom_group
+      file_2_play: media-source://media_source/local/mp3/doorbell-2.mp3
+  icon: mdi:doorbell-video
+media_player_front_doorbell_motion:
+  alias: Media Player Front DoorBell Motion
+  use_blueprint:
+    path: SirGoodenough/play_media_file_script.yaml
+    input:
+      speaker_target: media_player.intercom_group
+      file_2_play: media-source://media_source/local/mp3/Ring_-_Windchimes.mp3
+  icon: mdi:motion-sensor
+media_player_front_doorbell_ding:
+  alias: Media Player Front DoorBell Ding
+  use_blueprint:
+    path: SirGoodenough/play_media_file_script.yaml
+    input:
+      speaker_target: media_player.intercom_group
+      file_2_play: media-source://media_source/local/mp3/doorbell-1.mp3
+  icon: mdi:doorbell-video
