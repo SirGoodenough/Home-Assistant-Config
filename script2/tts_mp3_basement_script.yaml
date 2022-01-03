@@ -18,3 +18,20 @@ tts_dryer_done:
       speaker_target: media_player.intercom_group
       announcement_message: The clothes are dry
   icon: mdi:tumble-dryer-off
+media_player_dryer_alert:
+  alias: Media Player Dryer Alert
+  use_blueprint:
+    path: SirGoodenough/play_media_file_script.yaml
+    input:
+      speaker_target: media_player.intercom_group
+      file_2_play: media-source://media_source/local/mp3/Dryer.mp3
+  icon: mdi:tumble-dryer-alert
+media_player_washer_alert:
+  alias: Media Player Washer Alert
+  use_blueprint:
+    path: SirGoodenough/play_media_file_script.yaml
+    input:
+      speaker_target: media_player.intercom_group
+      file_2_play: source://media_source/local/mp3/WashingMachine.mp3
+      media_type: audio/mp3
+  icon: mdi:washing-machine

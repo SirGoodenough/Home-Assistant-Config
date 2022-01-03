@@ -63,3 +63,19 @@ tts_mister_message:
       speaker_target: media_player.intercom_group
       announcement_message: No juice in the Bucket, mate.  Time to add the Vegemite.
   icon: mdi:sprinkler-fire
+media_player_jens_neb:
+  alias: Media Player Jens Neb
+  use_blueprint:
+    path: SirGoodenough/play_media_file_script.yaml
+    input:
+      speaker_target: media_player.kitchen_speaker
+      file_2_play: media-source://media_source/local/mp3/Mister.mp3
+  icon: mdi:fountain
+media_player_gong:
+  alias: Media Player Gong
+  use_blueprint:
+    path: SirGoodenough/play_media_file_script.yaml
+    input:
+      speaker_target: media_player.jen_group
+      file_2_play: media-source://media_source/local/mp3/Metal_Gong-Dianakc-109711828.mp3
+  icon: mdi:ear-hearing

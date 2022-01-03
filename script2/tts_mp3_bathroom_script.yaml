@@ -6,6 +6,14 @@ media_player_bathroom_silence:
       file_2_play: media-source://media_source/local/mp3/1sec.mp3
   icon: mdi:message-bulleted-off
   alias: Media Player Bathroom Silence
+media_player_bathroom:
+  alias: Media Player Bathroom
+  use_blueprint:
+    path: SirGoodenough/play_media_file_script.yaml
+    input:
+      speaker_target: media_player.intercom_group
+      file_2_play: media-source://media_source/local/mp3/Bathroom.mp3
+  icon: mdi:paper-roll
 tts_for_bathroom_overheat:
   alias: TTS for Bathroom overheat
   use_blueprint:
