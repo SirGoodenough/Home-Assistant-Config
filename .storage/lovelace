@@ -4099,23 +4099,7 @@
                     "icon": "mdi:youtube",
                     "theme": "dark_red",
                     "badges": [],
-                    "cards": [
-                        {
-                            "type": "entities",
-                            "entities": [
-                                "switch.kitchen_speaker_do_not_disturb",
-                                "number.kitchen_speaker_alarm_volume"
-                            ],
-                            "title": "Google Home Kitchen speaker"
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                "sensor.kitchen_speaker_device"
-                            ],
-                            "title": "Google Home Kitchen speaker"
-                        }
-                    ]
+                    "cards": []
                 },
                 {
                     "badges": [],
