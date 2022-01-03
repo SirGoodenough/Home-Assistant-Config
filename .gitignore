@@ -25,6 +25,7 @@
 !alert.yaml
 !automations.yaml
 !binary_sensors.yaml
+!button.yaml
 !camera.yaml
 !climate.yaml
 !cloud.yaml

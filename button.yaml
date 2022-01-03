@@ -1,0 +1,45 @@
+---
+####################################################
+# Tasmota Firsts Update Button                     #
+#  These are the first devices to update when      #
+#   a new version of Tasmota is available.  These  #
+#   are the canarys in the coal mine sample.       #
+####################################################
+  - platform: mqtt
+    unique_id: 8f20502e-b7e6-41b2-ac8c-dd99c02da0ef
+    name: "Tasmota Firsts Update"
+    command_topic: "firsts/cmnd/upgrade"
+    payload_press: "1"
+    qos: 0
+    retain: false
+    entity_category: "config"
+    device_class: "update"
+          # List of firsts GroupTopic:
+          #  BenchStrip, Bulb1, Garageback_Light, Humidifer, 
+          #  Jens_Neb, Office_Fan, Sonoff Bridge 1
+
+####################################################
+# Tasmota Update All Button                        #
+####################################################
+  - platform: mqtt
+    unique_id: 552a0134-02bf-4c87-8f72-c34a11ea46a8
+    name: "Tasmota All Update"
+    command_topic: "tasmotas/cmnd/upgrade"
+    payload_press: "1"
+    qos: 0
+    retain: false
+    entity_category: "config"
+    device_class: "update"
+
+####################################################
+# Restart All Tasmotas Button                      #
+####################################################
+  - platform: mqtt
+    unique_id: 196845aa-1740-49e7-8b97-707503db690f
+    name: "Tasmota All Restart"
+    command_topic: "tasmotas/cmnd/restart"
+    payload_press: "1"
+    qos: 0
+    retain: false
+    entity_category: "config"
+    device_class: "restart"
