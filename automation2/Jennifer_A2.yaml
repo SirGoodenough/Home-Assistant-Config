@@ -27,12 +27,7 @@
             entity_id: timer.flushtime2
 
     - alias: Gong the end of the first timer
-      service: media_player.play_media
-      data:
-        entity_id: media_player.jen_group
-        media_content_id: 
-          "media-source://media_source/local/mp3/Metal_Gong-Dianakc-109711828.mp3"
-        media_content_type: audio/mp3
+      service: script.media_player_gong
 
     - delay: 00:00:57 # Delay for the second part first warning
 
@@ -52,12 +47,7 @@
             entity_id: timer.flushtime10
 
     - alias: Gong the end of the last timer
-      service: media_player.play_media
-      data:
-        entity_id: media_player.jen_group
-        media_content_id: 
-          "media-source://media_source/local/mp3/Metal_Gong-Dianakc-109711828.mp3"
-        media_content_type: audio/mp3
+      service: script.media_player_gong
     - service: input_boolean.turn_off
       entity_id: input_boolean.flush2
     - delay: 00:00:06
@@ -89,13 +79,8 @@
       service: input_boolean.turn_off
       entity_id: input_boolean.mist_button
     - service: script.tts_mister_message
-    - delay: 00:00:10
-    - service: media_player.play_media
-      data:
-        entity_id: media_player.kitchen_speaker
-        media_content_id: 
-          "media-source://media_source/local/mp3/Mister.mp3"
-        media_content_type: audio/mp3
+    - delay: 00:00:07
+    - service: script.media_player_jens_neb
 
 - id: bc67a0b5-846f-41df-b0fb-cc1c8a8b714b
   alias: Jen Message List

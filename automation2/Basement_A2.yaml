@@ -13,13 +13,9 @@
       for:
         seconds: 30
     action:
-    - service: media_player.play_media
-      data:
-        entity_id: media_player.intercom_group
-        media_content_id: 
-          "media-source://media_source/local/mp3/Dryer.mp3"
-        media_content_type: audio/mp3
-    - delay: 00:00:06
+    - service: script.media_player_dryer_alert
+    - delay: 
+      seconds: 7.5
     - service: script.tts_dryer_done
     
   #####################################################
@@ -110,11 +106,6 @@
       for:
         minutes: 5
     action:
-    - service: media_player.play_media
-      data:
-        entity_id: media_player.intercom_group
-        media_content_id: 
-          "media-source://media_source/local/mp3/WashingMachine.mp3"
-        media_content_type: audio/mp3
+    - service: script.media_player_washer_alert
     - delay: 00:00:06
     - service: script.tts_wash_machine_done

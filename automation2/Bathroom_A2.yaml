@@ -26,12 +26,7 @@
     state: "on"
   action:
     - service: script.upstairs_bath_heater_off
-    - service: media_player.play_media
-      data:
-        entity_id: media_player.intercom_group
-        media_content_id: 
-          "media-source://media_source/local/mp3/Bathroom.mp3"
-        media_content_type: audio/mp3
+    - service: script.media_player_bathroom
     - delay: 00:00:06
     - service: script.tts_for_bathroom_overheat
 
@@ -50,12 +45,7 @@
     state: "on"
   action:
     - service: script.upstairs_bath_heater_off
-    - service: media_player.play_media
-      data:
-        entity_id: media_player.intercom_group
-        media_content_id: 
-          "media-source://media_source/local/mp3/Bathroom.mp3"
-        media_content_type: audio/mp3
+    - service: script.media_player_bathroom
     - delay: 00:00:06
     - service: script.tts_bathroom_door_is_open
 
