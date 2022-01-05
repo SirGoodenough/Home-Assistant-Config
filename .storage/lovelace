@@ -2281,7 +2281,8 @@
                             "entity": "switch.humidifier_2",
                             "name": "Humidifer Power",
                             "icon": "mdi:air-humidifier",
-                            "icon_height": "50px"
+                            "icon_height": "50px",
+                            "theme": "dark_orange"
                         },
                         {
                             "type": "humidifier",
@@ -3116,7 +3117,8 @@
                                     "entity_id": "switch.tarantula_power"
                                 }
                             },
-                            "type": "button"
+                            "type": "button",
+                            "theme": "dark_orange"
                         },
                         {
                             "type": "entities",
@@ -3441,10 +3443,13 @@
                                     "entity": "switch.serverstrip"
                                 },
                                 {
-                                    "entity": "script.tasmota_firsts_update"
+                                    "entity": "button.tasmota_all_restart"
                                 },
                                 {
-                                    "entity": "script.tasmota_all_update"
+                                    "entity": "button.tasmota_firsts_update"
+                                },
+                                {
+                                    "entity": "button.tasmota_all_update"
                                 }
                             ],
                             "show_header_toggle": true,
