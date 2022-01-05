@@ -63,8 +63,8 @@
         entity_id: person.julie
         state: "Home"
       - condition: numeric_state
-        entity_id: sensor.garage_door_si7021_temperature
-        below: 50
+        entity_id: sensor.dark_sky_apparent_temperature
+        below: 40
   action:
     - service: script.upstairs_bath_heater_on
     - service: script.tts_bathroom_heat_on
