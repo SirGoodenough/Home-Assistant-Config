@@ -73,7 +73,7 @@ blueprint:
       selector:
         text:
     ez_canary_grouptopic:
-      name: The GroupTopic name for the Devices getting the EZ Canary Button command.
+      name: The GroupTopic name for the EZ Canary Button
       description: "This is the name you assigned to the GroupTopics in the devices 
         you chose as the first ones to recieve a firmware update.  
         This needs to be set-up by you in the Tasmota Console of the devices themselves.  
@@ -165,7 +165,7 @@ sequence:
               "mf": "SirGoodenough",
               "mdl": "Home Assistant EZ Buttons for Tasmota",
               "sa": "home",
-              "sw\": "https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml"
+              "sw": "https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml"
           },
           "dev_cla":"update",
           "payload_press": "1"
