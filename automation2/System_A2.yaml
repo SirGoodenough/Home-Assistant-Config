@@ -86,7 +86,6 @@
     - platform: time
       at: 06:18:14
   action:
-    - service: tts.clear_cache
     - service: hassio.addon_start
       data:
         addon: 3490a758_remote_backup
