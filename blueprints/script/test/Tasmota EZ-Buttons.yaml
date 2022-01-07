@@ -1,17 +1,17 @@
 blueprint:
-  name: Tasmota EZ-Button for Update and Reset All 2022-01-06
-  description: "This will create 3 buttons to help you 
+  name: Tasmota EZ-Button for Update and Restart All 2022-01-07
+  description: "## This will create 3 buttons to help you.  
+
     #1: Press a button to restart ALL Tasmota Devices (Also to use during 
     Home Assistant Restart to get all current State and Sensor readings)  
 
     #2: Press a button to update a couple of Tasmota devices to test that the 
     new version will not break something,  
+    (Think of these units as your canary's in the coal mine.)  
 
-    (Think of these units as your canary's in the coal mine.) 
-    #3: Press a button to update ALL Tasmota devices that you push 
-    when a new release happens.  
+    #3: Press a button to update ALL Tasmota devices to the latest version.  
 
-    There are a few Requirements to allow this to work.  
+    ## There are a few Requirements to allow this to work.  
 
     A: You need the Home Assistant Tasmota Integration to be functional on your system
     and HA needs to be able to see and interact with the devices.  
@@ -32,14 +32,13 @@ blueprint:
     Again this is easy because in order to have A: running, 
     Tasmota V9.2 minimum is a requirement for A:.  
     Tasmota has had breaking changes in it's history.  Therefore you should never 
-    stray from the upgrade path listed in the Tasmota Docs.  
+    stray from the upgrade path listed in the Tasmota Docs when upgrading.  
     To upgrade your Tasmota firmware, you need to follow the path, 
     or risk bad things happening:  
     v1.0.11 > v3.9.22 > v4.2.0 > v5.14.0 > v6.7.1 > v7.2.0 > v8.5.1 > v9.1 > Current release  
     That means you need to manually update your firmware up to 9.1 minimum 
-    for these buttons to work going forward.  
-    "
-  #source_url: https://gist.github.com/SirGoodenough/fbd552e2c93ebaa5c9b3d2b4ebff3297
+    for these buttons to work going forward.  "
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml
   domain: script
   homeassistant:
     min_version: 2021.12.0
@@ -157,7 +156,7 @@ sequence:
         {
           "name": "{{ ez_update_var }}",
           "cmd_t": "tasmotas/cmnd/upgrade",
-          "uniq_id": 9NS7GaU5U9533erK_{{ ez_update_var }}",
+          "uniq_id": "9NS7GaU5U9533erK_{{ ez_update_var }}",
           "obj_id": "upgrade_all",
           "dev": {
               "ids": "9NS7GaU5U9533erK",
