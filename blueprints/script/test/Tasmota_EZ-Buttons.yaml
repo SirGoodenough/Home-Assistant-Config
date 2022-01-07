@@ -67,7 +67,7 @@ blueprint:
         to use for the test new version select sample.  I suggest use 5 or less 
         Tasmota devices for this list.  
         Leave this as 'not_selected' if you do not plan on using this feature.  
-        Leaving it Blank will cause errors. "
+        Leaving this Blank will cause errors. Will be converted to lower-case-chase"
       default: "not_selected"
       selector:
         text:
@@ -77,7 +77,9 @@ blueprint:
         you chose as the first ones to recieve a firmware update.  
         This needs to be set-up by you in the Tasmota Console of the devices themselves.  
         Leave this blank if you are not using this feature.  The button will be created, 
-        but it won't do anything.  Leaving it Blank will cause errors. "
+        but it won't do anything.  Use lower_case_chase formatting on 
+        this item and only numbers and letters.  REQUIRED or this button will not be created.
+        Leaving this Blank will cause errors. Will be converted to lower-case-chase"
       default: "firsts"
       selector:
         text:
@@ -91,53 +93,63 @@ blueprint:
         to execute a minute or so after Home Assistant restarts.  
         It will update all the devices and pull fresh sensor and 
         state readings into HA so things are working right away when you start.  
-        Leaving this Blank will cause errors. "
+        Leaving this Blank will cause errors. Will be converted to lower-case-chase"
       default: "EZ Restart Button Tasmota"
       selector:
         text:
 variables:
-  ez_update_var: !input ez_update
-  ez_canary_var: !input ez_canary
+  ez_update_v1: !input ez_update
+  ez_canary_v1: !input ez_canary
+  ez_restart_v1: !input ez_restart
   ez_canary_grouptopic_var: !input ez_canary_grouptopic
-  ez_restart_var: !input ez_restart
+  ez_update_var: "{{ ez_update_v1 | lower | regex_replace('[ -]','_') | regex_replace('[^a-z0-9_]','') }}"
+  ez_canary_var: "{{ ez_canary_v1 | lower | regex_replace('[ -]','_') | regex_replace('[^a-z0-9_]','') }}"
+  ez_restart_var: "{{ ez_restart_v1 | lower | regex_replace('[ -]','_') | regex_replace('[^a-z0-9_]','') }}"
+  ez_canary_grouptopic_v1:  "{{ ez_canary_grouptopic_var | lower | regex_replace('[ -]','_') | regex_replace('[^a-z0-9_]','') }}"
 mode: single
 max_exceeded: silent
 sequence:
   - choose:
-      - alias: "If a different name for the canary is chosen, configure the button."
+    - alias: "Don't make this button unless these conditions are met:"
+      conditions:
+      - condition: and
         conditions:
-          - condition: template
+          - alias: "If a different name for the canary is chosen, configure the button."
+            condition: template
             value_template: '{{ ez_canary_var != "not_selected" }}'
-        sequence:
-          - service: mqtt.publish
-            data:
-              "topic": "homeassistant/button/9NS7GaU5U9533erK_{{ ez_canary_var }}/config"
-              "payload": >
-                {
-                  "name": "{{ ez_canary_var }}",
-                  "cmd_t": "{{ ez_canary_grouptopic }}/cmnd/upgrade",
-                  "uniq_id": "9NS7GaU5U9533erK_{{ ez_canary_var }}",
-                  "obj_id": "upgrade_few",
-                  "dev": {
-                      "ids": "9NS7GaU5U9533erK",
-                      "name": "Tasmota EZ Buttons",
-                      "mf": "SirGoodenough",
-                      "mdl": "Home Assistant EZ Buttons for Tasmota",
-                      "sa": "home",
-                      "sw": "https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml"
-                  },
-                  "dev_cla":"update",
-                  "payload_press": "1"
-                }
-  - service: mqtt.publish
+          - alias: "Make sure grouptopic was not converted so it matches Tasmota GroupTopic"
+            condition: template
+            value_template: '{{ ez_canary_grouptopic_var == ez_canary_grouptopic_v1 }}'
+      sequence:
+        - alias: Make the button 4 canary update
+          service: mqtt.publish
+          data:
+            "topic": "homeassistant/button/9NS7GaU5U9533erK_{{ ez_canary_var }}/config"
+            "payload": >
+              { "name": "{{ ez_canary_var }}",
+                "avty_t": "homeassistant/status",
+                "uniq_id": "9NS7GaU5U9533erK_{{ ez_canary_var }}",
+                "dev_cla":"update",
+                "dev": {
+                    "ids": "9NS7GaU5U9533erK",
+                    "name": "Tasmota EZ Buttons",
+                    "mf": "SirGoodenough",
+                    "mdl": "Home Assistant EZ Buttons for Tasmota",
+                    "sa": "home",
+                    "sw": "https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml"
+                },
+                "cmd_t": "{{ ez_canary_grouptopic_var }}/cmnd/upgrade",
+                "payload_press": "1"
+              }
+  - alias: Make the button 4 restart
+    service: mqtt.publish
     data:
       "topic": "homeassistant/button/9NS7GaU5U9533erK_{{ ez_restart_var }}/config"
       "payload": >
-        {
-          "name": "{{ ez_restart_var }}",
-          "cmd_t": "tasmotas/cmnd/restart",
+        { "name": "{{ ez_restart_var }}",
+          "avty_t": "homeassistant/status",
           "uniq_id": "9NS7GaU5U9533erK_{{ ez_restart_var }}",
-          "obj_id": "restart",
+          "dev_cla":"restart",
           "dev": {
               "ids": "9NS7GaU5U9533erK",
               "name": "Tasmota EZ Buttons",
@@ -146,18 +158,18 @@ sequence:
               "sa": "home",
               "sw": "https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml"
           },
-          "dev_cla":"restart",
+          "cmd_t": "tasmotas/cmnd/restart",
           "payload_press": "1"
         }
-  - service: mqtt.publish
+  - alias: Make the button 4 all update
+    service: mqtt.publish
     data:
       "topic": "homeassistant/button/9NS7GaU5U9533erK_{{ ez_update_var }}/config"
       "payload": >
-        {
-          "name": "{{ ez_update_var }}",
-          "cmd_t": "tasmotas/cmnd/upgrade",
+        { "name": "{{ ez_update_var }}",
+          "avty_t": "homeassistant/status",
           "uniq_id": "9NS7GaU5U9533erK_{{ ez_update_var }}",
-          "obj_id": "upgrade_all",
+          "dev_cla": "update",
           "dev": {
               "ids": "9NS7GaU5U9533erK",
               "name": "Tasmota EZ Buttons",
@@ -166,6 +178,6 @@ sequence:
               "sa": "home",
               "sw": "https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml"
           },
-          "dev_cla":"update",
+          "cmd_t": "tasmotas/cmnd/upgrade",
           "payload_press": "1"
         }
