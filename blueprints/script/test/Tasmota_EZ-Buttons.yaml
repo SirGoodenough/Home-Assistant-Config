@@ -1,33 +1,47 @@
 blueprint:
   name: Tasmota EZ-Button for Update and Restart All 2022-01-07
-  description: "## This will create 3 buttons to help you.  
+  description: "## 🧿 This will create 3 buttons to help you. 🧿  
 
-    #1: Press a button to restart ALL Tasmota Devices (Also to use during 
+    #### 1:
+
+    Press a button to restart ALL Tasmota Devices (Also to use during 
     Home Assistant Restart to get all current State and Sensor readings)  
 
-    #2: Press a button to update a couple of Tasmota devices to test that the 
+    #### 2:
+
+    Press a button to update a couple of Tasmota devices to test that the 
     new version will not break something,  
     (Think of these units as your canary's in the coal mine.)  
 
-    #3: Press a button to update ALL Tasmota devices to the latest version.  
+    #### 3:
 
-    ## There are a few Requirements to allow this to work.  
+    Press a button to update ALL Tasmota devices to the latest version.  
 
-    A: You need the Home Assistant Tasmota Integration to be functional on your system
+    ## 🧿 There are a few Requirements to allow this to work. 🧿  
+
+    #### A: ✔️
+
+    You need the Home Assistant Tasmota Integration to be functional on your system
     and HA needs to be able to see and interact with the devices.  
     This Blueprint does not do that for you.  
 
-    B: This script makes the assumption that the default GroupTopic of 'Tasmotas' 
+    #### B: ✔️
+
+    This script makes the assumption that the default GroupTopic of 'Tasmotas' 
     is available on all your Tasmota Devices.  
     If you have devices that have been upgraded from pre V7 or so, 
     they may be missing this GroupTiopic.  
-    If this is the case you will have to add that GroupTopic 'Tasmotas' to your device.  
+    If this is the case you will have to add the GroupTopic 'Tasmotas' to your device.  
     'https://tasmota.github.io/docs/Commands/#control'
 
-    C: Your Home Assistant Instance needs to be or be communicating with an MQTT Broker.  
+    #### C: ✔️
+
+    Your Home Assistant Instance needs to be or be communicating with an MQTT Broker.  
     But this is easy because in order to have A: running, MQTT is a requirement for A:.  
 
-    D: Your Tasmota devices need to be updated to the same 'breaking change' generation 
+    #### D: ✔️
+
+    Your Tasmota devices need to be updated to the same 'breaking change' generation 
     as the Released version of Tasmota for this to be able to update.  
     Again this is easy because in order to have A: running, 
     Tasmota V9.2 minimum is a requirement for A:.  
@@ -35,9 +49,9 @@ blueprint:
     stray from the upgrade path listed in the Tasmota Docs when upgrading.  
     To upgrade your Tasmota firmware, you need to follow the path, 
     or risk bad things happening:  
-    v1.0.11 > v3.9.22 > v4.2.0 > v5.14.0 > v6.7.1 > v7.2.0 > v8.5.1 > v9.1 > Current release  
-    That means you need to manually update your firmware up to 9.1 minimum 
-    for these buttons to work going forward.  "
+    v1.0.11 🔀 v3.9.22 🔀 v4.2.0 🔀 v5.14.0 🔀 v6.7.1 🔀 v7.2.0 🔀 v8.5.1 🔀 v9.1 🔀 Current release.  
+    That means you currently need to manually update your firmware to v9.1 minimum 
+    for these buttons to work going forward."
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml
   domain: script
   homeassistant:
