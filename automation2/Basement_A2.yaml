@@ -13,10 +13,10 @@
       for:
         seconds: 30
     action:
-    - service: script.media_player_dryer_alert
-    - delay: 
-      seconds: 7.5
     - service: script.tts_dryer_done
+    - delay: 
+        seconds: 4
+    - service: script.media_player_dryer_alert
     
   #####################################################
   # Dust Collector                                    #
