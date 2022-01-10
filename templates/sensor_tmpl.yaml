@@ -1,0 +1,85 @@
+- sensor:
+    3D_time_remaining2:
+      friendly_name: 'Tarantula Time Remaining:'
+      value_template: >-
+        {% set time = states.sensor.octoprint_time_remaining_format.state | int %}
+        {% set minutes = ((time % 3600) / 60) | int%}
+        {% set hours = ((time % 86400) / 3600) | int %}
+        {% set days = (time / 86400) | int %}
+        {%- if time == 0 -%}
+          {{ '0, Job Complete' }}
+            {%- else -%}
+            {%- if time < 60 -%}
+            Less than a minute
+            {%- else -%}
+          {%- if days > 0 -%}
+            {%- if days == 1 -%}
+              1 day
+            {%- else -%}
+              {{ days }} days
+            {%- endif -%}
+          {%- endif -%}
+          {%- if hours > 0 -%}
+            {%- if days > 0 -%}
+              {{ ', ' }}
+            {%- endif -%}
+            {%- if hours == 1 -%}
+              1 hour
+            {%- else -%}
+              {{ hours }} hours
+            {%- endif -%}
+          {%- endif -%}
+          {%- if minutes > 0 -%}
+            {%- if days > 0 or hours > 0 -%}
+              {{ ', ' }}
+            {%- endif -%}
+            {%- if minutes == 1 -%}
+              1 minute
+            {%- else -%}
+              {{ minutes }} minutes
+            {%- endif -%}
+          {%- endif -%}
+        {%- endif -%}
+        {%- endif -%}
+    3D_time_elapsed2:
+      friendly_name: 'Tarantula Time Elapsed:'
+      value_template: >-
+        {% set time = states.sensor.octoprint_time_elapsed_format.state | int %}
+        {% set minutes = ((time % 3600) / 60) | int%}
+        {% set hours = ((time % 86400) / 3600) | int %}
+        {% set days = (time / 86400) | int %}
+        {%- if time == 0 -%}
+          {{ '0, Job Complete' }}
+            {%- else -%}
+            {%- if time < 60 -%}
+            Less than a minute
+            {%- else -%}
+          {%- if days > 0 -%}
+            {%- if days == 1 -%}
+              1 day
+            {%- else -%}
+              {{ days }} days
+            {%- endif -%}
+          {%- endif -%}
+          {%- if hours > 0 -%}
+            {%- if days > 0 -%}
+              {{ ', ' }}
+            {%- endif -%}
+              {%- if hours == 1 -%}
+                1 hour
+              {%- else -%}
+                {{ hours }} hours
+              {%- endif -%}
+            {%- endif -%}
+            {%- if minutes > 0 -%}
+              {%- if days > 0 or hours > 0 -%}
+                {{ ', ' }}
+              {%- endif -%}
+              {%- if minutes == 1 -%}
+                1 minute
+              {%- else -%}
+                {{ minutes }} minutes
+              {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+          {%- endif -%}
