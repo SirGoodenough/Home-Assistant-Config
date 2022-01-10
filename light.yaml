@@ -9,7 +9,7 @@
 
   - platform: switch
     name: "Office Track Jim Bulb"
-    entity_id: switch.office_track_2
+    entity_id: switch.office_track_jim
  
   - platform: mqtt
     name: "Jens Night Light"

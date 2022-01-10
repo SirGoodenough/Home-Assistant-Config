@@ -456,7 +456,7 @@
                                     "entity": "binary_sensor.dust_collector_button1"
                                 },
                                 {
-                                    "entity": "switch.dust_collector_2"
+                                    "entity": "switch.dust_collector"
                                 },
                                 {
                                     "entity": "switch.sonoff_1000d4bf8f_1"
@@ -777,7 +777,7 @@
                                     "entity": "light.jens_light"
                                 },
                                 {
-                                    "entity": "light.bulb1_2"
+                                    "entity": "light.bulb1"
                                 },
                                 {
                                     "entity": "input_boolean.flush2"
