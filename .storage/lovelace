@@ -427,7 +427,7 @@
                                     "entity": "switch.office_monitors"
                                 },
                                 {
-                                    "entity": "switch.benchstrip"
+                                    "entity": "switch.bench_test"
                                 },
                                 {
                                     "entity": "switch.office_usb"
