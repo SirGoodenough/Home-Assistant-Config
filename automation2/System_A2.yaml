@@ -104,12 +104,11 @@
     - platform: homeassistant
       event: start
   action:
-    - delay: 00:00:39
-    - alias: Tell the tasmotas to report home after boot so the sensors are updated
-      service: mqtt.publish
-      data:
-        topic: tasmotas/cmnd/backlog
-        payload: "state; status 8; status 11"
+    - delay: 00:00:22
+    - alias: Push the Tasmota Restart Button
+      service: button.press
+      target:
+        entity_id: button.ez_restart_button_tasmota
     - alias: "Assume its dark- Prevents IDK state and lights not working"
       service: mqtt.publish
       data:
@@ -117,13 +116,13 @@
         payload: "DARK"
         retain: true
     - alias: Add extra delay so is running when accessed
-      delay: 00:04:14
+      delay: 00:01:14
     - alias: Make sure chromcast is on
       service: switch.turn_on
       entity_id: switch.chromecast
     - alias: Make sure Dust Collector is off
       service: switch.turn_off
-      entity_id: switch.dust_collector_2
+      entity_id: switch.dust_collector
     - alias: Make sure bathroom speaker is unmuted pt 1
       service: script.media_player_bathroom_silence
     - alias: Make sure bathroom speaker is unmuted pt 2
@@ -132,9 +131,3 @@
         entity_id: media_player.bathroom_speaker
       data:
         is_volume_muted: false
-
-
-#####################
-## mount music
-#####################
- 

@@ -1,7 +1,0 @@
-tasmota_ez_button_for_update_and_restart_all_2022_01_07a:
-  alias: Tasmota EZ-Button for Update and Restart All 2022-01-07a
-  use_blueprint:
-    path: SirGoodenough/Tasmota_EZ-Buttons.yaml
-    input:
-      ez_canary: Tasmota Firsts
-  icon: mdi:dump-truck
