@@ -737,6 +737,15 @@
                                 }
                             ],
                             "square": false
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "button.ez_restart_button_tasmota",
+                                "button.ez_update_button_tasmota",
+                                "button.tasmota_firsts"
+                            ],
+                            "title": "Tasmota EZ Buttons"
                         }
                     ],
                     "icon": "mdi:home-automation",
