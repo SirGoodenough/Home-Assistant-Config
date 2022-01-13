@@ -203,9 +203,10 @@
         entity_id: input_boolean.bedroom_auto_fan
         state: "on"
   action:
-    - alias: Send Warning
-    - service: script.media_player_bathroom
+    - alias: Send Warning sounder
+      service: script.media_player_bathroom
     - delay: 00:00:06
+    - alias: Send Warning tts
       service: script.tts_bedroom_door
     - alias: Force the switch closed and assume someone checked the door
       service: mqtt.publish
