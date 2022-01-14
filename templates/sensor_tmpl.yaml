@@ -104,3 +104,12 @@
     state: "{{ state_attr('climate.gemodule5384', 'current_temperature') }}"
     unit_of_measurement: "°F"
     icon: "mdi-thermostat-box"
+
+  - name: "Sun State"
+    unique_id: f2ef3978-8f60-4f49-9ce5-1198306412fd
+    state: > 
+      {% if is_state('sun.sun', 'above_horizon') %}
+        up
+      {% else %}
+        down
+      {% endif %}
