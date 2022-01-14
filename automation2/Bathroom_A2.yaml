@@ -89,6 +89,8 @@
     - platform: state
       entity_id: binary_sensor.stairs_up
       to: "on"
+    - platform: state
+      entity_id: button.stairs_up
   action:
     - service: script.media_player_bathroom_silence
     - service: media_player.volume_mute
