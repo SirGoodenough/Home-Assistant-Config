@@ -37,3 +37,9 @@
       switch_count:
         friendly_name: "Swt"
         value_template: "{{ states.switch | count }}"
+      button_count:
+        friendly_name: "But"
+        value_template: "{{ states.button | count }}"
+      template_sensor_count:
+        friendly_name: "Tmp"
+        value_template: "{{ states.template| count }}"
