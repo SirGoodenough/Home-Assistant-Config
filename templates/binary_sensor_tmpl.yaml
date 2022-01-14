@@ -1,6 +1,6 @@
 - binary_sensor:
-  - unique_id: ce7cb6b7-c666-494b-aa3c-4ed79b2f1092
-    name: 'Dark Outside'
+  - name: 'Dark Outside'
+    unique_id: ce7cb6b7-c666-494b-aa3c-4ed79b2f1092
     state: >
       {% if (states.sun.sun.attributes.elevation | int < 5) %}
         true
@@ -11,8 +11,9 @@
       {% else %}
         false
       {% endif %}
-  - unique_id: 0f504a93-327b-4a03-ab93-4fc6aaaecbae
-    name: "Washing Machine"
+
+  - name: "Washing Machine"
+    unique_id: 0f504a93-327b-4a03-ab93-4fc6aaaecbae
     device_class: power
     delay_off:
       minutes: 7

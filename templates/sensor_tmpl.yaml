@@ -1,7 +1,12 @@
 - sensor:
   - name: 'Tarantula Time Remaining:'
+    unique_id: 8e34cb05-0ccc-4145-9486-f005e6d20935
     state: >
-      {% set time = states('sensor.octoprint_time_remaining_format') | int %}
+      {%- if states('sensor.octoprint_time_remaining_format') is defined -%}
+        {% set time = as_timestamp(states('sensor.octoprint_time_remaining_format')) | int %}
+      {%- else -%}
+        {% set time = 0 | int %}
+      {%- endif -%}
       {% set minutes = ((time % 3600) / 60) | int%}
       {% set hours = ((time % 86400) / 3600) | int %}
       {% set days = (time / 86400) | int %}
@@ -40,9 +45,15 @@
         {%- endif -%}
       {%- endif -%}
       {%- endif -%}
+
   - name: 'Tarantula Time Elapsed:'
+    unique_id: a467aa7d-680c-40e9-8b8e-d576d6547eda
     state: >
-      {% set time = states('sensor.octoprint_time_elapsed_format') | int %}
+      {%- if states('sensor.octoprint_time_elapsed_format') is defined -%}
+        {% set time = as_timestamp(states('sensor.octoprint_time_elapsed_format')) | int %}
+      {%- else -%}
+        {% set time = 0 | int %}
+      {%- endif -%}
       {% set minutes = ((time % 3600) / 60) | int%}
       {% set hours = ((time % 86400) / 3600) | int %}
       {% set days = (time / 86400) | int %}
@@ -81,3 +92,15 @@
           {%- endif -%}
         {%- endif -%}
         {%- endif -%}
+
+  - name: LRthermostat
+    unique_id: 1ca8aa2c-1fad-4c4b-99e7-4cf4dd91aa0b
+    state: "{{ state_attr('climate.living_room_2', 'current_temperature') }}"
+    unit_of_measurement: "°F"
+    icon: "mdi-thermostat-box"
+
+  - name: BRthermostat
+    unique_id: 850df15c-a1fb-4832-a29e-18fcaf3d3b61
+    state: "{{ state_attr('climate.gemodule5384', 'current_temperature') }}"
+    unit_of_measurement: "°F"
+    icon: "mdi-thermostat-box"
