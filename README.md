@@ -10,7 +10,7 @@ AND if you want to split your scripts up so that the script UI editor works and 
 
 Or go into a terminal in HA and do this:
 
-```ln -f /config/scripts.yaml /config/#path_to_your_subfolder ```
+```ln -f /config/scripts.yaml /config/#path_to_your_subfolder/scripts.yaml ```
 
 and in configuration.yaml do this:
 
