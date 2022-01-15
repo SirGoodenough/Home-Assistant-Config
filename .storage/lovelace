@@ -612,6 +612,10 @@
                                 {
                                     "type": "media-control",
                                     "entity": "media_player.workroom_speaker"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.jennys_room_display"
                                 }
                             ],
                             "columns": 2,
@@ -647,6 +651,34 @@
                                 {
                                     "type": "media-control",
                                     "entity": "media_player.office_speaker_2"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "button.press",
+                                        "service_data": {},
+                                        "target": {
+                                            "entity_id": "button.stairs_up"
+                                        }
+                                    },
+                                    "entity": "button.stairs_up",
+                                    "name": "Bathroom Mute"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.google_mute",
+                                        "service_data": {
+                                            "entities": "media_player.bathroom_speaker",
+                                            "status": false
+                                        },
+                                        "target": {}
+                                    },
+                                    "entity": "media_player.bathroom_speaker",
+                                    "name": "Bathroom Unmute",
+                                    "icon": "mdi:gesture-tap-button"
                                 }
                             ],
                             "square": false

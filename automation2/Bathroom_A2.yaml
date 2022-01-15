@@ -92,16 +92,14 @@
     - platform: state
       entity_id: button.stairs_up
   action:
-    - service: script.media_player_bathroom_silence
-    - service: media_player.volume_mute
-      target:
-        entity_id: media_player.bathroom_speaker
+    - alias: Mute bathroom
+      service: script.google_mute
       data:
-        is_volume_muted: true
+        status: true
+        entities: media_player.bathroom_speaker
     - delay: 04:00:00
-    - service: script.media_player_bathroom_silence
-    - service: media_player.volume_mute
-      target:
-        entity_id: media_player.bathroom_speaker
+    - alias: Unmute bathroom
+      service: script.google_mute
       data:
-        is_volume_muted: false
+        status: false
+        entities: media_player.bathroom_speaker
