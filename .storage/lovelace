@@ -2143,6 +2143,20 @@
                             "icon": "mdi:temperature-fahrenheit"
                         },
                         {
+                            "type": "sensor",
+                            "entity": "sensor.lrthermostat",
+                            "graph": "line",
+                            "detail": 2,
+                            "name": "Living Room Thermostat"
+                        },
+                        {
+                            "type": "sensor",
+                            "entity": "sensor.brthermostat",
+                            "graph": "line",
+                            "detail": 2,
+                            "name": "Bedroom AC Unit"
+                        },
+                        {
                             "entity": "sensor.furnace_register_temp",
                             "graph": "line",
                             "theme": "Dark - Green",
@@ -2166,19 +2180,24 @@
                             "icon": "mdi:stove"
                         },
                         {
+                            "entity": "sensor.bedroom_fan_si7021_temperature",
+                            "graph": "line",
+                            "type": "sensor",
+                            "detail": 2,
+                            "icon": "hass:bed"
+                        },
+                        {
+                            "type": "sensor",
+                            "entity": "sensor.dark_sky_temperature",
+                            "graph": "line",
+                            "detail": 2
+                        },
+                        {
                             "entity": "sensor.sonoff_rf_bridge_2_si7021_temperature",
                             "graph": "line",
                             "type": "sensor",
                             "detail": 2,
                             "icon": "mdi:seat"
-                        },
-                        {
-                            "entity": "sensor.bathoom_si7021_temperature",
-                            "graph": "line",
-                            "name": "Server Room Temperature",
-                            "type": "sensor",
-                            "detail": 2,
-                            "icon": "hass:server"
                         },
                         {
                             "entity": "sensor.dust_collector_si7021_temperature",
@@ -2196,13 +2215,6 @@
                             "icon": "mdi:garage"
                         },
                         {
-                            "entity": "sensor.bedroom_fan_si7021_temperature",
-                            "graph": "line",
-                            "type": "sensor",
-                            "detail": 2,
-                            "icon": "hass:bed"
-                        },
-                        {
                             "entity": "sensor.dryer3_si7021_temperature",
                             "graph": "line",
                             "type": "sensor",
@@ -2210,24 +2222,12 @@
                             "icon": "mdi:washing-machine"
                         },
                         {
-                            "type": "sensor",
-                            "entity": "sensor.dark_sky_temperature",
+                            "entity": "sensor.bathoom_si7021_temperature",
                             "graph": "line",
-                            "detail": 2
-                        },
-                        {
+                            "name": "Server Room Temperature",
                             "type": "sensor",
-                            "entity": "sensor.lrthermostat",
-                            "graph": "line",
                             "detail": 2,
-                            "name": "Living Room Thermostat"
-                        },
-                        {
-                            "type": "sensor",
-                            "entity": "sensor.brthermostat",
-                            "graph": "line",
-                            "detail": 2,
-                            "name": "Bedroom AC Unit"
+                            "icon": "hass:server"
                         }
                     ],
                     "icon": "mdi:thermometer-lines",
