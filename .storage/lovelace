@@ -12,7 +12,8 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "sensor.kitchen_temperature_3"
+                                    "entity": "sensor.kitchen_temperature_3",
+                                    "secondary_info": "last-updated"
                                 },
                                 {
                                     "entity": "sensor.kitchen_humidity_3"
@@ -66,10 +67,13 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "sensor.sonoff_rf_bridge_2_si7021_temperature"
+                                    "entity": "sensor.sonoff_rf_bridge_2_si7021_temperature",
+                                    "name": "LivingRoom Temp",
+                                    "secondary_info": "last-updated"
                                 },
                                 {
-                                    "entity": "sensor.sonoff_rf_bridge_2_si7021_humidity"
+                                    "entity": "sensor.sonoff_rf_bridge_2_si7021_humidity",
+                                    "name": "Living Room Hunidity"
                                 },
                                 {
                                     "entity": "climate.living_room_2"
@@ -515,7 +519,8 @@
                                     "entity": "light.garagetop_light"
                                 },
                                 {
-                                    "entity": "light.garagesidelight3"
+                                    "entity": "light.garagesidelight3",
+                                    "secondary_info": "last-changed"
                                 },
                                 {
                                     "entity": "script.garage_outside_lights_on"
@@ -527,7 +532,8 @@
                                     "entity": "binary_sensor.back_door_pir"
                                 },
                                 {
-                                    "entity": "binary_sensor.yard_light_pir"
+                                    "entity": "binary_sensor.yard_light_pir",
+                                    "secondary_info": "last-changed"
                                 },
                                 {
                                     "entity": "binary_sensor.back_door_motion"
@@ -2184,7 +2190,8 @@
                             "graph": "line",
                             "type": "sensor",
                             "detail": 2,
-                            "icon": "hass:bed"
+                            "icon": "hass:bed",
+                            "name": "Bedroom"
                         },
                         {
                             "type": "sensor",
@@ -2197,14 +2204,16 @@
                             "graph": "line",
                             "type": "sensor",
                             "detail": 2,
-                            "icon": "mdi:seat"
+                            "icon": "mdi:seat",
+                            "name": "Living Room"
                         },
                         {
                             "entity": "sensor.dust_collector_si7021_temperature",
                             "graph": "line",
                             "type": "sensor",
                             "detail": 2,
-                            "icon": "mdi:stairs-down"
+                            "icon": "mdi:stairs-down",
+                            "name": "Back Basement"
                         },
                         {
                             "entity": "sensor.garage_door_si7021_temperature",
@@ -2219,15 +2228,16 @@
                             "graph": "line",
                             "type": "sensor",
                             "detail": 2,
-                            "icon": "mdi:washing-machine"
+                            "icon": "mdi:washing-machine",
+                            "name": "Front Basement"
                         },
                         {
                             "entity": "sensor.bathoom_si7021_temperature",
                             "graph": "line",
-                            "name": "Server Room Temperature",
+                            "name": "Bathroom",
                             "type": "sensor",
                             "detail": 2,
-                            "icon": "hass:server"
+                            "icon": "mdi:paper-roll-outline"
                         }
                     ],
                     "icon": "mdi:thermometer-lines",
@@ -3836,12 +3846,6 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "sensor.bathoom_si7021_temperature"
-                                },
-                                {
-                                    "entity": "sensor.bathoom_si7021_humidity"
-                                },
-                                {
                                     "entity": "switch.bathoom_2"
                                 },
                                 {
@@ -4006,54 +4010,77 @@
                                 {
                                     "type": "sensor",
                                     "entity": "sensor.automation_count",
-                                    "graph": "line"
+                                    "name": "Automat",
+                                    "icon": "mdi:check-bold"
                                 },
                                 {
                                     "type": "sensor",
                                     "entity": "sensor.binary_sensor_count",
-                                    "graph": "line"
+                                    "name": "BinarySens",
+                                    "icon": "mdi:check-bold"
                                 },
                                 {
                                     "type": "sensor",
                                     "entity": "sensor.camera_count",
-                                    "graph": "line"
+                                    "name": "Cameras",
+                                    "icon": "mdi:check-bold"
                                 },
                                 {
                                     "type": "sensor",
                                     "entity": "sensor.entities_count",
-                                    "graph": "line"
+                                    "name": "Entitys",
+                                    "icon": "mdi:check-bold"
                                 },
                                 {
                                     "type": "sensor",
                                     "entity": "sensor.group_count",
-                                    "graph": "line"
+                                    "name": "Groups",
+                                    "icon": "mdi:check-bold"
                                 },
                                 {
                                     "type": "sensor",
                                     "entity": "sensor.lights_count",
-                                    "graph": "line"
+                                    "name": "Lights",
+                                    "icon": "mdi:check-bold"
                                 },
                                 {
                                     "type": "sensor",
                                     "entity": "sensor.media_player_count",
-                                    "graph": "line"
+                                    "name": "MediaPlay",
+                                    "icon": "mdi:check-bold"
                                 },
                                 {
                                     "type": "sensor",
                                     "entity": "sensor.script_count",
-                                    "graph": "line"
+                                    "name": "Scripts",
+                                    "icon": "mdi:check-bold"
                                 },
                                 {
                                     "type": "sensor",
                                     "entity": "sensor.sensor_count",
-                                    "graph": "line"
+                                    "name": "Sensors",
+                                    "icon": "mdi:check-bold"
                                 },
                                 {
                                     "type": "sensor",
                                     "entity": "sensor.switch_count",
-                                    "graph": "line"
+                                    "name": "Switches",
+                                    "icon": "mdi:check-bold"
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.button_count",
+                                    "name": "Buttons",
+                                    "icon": "mdi:check-bold"
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.inputs_count",
+                                    "name": "Helpers",
+                                    "icon": "mdi:check-bold"
                                 }
-                            ]
+                            ],
+                            "square": false
                         },
                         {
                             "type": "button",
