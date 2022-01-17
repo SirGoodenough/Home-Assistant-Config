@@ -99,7 +99,7 @@
   #   payload_off: "OFF"
   #   payload_available: "Online"
   #   payload_not_available: "Offline"
-
+#
     # Depricated for reference...
   # - platform: mqtt
   #   name: "Jens Night Light"
