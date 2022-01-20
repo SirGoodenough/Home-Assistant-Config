@@ -150,6 +150,39 @@
                             }
                         },
                         {
+                            "type": "vertical-stack",
+                            "cards": [
+                                {
+                                    "type": "thermostat",
+                                    "entity": "climate.living_room_2"
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.lrthermostat",
+                                    "graph": "line",
+                                    "unit": "\u00b0F",
+                                    "name": "Living Room Temperature"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "cards": [
+                                {
+                                    "type": "thermostat",
+                                    "entity": "climate.gemodule5384"
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.brthermostat",
+                                    "graph": "line",
+                                    "name": "Bedroom Temperature",
+                                    "unit": "\u00b0F",
+                                    "detail": 2
+                                }
+                            ]
+                        },
+                        {
                             "type": "conditional",
                             "conditions": [
                                 {
@@ -442,19 +475,6 @@
                             ],
                             "title": "Glance",
                             "columns": 4
-                        },
-                        {
-                            "type": "humidifier",
-                            "entity": "humidifier.house_humidity"
-                        },
-                        {
-                            "type": "thermostat",
-                            "entity": "climate.living_room_2"
-                        },
-                        {
-                            "type": "thermostat",
-                            "entity": "climate.gemodule5384",
-                            "theme": "Dark - Light Red"
                         },
                         {
                             "type": "glance",
