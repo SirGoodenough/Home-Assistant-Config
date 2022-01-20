@@ -12,61 +12,6 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "sensor.kitchen_temperature_3",
-                                    "secondary_info": "last-updated"
-                                },
-                                {
-                                    "entity": "sensor.kitchen_humidity_3"
-                                },
-                                {
-                                    "entity": "light.dad_lights"
-                                },
-                                {
-                                    "entity": "light.jims_computer_light"
-                                },
-                                {
-                                    "entity": "light.cabinetlight"
-                                },
-                                {
-                                    "entity": "light.kitchen_down_lights"
-                                },
-                                {
-                                    "entity": "light.kitchensink"
-                                },
-                                {
-                                    "entity": "light.growlight2"
-                                },
-                                {
-                                    "entity": "light.b_porch_socket"
-                                },
-                                {
-                                    "entity": "switch.kitchenfan"
-                                },
-                                {
-                                    "entity": "switch.dishwasher"
-                                },
-                                {
-                                    "entity": "lock.kwikset_touchpad_electronic_deadbolt_locked"
-                                },
-                                {
-                                    "entity": "binary_sensor.back_door_open_433"
-                                },
-                                {
-                                    "entity": "binary_sensor.back_door_pir"
-                                },
-                                {
-                                    "entity": "alert.back_door_notify_low_battery"
-                                }
-                            ],
-                            "show_header_toggle": true,
-                            "title": "Kitchen",
-                            "type": "entities",
-                            "state_color": true,
-                            "theme": "3ative_blue"
-                        },
-                        {
-                            "entities": [
-                                {
                                     "entity": "sensor.sonoff_rf_bridge_2_si7021_temperature",
                                     "name": "LivingRoom Temp",
                                     "secondary_info": "last-updated"
@@ -130,6 +75,61 @@
                             "state_color": true
                         },
                         {
+                            "entities": [
+                                {
+                                    "entity": "sensor.kitchen_temperature_3",
+                                    "secondary_info": "last-updated"
+                                },
+                                {
+                                    "entity": "sensor.kitchen_humidity_3"
+                                },
+                                {
+                                    "entity": "light.dad_lights"
+                                },
+                                {
+                                    "entity": "light.jims_computer_light"
+                                },
+                                {
+                                    "entity": "light.cabinetlight"
+                                },
+                                {
+                                    "entity": "light.kitchen_down_lights"
+                                },
+                                {
+                                    "entity": "light.kitchensink"
+                                },
+                                {
+                                    "entity": "light.growlight2"
+                                },
+                                {
+                                    "entity": "light.b_porch_socket"
+                                },
+                                {
+                                    "entity": "switch.kitchenfan"
+                                },
+                                {
+                                    "entity": "switch.dishwasher"
+                                },
+                                {
+                                    "entity": "lock.kwikset_touchpad_electronic_deadbolt_locked"
+                                },
+                                {
+                                    "entity": "binary_sensor.back_door_open_433"
+                                },
+                                {
+                                    "entity": "binary_sensor.back_door_pir"
+                                },
+                                {
+                                    "entity": "alert.back_door_notify_low_battery"
+                                }
+                            ],
+                            "show_header_toggle": true,
+                            "title": "Kitchen",
+                            "type": "entities",
+                            "state_color": true,
+                            "theme": "3ative_blue"
+                        },
+                        {
                             "type": "conditional",
                             "conditions": [
                                 {
@@ -175,6 +175,221 @@
                             "name": "Chaloupka Abode",
                             "theme": "Animated Weather Card",
                             "secondary_info_attribute": "wind_speed"
+                        },
+                        {
+                            "type": "conditional",
+                            "conditions": [
+                                {
+                                    "entity": "binary_sensor.battery_low_mailbox",
+                                    "state": "on"
+                                }
+                            ],
+                            "card": {
+                                "type": "button",
+                                "tap_action": {
+                                    "action": "call-service",
+                                    "service": "python_script.battery_clear",
+                                    "service_data": {},
+                                    "target": {}
+                                },
+                                "entity": "binary_sensor.battery_low_mailbox",
+                                "name": "MailBox Battery",
+                                "icon": "mdi:battery-alert-variant-outline"
+                            }
+                        },
+                        {
+                            "type": "conditional",
+                            "conditions": [
+                                {
+                                    "entity": "binary_sensor.battery_low_side_door_inside",
+                                    "state": "on"
+                                }
+                            ],
+                            "card": {
+                                "type": "button",
+                                "tap_action": {
+                                    "action": "call-service",
+                                    "service": "python_script.battery_clear",
+                                    "service_data": {},
+                                    "target": {}
+                                },
+                                "entity": "binary_sensor.battery_low_side_door_inside",
+                                "name": "Side Door Battery",
+                                "icon": "mdi:battery-alert-variant-outline"
+                            }
+                        },
+                        {
+                            "type": "conditional",
+                            "conditions": [
+                                {
+                                    "entity": "binary_sensor.battery_low_bedroom_door",
+                                    "state": "on"
+                                }
+                            ],
+                            "card": {
+                                "type": "button",
+                                "tap_action": {
+                                    "action": "call-service",
+                                    "service": "python_script.battery_clear",
+                                    "service_data": {},
+                                    "target": {}
+                                },
+                                "entity": "binary_sensor.battery_low_bedroom_door",
+                                "name": "Bathroom Battery",
+                                "icon": "mdi:battery-alert-variant-outline"
+                            }
+                        },
+                        {
+                            "type": "conditional",
+                            "conditions": [
+                                {
+                                    "entity": "binary_sensor.battery_low_back_door",
+                                    "state": "on"
+                                }
+                            ],
+                            "card": {
+                                "type": "button",
+                                "tap_action": {
+                                    "action": "call-service",
+                                    "service": "python_script.battery_clear",
+                                    "service_data": {},
+                                    "target": {}
+                                },
+                                "entity": "binary_sensor.battery_low_back_door",
+                                "name": "Back Door Battery",
+                                "icon": "mdi:battery-alert-variant-outline"
+                            }
+                        },
+                        {
+                            "type": "conditional",
+                            "conditions": [
+                                {
+                                    "entity": "binary_sensor.battery_low_front_door_inside",
+                                    "state": "on"
+                                }
+                            ],
+                            "card": {
+                                "type": "button",
+                                "tap_action": {
+                                    "action": "call-service",
+                                    "service": "python_script.battery_clear",
+                                    "service_data": {},
+                                    "target": {}
+                                },
+                                "entity": "binary_sensor.battery_low_front_door_inside",
+                                "name": "Front Door Battery",
+                                "icon": "mdi:battery-alert-variant-outline"
+                            }
+                        },
+                        {
+                            "type": "conditional",
+                            "conditions": [
+                                {
+                                    "entity": "binary_sensor.battery_low_garage_door",
+                                    "state": "on"
+                                }
+                            ],
+                            "card": {
+                                "type": "button",
+                                "tap_action": {
+                                    "action": "call-service",
+                                    "service": "python_script.battery_clear",
+                                    "service_data": {},
+                                    "target": {}
+                                },
+                                "entity": "binary_sensor.battery_low_garage_door",
+                                "name": "Garage Door Closed Battery",
+                                "icon": "mdi:battery-alert-variant-outline"
+                            }
+                        },
+                        {
+                            "type": "conditional",
+                            "conditions": [
+                                {
+                                    "entity": "binary_sensor.battery_low_garage_door_open",
+                                    "state": "on"
+                                }
+                            ],
+                            "card": {
+                                "type": "button",
+                                "tap_action": {
+                                    "action": "call-service",
+                                    "service": "python_script.battery_clear",
+                                    "service_data": {},
+                                    "target": {}
+                                },
+                                "entity": "binary_sensor.battery_low_garage_door_open",
+                                "name": "Garage Door Open Battery",
+                                "icon": "mdi:battery-alert-variant-outline"
+                            }
+                        },
+                        {
+                            "type": "conditional",
+                            "conditions": [
+                                {
+                                    "entity": "binary_sensor.battery_low_bathroom",
+                                    "state": "on"
+                                }
+                            ],
+                            "card": {
+                                "type": "button",
+                                "tap_action": {
+                                    "action": "call-service",
+                                    "service": "python_script.battery_clear",
+                                    "service_data": {},
+                                    "target": {}
+                                },
+                                "entity": "binary_sensor.battery_low_bathroom",
+                                "name": "Bathroom Battery",
+                                "icon": "mdi:battery-alert-variant-outline"
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tap_action": {
+                                "action": "call-service",
+                                "service": "input_boolean.turn_on",
+                                "service_data": {},
+                                "target": {
+                                    "entity_id": [
+                                        "input_boolean.pad_enable3"
+                                    ]
+                                }
+                            },
+                            "entity": "switch.v8",
+                            "name": "All Locks - Tap Lock / Hold Unlock",
+                            "icon": "mdi:lock",
+                            "show_state": false,
+                            "icon_height": "80px",
+                            "hold_action": {
+                                "action": "call-service",
+                                "service": "input_boolean.turn_on",
+                                "service_data": {},
+                                "target": {
+                                    "entity_id": "input_boolean.pad_enable2"
+                                }
+                            }
+                        },
+                        {
+                            "type": "conditional",
+                            "conditions": [
+                                {
+                                    "entity": "binary_sensor.battery_low_garage_side_door",
+                                    "state": "on"
+                                }
+                            ],
+                            "card": {
+                                "type": "button",
+                                "tap_action": {
+                                    "action": "call-service",
+                                    "service": "python_script.battery_clear",
+                                    "service_data": {},
+                                    "target": {}
+                                },
+                                "entity": "binary_sensor.battery_low_garage_side_door",
+                                "name": "Garage Side Door Battery",
+                                "icon": "mdi:battery-alert-variant-outline"
+                            }
                         },
                         {
                             "type": "glance",
@@ -227,32 +442,6 @@
                             ],
                             "title": "Glance",
                             "columns": 4
-                        },
-                        {
-                            "type": "button",
-                            "tap_action": {
-                                "action": "call-service",
-                                "service": "input_boolean.turn_on",
-                                "service_data": {},
-                                "target": {
-                                    "entity_id": [
-                                        "input_boolean.pad_enable3"
-                                    ]
-                                }
-                            },
-                            "entity": "switch.v8",
-                            "name": "All Locks - Tap Lock / Hold Unlock",
-                            "icon": "mdi:lock",
-                            "show_state": false,
-                            "icon_height": "80px",
-                            "hold_action": {
-                                "action": "call-service",
-                                "service": "input_boolean.turn_on",
-                                "service_data": {},
-                                "target": {
-                                    "entity_id": "input_boolean.pad_enable2"
-                                }
-                            }
                         },
                         {
                             "type": "humidifier",
@@ -3381,6 +3570,17 @@
                             "show_header_toggle": false,
                             "title": "Battery",
                             "type": "entities"
+                        },
+                        {
+                            "type": "button",
+                            "tap_action": {
+                                "action": "call-service",
+                                "service": "python_script.battery_clear",
+                                "service_data": {},
+                                "target": {}
+                            },
+                            "name": "Clear Battery Low",
+                            "icon": "mdi:home-battery-outline"
                         }
                     ],
                     "icon": "mdi:battery-alert",
