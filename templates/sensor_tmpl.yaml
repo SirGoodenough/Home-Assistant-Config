@@ -97,13 +97,13 @@
     unique_id: 1ca8aa2c-1fad-4c4b-99e7-4cf4dd91aa0b
     state: "{{ state_attr('climate.living_room_2', 'current_temperature') }}"
     unit_of_measurement: "°F"
-    icon: "mdi-thermostat-box"
+    icon: "mdi:thermostat-box"
 
   - name: BRthermostat
     unique_id: 850df15c-a1fb-4832-a29e-18fcaf3d3b61
     state: "{{ state_attr('climate.gemodule5384', 'current_temperature') }}"
     unit_of_measurement: "°F"
-    icon: "mdi-thermostat-box"
+    icon: "mdi:thermostat-box"
 
   - name: "Sun State"
     unique_id: f2ef3978-8f60-4f49-9ce5-1198306412fd

@@ -47,6 +47,7 @@
 !http.yaml
 !lock.yaml
 !logger.yaml
+!media.yaml
 !media_player.yaml
 !mqtt.yaml
 !notify.yaml
