@@ -84,7 +84,6 @@
       - 180
     message: "Garage Side Door battery is low."
     done_message: "Garage Side Door is fine now."
-    state: "on"
     notifiers:
       - notify.message_dad
 
