@@ -12,6 +12,61 @@
                         {
                             "entities": [
                                 {
+                                    "entity": "sensor.kitchen_temperature_3",
+                                    "secondary_info": "last-updated"
+                                },
+                                {
+                                    "entity": "sensor.kitchen_humidity_3"
+                                },
+                                {
+                                    "entity": "light.dad_lights"
+                                },
+                                {
+                                    "entity": "light.jims_computer_light"
+                                },
+                                {
+                                    "entity": "light.cabinetlight"
+                                },
+                                {
+                                    "entity": "light.kitchen_down_lights"
+                                },
+                                {
+                                    "entity": "light.kitchensink"
+                                },
+                                {
+                                    "entity": "light.growlight2"
+                                },
+                                {
+                                    "entity": "light.b_porch_socket"
+                                },
+                                {
+                                    "entity": "switch.kitchenfan"
+                                },
+                                {
+                                    "entity": "switch.dishwasher"
+                                },
+                                {
+                                    "entity": "lock.kwikset_touchpad_electronic_deadbolt_locked"
+                                },
+                                {
+                                    "entity": "binary_sensor.back_door_open_433"
+                                },
+                                {
+                                    "entity": "binary_sensor.back_door_pir"
+                                },
+                                {
+                                    "entity": "alert.back_door_notify_low_battery"
+                                }
+                            ],
+                            "show_header_toggle": true,
+                            "title": "Kitchen",
+                            "type": "entities",
+                            "state_color": true,
+                            "theme": "3ative_blue"
+                        },
+                        {
+                            "entities": [
+                                {
                                     "entity": "sensor.sonoff_rf_bridge_2_si7021_temperature",
                                     "name": "LivingRoom Temp",
                                     "secondary_info": "last-updated"
@@ -73,61 +128,6 @@
                             "title": "Living Room",
                             "type": "entities",
                             "state_color": true
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "sensor.kitchen_temperature_3",
-                                    "secondary_info": "last-updated"
-                                },
-                                {
-                                    "entity": "sensor.kitchen_humidity_3"
-                                },
-                                {
-                                    "entity": "light.dad_lights"
-                                },
-                                {
-                                    "entity": "light.jims_computer_light"
-                                },
-                                {
-                                    "entity": "light.cabinetlight"
-                                },
-                                {
-                                    "entity": "light.kitchen_down_lights"
-                                },
-                                {
-                                    "entity": "light.kitchensink"
-                                },
-                                {
-                                    "entity": "light.growlight2"
-                                },
-                                {
-                                    "entity": "light.b_porch_socket"
-                                },
-                                {
-                                    "entity": "switch.kitchenfan"
-                                },
-                                {
-                                    "entity": "switch.dishwasher"
-                                },
-                                {
-                                    "entity": "lock.kwikset_touchpad_electronic_deadbolt_locked"
-                                },
-                                {
-                                    "entity": "binary_sensor.back_door_open_433"
-                                },
-                                {
-                                    "entity": "binary_sensor.back_door_pir"
-                                },
-                                {
-                                    "entity": "alert.back_door_notify_low_battery"
-                                }
-                            ],
-                            "show_header_toggle": true,
-                            "title": "Kitchen",
-                            "type": "entities",
-                            "state_color": true,
-                            "theme": "3ative_blue"
                         },
                         {
                             "type": "conditional",
@@ -508,7 +508,7 @@
                                     "customTheme": true,
                                     "customSetpoints": true,
                                     "hiPercentage": 100,
-                                    "name": "Office Fan",
+                                    "name": "Bedroom Fan",
                                     "type": "custom:fan-percent-button-row"
                                 },
                                 {
@@ -794,11 +794,7 @@
                                 },
                                 {
                                     "type": "media-control",
-                                    "entity": "media_player.momsairplay"
-                                },
-                                {
-                                    "type": "media-control",
-                                    "entity": "media_player.kitchen_speaker"
+                                    "entity": "media_player.workroom_speaker"
                                 },
                                 {
                                     "type": "media-control",
@@ -806,7 +802,7 @@
                                 },
                                 {
                                     "type": "media-control",
-                                    "entity": "media_player.workroom_speaker"
+                                    "entity": "media_player.kitchen_speaker"
                                 },
                                 {
                                     "type": "media-control",
@@ -2306,7 +2302,7 @@
                             "entity": "climate.gemodule5384"
                         },
                         {
-                            "entity": "sensor.furnace_pellet_firebox_temp",
+                            "entity": "sensor.furnace_pellet_firebox_temperature_3",
                             "graph": "line",
                             "theme": "Dark - Red",
                             "type": "sensor",
@@ -2314,7 +2310,7 @@
                             "icon": "mdi:fireplace"
                         },
                         {
-                            "entity": "sensor.furnace_oil_firebox_temp",
+                            "entity": "sensor.furnace_oil_firebox_temperature_3",
                             "graph": "line",
                             "theme": "slate_red",
                             "type": "sensor",
@@ -2427,6 +2423,20 @@
                             "type": "sensor",
                             "detail": 2,
                             "icon": "mdi:paper-roll-outline"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "sensor.furnace_oil_firebox_temperature_3",
+                                "sensor.furnace_oil_top_humidity_3",
+                                "sensor.furnace_oil_top_temperature_3",
+                                "sensor.furnace_pellet_firebox_temperature_3",
+                                "sensor.furnace_pellet_top_temperature_3",
+                                "sensor.furnace_register_temperature_3",
+                                "sensor.furnace_return_humidity_3",
+                                "sensor.furnace_return_temperature_3"
+                            ],
+                            "title": "ThermoPI Furnace"
                         }
                     ],
                     "icon": "mdi:thermometer-lines",

@@ -20,7 +20,7 @@
 
   - platform: filter
     name: "Furnace Oil Top Temp"
-    entity_id: sensor.furnace_oil_top_temperature_2
+    entity_id: sensor.furnace_oil_top_temperature_3
     filters:
       - filter: outlier
         window_size: 4 # Number of states in filter
@@ -28,7 +28,7 @@
 
   - platform: filter
     name: "Furnace Oil Top Humid"
-    entity_id: sensor.furnace_oil_top_humidity_2
+    entity_id: sensor.furnace_oil_top_humidity_3
     filters:
       - filter: outlier
         window_size: 4 # Number of states in filter
@@ -36,7 +36,7 @@
 
   - platform: filter
     name: "Furnace Return Temp"
-    entity_id: sensor.furnace_return_temperature_2
+    entity_id: sensor.furnace_return_temperature_3
     filters:
       - filter: outlier
         window_size: 4 # Number of states in filter
@@ -44,7 +44,7 @@
 
   - platform: filter
     name: "Furnace Return Humid"
-    entity_id: sensor.furnace_return_humidity_2
+    entity_id: sensor.furnace_return_humidity_3
     filters:
       - filter: outlier
         window_size: 4 # Number of states in filter
@@ -52,7 +52,7 @@
 
   - platform: filter
     name: "Furnace Register Temp"
-    entity_id: sensor.furnace_register_temperature_2
+    entity_id: sensor.furnace_register_temperature_3
     filters:
       - filter: outlier
         window_size: 4 # Number of states in filter
@@ -60,7 +60,7 @@
 
   - platform: filter
     name: "Furnace Pellet Top Temp"
-    entity_id: sensor.furnace_pellet_top_temperature_2
+    entity_id: sensor.furnace_pellet_top_temperature_3
     filters:
       - filter: outlier
         window_size: 4 # Number of states in filter
@@ -68,7 +68,7 @@
 
   - platform: filter
     name: "Furnace Oil Firebox Temp"
-    entity_id: sensor.furnace_oil_firebox_temperature_2
+    entity_id: sensor.furnace_oil_firebox_temperature_3
     filters:
       - filter: outlier
         window_size: 4 # Number of states in filter
@@ -76,7 +76,7 @@
 
   - platform: filter
     name: "Furnace Pellet Firebox Temp"
-    entity_id: sensor.furnace_pellet_firebox_temperature_2
+    entity_id: sensor.furnace_pellet_firebox_temperature_3
     filters:
       - filter: outlier
         window_size: 4 # Number of states in filter
