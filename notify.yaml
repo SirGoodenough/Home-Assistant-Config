@@ -24,7 +24,7 @@
     recipient: !secret ControlCentral_Rm
 
   - platform: smtp
-    name: message_mom
+    name: message_jen
     unique_id: 3452de30-172c-4e0e-826a-5143dec62341
     server: smtp.gmail.com
     port: 587
@@ -52,9 +52,9 @@
       - !secret ControlCentral_Ra
 
   - platform: syslog
-    name: borusa
-    unique_id: 70a16263-f791-4cad-a464-0beb8fa7aaa1
-
+    name: chaloupkaabode_ha
+    unique_id: ce484330-657c-475c-8aa6-8840c3ebd06d
+    
   # - name: "NOTIFIER_NAME"
   #   platform: smtp
   #   server: "smtp.gmail.com"
