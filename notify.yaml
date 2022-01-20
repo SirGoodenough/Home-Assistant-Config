@@ -54,7 +54,7 @@
   - platform: syslog
     name: chaloupkaabode_ha
     unique_id: ce484330-657c-475c-8aa6-8840c3ebd06d
-    
+
   # - name: "NOTIFIER_NAME"
   #   platform: smtp
   #   server: "smtp.gmail.com"
@@ -68,3 +68,4 @@
   #     - "RECIPIENT_1@example.com"
   #     - "RECIPIENT_N@example.com"
   #   sender_name: "SENDER_NAME"
+  
