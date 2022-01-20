@@ -38,6 +38,7 @@
   back_door_notify_low_battery:
     name: Back Door Battery is Low
     entity_id: binary_sensor.battery_low_lock_back_door
+    state: "on"
     repeat:
       - 60
       - 120
@@ -50,6 +51,7 @@
   front_door_notify_low_battery:
     name: Front Door Battery is Low
     entity_id: binary_sensor.battery_low_front_door_inside
+    state: "on"
     repeat:
       - 60
       - 120
@@ -62,6 +64,7 @@
   side_door_notify_low_battery:
     name: Side Door Battery is Low
     entity_id: binary_sensor.battery_low_side_door_inside
+    state: "on"
     repeat:
       - 60
       - 120
@@ -74,18 +77,21 @@
   garage_side_door_notify_low_battery:
     name: Garage Side Door Battery is Low
     entity_id: binary_sensor.battery_low_garage_side_door
+    state: "on"
     repeat:
       - 60
       - 120
       - 180
     message: "Garage Side Door battery is low."
     done_message: "Garage Side Door is fine now."
+    state: "on"
     notifiers:
       - notify.message_dad
 
   garage_door_notify_low_battery:
     name: Garage Door Battery is Low
     entity_id: binary_sensor.battery_low_garage_door
+    state: "on"
     repeat:
       - 60
       - 120
@@ -98,6 +104,7 @@
   bedroom_door_notify_low_battery:
     name: Bedroom Door Battery is Low
     entity_id: binary_sensor.battery_low_bedroom_door
+    state: "on"
     repeat:
       - 60
       - 120
