@@ -127,4 +127,4 @@
   - name: "LRthermostat Fan Mode"
     unique_id: 68b1ee25-944e-4b19-b1c6-a3d8a7c56756
     state: "{{ state_attr('climate.gemodule5384', 'hvac_action') }}"
-    icon: mdi:air-conditioner
+    icon: "mdi:air-conditioner"
