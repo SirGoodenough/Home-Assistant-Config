@@ -8,3 +8,10 @@
     require_admin: true
     config:
       ingress: Supervisor
+  - name: panel-redirect
+    url_path: redirect-logs
+    sidebar_title: Logs
+    sidebar_icon: mdi:math-log
+    module_url: /local/panel-redirect.js
+    config:
+      target: /config/logs
