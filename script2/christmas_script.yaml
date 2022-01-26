@@ -58,9 +58,9 @@
             entity_id: switch.f2
           - delay:
               seconds: 1
-          - service: switch.turn_off
+          - service: switch.turn_on
             entity_id: switch.f3
-            delay:
+          - delay:
               seconds: 3
           - service: light.turn_on
             entity_id: light.wled
