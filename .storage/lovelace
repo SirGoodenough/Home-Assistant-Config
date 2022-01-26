@@ -162,6 +162,13 @@
                                     "graph": "line",
                                     "unit": "\u00b0F",
                                     "name": "Living Room Temperature"
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.sonoff_rf_bridge_2_si7021_temperature",
+                                    "graph": "line",
+                                    "name": "Living Room Temperature 2",
+                                    "detail": 2
                                 }
                             ]
                         },
@@ -179,6 +186,12 @@
                                     "name": "Bedroom Temperature",
                                     "unit": "\u00b0F",
                                     "detail": 2
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.bedroom_fan_si7021_temperature",
+                                    "graph": "line",
+                                    "name": "Bedroom Ceiling Temperature"
                                 }
                             ]
                         },
@@ -893,6 +906,11 @@
                                 }
                             ],
                             "square": false
+                        },
+                        {
+                            "type": "picture-entity",
+                            "entity": "lock.front_door",
+                            "camera_image": "camera.front_door"
                         }
                     ],
                     "icon": "mdi:home-automation",
@@ -1335,11 +1353,11 @@
                                     "type": "button",
                                     "tap_action": {
                                         "action": "call-service",
-                                        "service": "script.vizio_j_mute",
+                                        "service": "script.vizio_j_vol_down",
                                         "service_data": {},
                                         "target": {}
                                     },
-                                    "entity": "script.vizio_j_mute",
+                                    "entity": "script.vizio_j_vol_down",
                                     "icon_height": "50px",
                                     "theme": "Dark - Orange"
                                 },
@@ -1359,11 +1377,11 @@
                                     "type": "button",
                                     "tap_action": {
                                         "action": "call-service",
-                                        "service": "script.vizio_j_vol_down",
+                                        "service": "script.vizio_j_ch_down",
                                         "service_data": {},
                                         "target": {}
                                     },
-                                    "entity": "script.vizio_j_vol_down",
+                                    "entity": "script.vizio_j_ch_down",
                                     "icon_height": "50px",
                                     "theme": "Dark - Orange"
                                 },
@@ -1371,11 +1389,11 @@
                                     "type": "button",
                                     "tap_action": {
                                         "action": "call-service",
-                                        "service": "script.vizio_j_ch_down",
+                                        "service": "script.vizio_j_mute",
                                         "service_data": {},
                                         "target": {}
                                     },
-                                    "entity": "script.vizio_j_ch_down",
+                                    "entity": "script.vizio_j_mute",
                                     "icon_height": "50px",
                                     "theme": "Dark - Orange"
                                 },
@@ -2314,12 +2332,11 @@
                     "badges": [],
                     "cards": [
                         {
-                            "type": "thermostat",
-                            "entity": "climate.living_room_2"
-                        },
-                        {
-                            "type": "thermostat",
-                            "entity": "climate.gemodule5384"
+                            "type": "sensor",
+                            "entity": "sensor.lrthermostat",
+                            "graph": "line",
+                            "detail": 2,
+                            "name": "Living Room Thermostat"
                         },
                         {
                             "entity": "sensor.furnace_pellet_firebox_temperature_3",
@@ -2338,6 +2355,14 @@
                             "icon": "mdi:temperature-fahrenheit"
                         },
                         {
+                            "entity": "sensor.sonoff_rf_bridge_2_si7021_temperature",
+                            "graph": "line",
+                            "type": "sensor",
+                            "detail": 2,
+                            "icon": "mdi:seat",
+                            "name": "Living Room"
+                        },
+                        {
                             "entity": "sensor.furnace_pellet_top_temp",
                             "graph": "line",
                             "theme": "Dark - Red",
@@ -2352,13 +2377,6 @@
                             "type": "sensor",
                             "detail": 2,
                             "icon": "mdi:temperature-fahrenheit"
-                        },
-                        {
-                            "type": "sensor",
-                            "entity": "sensor.lrthermostat",
-                            "graph": "line",
-                            "detail": 2,
-                            "name": "Living Room Thermostat"
                         },
                         {
                             "type": "sensor",
@@ -2384,13 +2402,6 @@
                             "icon": "mdi:temperature-fahrenheit"
                         },
                         {
-                            "entity": "sensor.kitchen_temp",
-                            "graph": "line",
-                            "type": "sensor",
-                            "detail": 2,
-                            "icon": "mdi:stove"
-                        },
-                        {
                             "entity": "sensor.bedroom_fan_si7021_temperature",
                             "graph": "line",
                             "type": "sensor",
@@ -2399,18 +2410,17 @@
                             "name": "Bedroom"
                         },
                         {
+                            "entity": "sensor.kitchen_temp",
+                            "graph": "line",
+                            "type": "sensor",
+                            "detail": 2,
+                            "icon": "mdi:stove"
+                        },
+                        {
                             "type": "sensor",
                             "entity": "sensor.dark_sky_temperature",
                             "graph": "line",
                             "detail": 2
-                        },
-                        {
-                            "entity": "sensor.sonoff_rf_bridge_2_si7021_temperature",
-                            "graph": "line",
-                            "type": "sensor",
-                            "detail": 2,
-                            "icon": "mdi:seat",
-                            "name": "Living Room"
                         },
                         {
                             "entity": "sensor.dust_collector_si7021_temperature",
@@ -2419,6 +2429,14 @@
                             "detail": 2,
                             "icon": "mdi:stairs-down",
                             "name": "Back Basement"
+                        },
+                        {
+                            "entity": "sensor.bathoom_si7021_temperature",
+                            "graph": "line",
+                            "name": "Bathroom",
+                            "type": "sensor",
+                            "detail": 2,
+                            "icon": "mdi:paper-roll-outline"
                         },
                         {
                             "entity": "sensor.garage_door_si7021_temperature",
@@ -2435,14 +2453,6 @@
                             "detail": 2,
                             "icon": "mdi:washing-machine",
                             "name": "Front Basement"
-                        },
-                        {
-                            "entity": "sensor.bathoom_si7021_temperature",
-                            "graph": "line",
-                            "name": "Bathroom",
-                            "type": "sensor",
-                            "detail": 2,
-                            "icon": "mdi:paper-roll-outline"
                         },
                         {
                             "type": "entities",
