@@ -10,6 +10,8 @@
           entity_id: 
             - light.garagesidelight3_switch
             - light.garagetop_light_switch
+            - light.fp_rf_relay
+            - light.b_porch_relay
 
   #####################################################
   # Outside Lights off                                #
@@ -20,8 +22,10 @@
       - service: light.turn_off
         data:
           entity_id: 
-            - light.garagesidelight3_switch
-            - light.garagetop_light_switch
+            - light.garagesidelight3
+            - light.garagetop_light
+            - light.fp_socket
+            - light.b_porch_socket
 
   #####################################################
   # Outside Lights Party Mode                         #
