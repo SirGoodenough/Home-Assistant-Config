@@ -77,14 +77,6 @@
     retain: false
 
   - platform: mqtt
-    name: "Moms Call Button"
-    unique_id: 4c09ceea-f9aa-418d-913a-2105d0a1d240
-    command_topic: "rf433/Mom-C"
-    payload_press: "ON"
-    qos: 0
-    retain: false
-
-  - platform: mqtt
     name: "Dust Collector Button1"
     unique_id: 6a24c825-605a-42b0-812f-88c0e6f696ca
     command_topic: "rf433/DustCollectorButton1"
@@ -157,7 +149,7 @@
     retain: false
 
   - platform: mqtt
-    name: "Moms button1"
+    name: "Moms GoodNight Button"
     unique_id: 31794cb5-a46a-45d3-b082-d01760d541d6
     command_topic: "rf433/MomsButton1"
     payload_press: "ON"
@@ -165,7 +157,7 @@
     retain: false
 
   - platform: mqtt
-    name: "Moms button2"
+    name: "Moms Lights Toggle"
     unique_id: e2ecd99c-87f7-46d8-a47b-34864d9857d4
     command_topic: "rf433/MomsButton2"
     payload_press: "ON"
@@ -173,7 +165,7 @@
     retain: false
 
   - platform: mqtt
-    name: "Moms button3"
+    name: "Moms Chair Light Toggle"
     unique_id: 4cfc4522-36a5-4663-a0b1-3769b18b69fa
     command_topic: "rf433/MomsButton3"
     payload_press: "ON"
@@ -181,7 +173,15 @@
     retain: false
 
   - platform: mqtt
-    name: "Office Light 1"
+    name: "Moms Call Button"
+    unique_id: 4c09ceea-f9aa-418d-913a-2105d0a1d240
+    command_topic: "rf433/Mom-C"
+    payload_press: "ON"
+    qos: 0
+    retain: false
+
+  - platform: mqtt
+    name: "Office Light Front"
     unique_id: 796ed8c1-b3a4-48e1-b934-7101c19b3f7b
     command_topic: "rf433/OfficeLight1"
     payload_press: "ON"
@@ -189,7 +189,7 @@
     retain: false
 
   - platform: mqtt
-    name: "Office Light 2"
+    name: "Office Light Back"
     unique_id: d8c704f8-c108-4238-997e-a8743e18a5f7
     command_topic: "rf433/OfficeLight2"
     payload_press: "ON"
@@ -197,7 +197,7 @@
     retain: false
 
   - platform: mqtt
-    name: "Stairs UP"
+    name: "Bathroom Mute"
     unique_id: 3de89090-97f2-4e58-b89b-beeeced9767c
     command_topic: "rf433/StairUP"
     payload_press: "ON"
@@ -205,7 +205,7 @@
     retain: false
 
   - platform: mqtt
-    name: "Stairs Down"
+    name: "Stairs Light"
     unique_id: c4a204ad-0db9-458f-b18e-5c3ba1d3e342
     command_topic: "rf433/StairDN"
     payload_press: "ON"
