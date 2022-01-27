@@ -9,9 +9,11 @@
     config:
       ingress: Supervisor
   - name: panel-redirect
-    url_path: redirect-logs
     sidebar_title: Logs
     sidebar_icon: mdi:math-log
-    module_url: /local/panel-redirect.js
+    js_url: /api/hassio/app/entrypoint.js
+    url_path: /config/logs
+    embed_iframe: true
+    require_admin: true
     config:
-      target: /config/logs
+      ingress: Logs
