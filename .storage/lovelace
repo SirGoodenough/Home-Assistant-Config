@@ -122,6 +122,9 @@
                                 },
                                 {
                                     "entity": "binary_sensor.upstairs_pir"
+                                },
+                                {
+                                    "entity": "button.moms_button3"
                                 }
                             ],
                             "show_header_toggle": true,
