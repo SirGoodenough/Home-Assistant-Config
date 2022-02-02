@@ -2,99 +2,61 @@
 #####################################################
 ## 3D Printer Template Sensors                     ##
 #####################################################
-  - name: 'Tarantula Time Remaining:'
-    unique_id: 8e34cb05-0ccc-4145-9486-f005e6d20935
-    state: >
-      {%- if states('sensor.octoprint_time_remaining_format') is defined -%}
-        {% set time = as_timestamp(states('sensor.octoprint_time_remaining_format')) | int %}
-      {%- else -%}
-        {% set time = 0 | int %}
-      {%- endif -%}
-      {% set minutes = ((time % 3600) / 60) | int%}
-      {% set hours = ((time % 86400) / 3600) | int %}
-      {% set days = (time / 86400) | int %}
-      {%- if time == 0 -%}
-        {{ '0, Job Complete' }}
-          {%- else -%}
-          {%- if time < 60 -%}
-          Less than a minute
-          {%- else -%}
-        {%- if days > 0 -%}
-          {%- if days == 1 -%}
-            1 day
-          {%- else -%}
-            {{ days }} days
-          {%- endif -%}
-        {%- endif -%}
-        {%- if hours > 0 -%}
-          {%- if days > 0 -%}
-            {{ ', ' }}
-          {%- endif -%}
-          {%- if hours == 1 -%}
-            1 hour
-          {%- else -%}
-            {{ hours }} hours
-          {%- endif -%}
-        {%- endif -%}
-        {%- if minutes > 0 -%}
-          {%- if days > 0 or hours > 0 -%}
-            {{ ', ' }}
-          {%- endif -%}
-          {%- if minutes == 1 -%}
-            1 minute
-          {%- else -%}
-            {{ minutes }} minutes
-          {%- endif -%}
-        {%- endif -%}
-      {%- endif -%}
-      {%- endif -%}
+  - unique_id: octoprint_time_elapsed_format
+    attributes:
+      friendly_name: "Printing Time Elapsed"
+    state: >-
+      {% if states('sensor.tarantula_time_elapsed') != "unknown" %}
+        "{{ states('sensor.tarantula_time_elapsed') | int | timestamp_custom('%H:%M:%S', 0) }}"
+      {% else %} 
+        "{{ 0 | timestamp_custom('%H:%M:%S', 0) }}"
+      {% endif %}
+  - unique_id: octoprint_time_remaining_format
+    attributes:
+      friendly_name: "Printing Time Remaining"
+    state: >-
+      {% if states('sensor.tarantula_time_remaining') != "unknown" %}
+        "{{ states('sensor.tarantula_time_remaining') | int | timestamp_custom('%H:%M:%S', 0) }}"
+      {% else %} 
+        "{{ 0 | timestamp_custom('%H:%M:%S', 0) }}"
+      {% endif %}
 
-  - name: 'Tarantula Time Elapsed:'
-    unique_id: a467aa7d-680c-40e9-8b8e-d576d6547eda
-    state: >
-      {%- if states('sensor.octoprint_time_elapsed_format') is defined -%}
-        {% set time = as_timestamp(states('sensor.octoprint_time_elapsed_format')) | int %}
-      {%- else -%}
-        {% set time = 0 | int %}
-      {%- endif -%}
-      {% set minutes = ((time % 3600) / 60) | int%}
-      {% set hours = ((time % 86400) / 3600) | int %}
-      {% set days = (time / 86400) | int %}
-      {%- if time == 0 -%}
-        {{ '0, Job Complete' }}
-          {%- else -%}
-          {%- if time < 60 -%}
-          Less than a minute
-          {%- else -%}
-        {%- if days > 0 -%}
-          {%- if days == 1 -%}
-            1 day
-          {%- else -%}
-            {{ days }} days
-          {%- endif -%}
-        {%- endif -%}
-        {%- if hours > 0 -%}
-          {%- if days > 0 -%}
-            {{ ', ' }}
-          {%- endif -%}
-            {%- if hours == 1 -%}
-              1 hour
-            {%- else -%}
-              {{ hours }} hours
-            {%- endif -%}
-          {%- endif -%}
-          {%- if minutes > 0 -%}
-            {%- if days > 0 or hours > 0 -%}
-              {{ ', ' }}
-            {%- endif -%}
-            {%- if minutes == 1 -%}
-              1 minute
-            {%- else -%}
-              {{ minutes }} minutes
-            {%- endif -%}
-          {%- endif -%}
-        {%- endif -%}
-        {%- endif -%}
+  - unique_id: octoprint_soc_temperature_in_c
+    state: '{{ "%.2f"|format((( states("sensor.octoprint_soc_temperature") | float ) -32) *5/9) }}'
+    attributes:
+      friendly_name: "3D PI CPU"
+    device_class: temperature
+    unit_of_measurement: C
+  - unique_id: octoprint_bed_target_in_c
+    state: '{{ "%.1f"|format((( states("sensor.octoprint_bed_target") | float ) -32) *5/9) }}'
+    attributes:
+      friendly_name: "3D Bed Target"
+    device_class: temperature
+    unit_of_measurement: C
+  - unique_id: octoprint_tool_0_temperature_in_c
+    state: '{{ "%.1f"|format((( states("sensor.octoprint_tool_0_temperature") | float ) -32) *5/9) }}'
+    attributes:
+      friendly_name: "3D Extruder"
+    device_class: temperature
+    unit_of_measurement: C
+  - unique_id: octoprint_bed_temperature_in_c
+    state: '{{ "%.1f"|format((( states("sensor.octoprint_bed_temperature") | float ) -32) *5/9) }}'
+    attributes:
+      friendly_name: "3D Bed"
+    device_class: temperature
+    unit_of_measurement: C
+  - unique_id: octoprint_tool_0_target_in_c
+    state: '{{ "%.1f"|format((( states("sensor.octoprint_tool_0_target") | float ) -32) *5/9) }}'
+    attributes:
+      friendly_name: "3D Extruder Target"
+    device_class: temperature
+    unit_of_measurement: C
+  - unique_id: octoprint_tool_0_target_2_in_c
+    state: '{{ "%.1f"|format((( states("sensor.octoprint_tool_0_target_2") | float ) -32) *5/9) }}'
+    attributes:
+      friendly_name: "3D Extruder Target"
+    device_class: temperature
+    unit_of_measurement: C
 
 #####################################################
 ## Weather Template Sensors                        ##
@@ -137,3 +99,18 @@
     unique_id: 0a26fddd-d1ec-48fc-9984-61feb1d1e5c1
     state: "{{ state_attr('climate.gemodule5384', 'hvac_action') }}"
     icon: "mdi:air-conditioner"
+
+  ####################################################
+  #  Battery                                         #
+  ####################################################
+  - unique_id: lock_backdoor_bat_level
+    attributes:
+      friendly_name: "Lock BackDoor Battery Level"
+    device_class: battery
+    unit_of_measurement: "%"
+    state: >-
+      {% if states.zwave.kwikset_touchpad_electronic_deadbolt.attributes.battery_level is defined %}
+        {{ states.zwave.kwikset_touchpad_electronic_deadbolt.attributes.battery_level }}
+      {% else %}
+        "-1"
+      {% endif %}

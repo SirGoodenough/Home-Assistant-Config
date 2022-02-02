@@ -88,7 +88,10 @@
                                     "entity": "light.livingroomlight"
                                 },
                                 {
-                                    "entity": "button.moms_button1"
+                                    "entity": "button.moms_button2"
+                                },
+                                {
+                                    "entity": "button.moms_button3"
                                 },
                                 {
                                     "entity": "light.stairway_switch"
@@ -100,7 +103,7 @@
                                     "entity": "light.fp_socket"
                                 },
                                 {
-                                    "entity": "button.moms_button2"
+                                    "entity": "button.moms_button1"
                                 },
                                 {
                                     "entity": "binary_sensor.front_door_open"
@@ -158,7 +161,8 @@
                                     "entity": "sensor.lrthermostat",
                                     "graph": "line",
                                     "unit": "\u00b0F",
-                                    "name": "Living Room Temperature"
+                                    "name": "Living Room Temperature",
+                                    "detail": 2
                                 },
                                 {
                                     "type": "sensor",
@@ -3045,10 +3049,16 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "sensor.octoprint_bed_temperature"
+                                    "entity": "sensor.template_octoprint_bed_temperature_in_c"
                                 },
                                 {
-                                    "entity": "sensor.octoprint_tool_0_temperature"
+                                    "entity": "sensor.template_octoprint_tool_0_temperature_in_c"
+                                },
+                                {
+                                    "entity": "sensor.template_octoprint_bed_target_in_c"
+                                },
+                                {
+                                    "entity": "sensor.template_octoprint_tool_0_target_2_in_c"
                                 },
                                 {
                                     "entity": "sensor.octoprint_soc_temperature"
@@ -3108,22 +3118,19 @@
                                     "entity": "sensor.octoprint_print_time_left"
                                 },
                                 {
-                                    "entity": "sensor.octoprint_soc_temperature"
+                                    "entity": "sensor.template_octoprint_soc_temperature_in_c"
                                 },
                                 {
-                                    "entity": "sensor.octoprint_bed_temperature"
+                                    "entity": "sensor.template_octoprint_bed_temperature_in_c"
                                 },
                                 {
-                                    "entity": "sensor.octoprint_bed_target"
+                                    "entity": "sensor.template_octoprint_bed_target_in_c"
                                 },
                                 {
-                                    "entity": "sensor.octoprint_tool_0_temperature"
+                                    "entity": "sensor.template_octoprint_tool_0_temperature_in_c"
                                 },
                                 {
-                                    "entity": "sensor.octoprint_tool_0_target"
-                                },
-                                {
-                                    "entity": "sensor.octoprint_tool_0_target_2"
+                                    "entity": "sensor.template_octoprint_tool_0_target_2_in_c"
                                 },
                                 {
                                     "entity": "binary_sensor.octoprint_connected"
@@ -3152,62 +3159,16 @@
                             "state_color": true
                         },
                         {
-                            "entity": "sensor.octoprint_bed_temperature",
+                            "entity": "sensor.template_octoprint_bed_temperature_in_c",
                             "theme": "Dark - Green",
                             "type": "sensor",
                             "unit": "\u00b0C"
                         },
                         {
-                            "entity": "sensor.octoprint_tool_0_temperature",
+                            "entity": "sensor.template_octoprint_tool_0_temperature_in_c",
                             "theme": "Dark - Green",
                             "type": "sensor",
                             "unit": "\u00b0C"
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "sensor.octoprint_current_state",
-                                    "name": "Current State"
-                                },
-                                {
-                                    "entity": "sensor.octoprint_estimated_finish_time",
-                                    "name": "Estimated Finish Time"
-                                },
-                                {
-                                    "entity": "sensor.octoprint_job_percentage",
-                                    "name": "Job Percentage"
-                                },
-                                {
-                                    "entity": "binary_sensor.octoprint_printing_2",
-                                    "name": "Printing"
-                                },
-                                {
-                                    "entity": "binary_sensor.octoprint_printing_error",
-                                    "name": "Printing Error"
-                                },
-                                {
-                                    "entity": "sensor.octoprint_start_time",
-                                    "name": "Start Time"
-                                },
-                                {
-                                    "entity": "sensor.octoprint_actual_bed_temp",
-                                    "name": "Actual bed temp"
-                                },
-                                {
-                                    "entity": "sensor.octoprint_actual_tool0_temp",
-                                    "name": "Actual tool0 temp"
-                                },
-                                {
-                                    "entity": "sensor.octoprint_target_bed_temp",
-                                    "name": "Target bed temp"
-                                },
-                                {
-                                    "entity": "sensor.octoprint_target_tool0_temp",
-                                    "name": "Target tool0 temp"
-                                }
-                            ],
-                            "title": "OctoPrint"
                         },
                         {
                             "type": "entities",
@@ -3586,7 +3547,7 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "sensor.lock_backdoor_bat_level"
+                                    "entity": "sensor.template_lock_backdoor_bat_level"
                                 },
                                 {
                                     "entity": "alert.lock_back_door_notify_low_battery"
@@ -3619,6 +3580,18 @@
                             "show_header_toggle": false,
                             "title": "Battery",
                             "type": "entities"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.back_door_battery"
+                                },
+                                {
+                                    "entity": "sensor.front_door_battery"
+                                }
+                            ],
+                            "title": "Doorbell Batteries"
                         },
                         {
                             "type": "button",
