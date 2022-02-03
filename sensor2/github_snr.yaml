@@ -13,3 +13,5 @@
         name: "ThermoPI Repo"
       - path: "SirGoodenough/ThermoPI-Furnace"
         name: "ThermoPI-Furnace Repo"
+      - path: "SirGoodenough/HA_Blueprints"
+        name: "Blueprints Repo"
