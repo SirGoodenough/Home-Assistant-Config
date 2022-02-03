@@ -1,0 +1,32 @@
+- sensor:
+#####################################################
+## HVAC Template Sensors                           ##
+#####################################################
+  - name: LRthermostat
+    unique_id: 1ca8aa2c-1fad-4c4b-99e7-4cf4dd91aa0b
+    state: "{{ state_attr('climate.living_room_2', 'current_temperature') }}"
+    unit_of_measurement: "°F"
+    icon: "mdi:thermostat-box"
+
+  - name: "LRthermostat Heat State"
+    unique_id: c21b57a7-34df-483b-8521-4844a04fe49d
+    state: "{{ state_attr('climate.living_room_2', 'hvac_action') }}"
+    icon: "mdi:hvac"
+
+  - name: "LRthermostat Fan Mode"
+    unique_id: b281ed7b-7a2a-427d-b699-fba4370b6bd3
+    state: "{{ state_attr('climate.living_room_2', 'fan_action') }}"
+    icon: "mdi:fan-auto"
+
+  - name: BRthermostat
+    unique_id: 850df15c-a1fb-4832-a29e-18fcaf3d3b61
+    state: "{{ state_attr('climate.gemodule5384', 'current_temperature') }}"
+    unit_of_measurement: "°F"
+    icon: "mdi:thermostat-box"
+
+  - name: "BRthermostat Cool Mode"
+    unique_id: 0a26fddd-d1ec-48fc-9984-61feb1d1e5c1
+    state: "{{ state_attr('climate.gemodule5384', 'hvac_action') }}"
+    icon: "mdi:air-conditioner"
+
+

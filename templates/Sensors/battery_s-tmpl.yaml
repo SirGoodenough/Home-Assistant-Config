@@ -1,0 +1,16 @@
+- sensor:
+  ####################################################
+  #  Battery                                         #
+  ####################################################
+  - unique_id: lock_backdoor_bat_level
+    attributes:
+      friendly_name: "Lock BackDoor Battery Level"
+    device_class: battery
+    unit_of_measurement: "%"
+    state: >-
+      {% if states.zwave.kwikset_touchpad_electronic_deadbolt.attributes.battery_level is defined %}
+        {{ states.zwave.kwikset_touchpad_electronic_deadbolt.attributes.battery_level }}
+      {% else %}
+        "-1"
+      {% endif %}
+
