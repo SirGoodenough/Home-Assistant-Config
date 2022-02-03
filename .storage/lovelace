@@ -3027,7 +3027,8 @@
                     "cards": [
                         {
                             "type": "entity",
-                            "entity": "sensor.octoprint_print_file"
+                            "entity": "sensor.template_octoprint_print_file_short",
+                            "icon": "mdi:file-check"
                         },
                         {
                             "aspect_ratio": "0%",
@@ -3061,7 +3062,7 @@
                                     "entity": "sensor.template_octoprint_tool_0_target_2_in_c"
                                 },
                                 {
-                                    "entity": "sensor.octoprint_soc_temperature"
+                                    "entity": "sensor.template_octoprint_soc_temperature_in_c"
                                 }
                             ],
                             "hours_to_show": 12,
@@ -3142,7 +3143,7 @@
                                     "entity": "sensor.octoprint_print_estimated_time"
                                 },
                                 {
-                                    "entity": "sensor.octoprint_print_file"
+                                    "entity": "sensor.template_octoprint_print_file_short"
                                 },
                                 {
                                     "entity": "sensor.octoprint_print_status"
@@ -3169,17 +3170,6 @@
                             "theme": "Dark - Green",
                             "type": "sensor",
                             "unit": "\u00b0C"
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "sensor.tarantula_time_elapsed"
-                                },
-                                {
-                                    "entity": "sensor.tarantula_time_remaining"
-                                }
-                            ]
                         }
                     ],
                     "path": "3d",
@@ -3197,10 +3187,10 @@
                                     "entity": "light.b_porch_socket"
                                 },
                                 {
-                                    "entity": "sensor.lock_back_door_mode"
+                                    "entity": "sensor.template_lock_back_door_mode"
                                 },
                                 {
-                                    "entity": "sensor.lock_backdoor_bat_level"
+                                    "entity": "sensor.template_lock_backdoor_bat_level"
                                 },
                                 {
                                     "entity": "sensor.kwikset_touchpad_electronic_deadbolt_alarm_type"
@@ -4231,73 +4221,73 @@
                             "cards": [
                                 {
                                     "type": "sensor",
-                                    "entity": "sensor.automation_count",
+                                    "entity": "sensor.template_automation_count",
                                     "name": "Automat",
                                     "icon": "mdi:check-bold"
                                 },
                                 {
                                     "type": "sensor",
-                                    "entity": "sensor.binary_sensor_count",
+                                    "entity": "sensor.template_binary_sensor_count",
                                     "name": "BinarySens",
                                     "icon": "mdi:check-bold"
                                 },
                                 {
                                     "type": "sensor",
-                                    "entity": "sensor.camera_count",
+                                    "entity": "sensor.template_camera_count",
                                     "name": "Cameras",
                                     "icon": "mdi:check-bold"
                                 },
                                 {
                                     "type": "sensor",
-                                    "entity": "sensor.entities_count",
+                                    "entity": "sensor.template_entities_count",
                                     "name": "Entitys",
                                     "icon": "mdi:check-bold"
                                 },
                                 {
                                     "type": "sensor",
-                                    "entity": "sensor.group_count",
+                                    "entity": "sensor.template_group_count",
                                     "name": "Groups",
                                     "icon": "mdi:check-bold"
                                 },
                                 {
                                     "type": "sensor",
-                                    "entity": "sensor.lights_count",
+                                    "entity": "sensor.template_lights_count",
                                     "name": "Lights",
                                     "icon": "mdi:check-bold"
                                 },
                                 {
                                     "type": "sensor",
-                                    "entity": "sensor.media_player_count",
+                                    "entity": "sensor.template_media_player_count",
                                     "name": "MediaPlay",
                                     "icon": "mdi:check-bold"
                                 },
                                 {
                                     "type": "sensor",
-                                    "entity": "sensor.script_count",
+                                    "entity": "sensor.template_script_count",
                                     "name": "Scripts",
                                     "icon": "mdi:check-bold"
                                 },
                                 {
                                     "type": "sensor",
-                                    "entity": "sensor.sensor_count",
+                                    "entity": "sensor.template_sensor_count",
                                     "name": "Sensors",
                                     "icon": "mdi:check-bold"
                                 },
                                 {
                                     "type": "sensor",
-                                    "entity": "sensor.switch_count",
+                                    "entity": "sensor.template_switch_count",
                                     "name": "Switches",
                                     "icon": "mdi:check-bold"
                                 },
                                 {
                                     "type": "sensor",
-                                    "entity": "sensor.button_count",
+                                    "entity": "sensor.template_button_count",
                                     "name": "Buttons",
                                     "icon": "mdi:check-bold"
                                 },
                                 {
                                     "type": "sensor",
-                                    "entity": "sensor.inputs_count",
+                                    "entity": "sensor.template_inputs_count",
                                     "name": "Helpers",
                                     "icon": "mdi:check-bold"
                                 }

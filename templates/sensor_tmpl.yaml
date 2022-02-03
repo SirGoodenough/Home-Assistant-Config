@@ -6,7 +6,7 @@
     attributes:
       friendly_name: "Printing Time Elapsed"
     state: >-
-      {% if states('sensor.tarantula_time_elapsed') != "unknown" %}
+      {% if (is_number('sensor.tarantula_time_elapsed')) %}
         "{{ states('sensor.tarantula_time_elapsed') | int | timestamp_custom('%H:%M:%S', 0) }}"
       {% else %} 
         "{{ 0 | timestamp_custom('%H:%M:%S', 0) }}"
@@ -15,44 +15,68 @@
     attributes:
       friendly_name: "Printing Time Remaining"
     state: >-
-      {% if states('sensor.tarantula_time_remaining') != "unknown" %}
+      {% if (is_number('sensor.tarantula_time_remaining')) %}
         "{{ states('sensor.tarantula_time_remaining') | int | timestamp_custom('%H:%M:%S', 0) }}"
       {% else %} 
         "{{ 0 | timestamp_custom('%H:%M:%S', 0) }}"
       {% endif %}
 
+  - unique_id: octoprint_print_file_short
+    state: "{{ states('sensor.octoprint_print_file') | replace('TEVOTPRO-','') }}"
+    attributes:
+      friendly_name: "3D Print File"
+
   - unique_id: octoprint_soc_temperature_in_c
-    state: '{{ "%.2f"|format((( states("sensor.octoprint_soc_temperature") | float ) -32) *5/9) }}'
+    state: >-
+      {% if (is_number('sensor.octoprint_soc_temperature')) %}
+        '{{ "%.2f"|format((( states("sensor.octoprint_soc_temperature") | float ) -32) *5/9) }}'
+      {% else %} 
+        0.0
+      {% endif %}
     attributes:
       friendly_name: "3D PI CPU"
     device_class: temperature
     unit_of_measurement: C
   - unique_id: octoprint_bed_target_in_c
-    state: '{{ "%.1f"|format((( states("sensor.octoprint_bed_target") | float ) -32) *5/9) }}'
+    state: >-
+      {% if (is_number('sensor.octoprint_bed_target')) %}
+        '{{ "%.2f"|format((( states("sensor.octoprint_bed_target") | float ) -32) *5/9) }}'
+      {% else %} 
+        0.0
+      {% endif %}
     attributes:
       friendly_name: "3D Bed Target"
     device_class: temperature
     unit_of_measurement: C
   - unique_id: octoprint_tool_0_temperature_in_c
-    state: '{{ "%.1f"|format((( states("sensor.octoprint_tool_0_temperature") | float ) -32) *5/9) }}'
+    state: >-
+      {% if (is_number('sensor.octoprint_tool_0_temperature')) %}
+        '{{ "%.2f"|format((( states("sensor.octoprint_tool_0_temperature") | float ) -32) *5/9) }}'
+      {% else %} 
+        0.0
+      {% endif %}
     attributes:
       friendly_name: "3D Extruder"
     device_class: temperature
     unit_of_measurement: C
   - unique_id: octoprint_bed_temperature_in_c
-    state: '{{ "%.1f"|format((( states("sensor.octoprint_bed_temperature") | float ) -32) *5/9) }}'
+    state: >-
+      {% if (is_number('sensor.octoprint_bed_temperature')) %}
+        '{{ "%.2f"|format((( states("sensor.octoprint_bed_temperature") | float ) -32) *5/9) }}'
+      {% else %} 
+        0.0
+      {% endif %}
     attributes:
       friendly_name: "3D Bed"
     device_class: temperature
     unit_of_measurement: C
-  - unique_id: octoprint_tool_0_target_in_c
-    state: '{{ "%.1f"|format((( states("sensor.octoprint_tool_0_target") | float ) -32) *5/9) }}'
-    attributes:
-      friendly_name: "3D Extruder Target"
-    device_class: temperature
-    unit_of_measurement: C
   - unique_id: octoprint_tool_0_target_2_in_c
-    state: '{{ "%.1f"|format((( states("sensor.octoprint_tool_0_target_2") | float ) -32) *5/9) }}'
+    state: >-
+      {% if (is_number('sensor.octoprint_tool_0_target_2')) %}
+        '{{ "%.2f"|format((( states("sensor.octoprint_tool_0_target_2") | float ) -32) *5/9) }}'
+      {% else %} 
+        0.0
+      {% endif %}
     attributes:
       friendly_name: "3D Extruder Target"
     device_class: temperature
@@ -114,3 +138,201 @@
       {% else %}
         "-1"
       {% endif %}
+
+  ####################################################
+  #  HA Sensors courtesy Thanasis:                   #
+  ####################################################
+  - unique_id: automation_count
+    state: '{{ states.automation | count }}'
+    attributes:
+      friendly_name: "Aut"
+  - unique_id: binary_sensor_count
+    state: '{{ states.binary_sensor | count }}'
+    attributes:
+      friendly_name: "BiSn"
+  - unique_id: camera_count
+    state: '{{ states.camera | count }}'
+    attributes:
+      friendly_name: "Cam"
+  - unique_id: entities_count
+    state: "{{ states | map(attribute='entity_id') | list | count}}"
+    attributes:
+      friendly_name: "Ent"
+  - unique_id: group_count
+    state: '{{ states.group | count }}'
+    attributes:
+      friendly_name: "Grp"
+  - unique_id: inputs_count
+    state: "{{ states | map(attribute='entity_id') | map('regex_search','^input') | select('true') | list | count }}"
+    attributes:
+      friendly_name: "Inpt"
+  - unique_id: lights_count
+    state: '{{ states.light | count }}'
+    attributes:
+      friendly_name: "Lte"
+  - unique_id: media_player_count
+    state: '{{ states.media_player | count }}'
+    attributes:
+      friendly_name: "MPly"
+  - unique_id: script_count
+    state: '{{ states.script | count }}'
+    attributes:
+      friendly_name: "Scpt"
+  - unique_id: sensor_count
+    state: '{{ states.sensor | count }}'
+    attributes:
+      friendly_name: "Sen"
+  - unique_id: switch_count
+    state: '{{ states.switch | count }}'
+    attributes:
+      friendly_name: "Swt"
+  - unique_id: button_count
+    state: '{{ states.button | count }}'
+    attributes:
+      friendly_name: "But"
+
+  ####################################################
+  #  Lights                                          #
+  ####################################################
+  - unique_id: allow_xmas_lights
+    state:  >
+      {% set today = states('sensor.date').split('-') %}
+      {% set month = today[1]|int %}
+      {% set day = today[2]|int %}
+      {{ month > 10 or
+          month == 1 and day <= 5 }}
+
+  - unique_id: lock_back_door_mode
+    attributes:
+      friendly_name: "Lock Back Door Mode"
+    icon: >-
+      {% if is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "21") %}
+        mdi:lock-outline
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "22") %}
+        mdi:lock-open-outline
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "26") %}
+        mdi:lock
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "27") %}
+        mdi:lock
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "17") %}
+        mdi:lock-alert-outline
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "18") %}
+        mdi:account-lock-outline
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "19") %}
+        mdi:account-lock-open-outline
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "23") %}
+        mdi:emoticon-dead
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "24") %}
+        mdi:lock
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "25") %}
+        mdi:lock-open
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "112") %}
+        mdi:lock-plus
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "32") %}
+        mdi:lock-remove
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "161") %}
+        mdi:lock-alert-outline
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "162") %}
+        mdi:lock-alert
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "167") %}
+        mdi:battery-30
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "168") %}
+        mdi:battery-10
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "169") %}
+        mdi:battery-alert-variant
+      {% else %}
+        mdi:cancel
+      {% endif %}
+    state: >-
+      {% if is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "21") %}
+        Manual Lock
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "22") %}
+        Manual Unlock
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "26") %}
+        Auto Jammed
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "27") %}
+        Auto Locked
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "17") %}
+        Keypad Jammed
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "18") %}
+        {% if is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 1) %}
+          Locked by House
+        {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 2) %}
+          Locked by Dad
+        {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 3) %}
+          Locked by Mom
+        {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 4) %}
+          Locked by Carol
+        {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 5) %}
+          Locked by Bill
+        {% else %}
+          "Unknown Code Lock " {{ states('sensor.kwikset_touchpad_electronic_deadbolt_alarm_level') }}
+        {% endif %}
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "19") %}
+        {% if is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 1) %}
+          Unlocked by House
+        {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 2) %}
+          Unlocked by Dad
+        {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 3) %}
+          Unlocked by Mom
+        {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 4) %}
+          Unlocked by Carol
+        {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 5) %}
+          Unlocked by Bill
+        {% else %}
+          "Unknown Code Lock " {{ states('sensor.kwikset_touchpad_electronic_deadbolt_alarm_level') }}
+        {% endif %}
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "23") %}
+        Controller Jammed
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "24") %}
+        Controller Locked
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "25") %}
+        Controller Opened
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "112") %}
+        New User Code " {{ states('sensor.kwikset_touchpad_electronic_deadbolt_alarm_level') }}
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "32") %}
+        All User Codes deleted
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "161") %}
+        Failed User Code attempt
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "162") %}
+        {% if is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 1) %}
+          Locked by House
+        {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 2) %}
+          Locked by Dad
+        {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 3) %}
+          Locked by Mom
+        {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 4) %}
+          Locked by Carol
+        {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 5) %}
+          Locked by Bill
+        {% else %}
+          Unknown Code Lock " {{ states('sensor.kwikset_touchpad_electronic_deadbolt_alarm_level') }}
+        {% endif %}
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "167") %}
+        Low battery level
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "168") %}
+        Critical battery level
+      {% elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "169") %}
+        Battery level too low to operate lock
+      {% else %}
+        {{ states("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type") }}
+      {% endif %}
+
+# 021 001 Lock Secured using Keyed cylinder or inside thumb-turn
+# 022 001 Lock Un-Secured using Keyed cylinder or inside thumb-turn
+# 026 001 Lock Auto Secured – Bolt Jammed (Not fully extended)
+# 027 001 Lock Auto Secured – Successful (Fully extended)
+# 017 001 Lock Secured at Keypad – Bolt Jammed (Not fully extended)
+# 018 000 or User-ID#* Lock Secured at Keypad – Successful (Fully extended)
+# 019 User-ID#* Lock Un-Secured by User (User-ID) at Keypad
+# 023 001 Lock Secured by Controller – Bolt Jammed (Not fully extended)
+# 024 001 Lock Secured by Controller – Successful (Fully extended)
+# 025 001 Lock Un-Secured by Controller – Successful (Fully retracted)
+# 112 User-ID#* New User Code (User-ID#) added to the lock
+# 032 001 All User Codes deleted from lock
+# 161 001 Failed User Code attempt at Keypad
+# 162 User-ID#* Attempted access by user (User-ID#) outside of scheduled
+# 167 001 Low battery level
+# 168 001 Critical battery level
+# 169 001 Battery level too low to operate lock
+

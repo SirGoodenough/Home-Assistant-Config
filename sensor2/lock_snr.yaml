@@ -2,43 +2,43 @@
   ####################################################
   #  Locks                                           #
   ####################################################
-  - platform: template
-    sensors:
-      lock_back_door_mode:
-        friendly_name: "Lock Back Door Mode"
-        icon_template: >-
-          {%- if is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "19") -%}
-            mdi:lock-open-outline
-          {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "21") -%}
-            mdi:lock-outline
-          {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "22") -%}
-            mdi:lock-open-outline
-          {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "23") -%}
-            mdi:emoticon-dead
-          {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "24") -%}
-            mdi:lock
-          {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "25") -%}
-            mdi:lock-open
-          {%- else -%}
-            mdi:cancel
-          {%- endif -%}
-        value_template: >-
-          {%- if is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "19") -%}
-            {%- if is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 1) -%}
-              "Unlocked by House"
-            {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 2) -%}
-              "Unlocked by Dad"
-            {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 3) -%}
-              "Unlocked by Mom"
-            {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 4) -%}
-              "Unlocked by Carol"
-            {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 5) -%}
-              "Unlocked by Bill"       
-            {%- else -%}
-              "Unknown Code Unlock"
-            {%- endif -%}
-          {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "23") -%}
-            "Deadbolt Jammed"
-          {%- else -%}
-            {{ states.sensor.kwikset_touchpad_electronic_deadbolt_alarm_type.state }} 
-          {%- endif -%}
+  # - platform: template
+  #   sensors:
+  #     lock_back_door_mode:
+  #       friendly_name: "Lock Back Door Mode"
+  #       icon_template: >-
+  #         {%- if is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "19") -%}
+  #           mdi:lock-open-outline
+  #         {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "21") -%}
+  #           mdi:lock-outline
+  #         {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "22") -%}
+  #           mdi:lock-open-outline
+  #         {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "23") -%}
+  #           mdi:emoticon-dead
+  #         {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "24") -%}
+  #           mdi:lock
+  #         {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "25") -%}
+  #           mdi:lock-open
+  #         {%- else -%}
+  #           mdi:cancel
+  #         {%- endif -%}
+  #       value_template: >-
+  #         {%- if is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "19") -%}
+  #           {%- if is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 1) -%}
+  #             "Unlocked by House"
+  #           {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 2) -%}
+  #             "Unlocked by Dad"
+  #           {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 3) -%}
+  #             "Unlocked by Mom"
+  #           {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 4) -%}
+  #             "Unlocked by Carol"
+  #           {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_level", 5) -%}
+  #             "Unlocked by Bill"       
+  #           {%- else -%}
+  #             "Unknown Code Unlock"
+  #           {%- endif -%}
+  #         {%- elif is_state("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type", "23") -%}
+  #           "Deadbolt Jammed"
+  #         {%- else -%}
+  #           {{ states.sensor.kwikset_touchpad_electronic_deadbolt_alarm_type.state }} 
+  #         {%- endif -%}
