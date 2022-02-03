@@ -318,6 +318,9 @@
         {{ states("sensor.kwikset_touchpad_electronic_deadbolt_alarm_type") }}
       {% endif %}
 
+##### Kwikset Lock Alarm Codes:
+##### source:
+  ##### http://s7d5.scene7.com/is/content/BDHHI/ApplicationNote-UsingASCII-Z-Wave-Locks
 # 021 001 Lock Secured using Keyed cylinder or inside thumb-turn
 # 022 001 Lock Un-Secured using Keyed cylinder or inside thumb-turn
 # 026 001 Lock Auto Secured – Bolt Jammed (Not fully extended)
