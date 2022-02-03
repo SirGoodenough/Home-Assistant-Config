@@ -1,6 +1,0 @@
----
-  host: !secret Tarantula
-  name: Tarantula
-  api_key: !secret octo_API
-  number_of_tools: 1
-  bed: true
