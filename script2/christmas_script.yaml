@@ -9,7 +9,7 @@
         - alias: "Don't light me up if it's not enabled"
           conditions:
           - condition: state
-            entity_id: sensor.allow_xmas_lights
+            entity_id: sensor.template_allow_xmas_lights
             state: "True"
           sequence:
           - service: light.turn_off

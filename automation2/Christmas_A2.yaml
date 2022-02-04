@@ -28,7 +28,7 @@
       to: "on"
   condition:
     - condition: state
-      entity_id: sensor.allow_xmas_lights
+      entity_id: sensor.template_allow_xmas_lights
       state: "True"
   action:
     - service: script.turn_on
@@ -44,7 +44,7 @@
       to: "on"
   condition:
     - condition: state
-      entity_id: sensor.allow_xmas_lights
+      entity_id: sensor.template_allow_xmas_lights
       state: "True"
   action:
     - service: script.turn_on
@@ -67,7 +67,7 @@
       to: "on"
   condition:
     - condition: state
-      entity_id: sensor.allow_xmas_lights
+      entity_id: sensor.template_allow_xmas_lights
       state: "True"
   action:
     - service: switch.turn_on
@@ -111,7 +111,7 @@
     condition: and
     conditions:
       - condition: state
-        entity_id: sensor.allow_xmas_lights
+        entity_id: sensor.template_allow_xmas_lights
         state: "True"
       - condition: state
         entity_id: binary_sensor.dark_outside
@@ -156,10 +156,10 @@
     - platform: homeassistant
       event: start
     - platform: state
-      entity_id: sensor.allow_xmas_lights
+      entity_id: sensor.template_allow_xmas_lights
   action:
     - service: >
-        {% if is_state('sensor.allow_xmas_lights', 'True') %}
+        {% if is_state('sensor.template_allow_xmas_lights', 'True') %}
           automation.turn_on
         {% else %}
           automation.turn_off
