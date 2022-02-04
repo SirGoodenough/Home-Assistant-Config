@@ -14,6 +14,10 @@
     state: '{{ states.camera | count }}'
     attributes:
       friendly_name: "Cam"
+  - unique_id: button_count
+    state: '{{ states.button | count }}'
+    attributes:
+      friendly_name: "But"
   - unique_id: entities_count
     state: "{{ states | map(attribute='entity_id') | list | count}}"
     attributes:
@@ -46,8 +50,8 @@
     state: '{{ states.switch | count }}'
     attributes:
       friendly_name: "Swt"
-  - unique_id: button_count
-    state: '{{ states.button | count }}'
+  - unique_id: template_count
+    state: "{{ states | map(attribute='entity_id') | map('regex_search','sensor.template_') | select('true') | list | count }}"
     attributes:
-      friendly_name: "But"
+      friendly_name: "Tmpl"
 

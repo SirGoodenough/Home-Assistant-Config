@@ -4089,6 +4089,9 @@
                                 },
                                 {
                                     "entity": "button.tasmota_firsts"
+                                },
+                                {
+                                    "entity": "script.tasmota_ez_button_for_update_and_restart_all_2022_01_07a"
                                 }
                             ],
                             "show_header_toggle": true,
@@ -4269,12 +4272,6 @@
                                 },
                                 {
                                     "type": "sensor",
-                                    "entity": "sensor.template_sensor_count",
-                                    "name": "Sensors",
-                                    "icon": "mdi:check-bold"
-                                },
-                                {
-                                    "type": "sensor",
                                     "entity": "sensor.template_switch_count",
                                     "name": "Switches",
                                     "icon": "mdi:check-bold"
@@ -4290,6 +4287,16 @@
                                     "entity": "sensor.template_inputs_count",
                                     "name": "Helpers",
                                     "icon": "mdi:check-bold"
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.template_sensor_count",
+                                    "name": "Sensors",
+                                    "icon": "mdi:check-bold"
+                                },
+                                {
+                                    "type": "entity",
+                                    "entity": "sensor.template_template_count"
                                 }
                             ],
                             "square": false

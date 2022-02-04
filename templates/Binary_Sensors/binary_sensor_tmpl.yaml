@@ -1,4 +1,7 @@
 - binary_sensor:
+  #####################################################
+  # Weather                                           #
+  #####################################################
   - name: 'Dark Outside'
     unique_id: ce7cb6b7-c666-494b-aa3c-4ed79b2f1092
     state: >
@@ -18,6 +21,12 @@
     delay_off:
       minutes: 7
     state: >
-      {% if states('sensor.wash_machine_energy_current') != "unavailable" %}
-        {{ states('sensor.wash_machine_energy_current') | float > 0.085 }}
+      {% if (is_number('sensor.wash_machine_energy_current')) %}
+        {% if (states('sensor.wash_machine_energy_current') | float > 0.085) %}
+          true
+        {% else %}
+          false
+        {% endif %}
+      {% else %}
+        false
       {% endif %}
