@@ -1,0 +1,26 @@
+---
+  ######################
+  # Mom Bedtime        #
+  ######################
+  bedtime_button_mom:
+    alias: Bedtime Button Mom
+    sequence:
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.mom_bedtime
+      - service: lock.lock
+        target:
+          entity_id: 
+            - lock.front_door
+            - lock.side_door
+            - lock.kwikset_touchpad_electronic_deadbolt_locked
+      - service: light.turn_on
+        entity_id: light.stairway_light
+
+      - delay: 00:02:00
+
+      - service: light.turn_off
+        entity_id: 
+          - light.livingroomlight
+          - light.mom_light
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.christmas
