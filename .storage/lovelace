@@ -772,9 +772,6 @@
                                 },
                                 {
                                     "entity": "binary_sensor.dark_outside"
-                                },
-                                {
-                                    "entity": "light.christmas_tree"
                                 }
                             ],
                             "show_header_toggle": true,
@@ -3065,19 +3062,18 @@
                                     "entity": "sensor.template_octoprint_soc_temperature_in_c"
                                 }
                             ],
-                            "hours_to_show": 12,
                             "refresh_interval": 1,
                             "title": "Temperature Display",
-                            "type": "history-graph"
+                            "type": "history-graph",
+                            "hours_to_show": 8
                         },
                         {
                             "entity": "switch.tarantula_power",
                             "hold_action": {
                                 "action": "call-service",
-                                "service": "switch.turn_off",
-                                "service_data": {
-                                    "entity_id": "switch.tarantula_power"
-                                }
+                                "service": "script.tarantula_clean_shutdown",
+                                "service_data": {},
+                                "target": {}
                             },
                             "icon": "mdi:printer-3d",
                             "icon_height": "70px",
