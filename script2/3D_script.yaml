@@ -24,3 +24,15 @@ show_tarantula_home_hub_image:
         entity_id: media_player.kitchen_speaker
         media_content_id: !secret 3D_Static
         media_content_type: "image/jpg"
+
+tarantula_shutdown:
+  sequence:
+    - alias: Turn off Octoprint first for clean exit.
+      service: switch.turn_off
+      data: 
+        entity_id: switch.octoprint_shutdown_system
+    - delay: 00:00:05
+    - alias: Turn off Printer wall wart last after delay.
+      service: switch.turn_off
+      data: 
+        entity_id: switch.tarantula_power
