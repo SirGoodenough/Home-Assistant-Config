@@ -138,6 +138,11 @@
                 "name": "Bed Sit",
                 "icon": "mdi:table-chair",
                 "id": "bed_sit"
+            },
+            {
+                "name": "mom_bedtime",
+                "icon": "mdi:bed-queen",
+                "id": "mom_bedtime"
             }
         ]
     }

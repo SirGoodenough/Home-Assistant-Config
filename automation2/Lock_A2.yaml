@@ -89,7 +89,10 @@
     action:
       - service: lock.lock
         target:
-          entity_id: all
+          entity_id: 
+            - lock.front_door
+            - lock.side_door
+            - lock.kwikset_touchpad_electronic_deadbolt_locked
       - delay: 5
       - service: input_boolean.turn_off
         target:

@@ -48,6 +48,9 @@
   #       minutes: 15
   #   action:
   #   - service: lock.lock
-  #     entity_id: group.all_locks
+  #     entity_id: 
+  #       - lock.front_door
+  #       - lock.side_door
+  #       - lock.kwikset_touchpad_electronic_deadbolt_locked
   #   - service: lights.turn_off
   #     entity_id: group.all_lights
