@@ -14,6 +14,7 @@ frontend: !include frontend.yaml
 history: !include history.yaml
 image:
 input_boolean:
+input_button:
 input_datetime:
 input_number:
 input_select:
