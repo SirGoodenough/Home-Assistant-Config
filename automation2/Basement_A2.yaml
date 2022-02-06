@@ -84,3 +84,18 @@
     - service: script.media_player_washer_alert
     - delay: 00:00:06
     - service: script.tts_wash_machine_done
+
+  ####################################################
+  # Basement Smoke Detector                          #
+  ####################################################
+  - id: fb27c45c-c4fb-4c5e-962c-99c19c55ff26
+    alias: Basement Smoke
+    initial_state: on
+    trigger:
+    - platform: state
+      entity_id: binary_sensor.basement_smoke_alarm
+      to: 'on'
+    action:
+    - service: script.media_player_fire_alert
+    - delay: 00:00:12
+    - service: script.tts_smoke_detected_in_the_basement

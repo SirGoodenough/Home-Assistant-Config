@@ -35,3 +35,22 @@ media_player_washer_alert:
       file_2_play: source://media_source/local/mp3/WashingMachine.mp3
       media_type: audio/mp3
   icon: mdi:washing-machine
+tts_smoke_detected_in_the_basement:
+  alias: TTS Smoke Detected in the Basement
+  use_blueprint:
+    path: SirGoodenough/tts_cloud_message_script.yaml
+    input:
+      speaker_language: en-US
+      speaker_target: media_player.common_group
+      announcement_message: 'Smoke Detected in the Basement! Smoke Detected in the
+        Basement! Smoke Detected in the Basement! Smoke Detected in the Basement! '
+      speaker_gender: female
+  icon: mdi:smoke-detector-alert-outline
+media_player_fire_alert:
+  alias: Media Player Fire Alert
+  use_blueprint:
+    path: SirGoodenough/play_media_file_script.yaml
+    input:
+      speaker_target: media_player.common_group
+      file_2_play: media-source://media_source/local/mp3/Buzzer.mp3
+  icon: mdi:fire-alert

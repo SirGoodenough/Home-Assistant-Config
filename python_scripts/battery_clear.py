@@ -9,6 +9,7 @@ sensors = [
     "BatteryLowFrontDoorI",
     "BatteryLowGarageO",
     "BatteryLowBackDoorI"
+    "BasementSmoke"
     ]
 for x in sensors:
     service_data = {'topic':'rf433/{}'.format(x), 'payload':'OFF', 'qos':1, 'retain':'true'}

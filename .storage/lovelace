@@ -65,6 +65,28 @@
                             "theme": "3ative_blue"
                         },
                         {
+                            "type": "conditional",
+                            "conditions": [
+                                {
+                                    "entity": "binary_sensor.basement_smoke_alarm",
+                                    "state": "on"
+                                }
+                            ],
+                            "card": {
+                                "type": "button",
+                                "tap_action": {
+                                    "action": "call-service",
+                                    "service": "python_script.battery_clear",
+                                    "service_data": {},
+                                    "target": {}
+                                },
+                                "entity": "binary_sensor.basement_smoke_alarm",
+                                "name": "Basement Smoke Alarm",
+                                "icon": "mdi:smoke-detector-alert",
+                                "theme": "dark_red"
+                            }
+                        },
+                        {
                             "entities": [
                                 {
                                     "entity": "sensor.sonoff_rf_bridge_2_si7021_temperature",
