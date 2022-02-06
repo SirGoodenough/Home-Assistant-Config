@@ -41,16 +41,16 @@ tts_smoke_detected_in_the_basement:
     path: SirGoodenough/tts_cloud_message_script.yaml
     input:
       speaker_language: en-US
-      speaker_target: media_player.common_group
+      speaker_gender: female
+      speaker_target: media_player.intercom_group
       announcement_message: 'Smoke Detected in the Basement! Smoke Detected in the
         Basement! Smoke Detected in the Basement! Smoke Detected in the Basement! '
-      speaker_gender: female
   icon: mdi:smoke-detector-alert-outline
 media_player_fire_alert:
   alias: Media Player Fire Alert
   use_blueprint:
     path: SirGoodenough/play_media_file_script.yaml
     input:
-      speaker_target: media_player.common_group
+      speaker_target: media_player.intercom_group
       file_2_play: media-source://media_source/local/mp3/Buzzer.mp3
   icon: mdi:fire-alert

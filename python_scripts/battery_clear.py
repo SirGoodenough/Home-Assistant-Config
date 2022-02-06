@@ -8,7 +8,7 @@ sensors = [
     "BatteryLowGarageSide",
     "BatteryLowFrontDoorI",
     "BatteryLowGarageO",
-    "BatteryLowBackDoorI"
+    "BatteryLowBackDoorI",
     "BasementSmoke"
     ]
 for x in sensors:
