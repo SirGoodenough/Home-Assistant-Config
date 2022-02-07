@@ -3,7 +3,7 @@
   #  Build on the standard sensor to produce one that can be customized  #
   ########################################################################
   - unique_id: time_formatted
-    state: "{{ as_timestamp(states('sensor.date_time_iso')) | timestamp_custom('%A %B %-m, %I:%M %p') }}"
+    state: "{{ as_timestamp(states('sensor.date_time_iso')) | timestamp_custom('%A %B %-m, %I:%M %p, default=0') }}"
     attributes:
       friendly_name: "Date and time"
     icon: mdi:calendar-clock
