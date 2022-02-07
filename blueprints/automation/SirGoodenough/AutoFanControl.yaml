@@ -95,9 +95,10 @@ variables:
   temp_gap_2_to_3_var: !input 'temp_gap_2_to_3'
   room_temp_now_var: !input 'room_temp_now'
   room_set_temp_var: !input 'room_set_temp'
-  room_temp_now_val: '{{ expand(room_temp_now_var)[0].state | float }}'
-  room_set_temp_val: '{{ expand(room_set_temp_var)[0].state | float - temp_gap_var
-    | float }}'
+  room_temp_now_val: '{{ expand(room_temp_now_var)[0].state | float(0) }}'
+  room_set_temp_val: >
+   {{ expand(room_set_temp_var)[0].state | float(0) 
+     - temp_gap_var | float(0) }}'
 mode: restart
 trigger:
 - platform: state

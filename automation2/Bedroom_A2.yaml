@@ -146,7 +146,7 @@
       service: climate.set_temperature
       data:
         entity_id: climate.gemodule5384
-        temperature: "{{ states.input_number.bedroom_auto_temp.state | float }}"
+        temperature: "{{ states.input_number.bedroom_auto_temp.state | float(0) }}"
 
 - id:
     d3edc532-448c-432c-84c7-b2a0dc32fd84
