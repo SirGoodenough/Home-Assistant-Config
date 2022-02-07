@@ -35,4 +35,6 @@ tarantula_shutdown:
     - alias: Turn off Printer wall wart last after delay.
       service: switch.turn_off
       data: 
-        entity_id: switch.tarantula_power
+        entity_id: 
+          - switch.plug2
+          - switch.tarantula_power

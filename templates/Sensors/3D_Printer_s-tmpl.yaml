@@ -2,69 +2,72 @@
 #####################################################
 ## 3D Printer Template Sensors                     ##
 #####################################################
-  # - unique_id: octoprint_time_elapsed_format
-  #   attributes:
-  #     friendly_name: "Printing Time Elapsed"
-  #   state: >-
-  #     {{ iif ( states('sensor.tarantula_time_elapsed') != "unavailable",
-  #       states('sensor.tarantula_time_elapsed') | int | timestamp_custom('%H:%M:%S', 0),
-  #       0 | timestamp_custom('%H:%M:%S', 0) ) }}
-  # - unique_id: octoprint_time_remaining_format
-  #   attributes:
-  #     friendly_name: "Printing Time Remaining"
-  #   state: >-
-  #     {{ iif ( states('sensor.tarantula_time_remaining') != "unavailable",
-  #       states('sensor.tarantula_time_remaining') | int | timestamp_custom('%H:%M:%S', 0),
-  #       0 | timestamp_custom('%H:%M:%S', 0) ) }}
-
   - unique_id: octoprint_print_file_short
     state: "{{ states('sensor.octoprint_print_file') | replace('TEVOTPRO-','') | replace('.gcode','') }}"
     attributes:
       friendly_name: "3D Print File"
 
   - unique_id: octoprint_soc_temperature_in_c
-    state: >-
-      {{ iif (states('sensor.octoprint_soc_temperature') != "unavailable",
-        "%.2f"|format((( states("sensor.octoprint_soc_temperature") | float ) -32) *5/9),
-        0.0) }}
+    state: >
+      {{ "%.2f"|format((( states("sensor.octoprint_soc_temperature")
+        | float(0) ) -32) *5/9) }}
+    availability: >
+      {% set items = ['sensor.octoprint_soc_temperature'] %}
+      {{ expand(items)|rejectattr('state','in',['unknown','unavailable'])
+        |list|count == items|count }}
     attributes:
       friendly_name: "3D PI CPU"
     device_class: temperature
     unit_of_measurement: C
+    
   - unique_id: octoprint_bed_target_in_c
-    state: >-
-      {{ iif (states('sensor.octoprint_bed_target') != "unavailable",
-        "%.2f"|format((( states("sensor.octoprint_bed_target") | float ) -32) *5/9),
-        0.0) }}
+    state: >
+      {{ "%.2f"|format((( states("sensor.octoprint_bed_target")
+        | float(default=0) ) -32) *5/9) }}
+    availability: >
+      {% set items = ['sensor.octoprint_bed_target'] %}
+      {{ expand(items)|rejectattr('state','in',['unknown','unavailable'])
+        |list|count == items|count }}
     attributes:
       friendly_name: "3D Bed Target"
     device_class: temperature
     unit_of_measurement: C
+
   - unique_id: octoprint_tool_0_temperature_in_c
-    state: >-
-      {{ iif (states('sensor.octoprint_tool_0_temperature') != "unavailable",
-        "%.2f"|format((( states("sensor.octoprint_tool_0_temperature") | float ) -32) *5/9),
-        0.0) }}
+    state: >
+      {{ "%.2f"|format((( states("sensor.octoprint_tool_0_temperature") 
+        | float(0) ) -32) *5/9) }}
+    availability: >
+      {% set items = ['sensor.octoprint_tool_0_temperature'] %}
+      {{ expand(items)|rejectattr('state','in',['unknown','unavailable'])
+        |list|count == items|count }}
     attributes:
       friendly_name: "3D Extruder"
     device_class: temperature
     unit_of_measurement: C
+
   - unique_id: octoprint_bed_temperature_in_c
-    state: >-
-      {{ iif (states('sensor.octoprint_bed_temperature') != "unavailable",
-        "%.2f"|format((( states("sensor.octoprint_bed_temperature") | float ) -32) *5/9),
-        0.0) }}
+    state: >
+      {{ "%.2f"|format((( states("sensor.octoprint_bed_temperature") 
+        | float(default=0) ) -32) *5/9) }}
+    availability: >
+      {% set items = ['sensor.octoprint_bed_temperature'] %}
+      {{ expand(items)|rejectattr('state','in',['unknown','unavailable'])
+        |list|count == items|count }}
     attributes:
       friendly_name: "3D Bed"
     device_class: temperature
     unit_of_measurement: C
+
   - unique_id: octoprint_tool_0_target_2_in_c
-    state: >-
-      {{ iif (states('sensor.octoprint_tool_0_target_2') != "unavailable",
-        "%.2f"|format((( states("sensor.octoprint_tool_0_target_2") | float ) -32) *5/9),
-        0.0) }}
+    state: >
+      {{ "%.2f"|format((( states("sensor.octoprint_tool_0_target_2") 
+        | float(default=0) ) -32) *5/9) }}
+    availability: >
+      {% set items = ['sensor.octoprint_tool_0_target_2'] %}
+      {{ expand(items)|rejectattr('state','in',['unknown','unavailable'])
+        |list|count == items|count }}
     attributes:
       friendly_name: "3D Extruder Target"
     device_class: temperature
     unit_of_measurement: C
-

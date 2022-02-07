@@ -3093,7 +3093,7 @@
                             "entity": "switch.tarantula_power",
                             "hold_action": {
                                 "action": "call-service",
-                                "service": "script.tarantula_clean_shutdown",
+                                "service": "script.tarantula_shutdown",
                                 "service_data": {},
                                 "target": {}
                             },
@@ -3105,8 +3105,12 @@
                             "tap_action": {
                                 "action": "call-service",
                                 "service": "switch.turn_on",
-                                "service_data": {
-                                    "entity_id": "switch.tarantula_power"
+                                "service_data": {},
+                                "target": {
+                                    "entity_id": [
+                                        "switch.plug2",
+                                        "switch.tarantula_power"
+                                    ]
                                 }
                             },
                             "type": "button",
