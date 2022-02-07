@@ -3,7 +3,9 @@
 ## 3D Printer Template Sensors                     ##
 #####################################################
   - unique_id: octoprint_print_file_short
-    state: "{{ states('sensor.octoprint_print_file') | replace('TEVOTPRO-','') | replace('.gcode','') }}"
+    state: >
+      {{ states('sensor.octoprint_print_file') | replace('TEVOTPRO-','')
+        | replace('.gcode','') }}
     attributes:
       friendly_name: "3D Print File"
 
