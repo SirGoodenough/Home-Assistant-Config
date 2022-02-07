@@ -3,7 +3,7 @@ tts_first_flush:
   use_blueprint:
     path: SirGoodenough/tts_cloud_message_script.yaml
     input:
-      speaker_language: en-AU
+      speaker_language: da-DK
       speaker_gender: female
       speaker_target: media_player.jen_group
       announcement_message: '{{ ("It''s all the same, only the names will change","Every
