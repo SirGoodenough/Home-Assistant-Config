@@ -670,7 +670,7 @@
                                     "entity": "light.office_fan_light"
                                 },
                                 {
-                                    "entity": "switch.office_monitors"
+                                    "entity": "switch.filamentvac"
                                 },
                                 {
                                     "entity": "switch.bench_test"
@@ -966,6 +966,9 @@
                                 },
                                 {
                                     "entity": "light.jens_light"
+                                },
+                                {
+                                    "entity": "light.jens_led_bed"
                                 },
                                 {
                                     "entity": "light.bulb1"
@@ -3166,6 +3169,9 @@
                                 },
                                 {
                                     "entity": "sensor.template_octoprint_print_file_short"
+                                },
+                                {
+                                    "entity": "switch.filament_vac"
                                 },
                                 {
                                     "entity": "sensor.octoprint_print_status"

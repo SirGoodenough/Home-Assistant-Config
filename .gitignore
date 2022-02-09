@@ -90,6 +90,7 @@ themes**
 /.storage/cloud*
 /.storage/core*
 /.storage/hacs**
+/,zigbee2mqtt**
 
 # Ignore files created by IDE's
 .vscode
