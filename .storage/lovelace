@@ -670,7 +670,7 @@
                                     "entity": "light.office_fan_light"
                                 },
                                 {
-                                    "entity": "switch.filamentvac"
+                                    "entity": "switch.filament_vac"
                                 },
                                 {
                                     "entity": "switch.bench_test"
@@ -686,6 +686,24 @@
                                 },
                                 {
                                     "entity": "sensor.benchstrip_rssi"
+                                },
+                                {
+                                    "entity": "sensor.yertle_action"
+                                },
+                                {
+                                    "entity": "sensor.yertle_action_angle"
+                                },
+                                {
+                                    "entity": "sensor.yertle_action_from_side"
+                                },
+                                {
+                                    "entity": "sensor.yertle_action_side"
+                                },
+                                {
+                                    "entity": "sensor.yertle_action_to_side"
+                                },
+                                {
+                                    "entity": "sensor.yertle_battery"
                                 }
                             ],
                             "show_header_toggle": false,
@@ -3593,6 +3611,9 @@
                                 },
                                 {
                                     "entity": "binary_sensor.battery_low_mailbox"
+                                },
+                                {
+                                    "entity": "sensor.yertle_battery"
                                 }
                             ],
                             "show_header_toggle": false,
@@ -4341,6 +4362,16 @@
                             "name": "Page DrZzs JIM ONLY",
                             "icon": "mdi:youtube",
                             "icon_height": "40px"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.cc2531_router_led",
+                                    "name": "Led"
+                                }
+                            ],
+                            "title": "CC2531 Router"
                         }
                     ],
                     "icon": "mdi:brain",
