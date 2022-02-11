@@ -1,0 +1,19 @@
+- sensor:
+
+
+  # - name: oeiughi
+  #   unique_id: 9c2e6b1a-fed3-49c8-a66a-0a8f0c51d62e
+  #   state: >
+  #     {% set morgon = today_at(states('input_datetime.tid_morgon_vardag')) %}
+  #     {% set dag = today_at(states('input_datetime.tid_dag')) %}
+  #     {% set eftermiddag = today_at(states('input_datetime.tid_eftermiddag')) %}
+  #     {% set kväll = today_at(states('input_datetime.tid_kväll')) %}
+  #     {%- set d = {
+  #     'Morgon Vardag': morgon <= now() < dag,
+  #     'Dag': dag <= now() < eftermiddag and is_state('input_boolean.sol', 'on'),
+  #     'Eftermiddag': eftermiddag <= now() < kväll,
+  #     'Kväll': kväll <= now() and is_state('input_boolean.sol', 'off'),
+  #     'Något är fel!': true } %}
+  #     {%- set key = d.keys() | list %}
+  #     {{ key[(d.values() | list).index(true)] }}
+
