@@ -1,0 +1,27 @@
+- id: '1644640476335'
+  alias: Aqara Magic Cube (Z2M) Yertle
+  description: All the things Yertle can do
+  use_blueprint:
+    path: luckypoppy/z2m-xiaomi-cube-controller.yaml
+    input:
+      remote: sensor.yertle_action
+      fall:
+      - type: turn_on
+        device_id: d99723186c9d0c8de8475bf9646b8373
+        entity_id: switch.plug2
+        domain: switch
+      shake:
+      - service: script.tarantula_shutdown
+        data: {}
+      rotate_cw_face_0:
+      - service: light.turn_on
+        target:
+          entity_id: light.office_5, light.office_6
+        data_template:
+          brightness_step_pct: "{{ trigger.to_state.attributes.action_angle * 0.4 }}"
+      rotate_ccw_face_0:
+      - service: light.turn_on
+        target:
+          entity_id: light.office_5, light.office_6
+        data_template:
+          brightness_step_pct: "-{{ trigger.to_state.attributes.action_angle * 0.4 }}"
