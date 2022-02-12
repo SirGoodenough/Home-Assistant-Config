@@ -1,7 +1,7 @@
 ---
   - name: House Humidity
     humidifier: switch.humidifier_2
-    target_sensor: sensor.house_humidity_main
+    target_sensor: sensor.humidity_net
     min_humidity: 30
     max_humidity: 55
     target_humidity: 40
