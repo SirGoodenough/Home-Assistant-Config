@@ -55,7 +55,7 @@
                                     "entity": "binary_sensor.back_door_pir"
                                 },
                                 {
-                                    "entity": "alert.back_door_notify_low_battery"
+                                    "entity": "sensor.template_lock_backdoor_bat_level"
                                 },
                                 {
                                     "entity": "light.counter_1"
@@ -598,7 +598,7 @@
                                     "entity": "sensor.bedroom_speaker_alarms"
                                 },
                                 {
-                                    "entity": "alert.bedroom_door_notify_low_battery"
+                                    "entity": "binary_sensor.battery_low_bedroom_door"
                                 }
                             ],
                             "title": "Bedroom",
@@ -694,19 +694,10 @@
                                     "entity": "sensor.benchstrip_rssi"
                                 },
                                 {
+                                    "entity": "sensor.yertle_last_action_a"
+                                },
+                                {
                                     "entity": "sensor.yertle_action"
-                                },
-                                {
-                                    "entity": "sensor.yertle_action_angle"
-                                },
-                                {
-                                    "entity": "sensor.yertle_action_from_side"
-                                },
-                                {
-                                    "entity": "sensor.yertle_action_side"
-                                },
-                                {
-                                    "entity": "sensor.yertle_action_to_side"
                                 },
                                 {
                                     "entity": "sensor.yertle_battery"
@@ -3596,9 +3587,6 @@
                             "entities": [
                                 {
                                     "entity": "sensor.template_lock_backdoor_bat_level"
-                                },
-                                {
-                                    "entity": "alert.lock_back_door_notify_low_battery"
                                 },
                                 {
                                     "entity": "binary_sensor.battery_back_front_door_inside"

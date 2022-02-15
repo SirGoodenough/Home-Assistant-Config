@@ -1,0 +1,7 @@
+- trigger:
+    - platform: event
+      event_type: yertle_last_action
+  sensor:
+    - name: "Yertle Last Action"
+      unique_id: 23060243-d556-4949-b36c-6072438aaa7b
+      state: '{{ trigger.event.data.event }} - {{ trigger.event.data.side }}'
