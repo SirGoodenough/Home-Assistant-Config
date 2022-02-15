@@ -2,7 +2,7 @@
   alias: Aqara Magic Cube (Z2M) Yertle
   description: All the things Yertle can do
   use_blueprint:
-    path: luckypoppy/z2m-xiaomi-cube-controller.yaml
+    path: SirGoodenough/Zigbee2MQTT - Xiaomi Cube Controller.yaml
     input:
       remote: sensor.yertle_action
       fall:
