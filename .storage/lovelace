@@ -697,9 +697,6 @@
                                     "entity": "sensor.yertle_last_action_a"
                                 },
                                 {
-                                    "entity": "sensor.yertle_action"
-                                },
-                                {
                                     "entity": "sensor.yertle_battery"
                                 },
                                 {
