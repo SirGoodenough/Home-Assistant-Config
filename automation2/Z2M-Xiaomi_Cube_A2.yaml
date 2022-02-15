@@ -13,15 +13,15 @@
       shake:
       - service: script.tarantula_shutdown
         data: {}
-      rotate_cw_face_0:
-      - service: light.turn_on
-        target:
-          entity_id: light.office_5, light.office_6
-        data_template:
-          brightness_step_pct: "{{ trigger.to_state.attributes.action_angle * 0.4 }}"
-      rotate_ccw_face_0:
-      - service: light.turn_on
-        target:
-          entity_id: light.office_5, light.office_6
-        data_template:
-          brightness_step_pct: "-{{ trigger.to_state.attributes.action_angle * 0.4 }}"
+      # rotate_cw_face_0:
+      # - service: light.turn_on
+      #   target:
+      #     entity_id: light.office_5, light.office_6
+      #   data_template:
+      #     brightness_step_pct: "{{ trigger.to_state.attributes.action_angle * 0.4 }}"
+      # rotate_ccw_face_0:
+      # - service: light.turn_on
+      #   target:
+      #     entity_id: light.office_5, light.office_6
+      #   data_template:
+      #     brightness_step_pct: "{{ trigger.to_state.attributes.action_angle * 0.4 }}"
