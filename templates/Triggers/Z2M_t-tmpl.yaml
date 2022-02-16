@@ -1,7 +1,10 @@
 - trigger:
     - platform: event
-      event_type: yertle_last_action
+      event_type: cube_last_action
   sensor:
-    - name: "Yertle Last Action"
+    - name: "Cube Last Action"
       unique_id: 23060243-d556-4949-b36c-6072438aaa7b
-      state: '{{ trigger.event.data.event }} - {{ trigger.event.data.side }}'
+      state: >
+        {{ trigger.event.data.friendly_name }} - 
+        {{ trigger.event.data.event }} - 
+        {{ trigger.event.data.side }}
