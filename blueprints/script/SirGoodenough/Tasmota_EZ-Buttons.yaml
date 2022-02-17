@@ -148,7 +148,7 @@ sequence:
           \      \"mdl\": \"Home Assistant EZ Buttons for Tasmota\",\n      \"sa\"\
           : \"home\",\n      \"sw\": \"https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml\"\
           ,\n      \"cu\": \"https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934\"\
-          \n  },\n  \"cmd_t\": \"cmnd/{{ ez_canary_grouptopic_var }}/upgrade\",\n\
+          \n  },\n  \"cmd_t\": \"{{ ez_canary_grouptopic_var }}/cmnd/upgrade\",\n\
           \  \"payload_press\": \"1\"\n}\n"
 - alias: Make the button 4 restart
   service: mqtt.publish
@@ -162,7 +162,7 @@ sequence:
       mdl\": \"Home Assistant EZ Buttons for Tasmota\",\n      \"sa\": \"home\",\n\
       \      \"sw\": \"https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml\"\
       ,\n      \"cu\": \"https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934\"\
-      \n  },\n  \"cmd_t\": \"cmnd/tasmotas/restart\",\n  \"payload_press\": \"1\"\n\
+      \n  },\n  \"cmd_t\": \"tasmotas/cmnd/restart\",\n  \"payload_press\": \"1\"\n\
       }\n"
 - alias: Make the button 4 all update
   service: mqtt.publish
@@ -176,5 +176,5 @@ sequence:
       mdl\": \"Home Assistant EZ Buttons for Tasmota\",\n      \"sa\": \"home\",\n\
       \      \"sw\": \"https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml\"\
       ,\n      \"cu\": \"https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934\"\
-      \n  },\n  \"cmd_t\": \"cmnd/tasmotas/upgrade\",\n  \"payload_press\": \"1\"\n\
+      \n  },\n  \"cmd_t\": \"tasmotas/cmnd/upgrade\",\n  \"payload_press\": \"1\"\n\
       }\n"
