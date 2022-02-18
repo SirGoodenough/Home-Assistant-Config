@@ -1,5 +1,5 @@
 - id: '1644640476335'
-  alias: Aqara Magic Cube (Z2M) Yertle
+  alias: This is the Downstairs Magic Cube Yertle
   description: All the things Yertle can do
   use_blueprint:
     path: SirGoodenough/Zigbee2MQTT - Xiaomi Cube Controller.yaml
@@ -12,7 +12,17 @@
         domain: switch
       shake:
       - service: script.tarantula_shutdown
-        data: {}
+      doubletap_face_1:
+      - service: light.toggle
+        entity_id: light.dad_lights
+      doubletap_face_4:
+      - service: light.toggle
+        entity_id: 
+          - light.cabinetlight
+          - light.jims_computer_light
+      slide_face_4:
+      - service: light.turn_on
+        entity_id: light.stairway_switch
       # rotate_cw_face_0:
       # - service: light.turn_on
       #   target:
@@ -25,3 +35,19 @@
       #     entity_id: light.office_5, light.office_6
       #   data_template:
       #     brightness_step_pct: "{{ trigger.to_state.attributes.action_angle * 0.4 }}"
+
+- id: '1645134668040'
+  alias: Gertle Cube
+  description: This is the upstairs magic cube Gertle
+  use_blueprint:
+    path: SirGoodenough/Zigbee2MQTT - Xiaomi Cube Controller.yaml
+    input:
+      remote: sensor.gertle_action
+      fall:
+      - type: turn_on
+        device_id: d99723186c9d0c8de8475bf9646b8373
+        entity_id: switch.plug2
+        domain: switch
+      shake:
+      - service: script.tarantula_shutdown
+        data: {}

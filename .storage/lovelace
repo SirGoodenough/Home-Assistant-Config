@@ -62,6 +62,9 @@
                                 },
                                 {
                                     "entity": "light.counter_2"
+                                },
+                                {
+                                    "entity": "sensor.yertle_last_action_a"
                                 }
                             ],
                             "show_header_toggle": true,
@@ -695,9 +698,6 @@
                                 },
                                 {
                                     "entity": "sensor.yertle_last_action_a"
-                                },
-                                {
-                                    "entity": "sensor.yertle_battery"
                                 },
                                 {
                                     "entity": "light.office_5"
@@ -3611,6 +3611,9 @@
                                 },
                                 {
                                     "entity": "sensor.yertle_battery"
+                                },
+                                {
+                                    "entity": "sensor.gertle_battery"
                                 }
                             ],
                             "show_header_toggle": false,
