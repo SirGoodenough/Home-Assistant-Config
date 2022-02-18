@@ -6,6 +6,7 @@
       - automation
       - alert
       - binary_sensor
+      - button
       - cover
       - climate
       - fan
@@ -16,13 +17,14 @@
       - notify
       - octoprint
       - person
+      - rest_command
+      - ring
       - script
       - sensor
       - shell_command
       - sonoff
       - switch
-      - rest_command
-      - ring
+      - zone
   exclude:
     domains:
       - group
