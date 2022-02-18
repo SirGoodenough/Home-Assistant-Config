@@ -18,3 +18,13 @@ tts_moms_home:
       speaker_gender: female
       announcement_message: The Queen has arrived.
   icon: mdi:home-variant-outline
+tts_mom_left:
+  alias: TTS Mom Left
+  use_blueprint:
+    path: SirGoodenough/tts_cloud_message_script.yaml
+    input:
+      speaker_language: en-GB
+      speaker_target: media_player.intercom_group
+      speaker_gender: female
+      announcement_message: The Queen has left the premises.
+  icon: mdi:home-variant-outline

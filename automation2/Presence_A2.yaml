@@ -12,7 +12,7 @@
     service: script.tts_mama_left_katys
 
 - id: e6f402c1-7d0e-4907-930d-5765a59785c5
-  alias: Moms Mome
+  alias: Moms Home
   mode: queued
   initial_state: on
   trigger: 
@@ -23,3 +23,16 @@
     event: enter
   action:
     service: script.tts_moms_home
+
+- id: ac2c7291-fa80-47b3-b79d-bf044f4f88bc
+  alias: Moms Home
+  mode: queued
+  initial_state: on
+  trigger: 
+    platform: zone
+    # entity_id: device_tracker.life360_supreme_leader_chaloupka
+    entity_id: person.julie
+    zone: zone.home
+    event: leave
+  action:
+    service: script.tts_mom_left
