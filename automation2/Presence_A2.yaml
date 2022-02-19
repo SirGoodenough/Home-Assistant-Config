@@ -25,7 +25,7 @@
     service: script.tts_moms_home
 
 - id: ac2c7291-fa80-47b3-b79d-bf044f4f88bc
-  alias: Moms Home
+  alias: Moms Left
   mode: queued
   initial_state: on
   trigger: 
@@ -36,3 +36,16 @@
     event: leave
   action:
     service: script.tts_mom_left
+
+- id: 85a71eb6-9744-45f3-9425-ed7a31e58167
+  alias: Moms Left Nails
+  mode: queued
+  initial_state: on
+  trigger: 
+    platform: zone
+    # entity_id: device_tracker.life360_supreme_leader_chaloupka
+    entity_id: person.julie
+    zone: zone.nail_shop
+    event: leave
+  action:
+    service: script.tts_mom_left_nails

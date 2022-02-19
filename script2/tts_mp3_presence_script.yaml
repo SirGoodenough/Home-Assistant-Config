@@ -27,4 +27,14 @@ tts_mom_left:
       speaker_target: media_player.intercom_group
       speaker_gender: female
       announcement_message: The Queen has left the premises.
-  icon: mdi:home-variant-outline
+  icon: mdi:home-outline
+tts_mom_left_nails:
+  alias: TTS Mom Left Nails
+  use_blueprint:
+    path: SirGoodenough/tts_cloud_message_script.yaml
+    input:
+      speaker_language: en-GB
+      speaker_target: media_player.intercom_group
+      speaker_gender: female
+      announcement_message: The Queen has left the digital maintenance facility.
+  icon: mdi:home-outline
