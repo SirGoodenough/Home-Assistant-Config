@@ -12,6 +12,19 @@
         domain: switch
       shake:
       - service: script.tarantula_shutdown
+      rotate_cw_face_0:
+      - service: script.cube_dimmer_control
+        data:
+          angle: "{{ trigger.to_state.attributes.action_angle }}"
+          light: light.kitch
+      rotate_ccw_face_0:
+      - service: script.cube_dimmer_control
+        data:
+          angle: "{{ trigger.to_state.attributes.action_angle }}"
+          light: light.kitch
+      doubletap_face_0:
+      - service: light.toggle
+        entity_id: light.kitch
       doubletap_face_1:
       - service: light.toggle
         entity_id: light.dad_lights
@@ -23,20 +36,8 @@
       slide_face_4:
       - service: light.turn_on
         entity_id: light.stairway_switch
-      # rotate_cw_face_0:
-      # - service: light.turn_on
-      #   target:
-      #     entity_id: light.office_5, light.office_6
-      #   data_template:
-      #     brightness_step_pct: "{{ trigger.to_state.attributes.action_angle * 0.4 }}"
-      # rotate_ccw_face_0:
-      # - service: light.turn_on
-      #   target:
-      #     entity_id: light.office_5, light.office_6
-      #   data_template:
-      #     brightness_step_pct: "{{ trigger.to_state.attributes.action_angle * 0.4 }}"
 
-- id: '1645134668040'
+- id: a97c78fd-3deb-45d5-b884-2f04f8f5802b
   alias: Gertle Cube
   description: This is the upstairs magic cube Gertle
   use_blueprint:
@@ -51,3 +52,22 @@
       shake:
       - service: script.tarantula_shutdown
         data: {}
+
+- id: 4ae86eca-d558-4d9b-b1cb-7ea5e506aaf1
+  alias: Kitch Light on default
+  initial_state: on
+  mode: parallel
+  max: 100  
+  trigger:
+    - platform: state
+      entity_id: light.kitch
+      from: "off"
+      to: "on"
+  action:
+    - service: light.turn_on
+      data:
+        color_mode: white
+        transition: 10
+        kelvin: 1700
+        brightness: 38 * 255
+        entity_id: '{{ trigger.entity_id }}'

@@ -1,0 +1,44 @@
+cube_dimmer_control:
+  description: Template Dimmer Control
+  variables:
+    light:
+    angle:
+  sequence:
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ light }}"
+        brightness_pct: >
+          {% set step_size = angle * 0.4 %}
+          {% set cb = (state_attr( light, 'brightness') | float(10) / 255.0) * 100.0 %}
+          {% set new_brightness = cb | int(1) + step_size %}
+          {% if 91 <= new_brightness < (90 + step_size) %}
+            100
+          {% else %}
+            {{ new_brightness if new_brightness < 100 else 0 }}
+          {% endif %}
+
+    # - service: light.turn_on
+    #   entity_id: "{{ light }}"
+    #   data_template:
+    #     brightness_pct: >
+    #       {% set step_size = '{{ expand(angle)[0].state }}'/4 %}
+    #       {% set cb = (state_attr( expand(light)[0], 'brightness') | float(1) / 255.0) * 100.0 %}
+    #       {% set new_brightness = cb | int(10) + step_size %}
+    #       {% if 91 <= new_brightness < (90 + step_size) %}
+    #         100
+    #       {% else %}
+    #         {{ new_brightness if new_brightness < 100 else 0 }}
+    #       {% endif %}
+
+    # - service: light.turn_on
+    #   entity_id: light.emerson_recessed
+    #   data_template:
+    #     brightness_pct: >
+    #       {% set step_size = 25 %}
+    #       {% set cb = (state_attr('light.emerson_recessed', 'brightness') | float / 255.0) * 100.0 %}
+    #       {% set new_brightness = cb | int + step_size %}
+    #       {% if 91 <= new_brightness < (90 + step_size) %}
+    #         100
+    #       {% else %}
+    #         {{ new_brightness if new_brightness < 100 else 0 }}
+    #       {% endif %}

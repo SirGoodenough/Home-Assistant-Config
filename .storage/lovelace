@@ -19,6 +19,9 @@
                                     "entity": "sensor.kitchen_humidity_3"
                                 },
                                 {
+                                    "entity": "light.kitch"
+                                },
+                                {
                                     "entity": "light.dad_lights"
                                 },
                                 {
@@ -56,12 +59,6 @@
                                 },
                                 {
                                     "entity": "sensor.template_lock_backdoor_bat_level"
-                                },
-                                {
-                                    "entity": "light.counter_1"
-                                },
-                                {
-                                    "entity": "light.counter_2"
                                 },
                                 {
                                     "entity": "sensor.yertle_last_action_a"
@@ -1035,6 +1032,20 @@
                             "type": "weather-forecast",
                             "entity": "weather.home",
                             "theme": "Animated Weather Card"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.jen_temperature_humidity",
+                                    "name": "Humidity"
+                                },
+                                {
+                                    "entity": "sensor.jen_temperature_temperature",
+                                    "name": "Temperature"
+                                }
+                            ],
+                            "title": "Jen Temperature"
                         },
                         {
                             "type": "button",
@@ -3119,7 +3130,6 @@
                                 "target": {}
                             },
                             "icon": "mdi:printer-3d",
-                            "icon_height": "70px",
                             "name": "Turn Printer ON",
                             "show_icon": true,
                             "show_name": true,
@@ -3135,7 +3145,8 @@
                                 }
                             },
                             "type": "button",
-                            "theme": "dark_orange"
+                            "theme": "dark_orange",
+                            "icon_height": "50px"
                         },
                         {
                             "type": "entities",
@@ -3216,6 +3227,14 @@
                             "theme": "Dark - Green",
                             "type": "sensor",
                             "unit": "\u00b0C"
+                        },
+                        {
+                            "type": "button",
+                            "tap_action": {
+                                "action": "toggle"
+                            },
+                            "entity": "switch.filament_vac",
+                            "icon_height": "50px"
                         }
                     ],
                     "path": "3d",
@@ -3614,6 +3633,9 @@
                                 },
                                 {
                                     "entity": "sensor.gertle_battery"
+                                },
+                                {
+                                    "entity": "sensor.jen_temperature_battery"
                                 }
                             ],
                             "show_header_toggle": false,
