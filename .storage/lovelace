@@ -1184,6 +1184,12 @@
                             "show_header_toggle": false,
                             "title": "Jens Nebulizer",
                             "type": "entities"
+                        },
+                        {
+                            "type": "sensor",
+                            "entity": "sensor.jen_temperature_temperature",
+                            "graph": "line",
+                            "detail": 2
                         }
                     ],
                     "icon": "mdi:alpha-j-box",
@@ -2216,6 +2222,12 @@
                             "icon": "mdi:temperature-fahrenheit"
                         },
                         {
+                            "type": "sensor",
+                            "entity": "sensor.jen_temperature_temperature",
+                            "graph": "line",
+                            "detail": 2
+                        },
+                        {
                             "entity": "sensor.bedroom_fan_si7021_temperature",
                             "graph": "line",
                             "type": "sensor",
@@ -2336,6 +2348,13 @@
                             "graph": "line",
                             "type": "sensor",
                             "detail": 2
+                        },
+                        {
+                            "type": "sensor",
+                            "entity": "sensor.jen_temperature_humidity",
+                            "graph": "line",
+                            "unit": "%",
+                            "name": "Jen's Humidity"
                         },
                         {
                             "entity": "sensor.bedroom_humid",
