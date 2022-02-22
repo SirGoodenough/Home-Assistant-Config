@@ -49,16 +49,13 @@
                                     "entity": "switch.dishwasher"
                                 },
                                 {
-                                    "entity": "lock.kwikset_touchpad_electronic_deadbolt_locked"
+                                    "entity": "lock.smart_code_with_home_connect_technology"
                                 },
                                 {
                                     "entity": "binary_sensor.back_door_open_433"
                                 },
                                 {
                                     "entity": "binary_sensor.back_door_pir"
-                                },
-                                {
-                                    "entity": "sensor.template_lock_backdoor_bat_level"
                                 },
                                 {
                                     "entity": "sensor.yertle_last_action_a"
@@ -266,7 +263,7 @@
                                     "entity": "lock.side_door"
                                 },
                                 {
-                                    "entity": "lock.kwikset_touchpad_electronic_deadbolt_locked"
+                                    "entity": "lock.front_door"
                                 },
                                 {
                                     "entity": "cover.garage_door"
@@ -535,7 +532,7 @@
                                     "entity": "switch.bathroom_speaker_do_not_disturb"
                                 },
                                 {
-                                    "entity": "switch.aeotec_dsc26103_micro_switch_2nd_edition_switch"
+                                    "entity": "switch.micro_switch_g2"
                                 },
                                 {
                                     "entity": "input_boolean.bathroom_heater_auto_on"
@@ -943,6 +940,27 @@
                             "type": "picture-entity",
                             "entity": "lock.front_door",
                             "camera_image": "camera.front_door"
+                        },
+                        {
+                            "type": "conditional",
+                            "conditions": [
+                                {
+                                    "entity": "binary_sensor.battery_low_backdoor",
+                                    "state": "on"
+                                }
+                            ],
+                            "card": {
+                                "type": "button",
+                                "tap_action": {
+                                    "action": "call-service",
+                                    "service": "python_script.battery_clear",
+                                    "service_data": {},
+                                    "target": {}
+                                },
+                                "entity": "binary_sensor.battery_low_backdoor",
+                                "name": "Garage Door Closed Battery",
+                                "icon": "mdi:battery-alert-variant-outline"
+                            }
                         }
                     ],
                     "icon": "mdi:home-automation",
@@ -1034,66 +1052,25 @@
                             "theme": "Animated Weather Card"
                         },
                         {
+                            "type": "sensor",
+                            "entity": "sensor.jen_temperature_temperature",
+                            "graph": "line",
+                            "detail": 1,
+                            "name": "Jen Temperature Graph 24 hrs."
+                        },
+                        {
                             "type": "entities",
                             "entities": [
                                 {
-                                    "entity": "sensor.jen_temperature_humidity",
-                                    "name": "Humidity"
-                                },
-                                {
                                     "entity": "sensor.jen_temperature_temperature",
                                     "name": "Temperature"
+                                },
+                                {
+                                    "entity": "sensor.jen_temperature_humidity",
+                                    "name": "Humidity"
                                 }
                             ],
                             "title": "Jen Temperature"
-                        },
-                        {
-                            "type": "button",
-                            "tap_action": {
-                                "action": "call-service",
-                                "service": "input_boolean.turn_on",
-                                "service_data": {},
-                                "target": {
-                                    "entity_id": "input_boolean.mist_button"
-                                }
-                            },
-                            "entity": "input_boolean.mist_button",
-                            "name": "More Mist!",
-                            "hold_action": {
-                                "action": "call-service",
-                                "service": "input_boolean.turn_off",
-                                "service_data": {},
-                                "target": {
-                                    "entity_id": "input_boolean.mist_button"
-                                }
-                            },
-                            "theme": "Dark Soft UI Violet"
-                        },
-                        {
-                            "type": "button",
-                            "tap_action": {
-                                "action": "call-service",
-                                "service": "input_boolean.turn_on",
-                                "service_data": {},
-                                "target": {
-                                    "entity_id": [
-                                        "input_boolean.pad_enable3"
-                                    ]
-                                }
-                            },
-                            "entity": "switch.v8",
-                            "name": "All Locks - Tap Lock / Hold Unlock",
-                            "icon": "mdi:lock",
-                            "show_state": false,
-                            "icon_height": "80px",
-                            "hold_action": {
-                                "action": "call-service",
-                                "service": "input_boolean.turn_on",
-                                "service_data": {},
-                                "target": {
-                                    "entity_id": "input_boolean.pad_enable2"
-                                }
-                            }
                         },
                         {
                             "type": "glance",
@@ -1105,7 +1082,7 @@
                                     "entity": "lock.side_door"
                                 },
                                 {
-                                    "entity": "lock.kwikset_touchpad_electronic_deadbolt_locked"
+                                    "entity": "lock.smart_code_with_home_connect_technology"
                                 },
                                 {
                                     "entity": "cover.garage_door"
@@ -1186,10 +1163,52 @@
                             "type": "entities"
                         },
                         {
-                            "type": "sensor",
-                            "entity": "sensor.jen_temperature_temperature",
-                            "graph": "line",
-                            "detail": 2
+                            "type": "button",
+                            "tap_action": {
+                                "action": "call-service",
+                                "service": "input_boolean.turn_on",
+                                "service_data": {},
+                                "target": {
+                                    "entity_id": "input_boolean.mist_button"
+                                }
+                            },
+                            "entity": "input_boolean.mist_button",
+                            "name": "More Mist!",
+                            "hold_action": {
+                                "action": "call-service",
+                                "service": "input_boolean.turn_off",
+                                "service_data": {},
+                                "target": {
+                                    "entity_id": "input_boolean.mist_button"
+                                }
+                            },
+                            "theme": "Dark Soft UI Violet"
+                        },
+                        {
+                            "type": "button",
+                            "tap_action": {
+                                "action": "call-service",
+                                "service": "input_boolean.turn_on",
+                                "service_data": {},
+                                "target": {
+                                    "entity_id": [
+                                        "input_boolean.pad_enable3"
+                                    ]
+                                }
+                            },
+                            "entity": "switch.v8",
+                            "name": "All Locks - Tap Lock / Hold Unlock",
+                            "icon": "mdi:lock",
+                            "show_state": false,
+                            "icon_height": "80px",
+                            "hold_action": {
+                                "action": "call-service",
+                                "service": "input_boolean.turn_on",
+                                "service_data": {},
+                                "target": {
+                                    "entity_id": "input_boolean.pad_enable2"
+                                }
+                            }
                         }
                     ],
                     "icon": "mdi:alpha-j-box",
@@ -2902,200 +2921,6 @@
                     "badges": [],
                     "cards": [
                         {
-                            "cards": [
-                                {
-                                    "cards": [
-                                        {
-                                            "entity": "sensor.192_168_108_21_00_status",
-                                            "name": "Eldrad CPU FAH",
-                                            "type": "entity"
-                                        },
-                                        {
-                                            "entity": "sensor.192_168_108_21_00_percentdone",
-                                            "name": "Eldrad CPU FAH",
-                                            "type": "entity"
-                                        },
-                                        {
-                                            "entity": "sensor.192_168_108_21_00_points_per_day",
-                                            "max": 15000,
-                                            "min": 0,
-                                            "name": "Eldrad CPU Rate",
-                                            "severity": {
-                                                "green": 8000,
-                                                "red": 1000,
-                                                "yellow": 5000
-                                            },
-                                            "type": "gauge",
-                                            "unit": "."
-                                        },
-                                        {
-                                            "entities": [
-                                                {
-                                                    "entity": "script.eldrad_pause"
-                                                },
-                                                {
-                                                    "entity": "script.eldrad_unpause"
-                                                }
-                                            ],
-                                            "title": "Eldrad Pause Buttons",
-                                            "type": "entities"
-                                        }
-                                    ],
-                                    "type": "vertical-stack"
-                                },
-                                {
-                                    "cards": [
-                                        {
-                                            "entity": "sensor.192_168_108_21_01_status",
-                                            "name": "Eldrad GPU1 FAH",
-                                            "type": "entity"
-                                        },
-                                        {
-                                            "entity": "sensor.192_168_108_21_01_percentdone",
-                                            "name": "Eldrad GPU1 FAH",
-                                            "type": "entity"
-                                        },
-                                        {
-                                            "entity": "sensor.192_168_108_21_01_points_per_day",
-                                            "max": 100000,
-                                            "min": 0,
-                                            "name": "Eldrad GPU1 Rate",
-                                            "severity": {
-                                                "green": 50000,
-                                                "red": 20000,
-                                                "yellow": 40000
-                                            },
-                                            "type": "gauge",
-                                            "unit": "."
-                                        }
-                                    ],
-                                    "type": "vertical-stack"
-                                },
-                                {
-                                    "cards": [
-                                        {
-                                            "type": "entity",
-                                            "entity": "sensor.192_168_108_24_00_status",
-                                            "name": "Darkel CPU FAH",
-                                            "icon": "mdi:state-machine"
-                                        },
-                                        {
-                                            "type": "entity",
-                                            "entity": "sensor.192_168_108_24_00_percentdone",
-                                            "icon": "mdi:percent",
-                                            "name": "Darkel CPU FAH",
-                                            "unit": "%"
-                                        },
-                                        {
-                                            "type": "gauge",
-                                            "entity": "sensor.192_168_108_24_00_points_per_day",
-                                            "min": 0,
-                                            "max": 180000,
-                                            "name": "Darkel GPU Rate",
-                                            "severity": {
-                                                "green": 120000,
-                                                "yellow": 98000,
-                                                "red": 64000
-                                            },
-                                            "unit": "."
-                                        },
-                                        {
-                                            "type": "entities",
-                                            "entities": [
-                                                {
-                                                    "entity": "script.darkel_pause"
-                                                },
-                                                {
-                                                    "entity": "script.darkel_unpause"
-                                                }
-                                            ],
-                                            "title": "Darkel Pause Button"
-                                        }
-                                    ],
-                                    "type": "vertical-stack"
-                                },
-                                {
-                                    "cards": [
-                                        {
-                                            "entity": "sensor.192_168_108_24_01_status",
-                                            "name": "Darkel GPU FAH",
-                                            "type": "entity"
-                                        },
-                                        {
-                                            "entity": "sensor.192_168_108_24_01_percentdone",
-                                            "name": "Darkel GPU FAH",
-                                            "type": "entity"
-                                        },
-                                        {
-                                            "entity": "sensor.192_168_108_24_01_points_per_day",
-                                            "max": 2000000,
-                                            "min": 0,
-                                            "name": "Darkel GPU Rate",
-                                            "severity": {
-                                                "green": 1000000,
-                                                "red": 649995,
-                                                "yellow": 800000
-                                            },
-                                            "type": "gauge",
-                                            "unit": "."
-                                        }
-                                    ],
-                                    "type": "vertical-stack"
-                                },
-                                {
-                                    "cards": [
-                                        {
-                                            "entity": "sensor.192_168_108_44_00_status",
-                                            "name": "Garrote CPU FAH",
-                                            "type": "entity"
-                                        },
-                                        {
-                                            "entity": "sensor.192_168_108_44_00_percentdone",
-                                            "name": " Garrote CPU FAH",
-                                            "type": "entity"
-                                        },
-                                        {
-                                            "entity": "sensor.192_168_108_44_00_points_per_day",
-                                            "max": 8000,
-                                            "min": 0,
-                                            "name": "Garrote CPU Rate",
-                                            "severity": {
-                                                "green": 4000,
-                                                "red": 1200,
-                                                "yellow": 2000
-                                            },
-                                            "type": "gauge",
-                                            "unit": "."
-                                        },
-                                        {
-                                            "entities": [
-                                                {
-                                                    "entity": "script.garrote_pause"
-                                                },
-                                                {
-                                                    "entity": "script.garrote_unpause"
-                                                }
-                                            ],
-                                            "show_header_toggle": false,
-                                            "title": "Garrote Pause Button",
-                                            "type": "entities"
-                                        }
-                                    ],
-                                    "type": "vertical-stack"
-                                }
-                            ],
-                            "type": "horizontal-stack"
-                        }
-                    ],
-                    "panel": true,
-                    "path": "fah",
-                    "theme": "Orange Dark",
-                    "title": "FAH"
-                },
-                {
-                    "badges": [],
-                    "cards": [
-                        {
                             "type": "entity",
                             "entity": "sensor.template_octoprint_print_file_short",
                             "icon": "mdi:file-check"
@@ -3265,7 +3090,7 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "lock.kwikset_touchpad_electronic_deadbolt_locked"
+                                    "entity": "lock.smart_code_with_home_connect_technology"
                                 },
                                 {
                                     "entity": "light.b_porch_socket"
@@ -3274,16 +3099,10 @@
                                     "entity": "sensor.template_lock_back_door_mode"
                                 },
                                 {
-                                    "entity": "sensor.template_lock_backdoor_bat_level"
+                                    "entity": "sensor.smart_code_with_home_connect_technology_alarmtype"
                                 },
                                 {
-                                    "entity": "sensor.kwikset_touchpad_electronic_deadbolt_alarm_type"
-                                },
-                                {
-                                    "entity": "sensor.kwikset_touchpad_electronic_deadbolt_alarm_level"
-                                },
-                                {
-                                    "entity": "zwave.kwikset_touchpad_electronic_deadbolt"
+                                    "entity": "sensor.smart_code_with_home_connect_technology_alarmlevel"
                                 },
                                 {
                                     "entity": "binary_sensor.back_door_pir"
@@ -3293,12 +3112,6 @@
                                 },
                                 {
                                     "entity": "binary_sensor.back_door_motion"
-                                },
-                                {
-                                    "entity": "alert.back_door_notify_low_battery"
-                                },
-                                {
-                                    "entity": "alert.lock_back_door_notify_low_battery"
                                 }
                             ],
                             "show_header_toggle": false,
@@ -3321,9 +3134,6 @@
                                 },
                                 {
                                     "entity": "binary_sensor.front_door_motion"
-                                },
-                                {
-                                    "entity": "alert.front_door_notify_low_battery"
                                 }
                             ],
                             "show_header_toggle": false,
@@ -3349,9 +3159,6 @@
                                 },
                                 {
                                     "entity": "binary_sensor.side_doorbell"
-                                },
-                                {
-                                    "entity": "alert.side_door_notify_low_battery"
                                 }
                             ],
                             "show_header_toggle": false,
@@ -3424,7 +3231,7 @@
                                     "entity": "lock.side_door"
                                 },
                                 {
-                                    "entity": "lock.kwikset_touchpad_electronic_deadbolt_locked"
+                                    "entity": "lock.smart_code_with_home_connect_technology"
                                 },
                                 {
                                     "entity": "input_boolean.pad_enable"
@@ -3513,62 +3320,6 @@
                     "badges": [],
                     "cards": [
                         {
-                            "type": "entities",
-                            "entities": [
-                                "zwave.aeotec_dsc26103_micro_switch_2nd_edition",
-                                "switch.aeotec_dsc26103_micro_switch_2nd_edition_switch"
-                            ]
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                "zwave.hank_hkzwso01_smart_plug",
-                                "switch.hank_hkzwso01_smart_plug_switch"
-                            ]
-                        },
-                        {
-                            "type": "entity",
-                            "entity": "zwave.aeotec_zw090_zstick_gen5_us"
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                "zwave.hank_hkzwso01_smart_plug_2",
-                                "switch.hank_hkzwso01_smart_plug_switch_2"
-                            ]
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "sensor.kwikset_touchpad_electronic_deadbolt_alarm_level"
-                                },
-                                {
-                                    "entity": "zwave.kwikset_touchpad_electronic_deadbolt"
-                                },
-                                {
-                                    "entity": "sensor.kwikset_touchpad_electronic_deadbolt_alarm_type"
-                                },
-                                {
-                                    "entity": "lock.kwikset_touchpad_electronic_deadbolt_locked"
-                                },
-                                {
-                                    "entity": "sensor.lock_backdoor_bat_level"
-                                }
-                            ],
-                            "title": "Back Door Lock",
-                            "show_header_toggle": false
-                        }
-                    ],
-                    "icon": "mdi:z-wave",
-                    "id": "zwave",
-                    "path": "zwave",
-                    "title": "Zwave"
-                },
-                {
-                    "badges": [],
-                    "cards": [
-                        {
                             "entities": [
                                 {
                                     "entity": "binary_sensor.dark_outside"
@@ -3621,10 +3372,7 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "sensor.template_lock_backdoor_bat_level"
-                                },
-                                {
-                                    "entity": "binary_sensor.battery_back_front_door_inside"
+                                    "entity": "binary_sensor.battery_low_backdoor"
                                 },
                                 {
                                     "entity": "binary_sensor.battery_low_front_door_inside"
@@ -3646,15 +3394,6 @@
                                 },
                                 {
                                     "entity": "binary_sensor.battery_low_mailbox"
-                                },
-                                {
-                                    "entity": "sensor.yertle_battery"
-                                },
-                                {
-                                    "entity": "sensor.gertle_battery"
-                                },
-                                {
-                                    "entity": "sensor.jen_temperature_battery"
                                 }
                             ],
                             "show_header_toggle": false,
@@ -3669,9 +3408,21 @@
                                 },
                                 {
                                     "entity": "sensor.front_door_battery"
+                                },
+                                {
+                                    "entity": "sensor.smart_code_with_home_connect_technology_battery_level"
+                                },
+                                {
+                                    "entity": "sensor.gertle_battery"
+                                },
+                                {
+                                    "entity": "sensor.yertle_battery"
+                                },
+                                {
+                                    "entity": "sensor.jen_temperature_battery"
                                 }
                             ],
-                            "title": "Doorbell Batteries"
+                            "title": "Battery State"
                         },
                         {
                             "type": "button",
@@ -4151,7 +3902,7 @@
                                     "entity": "switch.bathoom_2"
                                 },
                                 {
-                                    "entity": "switch.hank_hkzwso01_smart_plug_switch"
+                                    "entity": "switch.smart_plug_with_two_usb_ports"
                                 },
                                 {
                                     "entity": "switch.sonoff_1000d4bf8f_1"
@@ -4403,16 +4154,6 @@
                             "name": "Page DrZzs JIM ONLY",
                             "icon": "mdi:youtube",
                             "icon_height": "40px"
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "binary_sensor.cc2531_router_led",
-                                    "name": "Led"
-                                }
-                            ],
-                            "title": "CC2531 Router"
                         }
                     ],
                     "icon": "mdi:brain",
@@ -4429,15 +4170,11 @@
                     "cards": []
                 },
                 {
-                    "badges": [],
-                    "cards": [],
                     "icon": "mdi:calendar-check",
                     "path": "calendar",
                     "theme": "dark_orange",
-                    "title": "Calendar"
-                },
-                {
-                    "panel": true,
+                    "title": "Calendar",
+                    "type": "panel",
                     "badges": [],
                     "cards": [
                         {

@@ -1,7 +1,7 @@
 ---
   - platform: switch
     name: "Jims Computer Light"
-    entity_id: switch.hank_hkzwso01_smart_plug_switch_2
+    entity_id: switch.jims_computer_light
 
   - platform: switch
     name: "Kitchen Down Lights"

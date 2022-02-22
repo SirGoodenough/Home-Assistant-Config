@@ -77,4 +77,4 @@ switch two: !include_dir_merge_list ./switch2
 template: !include_dir_merge_list ./templates
 tts: !include tts.yaml
 webhook_service:
-zwave: !include zwave.yaml
+# zwave: !include zwave.yaml
