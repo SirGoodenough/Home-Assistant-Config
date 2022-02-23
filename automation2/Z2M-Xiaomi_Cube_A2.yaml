@@ -1,5 +1,5 @@
 - id: '1644640476335'
-  alias: This is the Downstairs Magic Cube Yertle
+  alias: Yertle Cube
   description: All the things Yertle can do
   use_blueprint:
     path: SirGoodenough/Zigbee2MQTT - Xiaomi Cube Controller.yaml
@@ -29,7 +29,16 @@
       - service: light.toggle
         entity_id: light.dad_lights
       doubletap_face_4:
-      - service: light.toggle
+      - service: >
+          {% set light1 = 'light.cabinetlight' %}
+          {% set light2 = 'light.jims_computer_light' %}
+          {% if is_state( light1, 'on') %}
+            light.turn_off 
+          {% elif is_state( light2, 'on') %}
+            light.turn_off
+          {% else %}
+            light.turn_on
+          {% endif %}
         entity_id: 
           - light.cabinetlight
           - light.jims_computer_light
