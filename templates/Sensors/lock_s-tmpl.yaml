@@ -4,7 +4,7 @@
       friendly_name: "Lock Back Door Mode"
     icon: >-
       {% set alarmtype = "sensor.smart_code_with_home_connect_technology_alarmtype" %}
-      {% if is_state(alarmtype, "21") %}
+      {% if is_state( alarmtype, "21") %}
         mdi:lock-outline
       {% elif is_state( alarmtype, "22") %}
         mdi:lock-open-outline
