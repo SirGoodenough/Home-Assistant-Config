@@ -78,6 +78,10 @@
       - light.b_porch_socket
       - light.fp_socket
       - light.stairway_light
+      - light.counter_1
+      - light.counter_2
+      - light.kitch_fan_2
+      - light.kitch_fan_3
 
   - platform: group
     name: Dad Lights
@@ -89,7 +93,7 @@
       - light.kitchensink
 
   - platform: group
-    name: Kitch
+    name: Food Center
     unique_id: 0a7413ea-ee9e-4cdb-95c7-cbefcff87e6f
     entities:
       - light.counter_1
