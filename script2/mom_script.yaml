@@ -12,7 +12,7 @@
           entity_id: 
             - lock.front_door
             - lock.side_door
-            - lock.kwikset_touchpad_electronic_deadbolt_locked
+            - lock.smart_code_with_home_connect_technology
       - service: light.turn_on
         entity_id: light.stairway_light
 
