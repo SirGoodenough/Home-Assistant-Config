@@ -1,0 +1,27 @@
+blueprint:
+  name: Kwikset 910 Updater
+  description: Updates the manual status of 910 locks.
+  domain: automation
+  input:
+    alarmtype_sensor:
+      name: alarmType Sensor for lock
+      description: alarmType sensor must be enabled on lock device.
+      selector:
+        entity:
+          domain: sensor
+          integration: zwave_js
+    lock_entity:
+      name: Lock Entity
+      description: Lock entity.
+      selector:
+        entity:
+          domain: lock
+          integration: zwave_js
+  source_url: https://community.home-assistant.io/t/zwave-js-kwikset-910-manual-status-updater/283691
+trigger:
+- platform: state
+  entity_id: !input 'alarmtype_sensor'
+action:
+- service: zwave_js.refresh_value
+  target:
+    entity_id: !input 'lock_entity'
