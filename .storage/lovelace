@@ -25,7 +25,7 @@
                                     "entity": "light.dad_lights"
                                 },
                                 {
-                                    "entity": "light.jims_computer_light"
+                                    "entity": "light.jims_computer_light_2"
                                 },
                                 {
                                     "entity": "light.cabinetlight"
@@ -263,7 +263,7 @@
                                     "entity": "lock.side_door"
                                 },
                                 {
-                                    "entity": "lock.front_door"
+                                    "entity": "lock.smart_code_with_home_connect_technology"
                                 },
                                 {
                                     "entity": "cover.garage_door"
