@@ -379,6 +379,27 @@
                                     "service_data": {},
                                     "target": {}
                                 },
+                                "entity": "binary_sensor.battery_low_backdoor",
+                                "name": "BackDoor Battery",
+                                "icon": "mdi:battery-alert-variant-outline"
+                            }
+                        },
+                        {
+                            "type": "conditional",
+                            "conditions": [
+                                {
+                                    "entity": "binary_sensor.battery_low_back_door",
+                                    "state": "on"
+                                }
+                            ],
+                            "card": {
+                                "type": "button",
+                                "tap_action": {
+                                    "action": "call-service",
+                                    "service": "python_script.battery_clear",
+                                    "service_data": {},
+                                    "target": {}
+                                },
                                 "entity": "binary_sensor.battery_low_back_door",
                                 "name": "Back Door Battery",
                                 "icon": "mdi:battery-alert-variant-outline"
@@ -940,27 +961,6 @@
                             "type": "picture-entity",
                             "entity": "lock.front_door",
                             "camera_image": "camera.front_door"
-                        },
-                        {
-                            "type": "conditional",
-                            "conditions": [
-                                {
-                                    "entity": "binary_sensor.battery_low_backdoor",
-                                    "state": "on"
-                                }
-                            ],
-                            "card": {
-                                "type": "button",
-                                "tap_action": {
-                                    "action": "call-service",
-                                    "service": "python_script.battery_clear",
-                                    "service_data": {},
-                                    "target": {}
-                                },
-                                "entity": "binary_sensor.battery_low_backdoor",
-                                "name": "Garage Door Closed Battery",
-                                "icon": "mdi:battery-alert-variant-outline"
-                            }
                         }
                     ],
                     "icon": "mdi:home-automation",
