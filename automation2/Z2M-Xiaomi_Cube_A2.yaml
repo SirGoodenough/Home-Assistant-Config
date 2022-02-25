@@ -31,7 +31,7 @@
       doubletap_face_4:
       - service: >
           {% set light1 = 'light.cabinetlight' %}
-          {% set light2 = 'light.jims_computer_light' %}
+          {% set light2 = 'light.jims_computer_light_2' %}
           {% if is_state( light1, 'on') %}
             light.turn_off 
           {% elif is_state( light2, 'on') %}
@@ -41,7 +41,7 @@
           {% endif %}
         entity_id: 
           - light.cabinetlight
-          - light.jims_computer_light
+          - light.jims_computer_light_2
       slide_face_4:
       - service: light.turn_on
         entity_id: light.stairway_switch

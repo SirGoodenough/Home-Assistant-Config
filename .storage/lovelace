@@ -3044,9 +3044,6 @@
                                     "entity": "sensor.template_octoprint_print_file_short"
                                 },
                                 {
-                                    "entity": "switch.filament_vac"
-                                },
-                                {
                                     "entity": "sensor.octoprint_print_status"
                                 },
                                 {
