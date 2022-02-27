@@ -38,6 +38,16 @@
                 "url": "/hacsfiles/surveillance-card/surveillance-card.js?hacstag=147764937005",
                 "type": "module",
                 "id": "06b60c42860d464486a390cee5c2f1de"
+            },
+            {
+                "url": "/hacsfiles/thermal_comfort_icons/thermal_comfort_icons.js?hacstag=449218690130",
+                "type": "module",
+                "id": "2d06e379a2084cd9beb32e04454b04ec"
+            },
+            {
+                "url": "/hacsfiles/onlylocklock/only-lock-lock-row.js?hacstag=45089870602",
+                "type": "module",
+                "id": "faa6df4271c2402a9dd6684cb822959f"
             }
         ]
     }
