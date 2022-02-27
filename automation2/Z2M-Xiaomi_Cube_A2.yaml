@@ -1,4 +1,4 @@
-- id: '1644640476335'
+- id: "1644640476335"
   alias: Yertle Cube
   description: All the things Yertle can do
   use_blueprint:
@@ -6,45 +6,34 @@
     input:
       remote: sensor.yertle_action
       fall:
-      - type: turn_on
-        device_id: d99723186c9d0c8de8475bf9646b8373
-        entity_id: switch.plug2
-        domain: switch
+        - type: turn_on
+          device_id: d99723186c9d0c8de8475bf9646b8373
+          entity_id: switch.plug2
+          domain: switch
       shake:
-      - service: script.tarantula_shutdown
+        - service: script.tarantula_shutdown
       rotate_cw_face_0:
-      - service: script.cube_dimmer_control
-        data:
-          angle: "{{ trigger.to_state.attributes.action_angle }}"
-          light: light.kitch
+        - service: script.cube_dimmer_control
+          data:
+            angle: "{{ trigger.to_state.attributes.action_angle }}"
+            light: light.grp_kitch
       rotate_ccw_face_0:
-      - service: script.cube_dimmer_control
-        data:
-          angle: "{{ trigger.to_state.attributes.action_angle }}"
-          light: light.kitch
+        - service: script.cube_dimmer_control
+          data:
+            angle: "{{ trigger.to_state.attributes.action_angle }}"
+            light: light.grp_kitch
       doubletap_face_0:
-      - service: light.toggle
-        entity_id: light.kitch
+        - service: light.toggle
+          entity_id: light.grp_kitch
       doubletap_face_1:
-      - service: light.toggle
-        entity_id: light.dad_lights
+        - service: light.toggle
+          entity_id: light.grp_dad_lights
       doubletap_face_4:
-      - service: >
-          {% set light1 = 'light.cabinetlight' %}
-          {% set light2 = 'light.jims_computer_light_2' %}
-          {% if is_state( light1, 'on') %}
-            light.turn_off 
-          {% elif is_state( light2, 'on') %}
-            light.turn_off
-          {% else %}
-            light.turn_on
-          {% endif %}
-        entity_id: 
-          - light.cabinetlight
-          - light.jims_computer_light_2
+        - service: light.toggle
+          entity_id: light.grp_d_lights
       slide_face_4:
-      - service: light.turn_on
-        entity_id: light.stairway_switch
+        - service: light.turn_on
+          entity_id: light.stairway_switch
 
 - id: a97c78fd-3deb-45d5-b884-2f04f8f5802b
   alias: Gertle Cube
@@ -54,22 +43,22 @@
     input:
       remote: sensor.gertle_action
       fall:
-      - type: turn_on
-        device_id: d99723186c9d0c8de8475bf9646b8373
-        entity_id: switch.plug2
-        domain: switch
+        - type: turn_on
+          device_id: d99723186c9d0c8de8475bf9646b8373
+          entity_id: switch.plug2
+          domain: switch
       shake:
-      - service: script.tarantula_shutdown
-        data: {}
+        - service: script.tarantula_shutdown
+          data: {}
 
 - id: 4ae86eca-d558-4d9b-b1cb-7ea5e506aaf1
   alias: Kitch Light on default
   initial_state: on
   mode: parallel
-  max: 100  
+  max: 100
   trigger:
     - platform: state
-      entity_id: light.kitch
+      entity_id: light.grp_kitch
       from: "off"
       to: "on"
   action:
@@ -79,4 +68,4 @@
         transition: 10
         kelvin: 1700
         brightness: 38 * 255
-        entity_id: '{{ trigger.entity_id }}'
+        entity_id: "{{ trigger.entity_id }}"

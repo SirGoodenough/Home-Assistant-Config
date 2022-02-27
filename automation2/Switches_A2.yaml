@@ -120,7 +120,7 @@
       entity_id: light.kitchen_down_lights
 
 ####################################################
-# Office Light Button      Causing errors?         #
+# Office Light Button                              #
 ####################################################
 - id: 36d673e0-6732-4c89-9c05-e99ec815b58d
   alias: Toggle Office Light 1
@@ -130,17 +130,8 @@
       entity_id: binary_sensor.office_light_1
       to: "on"
   action:
-    - service: >
-        {% if is_state('light.office_fan_light', 'on') %}
-          light.turn_off 
-        {% elif is_state('light.plug3', 'on') %}
-          light.turn_off
-        {% else %}
-          light.turn_on
-        {% endif %}
-      entity_id:
-        - light.plug3
-        - light.office_fan_light
+    - service: light.toggle
+      entity_id: light.grp_mom_office
 
 - id: f00ef2fa-fec8-41ee-99a1-6548227b0e69
   alias: Toggle Office Light 2

@@ -19,16 +19,19 @@
                                     "entity": "sensor.kitchen_humidity_3"
                                 },
                                 {
-                                    "entity": "light.kitch"
+                                    "entity": "light.grp_kitch"
                                 },
                                 {
-                                    "entity": "light.dad_lights"
+                                    "entity": "light.grp_dad_lights"
                                 },
                                 {
                                     "entity": "light.jims_computer_light_2"
                                 },
                                 {
                                     "entity": "light.cabinetlight"
+                                },
+                                {
+                                    "entity": "light.grp_d_lights"
                                 },
                                 {
                                     "entity": "light.kitchen_down_lights"
@@ -685,13 +688,16 @@
                                     "entity": "sensor.office_fanspeed"
                                 },
                                 {
+                                    "entity": "light.office_fan_light"
+                                },
+                                {
+                                    "entity": "light.grp_mom_office"
+                                },
+                                {
                                     "entity": "light.plug3"
                                 },
                                 {
                                     "entity": "light.office_track_jim_bulb"
-                                },
-                                {
-                                    "entity": "light.office_fan_light"
                                 },
                                 {
                                     "entity": "switch.filament_vac"
@@ -1001,19 +1007,7 @@
                                     "entity": "light.jens_light"
                                 },
                                 {
-                                    "entity": "light.jens_led_bed"
-                                },
-                                {
-                                    "entity": "light.bulb1"
-                                },
-                                {
-                                    "entity": "input_boolean.flush2"
-                                },
-                                {
-                                    "entity": "timer.flushtime2"
-                                },
-                                {
-                                    "entity": "timer.flushtime10"
+                                    "entity": "light.grp_jens_color"
                                 }
                             ],
                             "show_header_toggle": false,
@@ -1045,6 +1039,14 @@
                                 }
                             },
                             "entity": "timer.flushtime10"
+                        },
+                        {
+                            "type": "button",
+                            "tap_action": {
+                                "action": "toggle"
+                            },
+                            "entity": "input_boolean.flush2",
+                            "icon_height": "40px"
                         },
                         {
                             "type": "weather-forecast",
@@ -1118,10 +1120,6 @@
                             "entity": "media_player.jennys_room_display"
                         },
                         {
-                            "type": "media-control",
-                            "entity": "media_player.farg"
-                        },
-                        {
                             "entities": [
                                 {
                                     "entity": "fan.jens_mist"
@@ -1163,26 +1161,8 @@
                             "type": "entities"
                         },
                         {
-                            "type": "button",
-                            "tap_action": {
-                                "action": "call-service",
-                                "service": "input_boolean.turn_on",
-                                "service_data": {},
-                                "target": {
-                                    "entity_id": "input_boolean.mist_button"
-                                }
-                            },
-                            "entity": "input_boolean.mist_button",
-                            "name": "More Mist!",
-                            "hold_action": {
-                                "action": "call-service",
-                                "service": "input_boolean.turn_off",
-                                "service_data": {},
-                                "target": {
-                                    "entity_id": "input_boolean.mist_button"
-                                }
-                            },
-                            "theme": "Dark Soft UI Violet"
+                            "type": "media-control",
+                            "entity": "media_player.farg"
                         },
                         {
                             "type": "button",
@@ -1209,6 +1189,28 @@
                                     "entity_id": "input_boolean.pad_enable2"
                                 }
                             }
+                        },
+                        {
+                            "type": "button",
+                            "tap_action": {
+                                "action": "call-service",
+                                "service": "input_boolean.turn_on",
+                                "service_data": {},
+                                "target": {
+                                    "entity_id": "input_boolean.mist_button"
+                                }
+                            },
+                            "entity": "input_boolean.mist_button",
+                            "name": "More Mist!",
+                            "hold_action": {
+                                "action": "call-service",
+                                "service": "input_boolean.turn_off",
+                                "service_data": {},
+                                "target": {
+                                    "entity_id": "input_boolean.mist_button"
+                                }
+                            },
+                            "theme": "Dark Soft UI Violet"
                         }
                     ],
                     "icon": "mdi:alpha-j-box",
@@ -2422,10 +2424,16 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "light.dad_lights"
+                                    "entity": "light.grp_dad_lights"
                                 },
                                 {
-                                    "entity": "light.jims_computer_light"
+                                    "entity": "light.jims_computer_light_2"
+                                },
+                                {
+                                    "entity": "light.cabinetlight"
+                                },
+                                {
+                                    "entity": "light.grp_d_lights"
                                 },
                                 {
                                     "entity": "light.kitchen_down_lights"
@@ -2434,7 +2442,13 @@
                                     "entity": "light.kitchensink"
                                 },
                                 {
-                                    "entity": "light.cabinetlight"
+                                    "entity": "light.grp_kitch"
+                                },
+                                {
+                                    "entity": "light.counter_1"
+                                },
+                                {
+                                    "entity": "light.counter_2"
                                 },
                                 {
                                     "entity": "light.growlight2"
@@ -2443,7 +2457,8 @@
                             "show_header_toggle": true,
                             "theme": "darkish",
                             "title": "Kitchen",
-                            "type": "entities"
+                            "type": "entities",
+                            "state_color": true
                         },
                         {
                             "entities": [
@@ -2455,6 +2470,9 @@
                                 },
                                 {
                                     "entity": "script.chill_time"
+                                },
+                                {
+                                    "entity": "script.work_time"
                                 }
                             ],
                             "show_header_toggle": true,
@@ -2537,15 +2555,19 @@
                                     "entity": "light.jens_light"
                                 },
                                 {
-                                    "entity": "light.bulb1_2"
+                                    "entity": "light.grp_jens_color"
                                 },
                                 {
-                                    "entity": "sensor.jennys_new_fanspeed"
+                                    "entity": "light.jens_led_bed"
+                                },
+                                {
+                                    "entity": "light.bulb1"
                                 }
                             ],
                             "theme": "darkish",
                             "title": "Jens Room",
-                            "type": "entities"
+                            "type": "entities",
+                            "state_color": true
                         },
                         {
                             "entities": [
@@ -2665,7 +2687,7 @@
                                     "entity": "switch.tarantula_power"
                                 },
                                 {
-                                    "entity": "sensor.office_fanspeed"
+                                    "entity": "script.tarantula_shutdown"
                                 }
                             ],
                             "title": "Office",
@@ -3345,12 +3367,14 @@
                         {
                             "type": "weather-forecast",
                             "entity": "weather.home",
-                            "show_forecast": false
+                            "show_forecast": false,
+                            "theme": "Animated Weather Card"
                         },
                         {
                             "type": "weather-forecast",
                             "entity": "weather.home_hourly",
-                            "show_forecast": false
+                            "show_forecast": false,
+                            "theme": "Animated Weather Card"
                         },
                         {
                             "type": "iframe",

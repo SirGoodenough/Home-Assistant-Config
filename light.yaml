@@ -100,3 +100,24 @@
       - light.counter_2
       - light.kitch_fan_2
       - light.kitch_fan_3
+
+  - platform: group
+    name: Jens Color
+    unique_id: f55a37e1-0358-4295-843c-fe31143c83cc
+    entities:
+      - light.bulb1
+      - light.jens_led_bed
+
+  - platform: group
+    name: D Lights
+    unique_id: 9fa921ea-7795-46ba-a850-bf85113e5f4d
+    entities:
+      - light.cabinetlight
+      - light.jims_computer_light_2
+
+  - platform: group
+    name: Mom Office
+    unique_id: a449deed-b1d4-4186-81af-a6697ed9d201
+    entities:
+      - light.office_fan_light
+      - light.plug3
