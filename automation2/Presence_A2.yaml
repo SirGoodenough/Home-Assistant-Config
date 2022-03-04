@@ -45,7 +45,7 @@
     platform: zone
     # entity_id: device_tracker.life360_supreme_leader_chaloupka
     entity_id: person.julie
-    zone: zone.nail_shop
+    zone: zone.nail_shop2
     event: leave
   action:
     service: script.tts_mom_left_nails
