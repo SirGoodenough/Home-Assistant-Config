@@ -1,5 +1,0 @@
----
-  - platform: mjpeg
-    name: OctoPrint
-    still_image_url: !secret 3D_Static
-    mjpeg_url: !secret 3D_Stream

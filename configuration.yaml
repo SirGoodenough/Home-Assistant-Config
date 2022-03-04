@@ -44,7 +44,7 @@ zone:
 # alert: !include alert.yaml
 binary_sensor: !include_dir_merge_list ./binSensor
 button: !include button.yaml
-camera: !include camera.yaml
+# camera: !include camera.yaml
 # climate: !include climate.yaml
 conversation:
 cover: !include cover.yaml
