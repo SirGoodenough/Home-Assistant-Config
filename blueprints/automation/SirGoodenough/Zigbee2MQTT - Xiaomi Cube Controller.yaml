@@ -241,14 +241,14 @@ trigger:
 - platform: state
   entity_id: !input 'remote'
 condition:
-- condition: and
-  conditions:
-  - condition: template
-    value_template: '{{ trigger.from_state.attributes.action != trigger.to_state.attributes.action
-      }} '
-  - condition: template
-    value_template: "{{ trigger.to_state.attributes.action in \n  ('rotate_right',\
-      \ 'rotate_left', 'flip90', 'flip180', 'slide', 'tap', 'shake', 'fall') }}\n"
+  - condition: and
+    conditions:
+      - condition: template
+        value_template: "{{ trigger.from_state.attributes.action !=\
+          \ trigger.to_state.attributes.action }}" 
+      - condition: template
+        value_template: "{{ trigger.to_state.attributes.action in ('rotate_right',\
+          \ 'rotate_left', 'flip90', 'flip180', 'slide', 'tap', 'shake', 'fall') }}"
 action:
 - variables:
     event: '{{ trigger.to_state.attributes.action }}'
