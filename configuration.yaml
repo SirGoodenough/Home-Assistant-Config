@@ -66,7 +66,7 @@ notify: !include notify.yaml
 panel_custom: !include panel_custom.yaml
 panel_iframe: !include panel_iframe.yaml
 python_script:
-# recorder: !include recorder.yaml
+recorder: !include recorder.yaml
 rest_command: !include rest_command.yaml
 ring: !include ring.yaml
 sensor: !include_dir_merge_list ./sensor2
