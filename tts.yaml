@@ -2,4 +2,10 @@
   - platform: google_translate
     service_name: google_translate_say
     language: 'en'
+  - platform: microsoft
+    api_key: !secret Azure
+    region: centralus
 
+    # language: en-us
+    # gender: Male
+    # type: RyanNeural
