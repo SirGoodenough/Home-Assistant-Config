@@ -4,6 +4,8 @@
     "key": "http",
     "data": {
         "server_port": 8123,
+        "ssl_certificate": "/ssl/fullchain.pem",
+        "ssl_key": "/ssl/privkey.pem",
         "cors_allowed_origins": [
             "https://google.com",
             "https://home-assistant.io"
