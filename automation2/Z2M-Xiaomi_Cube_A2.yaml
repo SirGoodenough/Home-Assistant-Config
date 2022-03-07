@@ -28,6 +28,15 @@
       doubletap_face_1:
         - service: light.toggle
           entity_id: light.grp_dad_lights
+      rotate_cw_face_3:
+        - service: light.toggle
+          entity_id: light.livingroomlight
+      rotate_ccw_face_3:
+        - service: light.toggle
+          entity_id: light.mom_light
+      flipped180_face_3:
+        - service: input_button.press
+          entity_id: button.moms_button2
       doubletap_face_4:
         - service: light.toggle
           entity_id: light.grp_d_lights
