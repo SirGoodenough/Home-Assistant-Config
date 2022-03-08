@@ -2,10 +2,117 @@
   - platform: google_translate
     service_name: google_translate_say
     language: 'en'
+
   - platform: microsoft
     api_key: !secret Azure
     region: centralus
-
     # language: en-us
     # gender: Male
     # type: RyanNeural
+
+  - platform: voicerss
+    api_key: !secret Voice_RSS_key
+# language string (Optional, default: en-us)
+#   The language to use.
+# codec string (Optional, default: mp3)
+#   The audio codec.
+# format string (Optional, default: 8khz_8bit_mono)
+#   The audio sample format.
+
+  - platform: picotts
+# language string (Optional, default: en-US)
+#   The language to use. Supported languages are en-US, en-GB, de-DE, es-ES, fr-FR and it-IT.
+
+  - platform: marytts
+# codec string (Optional, default: WAVE_FILE)
+#   The audio codec. Supported codecs are AIFF_FILE, AU_FILE and WAVE_FILE.
+# voice string (Optional)
+#   The speaker voice. Default: cmu-slt-hsmm
+# language string (Optional, default: en_US)
+#   The language to use. Supported languages are de, en_GB, en_US, fr, it, lb, ru, sv, te and tr.
+# effect map (Optional)
+#   A dictionary of effects which should be applied to the speech output.
+
+  # - platform: amazon_polly
+  #   aws_access_key_id: AWS_ACCESS_KEY_ID
+  #   aws_secret_access_key: AWS_SECRET_ACCESS_KEY
+# - service: tts.amazon_polly_say
+#   target:
+#     entity_id: media_player.living_room
+#     message: >
+#       <speak>
+#           Hello from Amazon Polly
+#       </speak>
+# voice string (Optional)
+#   Voice name to be used.
+# output_format string (Optional, default: mp3)
+#   Override the default output format. Either mp3, ogg_vorbis or pcm.
+# sample_rate string (Optional)
+#   Override the default sample rate. Possible values are: 8000, 16000, 22050, 24000.
+# Default:
+#   22050 for MP3 and Ogg Vorbis, 16000 for pcm
+# engine string (Optional, default: standard)
+#   Override the default engine. Can be either of standard or neural. See Amazon documentation for compatible regions and voices.
+
+  # - platform: watson_tts
+  #   watson_apikey: YOUR_GENERATED_APIKEY
+# - service: tts.watson_tts_say
+#   target:
+#     entity_id: media_player.living_room
+#   data:
+#     message: >
+#       <speak>
+#           Hello from Watson
+#       </speak>
+#   options:
+#     voice: en-US_EmilyV3Voice
+# voice string (Optional, default: en-US_AllisonV3Voice)
+#   Voice name to be used.
+# output_format string (Optional, default: audio/mp3)
+# Override the default output format. Supported formats: audio/flac, audio/mp3, audio/mpeg, audio/ogg, audio/ogg;codecs=opus, audio/ogg;codecs=vorbis, audio/wav
+
+  # - platform: yandextts
+  #   api_key: THE_API_KEY
+# language string (Optional, default: en-US)
+#   The language to use. Supported languages are en-US, ru-RU, uk-UK and tr-TR.
+# codec string (Optional, default: mp3)
+#   The audio codec. Supported codecs are mp3, wav and opus.
+# voice string (Optional, default: zahar)
+#   The speaker voice. Supported female voices are jane, oksana, alyss, omazh, silaerkan, nastya, sasha, tanya, tatyana_abramova, voicesearch, and zombie. Male voices are zahar, ermil, levitan, ermilov, kolya, kostya, nick, erkanyavas, zhenya, anton_samokhvalov, ermil_with_tuning, robot, dude, and smoky.
+# emotion string (Optional, default: neutral)
+#   The speaker emotional intonation. Supported emotions are good (friendly), evil (angry) and neutral
+# speed float (Optional, default: 1)
+#   The speech speed. Highest speed is 3 and lowest 0,1
+
+  # - platform: baidu
+  #   app_id: YOUR_APPID
+  #   api_key: YOUR_APIKEY
+  #   secret_key: YOUR_SECRETKEY
+# pitch integer (Optional, default: 5)
+#   Audio pitch from 0 to 9.
+# volume integer (Optional, default: 5)
+#   Audio volume from 0 to 15.
+# person integer (Optional, default: 0)
+#   The voice type. You choose one from 0, 1, 3, 4, 5, 103, 106, 110 or 111.
+
+  # - platform: google_cloud
+  #   key_file: googlecloud.json
+# language string (Optional, default: en-US)
+#   Default language of the voice, e.g., en-US. Supported languages, genders and voices listed here. Also there are extra not documented but supported languages (see dropdown here).
+# gender string (Optional, default: neutral)
+#   Default gender of the voice, e.g., male. Supported languages, genders and voices listed here.
+# voice string (Optional)
+#   Default voice name, e.g., en-US-Wavenet-F. Supported languages, genders and voices listed here. Important! This parameter will override language and gender parameters if set.
+# encoding string (Optional, default: mp3)
+#   Default audio encoder. Supported encodings are ogg_opus, mp3 and linear16.
+# speed float (Optional, default: 1.0)
+#   Default rate/speed of the voice, in the range [0.25, 4.0]. 1.0 is the normal native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed.
+# pitch float (Optional, default: 0.0)
+#   Default pitch of the voice, in the range [-20.0, 20.0]. 20 means increase of 20 semitones from the original pitch. -20 means decrease of 20 semitones from the original pitch.
+# gain float (Optional, default: 0.0)
+#   Default volume gain (in dB) of the voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. Strongly recommend not to exceed +10 (dB) as there’s usually no effective increase in loudness for any value greater than that.
+# profiles list (Optional, default: [])
+#   An identifier which selects ‘audio effects’ profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given. Supported profile ids listed here.
+# text_type string (Optional, default: text)
+#   Default text type. Supported text types are text and ssml. Read more on what is that and how to use SSML here.
+
