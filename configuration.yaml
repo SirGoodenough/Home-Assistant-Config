@@ -33,7 +33,6 @@ sun:
 system_health:
 # tag:
 timer: !include timer.yaml
-updater:
 usb:
 webhook:
 zeroconf:
