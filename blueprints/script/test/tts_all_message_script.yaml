@@ -3,31 +3,29 @@ blueprint:
   name: TTS_say Message
   description: This is a script that can use any of the 11 integrated TTS Platforms 
     in Home Assistant to send a message to a media player. Some will require 
-    Google Type Speakers, some will require Non-Google type speakers. 
-    -
+    Google Type Speakers, some will require Non-Google type speakers. \n
+    
     This blueprint **WILL NOT** set-up TTS for you.  You will be given 
     the opportunity to add the incorrect options that will **NOT** allow your TTS 
-    to function. Your best road to success will be to add a TTS session manually, 
+    to function. Your best road to success will be to add a TTS session with UI, 
     and only after that is successfully talking to you should you take the 
     languages and options that work there and apply them in this Blueprint. 
     The safest thing to do other than that is to start with the basic sonfiguration 
-    for the TTS_say integration that you are using and add options one at a time. 
-    -
-    * This Blueprint makes the assumption that you already have a TTS integration installed and you know how it works and how to use it. * 
-    -
+    for the TTS_say integration that you are using and add options one at a time. \n
+    
+    **This Blueprint makes the assumption that you already have a TTS integration installed and you know how it works and how to use it.** \n
+    
     You will need to verify that the name you have given to the TTS integration 
-    is the Default name or you need to change this blueprint to use the custom 
-    name you have set in the TTS !input section. 
-    -
+    in your system configuration is the Default name or you need to change this 
+    blueprint to use the custom name you have set in the TTS !input section. \n
+    
     This will be a way to streamline your automations and scripts. It provides 
     specific services that can be called with a single line service call. 
     This is contrasted to the multiline service calls of repeating values spread 
-    throughout your configuration. 
-    -
+    throughout your configuration. \n
     In addition it puts all your TTS specific code in 1 spot, the blueprint, 
-    and that allows it to be called over and over. 
-    Plus it gives you one place, the blueprint, to repair issues should they arrise.
-
+    and that allows it to be called over and over. \n
+    Plus it gives you one place, the blueprint, to repair issues should they arrise.\n
   homeassistant:
     min_version: 2021.11.0
   input:
