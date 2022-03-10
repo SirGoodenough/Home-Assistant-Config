@@ -1008,6 +1008,9 @@
                                 },
                                 {
                                     "entity": "light.grp_jens_color"
+                                },
+                                {
+                                    "entity": "light.grp_kitch"
                                 }
                             ],
                             "show_header_toggle": false,
