@@ -73,6 +73,7 @@ s -lovelace## Ignore all
 ############# Failsafe  \/ \/ \/ \/ \/ #############
 secrets.yaml
 shell_command.yaml
+home-assistant.log.*
 
 # Generic ignores
 *.log
@@ -90,7 +91,7 @@ themes**
 /.storage/cloud*
 /.storage/core*
 /.storage/hacs**
-/,zigbee2mqtt**
+zigbee2mqtt**
 
 # Ignore files created by IDE's
 .vscode
