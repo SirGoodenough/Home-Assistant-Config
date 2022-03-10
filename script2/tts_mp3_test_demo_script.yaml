@@ -2,9 +2,11 @@ blueprint_test1_message_nabu_cloud:
   alias: Test1 message Blueprint tts_cloud_say using Nabu-Casa
   description: Blah Blah
   use_blueprint:
-    path: /config/blueprints/script/SirGoodenough/tts_cloud_message_script.yaml
+    path: /config/blueprints/script/
     input:
-      speaker_language: en-AU
+      GTS_language: en
+      TTS: tts.cloud_say
+      cloud_language: en-AU
       speaker_gender: male
       speaker_target: media_player.living_room_speaker
       announcement_message: It matters not what I say.
@@ -13,19 +15,21 @@ blueprint_test2:
   alias: Test2 message Blueprint google_translate_say
   description: Blah Blah
   use_blueprint:
-    path: /config/blueprints/script/SirGoodenough/tts_google_translate_say_message_script.yaml
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
       speaker_target: media_player.living_room_speaker
-      speaker_language: es
+      TTS: tts.google_translate_say
+      GTS_language: es
       announcement_message: No importa lo que diga.
   icon: mdi:phone-in-talk-outline
 blueprint_test3_message_google_translate:
   alias: Test3 message Blueprint google_translate_say
   description: Blah Blah
   use_blueprint:
-    path: SirGoodenough/tts_google_translate_say_message_script.yaml
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
-      speaker_language: '{{ ("en", "uk","th") |random }}'
+      TTS: tts.google_translate_say
+      GTS_language: '{{ ("en", "uk","th") |random }}'
       speaker_target: media_player.kitchen_speaker
       announcement_message: '{{ ("So close, no matter how far","Couldn''t be much
         more from the heart","Forever trusting who we are","And nothing else matters","Never
@@ -40,9 +44,11 @@ blueprint_test4_message_nabu_cloud:
   alias: Test4 message Blueprint tts_cloud_say using Nabu-Casa
   description: Blah Blah
   use_blueprint:
-    path: SirGoodenough/tts_cloud_message_script.yaml
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
-      speaker_language: '{{ ("en-GB", "en-US","en-AU") |random }}'
+      GTS_language: en
+      TTS: tts.cloud_say
+      cloud_language: '{{ ("en-GB", "en-US","en-AU") |random }}'
       speaker_gender: male
       speaker_target: media_player.kitchen_speaker
       announcement_message: '{{ ("So close, no matter how far","Couldn''t be much

@@ -2,9 +2,11 @@ sg_food_say:
   alias: Announce Dads Food Day
   description: Dads lets have fun with food day
   use_blueprint:
-    path: /config/blueprints/script/SirGoodenough/tts_cloud_message_script.yaml
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
-      speaker_language: en-AU
+      GTS_language: en
+      TTS: tts.cloud_say
+      cloud_language: en-AU
       speaker_gender: male
       speaker_target: media_player.intercom_group
       announcement_message: Dad's food day. Lets get Jimmy John's!
@@ -13,9 +15,11 @@ jen_food_say:
   alias: Announce Jens Food Day
   description: Jens lets have fun with food day
   use_blueprint:
-    path: /config/blueprints/script/SirGoodenough/tts_cloud_message_script.yaml
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
-      speaker_language: en-GB
+      GTS_language: en
+      TTS: tts.cloud_say
+      cloud_language: en-GB
       speaker_gender: male
       speaker_target: media_player.intercom_group
       announcement_message: Jen's food day. Lets get extra ranch from Denny's!
@@ -24,9 +28,11 @@ julie_food_say:
   alias: Announce Julies Food Day
   description: Moms lets have fun with food day
   use_blueprint:
-    path: /config/blueprints/script/SirGoodenough/tts_cloud_message_script.yaml
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
-      speaker_language: en-US
+      GTS_language: en
+      TTS: tts.cloud_say
+      cloud_language: en-US
       speaker_gender: female
       speaker_target: media_player.intercom_group
       announcement_message: Julie's food day. Cheese Curds over easy, please.
@@ -35,9 +41,11 @@ sg_food_say2:
   alias: Announce Dads Food Day
   description: Dads lets have fun with food day
   use_blueprint:
-    path: /config/blueprints/script/SirGoodenough/tts_cloud_message_script.yaml
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
-      speaker_language: en-AU
+      GTS_language: en
+      TTS: tts.cloud_say
+      cloud_language: en-AU
       speaker_gender: male
       speaker_target: media_player.intercom_group
       announcement_message: Dad's food day. It's Happy Family for a Happy Family!
@@ -46,9 +54,11 @@ jen_food_say2:
   alias: Announce Jens Food Day
   description: Jens lets have fun with food day
   use_blueprint:
-    path: /config/blueprints/script/SirGoodenough/tts_cloud_message_script.yaml
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
-      speaker_language: en-GB
+      GTS_language: en
+      TTS: tts.cloud_say
+      cloud_language: en-GB
       speaker_gender: male
       speaker_target: media_player.intercom_group
       announcement_message: Jen's food day. Panera is my fave!!!
@@ -57,9 +67,11 @@ julie_food_say2:
   alias: Announce Julies Food Day
   description: Moms lets have fun with food day
   use_blueprint:
-    path: /config/blueprints/script/SirGoodenough/tts_cloud_message_script.yaml
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
-      speaker_language: en-US
+      GTS_language: en
+      TTS: tts.cloud_say
+      cloud_language: en-US
       speaker_gender: female
       speaker_target: media_player.intercom_group
       announcement_message: Julie's food day. If it ain't Wendy's, I ain't eatin'

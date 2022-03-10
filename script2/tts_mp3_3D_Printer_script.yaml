@@ -1,9 +1,11 @@
 tts_tarantula_off:
   alias: TTS Tarantula Off
   use_blueprint:
-    path: SirGoodenough/tts_cloud_message_script.yaml
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
-      speaker_language: en-AU
+      GTS_language: en
+      TTS: tts.cloud_say
+      cloud_language: en-AU
       speaker_gender: male
       speaker_target: media_player.kitchen_speaker
       announcement_message: The Forge has been disabled
@@ -11,9 +13,11 @@ tts_tarantula_off:
 tts_tarantula_print_complete:
   alias: TTS Tarantula Print Complete
   use_blueprint:
-    path: SirGoodenough/tts_cloud_message_script.yaml
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
-      speaker_language: en-CA
+      GTS_language: en
+      TTS: tts.cloud_say
+      cloud_language: en-CA
       speaker_gender: male
       speaker_target: media_player.kitchen_speaker
       announcement_message: The Forge is ready for more work
