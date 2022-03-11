@@ -7,7 +7,6 @@ s -lovelace## Ignore all
 !/automationDev**
 !/binSensor**
 !/blueprints**
-!/image**
 !/Lights**
 !/python_scripts**
 !/script2**
