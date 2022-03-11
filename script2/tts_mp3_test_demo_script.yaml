@@ -2,7 +2,7 @@ blueprint_test1_message_nabu_cloud:
   alias: Test1 message Blueprint tts_cloud_say using Nabu-Casa
   description: Blah Blah
   use_blueprint:
-    path: /config/blueprints/script/
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
       GTS_language: en
       TTS: tts.cloud_say
