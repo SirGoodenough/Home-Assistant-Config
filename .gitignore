@@ -8,18 +8,19 @@ s -lovelace## Ignore all
 !/binSensor**
 !/blueprints**
 !/image**
+!/Lights**
 !/python_scripts**
 !/script2**
 !/switch2**
 !/sensor2**
 !/scripts**
+!/templates**
 !/.storage
 !/.storage/broadlink_remote_*_codes
 !/.storage/http
 !/.storage/image
 !/.storage/input_*
 !/.storage/lovelace*
-!/templates**
 
 ## Allow files
 !alert.yaml
@@ -54,9 +55,11 @@ s -lovelace## Ignore all
 !octoprint.yaml
 !panel_custom.yaml
 !panel_iframe.yaml
+!person.yaml
 !recorder.yaml
 !rest_command.yaml
 !ring.yaml
+!scene.yaml
 !scripts.yaml
 !sensors.yaml
 !sonoff.yaml
@@ -74,6 +77,7 @@ s -lovelace## Ignore all
 secrets.yaml
 shell_command.yaml
 home-assistant.log.*
+.git-credentials
 
 # Generic ignores
 *.log
@@ -85,15 +89,17 @@ home-assistant.log.*
 __pycache__
 
 # Directory (contents) ignores
-deps**
-themes**
-/.storage/auth*
-/.storage/cloud*
-/.storage/core*
+/deps**
+/pop.git**
+/themes**
+/www**
+/zigbee2mqtt**
+/.storage/auth**
+/.storage/cloud**
+/.storage/core**
 /.storage/hacs**
-zigbee2mqtt**
 
 # Ignore files created by IDE's
-.vscode
-.theia
-.Trash*
+/.vscode**
+/.theia**
+/.Trash**
