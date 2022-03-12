@@ -725,6 +725,9 @@
                                 },
                                 {
                                     "entity": "light.office_6"
+                                },
+                                {
+                                    "entity": "light.grp_studio"
                                 }
                             ],
                             "show_header_toggle": false,

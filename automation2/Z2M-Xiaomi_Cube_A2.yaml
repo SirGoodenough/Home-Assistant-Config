@@ -59,6 +59,49 @@
       shake:
         - service: script.tarantula_shutdown
           data: {}
+      rotate_cw_face_0:
+        - service: script.cube_dimmer_control
+          data:
+            angle: "{{ trigger.to_state.attributes.action_angle }}"
+            light: light.grp_studio
+      rotate_ccw_face_0:
+        - service: script.cube_dimmer_control
+          data:
+            angle: "{{ trigger.to_state.attributes.action_angle }}"
+            light: light.grp_studio
+      doubletap_face_0:
+        - service: light.toggle
+          entity_id: light.grp_studio
+      rotate_cw_face_1:
+        - service: script.cube_red_color_control
+          data:
+            angle: "{{ trigger.to_state.attributes.action_angle }}"
+            light: light.grp_studio
+      rotate_ccw_face_1:
+        - service: script.cube_red_color_control
+          data:
+            angle: "{{ trigger.to_state.attributes.action_angle }}"
+            light: light.grp_studio
+      rotate_cw_face_5:
+        - service: script.cube_green_color_control
+          data:
+            angle: "{{ trigger.to_state.attributes.action_angle }}"
+            light: light.grp_studio
+      rotate_ccw_face_5:
+        - service: script.cube_green_color_control
+          data:
+            angle: "{{ trigger.to_state.attributes.action_angle }}"
+            light: light.grp_studio
+      rotate_cw_face_4:
+        - service: script.cube_blue_color_control
+          data:
+            angle: "{{ trigger.to_state.attributes.action_angle }}"
+            light: light.grp_studio
+      rotate_ccw_face_4:
+        - service: script.cube_blue_color_control
+          data:
+            angle: "{{ trigger.to_state.attributes.action_angle }}"
+            light: light.grp_studio
 
 - id: 4ae86eca-d558-4d9b-b1cb-7ea5e506aaf1
   alias: Kitch Light on default
@@ -73,8 +116,25 @@
   action:
     - service: light.turn_on
       data:
-        color_mode: white
         transition: 10
         kelvin: 1700
-        brightness: 38 * 255
+        brightness: 96.9
+        entity_id: "{{ trigger.entity_id }}"
+
+- id: 124d0949-2fcf-4fa4-8d70-836dcc9c37e3
+  alias: Office Light on default
+  initial_state: on
+  mode: parallel
+  max: 100
+  trigger:
+    - platform: state
+      entity_id: light.grp_studio
+      from: "off"
+      to: "on"
+  action:
+    - service: light.turn_on
+      data:
+        transition: 4
+        rgb_color: [150,147,90]
+        brightness_pct: 38
         entity_id: "{{ trigger.entity_id }}"

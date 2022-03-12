@@ -56,3 +56,10 @@
     entities:
       - light.office_fan_light
       - light.plug3
+
+  - platform: group
+    name: Studio
+    unique_id: 0468c9fb-d0af-409f-bb28-dc173b9175cf
+    entities:
+      - light.office_5
+      - light.office_6
