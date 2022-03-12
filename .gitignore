@@ -89,6 +89,7 @@ __pycache__
 
 # Directory (contents) ignores
 /deps**
+/image**
 /pop.git**
 /themes**
 /www**
