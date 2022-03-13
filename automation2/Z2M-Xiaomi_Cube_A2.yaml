@@ -93,17 +93,6 @@
           data:
             angle: "{{ trigger.to_state.attributes.action_angle }}"
             light: light.grp_studio
-## Side 5 green
-      rotate_cw_face_5:
-        - service: script.cube_green_color_control
-          data:
-            angle: "{{ trigger.to_state.attributes.action_angle }}"
-            light: light.grp_studio
-      rotate_ccw_face_5:
-        - service: script.cube_green_color_control
-          data:
-            angle: "{{ trigger.to_state.attributes.action_angle }}"
-            light: light.grp_studio
 ## Side 4 blue
       rotate_cw_face_4:
         - service: script.cube_blue_color_control
@@ -112,6 +101,17 @@
             light: light.grp_studio
       rotate_ccw_face_4:
         - service: script.cube_blue_color_control
+          data:
+            angle: "{{ trigger.to_state.attributes.action_angle }}"
+            light: light.grp_studio
+## Side 5 green
+      rotate_cw_face_5:
+        - service: script.cube_green_color_control
+          data:
+            angle: "{{ trigger.to_state.attributes.action_angle }}"
+            light: light.grp_studio
+      rotate_ccw_face_5:
+        - service: script.cube_green_color_control
           data:
             angle: "{{ trigger.to_state.attributes.action_angle }}"
             light: light.grp_studio
