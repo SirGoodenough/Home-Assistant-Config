@@ -129,7 +129,6 @@
   action:
     - service: light.turn_on
       data:
-        transition: 4
         kelvin: 1700
         brightness: 96.9
         entity_id: "{{ trigger.entity_id }}"
