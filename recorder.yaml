@@ -11,6 +11,7 @@
       - climate
       - fan
       - generic_hygrostat
+      - life360
       - light
       - lock
       - media_player
@@ -32,7 +33,6 @@
       - cloud
       - counter
       - hacs
-      - life360
       - mqtt
       - timer
       - updater # Don't save updater

@@ -4,7 +4,6 @@
   initial_state: on
   trigger: 
     platform: zone
-    # entity_id: device_tracker.life360_supreme_leader_chaloupka
     entity_id: person.julie
     zone: zone.katy_s_kloset
     event: leave
@@ -17,7 +16,6 @@
   initial_state: on
   trigger: 
     platform: zone
-    # entity_id: device_tracker.life360_supreme_leader_chaloupka
     entity_id: person.julie
     zone: zone.home
     event: enter
@@ -30,7 +28,6 @@
   initial_state: on
   trigger: 
     platform: zone
-    # entity_id: device_tracker.life360_supreme_leader_chaloupka
     entity_id: person.julie
     zone: zone.home
     event: leave
@@ -43,9 +40,21 @@
   initial_state: on
   trigger: 
     platform: zone
-    # entity_id: device_tracker.life360_supreme_leader_chaloupka
     entity_id: person.julie
     zone: zone.nail_shop2
     event: leave
   action:
     service: script.tts_mom_left_nails
+
+- id: 6da00e0a-6695-4a38-8d36-a427b35d4be8
+  alias: Moms Left Clinic
+  mode: queued
+  initial_state: on
+  trigger: 
+    platform: zone
+    # entity_id: device_tracker.life360_supreme_leader_chaloupka
+    entity_id: person.julie, person.jim, person.jen
+    zone: zone.clinic
+    event: leave
+  action:
+    service: script.tts_anyone_left_clinic
