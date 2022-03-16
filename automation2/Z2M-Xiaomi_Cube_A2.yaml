@@ -33,10 +33,10 @@
           entity_id: light.grp_dad_lights
 ## Side l_light 3
       doubletap_face_3:
-        - service: input_button.press
+        - service: button.press
           entity_id: button.moms_button2
       flipped180_face_3:
-        - service: input_button.press
+        - service: button.press
           entity_id: button.moms_button2
       rotate_cw_face_3:
         - service: light.toggle
@@ -148,5 +148,5 @@
       data:
         transition: 4
         rgb_color: [150,147,90]
-        brightness_pct: 38
+        brightness_pct: 48
         entity_id: "{{ trigger.entity_id }}"
