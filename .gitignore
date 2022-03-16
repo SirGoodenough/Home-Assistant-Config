@@ -42,6 +42,7 @@ s -lovelace## Ignore all
 !humidifer.yaml
 !life360.yaml
 !light.yaml
+!light_profiles.csv
 !history.yaml
 !homeassistant.yaml
 !http.yaml
