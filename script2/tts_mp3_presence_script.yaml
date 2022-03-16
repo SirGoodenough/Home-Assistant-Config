@@ -45,4 +45,16 @@ tts_mom_left_nails:
       speaker_target: media_player.intercom_group
       speaker_gender: female
       announcement_message: The Queen has left the digital maintenance facility.
-  icon: mdi:home-outline
+  icon: mdi:nail
+tts_anyone_left_clinic:
+  alias: TTS Anyone Left Clinic
+  use_blueprint:
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
+    input:
+      GTS_language: en
+      TTS: tts.cloud_say
+      cloud_language: en-GB
+      speaker_target: media_player.intercom_group
+      speaker_gender: female
+      announcement_message: A Member of the Royal Family has left the Body Shop.
+  icon: mdi:doctor

@@ -961,7 +961,53 @@
                                     },
                                     "entity": "media_player.bathroom_speaker",
                                     "name": "Bathroom Unmute",
-                                    "icon": "mdi:gesture-tap-button"
+                                    "icon": "mdi:gesture-tap-button",
+                                    "hold_action": {
+                                        "action": "call-service",
+                                        "service": "script.google_mute",
+                                        "service_data": {
+                                            "entities": "media_player.bedroom_speaker",
+                                            "status": false
+                                        },
+                                        "target": {}
+                                    }
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "button.press",
+                                        "service_data": {},
+                                        "target": {
+                                            "entity_id": "button.stairs_up"
+                                        }
+                                    },
+                                    "entity": "button.stairs_up",
+                                    "name": "Bedroom Mute"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.google_mute",
+                                        "service_data": {
+                                            "entities": "media_player.bedroom_speaker",
+                                            "status": false
+                                        },
+                                        "target": {}
+                                    },
+                                    "entity": "media_player.bathroom_speaker",
+                                    "name": "Bedroom Unmute",
+                                    "icon": "mdi:gesture-tap-button",
+                                    "hold_action": {
+                                        "action": "call-service",
+                                        "service": "script.google_mute",
+                                        "service_data": {
+                                            "entities": "media_player.bathroom_speaker",
+                                            "status": false
+                                        },
+                                        "target": {}
+                                    }
                                 }
                             ],
                             "square": false
