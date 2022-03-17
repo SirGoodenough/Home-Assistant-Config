@@ -22,7 +22,7 @@
   # Dust Collector                                    #
   #####################################################
   - id: 33b1583b-dde3-4228-9c88-a0d457ddac6a
-    alias: Dust Collector button turn On
+    alias: Dust Collector button turn on or off via button
     initial_state: on
     trigger:
     - platform: state
@@ -33,27 +33,20 @@
     - service: switch.toggle
       entity_id: switch.dust_collector
 
-  - id: d15eac53-31d8-4112-bd37-b96a46710366
-    alias: Dust Collector Failsafe
+  - id: ead11d4f-da6c-4bc2-93a3-6500be201114
+    mode: restart
+    alias: Dust Collector Turn On Watchdog
     initial_state: on
     trigger:
     - platform: state
       entity_id: switch.dust_collector
       to: 'on'
     action:
-    - service: script.turn_on
-      entity_id: script.dust_collector_watchdog
-
-  - id: 6bb5f3f4-3698-45ec-b92e-c704b17612a7
-    alias: Dust Collector Failsafe Cancel
-    initial_state: on
-    trigger:
-    - platform: state
-      entity_id: switch.dust_collector
-      to: 'off'
-    action:
-    - service: homeassistant.turn_off
-      entity_id: automation.dust_collector_failsafe
+    - alias: Dust Collector Watchdog
+      delay:
+        minutes: 45
+    - service: switch.turn_off
+      dentity_id: switch.dust_collector
 
   ####################################################
   # Wash Machine                                     #
