@@ -22,6 +22,8 @@
   # Dust Collector                                    #
   #####################################################
   - id: 33b1583b-dde3-4228-9c88-a0d457ddac6a
+    mode: single
+    max_exceeded: silent
     alias: Dust Collector button turn on or off via button
     initial_state: on
     trigger:
@@ -32,6 +34,7 @@
     action:
     - service: switch.toggle
       entity_id: switch.dust_collector
+    - delay: 00:00:03
 
   - id: ead11d4f-da6c-4bc2-93a3-6500be201114
     mode: restart
