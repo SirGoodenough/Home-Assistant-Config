@@ -97,32 +97,55 @@
       to: 'on'
     action:
     - service: script.media_player_fire_alert
-    - delay: 00:00:12
+    - service: light.turn_on
+      data:
+        kelvin: 1700
+        brightness: 96.9
+        entity_id: light.grp_kitch
+    - service: light.turn_on
+      data:
+        transition: 0
+        rgb_color: [255,0,0]
+        brightness_pct: 100
+        entity_id: light.grp_kitch
+    - delay: 00:00:03
+    - service: light.turn_on
+      data:
+        kelvin: 1700
+        brightness: 96.9
+        entity_id: light.grp_kitch
+    - service: light.turn_on
+      data:
+        transition: 0
+        rgb_color: [255,0,0]
+        brightness_pct: 100
+        entity_id: light.grp_kitch
+    - delay: 00:00:03
+    - service: light.turn_on
+      data:
+        kelvin: 1700
+        brightness: 96.9
+        entity_id: light.grp_kitch
+    - service: light.turn_on
+      data:
+        transition: 0
+        rgb_color: [255,0,0]
+        brightness_pct: 100
+        entity_id: light.grp_kitch
+    - delay: 00:00:03
+    - service: light.turn_on
+      data:
+        kelvin: 1700
+        brightness: 96.9
+        entity_id: light.grp_kitch
+    - service: light.turn_on
+      data:
+        transition: 0
+        rgb_color: [255,0,0]
+        brightness_pct: 100
+        entity_id: light.grp_kitch
+    - delay: 00:00:03
     - service: script.tts_smoke_detected_in_the_basement
-    - service: light.turn_on
-      data:
-        kelvin: 1700
-        brightness: 96.9
-        entity_id: light.grp_kitch
-    - service: light.turn_on
-      data:
-        transition: 0
-        rgb_color: [255,0,0]
-        brightness_pct: 100
-        entity_id: light.grp_kitch
-    - delay: 00:00:03
-    - service: light.turn_on
-      data:
-        kelvin: 1700
-        brightness: 96.9
-        entity_id: light.grp_kitch
-    - service: light.turn_on
-      data:
-        transition: 0
-        rgb_color: [255,0,0]
-        brightness_pct: 100
-        entity_id: light.grp_kitch
-    - delay: 00:00:03
     - service: light.turn_on
       data:
         kelvin: 1700
