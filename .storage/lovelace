@@ -540,6 +540,29 @@
                             }
                         },
                         {
+                            "type": "conditional",
+                            "conditions": [
+                                {
+                                    "entity": "sensor.gertle_battery",
+                                    "state": "20"
+                                }
+                            ],
+                            "card": {
+                                "show_name": true,
+                                "show_icon": true,
+                                "type": "button",
+                                "tap_action": {
+                                    "action": "more-info"
+                                },
+                                "entity": "sensor.gertle_voltage",
+                                "hold_action": {
+                                    "action": "none"
+                                },
+                                "show_state": true,
+                                "name": "Gertle Low Battery"
+                            }
+                        },
+                        {
                             "type": "glance",
                             "entities": [
                                 {
@@ -549,6 +572,30 @@
                                     "entity": "sensor.water_the_plants"
                                 }
                             ]
+                        },
+                        {
+                            "type": "conditional",
+                            "conditions": [
+                                {
+                                    "entity": "sensor.yertle_battery",
+                                    "state": "20"
+                                }
+                            ],
+                            "card": {
+                                "show_name": true,
+                                "show_icon": true,
+                                "type": "button",
+                                "tap_action": {
+                                    "action": "more-info"
+                                },
+                                "entity": "sensor.yertle_voltage",
+                                "name": "Yertle Low Battery",
+                                "icon": "mdi:battery-check-outline",
+                                "show_state": true,
+                                "hold_action": {
+                                    "action": "none"
+                                }
+                            }
                         },
                         {
                             "entities": [
@@ -757,9 +804,6 @@
                                 },
                                 {
                                     "entity": "light.bmt_hall_socketd"
-                                },
-                                {
-                                    "entity": "script.dust_collector_watchdog"
                                 },
                                 {
                                     "entity": "binary_sensor.side_door_open_2"
