@@ -8,17 +8,17 @@ tts_first_flush:
       cloud_language: de-DE
       speaker_gender: female
       speaker_target: media_player.jen_group
-      announcement_message: '{{ ("Es ist alles gleich, nur die Namen ändern sich“, „Jeder
-        Tag, es scheint, als würden wir vergeuden“, „Ein anderer Ort, wo die Gesichter so sind
+      announcement_message: '{{ ("Es ist alles gleich, nur die Namen ändern sich","Jeder
+        Tag, es scheint, als würden wir vergeuden","Ein anderer Ort, wo die Gesichter so sind
         kalt","Ich würde die ganze Nacht fahren, nur um nach Hause zu kommen","Ich bin ein Cowboy. Auf einem Stahl
-        Pferd reite ich. Ich bin gesucht. Tot oder lebendig“, „Manchmal schlafe ich, manchmal ist es
+        Pferd reite ich. Ich bin gesucht. Tot oder lebendig","Manchmal schlafe ich, manchmal ist es
         tagelang nicht","Die Menschen, die ich treffe, gehen immer getrennte Wege","Manchmal
-        du sagst den Tag an der Flasche, die du trinkst“, „Und Zeiten, in denen du allein bist,
-        Nun, alles, was Sie tun, ist zu denken, „Oh, und ich reite. Yeah.","Und ich gehe durch diese Straßen.
-        Eine geladene Sechssaiter auf meinem Rücken“, „Ich spiele für immer. Weil ich vielleicht nicht schaffe
-        it back","Ich war überall. Ich stehe immer noch aufrecht“, „Ich habe eine Million gesehen
-        Gesichter und ich habe sie alle gerockt“, „Und ich werde gesucht. (gesucht). tot oder lebendig","Und
-        Ich reite. (und ich reite). tot oder lebendig“, „Ich fahre immer noch. (Ich fahre immer noch). tot
+        du sagst den Tag an der Flasche, die du trinkst","Und Zeiten, in denen du allein bist,
+        Nun, alles, was Sie tun, ist zu denken","Oh, und ich reite. Yeah.","Und ich gehe durch diese Straßen.
+        Eine geladene Sechssaiter auf meinem Rücken" "Ich spiele für immer. Weil ich vielleicht nicht schaffe
+        it back","Ich war überall. Ich stehe immer noch aufrecht","Ich habe eine Million gesehen
+        Gesichter und ich habe sie alle gerockt","Und ich werde gesucht. (gesucht). tot oder lebendig","Und
+        Ich reite. (und ich reite). tot oder lebendig","Ich fahre immer noch. (Ich fahre immer noch). tot
         oder lebendig") |random }}'
   icon: mdi:toilet
 tts_middle_flush:
