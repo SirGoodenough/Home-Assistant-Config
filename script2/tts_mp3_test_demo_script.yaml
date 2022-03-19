@@ -13,7 +13,7 @@ blueprint_test1_message_nabu_cloud:
   icon: mdi:car-brake-fluid-level
 blueprint_test2:
   alias: Test2 message Blueprint google_translate_say
-  description: Blah Blah
+  description: Blah Blah   
   use_blueprint:
     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
