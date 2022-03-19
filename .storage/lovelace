@@ -4065,9 +4065,6 @@
                                     "entity": "automation.dust_collector_button_turn_on"
                                 },
                                 {
-                                    "entity": "automation.dust_collector_failsafe"
-                                },
-                                {
                                     "entity": "automation.bathroom_is_overheated"
                                 },
                                 {
