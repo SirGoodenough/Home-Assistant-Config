@@ -46,7 +46,7 @@ tts_mom_left_nails:
       speaker_gender: female
       announcement_message: The Queen has left the digital maintenance facility.
   icon: mdi:nail
-tts_anyone_left_clinic:
+tts_anyone_left_clinic: 
   alias: TTS Anyone Left Clinic
   use_blueprint:
     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
