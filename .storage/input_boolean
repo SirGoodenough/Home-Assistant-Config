@@ -90,32 +90,32 @@
                 "id": "bed_head_up_10"
             },
             {
-                "name": "Bed Knee Up One",
+                "name": "Bed Knees Up One",
                 "icon": "mdi:foot-print",
                 "id": "bed_foot_up_1"
             },
             {
-                "name": "Bed Knee Down One",
+                "name": "Bed Knees Down One",
                 "icon": "mdi:foot-print",
                 "id": "bed_foot_down_1"
             },
             {
-                "name": "Bed Knee Down Five",
+                "name": "Bed Knees Down Five",
                 "icon": "mdi:foot-print",
                 "id": "bed_foot_down_5"
             },
             {
-                "name": "Bed Knee Down Ten",
+                "name": "Bed Knees Down Ten",
                 "icon": "mdi:foot-print",
                 "id": "bed_foot_down_10"
             },
             {
-                "name": "Bed Knee Up Five",
+                "name": "Bed Knees Up Five",
                 "icon": "mdi:foot-print",
                 "id": "bed_foot_up_5"
             },
             {
-                "name": "Bed Knee Up Ten",
+                "name": "Bed Knees Up Ten",
                 "icon": "mdi:foot-print",
                 "id": "bed_foot_up_10"
             },
