@@ -105,21 +105,21 @@
   #####################################################
   # MQTT Plug Set C Kitchen Down Lights               #
   #####################################################
-#   #######
-#   ## 1 ##
-#   #######
-#   - platform: mqtt
-#     name: "C1"
-#     unique_id: e01d7541-c56d-4a46-8f4a-463e444e677e
-#     state_topic: rf433/C1
-#     command_topic: "RFBridge2/cmnd/Backlog"
-#     availability_topic: "RFBridge2/tele/LWT"
-#     state_on: 'ON'
-#     state_off: 'OFF'
-#     payload_on: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8883"
-#     payload_off: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8882"
-#     payload_available: "Online"
-#     payload_not_available: "Offline"
+  #######
+  ## 1 ##
+  #######
+  - platform: mqtt
+    name: "C1"
+    unique_id: e01d7541-c56d-4a46-8f4a-463e444e677e
+    state_topic: rf433/C1
+    command_topic: "RFBridge2/cmnd/Backlog"
+    availability_topic: "RFBridge2/tele/LWT"
+    state_on: 'ON'
+    state_off: 'OFF'
+    payload_on: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8883"
+    payload_off: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8882"
+    payload_available: "Online"
+    payload_not_available: "Offline"
 
   #######
   ## 2 ##
