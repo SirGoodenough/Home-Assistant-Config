@@ -52,9 +52,20 @@
   initial_state: on
   trigger: 
     platform: zone
-    # entity_id: device_tracker.life360_supreme_leader_chaloupka
     entity_id: person.julie, person.jim, person.jen
     zone: zone.clinic
     event: leave
   action:
     service: script.tts_anyone_left_clinic
+
+- id: 77d42f27-865f-4b33-b47c-63bdcc9b78fb
+  alias: Moms Left Follicle Assembly Building
+  mode: queued
+  initial_state: on
+  trigger: 
+    platform: zone
+    entity_id: person.julie
+    zone: zone.follicle_assembly_building
+    event: leave
+  action:
+    service: script.tts_mom_left_fab

@@ -58,3 +58,15 @@ tts_anyone_left_clinic:
       speaker_gender: female
       announcement_message: A Member of the Royal Family has left the Body Shop.
   icon: mdi:doctor
+tts_mom_left_fab:
+  alias: TTS Mom Left FAB
+  use_blueprint:
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
+    input:
+      GTS_language: en
+      TTS: tts.cloud_say
+      cloud_language: en-GB
+      speaker_target: media_player.intercom_group
+      speaker_gender: female
+      announcement_message: The Queen has left the Follicle Assembly Building.
+  icon: mdi:hair-dryer
