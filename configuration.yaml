@@ -40,11 +40,8 @@ zone:
 
 # All the other stuff not covered in the default_config:
 
-# alert: !include alert.yaml
 binary_sensor: !include_dir_merge_list ./binSensor
 button: !include button.yaml
-# camera: !include camera.yaml
-# climate: !include climate.yaml
 conversation:
 cover: !include cover.yaml
 device_tracker: !include device_tracker.yaml
@@ -60,8 +57,7 @@ life360: !include life360.yaml
 light: !include_dir_merge_list ./Lights
 lock: !include lock.yaml
 logger: !include logger.yaml
-notify: !include notify.yaml
-# octoprint: !include octoprint.yaml
+notify: !include notify.yaml# octoprint: !include octoprint.yaml
 panel_custom: !include panel_custom.yaml
 panel_iframe: !include panel_iframe.yaml
 python_script:
@@ -76,4 +72,3 @@ switch two: !include_dir_merge_list ./switch2
 template: !include_dir_merge_list ./templates
 tts: !include tts.yaml
 webhook_service:
-# zwave: !include zwave.yaml
