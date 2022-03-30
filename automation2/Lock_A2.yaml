@@ -56,10 +56,7 @@
     action:
       - service: lock.unlock
         target:
-          entity_id: 
-            - lock.front_door
-            - lock.side_door
-            - lock.smart_code_with_home_connect_technology
+          entity_id: all
       - delay: 5
       - service: input_boolean.turn_off
         target:
@@ -92,11 +89,13 @@
     action:
       - service: lock.lock
         target:
-          entity_id: 
-            - lock.front_door
-            - lock.side_door
-            - lock.smart_code_with_home_connect_technology
+          entity_id: all
       - delay: 5
       - service: input_boolean.turn_off
         target:
           entity_id: input_boolean.pad_enable3
+
+
+            # - lock.front_door
+            # - lock.side_door
+            # - lock.smart_code_with_home_connect_technology

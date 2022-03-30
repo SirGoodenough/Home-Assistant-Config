@@ -9,10 +9,7 @@
         entity_id: input_boolean.mom_bedtime
       - service: lock.lock
         target:
-          entity_id: 
-            - lock.front_door
-            - lock.side_door
-            - lock.smart_code_with_home_connect_technology
+          entity_id: all
       - service: light.turn_on
         entity_id: light.stairway_light
 
@@ -24,3 +21,8 @@
           - light.mom_light
       - service: input_boolean.turn_off
         entity_id: input_boolean.christmas
+
+
+            # - lock.front_door
+            # - lock.side_door
+            # - lock.smart_code_with_home_connect_technology
