@@ -57,7 +57,7 @@ life360: !include life360.yaml
 light: !include_dir_merge_list ./Lights
 lock: !include lock.yaml
 logger: !include logger.yaml
-notify: !include notify.yaml# octoprint: !include octoprint.yaml
+notify: !include notify.yaml
 panel_custom: !include panel_custom.yaml
 panel_iframe: !include panel_iframe.yaml
 python_script:
