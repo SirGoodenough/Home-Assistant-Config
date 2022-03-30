@@ -1208,8 +1208,22 @@
                             "columns": 4
                         },
                         {
+                            "type": "entities",
+                            "entities": [
+                                "cover.jens_kitchen_curtain"
+                            ],
+                            "title": "Jens Kitchen Curtain"
+                        },
+                        {
                             "type": "media-control",
                             "entity": "media_player.jenny_s_tv"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "cover.jens_window_curtain"
+                            ],
+                            "title": "Jens Window Curtain"
                         },
                         {
                             "type": "media-control",
