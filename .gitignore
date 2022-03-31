@@ -3,6 +3,7 @@ s -lovelace## Ignore all
 **
 
 ## Allow folders
+# !*/
 !/automation2**
 !/automationDev**
 !/binSensor**
@@ -14,6 +15,7 @@ s -lovelace## Ignore all
 !/sensor2**
 !/scripts**
 !/templates**
+!/zigbee2mqtt/
 !/.storage
 !/.storage/broadlink_remote_*_codes
 !/.storage/http
@@ -26,7 +28,6 @@ s -lovelace## Ignore all
 !automations.yaml
 !binary_sensors.yaml
 !button.yaml
-!camera.yaml
 !climate.yaml
 !cloud.yaml
 !configuration.yaml
@@ -41,7 +42,6 @@ s -lovelace## Ignore all
 !hacs.yaml
 !humidifer.yaml
 !life360.yaml
-!light.yaml
 !light_profiles.csv
 !history.yaml
 !homeassistant.yaml
@@ -67,7 +67,7 @@ s -lovelace## Ignore all
 !timer.yaml
 !tts.yaml
 !updater.yaml
-!zwave.yaml
+!ZM85EL-2Z.js
 !.gitignore
 !.HA_VERSION
 !README.md
@@ -78,6 +78,8 @@ secrets.yaml
 shell_command.yaml
 home-assistant.log.*
 .git-credentials
+/zigbee2mqtt/configuration.yaml
+/zigbee2mqtt/groups.yaml
 
 # Generic ignores
 *.log
@@ -92,9 +94,9 @@ __pycache__
 /deps**
 /image**
 /pop.git**
+/Purgatory**
 /themes**
 /www**
-/zigbee2mqtt**
 /.storage/auth**
 /.storage/cloud**
 /.storage/core**
