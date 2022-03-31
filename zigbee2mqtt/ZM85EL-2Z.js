@@ -87,7 +87,7 @@ const definition = {
         {modelID: 'TS0601', manufacturerName: '_TZE200_zuz7f94z'},
         {modelID: 'TS0601', manufacturerName: '_TZE200_zyrdrmno'},
         {modelID: 'TS0601', manufacturerName: '_TZE200_68nvbio9'},
-        // Roman Rod = I Type - Curtains Track (Multi-Motor)
+        // Roman Rod - I Type - Curtains Track (Multi-Motor)
         {modelID: 'TS0601', manufacturerName: '_TZE200_cf1sl3tj'},
     ],
     model: 'TS0601_cover',
