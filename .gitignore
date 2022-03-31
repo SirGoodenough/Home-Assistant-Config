@@ -16,6 +16,7 @@ s -lovelace## Ignore all
 !/scripts**
 !/templates**
 !/zigbee2mqtt/
+!/zigbee2mqtt/*.js
 !/.storage
 !/.storage/broadlink_remote_*_codes
 !/.storage/http
@@ -67,7 +68,6 @@ s -lovelace## Ignore all
 !timer.yaml
 !tts.yaml
 !updater.yaml
-!ZM85EL-2Z.js
 !.gitignore
 !.HA_VERSION
 !README.md
@@ -78,8 +78,9 @@ secrets.yaml
 shell_command.yaml
 home-assistant.log.*
 .git-credentials
-/zigbee2mqtt/configuration.yaml
-/zigbee2mqtt/groups.yaml
+/zigbee2mqtt/*.json
+/zigbee2mqtt/*.yaml
+/zigbee2mqtt/.configuration.yaml.bk
 
 # Generic ignores
 *.log
@@ -97,6 +98,8 @@ __pycache__
 /Purgatory**
 /themes**
 /www**
+/zigbee2mqtt/old**
+/zigbee2mqtt/log**
 /.storage/auth**
 /.storage/cloud**
 /.storage/core**

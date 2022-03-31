@@ -81,7 +81,7 @@ const definition = {
         {modelID: 'TS0601', manufacturerName: '_TZE200_hsgrhjpf'},
         // Window pushers:
         {modelID: 'TS0601', manufacturerName: '_TZE200_g5wdnuow'},
-        // Tubular motors: 
+        // Tubular motors:
         {modelID: 'TS0601', manufacturerName: '_TZE200_fzo2pocs'},
         {modelID: 'TS0601', manufacturerName: '_TZE200_5sbebbzs'},
         {modelID: 'TS0601', manufacturerName: '_TZE200_zuz7f94z'},
