@@ -19,6 +19,9 @@
                                     "entity": "sensor.kitchen_humidity_3"
                                 },
                                 {
+                                    "entity": "sensor.yertle_last_action_a"
+                                },
+                                {
                                     "entity": "light.grp_kitch"
                                 },
                                 {
@@ -59,9 +62,6 @@
                                 },
                                 {
                                     "entity": "binary_sensor.back_door_pir"
-                                },
-                                {
-                                    "entity": "sensor.yertle_last_action_a"
                                 }
                             ],
                             "show_header_toggle": true,
@@ -1504,6 +1504,8 @@
                             "type": "grid",
                             "cards": [
                                 {
+                                    "show_name": true,
+                                    "show_icon": true,
                                     "type": "button",
                                     "tap_action": {
                                         "action": "call-service",
@@ -1516,6 +1518,8 @@
                                     "entity": "script.vizio_j_vol_up"
                                 },
                                 {
+                                    "show_name": true,
+                                    "show_icon": false,
                                     "type": "button",
                                     "tap_action": {
                                         "action": "toggle"
@@ -1620,13 +1624,15 @@
                                     "theme": "Dark - Orange"
                                 },
                                 {
+                                    "show_name": true,
+                                    "show_icon": true,
                                     "type": "button",
                                     "tap_action": {
                                         "action": "toggle"
                                     },
                                     "entity": "switch.chromecast",
                                     "icon_height": "50px",
-                                    "theme": "Dark - Light Red"
+                                    "theme": "Dark - Red"
                                 },
                                 {
                                     "type": "button",
@@ -1647,6 +1653,8 @@
                             "type": "grid",
                             "cards": [
                                 {
+                                    "show_name": true,
+                                    "show_icon": true,
                                     "type": "button",
                                     "entity": "script.br_power",
                                     "tap_action": {
@@ -1656,6 +1664,8 @@
                                     "theme": "Dark - Red"
                                 },
                                 {
+                                    "show_name": true,
+                                    "show_icon": false,
                                     "type": "button",
                                     "tap_action": {
                                         "action": "toggle"
@@ -1708,13 +1718,16 @@
                                     "theme": "Dark - Blue/Purple"
                                 },
                                 {
+                                    "show_name": true,
+                                    "show_icon": true,
                                     "type": "button",
                                     "tap_action": {
                                         "action": "toggle"
                                     },
                                     "icon_height": "-50px",
                                     "theme": "Dark - Blue/Purple",
-                                    "entity": "script.br_up"
+                                    "entity": "script.br_up",
+                                    "icon": "mdi:arrow-up"
                                 },
                                 {
                                     "type": "button",
@@ -1780,13 +1793,16 @@
                                     "theme": "Dark - Blue/Purple"
                                 },
                                 {
+                                    "show_name": true,
+                                    "show_icon": true,
                                     "type": "button",
                                     "tap_action": {
                                         "action": "toggle"
                                     },
                                     "entity": "script.br_scan_up",
                                     "icon_height": "-50px",
-                                    "theme": "Dark - Blue/Purple"
+                                    "theme": "Dark - Blue/Purple",
+                                    "name": "Scan up"
                                 },
                                 {
                                     "type": "button",
@@ -1807,15 +1823,20 @@
                                     "theme": "Dark - Blue/Purple"
                                 },
                                 {
+                                    "show_name": true,
+                                    "show_icon": true,
                                     "type": "button",
                                     "tap_action": {
                                         "action": "toggle"
                                     },
                                     "entity": "script.br_scan_down",
                                     "icon_height": "-50px",
-                                    "theme": "Dark - Blue/Purple"
+                                    "theme": "Dark - Blue/Purple",
+                                    "name": "Scan down"
                                 },
                                 {
+                                    "show_name": true,
+                                    "show_icon": false,
                                     "type": "button",
                                     "tap_action": {
                                         "action": "toggle"
@@ -1824,12 +1845,14 @@
                                     "icon_height": "50px"
                                 },
                                 {
+                                    "show_name": true,
+                                    "show_icon": false,
                                     "type": "button",
                                     "tap_action": {
                                         "action": "toggle"
                                     },
-                                    "entity": "script.denon_power",
-                                    "theme": "Dark - Red"
+                                    "theme": "Dark - Blue/Purple",
+                                    "icon": ""
                                 }
                             ],
                             "square": false
@@ -1837,25 +1860,6 @@
                         {
                             "type": "grid",
                             "cards": [
-                                {
-                                    "type": "button",
-                                    "tap_action": {
-                                        "action": "toggle"
-                                    },
-                                    "entity": "script.denon_power",
-                                    "theme": "Dark - Red",
-                                    "icon_height": "50px"
-                                },
-                                {
-                                    "type": "button",
-                                    "tap_action": {
-                                        "action": "toggle"
-                                    },
-                                    "name": "Denon Reciever Panel",
-                                    "theme": "Navy Blue & Yellow",
-                                    "icon_height": "50px",
-                                    "show_icon": false
-                                },
                                 {
                                     "type": "button",
                                     "tap_action": {
@@ -1869,11 +1873,13 @@
                                     "theme": "Navy Blue & Yellow"
                                 },
                                 {
+                                    "show_name": true,
+                                    "show_icon": false,
                                     "type": "button",
                                     "tap_action": {
                                         "action": "toggle"
                                     },
-                                    "entity": "script.denon_volume_up",
+                                    "name": "Denon Reciever Panel",
                                     "theme": "Navy Blue & Yellow",
                                     "icon_height": "50px"
                                 },
@@ -1882,63 +1888,9 @@
                                     "tap_action": {
                                         "action": "toggle"
                                     },
-                                    "entity": "script.denon_tuner",
-                                    "icon_height": "50px",
-                                    "theme": "Navy Blue & Yellow"
-                                },
-                                {
-                                    "type": "button",
-                                    "tap_action": {
-                                        "action": "toggle"
-                                    },
-                                    "entity": "script.denon_tune",
-                                    "icon_height": "50px",
-                                    "theme": "Navy Blue & Yellow"
-                                },
-                                {
-                                    "type": "button",
-                                    "tap_action": {
-                                        "action": "toggle"
-                                    },
-                                    "entity": "script.denon_volume_down",
-                                    "icon_height": "50px",
-                                    "theme": "Navy Blue & Yellow"
-                                },
-                                {
-                                    "type": "button",
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "script.denon_firetv",
-                                        "service_data": {},
-                                        "target": {}
-                                    },
-                                    "entity": "script.denon_tune_search",
-                                    "icon_height": "50px",
-                                    "theme": "Navy Blue & Yellow"
-                                },
-                                {
-                                    "type": "button",
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "script.denon_blue_ray",
-                                        "service_data": {},
-                                        "target": {}
-                                    },
-                                    "entity": "script.denon_reciever_band",
-                                    "icon_height": "50px",
-                                    "theme": "Navy Blue & Yellow"
-                                },
-                                {
-                                    "type": "button",
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "script.denon_tv_audio",
-                                        "service_data": {},
-                                        "target": {}
-                                    },
-                                    "entity": "script.denon_tv_audio",
-                                    "icon_height": "50px",
-                                    "theme": "Navy Blue & Yellow"
+                                    "entity": "script.denon_volume_up",
+                                    "theme": "Navy Blue & Yellow",
+                                    "icon_height": "50px"
                                 },
                                 {
                                     "type": "button",
@@ -1953,6 +1905,27 @@
                                     "theme": "Navy Blue & Yellow"
                                 },
                                 {
+                                    "show_name": true,
+                                    "show_icon": true,
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.denon_power",
+                                    "theme": "Dark - Red",
+                                    "icon_height": "50px",
+                                    "icon": "mdi:power"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.denon_volume_down",
+                                    "icon_height": "50px",
+                                    "theme": "Navy Blue & Yellow"
+                                },
+                                {
                                     "type": "button",
                                     "tap_action": {
                                         "action": "call-service",
@@ -1961,6 +1934,18 @@
                                         "target": {}
                                     },
                                     "entity": "script.denon_chromecast",
+                                    "icon_height": "50px",
+                                    "theme": "Navy Blue & Yellow"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.denon_tv_audio",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.denon_tv_audio",
                                     "icon_height": "50px",
                                     "theme": "Navy Blue & Yellow"
                                 },
@@ -1982,6 +1967,50 @@
                                         "target": {}
                                     },
                                     "entity": "script.denon_mecool",
+                                    "icon_height": "50px",
+                                    "theme": "Navy Blue & Yellow"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.denon_tuner",
+                                    "icon_height": "50px",
+                                    "theme": "Navy Blue & Yellow"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "script.denon_tune",
+                                    "icon_height": "50px",
+                                    "theme": "Navy Blue & Yellow"
+                                },
+                                {
+                                    "show_name": true,
+                                    "show_icon": true,
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.denon_firetv",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.denon_tune_search",
+                                    "icon_height": "50px",
+                                    "theme": "Navy Blue & Yellow"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "script.denon_blue_ray",
+                                        "service_data": {},
+                                        "target": {}
+                                    },
+                                    "entity": "script.denon_reciever_band",
                                     "icon_height": "50px",
                                     "theme": "Navy Blue & Yellow"
                                 },
@@ -2046,6 +2075,8 @@
                                     "theme": "Navy Blue & Yellow"
                                 },
                                 {
+                                    "show_name": true,
+                                    "show_icon": false,
                                     "type": "button",
                                     "tap_action": {
                                         "action": "toggle"
@@ -2071,6 +2102,8 @@
                             "type": "grid",
                             "cards": [
                                 {
+                                    "show_name": true,
+                                    "show_icon": true,
                                     "type": "button",
                                     "tap_action": {
                                         "action": "toggle"
@@ -2080,6 +2113,8 @@
                                     "theme": "material_dark_green"
                                 },
                                 {
+                                    "show_name": true,
+                                    "show_icon": false,
                                     "type": "button",
                                     "tap_action": {
                                         "action": "toggle"
