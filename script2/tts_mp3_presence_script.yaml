@@ -70,3 +70,15 @@ tts_mom_left_fab:
       speaker_gender: female
       announcement_message: The Queen has left the Follicle Assembly Building.
   icon: mdi:hair-dryer
+tts_mom_left_feed_store:
+  alias: TTS Mom Left Feed Store
+  use_blueprint:
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
+    input:
+      GTS_language: en
+      TTS: tts.cloud_say
+      cloud_language: en-GB
+      speaker_target: media_player.intercom_group
+      speaker_gender: female
+      announcement_message: The Queen has left the Burlap & Lace retail facility.
+  icon: mdi:barley

@@ -69,3 +69,15 @@
     event: leave
   action:
     service: script.tts_mom_left_fab
+
+- id: f8668a4a-c984-4b77-9b8a-28888ed4dcfb
+  alias: Moms Left Shop
+  mode: queued
+  initial_state: on
+  trigger: 
+    platform: zone
+    entity_id: person.julie
+    zone: zone.feed_store
+    event: leave
+  action:
+    service: script.tts_mom_left_feed_store
