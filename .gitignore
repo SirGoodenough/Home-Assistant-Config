@@ -92,6 +92,8 @@ home-assistant.log.*
 __pycache__
 
 # Directory (contents) ignores
+/blueprints/automation/test**
+/blueprints/script/test**
 /deps**
 /image**
 /pop.git**
