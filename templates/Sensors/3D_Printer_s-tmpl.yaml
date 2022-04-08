@@ -9,67 +9,18 @@
     attributes:
       friendly_name: "3D Print File"
 
-  - unique_id: octoprint_soc_temperature_in_c
-    state: >
-      {{ "%.2f"|format((( states("sensor.octoprint_soc_temperature")
-        | float(0) ) -32) *5/9) }}
-    availability: >
-      {% set items = ['sensor.octoprint_soc_temperature'] %}
-      {{ expand(items)|rejectattr('state','in',['unknown','unavailable'])
-        |list|count == items|count }}
-    attributes:
-      friendly_name: "3D PI CPU"
-    device_class: temperature
-    unit_of_measurement: C
 
-  - unique_id: octoprint_bed_target_in_c
-    state: >
-      {{ "%.2f"|format((( states("sensor.octoprint_bed_target")
-        | float(default=0) ) -32) *5/9) }}
-    availability: >
-      {% set items = ['sensor.octoprint_bed_target'] %}
-      {{ expand(items)|rejectattr('state','in',['unknown','unavailable'])
-        |list|count == items|count }}
-    attributes:
-      friendly_name: "3D Bed Target"
-    device_class: temperature
-    unit_of_measurement: C
-
-  - unique_id: octoprint_tool_0_temperature_in_c
-    state: >
-      {{ "%.2f"|format((( states("sensor.octoprint_tool_0_temperature") 
-        | float(0) ) -32) *5/9) }}
-    availability: >
-      {% set items = ['sensor.octoprint_tool_0_temperature'] %}
-      {{ expand(items)|rejectattr('state','in',['unknown','unavailable'])
-        |list|count == items|count }}
-    attributes:
-      friendly_name: "3D Extruder"
-    device_class: temperature
-    unit_of_measurement: C
-
-  - unique_id: octoprint_bed_temperature_in_c
-    state: >
-      {{ "%.2f"|format((( states("sensor.octoprint_bed_temperature") 
-        | float(default=0) ) -32) *5/9) }}
-    availability: >
-      {% set items = ['sensor.octoprint_bed_temperature'] %}
-      {{ expand(items)|rejectattr('state','in',['unknown','unavailable'])
-        |list|count == items|count }}
-    attributes:
-      friendly_name: "3D Bed"
-    device_class: temperature
-    unit_of_measurement: C
-
-  - unique_id: octoprint_tool_0_target_2_in_c
-    state: >
-      {{ "%.2f"|format((( states("sensor.octoprint_tool_0_target_2") 
-        | float(default=0) ) -32) *5/9) }}
-    availability: >
-      {% set items = ['sensor.octoprint_tool_0_target_2'] %}
-      {{ expand(items)|rejectattr('state','in',['unknown','unavailable'])
-        |list|count == items|count }}
-    attributes:
-      friendly_name: "3D Extruder Target"
-    device_class: temperature
-    unit_of_measurement: C
+      
+      # Replaced with 2022.4.0 functionality
+  # - unique_id: octoprint_soc_temperature_in_c
+  #   state: >
+  #     {{ "%.2f"|format((( states("sensor.octoprint_soc_temperature")
+  #       | float(0) ) -32) *5/9) }}
+  #   availability: >
+  #     {% set items = ['sensor.octoprint_soc_temperature'] %}
+  #     {{ expand(items)|rejectattr('state','in',['unknown','unavailable'])
+  #       |list|count == items|count }}
+  #   attributes:
+  #     friendly_name: "3D PI CPU"
+  #   device_class: temperature
+  #   unit_of_measurement: C

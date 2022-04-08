@@ -3112,19 +3112,19 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "sensor.template_octoprint_bed_temperature_in_c"
+                                    "entity": "sensor.octoprint_bed_temperature"
                                 },
                                 {
-                                    "entity": "sensor.template_octoprint_tool_0_temperature_in_c"
+                                    "entity": "sensor.octoprint_tool_0_temperature"
                                 },
                                 {
-                                    "entity": "sensor.template_octoprint_bed_target_in_c"
+                                    "entity": "sensor.octoprint_bed_target"
                                 },
                                 {
-                                    "entity": "sensor.template_octoprint_tool_0_target_2_in_c"
+                                    "entity": "sensor.octoprint_tool_0_target_2"
                                 },
                                 {
-                                    "entity": "sensor.template_octoprint_soc_temperature_in_c"
+                                    "entity": "sensor.octoprint_soc_temperature"
                                 }
                             ],
                             "refresh_interval": 1,
@@ -3184,19 +3184,19 @@
                                     "entity": "sensor.octoprint_print_time_left"
                                 },
                                 {
-                                    "entity": "sensor.template_octoprint_soc_temperature_in_c"
+                                    "entity": "sensor.octoprint_soc_temperature"
                                 },
                                 {
-                                    "entity": "sensor.template_octoprint_bed_temperature_in_c"
+                                    "entity": "sensor.octoprint_bed_temperature"
                                 },
                                 {
-                                    "entity": "sensor.template_octoprint_bed_target_in_c"
+                                    "entity": "sensor.octoprint_bed_target"
                                 },
                                 {
-                                    "entity": "sensor.template_octoprint_tool_0_temperature_in_c"
+                                    "entity": "sensor.octoprint_tool_0_temperature"
                                 },
                                 {
-                                    "entity": "sensor.template_octoprint_tool_0_target_2_in_c"
+                                    "entity": "sensor.octoprint_tool_0_target_2"
                                 },
                                 {
                                     "entity": "binary_sensor.octoprint_connected"
@@ -3225,16 +3225,22 @@
                             "state_color": true
                         },
                         {
-                            "entity": "sensor.template_octoprint_bed_temperature_in_c",
+                            "hours_to_show": 24,
+                            "graph": "none",
+                            "entity": "sensor.octoprint_bed_temperature",
                             "theme": "Dark - Green",
                             "type": "sensor",
-                            "unit": "\u00b0C"
+                            "unit": "\u00b0C",
+                            "detail": 1
                         },
                         {
-                            "entity": "sensor.template_octoprint_tool_0_temperature_in_c",
+                            "hours_to_show": 24,
+                            "graph": "none",
+                            "entity": "sensor.octoprint_tool_0_temperature",
                             "theme": "Dark - Green",
                             "type": "sensor",
-                            "unit": "\u00b0C"
+                            "unit": "\u00b0C",
+                            "detail": 1
                         },
                         {
                             "type": "button",
