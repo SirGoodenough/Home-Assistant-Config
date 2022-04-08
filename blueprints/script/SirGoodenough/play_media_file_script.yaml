@@ -1,12 +1,12 @@
 blueprint:
-  name: Media Player Script Blueprint 2021-12-28
+  name: Media Player Script Blueprint 2022-04-11
   description: 'This provides a way to play canned media files with the big long list
     of YAML entries but keep the main script or automation clean. All that is required
     there would be a simple line like: ''- service: script.media_player_doorbell_sound'''
-  source_url: https://gist.github.com/SirGoodenough/0f4ba089a08f78dae6ef2ebb4d058773
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.yaml
   domain: script
   homeassistant:
-    min_version: 2021.11.0
+    min_version: 2022.4.0
   input:
     speaker_target:
       name: Device(s) to send the file to
@@ -15,6 +15,7 @@ blueprint:
         pick one.
       selector:
         entity:
+          multiple: true
           domain: media_player
     file_2_play:
       name: Media File to play

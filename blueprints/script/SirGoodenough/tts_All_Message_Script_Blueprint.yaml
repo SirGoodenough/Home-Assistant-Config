@@ -1,8 +1,8 @@
 blueprint:
   domain: script
   homeassistant:
-    min_version: 2021.11.0
-  name: TTS_say Message-2022-03-09
+    min_version: 2022.4.0
+  name: TTS_say_Message-2022-04-11
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml
   description: '📣 This is a script that can use any of the 11 integrated TTS Platforms
     in Home Assistant to send a message to a media player. Some will require Google
@@ -59,6 +59,8 @@ blueprint:
           - tts.voicerss_say
           - tts.watson_tts_say
           - tts.yandextts_say
+          custom_value: false
+          multiple: false
     announcement_message:
       name: Spoken Message
       description: 'Required on ALL *_say platforms. Type your message here:'
@@ -74,6 +76,7 @@ blueprint:
         all TTS engines
       selector:
         entity:
+          multiple: true
           domain: media_player
     speaker_gender:
       name: Speaker Gender
@@ -85,6 +88,8 @@ blueprint:
           options:
           - female
           - male
+          custom_value: false
+          multiple: false
     baidu_person:
       name: Baidu Person Code
       description: Used only on most tts_baidu_say platform. This is the voice code
@@ -102,6 +107,8 @@ blueprint:
           - '106'
           - '110'
           - '111'
+          custom_value: false
+          multiple: false
     cloud_language:
       name: TTS Cloud Language
       description: 'This is for Nabu-Casa tts.cloud_say & tts.google_cloud_say. Select
@@ -162,11 +169,13 @@ blueprint:
           - th-TH
           - tr-TR
           - vi-VN
+          custom_value: false
+          multiple: false
     Google_Cloud_Voice:
       name: Google Cloud Voice Code
-      description: 'Usedonly with tts.google_cloud_say platform. Pick from here- (
-        https://cloud.google.com/text-to-speech/docs/voices ) This is the voice code
-        of the speaker. The default is: "en-US-Wavenet-F". Refer to ( https://www.home-assistant.io/integrations/google_cloud
+      description: 'Used only with tts.google_cloud_say platform. Pick from here-
+        ( https://cloud.google.com/text-to-speech/docs/voices ) This is the voice
+        code of the speaker. The default is: "en-US-Wavenet-F". Refer to ( https://www.home-assistant.io/integrations/google_cloud
         ) for more information.'
       default: []
     Google_Cloud_Profile:
@@ -186,6 +195,8 @@ blueprint:
           - small-bluetooth-speaker-class-device
           - telephony-class-application
           - wearable-class-device
+          custom_value: false
+          multiple: false
     GTS_language:
       name: TTS Google Translate Say Language
       description: This is for tts.google_translate_say only. Check the complete list
@@ -236,6 +247,8 @@ blueprint:
           - tr
           - uk
           - vi
+          custom_value: false
+          multiple: false
     marytts_language:
       name: Language option for tts.marytts_say
       description: 'Used only on tts.marytts_say. Select speaker Language:'
@@ -253,6 +266,8 @@ blueprint:
           - sv
           - te
           - tr
+          custom_value: false
+          multiple: false
     picotts_language:
       name: Language option for tts.picotts_say
       description: 'Used only on tts.picotts_say. Select speaker Language:'
@@ -266,6 +281,8 @@ blueprint:
           - es-ES
           - fr-FR
           - it-IT
+          custom_value: false
+          multiple: false
     voicerss_language:
       name: Language option for tts.voicerss_say
       description: Used only on tts.voicerss_say. Select speaker Language. SEE ( https://www.voicerss.org/api
@@ -323,6 +340,8 @@ blueprint:
           - th-th
           - tr-tr
           - vi-vn
+          custom_value: false
+          multiple: false
     voicerss_format:
       name: Message format option for tts.voicerss_say
       description: Used only on tts.voicerss_say. Select message format. There were
@@ -340,6 +359,8 @@ blueprint:
           - ru-RU
           - uk-UK
           - tr-TR
+          custom_value: false
+          multiple: false
     yandextts_voice:
       name: Voice option for tts.yandextts_say
       description: Used only on tts.yandextts_say. Select speaker Voice. SEE ( https://www.home-assistant.io/integrations/yandextts
@@ -373,6 +394,8 @@ blueprint:
           - robot
           - dude
           - smoky
+          custom_value: false
+          multiple: false
     yandextts_emotion:
       name: Emotion option for tts.yandextts_say
       description: Used only on tts.yandextts_say. Select speaker Emotion. SEE ( https://www.home-assistant.io/integrations/yandextts
@@ -384,6 +407,8 @@ blueprint:
           - neutral
           - evil
           - good
+          custom_value: false
+          multiple: false
 mode: queued
 variables:
   my_tts: !input 'TTS'

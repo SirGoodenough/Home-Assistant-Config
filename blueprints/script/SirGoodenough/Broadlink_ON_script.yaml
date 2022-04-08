@@ -1,8 +1,10 @@
 blueprint:
-  name: Broadlink_ON_script_2021-09-17
+  name: Broadlink_ON_script_2022-04-11
   description: A script that gets my TV on and Reciever set-up to correct mode.
-  source_url: https://gist.github.com/SirGoodenough/d530280dc4177aa2882bc3e7924982d5
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Broadlink_ON_script.yaml
   domain: script
+  homeassistant:
+    min_version: 2022.4.0
   input:
     adapter_power:
       name: Turn on the smart plug that powers the adapter
@@ -10,6 +12,7 @@ blueprint:
       default: switch.chromecast
       selector:
         entity:
+          multiple: true
           domain: switch
     reciever_power:
       name: Reciever Power
@@ -17,6 +20,7 @@ blueprint:
       default: script.denon_power
       selector:
         entity:
+          multiple: true
           domain: script
     tv_power:
       name: TV Power
@@ -24,12 +28,14 @@ blueprint:
       default: script.vizio_j_power
       selector:
         entity:
+          multiple: true
           domain: script
     tv_mode:
       name: TV Input Mode
       description: Select the feed into the TV.  Clicked after the OTA mode below.
       selector:
         entity:
+          multiple: true
           domain: script
     tv_ota_mode:
       name: OTA Input Mode
@@ -39,12 +45,14 @@ blueprint:
       default: script.vizio_j_tv
       selector:
         entity:
+          multiple: true
           domain: script
     reciever_input:
       name: Reciever Input
       description: Turn the Reciever Input to the correct adapter line
       selector:
         entity:
+          multiple: true
           domain: script
     reciever_out_mode:
       name: Reciever Speaker Out Mode
@@ -52,6 +60,7 @@ blueprint:
       default: script.denon_multeq_out
       selector:
         entity:
+          multiple: true
           domain: script
     cooldown:
       name: Cooldown
@@ -92,4 +101,3 @@ sequence:
 - service: script.turn_on
   target:
     entity_id: !input 'tv_mode'
- 

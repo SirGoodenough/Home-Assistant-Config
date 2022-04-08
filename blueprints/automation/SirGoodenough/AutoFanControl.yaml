@@ -1,9 +1,11 @@
 blueprint:
-  name: Auto_Fan_Temperature_Control_for_3-Speed_Fan
-  # Community link for blueprint:  source_url: 
-  # https://community.home-assistant.io/t/auto-fan-temperature-control-for-3-speed-fan-ifanxx-tasmota/326419
-  source_url: https://gist.github.com/SirGoodenough/15003002fc5409f029f38914876fa728
+  name: Auto_Fan_Temperature_Control_for_3-Speed_Fan_2022-02-07
+  description: This sets the fan speed for a 3 speed fan (such as an IFAN03/IFAN04)
+    based on a room temperature.
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl.yaml
   domain: automation
+  homeassistant:
+    min_version: 2021.7.0
   input:
     fan_control:
       name: Toggle to turn the fan function off for when away or seasonally
@@ -11,6 +13,7 @@ blueprint:
       selector:
         entity:
           domain: input_boolean
+          multiple: false
     room_temp_now:
       name: Room Temperature Sensor
       description: This is a temperature sensor or averaged temperature sensor preferrably
@@ -19,6 +22,7 @@ blueprint:
       selector:
         entity:
           domain: sensor
+          multiple: false
     room_set_temp:
       name: Room Target Temperature
       description: input_number - This is the target temperature of the room.   This
@@ -26,19 +30,19 @@ blueprint:
       selector:
         entity:
           domain: input_number
+          multiple: false
     temp_gap:
-      name: Temp Hysterious
-      description: This keeps the fan from speed cycling too often.   (Negative for
-        heating cycles & positive for cooling cycles.)  Set it bigger if the fan goes
-        on and off too much.   Set it smaller if the fan doesn't change speeds fast
-        enough.   0 is a good number if this area is not used in conjunction with
-        a heating or  cooling unit where you want to set them both to 21C (for instance).   I
-        use the Temperature setting input_number as an input to climate and this  at
-        the same time, so I needed an offset.
+      name: Temp Hysteresis
+      description: This keeps the fan from speed cycling too often.   Set it bigger
+        if the fan goes on and off too much.   Set it smaller if the fan doesn't change
+        speeds fast enough.   0 is a good number if this area is not used in conjunction
+        with a heating or  cooling unit where you want to set them both to 21C (for
+        instance).   I use the Temperature setting input_number as an input to climate
+        and this  at the same time, so I needed an offset.
       default: 1.3
       selector:
         number:
-          min: -7.0
+          min: 0.0
           max: 7.0
           unit_of_measurement: Degrees
           mode: slider
@@ -74,12 +78,12 @@ blueprint:
       name: Time of day fan should start
       description: Set this for the time of day you want the fan function to be enabled.
       selector:
-        time: 
+        time: {}
     fan_off_time:
       name: Time of day fan should stop
       description: Set this for the time of day you want the fan function to end.
       selector:
-        time: 
+        time: {}
     mqtt_fan_topic:
       name: Fan Topic
       description: "This is the MQTT Topic needed to change the fan speed.   Tasmota\
@@ -96,9 +100,8 @@ variables:
   room_temp_now_var: !input 'room_temp_now'
   room_set_temp_var: !input 'room_set_temp'
   room_temp_now_val: '{{ expand(room_temp_now_var)[0].state | float(0) }}'
-  room_set_temp_val: >
-   {{ expand(room_set_temp_var)[0].state | float(0) 
-     - temp_gap_var | float(0) }}'
+  room_set_temp_val: '{{ expand(room_set_temp_var)[0].state | float(0) - temp_gap_var
+    | float(0) }}'
 mode: restart
 trigger:
 - platform: state
@@ -158,12 +161,11 @@ action:
       data:
         topic: !input 'mqtt_fan_topic'
         payload: "{% if room_temp_now_val < room_set_temp_val %} {# Room is cooler\
-          \ (or warmer) than set temp so turn fan OFF. #}\n  0\n{% elif room_temp_now_val\
-          \ < (room_set_temp_val + temp_gap_1_to_2_var) %} {# Room is at the temp\
-          \ where the fan should be at LOW speed. #}\n  1\n{% elif room_temp_now_val\
-          \ < (room_set_temp_val + temp_gap_1_to_2_var + temp_gap_2_to_3_var) %} \
-          \ {# Room is at the temp where the fan should be at MEDIUM speed. #}\n \
-          \ 2\n{% else %}  {# Room is warm (or cold) enough to be on HIGH speed, #}\n\
-          \  3\n{% endif %}\n"
+          \ than set temp so turn fan OFF. #}\n  0\n{% elif room_temp_now_val < (room_set_temp_val\
+          \ + temp_gap_1_to_2_var) %} {# Room is at the temp where the fan should\
+          \ be at LOW speed. #}\n  1\n{% elif room_temp_now_val < (room_set_temp_val\
+          \ + temp_gap_1_to_2_var + temp_gap_2_to_3_var) %}  {# Room is at the temp\
+          \ where the fan should be at MEDIUM speed. #}\n  2\n{% else %}  {# Room\
+          \ is warm enough to be on HIGH speed, #}\n  3\n{% endif %}\n"
         qos: 1
         retain: false

@@ -1,8 +1,8 @@
 blueprint:
-  name: Keypad 5 button cypher to turn on something_2021-09-03
+  name: Keypad 5 button cypher to turn on something_2021-11-20
   description: This will accept any 5 button presses or binary sensor detections and
     use them to preform an action.  RE open a lock, or whatever.
-  source_url: https://gist.github.com/SirGoodenough/fbd552e2c93ebaa5c9b3d2b4ebff3297
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/keypad_5_button_cipher_to_turn_on_something.yaml
   domain: automation
   homeassistant:
     min_version: 2021.7.0
@@ -13,36 +13,42 @@ blueprint:
       selector:
         entity:
           domain: binary_sensor
+          multiple: false
     button_two:
       name: Button Press Two
       description: Binary Sensor for Second Button Pressed
       selector:
         entity:
           domain: binary_sensor
+          multiple: false
     button_three:
       name: Button Press Three
       description: Binary Sensor for Third Button Pressed
       selector:
         entity:
           domain: binary_sensor
+          multiple: false
     button_four:
       name: Button Press Four
       description: Binary Sensor for Forth Button Pressed
       selector:
         entity:
           domain: binary_sensor
+          multiple: false
     button_five:
       name: Button Press Five
       description: Binary Sensor for Fifth Button Pressed
       selector:
         entity:
           domain: binary_sensor
+          multiple: false
     lock_control:
       name: Buffer for the Final Lock Enable
       description: input_boolean - Final Enable to trigger your lock or action
       selector:
         entity:
           domain: input_boolean
+          multiple: false
     seq_status:
       name: Control Sequence Status Placeholder
       description: input_number - The internal use lock sequence number (set range
@@ -51,6 +57,7 @@ blueprint:
       selector:
         entity:
           domain: input_number
+          multiple: false
     on_timer:
       name: Lock On Time in Seconds
       description: Time output signal is on in seconds.  Generally 5 seconds is good
