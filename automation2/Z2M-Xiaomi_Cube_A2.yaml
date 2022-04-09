@@ -148,5 +148,5 @@
       data:
         transition: 4
         rgb_color: [150,147,90]
-        brightness_pct: 48
+        brightness_pct: 55
         entity_id: "{{ trigger.entity_id }}"
