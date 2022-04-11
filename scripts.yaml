@@ -1,0 +1,166 @@
+media_player_script_blueprint_test_1:
+  alias: Media Player Script Blueprint test 1
+  use_blueprint:
+    path: test/play_media_file_script.yaml
+    input:
+      file_2_play:
+        entity_id: media_player.kitchen_speaker
+        media_content_id: media-source://media_source/local/mp3/Door-chime-sound.mp3
+        media_content_type: audio/mpeg
+        metadata:
+          title: Door-chime-sound.mp3
+          thumbnail:
+          media_class: music
+          children_media_class:
+          navigateIds:
+          - {}
+          - media_content_type: app
+            media_content_id: media-source://media_source
+          - media_content_type: ''
+            media_content_id: media-source://media_source/local/mp3
+  mode: single
+  icon: mdi:air-purifier
+tts_say_message_test_1:
+  alias: TTS_say Message-test 1
+  use_blueprint:
+    path: test/tts_All_Message_Script_Blueprint.yaml
+    input:
+      GTS_language: en
+      TTS: tts.google_cloud_say
+      speaker_target:
+      - media_player.bathroom_speaker
+      - media_player.kitchen_speaker
+  mode: single
+  icon: mdi:account-plus
+media_player_script_blueprint_test_2:
+  alias: Media Player Script Blueprint test 2
+  use_blueprint:
+    path: test/play_media_file_script.yaml
+    input:
+      file_2_play:
+        entity_id: media_player.kitchen_speaker
+        media_content_id: media-source://media_source/local/mp3/Door-chime-sound.mp3
+        media_content_type: audio/mpeg
+        metadata:
+          title: Door-chime-sound.mp3
+          thumbnail:
+          media_class: music
+          children_media_class:
+          navigateIds:
+          - {}
+          - media_content_type: app
+            media_content_id: media-source://media_source
+          - media_content_type: ''
+            media_content_id: media-source://media_source/local/mp3
+  mode: single
+  icon: mdi:account-plus
+media_player_script_blueprint_test_3:
+  alias: Media Player Script Blueprint test 3
+  use_blueprint:
+    path: test/play_media_file_script.yaml
+    input:
+      file_2_play:
+        entity_id: media_player.kitchen_speaker
+        media_content_id: media-source://media_source/local/mp3/jaws_x.mp3
+        media_content_type: audio/mpeg
+        metadata:
+          title: jaws_x.mp3
+          thumbnail:
+          media_class: music
+          children_media_class:
+          navigateIds:
+          - {}
+          - media_content_type: app
+            media_content_id: media-source://media_source
+          - media_content_type: ''
+            media_content_id: media-source://media_source/local/mp3
+  mode: single
+  icon: mdi:air-conditioner
+media_player_script_blueprint_test_4:
+  alias: Media Player Script Blueprint test 4
+  use_blueprint:
+    path: test/play_media_file_script.yaml
+    input:
+      file_2_play:
+        entity_id: media_player.kitchen_speaker
+        media_content_id: media-source://media_source/local/mp3/steps.mp3
+        media_content_type: audio/mpeg
+        metadata:
+          title: steps.mp3
+          thumbnail:
+          media_class: music
+          children_media_class:
+          navigateIds:
+          - {}
+          - media_content_type: app
+            media_content_id: media-source://media_source
+          - media_content_type: ''
+            media_content_id: media-source://media_source/local/mp3
+  mode: single
+  icon: mdi:battery-20
+media_player_script_blueprint_test_5:
+  alias: Media Player Script Blueprint test 5
+  use_blueprint:
+    path: test/play_media_file_script.yaml
+    input:
+      file_2_play:
+        entity_id: media_player.workroom_speaker
+        media_content_id: media-source://media_source/local/mp3/youGotmail.mp3
+        media_content_type: audio/mpeg
+        metadata:
+          title: youGotmail.mp3
+          thumbnail:
+          media_class: music
+          children_media_class:
+          navigateIds:
+          - {}
+          - media_content_type: app
+            media_content_id: media-source://media_source
+          - media_content_type: ''
+            media_content_id: media-source://media_source/local/mp3
+  mode: single
+  icon: mdi:bed-queen-outline
+media_player_script_blueprint_test_6:
+  alias: Media Player Script Blueprint test 6
+  use_blueprint:
+    path: test/play_media_file_script.yaml
+    input:
+      file_2_play:
+        entity_id: media_player.kitchen_speaker
+        media_content_id: media-source://media_source/local/mp3/Mister.mp3
+        media_content_type: audio/mpeg
+        metadata:
+          title: Mister.mp3
+          thumbnail:
+          media_class: music
+          children_media_class:
+          navigateIds:
+          - {}
+          - media_content_type: app
+            media_content_id: media-source://media_source
+          - media_content_type: ''
+            media_content_id: media-source://media_source/local/mp3
+  mode: single
+  icon: mdi:clock-digital
+media_player_script_blueprint_test_7:
+  alias: Media Player Script Blueprint test 7
+  use_blueprint:
+    path: test/play_media_file_script.yaml
+    input:
+      file_2_play:
+        entity_id: media_player.workroom_speaker
+        media_content_id: media-source://media_source/local/mp3/Buzzer.mp3
+        media_content_type: audio/mpeg
+        metadata:
+          title: Buzzer.mp3
+          thumbnail:
+          media_class: music
+          children_media_class:
+          navigateIds:
+          - {}
+          - media_content_type: app
+            media_content_id: media-source://media_source
+          - media_content_type: ''
+            media_content_id: media-source://media_source/local/mp3
+  mode: single
+  icon: mdi:triangle
