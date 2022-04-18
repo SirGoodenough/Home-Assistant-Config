@@ -110,6 +110,9 @@
                                     "entity": "lock.front_door"
                                 },
                                 {
+                                    "entity": "sensor.rm02_last_action"
+                                },
+                                {
                                     "entity": "light.mom_light"
                                 },
                                 {
@@ -922,37 +925,6 @@
                             "cards": [
                                 {
                                     "type": "media-control",
-                                    "entity": "media_player.farg"
-                                },
-                                {
-                                    "type": "media-control",
-                                    "entity": "media_player.jenny_s_tv"
-                                },
-                                {
-                                    "type": "media-control",
-                                    "entity": "media_player.workroom_speaker"
-                                },
-                                {
-                                    "type": "media-control",
-                                    "entity": "media_player.living_room_speaker"
-                                },
-                                {
-                                    "type": "media-control",
-                                    "entity": "media_player.kitchen_speaker"
-                                },
-                                {
-                                    "type": "media-control",
-                                    "entity": "media_player.jennys_room_display"
-                                }
-                            ],
-                            "columns": 2,
-                            "square": false
-                        },
-                        {
-                            "type": "grid",
-                            "cards": [
-                                {
-                                    "type": "media-control",
                                     "entity": "media_player.basement_speaker"
                                 },
                                 {
@@ -1055,6 +1027,47 @@
                                 }
                             ],
                             "square": false
+                        },
+                        {
+                            "type": "grid",
+                            "cards": [
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.farg"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.jenny_s_tv"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.workroom_speaker"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.living_room_speaker"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.kitchen_speaker"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.jennys_room_display"
+                                }
+                            ],
+                            "columns": 2,
+                            "square": false
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.mom_button_action",
+                                    "name": "Action"
+                                }
+                            ],
+                            "title": "Mom Button"
                         },
                         {
                             "type": "picture-entity",
