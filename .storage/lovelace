@@ -3605,6 +3605,9 @@
                                 },
                                 {
                                     "entity": "sensor.jen_temperature_battery"
+                                },
+                                {
+                                    "entity": "sensor.mom_button_battery"
                                 }
                             ],
                             "title": "Battery State"
