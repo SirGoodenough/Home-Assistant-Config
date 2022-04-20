@@ -11,9 +11,13 @@
         true
       {% elif ( (states.sun.sun.attributes.elevation | int < 15) and (is_state('weather.home', 'partlycloudy')) ) %}
         true
+      {% elif ( (states.sun.sun.attributes.elevation | int < 30) and (not is_state('weather.home', 'sunny')) ) %}
+        true
       {% else %}
         false
       {% endif %}
+      {# This is using the MET integration for weather. Available conditions: #}
+      {# https://github.com/home-assistant/core/blob/70648d6e3b42bb0910e33e5c6a4e1e8c0789d82c/homeassistant/components/met/const.py #}
 
   - name: "Washing Machine"
     unique_id: 0f504a93-327b-4a03-ab93-4fc6aaaecbae
