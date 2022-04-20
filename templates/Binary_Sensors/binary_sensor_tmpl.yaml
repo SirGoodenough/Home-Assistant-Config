@@ -9,9 +9,9 @@
         true
       {% elif (is_state('weather.home', 'cloudy')) %}
         true
-      {% elif ( (states.sun.sun.attributes.elevation | int < 15) and (is_state('weather.home', 'partlycloudy')) ) %}
+      {% elif ( (states.sun.sun.attributes.elevation | int < 10) and (is_state('weather.home', 'partlycloudy')) ) %}
         true
-      {% elif ( (states.sun.sun.attributes.elevation | int < 30) and (not is_state('weather.home', 'sunny')) ) %}
+      {% elif ( (states.sun.sun.attributes.elevation | int < 15) and (not is_state('weather.home', 'sunny')) ) %}
         true
       {% else %}
         false
