@@ -7,8 +7,6 @@
     state: >
       {% if (states.sun.sun.attributes.elevation | int < 5) %}
         true
-      {% elif (is_state('weather.home', 'cloudy')) %}
-        true
       {% elif ( (states.sun.sun.attributes.elevation | int < 10) and (is_state('weather.home', 'partlycloudy')) ) %}
         true
       {% elif ( (states.sun.sun.attributes.elevation | int < 15) and (not is_state('weather.home', 'sunny')) ) %}
