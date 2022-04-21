@@ -67,8 +67,7 @@
                             "show_header_toggle": true,
                             "title": "Kitchen",
                             "type": "entities",
-                            "state_color": true,
-                            "theme": "3ative_blue"
+                            "state_color": true
                         },
                         {
                             "type": "conditional",
