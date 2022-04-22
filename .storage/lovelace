@@ -92,6 +92,27 @@
                             }
                         },
                         {
+                            "type": "conditional",
+                            "conditions": [
+                                {
+                                    "entity": "binary_sensor.stairway_smoke_smoke",
+                                    "state": "on"
+                                }
+                            ],
+                            "card": {
+                                "show_name": true,
+                                "show_icon": true,
+                                "type": "button",
+                                "tap_action": {
+                                    "action": "none"
+                                },
+                                "entity": "binary_sensor.stairway_smoke_smoke",
+                                "name": "UpStairs Smoke Alarm",
+                                "icon": "mdi:smoke-detector-alert",
+                                "theme": "dark_red"
+                            }
+                        },
+                        {
                             "entities": [
                                 {
                                     "entity": "sensor.sonoff_rf_bridge_2_si7021_temperature",
@@ -562,6 +583,30 @@
                                 },
                                 "show_state": true,
                                 "name": "Gertle Low Battery"
+                            }
+                        },
+                        {
+                            "type": "conditional",
+                            "conditions": [
+                                {
+                                    "entity": "binary_sensor.stairway_smoke_battery_low",
+                                    "state": "true"
+                                }
+                            ],
+                            "card": {
+                                "show_name": true,
+                                "show_icon": true,
+                                "type": "button",
+                                "tap_action": {
+                                    "action": "more-info"
+                                },
+                                "entity": "sensor.stairway_smoke_battery",
+                                "name": "UpSmoke Low Battery",
+                                "icon": "mdi:battery-check-outline",
+                                "show_state": true,
+                                "hold_action": {
+                                    "action": "none"
+                                }
                             }
                         },
                         {
@@ -3578,6 +3623,9 @@
                                 },
                                 {
                                     "entity": "binary_sensor.battery_low_mailbox"
+                                },
+                                {
+                                    "entity": "binary_sensor.stairway_smoke_battery_low"
                                 }
                             ],
                             "show_header_toggle": false,
@@ -3607,6 +3655,9 @@
                                 },
                                 {
                                     "entity": "sensor.mom_button_battery"
+                                },
+                                {
+                                    "entity": "sensor.stairway_smoke_battery"
                                 }
                             ],
                             "title": "Battery State"
