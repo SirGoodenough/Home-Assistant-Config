@@ -51,10 +51,6 @@
 
   - name: "Humidity NET"
     unique_id: f568315c-fff5-4dfd-94fe-a19778b7368b
-    state: "{{ states('sensor.house_humidity_main') | float(0) }}"
+    state: "{{ states('sensor.house_humidity_main') | float(41) }}"
     device_class: humidity
-    availability: >
-      {% set items = ['sensor.house_humidity_main'] %}
-      {{ expand(items)|rejectattr('state','in',['unknown','unavailable'])
-        |list|count == items|count }}
     icon: "mdi:waves-arrow-up"
