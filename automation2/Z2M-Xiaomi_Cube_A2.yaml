@@ -35,9 +35,6 @@
       doubletap_face_3:
         - service: button.press
           entity_id: button.moms_button2
-      flipped180_face_3:
-        - service: button.press
-          entity_id: button.moms_button2
       rotate_cw_face_3:
         - service: light.toggle
           entity_id: light.livingroomlight

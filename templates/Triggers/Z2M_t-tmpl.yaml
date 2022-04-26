@@ -9,8 +9,9 @@
         friendly_name: "Cube Action"
       state: >
         {{ trigger.event.data.friendly_name }} - 
-        {{ trigger.event.data.event }} - 
-        {{ trigger.event.data.side }}
+        {{ trigger.event.data.action }} - 
+        {{ trigger.event.data.side }} frm 
+        {{ trigger.event.data.last_side }}
 
 - trigger:
     - platform: event
