@@ -31,7 +31,7 @@
       doubletap_face_1:
         - service: light.toggle
           entity_id: light.grp_dad_lights
-## Side l_light 3
+## Side livingroom_lights 3
       doubletap_face_3:
         - service: button.press
           entity_id: button.moms_button2
@@ -39,12 +39,12 @@
         - service: button.press
           entity_id: button.moms_button2
       rotate_cw_face_3:
-        - service: script.cube_long_rotate_toggle
+        - service: cube_long_cw_toggle
           data:
             angle: "{{ trigger.to_state.attributes.action_angle }}"
             entity: light.livingroomlight
       rotate_ccw_face_3:
-        - service: script.cube_long_rotate_toggle
+        - service: cube_long_ccw_toggle
           data:
             angle: "{{ trigger.to_state.attributes.action_angle }}"
             entity: light.mom_light
