@@ -114,7 +114,7 @@ cube_short_cw_toggle:
     angle:
   sequence:
     - condition: template
-      value_template: '{{ angle > 0 < 100 }}'
+      value_template: '{{ angle > 0 <= 100 }}'
     - service: homeassistant.toggle
       entity_id: "{{ entity }}"
 
@@ -125,7 +125,7 @@ cube_short_ccw_toggle:
     angle:
   sequence:
     - condition: template
-      value_template: '{{ angle < 0 > -100 }}'
+      value_template: '{{ angle < 0 >= -100 }}'
     - service: homeassistant.toggle
       entity_id: "{{ entity }}"
 
