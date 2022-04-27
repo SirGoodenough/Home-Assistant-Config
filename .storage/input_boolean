@@ -143,6 +143,16 @@
                 "name": "mom_bedtime",
                 "icon": "mdi:bed-queen",
                 "id": "mom_bedtime"
+            },
+            {
+                "name": "Bed Cares Up",
+                "icon": "mdi:arrow-collapse-up",
+                "id": "bed_cares_up"
+            },
+            {
+                "name": "Bed Cares Down",
+                "icon": "mdi:arrow-collapse-down",
+                "id": "bed_cares_down"
             }
         ]
     }
