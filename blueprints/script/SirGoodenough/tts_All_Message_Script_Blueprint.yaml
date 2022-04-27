@@ -2,14 +2,16 @@ blueprint:
   domain: script
   homeassistant:
     min_version: 2022.4.0
-  name: TTS_say_Message-2022-04-11
+  name: TTS_say_Message-2022-04-26
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml
   description: '📣 This is a script that can use any of the 11 integrated TTS Platforms
     in Home Assistant to send a message to a media player. Some will require Google
     Type Speakers, some will require Non-Google type speakers.
 
+
     These integrations are listed here. Please refer to these pages for care and feeding
     of the *tts_say method you choose. ⛓ https://www.home-assistant.io/integrations/#text-to-speech
+
 
     This blueprint **WILL NOT** set-up TTS for you. You will be given the opportunity
     to add the incorrect options that will **NOT** allow your TTS to function. Your
@@ -19,27 +21,52 @@ blueprint:
     that is to start with the basic sonfiguration for the TTS_say integration that
     you are using and add options one at a time.
 
+
     The very basic requirements are for you to provide the *tts_say method that you
     have installed and tested, the entity that you want to send it to, and the message
     you want to send. Beyond that likely involves trial and error that may best be
     done in the Developer Tools Services area here: [![Open your Home Assistant instance
     and show your service developer tools.](https://my.home-assistant.io/badges/developer_services.svg)](https://my.home-assistant.io/redirect/developer_services/)
 
-    ⚠️ ***This Blueprint makes the assumption that you already have a tested & proven
-    TTS integration installed and you know how it works and how to use it.*** ⚠️
+
+    I have added an action statement both before and after the main TTS call.  You
+    can choose to ignore these, or you can use them to change volume, add a media
+    player to play a doorbell, turn on a light, add a delay, whatever you want to
+    do.
+
+
+    ### ⚠️ This Blueprint makes the assumption that you already have a tested & proven
+    TTS integration installed and you know how it works and how to use it ⚠️
+
 
     You will need to verify that the name you have given to the TTS integration in
     your system configuration is the Default name or you need to change this blueprint
     to use the custom name you have set in the tts: section of configuration.yaml.
 
+
     This will be a way to streamline your automations and scripts. It provides specific
     services that can be called with a single line service call. This is contrasted
     to the multiline service calls of repeating values spread throughout your configuration.
+
 
     In addition it puts all your TTS specific code in 1 spot, the blueprint, and that
     allows it to be called over and over. Plus it gives you one place, the blueprint,
     to repair issues should they arrise. 🔚'
   input:
+    b4_action:
+      name: Action before TTS
+      description: This is intended to add a volume control action or whatever you
+        want to do before sending the TTS message
+      default: []
+      selector:
+        action: {}
+    after_action:
+      name: Action after TTS
+      description: This is intended to add a volume control action or whatever you
+        want to do after sending the TTS message
+      default: []
+      selector:
+        action: {}
     TTS:
       name: Text to Speech Processor
       description: 'Required on ALL *_say platforms. Select the configured TTS engine
@@ -411,12 +438,20 @@ blueprint:
           multiple: false
 mode: queued
 variables:
+  my_b4_action: !input 'b4_action'
+  my_after_action: !input 'after_action'
   my_tts: !input 'TTS'
   my_message: !input 'announcement_message'
-  baidu_person_string: !input 'baidu_person'
-  my_baidu_person: '{{ baidu_person_string | int(0) }}'
+  baidu_person_val: !input 'baidu_person'
+  my_baidu_person: '{{ baidu_person_val | int(0) }}'
 sequence:
-- choose:
+- alias: Do something before the TTS Command
+  choose:
+  - conditions: '{{ not my_b4_action in (''none'', ''null'', ''unavailable'', '''')
+      }}'
+    sequence: !input 'b4_action'
+- alias: Main TTS Choose Statement
+  choose:
   - conditions: '{{ my_tts == "tts.amazon_polly_say" }}'
     sequence:
     - service: tts.amazon_polly_say
@@ -503,3 +538,8 @@ sequence:
       entity_id: !input 'speaker_target'
       message: '{{ my_message }}'
       language: !input 'GTS_language'
+- alias: Do something after the TTS Command
+  choose:
+  - conditions: '{{ not my_after_action in (''none'', ''null'', ''unavailable'', '''')
+      }}'
+    sequence: !input 'after_action'

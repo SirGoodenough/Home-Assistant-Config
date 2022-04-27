@@ -6,6 +6,16 @@
     max_exceeded: silent
     trigger:
       - platform: state
+        entity_id: input_boolean.bed_cares_up
+        id: cares_up
+        from: "off"
+        to: "on"
+      - platform: state
+        entity_id: input_boolean.bed_cares_down
+        id: cares_down
+        from: "off"
+        to: "on"
+      - platform: state
         entity_id: input_boolean.bed_down_6
         id: bed_down_6
         from: "off"
@@ -94,6 +104,38 @@
       - alias: Turn off all the smartbed buttons
         service: script.smartbed_buttons_off
       - choose:
+        - alias: bed_cares_up
+          conditions:
+          - condition: trigger
+            id: cares_up
+          sequence:
+          - alias: Send the bed_cares_up warning
+            service: script.tts_bed_cares_warning
+          - alias: Send the bed_cares_up command
+            service: shell_command.bed
+            data:
+              url: !secret SmartBed_URL
+              cmnd: 'button/4?timeout=6'
+          - delay: 00:00:07
+          - service: shell_command.bed
+            data:
+              url: !secret SmartBed_URL
+              cmnd: 'button/2?timeout=14'
+        - alias: bed_cares_down
+          conditions:
+          - condition: trigger
+            id: cares_down
+          sequence:
+          - alias: Send the bed_cares_down command
+            service: shell_command.bed
+            data:
+              url: !secret SmartBed_URL
+              cmnd: 'button/0?timeout=14'
+          - delay: 00:00:15
+          - service: shell_command.bed
+            data:
+              url: !secret SmartBed_URL
+              cmnd: 'button/5?timeout=6'
         - alias: bed_down_6 sent
           conditions:
           - condition: trigger

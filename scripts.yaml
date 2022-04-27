@@ -1,0 +1,32 @@
+tts_test:
+  alias: TTS_test
+  use_blueprint:
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
+    input:
+      GTS_language: en
+      TTS: tts.cloud_say
+      b4_action:
+      - service: media_player.play_media
+        target:
+          entity_id: media_player.kitchen_speaker
+        data:
+          media_content_id: media-source://media_source/local/mp3/Buzzer.mp3
+          media_content_type: audio/mpeg
+        metadata:
+          title: Buzzer.mp3
+          thumbnail:
+          media_class: music
+          children_media_class:
+          navigateIds:
+          - {}
+          - media_content_type: app
+            media_content_id: media-source://media_source
+          - media_content_type: ''
+            media_content_id: media-source://media_source/local/mp3
+      - delay: 00:00:05
+      speaker_target:
+      - media_player.kitchen_speaker
+      speaker_gender: male
+      cloud_language: sk-SK
+  mode: single
+  icon: mdi:air-humidifier-off

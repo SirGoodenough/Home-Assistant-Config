@@ -87,6 +87,39 @@ media_player_gong:
       speaker_target: media_player.jen_group
       file_2_play: media-source://media_source/local/mp3/Metal_Gong-Dianakc-109711828.mp3
   icon: mdi:ear-hearing
+tts_bed_cares_warning:
+  alias: TTS Jens Bed Cares Warning
+  use_blueprint:
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
+    input:
+      GTS_language: en
+      TTS: tts.cloud_say
+      cloud_language: en-IN
+      speaker_gender: female
+      speaker_target: media_player.jennys_room_display
+      announcement_message: "Make sure the tray is secured to launch position.  Bed is about to launch. 5, 4, 3, 2, 1..."
+      b4_action:
+      - service: media_player.play_media
+        target:
+          entity_id: media_player.kitchen_speaker
+        data:
+          media_content_id: media-source://media_source/local/mp3/Buzzer.mp3
+          media_content_type: audio/mpeg
+        metadata:
+          title: Buzzer.mp3
+          thumbnail:
+          media_class: music
+          children_media_class:
+          navigateIds:
+          - {}
+          - media_content_type: app
+            media_content_id: media-source://media_source
+          - media_content_type: ''
+            media_content_id: media-source://media_source/local/mp3
+      - delay: 00:00:05
+      after_action:
+      - delay: 00:00:06
+  icon: mdi:sign-caution
 
 
   # It''s all the same, only the names will change","Every
