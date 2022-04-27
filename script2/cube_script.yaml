@@ -107,31 +107,38 @@ cube_blue_color_control:
             {{ R, G, new_blue }}
           {% endif %}
 
-# cube_rotate_press:
-#   description: Template Rotate Long/Press Short Press Control
-#   variables:
-#     entity:
-#     angle:
-#     domain:
-#   sequence:
-#     - alias: These are slide events
-#       choose:
-#       - conditions:
-#         - condition: and
-#           conditions:
-#             - condition: template
-#               {% if angle < 100 %}
-#             - condition: numeric_state
-#               entity_id: sensor.dark_sky_apparent_temperature
-#               below: 40
+cube_short_rotate_toggle:
+  description: Template Press Short Press Control
+  variables:
+    entity:
+    angle:
+  sequence:
+    - choose:
+      - alias: Short Rotate on CW rotation
+        conditions: '{{ angle > 0 < 100 }}'
+        sequence: 
+        - service: homeassistant.toggle
+          entity_id: "{{ entity }}"
+      - alias: Short Rotate on CCW rotation
+        conditions: '{{ angle < 0 > -100 }}'
+        sequence: 
+        - service: homeassistant.toggle
+          entity_id: "{{ entity }}"
 
-#         '{{ domain == "switch" }}'
-#         sequence: 
-#         - service: switch.toggle
-#           data_template:
-#             entity_id: "{{ entity }}"
-#             brightness_pct: >
-#               {% if angle < 100 %}
-#                 go
-#               {% endif %}
-
+cube_long_rotate_toggle:
+  description: Template Rotate Long Press Control
+  variables:
+    entity:
+    angle:
+  sequence:
+    - choose:
+      - alias: Long Rotate on CW rotation
+        conditions: '{{ angle > 100 }}'
+        sequence: 
+        - service: homeassistant.toggle
+          entity_id: "{{ entity }}"
+      - alias: Long Rotate on CCW rotation
+        conditions: '{{ angle < -100 }}'
+        sequence: 
+        - service: homeassistant.toggle
+          entity_id: "{{ entity }}"

@@ -35,12 +35,19 @@
       doubletap_face_3:
         - service: button.press
           entity_id: button.moms_button2
+      3_from_0:
+        - service: button.press
+          entity_id: button.moms_button2
       rotate_cw_face_3:
-        - service: light.toggle
-          entity_id: light.livingroomlight
+        - service: script.cube_long_rotate_toggle
+          data:
+            angle: "{{ trigger.to_state.attributes.action_angle }}"
+            entity: light.livingroomlight
       rotate_ccw_face_3:
-        - service: light.toggle
-          entity_id: light.mom_light
+        - service: script.cube_long_rotate_toggle
+          data:
+            angle: "{{ trigger.to_state.attributes.action_angle }}"
+            entity: light.mom_light
 ## Side d_light 4
       doubletap_face_4:
         - service: light.toggle
@@ -112,38 +119,3 @@
           data:
             angle: "{{ trigger.to_state.attributes.action_angle }}"
             light: light.grp_studio
-
-- id: 4ae86eca-d558-4d9b-b1cb-7ea5e506aaf1
-  alias: Kitch Light on default
-  initial_state: on
-  mode: parallel
-  max: 100
-  trigger:
-    - platform: state
-      entity_id: light.grp_kitch
-      from: "off"
-      to: "on"
-  action:
-    - service: light.turn_on
-      data:
-        kelvin: 1700
-        brightness: 96.9
-        entity_id: "{{ trigger.entity_id }}"
-
-- id: 124d0949-2fcf-4fa4-8d70-836dcc9c37e3
-  alias: Office Light on default
-  initial_state: on
-  mode: parallel
-  max: 100
-  trigger:
-    - platform: state
-      entity_id: light.grp_studio
-      from: "off"
-      to: "on"
-  action:
-    - service: light.turn_on
-      data:
-        transition: 4
-        rgb_color: [150,147,90]
-        brightness_pct: 55
-        entity_id: "{{ trigger.entity_id }}"
