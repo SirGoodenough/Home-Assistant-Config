@@ -107,38 +107,46 @@ cube_blue_color_control:
             {{ R, G, new_blue }}
           {% endif %}
 
-cube_short_rotate_toggle:
-  description: Template Press Short Press Control
+cube_short_cw_toggle:
+  description: Template CW Short Press Control
   variables:
     entity:
     angle:
   sequence:
-    - choose:
-      - alias: Short Rotate on CW rotation
-        conditions: '{{ angle > 0 < 100 }}'
-        sequence: 
-        - service: homeassistant.toggle
-          entity_id: "{{ entity }}"
-      - alias: Short Rotate on CCW rotation
-        conditions: '{{ angle < 0 > -100 }}'
-        sequence: 
-        - service: homeassistant.toggle
-          entity_id: "{{ entity }}"
+    - condition: template
+      value_template: '{{ angle > 0 < 100 }}'
+    - service: homeassistant.toggle
+      entity_id: "{{ entity }}"
 
-cube_long_rotate_toggle:
-  description: Template Rotate Long Press Control
+cube_short_ccw_toggle:
+  description: Template CCW Short Press Control
   variables:
     entity:
     angle:
   sequence:
-    - choose:
-      - alias: Long Rotate on CW rotation
-        conditions: '{{ angle > 100 }}'
-        sequence: 
-        - service: homeassistant.toggle
-          entity_id: "{{ entity }}"
-      - alias: Long Rotate on CCW rotation
-        conditions: '{{ angle < -100 }}'
-        sequence: 
-        - service: homeassistant.toggle
-          entity_id: "{{ entity }}"
+    - condition: template
+      value_template: '{{ angle < 0 > -100 }}'
+    - service: homeassistant.toggle
+      entity_id: "{{ entity }}"
+
+cube_long_cw_toggle:
+  description: Template CW Long Press Control
+  variables:
+    entity:
+    angle:
+  sequence:
+    - condition: template
+      value_template: '{{ angle > 100 }}'
+    - service: homeassistant.toggle
+      entity_id: "{{ entity }}"
+
+cube_long_ccw_toggle:
+  description: Template CCW Long Press Control
+  variables:
+    entity:
+    angle:
+  sequence:
+    - condition: template
+      value_template: '{{ angle < -100 }}'
+    - service: homeassistant.toggle
+      entity_id: "{{ entity }}"
