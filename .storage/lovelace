@@ -1378,6 +1378,32 @@
                                 }
                             },
                             "theme": "Dark Soft UI Violet"
+                        },
+                        {
+                            "square": false,
+                            "columns": 2,
+                            "type": "grid",
+                            "cards": [
+                                {
+                                    "show_name": true,
+                                    "show_icon": true,
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "input_boolean.bed_cares_up"
+                                },
+                                {
+                                    "show_name": true,
+                                    "show_icon": true,
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "input_boolean.bed_cares_down",
+                                    "show_state": false
+                                }
+                            ]
                         }
                     ],
                     "icon": "mdi:alpha-j-box",
