@@ -108,7 +108,7 @@ cube_blue_color_control:
           {% endif %}
 
 cube_short_cw_toggle:
-  description: Template CW Short Press Control
+  description: CW Short Press Toggle
   variables:
     entity:
     angle:
@@ -117,20 +117,8 @@ cube_short_cw_toggle:
       value_template: '{{ angle > 0 <= 100 }}'
     - service: homeassistant.toggle
       entity_id: "{{ entity }}"
-
-cube_short_ccw_toggle:
-  description: Template CCW Short Press Control
-  variables:
-    entity:
-    angle:
-  sequence:
-    - condition: template
-      value_template: '{{ angle < 0 >= -100 }}'
-    - service: homeassistant.toggle
-      entity_id: "{{ entity }}"
-
 cube_long_cw_toggle:
-  description: Template CW Long Press Control
+  description: CW Long Press Toggle
   variables:
     entity:
     angle:
@@ -140,8 +128,18 @@ cube_long_cw_toggle:
     - service: homeassistant.toggle
       entity_id: "{{ entity }}"
 
+cube_short_ccw_toggle:
+  description: CCW Short Press Toggle
+  variables:
+    entity:
+    angle:
+  sequence:
+    - condition: template
+      value_template: '{{ angle < 0 >= -100 }}'
+    - service: homeassistant.toggle
+      entity_id: "{{ entity }}"
 cube_long_ccw_toggle:
-  description: Template CCW Long Press Control
+  description: CCW Long Press Toggle
   variables:
     entity:
     angle:
