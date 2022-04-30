@@ -39,12 +39,12 @@
         - service: button.press
           entity_id: button.moms_button2
       rotate_cw_face_3:
-        - service: cube_long_cw_toggle
+        - service: script.cube_long_cw_toggle
           data:
             angle: "{{ trigger.to_state.attributes.action_angle }}"
             entity: light.livingroomlight
       rotate_ccw_face_3:
-        - service: cube_long_ccw_toggle
+        - service: script.cube_long_ccw_toggle
           data:
             angle: "{{ trigger.to_state.attributes.action_angle }}"
             entity: light.mom_light
@@ -55,6 +55,21 @@
       slide_face_4:
         - service: light.turn_on
           entity_id: light.stairway_switch
+## Testing side 5
+      slide_face_5:
+        - condition: template
+          value_template: '{{ not last_side == 2 }}'
+        - service: light.toggle
+          data: {}
+          target:
+            entity_id: light.kitchen_down_lights
+      5_from_2:
+        - condition: template
+          value_template: '{{ action == "slide" }}'
+        - service: light.toggle
+          data: {}
+          target:
+            entity_id: light.kitchensink
 
 - id: a97c78fd-3deb-45d5-b884-2f04f8f5802b
   alias: Gertle Cube
