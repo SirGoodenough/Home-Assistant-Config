@@ -13,6 +13,8 @@ blueprint:
     Template sensor can grab it and show you the last action sent. Thie will help  when
     setting up new functions and to troubleshoot strange behaviours.'
   domain: automation
+  homeassistant:
+    min_version: 2022.4.0
   input:
     remote:
       name: Remote

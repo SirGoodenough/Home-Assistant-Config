@@ -5,17 +5,22 @@ blueprint:
     gives you the ability to assign local scripts or functions to do the things you
     want the remote to do. Functions that are left empty will simply do nothing.
 
+
     ### 🍎 There is a set of 36 event functions that will trigger on specific actions
     on specific sides that are listed as **Group 1 actions 🍎**.
+
 
     ### 🍊 There is a set of 6 event functions that will trigger on specific actions
     on *ANY* side that are listed as **Group 2 sctions 🍊**.
 
+
     ### 🍐 There is a set of 30 event functions that will trigger on cube flips to
     & froma specific sides that are listed as **Group 3 sctions 🍐**.
 
+
     ### 🍩 There are 2 actions (shake and drop) that only occur once and are OK to
     be combined with any other group.
+
 
     Please be aware that ALL actions except the 2 listed above / 🍩 will trigger an
     action in **ALL 3 groups at the same time** every time. Therefore I suggest if
@@ -25,15 +30,19 @@ blueprint:
     mixed groups, but you run the risk of a single cube action triggering more than
     1 Home Assistant action and making a mess of things 🍱.
 
+
     #### NOTICE: This cube *can* be triggered 74 ways, but only 38 of them are unique.
+
 
     There is sample code to make the template sensor in the help file on GitHib named
     the same as this one and in the community page related to this.
+
 
     Within this blueprint there is an event handler that will latch the last command
     that the blueprint finds and sends that to the event buss. From there a simple
     Template sensor can grab it and show you the last action sent. Thie will help
     when setting up new functions and to troubleshoot strange behaviours.
+
 
     > This was forked from https://community.home-assistant.io/t/z2m-xiaomi-cube-controller/263006
     1.2 project authored by luckypoppy and the friends he pulled together to create
@@ -43,6 +52,8 @@ blueprint:
     I wanted to help. I also had a better idea for troubleshooting info.'
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller.yaml
   domain: automation
+  homeassistant:
+    min_version: 2022.4.0
   input:
     remote:
       name: Remote
