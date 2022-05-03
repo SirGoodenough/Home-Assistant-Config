@@ -43,6 +43,58 @@ jen_needs_help_level2_template:
       data:
         message: "{{ message }}"
 
+#####################################################
+# Jen Curtain Positions                             #
+#####################################################
+jen_night_curtain_position:
+  alias: Both at 60% Night
+  sequence:
+    - service: cover.set_cover_position
+      target:
+        entity_id:
+          - cover.jens_kitchen_curtain
+          - cover.jens_window_curtain
+      data:
+        position: 60
+
+jen_day_curtain_position:
+  alias: Window 60% Kitchen Open Day
+  sequence:
+    - service: cover.set_cover_position
+      target:
+        entity_id:
+          - cover.jens_kitchen_curtain
+      data:
+        position: 100
+    - service: cover.set_cover_position
+      target:
+        entity_id:
+          - cover.jens_window_curtain
+      data:
+        position: 60
+
+jen_open_curtain_position:
+  alias: Open Both Curtains
+  sequence:
+    - service: cover.set_cover_position
+      target:
+        entity_id:
+          - cover.jens_kitchen_curtain
+          - cover.jens_window_curtain
+      data:
+        position: 100
+
+jen_closed_curtain_position:
+  alias: Close Both Curtains
+  sequence:
+    - service: cover.set_cover_position
+      target:
+        entity_id:
+          - cover.jens_kitchen_curtain
+          - cover.jens_window_curtain
+      data:
+        position: 0
+
 # ##
 #   ##
 #   ##--> Depricated NEXT 3 SCRIPTS

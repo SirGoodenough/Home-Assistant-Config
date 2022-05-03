@@ -1207,25 +1207,35 @@
                             "theme": "Animated Weather Card"
                         },
                         {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "cover.jens_window_curtain"
+                                },
+                                {
+                                    "entity": "cover.jens_kitchen_curtain"
+                                },
+                                {
+                                    "entity": "script.jen_night_curtain_position"
+                                },
+                                {
+                                    "entity": "script.jen_day_curtain_position"
+                                },
+                                {
+                                    "entity": "script.jen_open_curtain_position"
+                                },
+                                {
+                                    "entity": "script.jen_closed_curtain_position"
+                                }
+                            ],
+                            "title": "Jens Curtain Control Panel"
+                        },
+                        {
                             "type": "sensor",
                             "entity": "sensor.jen_temperature_temperature",
                             "graph": "line",
                             "detail": 1,
                             "name": "Jen Temperature Graph 24 hrs."
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "sensor.jen_temperature_temperature",
-                                    "name": "Temperature"
-                                },
-                                {
-                                    "entity": "sensor.jen_temperature_humidity",
-                                    "name": "Humidity"
-                                }
-                            ],
-                            "title": "Jen Temperature"
                         },
                         {
                             "type": "glance",
@@ -1265,22 +1275,22 @@
                             "columns": 4
                         },
                         {
-                            "type": "entities",
-                            "entities": [
-                                "cover.jens_kitchen_curtain"
-                            ],
-                            "title": "Jens Kitchen Curtain"
-                        },
-                        {
                             "type": "media-control",
                             "entity": "media_player.jenny_s_tv"
                         },
                         {
                             "type": "entities",
                             "entities": [
-                                "cover.jens_window_curtain"
+                                {
+                                    "entity": "sensor.jen_temperature_temperature",
+                                    "name": "Temperature"
+                                },
+                                {
+                                    "entity": "sensor.jen_temperature_humidity",
+                                    "name": "Humidity"
+                                }
                             ],
-                            "title": "Jens Window Curtain"
+                            "title": "Jen Temperature"
                         },
                         {
                             "type": "media-control",
