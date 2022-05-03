@@ -22,7 +22,7 @@
   max: 100
   trigger:
     - platform: state
-      entity_id: light.grp_studio
+      entity_id: light.office_5, light.office_6
       from: "off"
       to: "on"
   action:

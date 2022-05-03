@@ -121,21 +121,21 @@
     payload_available: "Online"
     payload_not_available: "Offline"
 
-  #######
-  ## 2 ##
-  #######
-  - platform: mqtt
-    name: "Office Monitors"
-    unique_id: 938f028a-b2ac-47f4-a39d-4bcccc2cad8d
-    state_topic: rf433/C2
-    command_topic: "RFBridge2/cmnd/Backlog"
-    availability_topic: "RFBridge2/tele/LWT"
-    state_on: 'ON'
-    state_off: 'OFF'
-    payload_on: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8885; RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8885"
-    payload_off: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8884; RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8884"
-    payload_available: "Online"
-    payload_not_available: "Offline"
+  # #######
+  # ## 2 ##
+  # #######
+  # - platform: mqtt
+  #   name: "Office Monitors"
+  #   unique_id: 938f028a-b2ac-47f4-a39d-4bcccc2cad8d
+  #   state_topic: rf433/C2
+  #   command_topic: "RFBridge2/cmnd/Backlog"
+  #   availability_topic: "RFBridge2/tele/LWT"
+  #   state_on: 'ON'
+  #   state_off: 'OFF'
+  #   payload_on: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8885; RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8885"
+  #   payload_off: "RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8884; RfSync 9540; RfLow 310; RfHigh 920; RfCode #CB8884"
+  #   payload_available: "Online"
+  #   payload_not_available: "Offline"
 
   #########################################################
   ## 3 ## Controls 3 RF switches stealing #3 from D and E.#
