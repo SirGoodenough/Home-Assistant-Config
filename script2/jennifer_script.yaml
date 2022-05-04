@@ -47,7 +47,7 @@ jen_needs_help_level2_template:
 # Jen Curtain Positions                             #
 #####################################################
 jen_night_curtain_position:
-  alias: Both at 60% Night
+  alias: Curtains Night
   sequence:
     - service: cover.set_cover_position
       target:
@@ -58,7 +58,7 @@ jen_night_curtain_position:
         position: 60
 
 jen_day_curtain_position:
-  alias: Window 60% Kitchen Open Day
+  alias: Curtains Day
   sequence:
     - service: cover.set_cover_position
       target:
@@ -74,7 +74,7 @@ jen_day_curtain_position:
         position: 60
 
 jen_open_curtain_position:
-  alias: Open Both Curtains
+  alias: Curtains Open
   sequence:
     - service: cover.set_cover_position
       target:
@@ -85,7 +85,7 @@ jen_open_curtain_position:
         position: 100
 
 jen_closed_curtain_position:
-  alias: Close Both Curtains
+  alias: Curtains Close
   sequence:
     - service: cover.set_cover_position
       target:
