@@ -109,33 +109,35 @@
           - condition: trigger
             id: cares_up
           sequence:
-          - alias: Send the bed_cares_up warning
+          - alias: Send the bed up warning
             service: script.tts_bed_cares_warning
-          - alias: Send the bed_cares_up command
+          - delay: 00:00:10
+          - alias: Send the bed up command
             service: shell_command.bed
             data:
               url: !secret SmartBed_URL
-              cmnd: 'button/4?timeout=6'
-          - delay: 00:00:07
-          - service: shell_command.bed
+              cmnd: 'button/4?timeout=7'
+          - delay: 00:00:08
+          - alias: Send the bed head down & knees up command
+            service: shell_command.bed
             data:
               url: !secret SmartBed_URL
-              cmnd: 'button/2?timeout=14'
+              cmnd: 'button/9?timeout=19'
         - alias: bed_cares_down
           conditions:
           - condition: trigger
             id: cares_down
           sequence:
-          - alias: Send the bed_cares_down command
+          - alias: Send the bedhead down command
             service: shell_command.bed
             data:
               url: !secret SmartBed_URL
-              cmnd: 'button/0?timeout=14'
-          - delay: 00:00:15
+              cmnd: 'button/0?timeout=19'
+          - delay: 00:00:20
           - service: shell_command.bed
             data:
               url: !secret SmartBed_URL
-              cmnd: 'button/5?timeout=6'
+              cmnd: 'button/5?timeout=7'
         - alias: bed_down_6 sent
           conditions:
           - condition: trigger
@@ -313,3 +315,17 @@
             data:
               url: !secret SmartBed_URL
               cmnd: 'button/0?timeout=10'
+
+# ## Relay Number List:
+# > 0 - Head Up
+# > 1 - Knees Up
+# > 2 - Head Down
+# > 3 - Knees Down
+# > 4 - Bed Up
+# > 5 - Bed Down
+# > 6 - Head Up + Knees Up
+# > 7 - Head Up + Knees Down
+# > 8 - Head Down + Knees Down
+# > 9 - Head Down + Knees Up
+# > 10 - Cares Position Up
+# > 11 - Cares Position Down
