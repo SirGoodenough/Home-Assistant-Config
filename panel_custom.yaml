@@ -8,12 +8,19 @@
     require_admin: true
     config:
       ingress: Supervisor
-  - name: panel-redirect
+  - name: config/logs
     sidebar_title: Logs
     sidebar_icon: mdi:math-log
-    js_url: /api/hassio/app/entrypoint.js
-    url_path: /config/logs
+    module_url: https://10.10.100.8:8123/config/logs
     embed_iframe: true
     require_admin: true
     config:
       ingress: Logs
+  - name: config/system
+    sidebar_title: System
+    sidebar_icon: mdi:cog
+    module_url: 'https://10.10.100.8:8123/config/system'
+    embed_iframe: true
+    require_admin: true
+    config:
+      ingress: System
