@@ -20,8 +20,7 @@
       platform: time
       at: "20:00:04"
   condition:
-    condition: and
-    conditions:
+    and:
       - alias: Its within the time allowed
         condition: time
         after: "19:59:57"
@@ -92,16 +91,15 @@
       entity_id: input_boolean.bedroom_auto_fan
       to: "on"
   condition:
-    condition: and
-    conditions:
-      - alias: Its within the time allowed
-        condition: time
-        after: "19:59:57"
-        before: "09:12:53"
-      - alias: This is turned off in the fall winter to disable everything
-        condition: state
-        entity_id: input_boolean.bedroom_auto_fan
-        state: "on"
+    and:
+    - alias: Its within the time allowed
+      condition: time
+      after: "19:59:57"
+      before: "09:12:53"
+    - alias: This is turned off in the fall winter to disable everything
+      condition: state
+      entity_id: input_boolean.bedroom_auto_fan
+      state: "on"
   action:
     - alias: call bedroom ac start script
       service: script.bedroom_ac_start
@@ -188,20 +186,19 @@
       platform: time
       at: "19:34:06"
   condition:
-    condition: and
-    conditions:
-      - alias: The door is closed
-        condition: state
-        entity_id: binary_sensor.bedroom
-        state: "on"
-      - alias: Its warmer than the room setting
-        condition: numeric_state
-        entity_id: sensor.bedroom_fan_si7021_temperature
-        above: input_number.bedroom_auto_temp
-      - alias: This is turned off in the fall winter to disable everything
-        condition: state
-        entity_id: input_boolean.bedroom_auto_fan
-        state: "on"
+    and:
+    - alias: The door is closed
+      condition: state
+      entity_id: binary_sensor.bedroom
+      state: "on"
+    - alias: Its warmer than the room setting
+      condition: numeric_state
+      entity_id: sensor.bedroom_fan_si7021_temperature
+      above: input_number.bedroom_auto_temp
+    - alias: This is turned off in the fall winter to disable everything
+      condition: state
+      entity_id: input_boolean.bedroom_auto_fan
+      state: "on"
   action:
     - alias: Send Warning sounder
       service: script.media_player_bathroom

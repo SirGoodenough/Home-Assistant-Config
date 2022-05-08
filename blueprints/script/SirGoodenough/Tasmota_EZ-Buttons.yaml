@@ -1,5 +1,5 @@
 blueprint:
-  name: Tasmota EZ-Button for Update and Restart All 2022-02-07
+  name: Tasmota EZ-Button for Update and Restart All 2022-05-05
   description: '## 🧿 This will create 3 buttons to help you. 🧿
 
     #### 1:
@@ -17,7 +17,7 @@ blueprint:
 
     Press a button to update ALL Tasmota devices to the latest version.
 
-    ## 🧿 There are a Requirements to allow this to work. 🧿
+    ## 🧿 There are 5 Requirements to allow this to work. 🧿
 
     #### A: ✔️
 
@@ -40,9 +40,10 @@ blueprint:
 
     #### D: ✔️
 
-    This assumes your Tasmota Devices MQTT topic is set to the default. ```%prefix%/%topic%/```  If
-    not you will need to edit this in a couple of places in the Blueprint to match
-    your Tasmota topic.
+    Tasmota Devices firmware default MQTT topic is set to: ```%prefix%/%topic%/```
+    If you did not change the topic in your Tasmota Devices then leave it as the default
+    here as well.  The other option available to you is to flip them as I do in my
+    Home Assistant personally.
 
     #### E: ✔️
 
@@ -52,13 +53,21 @@ blueprint:
     for A:. Tasmota has had breaking changes in it''s history.  Therefore you should
     never stray from the upgrade path listed in the Tasmota Docs when upgrading. To
     upgrade your Tasmota firmware, you need to follow the path, or risk bad things
-    happening: v1.0.11 🔀 v3.9.22 🔀 v4.2.0 🔀 v5.14.0 🔀 v6.7.1 🔀 v7.2.0 🔀 v8.5.1 🔀 v9.1
-    🔀 Current release. That means you currently need to manually update your firmware
-    to v9.1 minimum for these buttons to work going forward.'
+    happening:
+
+
+    v1.0.11 🔀 v3.9.22 🔀 v4.2.0 🔀 v5.14.0 🔀 v6.7.1 🔀 v7.2.0 🔀 v8.5.1 🔀 v9.1 🔀 Current
+    release.
+
+
+    That means you currently need to manually update your firmware to v9.1 minimum
+    for these buttons to work going forward.
+
+    [Community link for this blueprint](https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934) '
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml
   domain: script
   homeassistant:
-    min_version: 2022.4.0
+    min_version: 2022.5.0
   input:
     ez_update:
       name: EZ Update Button Tasmota
@@ -75,6 +84,21 @@ blueprint:
       default: EZ Update Button Tasmota
       selector:
         text: {}
+    topic_format:
+      name: Tasmota Topic Format
+      description: 'The format of your Tasmota devides has a default that most people
+        use: ''%prefix%/%topic%/''.  I personally however use something else.  Everytime
+        I modify this I have found myself manually editing the code to work with my
+        system so I have changed it to be able to set it in the inputs.  The default
+        is set to the normal Tasmota default,'
+      default: '%prefix%/%topic%/'
+      selector:
+        select:
+          options:
+          - '%prefix%/%topic%/'
+          - '%topic%/%prefix%/'
+          custom_value: false
+          multiple: false
     ez_canary:
       name: EZ Canary Button Tasmota
       description: This is the name of the button you want to use for the test new
@@ -121,14 +145,20 @@ variables:
     }}'
   ez_canary_grouptopic_v1: '{{ ez_canary_grouptopic_var | lower | regex_replace(''[
     -]'',''_'') | regex_replace(''[^a-z0-9_]'','''') }}'
+  canary_topic: "{% if topic_format == '%prefix%/%topic%/'%}\n  cmnd/{{ ez_canary_grouptopic_var\
+    \ }}/upgrade\n{% else %}\n  {{ ez_canary_grouptopic_var }}/cmnd/upgrade\n{% endif\
+    \ %}\n"
+  restart_topic: "{% if topic_format == '%prefix%/%topic%/'%}\n  cmnd/tasmotas/restart\n\
+    {% else %}\n  tasmotas/cmnd/restart\n{% endif %}\n"
+  upgrade_topic: "{% if topic_format == '%prefix%/%topic%/'%}\n  cmnd/tasmotas/upgrade\n\
+    {% else %}\n  tasmotas/cmnd/upgrade\n{% endif %}\n"
 mode: single
 max_exceeded: silent
 sequence:
 - choose:
   - alias: 'Don''t make this button unless these conditions are met:'
     conditions:
-    - condition: and
-      conditions:
+    - and:
       - alias: If a different name for the canary is chosen, configure the button.
         condition: template
         value_template: '{{ ez_canary_var != "not_selected" }}'
@@ -148,8 +178,8 @@ sequence:
           \      \"mdl\": \"Home Assistant EZ Buttons for Tasmota\",\n      \"sa\"\
           : \"home\",\n      \"sw\": \"https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml\"\
           ,\n      \"cu\": \"https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934\"\
-          \n  },\n  \"cmd_t\": \"{{ ez_canary_grouptopic_var }}/cmnd/upgrade\",\n\
-          \  \"payload_press\": \"1\"\n}\n"
+          \n  },\n  \"cmd_t\": \"{{ canary_topic }}\",\n  \"payload_press\": \"1\"\
+          \n}\n"
 - alias: Make the button 4 restart
   service: mqtt.publish
   data:
@@ -162,7 +192,7 @@ sequence:
       mdl\": \"Home Assistant EZ Buttons for Tasmota\",\n      \"sa\": \"home\",\n\
       \      \"sw\": \"https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml\"\
       ,\n      \"cu\": \"https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934\"\
-      \n  },\n  \"cmd_t\": \"tasmotas/cmnd/restart\",\n  \"payload_press\": \"1\"\n\
+      \n  },\n  \"cmd_t\": \"{{ restart_topic }}\",\n  \"payload_press\": \"1\"\n\
       }\n"
 - alias: Make the button 4 all update
   service: mqtt.publish
@@ -176,5 +206,5 @@ sequence:
       mdl\": \"Home Assistant EZ Buttons for Tasmota\",\n      \"sa\": \"home\",\n\
       \      \"sw\": \"https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml\"\
       ,\n      \"cu\": \"https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934\"\
-      \n  },\n  \"cmd_t\": \"tasmotas/cmnd/upgrade\",\n  \"payload_press\": \"1\"\n\
+      \n  },\n  \"cmd_t\": \"{{ upgrade_topic }}\",\n  \"payload_press\": \"1\"\n\
       }\n"

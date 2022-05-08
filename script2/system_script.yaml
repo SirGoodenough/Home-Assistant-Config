@@ -19,6 +19,7 @@
       path: SirGoodenough/Tasmota_EZ-Buttons.yaml
       input:
         ez_canary: Tasmota Firsts
+        topic_format: '%topic%/%prefix%/'
     icon: mdi:truck-delivery
 
 ####################################################

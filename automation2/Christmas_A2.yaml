@@ -108,14 +108,13 @@
     platform: homeassistant
     event: start
   condition:
-    condition: and
-    conditions:
-      - condition: state
-        entity_id: sensor.template_allow_xmas_lights
-        state: "True"
-      - condition: state
-        entity_id: binary_sensor.dark_outside
-        state: "on"
+    and:
+    - condition: state
+      entity_id: sensor.template_allow_xmas_lights
+      state: "True"
+    - condition: state
+      entity_id: binary_sensor.dark_outside
+      state: "on"
   action:
     - service: switch.turn_on
       entity_id: switch.outside_christmas

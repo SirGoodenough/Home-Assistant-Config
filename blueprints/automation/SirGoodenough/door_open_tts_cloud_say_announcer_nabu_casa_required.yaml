@@ -1,10 +1,12 @@
 blueprint:
-  name: Door open tts.cloud_say announcer (Nabu-Casa required) 2022-04-11
-  description: This uses tts.cloud_say from Nabu-Casa to tell you a door is open too
-    long and a door has been closed.
+  name: Door open tts.cloud_say announcer (Nabu-Casa required) 2022-05-05
+  description: 'This uses tts.cloud_say from Nabu-Casa to tell you a door is open
+    too long and a door has been closed.
+
+    [Community link for this blueprint](https://community.home-assistant.io/t/door-open-tts-cloud-say-announcer-nabu-casa-required/316046)'
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml
   homeassistant:
-    min_version: 2022.4.0
+    min_version: 2022.5.0
   domain: automation
   input:
     door_entity:
@@ -18,19 +20,19 @@ blueprint:
           domain: binary_sensor
     start_time:
       name: StartTime
-      description: 'Time of day you want to enable the announcement each day.  Leave
-        at 12:00:00 if you want it to always be on.
+      description: 'Time of day you want to enable the announcement each day.
 
-        '
+
+        Leave at 12:00:00 if you want it to always be on.'
       selector:
         time: {}
       default: 00:00:00
     end_time:
       name: EndTime
-      description: 'Time of day you want to disable the announcement each day.  Leave
-        at 12:00:00 if you want it to always be on.
+      description: 'Time of day you want to disable the announcement each day.
 
-        '
+
+        Leave at 12:00:00 if you want it to always be on.'
       selector:
         time: {}
       default: 00:00:00
@@ -40,11 +42,11 @@ blueprint:
       selector:
         entity:
           domain: media_player
-          multiple: false
+          multiple: true
     speaker_gender:
       name: Speaker Gender
       description: Select speaker gender male or female
-      default: male
+      default: female
       selector:
         select:
           options:
@@ -54,10 +56,13 @@ blueprint:
           multiple: false
     speaker_language:
       name: Speaker Language
-      description: 'Select Language code.  See-> (https://www.nabucasa.com/config/tts/)
+      description: 'Select Language code. [See here for Details](https://www.nabucasa.com/config/tts/)
+
         This defaults to en-US (english/US). However all the languages available on
-        2021-12-24 were put into the pick list. NOTE: It is possible that not all
-        Languages will give you both Genders.'
+        2021-12-24 were put into the pick list.
+
+
+        ***NOTE: It is possible that not all Languages will give you both Genders.***'
       default: en-US
       selector:
         select:
@@ -115,14 +120,22 @@ blueprint:
           multiple: false
     announcement_message:
       name: Announcement message
-      description: What to say when door is opened
+      description: 'What to say when door is opened
+
+        This can be set to "" if you do not want a message while sensor is active.'
+      default: Your Barn Door has been left open.
     final_message:
       name: Final message
-      description: What to say when door is closed
+      description: 'What to say when door is closed.
+
+        This can be set to "" if you do not want a message after the sensor is reset.'
+      default: Thank you for closing the barn door.
     cooldown:
       name: Announcement cooldown
-      description: The minimum number of seconds needed before AND between between
-        announcements.  This is your initial delay and pause between messages...
+      description: 'The minimum number of seconds needed before AND between between
+        announcements.
+
+        This is your initial delay and pause between messages...'
       default: 10
       selector:
         number:

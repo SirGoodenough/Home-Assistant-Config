@@ -97,10 +97,9 @@
       entity_id: input_select.phone_help
       id: phone
   condition:
-    condition: or
-    conditions:
-      - "{{ trigger.to_state.state != '' }}"
-      - "{{ trigger.to_state.state != 'off' }}"
+    or:
+    - "{{ trigger.to_state.state != '' }}"
+    - "{{ trigger.to_state.state != 'off' }}"
   action:
     - service: input_select.select_option
       target:

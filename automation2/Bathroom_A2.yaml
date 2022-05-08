@@ -57,8 +57,7 @@
       entity_id: input_boolean.bathroom_heater_auto_on
       to: "on"
   condition:
-    condition: and
-    conditions:
+    and:
       - condition: state
         entity_id: person.julie
         state: "Home"
