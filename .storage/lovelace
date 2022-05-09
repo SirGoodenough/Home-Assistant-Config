@@ -127,7 +127,7 @@
                                     "entity": "climate.living_room_2"
                                 },
                                 {
-                                    "entity": "lock.front_door"
+                                    "entity": "lock.front_door_lock"
                                 },
                                 {
                                     "entity": "sensor.rm02_last_action"
@@ -283,7 +283,7 @@
                                     "entity": "binary_sensor.aromatherapy_water"
                                 },
                                 {
-                                    "entity": "lock.front_door"
+                                    "entity": "lock.front_door_lock"
                                 },
                                 {
                                     "entity": "lock.side_door"
@@ -295,7 +295,7 @@
                                     "entity": "cover.garage_door"
                                 },
                                 {
-                                    "entity": "binary_sensor.front_door_open"
+                                    "entity": "binary_sensor.front_door_motion"
                                 },
                                 {
                                     "entity": "binary_sensor.side_door_open_2"
