@@ -80,25 +80,3 @@
     - service: input_boolean.turn_on
       entity_id: input_boolean.bathroom_heater_auto_on
 
-- id: c61050df-d8b7-46db-9150-7137cf6f3b92
-  alias: Silence Bathroom Speaker
-  initial_state: on
-  mode: restart
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.stairs_up
-      to: "on"
-    - platform: state
-      entity_id: button.stairs_up
-  action:
-    - alias: Mute bathroom
-      service: script.google_mute
-      data:
-        status: true
-        entities: media_player.bathroom_speaker, media_player.bedroom_speaker
-    - delay: 04:00:00
-    - alias: Unmute bathroom
-      service: script.google_mute
-      data:
-        status: false
-        entities: media_player.bathroom_speaker, media_player.bedroom_speaker

@@ -9,8 +9,8 @@ bedroom_temp_control:
       data:
         topic: "Bedroom_Fan/cmnd/FanSpeed"
         payload: >
-          {% set bte = states('sensor.bedroom_fan_si7021_temperature') | float %}
-          {% set bat = (states('input_number.bedroom_auto_temp') | float) -1.3 %}
+          {% set bat = (states('input_number.bedroom_auto_temp') | float(73)) -1.3 %}
+          {% set bte = states('sensor.bedroom_fan_si7021_temperature') | float(bat) %}
           {% if bte < bat %}
             0
           {% elif bte < (bat + 5.8) %}

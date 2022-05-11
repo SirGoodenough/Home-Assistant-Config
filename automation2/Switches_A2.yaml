@@ -182,17 +182,3 @@
       entity_id:
         - light.bmt_hall_socketu
         - light.bmt_hall_socketd
-
-####################################################
-# Stair Light Button / PIR                         #
-####################################################
-- id: f1afcd0d-fd1e-4fc0-a1ec-e0a659061b00
-  alias: Toggle Stair UP Light
-  initial_state: on
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.stairs_down
-      to: "on"
-  action:
-    - service: light.toggle
-      entity_id: light.stairway_light
