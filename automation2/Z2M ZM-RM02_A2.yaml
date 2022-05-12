@@ -1,6 +1,7 @@
 - id: '1650315151223'
   alias: Moms Button Remote
   description: Buttons for Mom's chair
+  trace: 10
   use_blueprint:
     path: SirGoodenough/Zigbee2MQTT - ZemiSmart ZM-RM02 Controller.yaml
     input:
