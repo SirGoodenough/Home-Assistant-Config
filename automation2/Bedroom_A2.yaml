@@ -55,7 +55,7 @@
       fan_on_time: 11:11:11
       mqtt_fan_topic: Bedroom_Fan/cmnd/FanSpeed
       loop_action:
-      - alias: call bedroom ac start script
+      - alias: "Start AirCon & limit to prevent rate limit outages"
         if: '{{ states(''climate.gemodule5384'') == ''off'' }}'
         then:
           service: script.bedroom_ac_start
@@ -87,11 +87,11 @@
       fan_on_time: '20:37:00'
       mqtt_fan_topic: Bedroom_Fan/cmnd/FanSpeed
       loop_action:
-      - alias: "call bedroom ac set temperature & limit to prevent rate limit outages"
+      - alias: "Start AirCon & limit to prevent rate limit outages"
         if: '{{ states(''climate.gemodule5384'') == ''off'' }}'
         then:
           service: script.bedroom_ac_start
-      - alias: call bedroom ac set temperature
+      - alias: "call bedroom ac set temperature & limit to prevent rate limit outages"
         if: '{{ is_number(state_attr(''climate.gemodule5384'', ''temperature''))
           and state_attr(''climate.gemodule5384'', ''temperature'') | float(73.1)
           != states(''input_number.bedroom_auto_temp'') | float(73.1) }}'
