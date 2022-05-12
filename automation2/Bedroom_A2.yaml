@@ -1,179 +1,6 @@
----
 #####################################################
 # Bedroom                                           #
 #####################################################
-- id:
-    92fa7b06-d6d5-426e-a197-15cafdce4d6b
-    # Set the fan speed based on room Temperature
-  mode: restart
-  alias: Bedroom Fan Auto Mode
-  initial_state: on
-  trigger:
-    - id: room_temp_change
-      platform: state
-      entity_id: sensor.bedroom_fan_si7021_temperature
-    - id: enable_on
-      platform: state
-      entity_id: input_boolean.bedroom_auto_fan
-      to: "on"
-    - id: time_trigger
-      platform: time
-      at: "20:00:04"
-  condition:
-    and:
-      - alias: Its within the time allowed
-        condition: time
-        after: "19:59:57"
-        before: "09:12:53"
-      - alias: This is turned off in the fall winter to disable everything
-        condition: state
-        entity_id: input_boolean.bedroom_auto_fan
-        state: "on"
-  action:
-    - alias: call bedroom control script
-      service: script.bedroom_temp_control
-
-- id:
-    33679c7e-d77a-4aa4-9bdc-f9e2c46d9153
-    # Bedroom Cool Daytime Control
-  mode: restart
-  alias: Bedroom As Needed Auto Mode
-  initial_state: on
-  trigger:
-    - id: temperature_trigger
-      platform: state
-      entity_id: sensor.bedroom_fan_si7021_temperature
-    - id: enable_2_on
-      platform: state
-      entity_id: input_boolean.bedroom_cool
-      to: "on"
-  condition:
-    - alias: Daytime as needed control
-      condition: state
-      entity_id: input_boolean.bedroom_cool
-      state: "on"
-  action:
-    - alias: call bedroom control script
-      service: script.bedroom_temp_control
-
-- id:
-    bc3cbabb-f2e5-4959-816a-26942b894dd6
-    # Bedroom Cool Daytime Control Reset
-  mode: queued
-  alias: Bedroom As Needed Auto Mode OFF
-  initial_state: on
-  trigger:
-    - id: off_time
-      platform: time
-      at: "19:00:26"
-  condition:
-    - alias: Daytime as needed control
-      condition: state
-      entity_id: input_boolean.bedroom_cool
-      state: "on"
-  action:
-    - alias: Shut it script.br_down 
-      service: input_boolean.turn_off
-      entity_id: input_boolean.bedroom_cool
-
-- id:
-    66849a21-2bb7-4a68-9795-38e9a1c475f1
-    # start Bedroom AC before bedtime
-  mode: queued
-  alias: Bedroom AC Control
-  initial_state: on
-  trigger:
-    - id: time_hit
-      platform: time
-      at: "20:34:06"
-    - id: enable_on
-      platform: state
-      entity_id: input_boolean.bedroom_auto_fan
-      to: "on"
-  condition:
-    and:
-    - alias: Its within the time allowed
-      condition: time
-      after: "19:59:57"
-      before: "09:12:53"
-    - alias: This is turned off in the fall winter to disable everything
-      condition: state
-      entity_id: input_boolean.bedroom_auto_fan
-      state: "on"
-  action:
-    - alias: call bedroom ac start script
-      service: script.bedroom_ac_start
-
-- id:
-    48bc08a6-0808-4fc8-9a7c-8290fa14795a
-    # start Bedroom ac when bedroom cool is on
-  mode: queued
-  alias: Bedroom AC Control
-  initial_state: on
-  trigger:
-    - id: enable_on
-      platform: state
-      entity_id: input_boolean.bedroom_cool
-      to: "on"
-  condition:
-    - alias: This is turned off in the fall winter to disable everything
-      condition: state
-      entity_id: input_boolean.bedroom_auto_fan
-      state: "on"
-  action:
-    - alias: call bedroom ac start script
-      service: script.bedroom_ac_start
-
-- id:
-    7a06edf5-cd41-43f7-8fff-15ae61551090
-    # set Bedroom AC temp from the input slider
-  mode: queued
-  alias: Bedroom AC Temp
-  initial_state: on
-  trigger:
-    - id: set_number_changed
-      platform: state
-      entity_id: input_number.bedroom_auto_temp
-  condition:
-    - alias: This is turned off in the fall winter to disable everything
-      condition: state
-      entity_id: input_boolean.bedroom_auto_fan
-      state: "on"
-  action:
-    - alias: set the climate temp
-      service: climate.set_temperature
-      data:
-        entity_id: climate.gemodule5384
-        temperature: "{{ states.input_number.bedroom_auto_temp.state | float(0) }}"
-
-- id:
-    d3edc532-448c-432c-84c7-b2a0dc32fd84
-    # turn off the stuff when you turn the automation triggers off.
-    # Turn the fan off in the morning to wake my ass up.  mode: queued
-  mode: queued
-  alias: Bedroom Fan bedroom_auto_temp Off Mode
-  initial_state: on
-  trigger:
-    - id: auto-fan_off
-      platform: state
-      entity_id: input_boolean.bedroom_auto_fan
-      to: "off"
-    - id: bedroom_cool_off
-      platform: state
-      entity_id: input_boolean.bedroom_cool
-      to: "off"
-    - id: morning_off
-      platform: time
-      at: "09:12:58"
-  condition:
-    - alias: This is turned off in the fall winter to disable everything
-      condition: state
-      entity_id: input_boolean.bedroom_auto_fan
-      state: "on"
-  action:
-    - alias: call shut it down script
-      service: script.bedroom_cooling_off
-
 - id:
     1a863145-656e-4dd6-8cbf-1de4bc3665f3
     # Complain if the bedroom door is still open shortly
@@ -211,3 +38,231 @@
         topic: rf433/Bedroom
         payload: "OFF"
         retain: true
+
+####################################################
+# Blueprint  Bedroom Fan Mayson                    #
+####################################################
+
+####################################################
+# Blueprint   Bedroom Fan Night                    #
+####################################################
+- id: '1652324479212'
+  alias: Bedroom fan and AC Control
+  description: Set the fan and AirCon to balance at night
+  use_blueprint:
+    path: SirGoodenough/AutoFanControl.yaml
+    input:
+      fan_off_time: 09:12:54
+      fan_control: input_boolean.bedroom_auto_fan
+      room_temp_now: sensor.bedroom_fan_si7021_temperature
+      room_set_temp: input_number.bedroom_auto_temp
+      fan_on_time: '20:37:00'
+      mqtt_fan_topic: Bedroom_Fan/cmnd/FanSpeed
+      loop_action:
+      - alias: "call bedroom ac set temperature & limit to prevent rate limit outages"
+        if: '{{ states(''climate.gemodule5384'') == ''off'' }}'
+        then:
+          service: script.bedroom_ac_start
+      - alias: call bedroom ac set temperature
+        if: '{{ is_number(state_attr(''climate.gemodule5384'', ''temperature''))
+          and state_attr(''climate.gemodule5384'', ''temperature'') | float(73.1)
+          != states(''input_number.bedroom_auto_temp'') | float(73.1) }}'
+        then:
+          service: script.bedroom_ac_set_temp
+          data:
+            Temp: '{{ states(''input_number.bedroom_auto_temp'') | float(73.1) }}'
+      off_action:
+        - alias: call shut the AirCon down script
+          service: script.bedroom_cooling_off
+
+# - id:
+#     d3edc532-448c-432c-84c7-b2a0dc32fd84
+#     # turn off the stuff when you turn the automation triggers off.
+#     # Turn the fan off in the morning to wake my ass up.  mode: queued
+#   mode: queued
+#   alias: Bedroom Fan bedroom_auto_temp Off Mode
+#   initial_state: on
+#   trigger:
+#     - id: auto-fan_off
+#       platform: state
+#       entity_id: input_boolean.bedroom_auto_fan
+#       to: "off"
+#     - id: bedroom_cool_off
+#       platform: state
+#       entity_id: input_boolean.bedroom_cool
+#       to: "off"
+#     - id: morning_off
+#       platform: time
+#       at: "09:12:58"
+#   condition:
+#     - alias: This is turned off in the fall winter to disable everything
+#       condition: state
+#       entity_id: input_boolean.bedroom_auto_fan
+#       state: "on"
+#   action:
+#     - alias: call shut it down script
+#       service: script.bedroom_cooling_off
+
+# - id:
+#     92fa7b06-d6d5-426e-a197-15cafdce4d6b
+#     # Set the fan speed based on room Temperature
+#   mode: restart
+#   alias: Bedroom Fan Auto Mode
+#   initial_state: on
+#   trigger:
+#     - id: room_temp_change
+#       platform: state
+#       entity_id: sensor.bedroom_fan_si7021_temperature
+#     - id: enable_on
+#       platform: state
+#       entity_id: input_boolean.bedroom_auto_fan
+#       to: "on"
+#     - id: time_trigger
+#       platform: time
+#       at: "20:00:04"
+#   condition:
+#     and:
+#       - alias: Its within the time allowed
+#         condition: time
+#         after: "19:59:57"
+#         before: "09:12:53"
+#       - alias: This is turned off in the fall winter to disable everything
+#         condition: state
+#         entity_id: input_boolean.bedroom_auto_fan
+#         state: "on"
+#   action:
+#     - alias: call bedroom control script
+#       service: script.bedroom_temp_control
+
+# - id:
+#     33679c7e-d77a-4aa4-9bdc-f9e2c46d9153
+#     # Bedroom Cool Daytime Control
+#   mode: restart
+#   alias: Bedroom As Needed Auto Mode
+#   initial_state: on
+#   trigger:
+#     - id: temperature_trigger
+#       platform: state
+#       entity_id: sensor.bedroom_fan_si7021_temperature
+#     - id: enable_2_on
+#       platform: state
+#       entity_id: input_boolean.bedroom_cool
+#       to: "on"
+#   condition:
+#     - alias: Daytime as needed control
+#       condition: state
+#       entity_id: input_boolean.bedroom_cool
+#       state: "on"
+#   action:
+#     - alias: call bedroom control script
+#       service: script.bedroom_temp_control
+
+# - id:
+#     bc3cbabb-f2e5-4959-816a-26942b894dd6
+#     # Bedroom Cool Daytime Control Reset
+#   mode: queued
+#   alias: Bedroom As Needed Auto Mode OFF
+#   initial_state: on
+#   trigger:
+#     - id: off_time
+#       platform: time
+#       at: "19:00:26"
+#   condition:
+#     - alias: Daytime as needed control
+#       condition: state
+#       entity_id: input_boolean.bedroom_cool
+#       state: "on"
+#   action:
+#     - alias: Shut it down 
+#       service: input_boolean.turn_off
+#       entity_id: input_boolean.bedroom_cool
+
+# - id:
+#     66849a21-2bb7-4a68-9795-38e9a1c475f1
+#     # start Bedroom AC before bedtime
+#   mode: queued
+#   alias: Bedroom AC Control
+#   initial_state: on
+#   trigger:
+#     - id: time_hit
+#       platform: time
+#       at: "20:34:06"
+#     - id: enable_on
+#       platform: state
+#       entity_id: input_boolean.bedroom_auto_fan
+#       to: "on"
+#   condition:
+#     and:
+#     - alias: Its within the time allowed
+#       condition: time
+#       after: "19:59:57"
+#       before: "09:12:53"
+#     - alias: This is turned off in the fall winter to disable everything
+#       condition: state
+#       entity_id: input_boolean.bedroom_auto_fan
+#       state: "on"
+#   action:
+#     - alias: call bedroom ac start script
+#       if: "{{ 'states.climate.gemodule5384.state' == 'off' }}"
+#       then: 
+#         service: script.bedroom_ac_start
+#     - alias: call bedroom ac set temperature
+#       if: "{{ is_number(state_attr('climate.gemodule5384', 'temperature')) and
+#         state_attr('climate.gemodule5384', 'temperature') | float(73.1) !=
+#         states('input_number.input_number.bedroom_auto_temp') | float(73.1) }}"
+#       then: 
+#         service: script.bedroom_ac_set_temp
+#         data:
+#           Temp: "{{ states('input_number.bedroom_auto_temp') | float(73.1) }}"
+
+# - id:
+#     48bc08a6-0808-4fc8-9a7c-8290fa14795a
+#     # start Bedroom ac when bedroom cool is on
+#   mode: queued
+#   alias: Bedroom AC Control
+#   initial_state: on
+#   trigger:
+#     - id: enable_on
+#       platform: state
+#       entity_id: input_boolean.bedroom_cool
+#       to: "on"
+#   condition:
+#     - alias: This is turned off in the fall winter to disable everything
+#       condition: state
+#       entity_id: input_boolean.bedroom_auto_fan
+#       state: "on"
+#   action:
+#     - alias: call bedroom ac start script
+#       if: "{{ 'states.climate.gemodule5384.state' == 'off' }}"
+#       then: 
+#         service: script.bedroom_ac_start
+#     - alias: call bedroom ac set temperature
+#       if: "{{ is_number(state_attr('climate.gemodule5384', 'temperature')) and
+#         state_attr('climate.gemodule5384', 'temperature') | float(73.1) !=
+#         states('input_number.input_number.bedroom_auto_temp') | float(73.1) }}"
+#       then: 
+#         service: script.bedroom_ac_set_temp
+#         data:
+#           Temp: "{{ states('input_number.bedroom_auto_temp') | float(73.1) }}"
+ 
+# - id:
+#     7a06edf5-cd41-43f7-8fff-15ae61551090
+#     # set Bedroom AC temp from the input slider
+#   mode: queued
+#   alias: Bedroom AC Temp
+#   initial_state: on
+#   trigger:
+#     - id: set_number_changed
+#       platform: state
+#       entity_id: input_number.bedroom_auto_temp
+#   condition:
+#     - alias: This is turned off in the fall winter to disable everything
+#       condition: state
+#       entity_id: input_boolean.bedroom_auto_fan
+#       state: "on"
+#   action:
+#     - alias: set the climate temp
+#       service: climate.set_temperature
+#       data:
+#         entity_id: climate.gemodule5384
+#         temperature: "{{ states('input_number.bedroom_auto_temp') | float(73.1) }}"

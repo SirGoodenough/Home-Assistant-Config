@@ -153,6 +153,11 @@
                 "name": "Bed Cares Down",
                 "icon": "mdi:arrow-collapse-down",
                 "id": "bed_cares_down"
+            },
+            {
+                "name": "Mayson Cool",
+                "icon": "mdi:cradle",
+                "id": "mayson_cool"
             }
         ]
     }

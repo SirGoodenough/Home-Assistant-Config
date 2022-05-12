@@ -60,6 +60,16 @@
                 "step": 1.0,
                 "mode": "slider",
                 "id": "test_target_temp"
+            },
+            {
+                "min": 65.0,
+                "max": 90.0,
+                "name": "Mayson Nap Temperature",
+                "unit_of_measurement": "\u00baF",
+                "mode": "slider",
+                "step": 1.0,
+                "id": "mayson_nap_temperature",
+                "icon": "mdi:temperature-fahrenheit"
             }
         ]
     }

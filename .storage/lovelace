@@ -201,6 +201,86 @@
                             }
                         },
                         {
+                            "show_name": true,
+                            "show_icon": true,
+                            "type": "button",
+                            "tap_action": {
+                                "action": "call-service",
+                                "service": "input_boolean.turn_on",
+                                "service_data": {},
+                                "target": {
+                                    "entity_id": [
+                                        "input_boolean.pad_enable3"
+                                    ]
+                                }
+                            },
+                            "entity": "sensor.recycling",
+                            "name": "All Locks - Tap Lock / Hold Unlock",
+                            "icon": "mdi:lock",
+                            "show_state": false,
+                            "icon_height": "30px",
+                            "hold_action": {
+                                "action": "call-service",
+                                "service": "input_boolean.turn_on",
+                                "service_data": {},
+                                "target": {
+                                    "entity_id": "input_boolean.pad_enable2"
+                                }
+                            }
+                        },
+                        {
+                            "type": "glance",
+                            "entities": [
+                                {
+                                    "entity": "sensor.hacs"
+                                },
+                                {
+                                    "entity": "sensor.garbage_2"
+                                },
+                                {
+                                    "entity": "sensor.recycling"
+                                },
+                                {
+                                    "entity": "binary_sensor.aromatherapy_water"
+                                },
+                                {
+                                    "entity": "lock.front_door_lock"
+                                },
+                                {
+                                    "entity": "lock.side_door"
+                                },
+                                {
+                                    "entity": "lock.smart_code_with_home_connect_technology"
+                                },
+                                {
+                                    "entity": "cover.garage_door"
+                                },
+                                {
+                                    "entity": "binary_sensor.front_door_motion"
+                                },
+                                {
+                                    "entity": "binary_sensor.back_door_pir"
+                                },
+                                {
+                                    "entity": "binary_sensor.back_door_open_433"
+                                },
+                                {
+                                    "entity": "binary_sensor.garage_side_door_open"
+                                },
+                                {
+                                    "entity": "binary_sensor.front_door_open_433"
+                                },
+                                {
+                                    "entity": "binary_sensor.side_door_open_433"
+                                },
+                                {
+                                    "entity": "light.main_lights"
+                                }
+                            ],
+                            "title": "Glance",
+                            "columns": 4
+                        },
+                        {
                             "type": "vertical-stack",
                             "cards": [
                                 {
@@ -266,58 +346,6 @@
                                 },
                                 "theme": "Dark - Light Red"
                             }
-                        },
-                        {
-                            "type": "glance",
-                            "entities": [
-                                {
-                                    "entity": "sensor.hacs"
-                                },
-                                {
-                                    "entity": "sensor.garbage_2"
-                                },
-                                {
-                                    "entity": "sensor.recycling"
-                                },
-                                {
-                                    "entity": "binary_sensor.aromatherapy_water"
-                                },
-                                {
-                                    "entity": "lock.front_door_lock"
-                                },
-                                {
-                                    "entity": "lock.side_door"
-                                },
-                                {
-                                    "entity": "lock.smart_code_with_home_connect_technology"
-                                },
-                                {
-                                    "entity": "cover.garage_door"
-                                },
-                                {
-                                    "entity": "binary_sensor.front_door_motion"
-                                },
-                                {
-                                    "entity": "binary_sensor.side_door_open_2"
-                                },
-                                {
-                                    "entity": "binary_sensor.back_door_open_433"
-                                },
-                                {
-                                    "entity": "binary_sensor.garage_side_door_open"
-                                },
-                                {
-                                    "entity": "binary_sensor.front_door_open_433"
-                                },
-                                {
-                                    "entity": "binary_sensor.side_door_open_433"
-                                },
-                                {
-                                    "entity": "light.main_lights"
-                                }
-                            ],
-                            "title": "Glance",
-                            "columns": 4
                         },
                         {
                             "type": "weather-forecast",
@@ -516,32 +544,6 @@
                             }
                         },
                         {
-                            "type": "button",
-                            "tap_action": {
-                                "action": "call-service",
-                                "service": "input_boolean.turn_on",
-                                "service_data": {},
-                                "target": {
-                                    "entity_id": [
-                                        "input_boolean.pad_enable3"
-                                    ]
-                                }
-                            },
-                            "entity": "switch.v8",
-                            "name": "All Locks - Tap Lock / Hold Unlock",
-                            "icon": "mdi:lock",
-                            "show_state": false,
-                            "icon_height": "80px",
-                            "hold_action": {
-                                "action": "call-service",
-                                "service": "input_boolean.turn_on",
-                                "service_data": {},
-                                "target": {
-                                    "entity_id": "input_boolean.pad_enable2"
-                                }
-                            }
-                        },
-                        {
                             "type": "conditional",
                             "conditions": [
                                 {
@@ -714,6 +716,13 @@
                                 },
                                 {
                                     "entity": "binary_sensor.battery_low_bedroom_door"
+                                },
+                                {
+                                    "entity": "input_number.mayson_nap_temperature"
+                                },
+                                {
+                                    "entity": "input_boolean.mayson_cool",
+                                    "secondary_info": "last-changed"
                                 }
                             ],
                             "title": "Bedroom",
@@ -1104,16 +1113,6 @@
                             "square": false
                         },
                         {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "sensor.mom_button_action",
-                                    "name": "Action"
-                                }
-                            ],
-                            "title": "Mom Button"
-                        },
-                        {
                             "type": "picture-entity",
                             "entity": "lock.front_door",
                             "camera_image": "camera.front_door"
@@ -1241,7 +1240,7 @@
                             "type": "glance",
                             "entities": [
                                 {
-                                    "entity": "lock.front_door"
+                                    "entity": "lock.front_door_lock"
                                 },
                                 {
                                     "entity": "lock.side_door"
@@ -1253,7 +1252,7 @@
                                     "entity": "cover.garage_door"
                                 },
                                 {
-                                    "entity": "binary_sensor.front_door_open"
+                                    "entity": "binary_sensor.front_door_pir"
                                 },
                                 {
                                     "entity": "binary_sensor.side_door_open_2"
