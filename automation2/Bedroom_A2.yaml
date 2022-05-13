@@ -106,7 +106,6 @@
       - alias: call shut the AirCon down script
         service: script.bedroom_cooling_off
 
-
 - id:
     33679c7e-d77a-4aa4-9bdc-f9e2c46d9153
     # Bedroom Cool Daytime Control
@@ -179,4 +178,3 @@
         service: script.bedroom_ac_set_temp
         data:
           Temp: "{{ states('input_number.bedroom_auto_temp') | float(73.1) }}"
-
