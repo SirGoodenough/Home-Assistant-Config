@@ -28,7 +28,6 @@ bedroom_temp_control:
         data:
           Temp: "{{ states('input_number.bedroom_auto_temp') | float(73.1) }}"
 
-
 #####################################################
 # Bedroom AC Start                                  # 
 #####################################################
