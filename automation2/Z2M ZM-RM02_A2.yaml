@@ -1,33 +1,34 @@
-- id: '1650315151223'
+- id: "3022ad60-0e5f-4114-91f5-d04d0d1ad070"
   alias: Moms Button Remote
+  trace:
+    stored_traces: 10
   description: Buttons for Mom's chair
-  trace: 10
   use_blueprint:
     path: SirGoodenough/Zigbee2MQTT - ZemiSmart ZM-RM02 Controller.yaml
     input:
       remote: sensor.mom_button_action
       tap_1:
-      - service: button.press
-        data: {}
-        target:
-          entity_id: button.moms_button1
+        - service: button.press
+          data: {}
+          target:
+            entity_id: button.moms_button1
       tap_2:
-      - service: button.press
-        data: {}
-        target:
-          entity_id: button.moms_button2
+        - service: button.press
+          data: {}
+          target:
+            entity_id: button.moms_button2
       tap_3:
-      - service: button.press
-        data: {}
-        target:
-          entity_id: button.moms_button3
+        - service: button.press
+          data: {}
+          target:
+            entity_id: button.moms_button3
       tap_5:
-      - service: light.toggle
-        data: {}
-        target:
-          entity_id: light.fp_socket
+        - service: light.toggle
+          data: {}
+          target:
+            entity_id: light.fp_socket
       tap_6:
-      - service: button.press
-        data: {}
-        target:
-          entity_id: button.moms_call_button
+        - service: button.press
+          data: {}
+          target:
+            entity_id: button.moms_call_button
