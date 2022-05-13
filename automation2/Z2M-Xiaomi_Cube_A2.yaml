@@ -1,7 +1,8 @@
 - id: "1644640476335"
   alias: Yertle Cube
   description: All the things Yertle can do
-  trace: 10
+  trace:
+     stored_traces: 10
   use_blueprint:
     path: SirGoodenough/Zigbee2MQTT - Xiaomi Cube Controller.yaml
     input:
@@ -75,6 +76,8 @@
 - id: a97c78fd-3deb-45d5-b884-2f04f8f5802b
   alias: Gertle Cube
   description: This is the upstairs magic cube Gertle
+  trace:
+     stored_traces: 10
   use_blueprint:
     path: SirGoodenough/Zigbee2MQTT - Xiaomi Cube Controller.yaml
     input:
