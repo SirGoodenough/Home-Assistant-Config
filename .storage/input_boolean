@@ -15,7 +15,7 @@
                 "name": "ChristmasLights"
             },
             {
-                "icon": "mdi:fan",
+                "icon": "mdi:fan-auto",
                 "id": "bedroom_auto_fan",
                 "name": "Bedroom Auto Fan"
             },
@@ -156,7 +156,7 @@
             },
             {
                 "name": "Mayson Cool",
-                "icon": "mdi:cradle",
+                "icon": "mdi:fan-auto",
                 "id": "mayson_cool"
             }
         ]
