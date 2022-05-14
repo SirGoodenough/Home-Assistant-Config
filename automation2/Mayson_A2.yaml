@@ -33,7 +33,8 @@
         entities: media_player.bathroom_speaker, media_player.bedroom_speaker
     - alias: Enable the room temperature control
       service: input_boolean.turn_on
-      entity_id: input_boolean.mayson_cool
+      target:
+        entity_id: input_boolean.mayson_cool
     - alias: How long to be quiet and cooled
       delay: 06:00:00
     - alias: Unmute bathroom
@@ -43,4 +44,5 @@
         entities: media_player.bathroom_speaker, media_player.bedroom_speaker
     - alias: Disable the room temperature control
       service: input_boolean.turn_off
-      entity_id: input_boolean.mayson_cool
+      target:
+        entity_id: input_boolean.mayson_cool
