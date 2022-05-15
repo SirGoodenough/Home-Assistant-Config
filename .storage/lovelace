@@ -1113,8 +1113,11 @@
                             "square": false
                         },
                         {
+                            "show_state": true,
+                            "show_name": true,
+                            "camera_view": "auto",
                             "type": "picture-entity",
-                            "entity": "lock.front_door",
+                            "entity": "lock.front_door_lock",
                             "camera_image": "camera.front_door"
                         }
                     ],
