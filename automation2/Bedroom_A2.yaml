@@ -42,20 +42,20 @@
 ###################################################
 # Blueprint  Bedroom Fan Mayson                   #
 ###################################################
-- id: '1652244525468'
+- id: f1d396f5-8f40-42b2-8d17-e9a6159c5ce2
   alias: "Mayson's Naptime Auto Fan"
-  description: 'Set the Temperature for Naptime 11am 4:30pm'
+  description: 'Set the Temperature for Naptime'
   trace:
     stored_traces: 10
   use_blueprint:
-    path: SirGoodenough/AutoFanControl.yaml
+    path: SirGoodenough/AutoFanControl HA_fan.yaml
     input:
-      fan_off_time: '16:34:18'
+      fan_off_time: '19:00:00'
       fan_control: input_boolean.mayson_cool
-      room_set_temp: input_number.mayson_nap_temperature
       room_temp_now: sensor.bedroom_fan_si7021_temperature
-      fan_on_time: '11:11:11'
-      mqtt_fan_topic: Bedroom_Fan/cmnd/FanSpeed
+      room_set_temp: input_number.mayson_nap_temperature
+      fan_on_time: '10:00:00'
+      fan: fan.bedroom_fan
       loop_action:
       - alias: "Start AirCon & limit to prevent rate limit outages"
         if: '{{ states(''climate.gemodule5384'') == ''off'' }}'
@@ -80,13 +80,13 @@
 ####################################################
 # Blueprint   Bedroom Fan Night                    #
 ####################################################
-- id: '1652324479212'
+- id: 22583f43-2e5f-4632-9277-242adfa9f4ec
   alias: Bedroom fan and AC Control
   description: Set the fan and AirCon to balance at night
   trace:
     stored_traces: 10
   use_blueprint:
-    path: SirGoodenough/AutoFanControl.yaml
+    path: SirGoodenough/AutoFanControl_MQTT.yaml
     input:
       fan_off_time: '09:12:54'
       fan_control: input_boolean.bedroom_auto_fan
@@ -168,33 +168,3 @@
   action:
     - alias: call shut the AirCon down script
       service: script.bedroom_cooling_off
-
-# - id:
-#     48bc08a6-0808-4fc8-9a7c-8290fa14795a
-#     # start Bedroom ac when bedroom cool is on
-#   mode: queued
-#   alias: Bedroom AC Control
-#   initial_state: on
-#   trigger:
-#     - id: enable_on
-#       platform: state
-#       entity_id: input_boolean.bedroom_cool
-#       to: "on"
-#   condition:
-#     - alias: This is turned off in the fall winter to disable everything
-#       condition: state
-#       entity_id: input_boolean.bedroom_auto_fan
-#       state: "on"
-#   action:
-#     - alias: "Start AirCon & limit to prevent rate limit outages"
-#       if: "{{ 'states.climate.gemodule5384.state' == 'off' }}"
-#       then: 
-#         service: script.bedroom_ac_start
-#     - alias: "call bedroom ac set temperature & limit to prevent rate limit outages"
-#       if: "{{ is_number(state_attr('climate.gemodule5384', 'temperature')) and
-#         state_attr('climate.gemodule5384', 'temperature') | float(73.1) !=
-#         states('input_number.bedroom_auto_temp') | float(73.1) }}"
-#       then: 
-#         service: script.bedroom_ac_set_temp
-#         data:
-#           Temp: "{{ states('input_number.bedroom_auto_temp') | float(73.1) }}"
