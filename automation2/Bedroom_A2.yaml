@@ -61,6 +61,8 @@
         if: '{{ states(''climate.gemodule5384'') == ''off'' }}'
         then:
           service: script.bedroom_ac_start
+      - alias: Make sure the device is on before the temperature is set
+        delay: 00:00:05
       - alias: "call Mayson ac set temperature & limit to prevent rate limit outages"
         if: '{{ is_number(state_attr(''climate.gemodule5384'', ''temperature''))
           and state_attr(''climate.gemodule5384'', ''temperature'') | float(73.1)
@@ -99,6 +101,7 @@
         if: '{{ states(''climate.gemodule5384'') == ''off'' }}'
         then:
           service: script.bedroom_ac_start
+      - delay: 00:00:05
       - alias: "call bedroom ac set temperature & limit to prevent rate limit outages"
         if: '{{ is_number(state_attr(''climate.gemodule5384'', ''temperature''))
           and state_attr(''climate.gemodule5384'', ''temperature'') | float(73.1)
@@ -111,8 +114,7 @@
       - alias: call shut the AirCon down script
         service: script.bedroom_cooling_off
 
-- id:
-    33679c7e-d77a-4aa4-9bdc-f9e2c46d9153
+- id: 33679c7e-d77a-4aa4-9bdc-f9e2c46d9153
     # Bedroom Cool Daytime Control
   mode: restart
   trace:
@@ -151,8 +153,7 @@
         data:
           Temp: '{{ states(''input_number.bedroom_auto_temp'') | float(73.1) }}'
 
-- id:
-    bc3cbabb-f2e5-4959-816a-26942b894dd6
+- id: bc3cbabb-f2e5-4959-816a-26942b894dd6
     # Bedroom Cool Daytime Control Reset
   mode: queued
   alias: Bedroom As Needed Auto Mode OFF
