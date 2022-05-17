@@ -55,7 +55,7 @@ jen_night_curtain_position:
           - cover.jens_kitchen_curtain
           - cover.jens_window_curtain
       data:
-        position: 60
+        position: '{{ range(57, 64) | random }}'
 
 jen_day_curtain_position:
   alias: Curtains Day
@@ -65,13 +65,13 @@ jen_day_curtain_position:
         entity_id:
           - cover.jens_kitchen_curtain
       data:
-        position: 100
+        position: '{{ range(98, 100) | random }}'
     - service: cover.set_cover_position
       target:
         entity_id:
           - cover.jens_window_curtain
       data:
-        position: 60
+        position: '{{ range(57, 64) | random }}'
 
 jen_open_curtain_position:
   alias: Curtains Open
@@ -82,7 +82,7 @@ jen_open_curtain_position:
           - cover.jens_kitchen_curtain
           - cover.jens_window_curtain
       data:
-        position: 100
+        position: '{{ range(98, 100) | random }}'
 
 jen_closed_curtain_position:
   alias: Curtains Close
@@ -93,7 +93,7 @@ jen_closed_curtain_position:
           - cover.jens_kitchen_curtain
           - cover.jens_window_curtain
       data:
-        position: 0
+        position: '{{ range(0, 2) | random }}'
 
 # ##
 #   ##
