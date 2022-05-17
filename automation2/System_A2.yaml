@@ -130,3 +130,31 @@
       data:
         status: false
         entities: media_player.bathroom_speaker
+
+####################################################
+# Restart Eldrad if it stops Pinging               #
+####################################################
+- id: 90c6e8db-9079-4a34-997b-e73a7bdc497a
+  alias: restart eldrad
+  description: Watch Eldrad and restart it if it's dead.
+  trigger:
+  - platform: state
+    entity_id:
+    - device_tracker.eldrad_2
+    to: not_home
+    for:
+      minutes: 12
+  action:
+  - service: switch.turn_off
+    target:
+      entity_id: switch.eldrad
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 12
+      milliseconds: 0
+  - service: switch.turn_on
+    target:
+      entity_id: switch.eldrad
+  - service: script.tts_say_eldrad_reset
+  mode: single

@@ -1,3 +1,17 @@
+tts_say_eldrad_reset:
+  alias: TTS_say_Eldrad_Reset
+  use_blueprint:
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
+    input:
+      GTS_language: en
+      TTS: tts.cloud_say
+      announcement_message: '{{ ("Eldrad Reset","Had to Kick Eldrad again","Eldrad
+        must live") | random }}'
+      speaker_target: media_player.kitchen_speaker
+      speaker_gender: male
+      cloud_language: en-US
+  mode: single
+  icon: mdi:restart-alert
 tts_mama_left_katys:
   alias: TTS Mama left Katys
   use_blueprint:
