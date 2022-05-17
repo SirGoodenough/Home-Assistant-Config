@@ -12,7 +12,7 @@
         to: "on"
       - platform: webhook
         id: cares_up
-        webhook_id: CBU-17dd01ea-b2e4-474b-8c79-684b9a189661aa3baced-f17d-4068-b592-e4948768c5fe
+        webhook_id: !secret "CaresUP"
       - platform: state
         id: cares_down
         entity_id: input_boolean.bed_cares_down
@@ -20,7 +20,7 @@
         to: "on"
       - platform: webhook
         id: cares_down
-        webhook_id: CBD-7dd26629-9d21-4c3d-bb8d-32ce88bf4796d9d9b3cf-b222-4ef9-8a2f-8cc669b5add5
+        webhook_id: !secret "CaresDOWN"
       - platform: state
         id: bed_down_6
         entity_id: input_boolean.bed_down_6
