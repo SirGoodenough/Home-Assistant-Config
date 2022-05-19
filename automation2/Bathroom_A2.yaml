@@ -38,7 +38,7 @@
     entity_id: switch.aeotec_dsc26103_micro_switch_2nd_edition_switch
     to: "on"
     for:
-      seconds: 120
+      minutes: 2
   condition:
     condition: state
     entity_id: binary_sensor.bathroom
