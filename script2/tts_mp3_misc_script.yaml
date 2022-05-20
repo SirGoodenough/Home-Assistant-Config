@@ -40,7 +40,7 @@ media_player_buzzer:
       file_2_play: media-source://media_source/local/mp3/Buzzer.mp3
   icon: mdi:alarm-light-outline
 media_player_boink:
-  alias: Media Player Gong
+  alias: Media Player Boinc
   use_blueprint:
     path: SirGoodenough/play_media_file_script.yaml
     input:

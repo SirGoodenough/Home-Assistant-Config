@@ -883,13 +883,13 @@
                                     "entity": "sensor.wash_machine_energy_current"
                                 },
                                 {
-                                    "entity": "sensor.wash_machine_energy_voltage"
-                                },
-                                {
                                     "entity": "switch.eldrad"
                                 },
                                 {
                                     "entity": "device_tracker.eldrad_2"
+                                },
+                                {
+                                    "entity": "device_tracker.eldrad_mountcadon_duckdns_org"
                                 },
                                 {
                                     "entity": "input_button.restart_eldrad"
@@ -2384,9 +2384,13 @@
                                 },
                                 {
                                     "entity": "input_button.broadlink_rm3_reset"
+                                },
+                                {
+                                    "entity": "device_tracker.rassilon_mountcadon_duckdns_org_c8_f7_42_21_a6_a8_2"
                                 }
                             ],
-                            "title": "TVRemote"
+                            "title": "TVRemote",
+                            "state_color": true
                         }
                     ]
                 },

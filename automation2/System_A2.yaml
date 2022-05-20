@@ -142,7 +142,13 @@
     entity_id: input_button.restart_eldrad
   - platform: state
     entity_id:
-    - device_tracker.eldrad_2
+      - device_tracker.eldrad_2
+    to: not_home
+    for:
+      minutes: 12
+  - platform: state
+    entity_id:
+      - device_tracker.eldrad_mountcadon_duckdns_org
     to: not_home
     for:
       minutes: 12
@@ -159,4 +165,34 @@
   - service: switch.turn_on
     target:
       entity_id: switch.eldrad
+  mode: single
+
+####################################################
+# Restart Downstairs Broadlink if it Dead          #
+####################################################
+- id: 90c6e8db-9079-4a34-997b-e73a7bdc497a
+  alias: restart eldrad
+  description: Watch Eldrad and restart it if it's dead.
+  trigger:
+  - platform: state
+    entity_id: input_button.broadlink_rm3_reset
+  - platform: state
+    entity_id:
+      - device_tracker.rassilon_mountcadon_duckdns_org_c8_f7_42_21_a6_a8_2
+    to: not_home
+    for:
+      minutes: 5
+  action:
+  - service: switch.turn_off
+    target:
+      entity_id: switch.sonoff_1000dbf4a6_1
+  - service: script.tts_say_broadcom_reset
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 4
+      milliseconds: 0
+  - service: switch.turn_on
+    target:
+      entity_id: switch.sonoff_1000dbf4a6_1
   mode: single

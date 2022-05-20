@@ -12,6 +12,20 @@ tts_say_eldrad_reset:
       cloud_language: en-US
   mode: single
   icon: mdi:restart-alert
+tts_say_broadcom_reset:
+  alias: TTS_say Broadcom_Reset
+  use_blueprint:
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
+    input:
+      GTS_language: en
+      TTS: tts.cloud_say
+      announcement_message: '{{ ("Broadcom Reset","Had to Kick Broadcom again",
+        "Where''s that damn remote") | random }}'
+      speaker_target: media_player.kitchen_speaker
+      speaker_gender: female
+      cloud_language: en-IN
+  mode: single
+  icon: mdi:restart-alert
 tts_mama_left_katys:
   alias: TTS Mama left Katys
   use_blueprint:
