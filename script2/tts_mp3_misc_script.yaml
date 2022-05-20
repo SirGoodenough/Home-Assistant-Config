@@ -47,5 +47,3 @@ media_player_boink:
       speaker_target: media_player.jen_group
       file_2_play: media-source://media_source/local/mp3/sfx-boing3.mp3
   icon: mdi:ear-hearing
-
-
