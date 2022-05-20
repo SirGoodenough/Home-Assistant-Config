@@ -1,0 +1,19 @@
+{
+    "version": 1,
+    "minor_version": 1,
+    "key": "input_button",
+    "data": {
+        "items": [
+            {
+                "name": "Broadlink RM3 Reset",
+                "icon": "mdi:restart",
+                "id": "broadcom_rm3_reset"
+            },
+            {
+                "name": "restart Eldrad",
+                "icon": "mdi:reload",
+                "id": "restart_eldrad"
+            }
+        ]
+    }
+}

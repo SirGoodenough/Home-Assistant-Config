@@ -139,6 +139,8 @@
   description: Watch Eldrad and restart it if it's dead.
   trigger:
   - platform: state
+    entity_id: input_button.restart_eldrad
+  - platform: state
     entity_id:
     - device_tracker.eldrad_2
     to: not_home
@@ -148,6 +150,7 @@
   - service: switch.turn_off
     target:
       entity_id: switch.eldrad
+  - service: script.tts_say_eldrad_reset
   - delay:
       hours: 0
       minutes: 0
@@ -156,5 +159,4 @@
   - service: switch.turn_on
     target:
       entity_id: switch.eldrad
-  - service: script.tts_say_eldrad_reset
   mode: single

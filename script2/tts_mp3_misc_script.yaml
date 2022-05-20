@@ -39,3 +39,13 @@ media_player_buzzer:
       speaker_target: media_player.intercom_group
       file_2_play: media-source://media_source/local/mp3/Buzzer.mp3
   icon: mdi:alarm-light-outline
+media_player_boink:
+  alias: Media Player Gong
+  use_blueprint:
+    path: SirGoodenough/play_media_file_script.yaml
+    input:
+      speaker_target: media_player.jen_group
+      file_2_play: media-source://media_source/local/mp3/sfx-boing3.mp3
+  icon: mdi:ear-hearing
+
+

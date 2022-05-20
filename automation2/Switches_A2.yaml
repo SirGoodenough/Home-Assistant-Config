@@ -182,3 +182,29 @@
       entity_id:
         - light.bmt_hall_socketu
         - light.bmt_hall_socketd
+
+- id: edaafacf-6c34-47d2-9dda-bcea8d4232a4
+  alias: Broadcom Brick Reset
+  description: 'Reset the dam RM3 that is mose always offline. POS!'
+  trigger:
+  - platform: state
+    entity_id:
+    - input_button.broadlink_rm3_reset
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 26a0f288f760db5d58d9723a73dc9f7d
+    entity_id: switch.sonoff_1000dbf4a6_1
+    domain: switch
+  - service: script.media_player_boink
+    data: {}
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - type: turn_on
+    device_id: 26a0f288f760db5d58d9723a73dc9f7d
+    entity_id: switch.sonoff_1000dbf4a6_1
+    domain: switch
+  mode: single

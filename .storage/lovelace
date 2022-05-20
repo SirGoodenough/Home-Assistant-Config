@@ -884,6 +884,15 @@
                                 },
                                 {
                                     "entity": "sensor.wash_machine_energy_voltage"
+                                },
+                                {
+                                    "entity": "switch.eldrad"
+                                },
+                                {
+                                    "entity": "device_tracker.eldrad_2"
+                                },
+                                {
+                                    "entity": "input_button.restart_eldrad"
                                 }
                             ],
                             "show_header_toggle": false,
@@ -2366,6 +2375,18 @@
                                 }
                             ],
                             "square": false
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "switch.sonoff_1000dbf4a6_1"
+                                },
+                                {
+                                    "entity": "input_button.broadlink_rm3_reset"
+                                }
+                            ],
+                            "title": "TVRemote"
                         }
                     ]
                 },
