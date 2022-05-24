@@ -275,18 +275,21 @@ action:
         topic: !input 'mqtt_fan_topic'
         qos: 2
         retain: false
-        payload: >
+        payload: >-
           {% if room_temp_now_val < room_set_temp_val %}
           {# Room is cooler than set temp so turn fan OFF. #}
             0
+
           {% elif room_temp_now_val < (room_set_temp_val + temp_gap_1_to_2_val) %}
           {# Room is at the temp where the fan should be at LOW speed. #}
             1
+
           {% elif room_temp_now_val < (room_set_temp_val + temp_gap_1_to_2_val + temp_gap_2_to_3_val) %} 
           {# Room is at the temp where the fan should be at MEDIUM speed. #}
             2
+
           {% else %} 
           {# Room is warm enough to be on HIGH speed, #}
             3
-          {% endif %}
 
+          {% endif %}

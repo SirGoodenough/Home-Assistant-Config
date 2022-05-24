@@ -268,17 +268,21 @@ action:
       target:
         entity_id: !input 'fan'
       data:
-        percentage: >
+        percentage: >-
           {% if room_temp_now_val < room_set_temp_val %}
           {# Room is cooler than set temp so turn fan OFF. #}
             0
+
           {% elif room_temp_now_val < (room_set_temp_val + temp_gap_1_to_2_val) %}
           {# Room is at the temp where the fan should be at LOW speed. #}
             33
+
           {% elif room_temp_now_val < (room_set_temp_val + temp_gap_1_to_2_val + temp_gap_2_to_3_val) %} 
           {# Room is at the temp where the fan should be at MEDIUM speed. #}
             66
+
           {% else %} 
           {# Room is warm enough to be on HIGH speed, #}
             100
+
           {% endif %}
