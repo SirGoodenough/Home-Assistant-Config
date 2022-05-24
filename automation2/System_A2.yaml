@@ -173,7 +173,7 @@
 ####################################################
 # Restart Downstairs Broadlink if it Dead          #
 ####################################################
-- id: 90c6e8db-9079-4a34-997b-e73a7bdc497a
+- id: 970763ea-a7ba-40e6-9d46-79b21e63996b
   alias: restart eldrad
   description: Watch Eldrad and restart it if it's dead.
   trigger:
