@@ -145,23 +145,26 @@
       - device_tracker.eldrad_2
     to: not_home
     for:
-      minutes: 12
+      minutes: 15
   - platform: state
     entity_id:
-      - device_tracker.eldrad_mountcadon_duckdns_org
+      - device_tracker.eldrad_2
     to: not_home
     for:
-      minutes: 12
+      hours: 1
+  - platform: state
+    entity_id:
+      - device_tracker.eldrad_2
+    to: not_home
+    for:
+      hours: 2
   action:
   - service: switch.turn_off
     target:
       entity_id: switch.eldrad
   - service: script.tts_say_eldrad_reset
   - delay:
-      hours: 0
-      minutes: 0
-      seconds: 12
-      milliseconds: 0
+      minutes: 1
   - service: switch.turn_on
     target:
       entity_id: switch.eldrad
