@@ -194,12 +194,15 @@ blueprint:
         action: {}
 variables:
   temp_gap_var: !input 'temp_gap'
+  temp_gap_val: '{{ temp_gap_var | float(0.0) }}'
   temp_gap_1_to_2_var: !input 'temp_gap_1_to_2'
+  temp_gap_1_to_2_val: '{{ temp_gap_1_to_2_var | float(0.0) }}'
   temp_gap_2_to_3_var: !input 'temp_gap_2_to_3'
+  temp_gap_2_to_3_val: '{{ temp_gap_2_to_3_var | float(0.0) }}'
   room_temp_now_var: !input 'room_temp_now'
-  room_temp_now_val: '{{ expand(room_temp_now_var)[0].state | float(0) }}'
+  room_temp_now_val: '{{ expand(room_temp_now_var)[0].state | float(0.0) }}'
   room_set_temp_var: !input 'room_set_temp'
-  room_set_temp_val: '{{ expand(room_set_temp_var)[0].state | float(0) - temp_gap_var
+  room_set_temp_val: '{{ expand(room_set_temp_var)[0].state | float(0.0) - temp_gap_val
     | float(0) }}'
   my_loop_action: !input 'loop_action'
   my_off_action: !input 'off_action'
@@ -265,10 +268,17 @@ action:
       target:
         entity_id: !input 'fan'
       data:
-        percentage: "{% if room_temp_now_val < room_set_temp_val %} {# Room is cooler\
-          \ than set temp so turn fan OFF. #}\n  0\n{% elif room_temp_now_val < (room_set_temp_val\
-          \ + temp_gap_1_to_2_var) %} {# Room is at the temp where the fan should\
-          \ be at LOW speed. #}\n  33\n{% elif room_temp_now_val < (room_set_temp_val\
-          \ + temp_gap_1_to_2_var + temp_gap_2_to_3_var) %}  {# Room is at the temp\
-          \ where the fan should be at MEDIUM speed. #}\n  66\n{% else %}  {# Room\
-          \ is warm enough to be on HIGH speed, #}\n  100\n{% endif %}\n"
+        percentage: >
+          {% if room_temp_now_val < room_set_temp_val %}
+          {# Room is cooler than set temp so turn fan OFF. #}
+            0
+          {% elif room_temp_now_val < (room_set_temp_val + temp_gap_1_to_2_val) %}
+          {# Room is at the temp where the fan should be at LOW speed. #}
+            33
+          {% elif room_temp_now_val < (room_set_temp_val + temp_gap_1_to_2_val + temp_gap_2_to_3_val) %} 
+          {# Room is at the temp where the fan should be at MEDIUM speed. #}
+            66
+          {% else %} 
+          {# Room is warm enough to be on HIGH speed, #}
+            100
+          {% endif %}
