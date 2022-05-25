@@ -58,8 +58,7 @@
       loop_action:
       - alias: "Start AirCon if room is 2° warmer than setting & limit to prevent rate limit outages"
         if: '{{ states(''climate.gemodule5384'') == ''off''
-          and is_number(state_attr(''climate.gemodule5384'', ''current_temperature''))
-          and state_attr(''climate.gemodule5384'', ''current_temperature'' | float(73.1)) - 2.0
+          and state_attr(''climate.gemodule5384'', ''current_temperature'') | float(73.1) - 2.0
           >= states(''input_number.bedroom_auto_temp'') | float(73.1)
           }}'
         then:
@@ -103,8 +102,7 @@
       loop_action:
       - alias: "Start AirCon if room is 2° warmer than setting & limit to prevent rate limit outages"
         if: '{{ states(''climate.gemodule5384'') == ''off''
-          and is_number(state_attr(''climate.gemodule5384'', ''current_temperature''))
-          and state_attr(''climate.gemodule5384'', ''current_temperature'' | float(73.1)) - 2.0
+          and state_attr(''climate.gemodule5384'', ''current_temperature'') | float(73.1) - 2.0
           >= states(''input_number.bedroom_auto_temp'') | float(73.1)
           }}'
         then:
@@ -149,8 +147,7 @@
   action:
     - alias: "Start AirCon if room is 2° warmer than setting & limit to prevent rate limit outages"
       if: '{{ states(''climate.gemodule5384'') == ''off''
-        and is_number(state_attr(''climate.gemodule5384'', ''current_temperature''))
-        and state_attr(''climate.gemodule5384'', ''current_temperature'' | float(73.1)) - 2.0
+        and state_attr(''climate.gemodule5384'', ''current_temperature'') | float(73.1) - 2.0
         >= states(''input_number.bedroom_auto_temp'') | float(73.1)
         }}'
       then:
