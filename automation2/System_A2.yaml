@@ -171,7 +171,7 @@
   mode: single
 
 ####################################################
-# Restart Downstairs Broadlink if it Dead          #
+# Restart Downstairs Broadlink if its Dead         #
 ####################################################
 - id: 970763ea-a7ba-40e6-9d46-79b21e63996b
   alias: restart eldrad
@@ -184,12 +184,12 @@
       - device_tracker.rassilon_mountcadon_duckdns_org_c8_f7_42_21_a6_a8_2
     to: not_home
     for:
-      minutes: 5
+      minutes: 15
   action:
   - service: switch.turn_off
     target:
       entity_id: switch.sonoff_1000dbf4a6_1
-  - service: script.tts_say_broadcom_reset
+  - service: script.tts_say_broadlink_reset
   - delay:
       hours: 0
       minutes: 0
