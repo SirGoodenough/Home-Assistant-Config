@@ -13,7 +13,7 @@
       to: "on"
     - platform: state
       id: poop_done
-      entity_id: input_button.poop_done
+      entity_id: input_boolean.poop_done
       from: "off"
       to: "on"
     - platform: state

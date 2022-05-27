@@ -1412,7 +1412,8 @@
                                     "tap_action": {
                                         "action": "toggle"
                                     },
-                                    "entity": "input_boolean.bed_cares_up"
+                                    "entity": "input_boolean.bed_cares_up",
+                                    "icon_height": "40px"
                                 },
                                 {
                                     "show_name": true,
@@ -1422,7 +1423,28 @@
                                         "action": "toggle"
                                     },
                                     "entity": "input_boolean.bed_cares_down",
-                                    "show_state": false
+                                    "show_state": false,
+                                    "icon_height": "40px"
+                                },
+                                {
+                                    "show_name": true,
+                                    "show_icon": true,
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "input_boolean.poop",
+                                    "icon_height": "40px"
+                                },
+                                {
+                                    "show_name": true,
+                                    "show_icon": true,
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "input_boolean.poop_done",
+                                    "icon_height": "40px"
                                 }
                             ]
                         }

@@ -158,6 +158,16 @@
                 "name": "Mayson Cool",
                 "icon": "mdi:fan-auto",
                 "id": "mayson_cool"
+            },
+            {
+                "name": "Poop",
+                "icon": "mdi:emoticon-poop-outline",
+                "id": "poop"
+            },
+            {
+                "name": "Poop Done",
+                "icon": "mdi:paper-roll-outline",
+                "id": "poop_done"
             }
         ]
     }
