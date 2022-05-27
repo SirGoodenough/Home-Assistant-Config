@@ -7,6 +7,16 @@
   max_exceeded: silent
   trigger:
     - platform: state
+      id: poop
+      entity_id: input_boolean.poop
+      from: "off"
+      to: "on"
+    - platform: state
+      id: poop_done
+      entity_id: input_button.poop_done
+      from: "off"
+      to: "on"
+    - platform: state
       id: cares_up
       entity_id: input_boolean.bed_cares_up
       from: "off"
@@ -111,27 +121,73 @@
     - alias: Turn off all the smartbed buttons
       service: script.smartbed_buttons_off
     - choose:
-      - alias: bed_cares_up
+      - alias: Up for Poop Duty
         conditions:
         - condition: trigger
-          id: cares_up
+          id: poop
         sequence:
+        - alias: Send the bed up warning
+          service: script.tts_bed_cares_warning
         - alias: Open the window curtain
           service: cover.set_cover_position
           target:
             entity_id:
               - cover.jens_window_curtain
           data:
-            position: '{{ range(98, 100) | random }}'
-        - alias: Send the bed up warning
-          service: script.tts_bed_cares_warning
-        - delay: 00:00:05
+            position: 100
+        - alias: Light on
+          service: light.turn_on
+          target:
+            entity_id:
+              - light.jens_light
         - alias: Send the bed up command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/4?timeout=8'
-        - delay: 00:00:08
+        - delay: 00:00:10
+        - alias: Send the bed head down & knees up command
+          service: shell_command.bed
+          data:
+            url: !secret SmartBed_URL
+            cmnd: 'button/9?timeout=10'
+      - alias: Down Because Poop duty done
+        conditions:
+        - condition: trigger
+          id: poop_done
+        sequence:
+        - alias: Send the bed head up command
+          service: shell_command.bed
+          data:
+            url: !secret SmartBed_URL
+            cmnd: 'button/0?timeout=10'
+        - delay: 00:00:20
+        - alias: Bed Down Command
+          service: shell_command.bed
+          data:
+            url: !secret SmartBed_URL
+            cmnd: 'button/5?timeout=8'
+
+      - alias: bed_cares_up
+        conditions:
+        - condition: trigger
+          id: cares_up
+        sequence:
+        - alias: Send the bed up warning
+          service: script.tts_bed_cares_warning
+        - alias: Open the window curtain
+          service: cover.set_cover_position
+          target:
+            entity_id:
+              - cover.jens_window_curtain
+          data:
+            position: 100
+        - alias: Send the bed up command
+          service: shell_command.bed
+          data:
+            url: !secret SmartBed_URL
+            cmnd: 'button/4?timeout=8'
+        - delay: 00:00:10
         - alias: Send the bed head down & knees up command
           service: shell_command.bed
           data:
@@ -142,16 +198,16 @@
         - condition: trigger
           id: cares_down
         sequence:
-        - alias: Send the bed head down command
+        - alias: Send the bed head up command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/0?timeout=17'
         - delay: 00:00:20
-        - service: shell_command.bed
+        - alias: Bed Down Command
+          service: shell_command.bed
           data:
             url: !secret SmartBed_URL
-            cmnd: 'button/5?timeout=8'
       - alias: bed_down_6 sent
         conditions:
         - condition: trigger
@@ -329,6 +385,9 @@
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/0?timeout=10'
+    - alias: Turn off all the smartbed buttons
+      service: script.smartbed_buttons_off
+
 
 # ## Relay Number List:
 # > 0 - Head Up
