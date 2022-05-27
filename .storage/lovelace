@@ -1409,20 +1409,42 @@
                                     "show_name": true,
                                     "show_icon": true,
                                     "type": "button",
+                                    "entity": "input_button.bed_cares_up",
+                                    "icon_height": "40px",
                                     "tap_action": {
                                         "action": "toggle"
-                                    },
-                                    "entity": "input_boolean.bed_cares_up"
+                                    }
                                 },
                                 {
                                     "show_name": true,
                                     "show_icon": true,
                                     "type": "button",
+                                    "entity": "input_button.bed_cares_down",
+                                    "show_state": false,
+                                    "icon_height": "40px",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    }
+                                },
+                                {
+                                    "show_name": true,
+                                    "show_icon": true,
+                                    "type": "button",
+                                    "entity": "input_button.poop",
                                     "tap_action": {
                                         "action": "toggle"
                                     },
-                                    "entity": "input_boolean.bed_cares_down",
-                                    "show_state": false
+                                    "icon_height": "40px"
+                                },
+                                {
+                                    "show_name": true,
+                                    "show_icon": true,
+                                    "type": "button",
+                                    "entity": "input_button.poop_done",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "icon_height": "40px"
                                 }
                             ]
                         }
