@@ -8,142 +8,130 @@
   trigger:
     - platform: state
       id: cares_up
-      entity_id: input_button.bed_cares_up
+      entity_id: input_boolean.bed_cares_up
+      from: "off"
+      to: "on"
     - platform: webhook
       id: cares_up
       webhook_id: !secret "CaresUP"
     - platform: state
       id: cares_down
-      entity_id: input_button.bed_cares_down
+      entity_id: input_boolean.bed_cares_down
+      from: "off"
+      to: "on"
     - platform: webhook
       id: cares_down
       webhook_id: !secret "CaresDOWN"
     - platform: state
       id: bed_down_6
-      entity_id: input_button.bed_down_6
+      entity_id: input_boolean.bed_down_6
+      from: "off"
+      to: "on"
     - platform: state
       id: bed_up_6
-      entity_id: input_button.bed_up_6
+      entity_id: input_boolean.bed_up_6
+      from: "off"
+      to: "on"
     - platform: state
       id: bed_flat
-      entity_id: input_button.bed_flat
+      entity_id: input_boolean.bed_flat
+      from: "off"
+      to: "on"
     - platform: state
       id: bed_restart
-      entity_id: input_button.bed_restart
+      entity_id: input_boolean.bed_restart
+      from: "off"
+      to: "on"
     - platform: state
       id: bed_sit
-      entity_id: input_button.bed_sit
+      entity_id: input_boolean.bed_sit
+      from: "off"
+      to: "on"
     - platform: state
       id: bed_foot_down_1
-      entity_id: input_button.bed_foot_down_1
+      entity_id: input_boolean.bed_foot_down_1
+      from: "off"
+      to: "on"
     - platform: state
       id: bed_foot_down_5
-      entity_id: input_button.bed_foot_down_5
+      entity_id: input_boolean.bed_foot_down_5
+      from: "off"
+      to: "on"
     - platform: state
       id: bed_foot_down_10
-      entity_id: input_button.bed_foot_down_10
+      entity_id: input_boolean.bed_foot_down_10
+      from: "off"
+      to: "on"
     - platform: state
       id: bed_foot_up_1
-      entity_id: input_button.bed_foot_up_1
+      entity_id: input_boolean.bed_foot_up_1
+      from: "off"
+      to: "on"
     - platform: state
       id: bed_foot_up_5
-      entity_id: input_button.bed_foot_up_5
+      entity_id: input_boolean.bed_foot_up_5
+      from: "off"
+      to: "on"
     - platform: state
       id: bed_foot_up_10
-      entity_id: input_button.bed_foot_up_10
+      entity_id: input_boolean.bed_foot_up_10
+      from: "off"
+      to: "on"
     - platform: state
       id: bed_head_down_1
-      entity_id: input_button.bed_head_down_1
+      entity_id: input_boolean.bed_head_down_1
+      from: "off"
+      to: "on"
     - platform: state
       id: bed_head_down_5
-      entity_id: input_button.bed_head_down_5
+      entity_id: input_boolean.bed_head_down_5
+      from: "off"
+      to: "on"
     - platform: state
       id: bed_head_down_10
-      entity_id: input_button.bed_head_down_10
+      entity_id: input_boolean.bed_head_down_10
+      from: "off"
+      to: "on"
     - platform: state
       id: bed_head_up_1
-      entity_id: input_button.bed_head_up_1
+      entity_id: input_boolean.bed_head_up_1
+      from: "off"
+      to: "on"
     - platform: state
       id: bed_head_up_5
-      entity_id: input_button.bed_head_up_5
+      entity_id: input_boolean.bed_head_up_5
+      from: "off"
+      to: "on"
     - platform: state
       id: bed_head_up_10
-      entity_id: input_button.bed_head_up_10
-    - platform: state
-      id: poop
-      entity_id: input_button.poop
-    - platform: state
-      id: poop_done
-      entity_id: input_button.poop_done
+      entity_id: input_boolean.bed_head_up_10
+      from: "off"
+      to: "on"
   action:
+    - alias: Turn off all the smartbed buttons
+      service: script.smartbed_buttons_off
     - choose:
-      - alias: bed_cares_up
-        conditions:
-        - condition: trigger
-          id: poop
-        sequence:
-        - alias: Send the bed up warning
-          service: script.tts_bed_cares_warning
-        - alias: Open the window curtain
-          service: cover.set_cover_position
-          target:
-            entity_id:
-              - cover.jens_window_curtain
-          data:
-            position: 100
-        - alias: Light on
-          service: light.turn_on
-          target:
-            entity_id:
-              - light.jens_light
-        - alias: Send the bed up command
-          service: shell_command.bed
-          data:
-            url: !secret SmartBed_URL
-            cmnd: 'button/4?timeout=8'
-        - delay: 00:00:10
-        - alias: Send the bed head down & knees up command
-          service: shell_command.bed
-          data:
-            url: !secret SmartBed_URL
-            cmnd: 'button/9?timeout=10'
-      - alias: bed_cares_down
-        conditions:
-        - condition: trigger
-          id: poop_done
-        sequence:
-        - alias: Send the bed head up command
-          service: shell_command.bed
-          data:
-            url: !secret SmartBed_URL
-            cmnd: 'button/0?timeout=10'
-        - delay: 00:00:20
-        - alias: Bed Down Command
-          service: shell_command.bed
-          data:
-            url: !secret SmartBed_URL
-            cmnd: 'button/5?timeout=8'
-
       - alias: bed_cares_up
         conditions:
         - condition: trigger
           id: cares_up
         sequence:
-        - alias: Send the bed up warning
-          service: script.tts_bed_cares_warning
         - alias: Open the window curtain
           service: cover.set_cover_position
           target:
             entity_id:
               - cover.jens_window_curtain
           data:
-            position: 100
+            position: '{{ range(98, 100) | random }}'
+        - alias: Send the bed up warning
+          service: script.tts_bed_cares_warning
+        - delay: 00:00:05
         - alias: Send the bed up command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/4?timeout=8'
-        - delay: 00:00:10
+        - delay: 00:00:08
         - alias: Send the bed head down & knees up command
           service: shell_command.bed
           data:
@@ -154,14 +142,13 @@
         - condition: trigger
           id: cares_down
         sequence:
-        - alias: Send the bed head up command
+        - alias: Send the bed head down command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/0?timeout=17'
         - delay: 00:00:20
-        - alias: Bed Down Command
-          service: shell_command.bed
+        - service: shell_command.bed
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/5?timeout=8'

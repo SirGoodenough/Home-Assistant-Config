@@ -55,9 +55,104 @@
                 "id": "fan_test"
             },
             {
+                "name": "Bed Restart",
+                "icon": "mdi:restart-alert",
+                "id": "bed_restart"
+            },
+            {
+                "name": "Bed Head Up One",
+                "icon": "mdi:head-plus",
+                "id": "bed_head_up_1"
+            },
+            {
+                "name": "Bed Head Down One",
+                "icon": "mdi:head-minus",
+                "id": "bed_head_down_1"
+            },
+            {
+                "name": "Bed Head Down Five",
+                "icon": "mdi:head-minus",
+                "id": "bed_head_down_5"
+            },
+            {
+                "name": "Bed Head Down Ten",
+                "icon": "mdi:head-minus",
+                "id": "bed_head_down_10"
+            },
+            {
+                "name": "Bed Head Up Five",
+                "icon": "mdi:head-plus",
+                "id": "bed_head_up_5"
+            },
+            {
+                "name": "Bed Head Up Ten",
+                "icon": "mdi:head-plus",
+                "id": "bed_head_up_10"
+            },
+            {
+                "name": "Bed Knees Up One",
+                "icon": "mdi:foot-print",
+                "id": "bed_foot_up_1"
+            },
+            {
+                "name": "Bed Knees Down One",
+                "icon": "mdi:foot-print",
+                "id": "bed_foot_down_1"
+            },
+            {
+                "name": "Bed Knees Down Five",
+                "icon": "mdi:foot-print",
+                "id": "bed_foot_down_5"
+            },
+            {
+                "name": "Bed Knees Down Ten",
+                "icon": "mdi:foot-print",
+                "id": "bed_foot_down_10"
+            },
+            {
+                "name": "Bed Knees Up Five",
+                "icon": "mdi:foot-print",
+                "id": "bed_foot_up_5"
+            },
+            {
+                "name": "Bed Knees Up Ten",
+                "icon": "mdi:foot-print",
+                "id": "bed_foot_up_10"
+            },
+            {
+                "name": "Bed Down Six",
+                "icon": "mdi:bed-empty",
+                "id": "bed__down_5"
+            },
+            {
+                "name": "Bed Flat",
+                "icon": "mdi:trending-neutral",
+                "id": "bed_flat"
+            },
+            {
+                "name": "Bed Up Six",
+                "icon": "mdi:bed",
+                "id": "bed_up_5"
+            },
+            {
+                "name": "Bed Sit",
+                "icon": "mdi:table-chair",
+                "id": "bed_sit"
+            },
+            {
                 "name": "mom_bedtime",
                 "icon": "mdi:bed-queen",
                 "id": "mom_bedtime"
+            },
+            {
+                "name": "Bed Cares Up",
+                "icon": "mdi:arrow-collapse-up",
+                "id": "bed_cares_up"
+            },
+            {
+                "name": "Bed Cares Down",
+                "icon": "mdi:arrow-collapse-down",
+                "id": "bed_cares_down"
             },
             {
                 "name": "Mayson Cool",
