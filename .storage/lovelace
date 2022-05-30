@@ -3695,10 +3695,13 @@
                                     "entity": "binary_sensor.battery_low_side_door_inside"
                                 },
                                 {
+                                    "entity": "binary_sensor.battery_low_garage_side_door"
+                                },
+                                {
                                     "entity": "binary_sensor.battery_low_garage_door"
                                 },
                                 {
-                                    "entity": "binary_sensor.battery_low_garage_side_door"
+                                    "entity": "binary_sensor.battery_low_garage_door_open"
                                 },
                                 {
                                     "entity": "binary_sensor.battery_low_bathroom"
@@ -3743,6 +3746,12 @@
                                 },
                                 {
                                     "entity": "sensor.stairway_smoke_battery"
+                                },
+                                {
+                                    "entity": "sensor.front_lock_button_battery"
+                                },
+                                {
+                                    "entity": "sensor.food_center_button_battery"
                                 }
                             ],
                             "title": "Battery State"
