@@ -135,6 +135,7 @@
               - cover.jens_window_curtain
           data:
             position: 100
+        - delay: 00:00:03
         - alias: Light on
           service: light.turn_on
           target:
@@ -145,7 +146,11 @@
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/4?timeout=8'
-        - delay: 00:00:10
+        - delay: 00:00:09
+        - alias: Send blank to make sure bed is stopped
+          service: shell_command.bed
+          data:
+            url: !secret SmartBed_URL
         - alias: Send the bed head down & knees up command
           service: shell_command.bed
           data:
@@ -161,13 +166,16 @@
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/0?timeout=10'
-        - delay: 00:00:20
+        - delay: 00:00:11
+        - alias: Send blank to make sure bed is stopped
+          service: shell_command.bed
+          data:
+            url: !secret SmartBed_URL
         - alias: Bed Down Command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/5?timeout=8'
-
       - alias: bed_cares_up
         conditions:
         - condition: trigger
@@ -187,7 +195,11 @@
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/4?timeout=8'
-        - delay: 00:00:10
+        - delay: 00:00:09
+        - alias: Send blank to make sure bed is stopped
+          service: shell_command.bed
+          data:
+            url: !secret SmartBed_URL
         - alias: Send the bed head down & knees up command
           service: shell_command.bed
           data:
@@ -203,11 +215,16 @@
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/0?timeout=17'
-        - delay: 00:00:20
+        - delay: 00:00:17
+        - alias: Send blank to make sure bed is stopped
+          service: shell_command.bed
+          data:
+            url: !secret SmartBed_URL
         - alias: Bed Down Command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
+            cmnd: 'button/5?timeout=8'
       - alias: bed_down_6 sent
         conditions:
         - condition: trigger
