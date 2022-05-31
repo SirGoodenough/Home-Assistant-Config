@@ -168,6 +168,16 @@
                 "name": "Poop Done",
                 "icon": "mdi:paper-roll-outline",
                 "id": "poop_done"
+            },
+            {
+                "name": "test_color",
+                "icon": "mdi:toggle-switch-off-outline",
+                "id": "test_color"
+            },
+            {
+                "name": "Bed Stop",
+                "icon": "mdi:octagon",
+                "id": "bed_stop"
             }
         ]
     }

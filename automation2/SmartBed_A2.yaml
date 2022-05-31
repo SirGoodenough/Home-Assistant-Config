@@ -117,6 +117,11 @@
       entity_id: input_boolean.bed_head_up_10
       from: "off"
       to: "on"
+    - platform: state
+      id: bed_stop
+      entity_id: input_boolean.bed_stop
+      from: "off"
+      to: "on"
   action:
     - alias: Turn off all the smartbed buttons
       service: script.smartbed_buttons_off
@@ -404,6 +409,15 @@
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/0?timeout=10'
+      - alias: bed_stop
+        conditions:
+        - condition: trigger
+          id: bed_stop
+        sequence:
+        - alias: Send the stop command (no payload)
+          service: shell_command.bed
+          data:
+            url: !secret SmartBed_URL
     - alias: Turn off all the smartbed buttons
       service: script.smartbed_buttons_off
 

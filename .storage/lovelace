@@ -1447,6 +1447,16 @@
                                     "icon_height": "40px"
                                 }
                             ]
+                        },
+                        {
+                            "show_name": true,
+                            "show_icon": true,
+                            "type": "button",
+                            "tap_action": {
+                                "action": "toggle"
+                            },
+                            "entity": "input_boolean.bed_stop",
+                            "icon_height": "80px"
                         }
                     ],
                     "icon": "mdi:alpha-j-box",
