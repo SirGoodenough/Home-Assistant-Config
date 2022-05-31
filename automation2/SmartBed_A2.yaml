@@ -133,6 +133,7 @@
           target:
             entity_id:
               - cover.jens_window_curtain
+              - cover.jens_kitchen_curtain
           data:
             position: 100
         - delay: 00:00:03
@@ -188,6 +189,7 @@
           target:
             entity_id:
               - cover.jens_window_curtain
+              - cover.jens_kitchen_curtain
           data:
             position: 100
         - alias: Send the bed up command
