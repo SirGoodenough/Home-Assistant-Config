@@ -712,9 +712,6 @@
                                     "entity": "binary_sensor.bedroom"
                                 },
                                 {
-                                    "entity": "sensor.bedroom_speaker_alarms"
-                                },
-                                {
                                     "entity": "binary_sensor.battery_low_bedroom_door"
                                 },
                                 {
@@ -960,7 +957,7 @@
                                 },
                                 {
                                     "type": "media-control",
-                                    "entity": "media_player.common_group"
+                                    "entity": "media_player.common_group_2"
                                 },
                                 {
                                     "type": "media-control",
@@ -3040,7 +3037,7 @@
                             ],
                             "card": {
                                 "type": "picture",
-                                "image": "http://10.10.100.8:8123/local/images/GoofyJim.gif",
+                                "image": "https://borusa.local:8123/local/images/GoofyJim.gif",
                                 "tap_action": {
                                     "action": "call-service",
                                     "service": "script.sg_food_say",
@@ -3065,7 +3062,7 @@
                             ],
                             "card": {
                                 "type": "picture",
-                                "image": "http://10.10.100.8:8123/local/images/UnicomJennifer.gif",
+                                "image": "https://borusa.local:8123/local/images/UnicomJennifer.gif",
                                 "tap_action": {
                                     "action": "call-service",
                                     "service": "script.jen_food_say",
@@ -3090,7 +3087,7 @@
                             ],
                             "card": {
                                 "type": "picture",
-                                "image": "http://10.10.100.8:8123/local/images/QueenJulie.gif",
+                                "image": "https://borusa.local:8123/local/images/QueenJulie.gif",
                                 "tap_action": {
                                     "action": "call-service",
                                     "service": "script.julie_food_say",
@@ -3115,7 +3112,7 @@
                             ],
                             "card": {
                                 "type": "picture",
-                                "image": "http://10.10.100.8:8123/local/images/GoofyJim.gif",
+                                "image": "https://borusa.local:8123/local/images/GoofyJim.gif",
                                 "tap_action": {
                                     "action": "call-service",
                                     "service": "script.sg_food_say",
@@ -3140,7 +3137,7 @@
                             ],
                             "card": {
                                 "type": "picture",
-                                "image": "http://10.10.100.8:8123/local/images/UnicomJennifer.gif",
+                                "image": "https://borusa.local:8123/local/images/UnicomJennifer.gif",
                                 "tap_action": {
                                     "action": "call-service",
                                     "service": "script.jen_food_say",
@@ -3165,7 +3162,7 @@
                             ],
                             "card": {
                                 "type": "picture",
-                                "image": "http://10.10.100.8:8123/local/images/QueenJulie.gif",
+                                "image": "https://borusa.local:8123/local/images/QueenJulie.gif",
                                 "tap_action": {
                                     "action": "call-service",
                                     "service": "script.julie_food_say",
