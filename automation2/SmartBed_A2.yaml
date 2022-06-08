@@ -34,12 +34,12 @@
       webhook_id: !secret "CaresDOWN"
     - platform: state
       id: bed_down_6
-      entity_id: input_boolean.bed_down_6
+      entity_id: input_boolean.bed_down_six
       from: "off"
       to: "on"
     - platform: state
       id: bed_up_6
-      entity_id: input_boolean.bed_up_6
+      entity_id: input_boolean.bed_up_six
       from: "off"
       to: "on"
     - platform: state
@@ -58,63 +58,63 @@
       from: "off"
       to: "on"
     - platform: state
-      id: bed_foot_down_1
-      entity_id: input_boolean.bed_foot_down_1
+      id: bed_knees_down_1
+      entity_id: input_boolean.bed_knees_down_one
       from: "off"
       to: "on"
     - platform: state
-      id: bed_foot_down_5
-      entity_id: input_boolean.bed_foot_down_5
+      id: bed_knees_down_5
+      entity_id: input_boolean.bed_knees_down_five
       from: "off"
       to: "on"
     - platform: state
-      id: bed_foot_down_10
-      entity_id: input_boolean.bed_foot_down_10
+      id: bed_knees_down_10
+      entity_id: input_boolean.bed_knees_down_ten
       from: "off"
       to: "on"
     - platform: state
-      id: bed_foot_up_1
-      entity_id: input_boolean.bed_foot_up_1
+      id: bed_knees_up_1
+      entity_id: input_boolean.bed_knees_up_one
       from: "off"
       to: "on"
     - platform: state
-      id: bed_foot_up_5
-      entity_id: input_boolean.bed_foot_up_5
+      id: bed_knees_up_5
+      entity_id: input_boolean.bed_knees_up_five
       from: "off"
       to: "on"
     - platform: state
-      id: bed_foot_up_10
-      entity_id: input_boolean.bed_foot_up_10
+      id: bed_knees_up_10
+      entity_id: input_boolean.bed_knees_up_ten
       from: "off"
       to: "on"
     - platform: state
       id: bed_head_down_1
-      entity_id: input_boolean.bed_head_down_1
+      entity_id: input_boolean.bed_head_down_one
       from: "off"
       to: "on"
     - platform: state
       id: bed_head_down_5
-      entity_id: input_boolean.bed_head_down_5
+      entity_id: input_boolean.bed_head_down_five
       from: "off"
       to: "on"
     - platform: state
       id: bed_head_down_10
-      entity_id: input_boolean.bed_head_down_10
+      entity_id: input_boolean.bed_head_down_ten
       from: "off"
       to: "on"
     - platform: state
       id: bed_head_up_1
-      entity_id: input_boolean.bed_head_up_1
+      entity_id: input_boolean.bed_head_up_one
       from: "off"
       to: "on"
     - platform: state
       id: bed_head_up_5
-      entity_id: input_boolean.bed_head_up_5
+      entity_id: input_boolean.bed_head_up_five
       from: "off"
       to: "on"
     - platform: state
       id: bed_head_up_10
-      entity_id: input_boolean.bed_head_up_10
+      entity_id: input_boolean.bed_head_up_ten
       from: "off"
       to: "on"
     - platform: state
@@ -295,62 +295,62 @@
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/0?timeout=6'
-      - alias: bed_foot_down_1 sent
+      - alias: bed_knees_down_1 sent
         conditions:
         - condition: trigger
-          id: bed_foot_down_1
+          id: bed_knees_down_1
         sequence:
-        - alias: Send the bed_foot_down_1 command
+        - alias: Send the bed_knees_down_1 command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/3?timeout=1'
-      - alias: bed_foot_down_5 sent
+      - alias: bed_knees_down_5 sent
         conditions:
         - condition: trigger
-          id: bed_foot_down_5
+          id: bed_knees_down_5
         sequence:
-        - alias: Send the bed_foot_down_5 command
+        - alias: Send the bed_knees_down_5 command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/3?timeout=5'
-      - alias: bed_foot_down_10 sent
+      - alias: bed_knees_down_10 sent
         conditions:
         - condition: trigger
-          id: bed_foot_down_10
+          id: bed_knees_down_10
         sequence:
-        - alias: Send the bed_foot_down_10 command
+        - alias: Send the bed_knees_down_10 command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/3?timeout=10'
-      - alias: bed_foot_up_1 sent
+      - alias: bed_knees_up_1 sent
         conditions:
         - condition: trigger
-          id: bed_foot_up_1
+          id: bed_knees_up_1
         sequence:
-        - alias: Send the bed_foot_up_1 command
+        - alias: Send the bed_knees_up_1 command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/1?timeout=1'
-      - alias: bed_foot_up_5 sent
+      - alias: bed_knees_up_5 sent
         conditions:
         - condition: trigger
-          id: bed_foot_up_5
+          id: bed_knees_up_5
         sequence:
-        - alias: Send the bed_foot_up_5 command
+        - alias: Send the bed_knees_up_5 command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/1?timeout=5'
-      - alias: bed_foot_up_10 sent
+      - alias: bed_knees_up_10 sent
         conditions:
         - condition: trigger
-          id: bed_foot_up_10
+          id: bed_knees_up_10
         sequence:
-        - alias: Send the bed_foot_up_10 command
+        - alias: Send the bed_knees_up_10 command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
