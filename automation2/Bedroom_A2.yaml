@@ -56,9 +56,9 @@
       fan_on_time: '10:00:00'
       fan: fan.bedroom_fan
       loop_action:
-      - alias: "Start AirCon if room is 2° warmer than setting & limit to prevent rate limit outages"
+      - alias: "Start AirCon if room is warmer than setting & limit to prevent rate limit outages"
         if: '{{ states(''climate.gemodule5384'') == ''off''
-          and state_attr(''climate.gemodule5384'', ''current_temperature'') | float(73.1) - 2.0
+          and state_attr(''climate.gemodule5384'', ''current_temperature'') | float(73.1) - 1.0
           >= states(''input_number.bedroom_auto_temp'') | float(73.1)
           }}'
         then:
@@ -100,9 +100,9 @@
       fan_on_time: '20:37:00'
       mqtt_fan_topic: Bedroom_Fan/cmnd/FanSpeed
       loop_action:
-      - alias: "Start AirCon if room is 2° warmer than setting & limit to prevent rate limit outages"
+      - alias: "Start AirCon if room is warmer than setting & limit to prevent rate limit outages"
         if: '{{ states(''climate.gemodule5384'') == ''off''
-          and state_attr(''climate.gemodule5384'', ''current_temperature'') | float(73.1) - 2.0
+          and state_attr(''climate.gemodule5384'', ''current_temperature'') | float(73.1) - 1.0
           >= states(''input_number.bedroom_auto_temp'') | float(73.1)
           }}'
         then:
@@ -145,9 +145,9 @@
       entity_id: input_boolean.bedroom_cool
       state: "on"
   action:
-    - alias: "Start AirCon if room is 2° warmer than setting & limit to prevent rate limit outages"
+    - alias: "Start AirCon if room is warmer than setting & limit to prevent rate limit outages"
       if: '{{ states(''climate.gemodule5384'') == ''off''
-        and state_attr(''climate.gemodule5384'', ''current_temperature'') | float(73.1) - 2.0
+        and state_attr(''climate.gemodule5384'', ''current_temperature'') | float(73.1) - 1.0
         >= states(''input_number.bedroom_auto_temp'') | float(73.1)
         }}'
       then:
