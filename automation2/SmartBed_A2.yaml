@@ -11,11 +11,17 @@
       entity_id: input_boolean.poop
       from: "off"
       to: "on"
+    - platform: webhook
+      id: poop
+      webhook_id: !secret "PoopUP"
     - platform: state
       id: poop_done
       entity_id: input_boolean.poop_done
       from: "off"
       to: "on"
+    - platform: webhook
+      id: poop_done
+      webhook_id: !secret "PoopDOWN"
     - platform: state
       id: cares_up
       entity_id: input_boolean.bed_cares_up
@@ -424,6 +430,13 @@
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
+      - alias: Webhook Test
+        conditions:
+        - condition: trigger
+          id: test1thru4
+        sequence:
+        - service: script.media_player_boink
+
     - alias: Turn off all the smartbed buttons
       service: script.smartbed_buttons_off
 
