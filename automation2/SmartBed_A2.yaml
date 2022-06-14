@@ -5,39 +5,43 @@
     stored_traces: 14
   mode: single
   max_exceeded: silent
-  trigger:
+  trigger: 
+    - platform: webhook
+      id: poop
+#      webhook_id: !secret "PoopUP"
+      webhook_id: !secret "test1thru4"
+    - platform: webhook
+      id: poop_done
+#      webhook_id: !secret "PoopDOWN"
+      webhook_id: !secret "test1thru4"
+    - platform: webhook
+      id: cares_up
+#      webhook_id: !secret "CaresUP"
+      webhook_id: !secret "test1thru4"
+    - platform: webhook
+      id: cares_down
+#      webhook_id: !secret "CaresDOWN"
+      webhook_id: !secret "test1thru4"
     - platform: state
       id: poop
       entity_id: input_boolean.poop
       from: "off"
       to: "on"
-    - platform: webhook
-      id: poop
-      webhook_id: !secret "PoopUP"
     - platform: state
       id: poop_done
       entity_id: input_boolean.poop_done
       from: "off"
       to: "on"
-    - platform: webhook
-      id: poop_done
-      webhook_id: !secret "PoopDOWN"
     - platform: state
       id: cares_up
       entity_id: input_boolean.bed_cares_up
       from: "off"
       to: "on"
-    - platform: webhook
-      id: cares_up
-      webhook_id: !secret "CaresUP"
     - platform: state
       id: cares_down
       entity_id: input_boolean.bed_cares_down
       from: "off"
       to: "on"
-    - platform: webhook
-      id: cares_down
-      webhook_id: !secret "CaresDOWN"
     - platform: state
       id: bed_down_6
       entity_id: input_boolean.bed_down_six
