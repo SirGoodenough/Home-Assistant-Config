@@ -7,21 +7,21 @@
   max_exceeded: silent
   trigger: 
     - platform: webhook
-      id: poop
-#      webhook_id: !secret "PoopUP"
-      webhook_id: !secret "test1thru4"
+#      id: poop
+      id: test1thru4
+      webhook_id: !secret "PoopUP"
     - platform: webhook
-      id: poop_done
-#      webhook_id: !secret "PoopDOWN"
-      webhook_id: !secret "test1thru4"
+#      id: poop_done
+      id: test1thru4
+      webhook_id: !secret "PoopDOWN"
     - platform: webhook
-      id: cares_up
-#      webhook_id: !secret "CaresUP"
-      webhook_id: !secret "test1thru4"
+#      id: cares_up
+      id: test1thru4
+      webhook_id: !secret "CaresUP"
     - platform: webhook
-      id: cares_down
-#      webhook_id: !secret "CaresDOWN"
-      webhook_id: !secret "test1thru4"
+#      id: cares_down
+      id: test1thru4
+      webhook_id: !secret "CaresDOWN"
     - platform: state
       id: poop
       entity_id: input_boolean.poop
