@@ -149,15 +149,14 @@
               - cover.jens_kitchen_curtain
           data:
             position: 100
-        - alias: Send the bed up warning
-          service: script.tts_bed_cares_warning
-        - delay: 00:00:03
         - alias: Light on
           service: light.turn_on
           target:
             entity_id:
               - light.jens_light
-        - alias: Send the bed up command
+        - alias: Send the bed UP warning
+          service: script.tts_bed_cares_warning
+        - alias: Send the bed UP command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
@@ -167,7 +166,7 @@
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
-        - alias: Send the bed head down & knees up command
+        - alias: Send the bed head Down & knees UP command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
@@ -177,11 +176,11 @@
         - condition: trigger
           id: poop_done
         sequence:
-        - alias: Send the bed head up command
+        - alias: Head UP-Knees Down Command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
-            cmnd: 'button/0?timeout=7'
+            cmnd: 'button/7?timeout=7'
         - delay: 00:00:08
         - alias: Send blank to make sure bed is stopped
           service: shell_command.bed
@@ -202,13 +201,11 @@
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/5?timeout=8'
-      - alias: bed_cares_up
+      - alias: bed_cares_UP
         conditions:
         - condition: trigger
           id: cares_up
         sequence:
-        - alias: Send the bed up warning
-          service: script.tts_bed_cares_warning
         - alias: Open the window curtain
           service: cover.set_cover_position
           target:
@@ -217,13 +214,14 @@
               - cover.jens_kitchen_curtain
           data:
             position: 100
-        - delay: 00:00:03
         - alias: Light on
           service: light.turn_on
           target:
             entity_id:
               - light.jens_light
-        - alias: Send the bed up command
+        - alias: Send the bed UP warning
+          service: script.tts_bed_cares_warning
+        - alias: Send the bed UP command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
@@ -233,17 +231,17 @@
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
-        - alias: Send the bed head down & knees up command
+        - alias: Send the bed head Down & knees up command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/9?timeout=17'
-      - alias: bed_cares_down
+      - alias: bed_cares_Down
         conditions:
         - condition: trigger
           id: cares_down
         sequence:
-        - alias: Send the bed head up command
+        - alias: Send the bed head UP command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
@@ -253,11 +251,11 @@
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
-        - alias: Head UP-Knees UP Command
+        - alias: Head UP-Knees Down Command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
-            cmnd: 'button/6?timeout=3'
+            cmnd: 'button/7?timeout=3'
         - delay: 00:00:03
         - alias: Send blank to make sure bed is stopped
           service: shell_command.bed
@@ -268,12 +266,12 @@
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/5?timeout=8'
-      - alias: bed_down_6 sent
+      - alias: bed_Down_6 sent
         conditions:
         - condition: trigger
           id: bed_down_6
         sequence:
-        - alias: Send the bed_down_6 command
+        - alias: Send the bed_Down_6 command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
@@ -283,7 +281,7 @@
         - condition: trigger
           id: bed_up_6
         sequence:
-        - alias: Send the bed_up_6 command
+        - alias: Send the bed_UP_6 command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
@@ -318,129 +316,129 @@
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/6?timeout=15'
-        - alias: delay to send the head up more
+        - alias: delay to send the head UP more
           delay: 00:00:16
-        - alias: Send the head up more
+        - alias: Send the head UP more
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/0?timeout=6'
-      - alias: bed_knees_down_1 sent
+      - alias: bed_knees_Down_1 sent
         conditions:
         - condition: trigger
           id: bed_knees_down_1
         sequence:
-        - alias: Send the bed_knees_down_1 command
+        - alias: Send the bed_knees_Down_1 command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/3?timeout=1'
-      - alias: bed_knees_down_5 sent
+      - alias: bed_knees_Down_5 sent
         conditions:
         - condition: trigger
           id: bed_knees_down_5
         sequence:
-        - alias: Send the bed_knees_down_5 command
+        - alias: Send the bed_knees_Down_5 command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/3?timeout=5'
-      - alias: bed_knees_down_10 sent
+      - alias: bed_knees_Down_10 sent
         conditions:
         - condition: trigger
           id: bed_knees_down_10
         sequence:
-        - alias: Send the bed_knees_down_10 command
+        - alias: Send the bed_knees_Down_10 command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/3?timeout=10'
-      - alias: bed_knees_up_1 sent
+      - alias: bed_knees_UP_1 sent
         conditions:
         - condition: trigger
           id: bed_knees_up_1
         sequence:
-        - alias: Send the bed_knees_up_1 command
+        - alias: Send the bed_knees_UP_1 command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/1?timeout=1'
-      - alias: bed_knees_up_5 sent
+      - alias: bed_knees_UP_5 sent
         conditions:
         - condition: trigger
           id: bed_knees_up_5
         sequence:
-        - alias: Send the bed_knees_up_5 command
+        - alias: Send the bed_knees_UP_5 command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/1?timeout=5'
-      - alias: bed_knees_up_10 sent
+      - alias: bed_knees_UP_10 sent
         conditions:
         - condition: trigger
           id: bed_knees_up_10
         sequence:
-        - alias: Send the bed_knees_up_10 command
+        - alias: Send the bed_knees_UP_10 command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/1?timeout=10'
-      - alias: bed_head_down_1 sent
+      - alias: bed_head_Down_1 sent
         conditions:
         - condition: trigger
           id: bed_head_down_1
         sequence:
-        - alias: Send the bed_head_down_1 command
+        - alias: Send the bed_head_Down_1 command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/2?timeout=1'
-      - alias: bed_head_down_5 sent
+      - alias: bed_head_Down_5 sent
         conditions:
         - condition: trigger
           id: bed_head_down_5
         sequence:
-        - alias: Send the bed_head_down_5 command
+        - alias: Send the bed_head_Down_5 command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/2?timeout=5'
-      - alias: bed_head_down_10 sent
+      - alias: bed_head_Down_10 sent
         conditions:
         - condition: trigger
           id: bed_head_down_10
         sequence:
-        - alias: Send the bed_head_down_10 command
+        - alias: Send the bed_head_Down_10 command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/2?timeout=10'
-      - alias: bed_head_up_1 sent
+      - alias: bed_head_UP_1 sent
         conditions:
         - condition: trigger
           id: bed_head_up_1
         sequence:
-        - alias: Send the bed_head_up_1 command
+        - alias: Send the bed_head_UP_1 command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/0?timeout=1'
-      - alias: bed_head_up_5 sent
+      - alias: bed_head_UP_5 sent
         conditions:
         - condition: trigger
           id: bed_head_up_5
         sequence:
-        - alias: Send the bed_head_up_5 command
+        - alias: Send the bed_head_UP_5 command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/0?timeout=5'
-      - alias: bed_head_up_10 sent
+      - alias: bed_head_UP_10 sent
         conditions:
         - condition: trigger
           id: bed_head_up_10
         sequence:
-        - alias: Send the bed_head_up_10 command
+        - alias: Send the bed_head_UP_10 command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
