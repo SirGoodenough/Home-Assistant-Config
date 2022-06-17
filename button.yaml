@@ -15,7 +15,7 @@
     device_class: "update"
           # List of firsts GroupTopic:
           #  BenchStrip, Bulb1, Garageback_Light, Humidifer, 
-          #  Jens_Neb, Office_Fan, Sonoff Bridge 1
+          #  Jens_Neb, Office_Fan, Sonoff Bridge 1, StairTopLight
 
 ####################################################
 # Tasmota Update All Button                        #
