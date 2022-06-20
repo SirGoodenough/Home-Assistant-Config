@@ -4,21 +4,21 @@ s -lovelace## Ignore all
 
 ## Allow folders
 # !*/
-!/automation2**
-!/automationDev**
-!/binSensor**
-!/blueprints**
-!/Lights**
-!/mqtt**
-!/python_scripts**
-!/script2**
-!/switch2**
-!/sensor2**
-!/scripts**
-!/templates**
+!/automation2/**
+!/automationDev/**
+!/binSensor/**
+!/blueprints/**
+!/Lights/**
+!/mqtt/**
+!/python_scripts/**
+!/script2/**
+!/switch2/**
+!/sensor2/**
+!/scripts/**
+!/templates/**
 !/zigbee2mqtt/
 !/zigbee2mqtt/*.js
-!/.storage
+!/.storage/
 !/.storage/broadlink_remote_*_codes
 !/.storage/http
 !/.storage/image
