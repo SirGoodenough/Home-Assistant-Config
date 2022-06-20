@@ -1,9 +1,8 @@
----
+binary_sensor:
   #####################################################
   # Lock Pad                                          #
   #####################################################
-  - platform: mqtt
-    name: "Pad 1"
+  - name: "Pad 1"
     unique_id: 6e7d4d77-980f-4261-874b-6817893b2109
     device_class: motion
     state_topic: rf433/Pad1
@@ -15,8 +14,7 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - platform: mqtt
-    name: "Pad 2"
+  - name: "Pad 2"
     unique_id: 967f4d20-4bed-4762-936b-ebb1aee30058
     device_class: motion
     state_topic: rf433/Pad2
@@ -28,8 +26,7 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - platform: mqtt
-    name: "Pad 3"
+  - name: "Pad 3"
     unique_id: 2053615f-29ee-4849-b0ed-ebc4cf4ef5b3
     device_class: motion
     state_topic: rf433/Pad3
@@ -41,8 +38,7 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - platform: mqtt
-    name: "Pad 4"
+  - name: "Pad 4"
     unique_id: b5b3618e-273e-4904-9154-2eb1df29cbfd
     device_class: motion
     state_topic: rf433/Pad4
@@ -54,8 +50,7 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - platform: mqtt
-    name: "Pad 5"
+  - name: "Pad 5"
     unique_id: 5d00b0e3-65e2-4692-85c4-e462693aabd5
     device_class: motion
     state_topic: rf433/Pad5
@@ -67,8 +62,7 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - platform: mqtt
-    name: "Pad 8"
+  - name: "Pad 8"
     unique_id: 2ba48223-bafa-4664-8413-083500163b9f
     device_class: motion
     state_topic: rf433/Pad8
@@ -80,8 +74,7 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - platform: mqtt
-    name: "Pad 9"
+  - name: "Pad 9"
     unique_id: 63c372bc-a9a8-4d8c-b84f-af3d4bcaad6e
     device_class: motion
     state_topic: rf433/Pad9
@@ -93,8 +86,7 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - platform: mqtt
-    name: "Pad C"
+  - name: "Pad C"
     unique_id: 73994347-9e83-4876-a3ce-b42e5dcdf11f
     device_class: motion
     state_topic: rf433/PadC

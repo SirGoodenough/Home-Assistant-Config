@@ -1,9 +1,8 @@
----
+binary_sensor:
   #####################################################
   # Dryer Complete Signal                             #
   #####################################################
-  - platform: mqtt
-    name: "Dryer"
+  - name: "Dryer"
     unique_id: 1f3bc54d-b40d-400a-812a-bcfc828fbac2
     device_class: power
     state_topic: Dryer3/stat/POWER2

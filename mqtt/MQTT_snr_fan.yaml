@@ -1,9 +1,8 @@
----
+sensor:
   ####################################################
   #  Fans                                            #
   ####################################################
-  - platform: mqtt
-    unique_id: 47058f65-ca94-4c2c-aaf4-4589ec759eab
+  - unique_id: 47058f65-ca94-4c2c-aaf4-4589ec759eab
     name: "Office FanSpeed"
     state_topic: "Office_Fan/stat/RESULT"
     unit_of_measurement: "%"
@@ -22,8 +21,7 @@
         {{ states('sensor.office_fanspeed') }}
       {% endif %}
 
-  - platform: mqtt
-    unique_id: faa2f0c9-58d5-4054-bbf2-8d2a0d1684d7
+  - unique_id: faa2f0c9-58d5-4054-bbf2-8d2a0d1684d7
     name: "Jennys New FanSpeed"
     state_topic: "JensNewFan/stat/RESULT"
     unit_of_measurement: "%"
@@ -42,8 +40,7 @@
         {{ states('sensor.jennys_new_fanspeed') }}
       {% endif %}
 
-  - platform: mqtt
-    unique_id: 9ca6ee3b-88ba-4d3e-bce4-94e937b3c7a1
+  - unique_id: 9ca6ee3b-88ba-4d3e-bce4-94e937b3c7a1
     name: "Bedroom FanSpeed"
     state_topic: "Bedroom_Fan/stat/RESULT"
     unit_of_measurement: "%"

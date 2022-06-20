@@ -1,10 +1,9 @@
----
+cover:
   #####################################################
   # Garage Door                                       #
   #####################################################
 
-  - platform: mqtt
-    name: "Garage Door"
+  - name: "Garage Door"
     unique_id: 8470c4a0-4d48-45a4-af76-ecc569fc13a3
     device_class: garage
     optimistic: false

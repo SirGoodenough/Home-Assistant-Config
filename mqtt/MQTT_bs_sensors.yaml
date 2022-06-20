@@ -1,9 +1,8 @@
----
+binary_sensor:
   #####################################################
   # Sensors (433mhz)                                  #
   #####################################################
-  - platform: mqtt
-    name: "Basement Smoke Alarm"
+  - name: "Basement Smoke Alarm"
     unique_id: bcb34d78-3f52-42e5-9adc-af985d4df17a
     device_class: smoke
     state_topic: rf433/BasementSmoke

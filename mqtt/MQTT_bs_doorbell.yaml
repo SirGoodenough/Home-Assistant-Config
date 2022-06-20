@@ -1,11 +1,9 @@
----
+binary_sensor:
   #####################################################
   # DoorBell                                          #
   #####################################################
-  # - platform: ring
 
-  - platform: mqtt
-    name: "Side Doorbell"
+  - name: "Side Doorbell"
     unique_id: 51f99488-996b-4133-aafc-11e2d9562154
     state_topic: rf433/SideDoorBell
     payload_on: 'ON'

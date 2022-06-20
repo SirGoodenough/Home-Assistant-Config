@@ -1,9 +1,8 @@
----
+binary_sensor:
   #####################################################
   # Door Switches (433mhz)                            #
   #####################################################
-  - platform: mqtt
-    name: "Back Door Open 433"
+  - name: "Back Door Open 433"
     unique_id: d963beae-6b02-490b-b098-0d356c457c79
     device_class: door
     state_topic: rf433/BackDoorI
@@ -14,8 +13,7 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - platform: mqtt
-    name: "Bathroom"
+  - name: "Bathroom"
     unique_id: 40bc752f-50ef-4b96-81b9-a412f966f489
     device_class: door
     state_topic: rf433/Bathroom
@@ -26,8 +24,7 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - platform: mqtt
-    name: "Bedroom"
+  - name: "Bedroom"
     unique_id: 97c94660-1276-4d83-a6b7-8ea1cf8491cb
     device_class: door
     state_topic: rf433/Bedroom
@@ -38,8 +35,7 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - platform: mqtt
-    name: "Front Door Open"
+  - name: "Front Door Open"
     unique_id: 3840ef62-5718-4f25-a973-75e39f4f2871
     device_class: door
     state_topic: FrontLock/stat/door
@@ -50,8 +46,7 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - platform: mqtt
-    name: "Front Door Open 433"
+  - name: "Front Door Open 433"
     unique_id: 9e093b66-7711-4efe-a60a-bfecfc37cb1b
     device_class: door
     state_topic: rf433/FrontDoorI
@@ -62,8 +57,7 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - platform: mqtt
-    name: "Garage Door Closed"
+  - name: "Garage Door Closed"
     unique_id: f89a0d17-b290-4faa-b355-8ebabd6efcdf
     state_topic: rf433/GarageC
     payload_on: 'ON'
@@ -73,8 +67,7 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - platform: mqtt
-    name: "Garage Door Open"
+  - name: "Garage Door Open"
     unique_id: 39300c8f-28ba-435e-8b86-bd6ed8896e0b
     state_topic: rf433/GarageO
     payload_on: 'ON'
@@ -84,8 +77,7 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - platform: mqtt
-    name: "Garage Side Door Open"
+  - name: "Garage Side Door Open"
     unique_id: ae0eb578-29d5-4fb8-97a2-f2b570ca2370
     device_class: door
     state_topic: rf433/GarageSide
@@ -96,8 +88,7 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - platform: mqtt
-    name: "Mailbox"
+  - name: "Mailbox"
     unique_id: 503c8275-879c-4597-9084-b7e922bb992e
     device_class: opening
     state_topic: rf433/Mailbox
@@ -108,8 +99,7 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - platform: mqtt
-    name: "Side Door Open"
+  - name: "Side Door Open"
     unique_id: ff1346e5-f767-4da5-9868-c663e7c02413
     device_class: door
     state_topic: SideLock/stat/door
@@ -120,8 +110,7 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - platform: mqtt
-    name: "Side Door Open 433"
+  - name: "Side Door Open 433"
     unique_id: 97d7853b-d2d8-4403-8a5e-cb5b65d15345
     device_class: door
     state_topic: rf433/SideDoorI

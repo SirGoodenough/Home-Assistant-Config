@@ -9,6 +9,7 @@ s -lovelace## Ignore all
 !/binSensor**
 !/blueprints**
 !/Lights**
+!/mqtt**
 !/python_scripts**
 !/script2**
 !/switch2**

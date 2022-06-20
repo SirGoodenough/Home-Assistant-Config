@@ -1,6 +1,5 @@
----
-  - platform: mqtt
-    name: "Jens Night Light"
+light:
+  - name: "Jens Night Light"
     unique_id: 5801636e-abf4-4720-8a5b-a4c97a46228f
     command_topic: "JensNeb/cmnd/power2"
     state_topic: "JensNeb/tele/STATE"
@@ -41,8 +40,7 @@
         {% endif %}
     rgb_state_topic: "JensNeb/tele/RESULT"
 
-  - platform: mqtt
-    name: "Alarm Display"
+  - name: "Alarm Display"
     unique_id: e68bc3cb-e6fe-4c5f-9da4-06427296944e
     state_topic: "Bedroom_Fan/tele/STATE"
     command_topic: "Bedroom_Fan/cmnd/POWER1"
@@ -51,4 +49,3 @@
     payload_off: "OFF"
     payload_available: "Online"
     payload_not_available: "Offline"
-
