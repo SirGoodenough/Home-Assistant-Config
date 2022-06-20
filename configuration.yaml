@@ -41,7 +41,7 @@ zone:
 
 # All the other stuff not covered in the default_config:
 
-binary_sensor: !include_dir_merge_list ./binSensor/
+# binary_sensor: !include_dir_merge_list ./binSensor/
 # button: !include button.yaml
 conversation:
 # cover: !include cover.yaml
@@ -59,7 +59,16 @@ light: !include_dir_merge_list ./Lights/
 # lock: !include lock.yaml
 logger: !include logger.yaml
 notify: !include notify.yaml
-mqtt: !include_dir_merge_named ./mqtt/
+# mqtt: !include_dir_merge_named ./mqtt/
+mqtt:
+  binary_sensor: !include_dir_merge_list mqtt/binary_sensor/
+  button: !include_dir_merge_list mqtt/button/
+  cover: !include_dir_merge_list mqtt/cover/
+  fan: !include_dir_merge_list mqtt/fan/
+  light: !include_dir_merge_list mqtt/light/
+  lock: !include_dir_merge_list mqtt/lock/
+  sensor: !include_dir_merge_list mqtt/sensor/
+  switch: !include_dir_merge_list mqtt/switch/
 panel_custom: !include panel_custom.yaml
 panel_iframe: !include panel_iframe.yaml
 python_script:

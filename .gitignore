@@ -6,16 +6,15 @@ s -lovelace## Ignore all
 # !*/
 !/automation2/**
 !/automationDev/**
-!/binSensor/**
-!/blueprints/**
+!/blueprints**
 !/Lights/**
-!/mqtt/**
-!/python_scripts/**
+!/mqtt**
+!/python_scripts**
 !/script2/**
 !/switch2/**
 !/sensor2/**
 !/scripts/**
-!/templates/**
+!/templates**
 !/zigbee2mqtt/
 !/zigbee2mqtt/*.js
 !/.storage/

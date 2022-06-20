@@ -1,4 +1,4 @@
-lock:
+---
   - name: "Side Door Lock"
     unique_id: 84912be5-26f5-460e-bae7-34541520430b
     state_topic: "SideLock/stat/lock"
