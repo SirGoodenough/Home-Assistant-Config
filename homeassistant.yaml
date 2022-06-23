@@ -18,5 +18,6 @@
         - !secret House_Net
         - !secret HA_Net_V6
         - !secret House_Net_V6
+        - !secret ZT_Network
   external_url: !secret HA_Base_External
   internal_url: !secret HA_Base
