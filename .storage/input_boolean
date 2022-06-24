@@ -178,6 +178,16 @@
                 "name": "Bed Stop",
                 "icon": "mdi:octagon",
                 "id": "bed_stop"
+            },
+            {
+                "name": "Bed Cares Done",
+                "icon": "mdi:arrow-collapse-down",
+                "id": "bed_cares_done"
+            },
+            {
+                "name": "Poop Down",
+                "icon": "mdi:paper-roll-outline",
+                "id": "poop_down"
             }
         ]
     }

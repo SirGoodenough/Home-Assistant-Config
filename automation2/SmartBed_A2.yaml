@@ -33,8 +33,18 @@
       from: "off"
       to: "on"
     - platform: state
+      id: poop_done
+      entity_id: input_boolean.poop_down
+      from: "off"
+      to: "on"
+    - platform: state
       id: cares_up
       entity_id: input_boolean.bed_cares_up
+      from: "off"
+      to: "on"
+    - platform: state
+      id: cares_down
+      entity_id: input_boolean.bed_cares_done
       from: "off"
       to: "on"
     - platform: state
@@ -186,12 +196,12 @@
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
-        - alias: Head UP-Knees UP Command
+        - alias: Head UP-Knees Down - 7 Command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
-            cmnd: 'button/6?timeout=3'
-        - delay: 00:00:03
+            cmnd: 'button/7?timeout=4'
+        - delay: 00:00:04
         - alias: Send blank to make sure bed is stopped
           service: shell_command.bed
           data:
@@ -251,12 +261,12 @@
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
-        - alias: Head UP-Knees Down Command
+        - alias: Head UP-Knees Down - 7 Command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
-            cmnd: 'button/7?timeout=3'
-        - delay: 00:00:03
+            cmnd: 'button/7?timeout=4'
+        - delay: 00:00:04
         - alias: Send blank to make sure bed is stopped
           service: shell_command.bed
           data:
