@@ -6,15 +6,15 @@ s -lovelace## Ignore all
 # !*/
 !./automation2/**
 !./automationDev/**
-!./blueprints**
-!./light**
-!./mqtt**
-!./python_scripts**
+!./blueprints/**
+!./light/**
+!./mqtt/**
+!./python_scripts/**
 !./script2/**
 !./switch2/**
 !./sensor2/**
 !./scripts/**
-!./templates**
+!./templates/**
 !./zigbee2mqtt/
 !./zigbee2mqtt/*.js
 !/.storage/
@@ -70,6 +70,7 @@ s -lovelace## Ignore all
 !updater.yaml
 !.HA_VERSION
 !.gitignore
+!.gitkeep
 !README.md
 !LICENSE
 
@@ -80,7 +81,7 @@ home-assistant.log.*
 .git-credentials
 /zigbee2mqtt/*.json
 /zigbee2mqtt/*.yaml
-/zigbee2mqtt/.configuration.yaml.bk
+/zigbee2mqtt/.configuration.*
 
 # Generic ignores
 *.log
