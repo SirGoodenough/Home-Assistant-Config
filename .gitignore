@@ -7,7 +7,7 @@ s -lovelace## Ignore all
 !/automation2/**
 !/automationDev/**
 !/blueprints**
-!/Lights/**
+!/lights/**
 !/mqtt**
 !/python_scripts**
 !/script2/**
@@ -68,8 +68,8 @@ s -lovelace## Ignore all
 !timer.yaml
 !tts.yaml
 !updater.yaml
-!.gitignore
 !.HA_VERSION
+!.gitignore
 !README.md
 !LICENSE
 
