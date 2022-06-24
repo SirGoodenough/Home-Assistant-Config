@@ -37,10 +37,10 @@
                                     "entity": "light.grp_d_lights"
                                 },
                                 {
-                                    "entity": "light.kitchen_down_lights"
+                                    "entity": "light.kitchensink"
                                 },
                                 {
-                                    "entity": "light.kitchensink"
+                                    "entity": "light.kitchen_down_lights"
                                 },
                                 {
                                     "entity": "light.growlight2"
