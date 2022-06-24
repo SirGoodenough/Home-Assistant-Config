@@ -7,7 +7,7 @@ s -lovelace## Ignore all
 !./automation2/**
 !./automationDev/**
 !./blueprints**
-!./light/**
+!./light**
 !./mqtt**
 !./python_scripts**
 !./script2/**
