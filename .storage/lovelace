@@ -3450,7 +3450,7 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "lock.front_door"
+                                    "entity": "lock.front_door_lock"
                                 },
                                 {
                                     "entity": "light.fp_socket"
@@ -3554,7 +3554,7 @@
                             "type": "glance",
                             "entities": [
                                 {
-                                    "entity": "lock.front_door"
+                                    "entity": "lock.front_door_lock"
                                 },
                                 {
                                     "entity": "lock.side_door"
