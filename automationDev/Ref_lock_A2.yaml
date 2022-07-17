@@ -1,0 +1,265 @@
+---
+  # YouTube Video References:
+
+  # - id: 3e309378-0532-4922-b0c7-aad34bd6810b
+  #   alias: test lock 2
+  #   initial_state: on
+  #   trigger:
+  #     - platform: state
+  #       entity_id: input_boolean.pad_enable2
+  #   action:
+  #     - service: switch.toggle
+  #       entity_id: switch.tarantula_power
+
+  # - id: '1626982352098'
+  #   alias: Keypad 5 button cypher to turn on something
+  #   description: Test2 video
+  #   use_blueprint:
+  #     path: SirGoodenough/keypad_5_button_cipher_to_turn_on_something.yaml
+  #     input:
+  #       button_one: binary_sensor.pad_1
+  #       button_two: binary_sensor.pad_2
+  #       button_three: binary_sensor.pad_3
+  #       button_four: binary_sensor.pad_4
+  #       button_five: binary_sensor.pad_5
+  #       lock_control: input_boolean.pad_enable2
+  #       seq_status: input_number.lock_state2
+  #       on_timer: 9
+  
+  #################3
+  # Now using the Blueprint.  This is here for reference
+  #################3
+  # - id: fcd51418-e5d1-4673-9643-8c25f75a8c3f
+  #   alias: Auto Pad 5 button sequence code yaml
+  #   initial_state: "on"
+  #   mode: single
+  #   max_exceeded: silent
+
+  #   trigger:
+  #   - platform: state
+  #     entity_id: binary_sensor.pad_1
+  #     id: pad1
+  #     from: "off"
+  #     to: "on"
+  #   - platform: state
+  #     entity_id: binary_sensor.pad_2
+  #     id: pad2
+  #     from: "off"
+  #     to: "on"
+  #   - platform: state
+  #     entity_id: binary_sensor.pad_3
+  #     id: pad3
+  #     from: "off"
+  #     to: "on"
+  #   - platform: state
+  #     entity_id: binary_sensor.pad_4
+  #     id: pad4
+  #     from: "off"
+  #     to: "on"
+  #   - platform: state
+  #     entity_id: binary_sensor.pad_5
+  #     id: pad5
+  #     from: "off"
+  #     to: "on"
+
+  #   variables:
+  #     seq_status_ent: input_number.lock_state
+  #     seq_status_last: '{{ expand(seq_status_ent)[0].last_changed | as_timestamp }}'
+  #     seq_status_val: '{{ expand(seq_status_ent)[0].state }}'
+  #     tnow: '{{ as_timestamp(now()) }}'
+
+  #   action:
+  #     - alias: Reset seq number to 99 if timeout occurred Watchdog
+  #       service: input_number.set_value
+  #       data:
+  #         entity_id: input_number.lock_state
+  #         value: >
+  #           {% if seq_status_last < tnow - (5*60) %}
+  #             99
+  #           {% else %}
+  #             {{ seq_status_val }}
+  #           {% endif %}
+  #     - choose:
+  #       - alias: somebody pushed the first button
+  #         conditions:
+  #           - condition: trigger
+  #             id: 'pad1'
+  #         sequence:
+  #           - alias: Set number to 1
+  #             service: input_number.set_value
+  #             data:
+  #               entity_id: input_number.lock_state
+  #               value: 1
+  #       - alias: Button 2 pushed
+  #         conditions:
+  #           - condition: and
+  #             conditions:
+  #               - condition: trigger
+  #                 id: 'pad2'
+  #               - condition: template 
+  #                 value_template: "{{ is_state('input_number.lock_state', '1.0') }}"
+  #         sequence:
+  #           - alias: Set number to 3
+  #             service: input_number.set_value
+  #             data:
+  #               entity_id: input_number.lock_state
+  #               value: 3
+  #       - alias: Button 3 pushed
+  #         conditions:
+  #           - condition: and
+  #             conditions:
+  #               - condition: trigger
+  #                 id: 'pad3'
+  #               - condition: template 
+  #                 value_template: "{{ is_state('input_number.lock_state', '3.0') }}"
+  #         sequence:
+  #           - alias: Set number to 7
+  #             service: input_number.set_value
+  #             data:
+  #               entity_id: input_number.lock_state
+  #               value: 7
+  #       - alias: Button 4 pushed
+  #         conditions:
+  #           - condition: and
+  #             conditions:
+  #               - condition: trigger
+  #                 id: 'pad4'
+  #               - condition: template 
+  #                 value_template: "{{ is_state('input_number.lock_state', '7.0') }}"
+  #         sequence:
+  #           - alias: Set number to 15
+  #             service: input_number.set_value
+  #             data:
+  #               entity_id: input_number.lock_state
+  #               value: 15
+  #       - alias: Button 5 pushed
+  #         conditions:
+  #           - condition: and
+  #             conditions:
+  #               - condition: trigger
+  #                 id: 'pad5'
+  #               - condition: template 
+  #                 value_template: "{{ is_state('input_number.lock_state', '15.0') }}"
+  #         sequence:
+  #           - alias: Set number to 31
+  #             service: input_number.set_value
+  #             data:
+  #               entity_id: input_number.lock_state
+  #               value: 31
+  #           - alias: Enable the Lock
+  #             service: input_boolean.turn_on
+  #             entity_id: input_boolean.pad_enable
+  #           - alias: Leave the lock enabled for a time limit
+  #             delay: 60
+  #           - alias: Disable the Lock
+  #             service: input_boolean.turn_off
+  #             entity_id: input_boolean.pad_enable
+  #           - alias: Set number to 0
+  #             service: input_number.set_value
+  #             data:
+  #               entity_id: input_number.lock_state
+  #               value: 0
+  #   #  Default is to abort here if none of the conditions met.
+  #       default:
+  #         - alias: Reset the number
+  #           service: input_number.set_value
+  #           data:
+  #             entity_id: input_number.lock_state
+  #             value: 0
+  #         - alias: Shut it down
+  #           service: input_boolean.turn_off
+  #           entity_id: input_boolean.pad_enable
+
+
+  # - id: 5602f45c-dbe8-4874-a806-f30e119962f5
+  #   alias: test lock
+  #   initial_state: on
+  #   trigger:
+  #     - platform: state
+  #       entity_id: input_boolean.pad_enable
+  #   action:
+  #     - service: light.toggle
+  #       entity_id: light.kitchen_down_lights
+
+
+# Future reference:
+
+    # - service: tts.cloud_say
+    #   data:
+    #     entity_id: media_player.jen_group
+    #     message: >
+    #       {{ ("It's all the same, only the names will change",
+    #           "Every day, it seems we're wastin' away", 
+    #           "Another place, where the faces are so cold", 
+    #           "I'd drive all night just to get back home", 
+    #           "I'm a cowboy. On a steel horse I ride. I'm wanted. Dead or alive", 
+    #           "Sometimes I sleep, sometimes, it's not for days", 
+    #           "The people I meet always go their separate ways",
+    #           "Sometimes you tell the day by the bottle that you drink",
+    #           "And times when you're alone, well, all you do is think",
+    #           "Oh, and I ride.  Yeah.",
+    #           "And I walk these streets. A loaded six-string on my back",
+    #           "I play for keeps. 'Cause I might not make it back",
+    #           "I've been everywhere. Still I'm standing tall",
+    #           "I've seen a million faces and I've rocked them all",
+    #           "And I'm wanted. (wanted). dead or alive",
+    #           "And I ride. (and I ride). dead or alive",
+    #           "I still drive. (I still drive). dead or alive"
+    #           ) |random }}
+    #     options:
+    #       gender: female
+    #     language: en-US
+
+    # - service: tts.cloud_say
+    #   data:
+    #     entity_id: media_player.jen_group
+    #     message: >
+    #       {{ ("So close, no matter how far",
+    #           "Couldn't be much more from the heart",
+    #           "Forever trusting who we are",
+    #           "And nothing else matters",
+    #           "Never opened myself this way",
+    #           "Life is ours, we live it our way",
+    #           "All these words, I don't just say",
+    #           "Trust I seek and I find in you",
+    #           "Every day for us something new",
+    #           "Open mind for a different view",
+    #           "Never cared for what they do",
+    #           "Never cared for what they know",
+    #           "But I know",
+    #           "It couldn't be much more from the heart",
+    #           "I never opened myself this way",
+    #           "Never cared for what they say",
+    #           "Never cared for games they play",
+    #           "And I know, yeah, yeah"
+    #           ) |random }}
+    #     options:
+    #       gender: male
+    #     language: >
+    #       {{ ("en-GB",
+    #           "en-US",
+    #           "en-AU"
+    #           ) |random }}
+
+    # - service: tts.cloud_say
+    #   data:
+    #     entity_id: media_player.jen_group
+    #     message: >
+    #       {{ ("This ain't a song for the broken-hearted",
+    #           "No silent prayer for faith-departed",
+    #           "And I ain't gonna be just a face in the crowd",
+    #           "You're gonna hear my voice when I shout it out loud",
+    #           "It's my life.",
+    #           "But I ain't gonna live forever.",
+    #           "I just want to live while I'm alive",
+    #           "My heart is like an open highway",
+    #           "Like Frankie said, I did it my way",
+    #           "It's now or never.",
+    #           "Yeah, this is for the ones who stood their ground",
+    #           "For Tommy and Gina, who never backed down",
+    #           "Tomorrow's getting harder, make no mistakeings",
+    #           "Luck ain't even lucky, got to make your own breakings"
+    #           ) |random }}
+    #     options:
+    #       gender: female
+    #     language: en-US

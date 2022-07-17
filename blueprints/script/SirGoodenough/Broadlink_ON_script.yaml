@@ -1,0 +1,105 @@
+blueprint:
+  name: Broadlink_ON_script_2022-04-11
+  description: 'A script that gets my TV on and Reciever set-up to correct mode.
+
+    [Community link for this blueprint](https://community.home-assistant.io/t/script-blueprint-to-turn-my-tv-on-and-put-it-into-the-correct-mode-for-the-input-device-i-want/338755)'
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Broadlink_ON_script.yaml
+  domain: script
+  homeassistant:
+    min_version: 2022.4.0
+  input:
+    adapter_power:
+      name: Turn on the smart plug that powers the adapter
+      description: This turns on the smart plug that runs the adapter
+      default: switch.chromecast
+      selector:
+        entity:
+          multiple: true
+          domain: switch
+    reciever_power:
+      name: Reciever Power
+      description: Turn the Reciever Device ON
+      default: script.denon_power
+      selector:
+        entity:
+          multiple: true
+          domain: script
+    tv_power:
+      name: TV Power
+      description: Turn the TV Device ON
+      default: script.vizio_j_power
+      selector:
+        entity:
+          multiple: true
+          domain: script
+    tv_mode:
+      name: TV Input Mode
+      description: Select the feed into the TV.  Clicked after the OTA mode below.
+      selector:
+        entity:
+          multiple: true
+          domain: script
+    tv_ota_mode:
+      name: OTA Input Mode
+      description: Select the Over The Air TV mode to put the TV Mode into a known
+        state. Note- My TV uses multiple presses to select some inputs, so this is
+        needed in my case. You may not need this.  Adjust sequence accordingly...
+      default: script.vizio_j_tv
+      selector:
+        entity:
+          multiple: true
+          domain: script
+    reciever_input:
+      name: Reciever Input
+      description: Turn the Reciever Input to the correct adapter line
+      selector:
+        entity:
+          multiple: true
+          domain: script
+    reciever_out_mode:
+      name: Reciever Speaker Out Mode
+      description: Turn the Reciever Speakers into the desired output mode
+      default: script.denon_multeq_out
+      selector:
+        entity:
+          multiple: true
+          domain: script
+    cooldown:
+      name: Cooldown
+      description: The between IR Blasts...
+      default: 3
+      selector:
+        number:
+          min: 0.0
+          max: 10.0
+          unit_of_measurement: seconds
+          step: 0.5
+          mode: slider
+mode: queued
+sequence:
+- service: switch.turn_on
+  target:
+    entity_id: !input 'adapter_power'
+- service: script.turn_on
+  target:
+    entity_id: !input 'reciever_power'
+- delay: !input 'cooldown'
+- service: script.turn_on
+  target:
+    entity_id: !input 'tv_power'
+- delay: !input 'cooldown'
+- service: script.turn_on
+  target:
+    entity_id: !input 'reciever_input'
+- delay: !input 'cooldown'
+- service: script.turn_on
+  target:
+    entity_id: !input 'tv_ota_mode'
+- delay: !input 'cooldown'
+- service: script.turn_on
+  target:
+    entity_id: !input 'reciever_out_mode'
+- delay: !input 'cooldown'
+- service: script.turn_on
+  target:
+    entity_id: !input 'tv_mode'

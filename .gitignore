@@ -4,17 +4,31 @@ s -lovelace## Ignore all
 
 ## Allow folders
 # !*/
-!/automation2/**
-!/automationDev/**
+!/automation2/
+!/automation2/*.yaml
+!/automationDev/
+!/automationDev/*.yaml
+!/blueprints/
 !/blueprints/**
-!/light/**
+!/blueprints/*.yaml
+!/light/
+!/light/*.yaml
+!/mqtt/
 !/mqtt/**
-!/python_scripts/**
-!/script2/**
-!/switch2/**
-!/sensor2/**
-!/scripts/**
+!/mqtt/*.yaml
+!/python_scripts/
+!/python_scripts/*.py
+!/script2/
+!/script2/*.yaml
+!/switch2/
+!/switch2/*.yaml
+!/sensor2/
+!/sensor2/*.yaml
+!/scripts/
+!/scripts/*.yaml
+!/templates/
 !/templates/**
+!/templates/*.yaml
 !/zigbee2mqtt/
 !/zigbee2mqtt/*.js
 !/.storage/

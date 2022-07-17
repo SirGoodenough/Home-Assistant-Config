@@ -1,0 +1,83 @@
+- id: 53e72f6a-8cc9-47f3-936f-2b0b83b78a74
+  alias: Moms Leaving Katys
+  mode: queued
+  initial_state: on
+  trigger: 
+    platform: zone
+    entity_id: person.julie
+    zone: zone.katy_s_kloset
+    event: leave
+  action:
+    service: script.tts_mama_left_katys
+
+- id: e6f402c1-7d0e-4907-930d-5765a59785c5
+  alias: Moms Home
+  mode: queued
+  initial_state: on
+  trigger: 
+    platform: zone
+    entity_id: person.julie
+    zone: zone.home
+    event: enter
+  action:
+    service: script.tts_moms_home
+
+- id: ac2c7291-fa80-47b3-b79d-bf044f4f88bc
+  alias: Moms Left
+  mode: queued
+  initial_state: on
+  trigger: 
+    platform: zone
+    entity_id: person.julie
+    zone: zone.home
+    event: leave
+  action:
+    service: script.tts_mom_left
+
+- id: 85a71eb6-9744-45f3-9425-ed7a31e58167
+  alias: Moms Left Nails
+  mode: queued
+  initial_state: on
+  trigger: 
+    platform: zone
+    entity_id: person.julie
+    zone: zone.nail_shop2
+    event: leave
+  action:
+    service: script.tts_mom_left_nails
+
+- id: 6da00e0a-6695-4a38-8d36-a427b35d4be8
+  alias: Moms Left Clinic
+  mode: queued
+  initial_state: on
+  trigger: 
+    platform: zone
+    entity_id: person.julie, person.jim, person.jen
+    zone: zone.clinic
+    event: leave
+  action:
+    service: script.tts_anyone_left_clinic
+
+- id: 77d42f27-865f-4b33-b47c-63bdcc9b78fb
+  alias: Moms Left Follicle Assembly Building
+  mode: queued
+  initial_state: on
+  trigger: 
+    platform: zone
+    entity_id: person.julie
+    zone: zone.follicle_assembly_building
+    event: leave
+  action:
+    service: script.tts_mom_left_fab
+
+- id: f8668a4a-c984-4b77-9b8a-28888ed4dcfb
+  alias: Moms Left Shop
+  mode: queued
+  initial_state: on
+  trigger: 
+    platform: zone
+    entity_id: person.julie
+    zone: zone.feed_store
+    event: leave
+  action:
+    service: script.tts_mom_left_feed_store

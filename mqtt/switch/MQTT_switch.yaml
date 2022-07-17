@@ -1,0 +1,21 @@
+---
+  #####################################################
+  # 3D Printer switch                                 #
+  #####################################################
+  - name: "Tarantula Power"
+    unique_id: eab2eee7-39c4-4881-ab1d-342d64ca2c23
+    state_topic: "plug2/stat/POWER1"
+    command_topic: "plug2/cmnd/POWER1"
+    availability_topic: "plug2/tele/LWT"
+    state_on: "ON"
+    state_off: "OFF"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - name: "V8"
+    unique_id: 7a60a92e-bb31-40ce-97ce-32f9645cdae7
+    command_topic: "garage_door/cmnd/EVENT"
+    payload_on: "0a904dd0-eda7-4b57-90b3-bafd6b32def3"
+    payload_off: "0a904dd0-eda7-4b57-90b3-bafd6b32def3"    

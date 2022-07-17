@@ -1,0 +1,181 @@
+#####################################################
+# Bedroom Warn Open Door                            #
+#####################################################
+- id: 1a863145-656e-4dd6-8cbf-1de4bc3665f3
+    # Complain if the bedroom door is still open shortly
+    #   before the Bedroom AC is scheduled to turn on
+  mode: queued
+  alias: Bedroom Door is Open
+  initial_state: on
+  trigger:
+    - id: check_time
+      platform: time
+      at: "19:34:06"
+  condition:
+    and:
+    - alias: The door is closed
+      condition: state
+      entity_id: binary_sensor.bedroom
+      state: "on"
+    - alias: Its warmer than the room setting
+      condition: numeric_state
+      entity_id: sensor.bedroom_fan_si7021_temperature
+      above: input_number.bedroom_auto_temp
+    - alias: This is turned off in the fall winter to disable everything
+      condition: state
+      entity_id: input_boolean.bedroom_auto_fan
+      state: "on"
+  action:
+    - alias: Send Warning sounder
+      service: script.media_player_bathroom
+    - delay: 00:00:06
+    - alias: Send Warning tts
+      service: script.tts_bedroom_door
+    - alias: Force the switch closed and assume someone checked the door
+      service: mqtt.publish
+      data:
+        topic: rf433/Bedroom
+        payload: "OFF"
+        retain: true
+
+###################################################
+# Blueprint  Bedroom Fan Mayson                   #
+###################################################
+- id: f1d396f5-8f40-42b2-8d17-e9a6159c5ce2
+  alias: "Mayson's Naptime Auto Fan"
+  description: 'Set the Temperature for Naptime'
+  trace:
+    stored_traces: 10
+  use_blueprint:
+    path: SirGoodenough/AutoFanControl HA_fan.yaml
+    input:
+      fan_off_time: '19:00:00'
+      fan_control: input_boolean.mayson_cool
+      room_temp_now: sensor.bedroom_fan_si7021_temperature
+      room_set_temp: input_number.mayson_nap_temperature
+      fan_on_time: '10:00:00'
+      fan: fan.bedroom_fan
+      loop_action:
+      - alias: "Start AirCon if room is warmer than setting & limit to prevent rate limit outages"
+        if: '{{ states(''climate.gemodule5384'') == ''off''
+          and state_attr(''climate.gemodule5384'', ''current_temperature'') | float(73.1) - 1.0
+          >= states(''input_number.bedroom_auto_temp'') | float(73.1)
+          }}'
+        then:
+          service: script.bedroom_ac_start
+      - alias: Make sure the device is on before the temperature is set
+        delay: 00:00:05
+      - alias: "call Mayson ac set temperature & limit to prevent rate limit outages"
+        if: '{{ is_number(state_attr(''climate.gemodule5384'', ''temperature''))
+          and state_attr(''climate.gemodule5384'', ''temperature'') | float(73.1)
+          != states(''input_number.mayson_nap_temperature'') | float(73.1)
+          }}'
+        then:
+          service: script.bedroom_ac_set_temp
+          data:
+            Temp: '{{ states(''input_number.mayson_nap_temperature'') | float(73.1) }}'
+      off_action:
+      - alias: call shut the AirCon down script
+        service: script.bedroom_cooling_off
+      - alias: Make sure the control boolean is off
+        service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.mayson_cool
+
+####################################################
+# Blueprint   Bedroom Fan Night                    #
+####################################################
+- id: 22583f43-2e5f-4632-9277-242adfa9f4ec
+  alias: Bedroom fan and AC Control
+  description: Set the fan and AirCon to balance at night
+  trace:
+    stored_traces: 10
+  use_blueprint:
+    path: SirGoodenough/AutoFanControl_MQTT.yaml
+    input:
+      fan_off_time: '09:12:54'
+      fan_control: input_boolean.bedroom_auto_fan
+      room_temp_now: sensor.bedroom_fan_si7021_temperature
+      room_set_temp: input_number.bedroom_auto_temp
+      fan_on_time: '20:37:00'
+      mqtt_fan_topic: Bedroom_Fan/cmnd/FanSpeed
+      loop_action:
+      - alias: "Start AirCon if room is warmer than setting & limit to prevent rate limit outages"
+        if: '{{ states(''climate.gemodule5384'') == ''off''
+          and state_attr(''climate.gemodule5384'', ''current_temperature'') | float(73.1)
+          >= states(''input_number.bedroom_auto_temp'') | float(73.1)
+          }}'
+        then:
+          service: script.bedroom_ac_start
+      - delay: 00:00:05
+      - alias: "call bedroom ac set temperature & limit to prevent rate limit outages"
+        if: '{{ is_number(state_attr(''climate.gemodule5384'', ''temperature''))
+          and state_attr(''climate.gemodule5384'', ''temperature'') | float(73.1)
+          != states(''input_number.bedroom_auto_temp'') | float(73.1)
+          }}'
+        then:
+          service: script.bedroom_ac_set_temp
+          data:
+            Temp: '{{ states(''input_number.bedroom_auto_temp'') | float(73.1) }}'
+      off_action:
+      - alias: call shut the AirCon down script
+        service: script.bedroom_cooling_off
+
+- id: 33679c7e-d77a-4aa4-9bdc-f9e2c46d9153
+    # Bedroom Cool Daytime Control
+  mode: restart
+  trace:
+    stored_traces: 10
+  alias: Bedroom As Needed Auto Mode
+  initial_state: on
+  trigger:
+    - id: temperature change trigger
+      platform: state
+      entity_id: sensor.bedroom_fan_si7021_temperature
+    - id: enable when target changes
+      platform: state
+      entity_id: input_number.bedroom_auto_temp
+    - id: enable when flipped on first time
+      platform: state
+      entity_id: input_boolean.bedroom_cool
+      to: "on"
+  condition:
+    - alias: Daytime as needed control
+      condition: state
+      entity_id: input_boolean.bedroom_cool
+      state: "on"
+  action:
+    - alias: "Start AirCon if room is warmer than setting & limit to prevent rate limit outages"
+      if: '{{ states(''climate.gemodule5384'') == ''off''
+        and state_attr(''climate.gemodule5384'', ''current_temperature'') | float(73.1) - 1.0
+        >= states(''input_number.bedroom_auto_temp'') | float(73.1)
+        }}'
+      then:
+        service: script.bedroom_ac_start
+    - alias: call bedroom control script
+      service: script.bedroom_temp_control
+    - alias: "call bedroom ac set temperature & limit to prevent rate limit outages"
+      if: '{{ is_number(state_attr(''climate.gemodule5384'', ''temperature''))
+        and state_attr(''climate.gemodule5384'', ''temperature'') | float(73.1)
+        != states(''input_number.bedroom_auto_temp'') | float(73.1) }}'
+      then:
+        service: script.bedroom_ac_set_temp
+        data:
+          Temp: '{{ states(''input_number.bedroom_auto_temp'') | float(73.1) }}'
+
+- id: bc3cbabb-f2e5-4959-816a-26942b894dd6
+    # Bedroom Cool Daytime Control Reset
+  mode: queued
+  alias: Bedroom As Needed Auto Mode OFF
+  initial_state: on
+  trigger:
+    - id: off_time
+      platform: time
+      at: "19:00:26"
+    - id: I_B Turned off
+      platform: state
+      entity_id: input_boolean.bedroom_cool
+      to: 'off'
+  action:
+    - alias: call shut the AirCon down script
+      service: script.bedroom_cooling_off

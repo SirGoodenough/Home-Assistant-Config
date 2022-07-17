@@ -1,0 +1,34 @@
+tts_smoke_detected_in_the_basement:
+  alias: TTS Smoke Detected in the Basement
+  use_blueprint:
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
+    input:
+      GTS_language: en
+      TTS: tts.cloud_say
+      cloud_language: en-US
+      speaker_gender: female
+      speaker_target: media_player.intercom_group, media_player.bedroom_speaker
+      announcement_message: 'Smoke Detected in the Basement! Smoke Detected in the
+        Basement! Smoke Detected in the Basement! Smoke Detected in the Basement! '
+  icon: mdi:smoke-detector-alert-outline
+tts_smoke_detected_upstairs:
+  alias: TTS Smoke Detected Upstairs
+  use_blueprint:
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
+    input:
+      GTS_language: en
+      TTS: tts.cloud_say
+      cloud_language: en-US
+      speaker_gender: female
+      speaker_target: media_player.intercom_group, media_player.bedroom_speaker
+      announcement_message: 'Smoke Detected upstairs! Smoke Detected upstairs! 
+        Smoke Detected upstairs! Smoke Detected upstairs! '
+  icon: mdi:smoke-detector-alert-outline
+media_player_fire_alert:
+  alias: Media Player Fire Alert
+  use_blueprint:
+    path: SirGoodenough/play_media_file_script.yaml
+    input:
+      speaker_target: media_player.intercom_group, media_player.bedroom_speaker
+      file_2_play: media-source://media_source/local/mp3/FireTruck.mp3
+  icon: mdi:fire-alert

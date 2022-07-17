@@ -1,0 +1,60 @@
+---
+  ####################################################
+  #  Fans                                            #
+  ####################################################
+  - unique_id: 47058f65-ca94-4c2c-aaf4-4589ec759eab
+    name: "Office FanSpeed"
+    state_topic: "Office_Fan/stat/RESULT"
+    unit_of_measurement: "%"
+    value_template: >-
+      {% if value_json.FanSpeed is defined %}
+        {% if value_json.FanSpeed == 1 -%}
+          33
+        {%- elif value_json.FanSpeed == 2 -%}
+          66
+        {%- elif value_json.FanSpeed == 3 -%}
+          100
+        {%- else -%}
+          0
+        {%- endif %}
+      {% else %}
+        {{ states('sensor.office_fanspeed') }}
+      {% endif %}
+
+  - unique_id: faa2f0c9-58d5-4054-bbf2-8d2a0d1684d7
+    name: "Jennys New FanSpeed"
+    state_topic: "JensNewFan/stat/RESULT"
+    unit_of_measurement: "%"
+    value_template: >-
+      {% if value_json.FanSpeed is defined %}
+        {% if value_json.FanSpeed == 1 -%}
+          33
+        {%- elif value_json.FanSpeed == 2 -%}
+          66
+        {%- elif value_json.FanSpeed == 3 -%}
+          100
+        {%- else -%}
+          0
+        {%- endif %}
+      {% else %}
+        {{ states('sensor.jennys_new_fanspeed') }}
+      {% endif %}
+
+  - unique_id: 9ca6ee3b-88ba-4d3e-bce4-94e937b3c7a1
+    name: "Bedroom FanSpeed"
+    state_topic: "Bedroom_Fan/stat/RESULT"
+    unit_of_measurement: "%"
+    value_template: >-
+      {% if value_json.FanSpeed is defined %}
+        {% if value_json.FanSpeed == 1 -%}
+          33
+        {%- elif value_json.FanSpeed == 2 -%}
+          66
+        {%- elif value_json.FanSpeed == 3 -%}
+          100
+        {%- else -%}
+          0
+        {%- endif %}
+      {% else %}
+        {{ states('sensor.bedroom_fanspeed') }}
+      {% endif %}

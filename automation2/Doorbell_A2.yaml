@@ -1,0 +1,78 @@
+---
+  #####################################################
+  #                                                   #
+  # Doorbells                                         #
+  #                                                   #
+  #####################################################
+
+  #####################################################
+  # Front                                             #
+  #####################################################
+  - id: 34423786-8a35-4a83-8282-ffa5afe39345
+    alias: Front Doorbell Ding
+    initial_state: on
+    trigger:
+    - platform: state
+      entity_id: binary_sensor.front_door_ding
+      from: 'off'
+      to: 'on'
+    action:
+    - service: script.media_player_front_doorbell_ding
+    - delay: 00:00:05
+    - service: script.tts_front_doorbell
+
+  - id: 6e98f4dc-b148-459a-b93f-06b39ffc23f7
+    alias: Front Doorbell Motion
+    initial_state: on
+    trigger:
+    - platform: state
+      entity_id: binary_sensor.front_door_motion
+      from: 'off'
+      to: 'on'
+    action:
+    - service: script.media_player_front_doorbell_motion
+
+
+  #####################################################
+  # Back                                              #
+  #####################################################
+  - id: 427a318d-346a-4ca5-8850-d6905440d80f
+    alias: Back Doorbell Ding
+    initial_state: on
+    trigger:
+    - platform: state
+      entity_id: binary_sensor.back_door_ding
+      from: 'off'
+      to: 'on'
+    action:
+    - service: script.media_player_back_doorbell_ding
+    - delay: 00:00:05
+    - service: script.tts_back_doorbell
+
+  - id: 0d60fba9-431d-4022-864e-7381d6a7d8fc
+    alias: Back Doorbell Motion
+    initial_state: on
+    trigger:
+    - platform: state
+      entity_id: binary_sensor.back_door_motion
+      from: 'off'
+      to: 'on'
+    action:
+    - service: script.media_player_back_doorbell_motion
+
+  #####################################################
+  # Side                                              #
+  #####################################################
+  - id: e1269f8d-f87b-4990-bfdc-f7f418962985
+    alias: Side Doorbell Ding
+    initial_state: on
+    trigger:
+    - platform: state
+      entity_id: binary_sensor.side_doorbell
+      to: 'on'
+      for:
+        seconds: 1
+    action:
+    - service: script.media_player_side_doorbell
+    - delay: 00:00:06
+    - service: script.tts_side_doorbell

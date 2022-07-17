@@ -1,0 +1,57 @@
+- sensor:
+  ####################################################
+  #  HA Sensors courtesy Thanasis:                   #
+  ####################################################
+  - unique_id: automation_count
+    state: '{{ states.automation | count }}'
+    attributes:
+      friendly_name: "Aut"
+  - unique_id: binary_sensor_count
+    state: '{{ states.binary_sensor | count }}'
+    attributes:
+      friendly_name: "BiSn"
+  - unique_id: camera_count
+    state: '{{ states.camera | count }}'
+    attributes:
+      friendly_name: "Cam"
+  - unique_id: button_count
+    state: '{{ states.button | count }}'
+    attributes:
+      friendly_name: "But"
+  - unique_id: entities_count
+    state: "{{ states | map(attribute='entity_id') | list | count}}"
+    attributes:
+      friendly_name: "Ent"
+  - unique_id: group_count
+    state: '{{ states.group | count }}'
+    attributes:
+      friendly_name: "Grp"
+  - unique_id: inputs_count
+    state: "{{ states | map(attribute='entity_id') | map('regex_search','^input') | select('true') | list | count }}"
+    attributes:
+      friendly_name: "Inpt"
+  - unique_id: lights_count
+    state: '{{ states.light | count }}'
+    attributes:
+      friendly_name: "Lte"
+  - unique_id: media_player_count
+    state: '{{ states.media_player | count }}'
+    attributes:
+      friendly_name: "MPly"
+  - unique_id: script_count
+    state: '{{ states.script | count }}'
+    attributes:
+      friendly_name: "Scpt"
+  - unique_id: sensor_count
+    state: '{{ states.sensor | count }}'
+    attributes:
+      friendly_name: "Sen"
+  - unique_id: switch_count
+    state: '{{ states.switch | count }}'
+    attributes:
+      friendly_name: "Swt"
+  - unique_id: template_count
+    state: "{{ states | map(attribute='entity_id') | map('regex_search','sensor.template_') | select('true') | list | count }}"
+    attributes:
+      friendly_name: "Tmpl"
+

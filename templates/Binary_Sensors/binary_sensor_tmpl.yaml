@@ -1,0 +1,43 @@
+- binary_sensor:
+  #####################################################
+  # Weather                                           #
+  #####################################################
+  - name: 'Dark Outside'
+    unique_id: ce7cb6b7-c666-494b-aa3c-4ed79b2f1092
+    state: >
+      {% if ( 
+        states('sun.sun') | is_defined and 
+        states('sun.sun.attributes.elevation') | is_defined and
+        states.sun.sun.attributes.elevation | is_number and
+        states('weather.home') | is_defined ) %}
+          {% set elev = 'states.sun.sun.attributes.elevation' | int(0) %}
+          {% if ( elev < 6 ) %}
+            true
+          {% elif ( elev < 10 and is_state('weather.home', 'partlycloudy' ) ) %}
+            true
+          {% elif ( elev < 15 and not is_state('weather.home', 'sunny' ) ) %}
+            true
+          {% else %}
+            false
+          {% endif %}
+      {% else %}
+        true
+      {% endif %}
+      {# This is using the MET integration for weather. Available conditions: #}
+      {# https://github.com/home-assistant/core/blob/70648d6e3b42bb0910e33e5c6a4e1e8c0789d82c/homeassistant/components/met/const.py #}
+
+  - name: "Washing Machine"
+    unique_id: 0f504a93-327b-4a03-ab93-4fc6aaaecbae
+    device_class: power
+    delay_off:
+      minutes: 7
+    state: >
+      {% if (is_number('sensor.wash_machine_energy_current')) %}
+        {% if (states('sensor.wash_machine_energy_current') | float > 0.085) %}
+          true
+        {% else %}
+          false
+        {% endif %}
+      {% else %}
+        false
+      {% endif %}

@@ -1,0 +1,154 @@
+cube_dimmer_control:
+  description: Template Dimmer Control
+  variables:
+    light:
+    angle:
+  sequence:
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ light }}"
+        brightness_pct: >
+          {% set step_size = angle * 0.4 %}
+          {# Get brightness as a percent. #}
+          {% set cb = (state_attr( light, 'brightness') | float(10) / 255.0) * 100.0 %}
+          {% set new_brightness = cb | int(10) + step_size %}
+          {% if new_brightness < 5 %}
+            {# If it gets really low set to 0. Adjust if needed for your lights. #}
+            0
+          {% elif new_brightness <= 10 %}
+            {# If it's not quite 0, set to a minimum working brightness. #}
+            10
+          {% elif 91 <= new_brightness < (90 + step_size) %}
+            {# If it's almost full brightness, set to 100%. #}
+            100
+          {% else %}
+            {# Send actual calculated value. #}
+            {{ new_brightness }}
+          {% endif %}
+
+cube_red_color_control:
+  description: Control the red part of the color
+  variables:
+    light:
+    angle:
+  sequence:
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ light }}"
+        rgb_color: >
+          {% set step_size = angle * 0.6 %}
+          {% set color = state_attr(light, 'rgb_color') %}
+          {% set R = color[0] %}
+          {% set B = color[1] %}
+          {% set G = color[2] %}
+          {% set new_red = R + step_size | int(0) %}
+          {% if new_red < 0 %}
+            {# Make sure it doesn't go negative #}
+            {{ 0, B, G }}
+          {% elif new_red > 255 %}
+            {# Make sure it doesn't go over 255 #}
+            {{ 255, B, G }}
+          {% else %}
+            {# Send the value calculated #}
+            {{ new_red, B, G }}
+          {% endif %}
+
+cube_green_color_control:
+  description: Control the green part of the color
+  variables:
+    light:
+    angle:
+  sequence:
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ light }}"
+        rgb_color: >
+          {% set step_size = angle * 0.6 %}
+          {% set color = state_attr(light, 'rgb_color') %}
+          {% set R = color[0] %}
+          {% set G = color[1] %}
+          {% set B = color[2] %}
+          {% set new_green = G + step_size | int(0) %}
+          {% if new_green < 0 %}
+            {# Make sure it doesn't go negative #}
+            {{ R, 0, B }}
+          {% elif new_green > 255 %}
+            {# Make sure it doesn't go over 255 #}
+            {{ R, 255, B }}
+          {% else %}
+            {# Send the value calculated #}
+            {{ R, new_green, B }}
+          {% endif %}
+
+cube_blue_color_control:
+  description: Control the blue part of the color
+  variables:
+    light:
+    angle:
+  sequence:
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ light }}"
+        rgb_color: >
+          {% set step_size = angle * 0.6 %}
+          {% set color = state_attr(light, 'rgb_color') %}
+          {% set R = color[0] %}
+          {% set G = color[1] %}
+          {% set B = color[2] %}
+          {% set new_blue = B + step_size | int(0) %}
+          {% if new_blue < 0 %}
+            {# Make sure it doesn't go negative #}
+            {{ R, G, 0 }}
+          {% elif new_blue > 255 %}
+            {# Make sure it doesn't go over 255 #}
+            {{ R, G, 255 }}
+          {% else %}
+            {# Send the value calculated #}
+            {{ R, G, new_blue }}
+          {% endif %}
+
+cube_short_cw_toggle:
+  description: CW Short Press Toggle
+  variables:
+    entity:
+    angle:
+  sequence:
+    - condition: template
+      value_template: '{{ angle > 0 <= 100 }}'
+    - service: homeassistant.toggle
+      target:
+        entity_id: '{{ entity }}'
+cube_long_cw_toggle:
+  description: CW Long Press Toggle
+  variables:
+    entity:
+    angle:
+  sequence:
+    - condition: template
+      value_template: '{{ angle > 100 }}'
+    - service: homeassistant.toggle
+      target:
+        entity_id: '{{ entity }}'
+
+cube_short_ccw_toggle:
+  description: CCW Short Press Toggle
+  variables:
+    entity:
+    angle:
+  sequence:
+    - condition: template
+      value_template: '{{ angle < 0 >= -100 }}'
+    - service: homeassistant.toggle
+      target:
+        entity_id: '{{ entity }}'
+cube_long_ccw_toggle:
+  description: CCW Long Press Toggle
+  variables:
+    entity:
+    angle:
+  sequence:
+    - condition: template
+      value_template: '{{ angle < -100 }}'
+    - service: homeassistant.toggle
+      target:
+        entity_id: '{{ entity }}'

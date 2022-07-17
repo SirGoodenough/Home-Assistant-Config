@@ -1,0 +1,62 @@
+blueprint_test1_message_nabu_cloud:
+  alias: Test1 message Blueprint tts_cloud_say using Nabu-Casa
+  description: Blah Blah
+  use_blueprint:
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
+    input:
+      GTS_language: en
+      TTS: tts.cloud_say
+      cloud_language: en-AU
+      speaker_gender: male
+      speaker_target: media_player.living_room_speaker
+      announcement_message: It matters not what I say.
+  icon: mdi:car-brake-fluid-level
+blueprint_test2:
+  alias: Test2 message Blueprint google_translate_say
+  description: Blah Blah   
+  use_blueprint:
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
+    input:
+      speaker_target: media_player.living_room_speaker
+      TTS: tts.google_translate_say
+      GTS_language: es
+      announcement_message: No importa lo que diga.
+  icon: mdi:phone-in-talk-outline
+blueprint_test3_message_google_translate:
+  alias: Test3 message Blueprint google_translate_say
+  description: Blah Blah
+  use_blueprint:
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
+    input:
+      TTS: tts.google_translate_say
+      GTS_language: '{{ ("en", "uk","th") |random }}'
+      speaker_target: media_player.kitchen_speaker
+      announcement_message: '{{ ("So close, no matter how far","Couldn''t be much
+        more from the heart","Forever trusting who we are","And nothing else matters","Never
+        opened myself this way","Life is ours, we live it our way","All these words,
+        I don''t just say","Trust I seek and I find in you","Every day for us something
+        new","Open mind for a different view","Never cared for what they do","Never
+        cared for what they know","But I know","It couldn''t be much more from the
+        heart","I never opened myself this way","Never cared for what they say","Never
+        cared for games they play","And I know, yeah, yeah") |random }}'
+  icon: mdi:alarm-light-off
+blueprint_test4_message_nabu_cloud:
+  alias: Test4 message Blueprint tts_cloud_say using Nabu-Casa
+  description: Blah Blah
+  use_blueprint:
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
+    input:
+      GTS_language: en
+      TTS: tts.cloud_say
+      cloud_language: '{{ ("en-GB", "en-US","en-AU") |random }}'
+      speaker_gender: male
+      speaker_target: media_player.kitchen_speaker
+      announcement_message: '{{ ("So close, no matter how far","Couldn''t be much
+        more from the heart","Forever trusting who we are","And nothing else matters","Never
+        opened myself this way","Life is ours, we live it our way","All these words,
+        I don''t just say","Trust I seek and I find in you","Every day for us something
+        new","Open mind for a different view","Never cared for what they do","Never
+        cared for what they know","But I know","It couldn''t be much more from the
+        heart","I never opened myself this way","Never cared for what they say","Never
+        cared for games they play","And I know, yeah, yeah") |random }}'
+  icon: mdi:alarm-bell
