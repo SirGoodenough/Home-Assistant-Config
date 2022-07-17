@@ -1,11 +1,5 @@
 ---
-  name: Control-Central
   customize: !include customize.yaml
-  latitude: !secret Lat
-  longitude: !secret Long
-  elevation: !secret El
-  unit_system: imperial
-  time_zone: America/Chicago
   allowlist_external_dirs:
     - '/tmp'
   auth_mfa_modules:
@@ -19,5 +13,11 @@
         - !secret HA_Net_V6
         - !secret House_Net_V6
         - !secret ZT_Network
-  external_url: !secret HA_Base_External
-  internal_url: !secret HA_Base
+#  external_url: !secret HA_Base_External
+#  internal_url: !secret HA_Base
+#  name: Control-Central
+#  latitude: !secret Lat
+#  longitude: !secret Long
+#  elevation: !secret El
+#  unit_system: imperial
+#  time_zone: America/Chicago

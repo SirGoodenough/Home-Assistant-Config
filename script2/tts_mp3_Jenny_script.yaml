@@ -95,9 +95,9 @@ tts_bed_cares_warning:
       GTS_language: en
       TTS: tts.cloud_say
       cloud_language: en-IN
-      speaker_gender: female
+      speaker_gender: '{{ ("female, male") |random }}'
       speaker_target: media_player.jennys_room_display
-      announcement_message: "Make sure the tray is secured to launch position.  Bed is about to launch. 5, 4, 3, 2, 1..."
+      announcement_message: "Make sure the tray is secured to launch position.  Bed is about to launch."
       b4_action:
       - service: media_player.play_media
         target:
