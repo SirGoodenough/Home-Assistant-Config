@@ -105,6 +105,7 @@ __pycache__
 /.storage/cloud**
 /.storage/core**
 /.storage/hacs**
+/.storage/http
 
 # Ignore files created by IDE's
 /.vscode**
