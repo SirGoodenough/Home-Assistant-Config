@@ -19,7 +19,6 @@ s -lovelace## Ignore all
 !./zigbee2mqtt/*.js
 !/.storage/
 !/.storage/broadlink_remote_*_codes
-!/.storage/http
 !/.storage/image
 !/.storage/input_*
 !/.storage/lovelace*
@@ -46,7 +45,6 @@ s -lovelace## Ignore all
 !light_profiles.csv
 !history.yaml
 !homeassistant.yaml
-!http.yaml
 !lock.yaml
 !logger.yaml
 !media.yaml
