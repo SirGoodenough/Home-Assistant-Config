@@ -15,6 +15,7 @@
       - light
       - lock
       - media_player
+      - mqtt
       - notify
       - octoprint
       - person
@@ -33,7 +34,9 @@
       - cloud
       - counter
       - hacs
-      - mqtt
+      - logger
+      - media
+      - sun
       - timer
       - updater # Don't save updater
       - weather
