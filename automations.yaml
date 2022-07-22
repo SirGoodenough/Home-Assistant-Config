@@ -1,0 +1,58 @@
+- id: '1658501546639'
+  alias: Eldrad Level 2 restart
+  description: Longer delay to restart eldrad if its still dead
+  trigger:
+  - platform: state
+    entity_id:
+    - device_tracker.eldrad_2
+    to: away
+    for:
+      hours: 1
+      minutes: 32
+      seconds: 28
+    from: home
+  - platform: state
+    entity_id:
+    - device_tracker.eldrad_2
+    from: home
+    to: away
+    for:
+      hours: 3
+      minutes: 0
+      seconds: 0
+  - platform: state
+    entity_id:
+    - device_tracker.eldrad_2
+    from: home
+    to: away
+    for:
+      hours: 5
+      minutes: 0
+      seconds: 0
+  - platform: state
+    entity_id:
+    - device_tracker.eldrad_2
+    from: home
+    to: away
+    for:
+      hours: 7
+      minutes: 0
+      seconds: 0
+  condition: []
+  action:
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.eldrad
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 11
+      milliseconds: 0
+  - service: switch.turn_on
+    data: {}
+    target:
+      entity_id: switch.eldrad
+  - service: script.tts_say_eldrad_reset
+    data: {}
+  mode: single
