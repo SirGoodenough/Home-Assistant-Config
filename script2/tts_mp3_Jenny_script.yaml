@@ -34,11 +34,11 @@ tts_middle_flush:
       announcement_message: '{{ ("So close, no matter how far","Couldn''t be much
         more from the heart","Forever trusting who we are","And nothing else matters","Never
         opened myself this way","Life is ours, we live it our way","All these words,
-        I don''t just say","Trust I seek and I find in you","Every day for us something
+        i don''t just say","Trust i seek and i find in you","Every day for us something
         new","Open mind for a different view","Never cared for what they do","Never
-        cared for what they know","But I know","It couldn''t be much more from the
+        cared for what they know","But i know","It couldn''t be much more from the
         heart","I never opened myself this way","Never cared for what they say","Never
-        cared for games they play","And I know, yeah, yeah") |random }}'
+        cared for games they play","And i know, yeah, yeah") |random }}'
   icon: mdi:paper-roll
 tts_final_flush:
   alias: TTS Final Flush
@@ -51,10 +51,10 @@ tts_final_flush:
       speaker_gender: male
       speaker_target: media_player.jen_group
       announcement_message: '{{ ("This ain''t a song for the broken-hearted","No silent
-        prayer for faith-departed","And I ain''t gonna be just a face in the crowd","You''re
-        gonna hear my voice when I shout it out loud","It''s my life. It''s now or
-        never.","But I ain''t gonna live forever.","I just want to live while I''m
-        alive","My heart is like an open highway","Like Frankie said, I did it my
+        prayer for faith-departed","And i ain''t gonna be just a face in the crowd","You''re
+        gonna hear my voice when i shout it out loud","It''s my life. It''s now or
+        never.","But i ain''t gonna live forever.","I just want to live while I''m
+        alive","My heart is like an open highway","Like Frankie said, i did it my
         way","It''s now or never.","Yeah, this is for the ones who stood their ground","For
         Tommy and Gina, who never backed down","Tomorrow''s getting harder, make no
         mistake","Luck ain''t even lucky, got to make your own break") |random }}'
@@ -95,7 +95,7 @@ tts_bed_cares_warning:
       GTS_language: en
       TTS: tts.cloud_say
       cloud_language: en-IN
-      speaker_gender: '{{ ("female, male") |random }}'
+      speaker_gender: '{{ ("female","male") | random }}'
       speaker_target: media_player.jennys_room_display
       announcement_message: "Make sure the tray is secured to launch position.  Bed is about to launch."
       b4_action:
@@ -125,12 +125,12 @@ tts_bed_cares_warning:
   # It''s all the same, only the names will change","Every
   #       day, it seems we''re wastin'' away","Another place, where the faces are so
   #       cold","I''d drive all night just to get back home","I''m a cowboy. On a steel
-  #       horse I ride. I''m wanted. Dead or alive","Sometimes I sleep, sometimes, it''s
-  #       not for days","The people I meet always go their separate ways","Sometimes
+  #       horse i ride. I''m wanted. Dead or alive","Sometimes i sleep, sometimes, it''s
+  #       not for days","The people i meet always go their separate ways","Sometimes
   #       you tell the day by the bottle that you drink","And times when you''re alone,
-  #       well, all you do is think","Oh, and I ride.  Yeah.","And I walk these streets.
-  #       A loaded six-string on my back","I play for keeps. ''Cause I might not make
+  #       well, all you do is think","Oh, and i ride.  Yeah.","And i walk these streets.
+  #       A loaded six-string on my back","I play for keeps. ''Cause i might not make
   #       it back","I''ve been everywhere. Still I''m standing tall","I''ve seen a million
   #       faces and I''ve rocked them all","And I''m wanted. (wanted). dead or alive","And
-  #       I ride. (and I ride). dead or alive","I still drive. (I still drive). dead
+  #       i ride. (and i ride). dead or alive","I still drive. (I still drive). dead
   #       or alive

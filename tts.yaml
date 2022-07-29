@@ -2,36 +2,38 @@
   - platform: google_translate
     service_name: google_translate_say
     language: 'en'
+    cache_dir: /tmp/tts
+    time_memory: 300
 
-  - platform: microsoft
-    api_key: !secret Azure
-    region: centralus
-    # language: en-us
-    # gender: Male
-    # type: RyanNeural
+#   - platform: microsoft
+#     api_key: !secret Azure
+#     region: centralus
+#     # language: en-us
+#     # gender: Male
+#     # type: RyanNeural
 
-  - platform: voicerss
-    api_key: !secret Voice_RSS_key
-# language string (Optional, default: en-us)
-#   The language to use.
-# codec string (Optional, default: mp3)
-#   The audio codec.
-# format string (Optional, default: 8khz_8bit_mono)
-#   The audio sample format.
+#   - platform: voicerss
+#     api_key: !secret Voice_RSS_key
+# # language string (Optional, default: en-us)
+# #   The language to use.
+# # codec string (Optional, default: mp3)
+# #   The audio codec.
+# # format string (Optional, default: 8khz_8bit_mono)
+# #   The audio sample format.
 
-  - platform: picotts
-# language string (Optional, default: en-US)
-#   The language to use. Supported languages are en-US, en-GB, de-DE, es-ES, fr-FR and it-IT.
+#   - platform: picotts
+# # language string (Optional, default: en-US)
+# #   The language to use. Supported languages are en-US, en-GB, de-DE, es-ES, fr-FR and it-IT.
 
-  - platform: marytts
-# codec string (Optional, default: WAVE_FILE)
-#   The audio codec. Supported codecs are AIFF_FILE, AU_FILE and WAVE_FILE.
-# voice string (Optional)
-#   The speaker voice. Default: cmu-slt-hsmm
-# language string (Optional, default: en_US)
-#   The language to use. Supported languages are de, en_GB, en_US, fr, it, lb, ru, sv, te and tr.
-# effect map (Optional)
-#   A dictionary of effects which should be applied to the speech output.
+#   - platform: marytts
+# # codec string (Optional, default: WAVE_FILE)
+# #   The audio codec. Supported codecs are AIFF_FILE, AU_FILE and WAVE_FILE.
+# # voice string (Optional)
+# #   The speaker voice. Default: cmu-slt-hsmm
+# # language string (Optional, default: en_US)
+# #   The language to use. Supported languages are de, en_GB, en_US, fr, it, lb, ru, sv, te and tr.
+# # effect map (Optional)
+# #   A dictionary of effects which should be applied to the speech output.
 
   # - platform: amazon_polly
   #   aws_access_key_id: AWS_ACCESS_KEY_ID
