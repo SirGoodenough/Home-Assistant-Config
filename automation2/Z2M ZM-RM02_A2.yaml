@@ -12,7 +12,27 @@
           data: {}
           target:
             entity_id: button.moms_button1
+      doubletap_1:
+        - service: button.press
+          data: {}
+          target:
+            entity_id: button.moms_button1
+      hold_1:
+        - service: button.press
+          data: {}
+          target:
+            entity_id: button.moms_button1
       tap_2:
+        - service: button.press
+          data: {}
+          target:
+            entity_id: button.moms_button2
+      doubletap_2:
+        - service: button.press
+          data: {}
+          target:
+            entity_id: button.moms_button2
+      hold_2:
         - service: button.press
           data: {}
           target:
