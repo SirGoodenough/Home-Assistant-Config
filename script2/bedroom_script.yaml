@@ -14,16 +14,16 @@ bedroom_temp_control:
             0
           {% elif bte < (bat + 5.8) %}
             1
-          {% elif bte < (bat + 7.8) %} 
+          {% elif bte < (bat + 7.8) %}
             2
-          {% else %} 
+          {% else %}
             3
           {% endif %}
     - alias: "call bedroom ac set temperature & limit to prevent rate limit outages"
-      if: "{{ is_number(state_attr('climate.gemodule5384', 'temperature')) and
-        state_attr('climate.gemodule5384', 'temperature') | float(73.1) !=
+      if: "{{ is_number(state_attr('climate.gemodule5384_window_ac', 'temperature')) and
+        state_attr('climate.gemodule5384_window_ac', 'temperature') | float(73.1) !=
         states('input_number.input_number.bedroom_auto_temp') | float(73.1) }}"
-      then: 
+      then:
         service: script.bedroom_ac_set_temp
         data:
           Temp: "{{ states('input_number.bedroom_auto_temp') | float(73.1) }}"
@@ -36,7 +36,7 @@ bedroom_ac_start:
   sequence:
     - service: climate.turn_on
       target:
-        entity_id: climate.gemodule5384
+        entity_id: climate.gemodule5384_window_ac
 
 #####################################################
 # Bedroom Cooling Off                               # 
@@ -52,7 +52,7 @@ bedroom_cooling_off:
     - alias: Stop the AirCon
       service: climate.turn_off
       target:
-        entity_id: climate.gemodule5384
+        entity_id: climate.gemodule5384_window_ac
 
 #####################################################
 # Bedroom AC Set Temperature                        # 
@@ -66,5 +66,5 @@ bedroom_ac_set_temp:
   sequence:
     - service: climate.set_temperature
       data:
-        entity_id: climate.gemodule5384
+        entity_id: climate.gemodule5384_window_ac
         temperature: "{{ Temp }}"
