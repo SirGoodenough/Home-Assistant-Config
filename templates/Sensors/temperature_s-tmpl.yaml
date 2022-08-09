@@ -32,19 +32,19 @@
 
   - name: BRthermostat
     unique_id: 850df15c-a1fb-4832-a29e-18fcaf3d3b61
-    state: "{{ state_attr('climate.gemodule5384', 'current_temperature') }}"
+    state: "{{ state_attr('climate.gemodule5384_window_ac', 'current_temperature') }}"
     unit_of_measurement: "°F"
     availability: >
-      {% set items = ['climate.gemodule5384'] %}
+      {% set items = ['climate.gemodule5384_window_ac'] %}
       {{ expand(items)|rejectattr('state','in',['unknown','unavailable'])
         |list|count == items|count }}
     icon: "mdi:thermostat-box"
 
   - name: "BRthermostat Cool Mode"
     unique_id: 0a26fddd-d1ec-48fc-9984-61feb1d1e5c1
-    state: "{{ state_attr('climate.gemodule5384', 'hvac_action') }}"
+    state: "{{ state_attr('climate.gemodule5384_window_ac', 'hvac_action') }}"
     availability: >
-      {% set items = ['climate.gemodule5384'] %}
+      {% set items = ['climate.gemodule5384_window_ac'] %}
       {{ expand(items)|rejectattr('state','in',['unknown','unavailable'])
         |list|count == items|count }}
     icon: "mdi:air-conditioner"

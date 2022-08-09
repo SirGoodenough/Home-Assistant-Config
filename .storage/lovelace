@@ -309,12 +309,14 @@
               "cards": [
                 {
                   "type": "thermostat",
-                  "entity": "climate.gemodule5384"
+                  "entity": "climate.gemodule5384_window_ac",
+                  "name": "Bedroom AC"
                 },
                 {
-                  "type": "sensor",
-                  "entity": "sensor.brthermostat",
+                  "hours_to_show": 24,
                   "graph": "line",
+                  "type": "sensor",
+                  "entity": "sensor.gemodule5384_current_temperature",
                   "name": "Bedroom Temperature",
                   "unit": "°F",
                   "detail": 2
