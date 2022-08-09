@@ -186,11 +186,11 @@
         - condition: trigger
           id: poop_done
         sequence:
-        - alias: Head UP-Knees Down Command
+        - alias: Head UP - 0 Command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
-            cmnd: 'button/7?timeout=7'
+            cmnd: 'button/0?timeout=7'
         - delay: 00:00:08
         - alias: Send blank to make sure bed is stopped
           service: shell_command.bed
@@ -206,7 +206,7 @@
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
-        - alias: Bed Down Command
+        - alias: Bed Down - 5 Command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
@@ -251,12 +251,12 @@
         - condition: trigger
           id: cares_down
         sequence:
-        - alias: Send the bed head UP command
+        - alias: Send the bed head UP - 0 command
           service: shell_command.bed
           data:
             url: !secret SmartBed_URL
-            cmnd: 'button/0?timeout=14'
-        - delay: 00:00:14
+            cmnd: 'button/0?timeout=13'
+        - delay: 00:00:13
         - alias: Send blank to make sure bed is stopped
           service: shell_command.bed
           data:
