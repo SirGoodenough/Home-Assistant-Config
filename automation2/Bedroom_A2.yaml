@@ -57,11 +57,11 @@
       fan: fan.bedroom_fan
       loop_action:
       - alias: "Start AirCon if room is warmer than setting & limit to prevent rate limit outages"
-        if: '{{ states(''climate.gemodule5384_window_ac'') == ''off''
-          and state_attr(''climate.gemodule5384_window_ac'', ''current_temperature'') | float(73.1) - 1.0
-          >= states(''input_number.mayson_nap_temperature'') | float(73.1)
-          }}'
-        then:
+        # if: '{{ states(''climate.gemodule5384_window_ac'') == ''off''
+        #   and state_attr(''climate.gemodule5384_window_ac'', ''current_temperature'') | float(73.1) - 1.0
+        #   >= states(''input_number.mayson_nap_temperature'') | float(73.1)
+        #   }}'
+        # then:
           service: script.bedroom_ac_start
       - alias: Make sure the device is on before the temperature is set
         delay: 00:00:05
@@ -101,11 +101,11 @@
       mqtt_fan_topic: Bedroom_Fan/cmnd/FanSpeed
       loop_action:
       - alias: "Start AirCon if room is warmer than setting & limit to prevent rate limit outages"
-        if: '{{ states(''climate.gemodule5384_window_ac'') == ''off''
-          and state_attr(''climate.gemodule5384_window_ac'', ''current_temperature'') | float(73.1)
-          >= states(''input_number.bedroom_auto_temp'') | float(73.1)
-          }}'
-        then:
+        # if: '{{ states(''climate.gemodule5384_window_ac'') == ''off''
+        #   and state_attr(''climate.gemodule5384_window_ac'', ''current_temperature'') | float(73.1)
+        #   >= states(''input_number.bedroom_auto_temp'') | float(73.1)
+        #   }}'
+        # then:
           service: script.bedroom_ac_start
       - delay: 00:00:05
       - alias: "call bedroom ac set temperature & limit to prevent rate limit outages"
@@ -146,11 +146,11 @@
       state: "on"
   action:
     - alias: "Start AirCon if room is warmer than setting & limit to prevent rate limit outages"
-      if: '{{ states(''climate.gemodule5384_window_ac'') == ''off''
-        and state_attr(''climate.gemodule5384_window_ac'', ''current_temperature'') | float(73.1) - 1.0
-        >= states(''input_number.bedroom_auto_temp'') | float(73.1)
-        }}'
-      then:
+      # if: '{{ states(''climate.gemodule5384_window_ac'') == ''off''
+      #   and state_attr(''climate.gemodule5384_window_ac'', ''current_temperature'') | float(73.1) - 1.0
+      #   >= states(''input_number.bedroom_auto_temp'') | float(73.1)
+      #   }}'
+      # then:
         service: script.bedroom_ac_start
     - alias: call bedroom control script
       service: script.bedroom_temp_control
