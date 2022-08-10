@@ -62,7 +62,7 @@
         #   >= states(''input_number.mayson_nap_temperature'') | float(73.1)
         #   }}'
         # then:
-          service: script.bedroom_ac_start
+        service: script.bedroom_ac_start
       - alias: Make sure the device is on before the temperature is set
         delay: 00:00:05
       - alias: "call Mayson ac set temperature & limit to prevent rate limit outages"
@@ -106,7 +106,7 @@
         #   >= states(''input_number.bedroom_auto_temp'') | float(73.1)
         #   }}'
         # then:
-          service: script.bedroom_ac_start
+        service: script.bedroom_ac_start
       - delay: 00:00:05
       - alias: "call bedroom ac set temperature & limit to prevent rate limit outages"
         if: '{{ is_number(state_attr(''climate.gemodule5384_window_ac'', ''temperature''))
@@ -151,7 +151,7 @@
       #   >= states(''input_number.bedroom_auto_temp'') | float(73.1)
       #   }}'
       # then:
-        service: script.bedroom_ac_start
+      service: script.bedroom_ac_start
     - alias: call bedroom control script
       service: script.bedroom_temp_control
     - alias: "call bedroom ac set temperature & limit to prevent rate limit outages"
