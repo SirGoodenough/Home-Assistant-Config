@@ -54,7 +54,7 @@ hacs: !include hacs.yaml
 homeassistant: !include homeassistant.yaml
 http: !include http.yaml
 # introduction:
-life360: !include life360.yaml
+# life360: !include life360.yaml
 light: !include_dir_merge_list ./light/
 # lock: !include lock.yaml
 logger: !include logger.yaml
