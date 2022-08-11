@@ -89,6 +89,7 @@ s -lovelace## Ignore all
 ############# Failsafe  \/ \/ \/ \/ \/ #############
 secrets.yaml
 shell_command.yaml
+**/test.yaml
 home-assistant.log.*
 .git-credentials
 /zigbee2mqtt/*.json
