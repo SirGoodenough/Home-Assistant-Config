@@ -1,54 +1,59 @@
 {
-    "version": 1,
-    "minor_version": 1,
-    "key": "lovelace_resources",
-    "data": {
-        "items": [
-            {
-                "id": "aef2939fe061412cb050d85c5e5db530",
-                "type": "module",
-                "url": "/hacsfiles/garbage-collection-card/garbage-collection-card.js?hacstag=2070182001201"
-            },
-            {
-                "id": "8181d8d1d2ee476484b3b4897d8bbf4c",
-                "type": "module",
-                "url": "/hacsfiles/mini-graph-card/mini-graph-card-bundle.js?hacstag=1512800620110"
-            },
-            {
-                "id": "1f5d9e06c41b469caef7cee3c4dc9ac3",
-                "type": "module",
-                "url": "/hacsfiles/firetv-card/firetv-card.js?hacstag=187501032021"
-            },
-            {
-                "url": "/hacsfiles/fan-percent-button-row/fan-percent-button-row.js?hacstag=34575320520",
-                "type": "module",
-                "id": "94e1ad9512ec41f1a5e027107929dac2"
-            },
-            {
-                "url": "/hacsfiles/toggle-control-button-row/toggle-control-button-row.js",
-                "type": "module",
-                "id": "f530518701524e73aca62a65d74ae8d8"
-            },
-            {
-                "url": "/hacsfiles/flipdown-timer-card/flipdown-timer-card.js?hacstag=42308207103",
-                "type": "module",
-                "id": "100030eacb97436d84827f45f928c46d"
-            },
-            {
-                "url": "/hacsfiles/surveillance-card/surveillance-card.js?hacstag=147764937005",
-                "type": "module",
-                "id": "06b60c42860d464486a390cee5c2f1de"
-            },
-            {
-                "url": "/hacsfiles/thermal_comfort_icons/thermal_comfort_icons.js?hacstag=449218690130",
-                "type": "module",
-                "id": "2d06e379a2084cd9beb32e04454b04ec"
-            },
-            {
-                "url": "/hacsfiles/onlylocklock/only-lock-lock-row.js?hacstag=450898706031",
-                "type": "module",
-                "id": "faa6df4271c2402a9dd6684cb822959f"
-            }
-        ]
-    }
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace_resources",
+  "data": {
+    "items": [
+      {
+        "id": "aef2939fe061412cb050d85c5e5db530",
+        "type": "module",
+        "url": "/hacsfiles/garbage-collection-card/garbage-collection-card.js?hacstag=2070182001201"
+      },
+      {
+        "id": "8181d8d1d2ee476484b3b4897d8bbf4c",
+        "type": "module",
+        "url": "/hacsfiles/mini-graph-card/mini-graph-card-bundle.js?hacstag=1512800620110"
+      },
+      {
+        "id": "1f5d9e06c41b469caef7cee3c4dc9ac3",
+        "type": "module",
+        "url": "/hacsfiles/firetv-card/firetv-card.js?hacstag=187501032021"
+      },
+      {
+        "url": "/hacsfiles/fan-percent-button-row/fan-percent-button-row.js?hacstag=34575320520",
+        "type": "module",
+        "id": "94e1ad9512ec41f1a5e027107929dac2"
+      },
+      {
+        "url": "/hacsfiles/toggle-control-button-row/toggle-control-button-row.js",
+        "type": "module",
+        "id": "f530518701524e73aca62a65d74ae8d8"
+      },
+      {
+        "url": "/hacsfiles/flipdown-timer-card/flipdown-timer-card.js?hacstag=42308207103",
+        "type": "module",
+        "id": "100030eacb97436d84827f45f928c46d"
+      },
+      {
+        "url": "/hacsfiles/surveillance-card/surveillance-card.js?hacstag=147764937005",
+        "type": "module",
+        "id": "06b60c42860d464486a390cee5c2f1de"
+      },
+      {
+        "url": "/hacsfiles/thermal_comfort_icons/thermal_comfort_icons.js?hacstag=449218690130",
+        "type": "module",
+        "id": "2d06e379a2084cd9beb32e04454b04ec"
+      },
+      {
+        "url": "/hacsfiles/onlylocklock/only-lock-lock-row.js?hacstag=450898706031",
+        "type": "module",
+        "id": "faa6df4271c2402a9dd6684cb822959f"
+      },
+      {
+        "url": "/hacsfiles/lovelace-curtain-card/curtain-card.js?hacstag=509260172013",
+        "type": "module",
+        "id": "5389afdde2374522a6903262eea505d1"
+      }
+    ]
+  }
 }

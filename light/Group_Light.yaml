@@ -3,7 +3,7 @@
     name: Main Lights
     unique_id: 3503acba-9956-4951-b651-6385024ba170
     entities:
-      - light.cabinetlight
+      - light.kneelight
       - light.jens_light
       - light.jims_computer_light_2
       - light.mom_light
@@ -23,7 +23,7 @@
     unique_id: d6e23f4b-a9cf-4b11-bac4-77bfc9a5d82a
     entities:
       - light.jims_computer_light_2
-      - light.cabinetlight
+      - light.kneelight
       # - light.kitchen_down_lights
       - light.kitchensink
 
@@ -47,7 +47,7 @@
     name: D Lights
     unique_id: 9fa921ea-7795-46ba-a850-bf85113e5f4d
     entities:
-      - light.cabinetlight
+      - light.kneelight
       - light.jims_computer_light_2
 
   - platform: group

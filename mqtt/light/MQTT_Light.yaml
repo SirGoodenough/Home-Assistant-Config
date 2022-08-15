@@ -53,7 +53,7 @@
   - name: "KneeLight"
     unique_id: d6199c6d-1ca4-47f0-8200-eed436be9842
     state_topic: "cabnetlight/tele/STATE"
-    command_topic: "cabnetlight/stat/POWER"
+    command_topic: "cabnetlight/cmnd/POWER"
     availability_topic: "cabnetlight/tele/LWT"
     payload_on: "ON"
     payload_off: "OFF"
