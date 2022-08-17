@@ -54,7 +54,7 @@ jen_night_curtain_position:
         entity_id:
           - cover.jens_kitchen_curtain
       data:
-        position: '{{ range(range 68, 72) | random }}'
+        position: '{{ range(68, 72) | random }}'
     - service: cover.set_cover_position
       target:
         entity_id:
@@ -76,7 +76,7 @@ jen_day_curtain_position:
         entity_id:
           - cover.jens_window_curtain
       data:
-        position: '{{ range 55, 59) | random }}'
+        position: '{{ range(55, 59) | random }}'
 
 jen_open_curtain_position:
   alias: Curtains Open
