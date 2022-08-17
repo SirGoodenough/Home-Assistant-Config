@@ -31,7 +31,7 @@
                   "entity": "light.jims_computer_light_2"
                 },
                 {
-                  "entity": "light.kneelight"
+                  "entity": "light.cabinetlight"
                 },
                 {
                   "entity": "light.grp_d_lights"
@@ -1299,6 +1299,31 @@
               "entity": "media_player.jenny_s_tv"
             },
             {
+              "type": "horizontal-stack",
+              "cards": [
+                {
+                  "type": "custom:curtain-card",
+                  "title": "Window",
+                  "entity": "cover.jens_window_curtain",
+                  "curtainColor": "rgb(10,10,10,0.8)",
+                  "direction": "left",
+                  "size": 150,
+                  "showStatus": true,
+                  "sceneImage": "https://x5skwl.duckdns.org:23218/local/images/house_plant.gif"
+                },
+                {
+                  "type": "custom:curtain-card",
+                  "title": "Kitchen",
+                  "entity": "cover.jens_kitchen_curtain",
+                  "curtainColor": "rgb(10,10,10,0.8)",
+                  "direction": "right",
+                  "size": 150,
+                  "showStatus": true,
+                  "sceneImage": "https://x5skwl.duckdns.org:23218/local/images/GoofyJim.gif"
+                }
+              ]
+            },
+            {
               "type": "entities",
               "entities": [
                 {
@@ -1311,10 +1336,6 @@
                 }
               ],
               "title": "Jen Temperature"
-            },
-            {
-              "type": "media-control",
-              "entity": "media_player.jennys_room_display"
             },
             {
               "entities": [
@@ -1356,6 +1377,10 @@
               "show_header_toggle": false,
               "title": "Jens Nebulizer",
               "type": "entities"
+            },
+            {
+              "type": "media-control",
+              "entity": "media_player.jennys_room_display"
             },
             {
               "type": "media-control",
