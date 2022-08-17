@@ -145,7 +145,9 @@ d = { '00550C':['SideDoorBell','ON','false'],
       'FFFFFF':['NoOp','OFF','false']
     }
 
-p = data.get('payload')
+#  p = data.get('payload')
+p = str(data.get('payload')) 
+
 
 if p is not None:
   if p in d.keys():
