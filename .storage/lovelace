@@ -3074,7 +3074,7 @@
               ],
               "card": {
                 "type": "picture",
-                "image": "http://10.10.100.8:8123/local/images/GoofyJim.gif",
+                "image": "https://x5skwl.duckdns.org:23218/local/images/GoofyJim.gif",
                 "tap_action": {
                   "action": "call-service",
                   "service": "script.sg_food_say",
@@ -3099,7 +3099,7 @@
               ],
               "card": {
                 "type": "picture",
-                "image": "http://10.10.100.8:8123/local/images/UnicomJennifer.gif",
+                "image": "https://x5skwl.duckdns.org:23218/local/images/UnicomJennifer.gif",
                 "tap_action": {
                   "action": "call-service",
                   "service": "script.jen_food_say",
@@ -3124,7 +3124,7 @@
               ],
               "card": {
                 "type": "picture",
-                "image": "http://10.10.100.8:8123/local/images/QueenJulie.gif",
+                "image": "https://x5skwl.duckdns.org:23218/local/images/QueenJulie.gif",
                 "tap_action": {
                   "action": "call-service",
                   "service": "script.julie_food_say",
@@ -3149,7 +3149,7 @@
               ],
               "card": {
                 "type": "picture",
-                "image": "http://10.10.100.8:8123/local/images/GoofyJim.gif",
+                "image": "https://x5skwl.duckdns.org:23218/local/images/GoofyJim.gif",
                 "tap_action": {
                   "action": "call-service",
                   "service": "script.sg_food_say",
@@ -3174,7 +3174,7 @@
               ],
               "card": {
                 "type": "picture",
-                "image": "http://10.10.100.8:8123/local/images/UnicomJennifer.gif",
+                "image": "https://x5skwl.duckdns.org:23218/local/images/UnicomJennifer.gif",
                 "tap_action": {
                   "action": "call-service",
                   "service": "script.jen_food_say",
@@ -3199,7 +3199,7 @@
               ],
               "card": {
                 "type": "picture",
-                "image": "http://10.10.100.8:8123/local/images/QueenJulie.gif",
+                "image": "https://x5skwl.duckdns.org:23218/local/images/QueenJulie.gif",
                 "tap_action": {
                   "action": "call-service",
                   "service": "script.julie_food_say",
