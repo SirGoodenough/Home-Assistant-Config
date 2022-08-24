@@ -62,6 +62,9 @@
                 },
                 {
                   "entity": "binary_sensor.back_door_pir"
+                },
+                {
+                  "entity": "sensor.yertle_device_temperature"
                 }
               ],
               "show_header_toggle": true,
@@ -830,6 +833,9 @@
                 },
                 {
                   "entity": "light.grp_studio"
+                },
+                {
+                  "entity": "sensor.gertle_device_temperature"
                 }
               ],
               "show_header_toggle": false,
