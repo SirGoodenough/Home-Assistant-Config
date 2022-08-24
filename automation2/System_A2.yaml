@@ -184,7 +184,19 @@
       - device_tracker.rassilon_mountcadon_duckdns_org_c8_f7_42_21_a6_a8_2
     to: not_home
     for:
-      minutes: 15
+      minutes: 20
+  - platform: state
+    entity_id:
+      - device_tracker.rassilon_mountcadon_duckdns_org_c8_f7_42_21_a6_a8_2
+    to: not_home
+    for:
+      minutes:25
+  - platform: state
+    entity_id:
+      - device_tracker.rassilon_mountcadon_duckdns_org_c8_f7_42_21_a6_a8_2
+    to: not_home
+    for:
+      minutes: 30
   action:
   - service: switch.turn_off
     target:
