@@ -160,9 +160,6 @@
                   "entity": "button.moms_button1"
                 },
                 {
-                  "entity": "binary_sensor.front_door_open"
-                },
-                {
                   "entity": "binary_sensor.front_door_open_433"
                 },
                 {
@@ -325,10 +322,12 @@
                   "detail": 2
                 },
                 {
+                  "hours_to_show": 24,
+                  "graph": "line",
                   "type": "sensor",
                   "entity": "sensor.bedroom_fan_si7021_temperature",
-                  "graph": "line",
-                  "name": "Bedroom Ceiling Temperature"
+                  "name": "Bedroom Ceiling Temperature",
+                  "detail": 2
                 }
               ]
             },
@@ -1228,9 +1227,30 @@
               "icon_height": "40px"
             },
             {
-              "type": "weather-forecast",
-              "entity": "weather.home",
-              "theme": "Animated Weather Card"
+              "type": "horizontal-stack",
+              "cards": [
+                {
+                  "type": "custom:curtain-card",
+                  "title": "Window",
+                  "entity": "cover.jens_window_curtain",
+                  "curtainColor": "rgb(10,10,10,0.8)",
+                  "direction": "left",
+                  "size": 100,
+                  "showStatus": true,
+                  "sceneImage": "https://x5skwl.duckdns.org:23218/local/images/house_plant.gif"
+                },
+                {
+                  "type": "custom:curtain-card",
+                  "title": "Kitchen",
+                  "entity": "cover.jens_kitchen_curtain",
+                  "curtainColor": "rgb(10,10,10,0.8)",
+                  "direction": "right",
+                  "size": 100,
+                  "showStatus": true,
+                  "sceneImage": "https://x5skwl.duckdns.org:23218/local/images/GoofyJim.gif"
+                }
+              ],
+              "title": "Jens Curtain Control Panel"
             },
             {
               "type": "entities",
@@ -1253,8 +1273,12 @@
                 {
                   "entity": "script.jen_closed_curtain_position"
                 }
-              ],
-              "title": "Jens Curtain Control Panel"
+              ]
+            },
+            {
+              "type": "weather-forecast",
+              "entity": "weather.home",
+              "theme": "Animated Weather Card"
             },
             {
               "type": "sensor",
@@ -1303,31 +1327,6 @@
             {
               "type": "media-control",
               "entity": "media_player.jenny_s_tv"
-            },
-            {
-              "type": "horizontal-stack",
-              "cards": [
-                {
-                  "type": "custom:curtain-card",
-                  "title": "Window",
-                  "entity": "cover.jens_window_curtain",
-                  "curtainColor": "rgb(10,10,10,0.8)",
-                  "direction": "left",
-                  "size": 150,
-                  "showStatus": true,
-                  "sceneImage": "https://x5skwl.duckdns.org:23218/local/images/house_plant.gif"
-                },
-                {
-                  "type": "custom:curtain-card",
-                  "title": "Kitchen",
-                  "entity": "cover.jens_kitchen_curtain",
-                  "curtainColor": "rgb(10,10,10,0.8)",
-                  "direction": "right",
-                  "size": 150,
-                  "showStatus": true,
-                  "sceneImage": "https://x5skwl.duckdns.org:23218/local/images/GoofyJim.gif"
-                }
-              ]
             },
             {
               "type": "entities",
