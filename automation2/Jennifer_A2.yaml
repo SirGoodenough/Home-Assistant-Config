@@ -118,7 +118,7 @@
             service: script.jen_needs_help
             data:
               message: "{{ trigger.to_state.state }}"
-              entities: media_player.home_group
+              entities: media_player.common_group_2
         - alias: Message to all speakers except bedroom
           conditions:
             - condition: trigger

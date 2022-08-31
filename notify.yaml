@@ -8,7 +8,7 @@
     sender_name: "ChaloupkaAbode "
     starttls: 1
     username: !secret ControlCentral_L
-    password: !secret ControlCentral_P
+    password: !secret ControlCentral_P_Application
     recipient: !secret ControlCentral_Rd
 
   - platform: smtp
@@ -20,7 +20,7 @@
     sender_name: "ChaloupkaAbode "
     starttls: 1
     username: !secret ControlCentral_L
-    password: !secret ControlCentral_P
+    password: !secret ControlCentral_P_Application
     recipient: !secret ControlCentral_Rm
 
   - platform: smtp
@@ -32,7 +32,7 @@
     sender_name: "ChaloupkaAbode "
     starttls: 1
     username: !secret ControlCentral_L
-    password: !secret ControlCentral_P
+    password: !secret ControlCentral_P_Application
     recipient: !secret ControlCentral_Rj
 
   - platform: smtp
@@ -44,7 +44,7 @@
     sender_name: "ChaloupkaAbode "
     starttls: 1
     username: !secret ControlCentral_L
-    password: !secret ControlCentral_P
+    password: !secret ControlCentral_P_Application
     recipient:
       - !secret ControlCentral_Rm
       - !secret ControlCentral_Rj
