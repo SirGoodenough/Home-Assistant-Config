@@ -4,11 +4,12 @@
     unique_id: cc38764c-5bcf-49b5-9e89-d8241ab44c01
     server: smtp.gmail.com
     port: 587
-    sender: !secret ControlCentral_S
-    sender_name: "ChaloupkaAbode "
-    starttls: 1
+    timeout: 15
+    encryption: starttls
     username: !secret ControlCentral_L
     password: !secret ControlCentral_P_Application
+    sender: !secret ControlCentral_S
+    sender_name: "ChaloupkaAbode "
     recipient: !secret ControlCentral_Rd
 
   - platform: smtp
@@ -16,11 +17,12 @@
     unique_id: ca4c0752-8454-4069-b7f7-f97f971dd037
     server: smtp.gmail.com
     port: 587
-    sender: !secret ControlCentral_S
-    sender_name: "ChaloupkaAbode "
-    starttls: 1
+    encryption: starttls
+    timeout: 15
     username: !secret ControlCentral_L
     password: !secret ControlCentral_P_Application
+    sender: !secret ControlCentral_S
+    sender_name: "ChaloupkaAbode "
     recipient: !secret ControlCentral_Rm
 
   - platform: smtp
@@ -28,11 +30,12 @@
     unique_id: 3452de30-172c-4e0e-826a-5143dec62341
     server: smtp.gmail.com
     port: 587
-    sender: !secret ControlCentral_S
-    sender_name: "ChaloupkaAbode "
-    starttls: 1
+    encryption: starttls
+    timeout: 15
     username: !secret ControlCentral_L
     password: !secret ControlCentral_P_Application
+    sender: !secret ControlCentral_S
+    sender_name: "ChaloupkaAbode "
     recipient: !secret ControlCentral_Rj
 
   - platform: smtp
@@ -40,16 +43,16 @@
     unique_id: 15d99d2d-1033-4e6a-a26f-9940f50b45b9
     server: smtp.gmail.com
     port: 587
-    sender: !secret ControlCentral_S
-    sender_name: "ChaloupkaAbode "
-    starttls: 1
+    encryption: starttls
+    timeout: 15
     username: !secret ControlCentral_L
     password: !secret ControlCentral_P_Application
+    sender: !secret ControlCentral_S
+    sender_name: "ChaloupkaAbode "
     recipient:
       - !secret ControlCentral_Rm
       - !secret ControlCentral_Rj
       - !secret ControlCentral_Rd
-      - !secret ControlCentral_Ra
 
   - platform: syslog
     name: chaloupkaabode_ha
