@@ -1,4 +1,3 @@
----
 #####################################################
 #                                                   #
 # System                                            #
@@ -142,22 +141,52 @@
     entity_id: input_button.restart_eldrad
   - platform: state
     entity_id:
-      - device_tracker.eldrad_2
+    - device_tracker.eldrad_2
     to: not_home
     for:
       minutes: 15
   - platform: state
     entity_id:
-      - device_tracker.eldrad_2
+    - device_tracker.eldrad_2
     to: not_home
     for:
       hours: 1
   - platform: state
     entity_id:
-      - device_tracker.eldrad_2
+    - device_tracker.eldrad_2
     to: not_home
     for:
       hours: 2
+  - platform: state
+    entity_id:
+    - device_tracker.eldrad_2
+    to: not_home
+    for:
+      hours: 3
+      minutes: 32
+      seconds: 28
+    from: home
+  - platform: state
+    entity_id:
+    - device_tracker.eldrad_2
+    from: home
+    to: not_home
+    for:
+      hours: 5
+  - platform: state
+    entity_id:
+    - device_tracker.eldrad_2
+    from: home
+    to: not_home
+    for:
+      hours: 6
+  - platform: state
+    entity_id:
+    - device_tracker.eldrad_2
+    from: home
+    to: not_home
+    for:
+      hours: 7
   action:
   - service: switch.turn_off
     target:
@@ -190,7 +219,7 @@
       - device_tracker.rassilon_mountcadon_duckdns_org_c8_f7_42_21_a6_a8_2
     to: not_home
     for:
-      minutes:25
+      minutes: 25
   - platform: state
     entity_id:
       - device_tracker.rassilon_mountcadon_duckdns_org_c8_f7_42_21_a6_a8_2

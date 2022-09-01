@@ -81,3 +81,18 @@
     event: leave
   action:
     service: script.tts_mom_left_feed_store
+
+- id: 5d87c33d-0599-40f7-a1e2-eec7c4009d38
+  alias: Person @ Cottage
+  description: Webhook from Cottage that it detects a person
+  trigger:
+  - platform: webhook
+    webhook_id: person-cottage-07AWg1-wLwAO0LLg8qR4Qmu_
+  condition: []
+  action:
+    - alias: "Notify phone(s)"
+      service: notify.message_dad
+      data:
+        message: "I spy, with my little eye, {{ trigger.data }}"
+    - service: script.tts_say_person_cottage
+  mode: single

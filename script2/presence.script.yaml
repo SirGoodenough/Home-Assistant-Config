@@ -14,12 +14,5 @@ tts_say_person_cottage:
       - alias: "delay for sounder"
         delay: 00:00:06
       - service: script.media_player_back_doorbell_motion
-      b4_action:
-      - alias: "Notify phone(s)"
-        description: "Texting There is Person at Cottage"
-        sequence:
-        - service: notify.message_dad
-          data:
-            message: "I spy, with my little eye, someone at the cottage."
   mode: single
   icon: mdi:motion-sensor
