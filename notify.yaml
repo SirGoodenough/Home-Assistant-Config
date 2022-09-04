@@ -53,7 +53,7 @@
       - !secret ControlCentral_Rm
       - !secret ControlCentral_Rj
       - !secret ControlCentral_Rd
-
+ 
   - platform: syslog
     name: chaloupkaabode_ha
     unique_id: ce484330-657c-475c-8aa6-8840c3ebd06d
