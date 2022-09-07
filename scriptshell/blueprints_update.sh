@@ -111,22 +111,58 @@ do
 		_blueprint_update_debug "-> fixed source_url: ${blueprint_source_url}"
 	fi
 
-	# check filename is the same
-	if [ "$(basename "${file}")" != "$(basename "${blueprint_source_url}")" ]
+	# home assistant community blueprint exchange works a bit differently
+	if [ "$(echo "${blueprint_source_url}" | grep 'https://community.home-assistant.io/')" != "" ]
 	then
-		echo "-! non-matching filename"
-		_blueprint_update_debug "-! [$(basename "${file}")] != [$(basename "${blueprint_source_url}")]"
-		echo
-		continue
-	fi
+		_blueprint_update_debug "-! home assistant community blueprint exchange"
+		# add .json and then extract the code block from the json...
+		blueprint_source_url+=".json"
+		_blueprint_update_debug "-> fixed source_url: ${blueprint_source_url}"
 
-	_blueprint_update_debug "-> download blueprint"
-	wget -q -O "${_tempfile}" "${blueprint_source_url}"
-	wget_result=$?
-	if [ "${wget_result}" != "0" ]
-	then
-		echo "-! something went wrong while downloading, exiting..."
-		exit
+		_blueprint_update_debug "-> download blueprint"
+		wget -q -O "${_tempfile}" "${blueprint_source_url}"
+		wget_result=$?
+		if [ "${wget_result}" != "0" ]
+		then
+			echo "-! something went wrong while downloading, exiting..."
+			exit
+		fi
+
+		# find code block with lang-yaml or with auto (so none?)
+		if [ "$(cat "${_tempfile}" | jq -r '.post_stream.posts[0].cooked' | grep '<code class=\"lang-yaml\">')" != "" ]
+		then
+			_blueprint_update_debug "-> found a lang-yaml code-block"
+
+			_blueprint_update_debug "-> extracting the blueprint"
+			code="$(cat "${_tempfile}" | jq '.post_stream.posts[0].cooked' | sed -e s/'.*<code class=\\\"lang-yaml\\\">'/''/ -e s/'<\/code>.*'/''/)"
+
+			_blueprint_update_debug "-> saving the blueprint in the temp file"
+			echo -e "code: ${code}" > "${_tempfile}"
+
+			cat "${_tempfile}"
+
+		else
+			echo "-! couldn't find a lang-yaml code-block, exiting..."
+			continue
+		fi
+	else
+		# check filename is the same
+		if [ "$(basename "${file}")" != "$(basename "${blueprint_source_url}")" ]
+		then
+			echo "-! non-matching filename"
+			_blueprint_update_debug "-! [$(basename "${file}")] != [$(basename "${blueprint_source_url}")]"
+			echo
+			continue
+		fi
+
+		_blueprint_update_debug "-> download blueprint"
+		wget -q -O "${_tempfile}" "${blueprint_source_url}"
+		wget_result=$?
+		if [ "${wget_result}" != "0" ]
+		then
+			echo "-! something went wrong while downloading, exiting..."
+			exit
+		fi
 	fi
 
 	# insert the custom url, if it was in the original, and is not in the newly downloaded file
@@ -173,5 +209,4 @@ if [ -f "${_tempfile}" ]
 then
 	rm "${_tempfile}"
 fi
-
 echo "Process Completed"

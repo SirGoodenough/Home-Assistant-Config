@@ -2,7 +2,7 @@ blueprint:
   name: Schlage Lock Actions
   description: Perform action based on code slot that unlocked door
   domain: automation
-  source_url: https://community.home-assistant.io/t/zwave-js-schlage-lock-user-code-actions/280538
+  source_url: https://community.home-assistant.io/t/zwave-js-schlage-lock-user-code-actions/280538/10
   input:
     schlage_lock:
       name: Schlage Lock
