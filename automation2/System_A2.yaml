@@ -240,3 +240,18 @@
     target:
       entity_id: switch.sonoff_1000dbf4a6_1
   mode: single
+
+####################################################
+# check for blueprint updates                      #
+####################################################
+# - id: 28062904-bd08-44fc-9021-13d8ad4aa054
+#   alias: _Blueprints Update
+#   description: ""
+#   trigger:
+#     - platform: time_pattern
+#       hours: "3"
+#   condition: []
+#   action:
+#     - service: shell_command.blueprints_update
+#       data: {}
+#   mode: single
