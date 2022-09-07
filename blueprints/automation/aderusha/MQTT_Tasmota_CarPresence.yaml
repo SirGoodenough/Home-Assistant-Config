@@ -15,7 +15,7 @@ blueprint:
       selector:
         entity:
           domain: switch
-  source_url: https://github.com/aderusha/MQTTCarPresence/blob/master/MQTT_Tasmota_CarPresence.yaml
+  source_url: custom-https://github.com/aderusha/MQTTCarPresence/blob/master/MQTT_Tasmota_CarPresence.yaml
 mode: single
 trigger:
 - platform: state

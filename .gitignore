@@ -24,6 +24,8 @@ s -lovelace## Ignore all
 !/switch2/*.yaml
 !/sensor2/
 !/sensor2/*.yaml
+!/scriptshell/
+!/scriptshell/blueprints_update.sh
 !/scripts/
 !/scripts/*.yaml
 !/templates/
