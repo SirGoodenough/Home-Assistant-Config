@@ -5,10 +5,12 @@
   page_drzzs:
     alias: Page DrZzs
     sequence:
-    - service: webhook_service.basic_webhook
-      data:
-        webhook: !secret DrZzsPage
-        json: '1'
+    # - service: webhook_service.basic_webhook
+    #   data:
+    #     webhook: !secret DrZzsPage
+    #     data: {text":"SG Says HI}
+    - service: shell_command.drzzs_page
+      data: {"message":"{{Hello Doc}}"}
 
 ####################################################
 # Make EZButtons:                                  #

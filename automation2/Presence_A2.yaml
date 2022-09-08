@@ -93,6 +93,6 @@
     - alias: "Notify phone(s)"
       service: notify.message_dad
       data:
-        message: "I spy, with my little eye, {{ trigger.data }}"
+        message: "{{ trigger.json.message }}"
     - service: script.tts_say_person_cottage
   mode: single
