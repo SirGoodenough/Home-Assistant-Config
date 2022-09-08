@@ -8,9 +8,9 @@
     # - service: webhook_service.basic_webhook
     #   data:
     #     webhook: !secret DrZzsPage
-    #     data: {text":"SG Says HI}
+    #     data: {"message":"Hello Doc"}
     - service: shell_command.drzzs_page
-      data: {"message":"{{Hello Doc}}"}
+      data: {"message":"Hello Doc"}
 
 ####################################################
 # Make EZButtons:                                  #
