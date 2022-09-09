@@ -43,36 +43,43 @@ function _blueprint_update_debug
 	fi
 }
 
+# print info function
+function _blueprint_update_info
+{
+	echo "$@"
+}
+
 # check for self-updates
-echo "> ${self_file}"
+_blueprint_update_info "> ${self_file}"
 wget -q -O "${_tempfile}" "${self_source_url}"
 wget_result=$?
 if [ "${wget_result}" != "0" ]
 then
-	echo "! something went wrong while downloading, exiting..."
+	_blueprint_update_info "! something went wrong while downloading, exiting..."
+	_blueprint_update_info
 	exit
 fi
 self_diff=$(diff "${self_file}" "${_tempfile}")
 if [ "${self_diff}" == "" ]
 then
-	echo "-> self up-2-date"
+	_blueprint_update_info "-> self up-2-date"
 else
 	if [ "${_do_update}" == "true" ]
 	then
 		cp "${_tempfile}" "${self_file}"
 		chmod +x "${self_file}"
-		echo "-! self updated!"
+		_blueprint_update_info "-! self updated!"
 	else
-		echo "-! self changed!"
+		_blueprint_update_info "-! self changed!"
 	fi
 fi
-echo
+_blueprint_update_info
 
 # check for blueprints updates
 cd /config/blueprints/
 find . -type f -name "*.yaml" -print0 | while read -d $'\0' file
 do
-	echo "> ${file}"
+	_blueprint_update_info "> ${file}"
 
 	# get source url from file
 	blueprint_source_url=$(grep source_url "${file}" | sed s/' *source_url: '//)
@@ -81,8 +88,8 @@ do
 	# check for a value in source_url
 	if [ "${blueprint_source_url}" == "" ]
 	then
-		echo "-! no source_url in file"
-		echo
+		_blueprint_update_info "-! no source_url in file"
+		_blueprint_update_info
 		continue
 	fi
 
@@ -90,8 +97,8 @@ do
 	custom_source_url=""
 	if [ "$(echo "${blueprint_source_url}" | grep '^custom-')" != "" ]
 	then
-		_blueprint_update_debug "-! custom source_url set"
-		custom_source_url="${blueprint_source_url}"
+		_blueprint_update_debug "-! remove custom- from source_url"
+		sed -i s/'source_url: custom-'/'source_url: '/ "${file}"
 		blueprint_source_url="$(echo "${blueprint_source_url}" | sed s/'^custom-'//)"
 	fi
 
@@ -124,11 +131,12 @@ do
 		wget_result=$?
 		if [ "${wget_result}" != "0" ]
 		then
-			echo "-! something went wrong while downloading, exiting..."
+			_blueprint_update_info "-! something went wrong while downloading, exiting..."
+			_blueprint_update_info
 			exit
 		fi
 
-		# find code block with lang-yaml or with auto (so none?)
+		# find code block with lang-yaml or lang-auto
 		if [ "$(cat "${_tempfile}" | jq -r '.post_stream.posts[0].cooked' | grep '<code class=\"lang-yaml\">')" != "" ]
 		then
 			_blueprint_update_debug "-> found a lang-yaml code-block"
@@ -137,22 +145,33 @@ do
 			code="$(cat "${_tempfile}" | jq '.post_stream.posts[0].cooked' | sed -e s/'.*<code class=\\\"lang-yaml\\\">'/''/ -e s/'<\/code>.*'/''/)"
 
 			_blueprint_update_debug "-> saving the blueprint in the temp file"
-			echo -e "code: ${code}" > "${_tempfile}"
+			echo -e "${code}" > "${_tempfile}"
 
 			cat "${_tempfile}"
+		elif [ "$(cat "${_tempfile}" | jq -r '.post_stream.posts[0].cooked' | grep '<code class=\"lang-auto\">')" != "" ]
+		then
+			_blueprint_update_debug "-> found a lang-auto code-block"
 
+			_blueprint_update_debug "-> extracting the blueprint"
+			code="$(cat "${_tempfile}" | jq '.post_stream.posts[0].cooked' | sed -e s/'.*<code class=\\\"lang-auto\\\">'/''/ -e s/'<\/code>.*'/''/)"
+
+			_blueprint_update_debug "-> saving the blueprint in the temp file"
+			echo -e "${code}" > "${_tempfile}"
+
+			cat "${_tempfile}"
 		else
-			echo "-! couldn't find a lang-yaml code-block, exiting..."
+			_blueprint_update_info "-! couldn't find a lang-yaml or lang-auto code-block, skipping..."
+			_blueprint_update_info
 			continue
 		fi
 	else
 		# check filename is the same
 		if [ "$(basename "${file}")" != "$(basename "${blueprint_source_url}")" ]
 		then
-			echo "-! non-matching filename"
+			_blueprint_update_info "-! non-matching filename"
 			_blueprint_update_debug "-! [$(basename "${file}")] != [$(basename "${blueprint_source_url}")]"
-			echo
-			continue
+			_blueprint_update_info
+			#continue
 		fi
 
 		_blueprint_update_debug "-> download blueprint"
@@ -160,53 +179,45 @@ do
 		wget_result=$?
 		if [ "${wget_result}" != "0" ]
 		then
-			echo "-! something went wrong while downloading, exiting..."
+			_blueprint_update_info "-! something went wrong while downloading, exiting..."
+			_blueprint_update_info
 			exit
 		fi
 	fi
 
-	# insert the custom url, if it was in the original, and is not in the newly downloaded file
-	if [ "${custom_source_url}" != "" ]
+	# check for source_url in the new source file
+	new_blueprint_source_url=$(grep source_url "${_tempfile}" | sed s/' *source_url: '//)
+	if [ "${new_blueprint_source_url}" == "" ]
 	then
-		# check for source_url in the new source file
-		new_blueprint_source_url=$(grep source_url "${_tempfile}" | sed s/' *source_url: '//)
-
-		if [ "${new_blueprint_source_url}" == "" ]
-		then
-			_blueprint_update_debug "-! re-insert custom-url"
-			sed -i "s;blueprint:;blueprint:\n  source_url: ${custom_source_url};" "${_tempfile}"
-		else
-			echo "-! there is now a source_url in the blueprint"
-			echo "-! switched from [${blueprint_source_url}] to [${new_blueprint_source_url}]"
-		fi
+		_blueprint_update_debug "-! re-insert source_url"
+		sed -i "s;blueprint:;blueprint:\n  source_url: ${custom_source_url};" "${_tempfile}"
 	fi
 
 	_blueprint_update_debug "-> compare blueprints"
 	blueprint_diff=$(diff "${file}" "${_tempfile}")
 	if [ "${blueprint_diff}" == "" ]
 	then
-		echo "-> blueprint up-2-date"
+		_blueprint_update_info "-> blueprint up-2-date"
 	else
 		if [ "${_do_update}" == "true" ]
 		then
 			cp "${_tempfile}" "${file}"
 			need_reload="1"
-			echo "-! blueprint updated!"
+			_blueprint_update_info "-! blueprint updated!"
 		else
-			echo "-! blueprint changed!"
+			_blueprint_update_info "-! blueprint changed!"
 		fi
 	fi
 
-	echo
+	_blueprint_update_info
 done
 
 if [ "${need_reload}" == "1" ]
 then
-	echo "! there were updates, you should reload home assistant !"
+	_blueprint_update_info "! there were updates, you should reload home assistant !"
 fi
 
 if [ -f "${_tempfile}" ]
 then
 	rm "${_tempfile}"
 fi
-echo "Process Completed"
