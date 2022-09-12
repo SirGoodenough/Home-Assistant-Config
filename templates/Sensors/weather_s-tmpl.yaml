@@ -10,3 +10,5 @@
       {% else %}
         down
       {% endif %}
+    attributes:
+      friendly_name: "Sun State"

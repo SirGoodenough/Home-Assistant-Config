@@ -1,5 +1,6 @@
 - sensor:
-  - unique_id: lock_back_door_mode
+  - name: "Lock Back Door Mode"
+    unique_id: a54df078-9846-4dbd-aac5-7a733a3db22a
     attributes:
       friendly_name: "Lock Back Door Mode"
     icon: >-
