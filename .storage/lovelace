@@ -133,7 +133,7 @@
                   "entity": "lock.front_door_lock"
                 },
                 {
-                  "entity": "sensor.rm02_last_action"
+                  "entity": "input_button.mady_mute_lr_speaker"
                 },
                 {
                   "entity": "light.mom_light"
@@ -148,19 +148,19 @@
                   "entity": "button.moms_button3"
                 },
                 {
+                  "entity": "button.moms_button1"
+                },
+                {
                   "entity": "light.stairway_switch"
                 },
                 {
                   "entity": "light.stairway_light"
                 },
                 {
-                  "entity": "light.fp_socket"
-                },
-                {
-                  "entity": "button.moms_button1"
-                },
-                {
                   "entity": "binary_sensor.front_door_open_433"
+                },
+                {
+                  "entity": "light.fp_socket"
                 },
                 {
                   "entity": "binary_sensor.upstairs_pir"
@@ -173,6 +173,9 @@
                 },
                 {
                   "entity": "switch.outside_christmas"
+                },
+                {
+                  "entity": "sensor.rm02_last_action"
                 }
               ],
               "show_header_toggle": true,

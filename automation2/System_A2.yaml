@@ -118,17 +118,9 @@
         topic: Outside/cmnd/EVENT
         payload: "DARK"
         retain: true
-    - alias: Make sure ChromeCast is on
-      service: switch.turn_on
-      entity_id: switch.chromecast
     - alias: Make sure Dust Collector is off
       service: switch.turn_off
       entity_id: switch.dust_collector
-    - alias: Make sure Bathroom is not Muted
-      service: script.google_mute
-      data:
-        status: false
-        entities: media_player.bathroom_speaker
 
 ####################################################
 # Restart Eldrad if it stops Pinging               #
