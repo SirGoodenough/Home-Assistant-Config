@@ -38,14 +38,15 @@
         data:
           entity_id: "{{ entities }}"
           media_content_id: >
-            {% if status  == 'true' %}
+            {% if status  == true %}
               {# Tell speaker it's about to go silent #}
-              "media-source://media_source/local/mp3/shh.mp3"
+              media-source://media_source/local/mp3/shhh.mp3
             {% else %} 
               {# When turning speaker back on #}
-              "media-source://media_source/local/mp3/MicrowaveBeep.mp3"
+              media-source://media_source/local/mp3/MicrowaveBeep.mp3
             {% endif %}
           media_content_type: audio/mp3
+      - delay: 00:00:02
       - alias: Set status to boolean true to mute me, false to unmute me 
         service: media_player.volume_mute
         target:

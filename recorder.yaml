@@ -11,6 +11,10 @@
       - climate
       - fan
       - generic_hygrostat
+      - input_button
+      - input_boolean
+      - input_number
+      - input_select
       - life360
       - light
       - lock
