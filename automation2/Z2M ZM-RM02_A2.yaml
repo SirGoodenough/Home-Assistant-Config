@@ -53,10 +53,9 @@
           target:
             entity_id: button.moms_call_button
       doubletap_6:
-        - service: button.press
-          data: {}
+        - service: input_button.press
           target:
-            entity_id: input_button.mady_mute_lr_speaker 
+            entity_id: input_button.mady_mute_lr_speaker
       hold_6:
         - alias: Unmute LR Speaker
           service: script.google_mute
