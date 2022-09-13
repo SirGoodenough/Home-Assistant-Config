@@ -440,27 +440,6 @@
                   "service_data": {},
                   "target": {}
                 },
-                "entity": "binary_sensor.battery_low_backdoor",
-                "name": "BackDoor Battery",
-                "icon": "mdi:battery-alert-variant-outline"
-              }
-            },
-            {
-              "type": "conditional",
-              "conditions": [
-                {
-                  "entity": "binary_sensor.battery_low_back_door",
-                  "state": "on"
-                }
-              ],
-              "card": {
-                "type": "button",
-                "tap_action": {
-                  "action": "call-service",
-                  "service": "python_script.battery_clear",
-                  "service_data": {},
-                  "target": {}
-                },
                 "entity": "binary_sensor.battery_low_back_door",
                 "name": "Back Door Battery",
                 "icon": "mdi:battery-alert-variant-outline"
@@ -4324,6 +4303,124 @@
               "type": "entities"
             },
             {
+              "type": "grid",
+              "cards": [
+                {
+                  "hours_to_show": 24,
+                  "graph": "none",
+                  "type": "sensor",
+                  "entity": "sensor.aut2b25d3af_e1ba_4e83_beee_3e289f73807comation_count",
+                  "name": "Automat",
+                  "icon": "mdi:check-bold",
+                  "detail": 1
+                },
+                {
+                  "hours_to_show": 24,
+                  "graph": "none",
+                  "type": "sensor",
+                  "entity": "sensor.binary_sensor_count",
+                  "name": "BinarySens",
+                  "icon": "mdi:check-bold",
+                  "detail": 1
+                },
+                {
+                  "hours_to_show": 24,
+                  "graph": "none",
+                  "type": "sensor",
+                  "entity": "sensor.camera_count",
+                  "name": "Cameras",
+                  "icon": "mdi:check-bold",
+                  "detail": 1
+                },
+                {
+                  "hours_to_show": 24,
+                  "graph": "none",
+                  "type": "sensor",
+                  "entity": "sensor.entities_count",
+                  "name": "Entitys",
+                  "icon": "mdi:check-bold",
+                  "detail": 1
+                },
+                {
+                  "hours_to_show": 24,
+                  "graph": "none",
+                  "type": "sensor",
+                  "entity": "sensor.group_count",
+                  "name": "Groups",
+                  "icon": "mdi:check-bold",
+                  "detail": 1
+                },
+                {
+                  "hours_to_show": 24,
+                  "graph": "none",
+                  "type": "sensor",
+                  "entity": "sensor.lights_count",
+                  "name": "Lights",
+                  "icon": "mdi:check-bold",
+                  "detail": 1
+                },
+                {
+                  "hours_to_show": 24,
+                  "graph": "none",
+                  "type": "sensor",
+                  "entity": "sensor.media_player_count",
+                  "name": "MediaPlay",
+                  "icon": "mdi:check-bold",
+                  "detail": 1
+                },
+                {
+                  "hours_to_show": 24,
+                  "graph": "none",
+                  "type": "sensor",
+                  "entity": "sensor.script_count",
+                  "name": "Scripts",
+                  "icon": "mdi:check-bold",
+                  "detail": 1
+                },
+                {
+                  "hours_to_show": 24,
+                  "graph": "none",
+                  "type": "sensor",
+                  "entity": "sensor.switch_count",
+                  "name": "Switches",
+                  "icon": "mdi:check-bold",
+                  "detail": 1
+                },
+                {
+                  "hours_to_show": 24,
+                  "graph": "none",
+                  "type": "sensor",
+                  "entity": "sensor.button_count",
+                  "name": "Buttons",
+                  "icon": "mdi:check-bold",
+                  "detail": 1
+                },
+                {
+                  "hours_to_show": 24,
+                  "graph": "none",
+                  "type": "sensor",
+                  "entity": "sensor.inputs_count",
+                  "name": "Helpers",
+                  "icon": "mdi:check-bold",
+                  "detail": 1
+                },
+                {
+                  "hours_to_show": 24,
+                  "graph": "none",
+                  "type": "sensor",
+                  "entity": "sensor.sensor_count",
+                  "name": "Sensors",
+                  "icon": "mdi:check-bold",
+                  "detail": 1
+                },
+                {
+                  "type": "entity",
+                  "entity": "sensor.template_count"
+                }
+              ],
+              "square": false
+            },
+            {
               "entities": [
                 {
                   "entity": "automation.in_christmas"
@@ -4442,88 +4539,6 @@
               "title": "rassilon.mountcadon.duckdns.org"
             },
             {
-              "type": "grid",
-              "cards": [
-                {
-                  "type": "sensor",
-                  "entity": "sensor.template_automation_count",
-                  "name": "Automat",
-                  "icon": "mdi:check-bold"
-                },
-                {
-                  "type": "sensor",
-                  "entity": "sensor.template_binary_sensor_count",
-                  "name": "BinarySens",
-                  "icon": "mdi:check-bold"
-                },
-                {
-                  "type": "sensor",
-                  "entity": "sensor.template_camera_count",
-                  "name": "Cameras",
-                  "icon": "mdi:check-bold"
-                },
-                {
-                  "type": "sensor",
-                  "entity": "sensor.template_entities_count",
-                  "name": "Entitys",
-                  "icon": "mdi:check-bold"
-                },
-                {
-                  "type": "sensor",
-                  "entity": "sensor.template_group_count",
-                  "name": "Groups",
-                  "icon": "mdi:check-bold"
-                },
-                {
-                  "type": "sensor",
-                  "entity": "sensor.template_lights_count",
-                  "name": "Lights",
-                  "icon": "mdi:check-bold"
-                },
-                {
-                  "type": "sensor",
-                  "entity": "sensor.template_media_player_count",
-                  "name": "MediaPlay",
-                  "icon": "mdi:check-bold"
-                },
-                {
-                  "type": "sensor",
-                  "entity": "sensor.template_script_count",
-                  "name": "Scripts",
-                  "icon": "mdi:check-bold"
-                },
-                {
-                  "type": "sensor",
-                  "entity": "sensor.template_switch_count",
-                  "name": "Switches",
-                  "icon": "mdi:check-bold"
-                },
-                {
-                  "type": "sensor",
-                  "entity": "sensor.template_button_count",
-                  "name": "Buttons",
-                  "icon": "mdi:check-bold"
-                },
-                {
-                  "type": "sensor",
-                  "entity": "sensor.template_inputs_count",
-                  "name": "Helpers",
-                  "icon": "mdi:check-bold"
-                },
-                {
-                  "type": "sensor",
-                  "entity": "sensor.template_sensor_count",
-                  "name": "Sensors",
-                  "icon": "mdi:check-bold"
-                },
-                {
-                  "type": "entity",
-                  "entity": "sensor.template_template_count"
-                }
-              ],
-              "square": false
-            },
-            {
               "type": "button",
               "tap_action": {
                 "action": "call-service",
@@ -4535,6 +4550,16 @@
               "name": "Page DrZzs JIM ONLY",
               "icon": "mdi:youtube",
               "icon_height": "40px"
+            },
+            {
+              "entities": [
+                {
+                  "entity": "input_select.doc_messages"
+                }
+              ],
+              "show_header_toggle": false,
+              "title": "Doc Alert",
+              "type": "entities"
             }
           ],
           "icon": "mdi:brain",

@@ -2,7 +2,7 @@
   ####################################################
   #  HA Sensors courtesy Thanasis:                   #
   ####################################################
-  - name: aut2b25d3af-e1ba-4e83-beee-3e289f73807comation_count
+  - name: automation_count
     unique_id: e18ffcab-82ef-43ed-8e55-e3643e361716
     state: '{{ states.automation | count }}'
     attributes:
