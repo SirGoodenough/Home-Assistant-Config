@@ -1,18 +1,5 @@
 ---
 ####################################################
-# Page DrZzs                                       #
-####################################################
-  page_drzzs:
-    alias: Page DrZzs
-    sequence:
-    # - service: webhook_service.basic_webhook
-    #   data:
-    #     webhook: !secret DrZzsPage
-    #     data: {"message":"Hello Doc"}
-    - service: shell_command.drzzs_page
-      data: {"message":"Hello Doc"}
-
-####################################################
 # Make EZButtons:                                  #
 ####################################################
   tasmota_ez_button_for_update_and_restart_all_2022_01_07a:
@@ -53,3 +40,22 @@
           entity_id: "{{ entities }}"
         data:
           is_volume_muted: "{{ status }}"
+
+####################################################
+# Page DrZzs                                       #
+####################################################
+  page_drzzs:
+    alias: Page DrZzs
+    sequence:
+    # - service: webhook_service.basic_webhook
+    #   data:
+    #     webhook: !secret DrZzsPage
+    #     data: {"message":"Hello Doc"}
+    - service: shell_command.drzzs_page
+      data: {"message":"Hello Doc"}
+
+  message_test:
+    alias: Page DrZzs
+    sequence:
+    - service: shell_command.test_message
+      data: {"message":"Check Chat"}
