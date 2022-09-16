@@ -2,7 +2,7 @@
   #####################################################
   # Batteries                                         #
   #####################################################
-  - name: "Battery Back Front Door Inside"
+  - name: "Battery RF433 Back Front Door Inside"
     unique_id: 848d9a20-9360-445e-b087-0c17cacb0e0f
     device_class: battery
     state_topic: rf433/BatteryLowBackDoorI
@@ -13,7 +13,7 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - name: "Battery Low Bathroom"
+  - name: "Battery Low RF433 Bathroom"
     unique_id: 800cefaf-fa24-41c6-94b5-8694e9a22fe9
     device_class: battery
     state_topic: rf433/BatteryLowBathroom
@@ -24,7 +24,7 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - name: "Battery Low Back Door"
+  - name: "Battery Low RF433 Back Door"
     unique_id: b58a62e0-7e2c-4544-9ec9-2ed84764ca7a
     device_class: battery
     state_topic: rf433/BatteryLowBackDoorI
@@ -35,7 +35,7 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - name: "Battery Low Bedroom Door"
+  - name: "Battery Low RF433 Bedroom Door"
     unique_id: c3079644-f07a-4f96-abe5-829f92c65cd6
     device_class: battery
     state_topic: rf433/BatteryLowBedroom
@@ -46,7 +46,7 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - name: "Battery Low Front Door Inside"
+  - name: "Battery Low RF433 Front Door Inside"
     unique_id: 9c2e6cac-957d-47ea-bdbd-8763e0c28f68
     device_class: battery
     state_topic: rf433/BatteryLowFrontDoorI
@@ -57,7 +57,7 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - name: "Battery Low Garage Door"
+  - name: "Battery Low RF433 Garage Door"
     unique_id: 6a9dfbd5-ef86-4b93-80b8-f8939469de6e
     device_class: battery
     state_topic: rf433/BatteryLowGarageC
@@ -68,7 +68,7 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - name: "Battery Low Garage Door Open"
+  - name: "Battery Low RF433 Garage Door Open"
     unique_id: 98d1141c-3165-48b8-a505-6558f4b727ac
     device_class: battery
     state_topic: rf433/BatteryLowGarageO
@@ -79,7 +79,7 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - name: "Battery Low Garage Side Door"
+  - name: "Battery Low RF433 Garage Side Door"
     unique_id: 83b2b207-2d1f-4064-863c-e1586b13fb39
     device_class: battery
     state_topic: rf433/BatteryLowGarageSide
@@ -90,7 +90,7 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - name: "Battery Low Mailbox"
+  - name: "Battery Low RF433 Mailbox"
     unique_id: 93c8dee0-4ca4-48a8-bb5a-e9a8a70f500b
     device_class: battery
     state_topic: rf433/BatteryLowMailbox
@@ -101,7 +101,7 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - name: "Battery Low Side Door Inside"
+  - name: "Battery Low RF433 Side Door Inside"
     unique_id: a2608212-066d-43ab-b27c-013c5ba7c3a0
     device_class: battery
     state_topic: rf433/BatteryLowSideDoorI

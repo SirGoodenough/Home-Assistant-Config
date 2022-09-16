@@ -370,6 +370,8 @@
                 }
               ],
               "card": {
+                "show_name": true,
+                "show_icon": true,
                 "type": "button",
                 "tap_action": {
                   "action": "call-service",
@@ -378,7 +380,7 @@
                   "target": {}
                 },
                 "entity": "binary_sensor.battery_low_mailbox",
-                "name": "MailBox Battery",
+                "name": "MailBox Battery RF433",
                 "icon": "mdi:battery-alert-variant-outline"
               }
             },
@@ -391,6 +393,8 @@
                 }
               ],
               "card": {
+                "show_name": true,
+                "show_icon": true,
                 "type": "button",
                 "tap_action": {
                   "action": "call-service",
@@ -399,7 +403,7 @@
                   "target": {}
                 },
                 "entity": "binary_sensor.battery_low_side_door_inside",
-                "name": "Side Door Battery",
+                "name": "Side Door Battery RF433",
                 "icon": "mdi:battery-alert-variant-outline"
               }
             },
@@ -412,6 +416,8 @@
                 }
               ],
               "card": {
+                "show_name": true,
+                "show_icon": true,
                 "type": "button",
                 "tap_action": {
                   "action": "call-service",
@@ -420,7 +426,7 @@
                   "target": {}
                 },
                 "entity": "binary_sensor.battery_low_bedroom_door",
-                "name": "Bathroom Battery",
+                "name": "Bathroom Battery RF433",
                 "icon": "mdi:battery-alert-variant-outline"
               }
             },
@@ -433,6 +439,8 @@
                 }
               ],
               "card": {
+                "show_name": true,
+                "show_icon": true,
                 "type": "button",
                 "tap_action": {
                   "action": "call-service",
@@ -441,7 +449,7 @@
                   "target": {}
                 },
                 "entity": "binary_sensor.battery_low_back_door",
-                "name": "Back Door Battery",
+                "name": "Back Door Battery RF433",
                 "icon": "mdi:battery-alert-variant-outline"
               }
             },
@@ -454,6 +462,8 @@
                 }
               ],
               "card": {
+                "show_name": true,
+                "show_icon": true,
                 "type": "button",
                 "tap_action": {
                   "action": "call-service",
@@ -462,7 +472,7 @@
                   "target": {}
                 },
                 "entity": "binary_sensor.battery_low_front_door_inside",
-                "name": "Front Door Battery",
+                "name": "Front Door Inside Battery RF433",
                 "icon": "mdi:battery-alert-variant-outline"
               }
             },
@@ -475,6 +485,8 @@
                 }
               ],
               "card": {
+                "show_name": true,
+                "show_icon": true,
                 "type": "button",
                 "tap_action": {
                   "action": "call-service",
@@ -483,7 +495,7 @@
                   "target": {}
                 },
                 "entity": "binary_sensor.battery_low_garage_door",
-                "name": "Garage Door Closed Battery",
+                "name": "Garage Door Closed Battery RF433",
                 "icon": "mdi:battery-alert-variant-outline"
               }
             },
@@ -496,6 +508,8 @@
                 }
               ],
               "card": {
+                "show_name": true,
+                "show_icon": true,
                 "type": "button",
                 "tap_action": {
                   "action": "call-service",
@@ -504,7 +518,7 @@
                   "target": {}
                 },
                 "entity": "binary_sensor.battery_low_garage_door_open",
-                "name": "Garage Door Open Battery",
+                "name": "Garage Door Open Battery RF433",
                 "icon": "mdi:battery-alert-variant-outline"
               }
             },
@@ -517,6 +531,8 @@
                 }
               ],
               "card": {
+                "show_name": true,
+                "show_icon": true,
                 "type": "button",
                 "tap_action": {
                   "action": "call-service",
@@ -525,7 +541,7 @@
                   "target": {}
                 },
                 "entity": "binary_sensor.battery_low_bathroom",
-                "name": "Bathroom Battery",
+                "name": "Bathroom Battery RF433",
                 "icon": "mdi:battery-alert-variant-outline"
               }
             },
@@ -623,7 +639,7 @@
                 "tap_action": {
                   "action": "more-info"
                 },
-                "entity": "sensor.yertle_voltage",
+                "entity": "sensor.yertle_battery",
                 "name": "Yertle Low Battery",
                 "icon": "mdi:battery-check-outline",
                 "show_state": true,
