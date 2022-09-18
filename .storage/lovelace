@@ -1279,10 +1279,11 @@
               "theme": "Animated Weather Card"
             },
             {
-              "type": "sensor",
-              "entity": "sensor.jen_temperature_temperature",
+              "hours_to_show": 24,
               "graph": "line",
-              "detail": 1,
+              "type": "sensor",
+              "entity": "sensor.jen_temp",
+              "detail": 2,
               "name": "Jen Temperature Graph 24 hrs."
             },
             {
