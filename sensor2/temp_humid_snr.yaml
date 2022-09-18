@@ -121,3 +121,19 @@
       - filter: outlier
         window_size: 4 # Number of states in filter
         radius: 5.0 # Difference from mean
+
+  - platform: filter
+    name: "Jen Temp"
+    entity_id: sensor.jen_temperature_temperature
+    filters:
+      - filter: outlier
+        window_size: 4 # Number of states in filter
+        radius: 10.0 # Difference from mean
+
+  - platform: filter
+    name: "Jen Humid"
+    entity_id: sensor.jen_temperature_humidity
+    filters:
+      - filter: outlier
+        window_size: 4 # Number of states in filter
+        radius: 5.0 # Difference from mean

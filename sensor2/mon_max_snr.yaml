@@ -11,4 +11,4 @@
       - sensor.furnace_return_humid
       - sensor.livingroom_humid
       - sensor.kitchen_humid
-      - sensor.jen_temperature_humidity
+      - sensor.jen_humid

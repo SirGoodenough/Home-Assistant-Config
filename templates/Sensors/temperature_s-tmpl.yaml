@@ -39,11 +39,11 @@
   - name: BRthermostat
     unique_id: 850df15c-a1fb-4832-a29e-18fcaf3d3b61
     state: "{{ state_attr('climate.gemodule5384_window_ac', 'current_temperature') }}"
-    unit_of_measurement: "°F"
     availability: >
       {% set items = ['climate.gemodule5384_window_ac'] %}
       {{ expand(items)|rejectattr('state','in',['unknown','unavailable'])
         |list|count == items|count }}
+    unit_of_measurement: "°F"
     icon: "mdi:thermostat-box"
     attributes:
       friendly_name: BRthermostat
@@ -62,6 +62,10 @@
   - name: "Humidity NET"
     unique_id: f568315c-fff5-4dfd-94fe-a19778b7368b
     state: "{{ states('sensor.house_humidity_main') | float(41) }}"
+    availability: >
+      {% set items = ['sensor.house_humidity_main'] %}
+      {{ expand(items)|rejectattr('state','in',['unknown','unavailable'])
+        |list|count == items|count }}
     device_class: humidity
     icon: "mdi:waves-arrow-up"
     attributes:
