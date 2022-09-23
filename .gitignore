@@ -89,6 +89,7 @@ s -lovelace## Ignore all
 !LICENSE
 
 ############# Failsafe  \/ \/ \/ \/ \/ #############
+remote_cmd.yaml
 secrets.yaml
 shell_command.yaml
 **/test.yaml
