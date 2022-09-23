@@ -57,7 +57,7 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - name: "Battery Low RF433 Garage Door"
+  - name: "Battery Low RF433 Garage Door Closed"
     unique_id: 6a9dfbd5-ef86-4b93-80b8-f8939469de6e
     device_class: battery
     state_topic: rf433/BatteryLowGarageC
