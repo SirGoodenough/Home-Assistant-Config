@@ -10,14 +10,19 @@
         "id": "broadcom_rm3_reset"
       },
       {
+        "id": "restart_eldrad",
         "name": "restart Eldrad",
-        "icon": "mdi:reload",
-        "id": "restart_eldrad"
+        "icon": "mdi:restart-alert"
       },
       {
         "name": "Mady Mute LR Speaker",
         "icon": "mdi:volume-off",
         "id": "mady_mute_lr_speaker"
+      },
+      {
+        "id": "luton_reset",
+        "name": "restart Luton",
+        "icon": "mdi:restart-alert"
       }
     ]
   }
