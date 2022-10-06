@@ -4587,7 +4587,29 @@
           "icon": "mdi:youtube",
           "theme": "dark_red",
           "badges": [],
-          "cards": []
+          "cards": [
+            {
+              "type": "entities",
+              "entities": [
+                "sensor.temperature_1",
+                "sensor.temperature_10",
+                "sensor.temperature_11",
+                "sensor.temperature_12",
+                "sensor.temperature_13",
+                "sensor.temperature_14",
+                "sensor.temperature_15",
+                "sensor.temperature_2",
+                "sensor.temperature_3",
+                "sensor.temperature_4",
+                "sensor.temperature_5",
+                "sensor.temperature_6",
+                "sensor.temperature_7",
+                "sensor.temperature_8",
+                "sensor.temperature_9"
+              ],
+              "title": "ThermoPI Cottage"
+            }
+          ]
         },
         {
           "icon": "mdi:calendar-check",
