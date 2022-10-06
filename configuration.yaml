@@ -38,7 +38,7 @@ timer: !include timer.yaml
 usb:
 webhook:
 zeroconf:
-zone:
+zone: !include zones.yaml
 
 # All the other stuff not covered in the default_config:
 
