@@ -30,23 +30,19 @@ Also feel free to check out the code segments and Blueprints that I have on my G
 
 What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
 
-Channel Link URL: (WhatAreWeFixingToday) https://bit.ly/WhatAreWeFixingTodaysYT
+Channel Link URL: (WhatAreWeFixingToday): https://bit.ly/WhatAreWeFixingTodaysYT
 
 What are we Fixing Today Facebook page (Sir GoodEnough): https://bit.ly/WhatAreWeFixingTodaybFB
 
 What are we Fixing Today Twitter Account (Sir GoodEnough): https://bit.ly/WhatAreWeFixingTodayTW
 
-Discord Guild: (Sir_Goodenough#9683) https://discord.gg/Uhmhu3B
+Discord Guild: (Sir_Goodenough#9683): https://discord.gg/Uhmhu3B
 
 ## 🧀 If you want to support me
 
 Buy me Coffee: https://www.buymeacoffee.com/SirGoodenough
 
 PayPal one-off donation link: https://www.paypal.me/SirGoodenough
-
-Cash App \$CASHTAG: https://cash.me/$SirGoodenough
-
-Venmo cash link: https://venmo.com/SirGoodenough
 
 #WhatAreWeFixingToday
 
@@ -61,21 +57,23 @@ If your device connects to mains electricity (AC power) there is danger of elect
 
 We don't take any responsibility nor liability for using this software nor for the installation or any tips, advice, videos, etc. given by any member of this site or any related site.
 
-## 🌐 All My Blueprints
+# 🌐 All My Blueprints
 
 [Link to ALL my Blueprints](https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md)
 
 Here is a list of each of my blueprints, a quick description and jump links to the Blueprints Exchange post...
 
-### 🌀 Scripts
+## 🌀 Scripts
 
 #### 🧯Broadlink on Script Blueprint
 
 https://community.home-assistant.io/t/script-blueprint-to-turn-my-tv-on-and-put-it-into-the-correct-mode-for-the-input-device-i-want/338755
 
+This is a SCRIPT Blueprint that uses my Broadlink RM3 to turn my TV on and get it into the correct mode, Pushes remote buttons in sequence.
+
 #### 🧯Tasmota EZ Button Blueprint
 
-This Script Blueprint generates 3 Buttons to help you manage your Tasmota installed base.  Restart All, Update a few, and Update all.
+This Script Blueprint generates 3 Buttons to help you manage your Tasmota installed base. Restart All, Update a few, and Update all.
 
 https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934
 
@@ -91,13 +89,13 @@ This script can use any of the 11 integrated TTS Platforms in Home Assistant to 
 
 https://community.home-assistant.io/t/tts-script-blueprint-for-all-11-ha-core-tts-flavors/400700
 
-### 🔃 Automations
+## 🔃 Automations
 
 #### 🧯Auto Fan Control Blueprint
 
-This Blueprint is for controlling a 3 speed fan based on a temperature sensor.  Intended for Ifan03/Ifan04 but useful other places.
+This Blueprint is for controlling a 3 speed fan based on a temperature sensor. Both fan% control & MQTT fan control versions.
 
-https://community.home-assistant.io/t/auto-fan-temperature-control-for-3-speed-fan-ifanxx-tasmota/326419
+https://community.home-assistant.io/t/auto-fan-temp-control-for-3-speed-fan-using-ha-fan-or-mqtt-integration/326419
 
 #### 🧯Door Open TTS Cloud-Say Message Blueprint
 
@@ -116,3 +114,10 @@ https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-be
 This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote.  
 
 https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203
+
+#### 🧯Zigbee2MQTT - ZemiSmart ZM-RM02 Controller Blueprint
+
+This Blueprint uses the Z2M (Zigbee2MQTT) imported Action sensor to sort out the 18 commands from the ZemiSmart ZM-RM02 Controller.
+
+https://community.home-assistant.io/t/zigbee2mqtt-zemismart-zm-rm02-controller/412650
+
