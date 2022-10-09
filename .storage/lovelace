@@ -3285,7 +3285,7 @@
               "camera_view": "live",
               "entities": [
                 {
-                  "entity": "sensor.octoprint_print_progress"
+                  "entity": "sensor.octoprint_approximate_completion_time"
                 }
               ],
               "entity": "script.show_tarantula_home_hub_video",

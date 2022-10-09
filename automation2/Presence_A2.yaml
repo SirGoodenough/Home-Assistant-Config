@@ -10,6 +10,18 @@
   action:
     service: script.tts_mama_left_katys
 
+- id: 3dfbb928-fed7-40d3-b8f3-adf761c55681
+  alias: Moms Arriving Katys
+  mode: queued
+  initial_state: on
+  trigger: 
+    platform: zone
+    entity_id: person.julie
+    zone: zone.katy_s_kloset
+    event: enter
+  action:
+    service: script.tts_mama_arrive_katys
+
 - id: e6f402c1-7d0e-4907-930d-5765a59785c5
   alias: Moms Home
   mode: queued
