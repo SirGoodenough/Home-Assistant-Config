@@ -41,3 +41,21 @@
       {% else %}
         false
       {% endif %}
+
+  - name: 'AC Enabled'
+    unique_id: f885f9fd-b280-439b-81f0-3fdd713393f5
+    state: >
+      {% if (
+        states('weather.home') | is_defined ) and
+        states('weather.home.attributes.temperature') | is_defined %}
+          {% set temp = 'weather.home.attributes.temperature' | int( 41 ) %}
+          {% if ( temp > 40 ) %}
+            true
+          {% else %}
+            false
+          {% endif %}
+      {% else %}
+        true
+      {% endif %}
+      {# This is using the MET integration for weather. Available conditions #}
+      {# https://github.com/home-assistant/core/blob/70648d6e3b42bb0910e33e5c6a4e1e8c0789d82c/homeassistant/components/met/const.py #}

@@ -56,8 +56,9 @@
       fan_on_time: '10:00:00'
       fan: fan.bedroom_fan
       loop_action:
-      - alias: "Start AirCon obly if off to prevent rate limit outages"
-        if: '{{ states(''climate.gemodule5384_window_ac'') == ''off'' }}'
+      - alias: "Start AirCon only if off to prevent rate limit outages"
+        if: '{{ states(''climate.gemodule5384_window_ac'') == ''off''
+          and states(''binary_sensor.ac_enabled'') == true }}'
         then:
           service: script.bedroom_ac_start
       - alias: Make sure the device is on before the temperature is set
@@ -98,7 +99,8 @@
       mqtt_fan_topic: Bedroom_Fan/cmnd/FanSpeed
       loop_action:
       - alias: "Start AirCon only if off to prevent rate limit outages"
-        if: '{{ states(''climate.gemodule5384_window_ac'') == ''off'' }}'
+        if: '{{ states(''climate.gemodule5384_window_ac'') == ''off''
+          and states(''binary_sensor.ac_enabled'') == true }}'
         then:
           service: script.bedroom_ac_start
       - delay: 00:00:05
@@ -140,7 +142,8 @@
       state: "on"
   action:
     - alias: "Start AirCon only if off to prevent rate limit outages"
-      if: '{{ states(''climate.gemodule5384_window_ac'') == ''off'' }}'
+      if: '{{ states(''climate.gemodule5384_window_ac'') == ''off''
+        and states(''binary_sensor.ac_enabled'') == true }}'
       then:
         service: script.bedroom_ac_start
     - alias: call bedroom control script
