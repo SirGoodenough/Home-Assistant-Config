@@ -39,7 +39,7 @@ tts_mama_left_katys:
       announcement_message: The Queen has left the closet.
   icon: mdi:badge-account
 tts_mama_arrive_katys:
-  alias: TTS Mama left Katys
+  alias: TTS Mama Arrived Katys
   use_blueprint:
     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
@@ -49,6 +49,30 @@ tts_mama_arrive_katys:
       speaker_target: media_player.intercom_group
       speaker_gender: female
       announcement_message: The Queen has entered the closet.
+  icon: mdi:badge-account
+tts_mama_left_belvas:
+  alias: TTS Mama left Belvas
+  use_blueprint:
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
+    input:
+      GTS_language: en
+      TTS: tts.cloud_say
+      cloud_language: en-GB
+      speaker_target: media_player.intercom_group
+      speaker_gender: female
+      announcement_message: The Queen has left Belva's.
+  icon: mdi:badge-account
+tts_mama_arrive_belvas:
+  alias: TTS Mama Arrives Belvas
+  use_blueprint:
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
+    input:
+      GTS_language: en
+      TTS: tts.cloud_say
+      cloud_language: en-GB
+      speaker_target: media_player.intercom_group
+      speaker_gender: female
+      announcement_message: The Queen is visiting Belva's.
   icon: mdi:badge-account
 tts_moms_home:
   alias: TTS Moms Home

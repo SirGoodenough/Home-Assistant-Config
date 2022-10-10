@@ -22,6 +22,30 @@
   action:
     service: script.tts_mama_arrive_katys
 
+- id: 9f5e76bb-03e6-413e-90db-a5e0837a76db
+  alias: Moms Leaving Belvas
+  mode: queued
+  initial_state: on
+  trigger: 
+    platform: zone
+    entity_id: person.julie
+    zone: zone.belva
+    event: leave
+  action:
+    service: script.tts_mama_left_belvas
+
+- id: fc9a4503-097d-4ef0-b3f4-23202d707bf8
+  alias: Moms Arriving Belvas
+  mode: queued
+  initial_state: on
+  trigger: 
+    platform: zone
+    entity_id: person.julie
+    zone: zone.belva
+    event: enter
+  action:
+    service: script.tts_mama_arrive_belvas
+
 - id: e6f402c1-7d0e-4907-930d-5765a59785c5
   alias: Moms Home
   mode: queued
