@@ -42,12 +42,8 @@ zone: !include zones.yaml
 
 # All the other stuff not covered in the default_config:
 
-# binary_sensor: !include_dir_merge_list ./binSensor/
-# button: !include button.yaml
 conversation:
-# cover: !include cover.yaml
 device_tracker: !include device_tracker.yaml
-# fan: !include fan.yaml
 ffmpeg: !include ffmpeg.yaml
 generic_hygrostat: !include humidifer.yaml
 group: !include groups.yaml
@@ -55,12 +51,9 @@ hacs: !include hacs.yaml
 homeassistant: !include homeassistant.yaml
 http: !include http.yaml
 # introduction:
-# life360: !include life360.yaml
 light: !include_dir_merge_list ./light/
-# lock: !include lock.yaml
 logger: !include logger.yaml
 notify: !include notify.yaml
-# mqtt: !include_dir_merge_named ./mqtt/
 mqtt:
   binary_sensor: !include_dir_merge_list mqtt/binary_sensor/
   button: !include_dir_merge_list mqtt/button/
