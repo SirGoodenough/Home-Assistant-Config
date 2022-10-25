@@ -4,6 +4,7 @@
   ####################################################
   - platform: filter
     name: "Kitchen Temp"
+    unique_id: 6159998b-bab3-402f-80f6-79e3fb3e2804
     entity_id: sensor.kitchen_temperature_3
     filters:
       - filter: outlier
@@ -12,6 +13,7 @@
 
   - platform: filter
     name: "Kitchen Humid"
+    unique_id: 65f3b60a-0e34-468d-aaea-cf210e169791
     entity_id: sensor.kitchen_humidity_3
     filters:
       - filter: outlier
@@ -20,6 +22,7 @@
 
   - platform: filter
     name: "Furnace Oil Top Temp"
+    unique_id: 075c2a14-56e1-48b1-b830-8f40572d1f06
     entity_id: sensor.furnace_oil_top_temperature_3
     filters:
       - filter: outlier
@@ -28,6 +31,7 @@
 
   - platform: filter
     name: "Furnace Oil Top Humid"
+    unique_id: a3944cbd-0b65-43db-8fc5-4d5c103250d3
     entity_id: sensor.furnace_oil_top_humidity_3
     filters:
       - filter: outlier
@@ -36,6 +40,7 @@
 
   - platform: filter
     name: "Furnace Return Temp"
+    unique_id: f40ead4a-c6a5-45e0-aaac-c81632fff63f
     entity_id: sensor.furnace_return_temperature_3
     filters:
       - filter: outlier
@@ -44,6 +49,7 @@
 
   - platform: filter
     name: "Furnace Return Humid"
+    unique_id: 2369288e-7670-4908-b522-a1c4b4428d53
     entity_id: sensor.furnace_return_humidity_3
     filters:
       - filter: outlier
@@ -52,6 +58,7 @@
 
   - platform: filter
     name: "Furnace Register Temp"
+    unique_id: db19226e-98da-4230-9881-d174b777726c
     entity_id: sensor.furnace_register_temperature_3
     filters:
       - filter: outlier
@@ -60,6 +67,7 @@
 
   - platform: filter
     name: "Furnace Pellet Top Temp"
+    unique_id: 07a44fe2-657b-4e1b-ac56-f01bbe1e1af7
     entity_id: sensor.furnace_pellet_top_temperature_3
     filters:
       - filter: outlier
@@ -68,6 +76,7 @@
 
   - platform: filter
     name: "Furnace Oil Firebox Temp"
+    unique_id: 94d26f76-a89a-4673-aae3-51b7cfad4c6b
     entity_id: sensor.furnace_oil_firebox_temperature_3
     filters:
       - filter: outlier
@@ -76,6 +85,7 @@
 
   - platform: filter
     name: "Furnace Pellet Firebox Temp"
+    unique_id: fd75bb55-337b-464a-b29d-0f2dc616a30e
     entity_id: sensor.furnace_pellet_firebox_temperature_3
     filters:
       - filter: outlier
@@ -84,6 +94,7 @@
 
   - platform: filter
     name: "Livingroom Humid"
+    unique_id: f2a952ab-a9dc-4f7c-b9d9-4c2fc55802c2
     entity_id: sensor.sonoff_rf_bridge_2_si7021_humidity
     filters:
       - filter: outlier
@@ -92,6 +103,7 @@
 
   - platform: filter
     name: "Bedroom Humid"
+    unique_id: 9adb294b-4908-4d06-900e-abe299a92bb2
     entity_id: sensor.bedroom_fan_si7021_humidity
     filters:
       - filter: outlier
@@ -100,6 +112,7 @@
 
   - platform: filter
     name: "Dryer Humid"
+    unique_id: 0c6e11c5-60a6-442b-8f89-44cea0cb7aa7
     entity_id: sensor.dryer3_si7021_humidity
     filters:
       - filter: outlier
@@ -108,6 +121,7 @@
 
   - platform: filter
     name: "Basement Humid"
+    unique_id: c0639ca0-a70d-4e0f-9cae-ca0083614d76
     entity_id: sensor.dust_collector_si7021_humidity
     filters:
       - filter: outlier
@@ -116,6 +130,7 @@
 
   - platform: filter
     name: "Bathroom Humid"
+    unique_id: ceaa3c34-8a90-4933-9dbb-062a0f3ab451
     entity_id: sensor.bathoom_si7021_humidity
     filters:
       - filter: outlier
@@ -124,6 +139,7 @@
 
   - platform: filter
     name: "Jen Temp"
+    unique_id: db3e962f-b902-4857-8236-5a56e8784e50
     entity_id: sensor.jen_temperature_temperature
     filters:
       - filter: outlier
@@ -132,6 +148,7 @@
 
   - platform: filter
     name: "Jen Humid"
+    unique_id: 595445be-1a2f-41d4-9d1c-716196b5e2db
     entity_id: sensor.jen_temperature_humidity
     filters:
       - filter: outlier
