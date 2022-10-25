@@ -146,3 +146,25 @@ tts_mom_left_feed_store:
       speaker_gender: female
       announcement_message: The Queen has left the Burlap & Lace retail facility.
   icon: mdi:barley
+tts_say_luton:
+  alias: TTS_say_Luton
+  use_blueprint:
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
+    input:
+      GTS_language: en
+      after_action:
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 3
+          milliseconds: 0
+      - service: script.media_player_boink
+        data: {}
+      TTS: tts.cloud_say
+      announcement_message: Luton fizzle
+      speaker_target:
+      - media_player.kitchen_speaker
+      speaker_gender: female
+      cloud_language: en-US
+  mode: single
+  icon: mdi:restart-alert
