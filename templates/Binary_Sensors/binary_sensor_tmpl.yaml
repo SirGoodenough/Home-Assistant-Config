@@ -25,6 +25,13 @@
       {% endif %}
       {# This is using the MET integration for weather. Available conditions: #}
       {# https://github.com/home-assistant/core/blob/70648d6e3b42bb0910e33e5c6a4e1e8c0789d82c/homeassistant/components/met/const.py #}
+    availability: >
+      {% set items = ['sun.sun','weather.home'] %}
+      {{ expand(items)|rejectattr('state','in',['unknown','unavailable'])
+        |list|count == items|count }}
+    icon: mdi:snowflake-alert
+    attributes:
+      friendly_name: "Dark Outside"
 
   - name: "Washing Machine"
     unique_id: 0f504a93-327b-4a03-ab93-4fc6aaaecbae
@@ -33,7 +40,7 @@
       minutes: 7
     state: >
       {% if (is_number('sensor.wash_machine_energy_current')) %}
-        {% if (states('sensor.wash_machine_energy_current') | float > 0.085) %}
+        {% if (states('sensor.wash_machine_energy_current') | float( 0.06 ) > 0.085) %}
           true
         {% else %}
           false
@@ -41,6 +48,13 @@
       {% else %}
         false
       {% endif %}
+    availability: >
+      {% set items = ['sensor.wash_machine_energy_current'] %}
+      {{ expand(items)|rejectattr('state','in',['unknown','unavailable'])
+        |list|count == items|count }}
+    icon: mdi:power
+    attributes:
+      friendly_name: "Washing Machine"
 
   - name: 'AC Enabled'
     unique_id: f885f9fd-b280-439b-81f0-3fdd713393f5
@@ -59,3 +73,11 @@
       {% endif %}
       {# This is using the MET integration for weather. Available conditions #}
       {# https://github.com/home-assistant/core/blob/70648d6e3b42bb0910e33e5c6a4e1e8c0789d82c/homeassistant/components/met/const.py #}
+    availability: >
+      {% set items = ['weather.home'] %}
+      {{ expand(items)|rejectattr('state','in',['unknown','unavailable'])
+        |list|count == items|count }}
+    icon: mdi:snowflake-alert
+    attributes:
+      friendly_name: "AC Enabled"
+
