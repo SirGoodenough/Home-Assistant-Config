@@ -16,6 +16,8 @@ s -lovelace## Ignore all
 !/mqtt/
 !/mqtt/**
 !/mqtt/*.yaml
+!/packages/
+!/packages/*.yaml
 !/python_scripts/
 !/python_scripts/*.py
 !/script2/

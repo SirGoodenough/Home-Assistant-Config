@@ -80,4 +80,3 @@
     icon: mdi:snowflake-alert
     attributes:
       friendly_name: "AC Enabled"
-
