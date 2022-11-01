@@ -3253,13 +3253,13 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "device_tracker.life360_supreme_leader_chaloupka"
+                  "entity": "device_tracker.julie_chaloupka"
                 },
                 {
-                  "entity": "device_tracker.life360_jen_chaloupka"
+                  "entity": "device_tracker.jen_chaloupka"
                 },
                 {
-                  "entity": "device_tracker.life360_sirius_goodenough"
+                  "entity": "device_tracker.sirius_goodenough"
                 }
               ],
               "show_header_toggle": false,
