@@ -13,7 +13,9 @@ counter: !include counter.yaml
 dhcp:
 # energy
 frontend: !include frontend.yaml
+hardware:
 history: !include history.yaml
+homeassistant_alerts:
 image:
 input_boolean:
 input_button:
@@ -22,12 +24,14 @@ input_number:
 input_select:
 input_text:
 logbook:
+logger: !include logger.yaml
 map:
 media_source: !include media.yaml
 # mobile_app:
 my:
 person: !include person.yaml
 scene: !include scene.yaml
+schedule:
 script: !include_dir_merge_named ./script2/
 ssdp:
 stream:
@@ -52,7 +56,6 @@ homeassistant: !include homeassistant.yaml
 http: !include http.yaml
 # introduction:
 light: !include_dir_merge_list ./light/
-logger: !include logger.yaml
 notify: !include notify.yaml
 mqtt:
   binary_sensor: !include_dir_merge_list mqtt/binary_sensor/
