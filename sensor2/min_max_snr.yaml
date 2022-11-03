@@ -3,6 +3,7 @@
   #  Min/Max Sensors                                 #
   ####################################################
   - platform: min_max
+    unique_id: b26add4a-7c85-4522-ab00-ea70eb2958b8
     name: "House Humidity Main"
     type: mean
     round_digits: 1
