@@ -1284,6 +1284,54 @@
               "name": "Jen Temperature Graph 24 hrs."
             },
             {
+              "square": false,
+              "columns": 2,
+              "type": "grid",
+              "cards": [
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "input_boolean.bed_cares_up",
+                  "icon_height": "40px"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "input_boolean.bed_cares_down",
+                  "show_state": false,
+                  "icon_height": "40px"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "input_boolean.poop",
+                  "icon_height": "40px"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "input_boolean.poop_done",
+                  "icon_height": "40px"
+                }
+              ]
+            },
+            {
               "type": "glance",
               "entities": [
                 {
@@ -1319,10 +1367,6 @@
               ],
               "title": "Glance",
               "columns": 4
-            },
-            {
-              "type": "media-control",
-              "entity": "media_player.jenny_s_tv"
             },
             {
               "type": "entities",
@@ -1381,6 +1425,10 @@
             },
             {
               "type": "media-control",
+              "entity": "media_player.jenny_s_tv"
+            },
+            {
+              "type": "media-control",
               "entity": "media_player.jennys_room_display"
             },
             {
@@ -1436,50 +1484,128 @@
               "theme": "Dark Soft UI Violet"
             },
             {
-              "square": false,
-              "columns": 2,
-              "type": "grid",
-              "cards": [
+              "show_name": false,
+              "show_icon": true,
+              "type": "button",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "/lovelace/bed"
+              },
+              "entity": "script.smartbed_buttons_off",
+              "icon": "mdi:bed-empty"
+            }
+          ],
+          "icon": "mdi:alpha-j-box",
+          "id": "jennys_room",
+          "path": "jennys_room",
+          "title": "Jens Room"
+        },
+        {
+          "theme": "Backend-selected",
+          "title": "bed",
+          "path": "bed",
+          "subview": true,
+          "badges": [],
+          "cards": [
+            {
+              "type": "entities",
+              "entities": [
                 {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "input_boolean.bed_cares_up",
-                  "icon_height": "40px"
+                  "entity": "input_boolean.bed_head_up_one"
                 },
                 {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "input_boolean.bed_cares_down",
-                  "show_state": false,
-                  "icon_height": "40px"
+                  "entity": "input_boolean.bed_head_up_five"
                 },
                 {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "input_boolean.poop",
-                  "icon_height": "40px"
+                  "entity": "input_boolean.bed_head_up_ten"
                 },
                 {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "input_boolean.poop_done",
-                  "icon_height": "40px"
+                  "entity": "input_boolean.bed_stop"
+                },
+                {
+                  "entity": "input_boolean.bed_head_down_one"
+                },
+                {
+                  "entity": "input_boolean.bed_head_down_five"
+                },
+                {
+                  "entity": "input_boolean.bed_head_down_ten"
+                }
+              ],
+              "show_header_toggle": false
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "input_boolean.bed_knees_up_one"
+                },
+                {
+                  "entity": "input_boolean.bed_knees_up_five"
+                },
+                {
+                  "entity": "input_boolean.bed_knees_up_ten"
+                },
+                {
+                  "entity": "input_boolean.bed_stop"
+                },
+                {
+                  "entity": "input_boolean.bed_knees_down_one"
+                },
+                {
+                  "entity": "input_boolean.bed_knees_down_five"
+                },
+                {
+                  "entity": "input_boolean.bed_knees_down_ten"
+                }
+              ]
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "input_boolean.bed_up_six"
+                },
+                {
+                  "entity": "input_boolean.bed_stop"
+                },
+                {
+                  "entity": "input_boolean.bed_down_six"
+                }
+              ]
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "input_boolean.bed_cares_up"
+                },
+                {
+                  "entity": "input_boolean.bed_cares_down"
+                },
+                {
+                  "entity": "input_boolean.bed_stop"
+                },
+                {
+                  "entity": "input_boolean.poop"
+                },
+                {
+                  "entity": "input_boolean.poop_down"
+                }
+              ],
+              "show_header_toggle": false
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "input_boolean.bed_flat"
+                },
+                {
+                  "entity": "input_boolean.bed_sit"
+                },
+                {
+                  "entity": "input_boolean.bed_stop"
                 }
               ]
             },
@@ -1493,11 +1619,7 @@
               "entity": "input_boolean.bed_stop",
               "icon_height": "80px"
             }
-          ],
-          "icon": "mdi:alpha-j-box",
-          "id": "jennys_room",
-          "path": "jennys_room",
-          "title": "Jens Room"
+          ]
         },
         {
           "title": "remotes",
