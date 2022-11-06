@@ -30,7 +30,7 @@
       service: script.google_mute
       data:
         status: true
-        entities: media_player.bathroom_speaker, media_player.bedroom_speaker
+        entities: media_player.bathroom_speaker, media_player.bedroom_speaker, media_player.office_jamz
     - alias: Enable the room temperature control
       service: input_boolean.turn_on
       target:
@@ -41,7 +41,7 @@
       service: script.google_mute
       data:
         status: false
-        entities: media_player.bathroom_speaker, media_player.bedroom_speaker
+        entities: media_player.bathroom_speaker, media_player.bedroom_speaker, media_player.office_jamz
     - alias: Disable the room temperature control
       service: input_boolean.turn_off
       target:
