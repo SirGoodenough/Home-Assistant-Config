@@ -1,9 +1,9 @@
 ---
-  driving_speed: 18
-  max_gps_accuracy: 180
-  show_as_state:
-    - driving
-    - moving
+  # driving_speed: 18
+  # max_gps_accuracy: 180
+  # show_as_state:
+  #   - driving
+  #   - moving
   # accounts:   #(Now set in GUI)
   #   username: !secret Life360_Login
   #   password: !secret Life360_Password
