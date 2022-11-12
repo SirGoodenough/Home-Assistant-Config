@@ -24,7 +24,7 @@
     entities:
       - light.jims_computer_light_2
       - light.kneelight
-      - light.kitchen_down_lights
+      # - light.kitchen_down_lights
       - light.kitchensink
 
   - platform: group

@@ -231,7 +231,7 @@
     for:
       hours: 3
       minutes: 32
-      seconds: 28  
+      seconds: 28
   - platform: state
     entity_id:
     - device_tracker.luton
@@ -269,8 +269,8 @@
 # Restart Downstairs Broadlink if its Dead         #
 ####################################################
 - id: 970763ea-a7ba-40e6-9d46-79b21e63996b
-  alias: restart eldrad
-  description: Watch Eldrad and restart it if it's dead.
+  alias: restart Broadlink
+  description: Watch Broadlink and restart it if it's dead.
   trigger:
   - platform: state
     entity_id: input_button.broadlink_rm3_reset
