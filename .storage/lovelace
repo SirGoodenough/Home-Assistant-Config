@@ -2807,10 +2807,11 @@
               "detail": 2
             },
             {
-              "entity": "sensor.furnace_oil_top_humid",
-              "graph": "line",
               "type": "sensor",
-              "detail": 2
+              "entity": "sensor.jen_temperature_humidity",
+              "graph": "line",
+              "unit": "%",
+              "name": "Jen's Humidity"
             },
             {
               "entity": "sensor.livingroom_humid",
@@ -2825,11 +2826,10 @@
               "detail": 2
             },
             {
-              "type": "sensor",
-              "entity": "sensor.jen_temperature_humidity",
+              "entity": "sensor.furnace_oil_top_humid",
               "graph": "line",
-              "unit": "%",
-              "name": "Jen's Humidity"
+              "type": "sensor",
+              "detail": 2
             },
             {
               "entity": "sensor.bedroom_humid",
