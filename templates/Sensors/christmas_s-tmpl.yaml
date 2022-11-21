@@ -2,7 +2,7 @@
   ####################################################
   #  Christmas                                       #
   ####################################################
-  - name: "3D Print File"
+  - name: "template_allow_xmas_lights"
     unique_id: 7fad0766-2307-4ce2-bd51-4d7799119b3d
     state:  >
       {% set today = states('sensor.date').split('-') %}
@@ -11,4 +11,4 @@
       {{ month > 10 or
           month == 1 and day <= 5 }}
     attributes:
-      friendly_name: "3D Print File"
+      friendly_name: "template_allow_xmas_lights"
