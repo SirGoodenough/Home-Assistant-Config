@@ -12,11 +12,11 @@
             {
               "entities": [
                 {
-                  "entity": "sensor.kitchen_temperature_3",
+                  "entity": "sensor.kitchen_temperature_2",
                   "secondary_info": "last-updated"
                 },
                 {
-                  "entity": "sensor.kitchen_humidity_3"
+                  "entity": "sensor.kitchen_humidity_2"
                 },
                 {
                   "entity": "sensor.yertle_last_action_a"
@@ -802,7 +802,7 @@
                   "entity": "light.office_track_jim_bulb"
                 },
                 {
-                  "entity": "switch.filament_vac"
+                  "entity": "switch.sonoff_s40lite_switch"
                 },
                 {
                   "entity": "switch.bench_test"
@@ -2634,16 +2634,18 @@
               "name": "Living Room Thermostat"
             },
             {
-              "entity": "sensor.furnace_pellet_firebox_temperature_3",
+              "hours_to_show": 24,
               "graph": "line",
+              "entity": "sensor.furnace_pellet_firebox_temperature",
               "theme": "Dark - Red",
               "type": "sensor",
               "detail": 2,
               "icon": "mdi:fireplace"
             },
             {
-              "entity": "sensor.furnace_oil_firebox_temperature_3",
+              "hours_to_show": 24,
               "graph": "line",
+              "entity": "sensor.furnace_oil_firebox_temperature",
               "theme": "slate_red",
               "type": "sensor",
               "detail": 2,
@@ -2658,16 +2660,18 @@
               "name": "Living Room"
             },
             {
-              "entity": "sensor.furnace_pellet_top_temp",
+              "hours_to_show": 24,
               "graph": "line",
+              "entity": "sensor.furnace_pellet_top_temperature",
               "theme": "Dark - Red",
               "type": "sensor",
               "detail": 2,
               "icon": "mdi:fire"
             },
             {
-              "entity": "sensor.furnace_oil_top_temp",
+              "hours_to_show": 24,
               "graph": "line",
+              "entity": "sensor.furnace_oil_top_temperature",
               "theme": "slate_red",
               "type": "sensor",
               "detail": 2,
@@ -2681,16 +2685,18 @@
               "name": "Bedroom AC Unit"
             },
             {
-              "entity": "sensor.furnace_register_temp",
+              "hours_to_show": 24,
               "graph": "line",
+              "entity": "sensor.furnace_register_temperature",
               "theme": "Dark - Green",
               "type": "sensor",
               "detail": 2,
               "icon": "mdi:temperature-fahrenheit"
             },
             {
-              "entity": "sensor.furnace_return_temp",
+              "hours_to_show": 24,
               "graph": "line",
+              "entity": "sensor.furnace_return_temperature",
               "theme": "Dark - Green",
               "type": "sensor",
               "detail": 2,
@@ -2711,8 +2717,9 @@
               "name": "Bedroom"
             },
             {
-              "entity": "sensor.kitchen_temp",
+              "hours_to_show": 24,
               "graph": "line",
+              "entity": "sensor.kitchen_temperature_2",
               "type": "sensor",
               "detail": 2,
               "icon": "mdi:stove"
@@ -2758,14 +2765,30 @@
             {
               "type": "entities",
               "entities": [
-                "sensor.furnace_oil_firebox_temperature_3",
-                "sensor.furnace_oil_top_humidity_3",
-                "sensor.furnace_oil_top_temperature_3",
-                "sensor.furnace_pellet_firebox_temperature_3",
-                "sensor.furnace_pellet_top_temperature_3",
-                "sensor.furnace_register_temperature_3",
-                "sensor.furnace_return_humidity_3",
-                "sensor.furnace_return_temperature_3"
+                {
+                  "entity": "sensor.furnace_oil_firebox_temperature"
+                },
+                {
+                  "entity": "sensor.furnace_oil_top_humidity"
+                },
+                {
+                  "entity": "sensor.furnace_oil_top_temperature"
+                },
+                {
+                  "entity": "sensor.furnace_pellet_firebox_temperature"
+                },
+                {
+                  "entity": "sensor.furnace_pellet_top_temperature"
+                },
+                {
+                  "entity": "sensor.furnace_register_temperature"
+                },
+                {
+                  "entity": "sensor.furnace_return_humidity"
+                },
+                {
+                  "entity": "sensor.furnace_return_temperature"
+                }
               ],
               "title": "ThermoPI Furnace"
             }
@@ -3552,12 +3575,15 @@
               "detail": 1
             },
             {
+              "show_name": true,
+              "show_icon": true,
               "type": "button",
               "tap_action": {
                 "action": "toggle"
               },
-              "entity": "switch.filament_vac",
-              "icon_height": "50px"
+              "entity": "switch.sonoff_s40lite_switch",
+              "icon_height": "50px",
+              "icon": "mdi:vacuum"
             }
           ],
           "path": "3d",
