@@ -10,7 +10,7 @@
         states('sun.sun.attributes.elevation') | is_defined and
         states.sun.sun.attributes.elevation | is_number and
         states('weather.home') | is_defined ) %}
-          {% set elev = 'states.sun.sun.attributes.elevation' | int(0) %}
+          {% set elev = state_attr("sun.sun", "elevation") | int(0) %}
           {% if ( elev < 6 ) %}
             true
           {% elif ( elev < 10 and is_state('weather.home', 'partlycloudy' ) ) %}
@@ -29,7 +29,7 @@
       {% set items = ['sun.sun','weather.home'] %}
       {{ expand(items)|rejectattr('state','in',['unknown','unavailable'])
         |list|count == items|count }}
-    icon: mdi:snowflake-alert
+    icon: mdi:sun-clock
     attributes:
       friendly_name: "Dark Outside"
 
