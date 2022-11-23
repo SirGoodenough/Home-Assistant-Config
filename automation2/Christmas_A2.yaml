@@ -26,10 +26,10 @@
       entity_id: binary_sensor.blue_remote_c
       from: "off"
       to: "on"
-  # condition:
-  #   - condition: state
-  #     entity_id: sensor.template_allow_xmas_lights
-  #     state: "True"
+  condition:
+    - condition: state
+      entity_id: sensor.xmas_season_enable
+      state: "True"
   action:
     - service: script.turn_on
       entity_id: script.inside_christmas
@@ -42,10 +42,10 @@
       entity_id: binary_sensor.blue_remote_d
       from: "off"
       to: "on"
-  # condition:
-  #   - condition: state
-  #     entity_id: sensor.template_allow_xmas_lights
-  #     state: "True"
+  condition:
+    - condition: state
+      entity_id: sensor.xmas_season_enable
+      state: "True"
   action:
     - service: script.turn_on
       entity_id: script.heavenly_peace
@@ -65,10 +65,10 @@
       entity_id: binary_sensor.blue_remote_a
       from: "off"
       to: "on"
-  # condition:
-  #   - condition: state
-  #     entity_id: sensor.template_allow_xmas_lights
-  #     state: "True"
+  condition:
+    - condition: state
+      entity_id: sensor.xmas_season_enable
+      state: "True"
   action:
     - service: switch.turn_on
       entity_id: switch.outside_christmas
@@ -109,12 +109,9 @@
     event: start
   condition:
     and:
-    # - condition: state
-    #   entity_id: sensor.template_allow_xmas_lights
-    #   state: "True"
     - condition: state
-      entity_id: binary_sensor.dark_outside
-      state: "on"
+      entity_id: sensor.xmas_season_enable
+      state: "True"
     - condition: state
       entity_id: binary_sensor.dark_outside
       state: "on"
@@ -151,19 +148,19 @@
 ####################################################
 # Seasonally Allow Automations                     #
 ####################################################
-# - id: fd8a0028-7b23-47dd-a0fd-be1d5acf69a1
-#   alias: Christmas Enable
-#   initial_state: on
-#   trigger:
-#     - platform: homeassistant
-#       event: start
-#     - platform: state
-#       entity_id: sensor.template_allow_xmas_lights
-#   action:
-#     - service: >
-#         {% if is_state('sensor.template_allow_xmas_lights', 'True') %}
-#           automation.turn_on
-#         {% else %}
-#           automation.turn_off
-#         {% endif %}
-#       entity_id: group.christmas_enable
+- id: fd8a0028-7b23-47dd-a0fd-be1d5acf69a1
+  alias: Christmas Enable
+  initial_state: on
+  trigger:
+    - platform: homeassistant
+      event: start
+    - platform: state
+      entity_id: sensor.xmas_season_enable
+  action:
+    - service: >
+        {% if is_state('sensor.xmas_season_enable', 'True') %}
+          automation.turn_on
+        {% else %}
+          automation.turn_off
+        {% endif %}
+      entity_id: group.christmas_enable
