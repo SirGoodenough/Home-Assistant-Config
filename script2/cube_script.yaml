@@ -5,7 +5,7 @@ cube_dimmer_control:
     angle:
   sequence:
     - service: light.turn_on
-      data_template:
+      data:
         entity_id: "{{ light }}"
         brightness_pct: >
           {% set step_size = angle * 0.4 %}
