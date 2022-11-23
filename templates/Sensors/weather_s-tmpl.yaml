@@ -2,7 +2,7 @@
   #####################################################
   ## Weather Template Sensors                        ##
   #####################################################
-  - name: "Sun State"
+  - name: sun_state
     unique_id: f2ef3978-8f60-4f49-9ce5-1198306412fd
     state: > 
       {% if is_state('sun.sun', 'above_horizon') %}
