@@ -3196,7 +3196,7 @@
                   "entity": "sensor.bedroom_fanspeed"
                 },
                 {
-                  "entity": "climate.gemodule5384"
+                  "entity": "climate.gemodule5384_window_ac"
                 }
               ],
               "title": "Bedroom"
