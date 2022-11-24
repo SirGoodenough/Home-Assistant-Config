@@ -1,6 +1,6 @@
 - trigger:
     - platform: time_pattern
-      id: This will update every night
+      id: This will it update every night
       hours: "0"
       minutes: "0"
     - platform: homeassistant
