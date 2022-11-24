@@ -570,7 +570,7 @@
               "type": "conditional",
               "conditions": [
                 {
-                  "entity": "sensor.gertle_battery",
+                  "entity": "sensor.lumi_lumi_sensor_cube_battery",
                   "state": "20"
                 }
               ],
@@ -581,12 +581,13 @@
                 "tap_action": {
                   "action": "more-info"
                 },
-                "entity": "sensor.gertle_voltage",
+                "entity": "sensor.lumi_lumi_sensor_cube_battery",
                 "hold_action": {
                   "action": "none"
                 },
                 "show_state": true,
-                "name": "Gertle Low Battery"
+                "name": "Gertle Low Battery",
+                "icon": "mdi:battery-check-outline"
               }
             },
             {
@@ -832,7 +833,7 @@
                   "entity": "light.grp_studio"
                 },
                 {
-                  "entity": "sensor.gertle_device_temperature"
+                  "entity": "sensor.lumi_lumi_sensor_cube_aqgl01_device_temperature"
                 }
               ],
               "show_header_toggle": false,
@@ -2791,6 +2792,20 @@
                 }
               ],
               "title": "ThermoPI Furnace"
+            },
+            {
+              "hours_to_show": 24,
+              "graph": "line",
+              "type": "sensor",
+              "entity": "sensor.lumi_lumi_sensor_cube_aqgl01_device_temperature",
+              "detail": 2
+            },
+            {
+              "hours_to_show": 24,
+              "graph": "line",
+              "type": "sensor",
+              "entity": "sensor.yertle_device_temperature",
+              "detail": 1
             }
           ],
           "icon": "mdi:thermometer-lines",
@@ -4794,6 +4809,28 @@
                   "entity": "light.jims_computer_light"
                 }
               ]
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.lumi_lumi_sensor_cube_aqgl01_device_temperature",
+                  "name": "Device temperature"
+                },
+                {
+                  "entity": "button.lumi_lumi_sensor_cube_identify",
+                  "name": "Identify"
+                },
+                {
+                  "entity": "sensor.lumi_lumi_sensor_cube_lqi",
+                  "name": "LQI"
+                },
+                {
+                  "entity": "sensor.lumi_lumi_sensor_cube_rssi",
+                  "name": "RSSI"
+                }
+              ],
+              "title": "Gertle"
             }
           ]
         },
