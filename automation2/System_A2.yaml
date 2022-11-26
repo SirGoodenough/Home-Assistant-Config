@@ -124,75 +124,6 @@
       service: switch.turn_off
       entity_id: switch.dust_collector
 
-# ####################################################
-# # Restart Eldrad if it stops Pinging               #
-# ####################################################
-# - id: 90c6e8db-9079-4a34-997b-e73a7bdc497a
-#   alias: restart eldrad
-#   description: Watch Eldrad and restart it if it's dead.
-#   trigger:
-#   - platform: state
-#     entity_id: input_button.restart_eldrad
-#   - platform: state
-#     entity_id:
-#     - device_tracker.eldrad_2
-#     to: not_home
-#     for:
-#       minutes: 15
-#   - platform: state
-#     entity_id:
-#     - device_tracker.eldrad_2
-#     to: not_home
-#     for:
-#       hours: 1
-#   - platform: state
-#     entity_id:
-#     - device_tracker.eldrad_2
-#     to: not_home
-#     for:
-#       hours: 2
-#   - platform: state
-#     entity_id:
-#     - device_tracker.eldrad_2
-#     to: not_home
-#     for:
-#       hours: 3
-#       minutes: 32
-#       seconds: 28
-#     from: home
-#   - platform: state
-#     entity_id:
-#     - device_tracker.eldrad_2
-#     from: home
-#     to: not_home
-#     for:
-#       hours: 5
-#   - platform: state
-#     entity_id:
-#     - device_tracker.eldrad_2
-#     from: home
-#     to: not_home
-#     for:
-#       hours: 6
-#   - platform: state
-#     entity_id:
-#     - device_tracker.eldrad_2
-#     from: home
-#     to: not_home
-#     for:
-#       hours: 7
-#   action:
-#   - service: switch.turn_off
-#     target:
-#       entity_id: switch.eldrad
-#   - service: script.tts_say_eldrad_reset
-#   - delay:
-#       minutes: 1
-#   - service: switch.turn_on
-#     target:
-#       entity_id: switch.eldrad
-#   mode: single
-
 ####################################################
 # Restart Luton if it stops Pinging                #
 ####################################################
@@ -369,3 +300,10 @@
       target:
         entity_id:
           - input_select.doc_messages
+
+- alias: say a thing
+  sequence:
+    service: script.say_a_thing
+    data:
+      message: message 1
+      entities: media_player.kitchen_speaker

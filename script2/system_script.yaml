@@ -59,3 +59,25 @@
     sequence:
     - service: shell_command.test_message
       data: {"message":"Check Chat"}
+
+  say_a_thing:
+    alias: Get some words from automation and say them
+    variables:
+      message:
+      entities:
+    sequence:
+      - service: tts.cloud_say
+        data:
+          entity_id: "{{ entities }}"
+          message: "{{ message }}"
+          options:
+            gender: female
+          language: en-US
+##---> To Use thue script from an automation:
+# - alias: say a thing
+#   sequence:
+#     service: script.say_a_thing
+#     data:
+#       message: "message" 1
+#       entities: media_player.kitchen_speaker
+
