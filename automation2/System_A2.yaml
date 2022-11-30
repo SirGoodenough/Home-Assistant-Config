@@ -301,9 +301,9 @@
         entity_id:
           - input_select.doc_messages
 
-- alias: say a thing
-  sequence:
-    service: script.say_a_thing
-    data:
-      message: message 1
-      entities: media_player.kitchen_speaker
+# - alias: say a thing
+#   sequence:
+#     service: script.say_a_thing
+#     data:
+#       message: message 1
+#       entities: media_player.kitchen_speaker

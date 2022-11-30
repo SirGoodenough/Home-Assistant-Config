@@ -1,0 +1,66 @@
+- id: 1835f3d9-d3bd-4a73-be90-c3e12cc9a1b2
+  alias: Gertle Cube
+  description: This is the upstairs magic cube Gertle
+  trace:
+     stored_traces: 10
+  use_blueprint:
+    path: SirGoodenough/ZHA - Xiaomi Cube Controller.yaml
+    input:
+      last_side_input: input_number.gertle_last
+      cube: 171c43498d91c2e5db0aaafba5de9de7
+## Tarantula
+      fall:
+        - type: turn_on
+          device_id: d99723186c9d0c8de8475bf9646b8373
+          entity_id: switch.plug2
+          domain: switch
+      shake:
+        - service: script.tarantula_shutdown
+          data: {}
+## Side 0 studio
+      doubletap_face_0:
+        - service: light.toggle
+          entity_id: light.grp_studio
+      rotate_cw_face_0:
+        - service: script.cube_dimmer_control
+          data:
+            angle: '{{ trigger.event.data.args.relative_degrees | default(0) | float(0) }}'
+            light: light.grp_studio
+      rotate_ccw_face_0:
+        - service: script.cube_dimmer_control
+          data:
+            angle: '{{ trigger.event.data.args.relative_degrees | default(0) | float(0) }}'
+            light: light.grp_studio
+## Side 1 red
+      rotate_cw_face_1:
+        - service: script.cube_red_color_control
+          data:
+            angle: '{{ trigger.event.data.args.relative_degrees | default(0) | float(0) }}'
+            light: light.grp_studio
+      rotate_ccw_face_1:
+        - service: script.cube_red_color_control
+          data:
+            angle: '{{ trigger.event.data.args.relative_degrees | default(0) | float(0) }}'
+            light: light.grp_studio
+## Side 4 blue
+      rotate_cw_face_4:
+        - service: script.cube_blue_color_control
+          data:
+            angle: '{{ trigger.event.data.args.relative_degrees | default(0) | float(0) }}'
+            light: light.grp_studio
+      rotate_ccw_face_4:
+        - service: script.cube_blue_color_control
+          data:
+            angle: '{{ trigger.event.data.args.relative_degrees | default(0) | float(0) }}'
+            light: light.grp_studio
+## Side 5 green
+      rotate_cw_face_5:
+        - service: script.cube_green_color_control
+          data:
+            angle: '{{ trigger.event.data.args.relative_degrees | default(0) | float(0) }}'
+            light: light.grp_studio
+      rotate_ccw_face_5:
+        - service: script.cube_green_color_control
+          data:
+            angle: '{{ trigger.event.data.args.relative_degrees | default(0) | float(0) }}'
+            light: light.grp_studio

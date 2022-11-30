@@ -821,7 +821,7 @@
                   "entity": "sensor.benchstrip_rssi"
                 },
                 {
-                  "entity": "sensor.yertle_last_action_a"
+                  "entity": "sensor.zha_cube_last_action"
                 },
                 {
                   "entity": "light.office_5"
