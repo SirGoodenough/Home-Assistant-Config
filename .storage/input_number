@@ -74,15 +74,6 @@
       {
         "min": 0.0,
         "max": 6.0,
-        "name": "Gertle Current",
-        "icon": "mdi:border-outside",
-        "mode": "box",
-        "step": 1.0,
-        "id": "gertle_current"
-      },
-      {
-        "min": 0.0,
-        "max": 6.0,
         "name": "Gertle Last",
         "icon": "mdi:border-inside",
         "mode": "box",
