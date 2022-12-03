@@ -1,12 +1,12 @@
-- id: "1644640476335"
+- id: "12a989e7-9606-41e6-82fb-fed4fad6e5d3"
   alias: Yertle Cube
   description: All the things Yertle can do
   trace:
-     stored_traces: 10
+    stored_traces: 10
   use_blueprint:
-    path: SirGoodenough/Zigbee2MQTT - Xiaomi Cube Controller.yaml
+    path: SirGoodenough/Zigbee2MQTT - Xiaomi Cube Controller MQTT Triggered.yaml
     input:
-      remote: sensor.yertle_action
+      topic: zigbee2mqtt/Yertle
 ## Tarantula
       fall:
         - type: turn_on
@@ -22,12 +22,12 @@
       rotate_cw_face_0:
         - service: script.cube_dimmer_control
           data:
-            angle: "{{ trigger.to_state.attributes.action_angle }}"
+            angle: '{{ trigger.payload_json.angle }}'
             light: light.grp_kitch
       rotate_ccw_face_0:
         - service: script.cube_dimmer_control
           data:
-            angle: "{{ trigger.to_state.attributes.action_angle }}"
+            angle: '{{ trigger.payload_json.angle }}'
             light: light.grp_kitch
 ## Side dad 1
       doubletap_face_1:
@@ -43,12 +43,12 @@
       rotate_cw_face_3:
         - service: script.cube_long_cw_toggle
           data:
-            angle: "{{ trigger.to_state.attributes.action_angle }}"
+            angle: '{{ trigger.payload_json.angle }}'
             entity: light.livingroomlight
       rotate_ccw_face_3:
         - service: script.cube_long_ccw_toggle
           data:
-            angle: "{{ trigger.to_state.attributes.action_angle }}"
+            angle: '{{ trigger.payload_json.angle }}'
             entity: light.mom_light
 ## Side d_light 4
       doubletap_face_4:
@@ -59,16 +59,89 @@
           entity_id: light.stairway_switch
 ## Testing side 5
       slide_face_5:
-        - condition: template
-          value_template: '{{ not last_side == 2 }}'
         - service: light.toggle
           data: {}
           target:
             entity_id: light.kitchen_down_lights
       5_from_2:
-        - condition: template
-          value_template: '{{ action == "slide" }}'
         - service: light.toggle
           data: {}
           target:
             entity_id: light.kitchensink
+#####
+####### Deprecated - Old format using Z2M Legacy Triggers
+#####
+# - id: "1644640476335"
+#   alias: Yertle Cube
+#   description: All the things Yertle can do
+#   trace:
+#      stored_traces: 10
+#   use_blueprint:
+#     path: SirGoodenough/Zigbee2MQTT - Xiaomi Cube Controller.yaml
+#     input:
+#       remote: sensor.yertle_action
+# ## Tarantula
+#       fall:
+#         - type: turn_on
+#           device_id: d99723186c9d0c8de8475bf9646b8373
+#           entity_id: switch.plug2
+#           domain: switch
+#       shake:
+#         - service: script.tarantula_shutdown
+# ## side food 0
+#       doubletap_face_0:
+#         - service: light.toggle
+#           entity_id: light.grp_kitch
+#       rotate_cw_face_0:
+#         - service: script.cube_dimmer_control
+#           data:
+#             angle: "{{ trigger.to_state.attributes.action_angle }}"
+#             light: light.grp_kitch
+#       rotate_ccw_face_0:
+#         - service: script.cube_dimmer_control
+#           data:
+#             angle: "{{ trigger.to_state.attributes.action_angle }}"
+#             light: light.grp_kitch
+# ## Side dad 1
+#       doubletap_face_1:
+#         - service: light.toggle
+#           entity_id: light.grp_dad_lights
+# ## Side livingroom_lights 3
+#       doubletap_face_3:
+#         - service: button.press
+#           entity_id: button.moms_button2
+#       3_from_0:
+#         - service: button.press
+#           entity_id: button.moms_button2
+#       rotate_cw_face_3:
+#         - service: script.cube_long_cw_toggle
+#           data:
+#             angle: "{{ trigger.to_state.attributes.action_angle }}"
+#             entity: light.livingroomlight
+#       rotate_ccw_face_3:
+#         - service: script.cube_long_ccw_toggle
+#           data:
+#             angle: "{{ trigger.to_state.attributes.action_angle }}"
+#             entity: light.mom_light
+# ## Side d_light 4
+#       doubletap_face_4:
+#         - service: light.toggle
+#           entity_id: light.grp_d_lights
+#       slide_face_4:
+#         - service: light.turn_on
+#           entity_id: light.stairway_switch
+# ## Testing side 5
+#       slide_face_5:
+#         - condition: template
+#           value_template: '{{ not last_side == 2 }}'
+#         - service: light.toggle
+#           data: {}
+#           target:
+#             entity_id: light.kitchen_down_lights
+#       5_from_2:
+#         - condition: template
+#           value_template: '{{ action == "slide" }}'
+#         - service: light.toggle
+#           data: {}
+#           target:
+#             entity_id: light.kitchensink
