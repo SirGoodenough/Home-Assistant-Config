@@ -44,7 +44,7 @@ blueprint:
 
 
     There is sample code to make the template sensor in the help file on GitHib named
-    [Zigbee2MQTT - Xiaomi Cube Controller.md](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller.md)
+    [Zigbee2MQTT - Xiaomi Cube Controller MQTT Triggered.md](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller%20MQTT%20Triggered.md)
     & in the [community page related to this](https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203).
 
 
@@ -62,7 +62,7 @@ blueprint:
     I wanted to help. I also had a better idea for troubleshooting info.
 
     '
-  # source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller.yaml
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller%20MQTT%20Triggered.yaml
   domain: automation
   homeassistant:
     min_version: 2022.5.0
@@ -627,16 +627,27 @@ condition:
       ''flip180'', ''slide'', ''tap'', ''shake'', ''fall'') }}'
 action:
 - variables:
+      # Get the action command.
     action: '{{ trigger.payload_json.action }}'
+      # Get the side.
     side: '{{ trigger.payload_json.side }}'
+      # Get the topic as a variable.
     topic_var: !input topic
+      # Generate the Friendly_name from the Topic.
     friendly_name: '{{ topic_var.split(''/'')[1] }}'
+      # Generate the device_id from the Friendly_name.
     device_id: '{{ device_id( friendly_name ) }}'
+      # Pull out the ieee identifier.
     ieee_id_long: '{{(( device_attr( device_id, ''identifiers'') |list)[0][1]) }}'
+      # Generate just the number for the ieee.
     ieee_id: '{{ieee_id_long.split(''_'')[1] }}'
+      # Get the angle.
     angle: '{{ trigger.payload_json.angle }}'
+      # Set the name of the Number entity.
     num_name: '{{ friendly_name + '' last side'' }}'
+      # Set the rntity_id of the Number entity.
     num_ha_name: '{{ ''number.'' + friendly_name + ''_last_side'' }}'
+      # Get the last_side stored value from Home Assistant that was stored on the last run.
     last_side: '{{ states(num_ha_name) | int(0) }}'
 
 - alias: Make number helper to store last side
