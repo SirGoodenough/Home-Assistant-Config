@@ -629,30 +629,50 @@ action:
 - variables:
     action: '{{ trigger.payload_json.action }}'
     side: '{{ trigger.payload_json.side }}'
-    last_side_trigger: '{{ trigger.payload_json.action_from_side }}'
-    last_side: >
-      {% if action in ('flip180') %}
-        {% if side == 0 %}
-          3
-        {% elif side == 1 %}
-          4
-        {% elif side == 2 %}
-          5
-        {% elif side == 4 %}
-          1
-        {% elif side == 5 %}
-          2
-        {% else %}
-          0
-        {% endif %}
-      {% else %}
-        {{ last_side_trigger }}
-      {% endif %}
-    topic_raw: !input topic
-    friendly_name: '{{ topic_raw.split(''/'')[1] }}'
+    topic_var: !input topic
+    friendly_name: '{{ topic_var.split(''/'')[1] }}'
     device_id: '{{ device_id( friendly_name ) }}'
-    ieee_id: "{{( device_attr( device_id, 'identifiers') |list)[0][1] }}"
+    ieee_id_long: '{{(( device_attr( device_id, ''identifiers'') |list)[0][1]) }}'
+    ieee_id: '{{ieee_id_long.split(''_'')[1] }}'
     angle: '{{ trigger.payload_json.angle }}'
+    num_name: '{{ friendly_name + '' last side'' }}'
+    num_ha_name: '{{ ''number.'' + friendly_name + ''_last_side'' }}'
+    last_side: '{{ states(num_ha_name) | int(0) }}'
+
+- alias: Make number helper to store last side
+  service: mqtt.publish
+  data:
+    "topic": "{{ 'homeassistant/number/' + ieee_id + '/last_side/config' }}"
+    "retain": true
+    "payload": >
+      { "name": "{{ num_name }}",
+        "avty_t": "homeassistant/status",
+        "uniq_id": "{{ friendly_name + '_' + device_id }}",
+        "cmd_t": "{{ 'homeassistant/number/' + ieee_id + '/last_side/cmnd' }}",
+        "sta_t": "{{ 'homeassistant/number/' + ieee_id + '/last_side/state' }}",
+        "dev": {
+            "ids": [
+              "{{ device_id + 'num'}}",
+              "{{ 'num' + ieee_id_long }}"
+            ],
+            "name": "{{ friendly_name + ' Z2M Blueprint Helper' }}",
+            "mf": "SirGoodenough",
+            "mdl": "Number Helper for Z2M Cube Integration",
+            "sa": "home",
+            "sw": "https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT - Xiaomi Cube Controller.yaml",
+            "cu": "https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203"
+        },
+        "min": "0",
+        "max": "6",
+        "step": "1",
+        "ret": true
+      }
+- alias: 'Store the current_side as the last_side for the next trigger'
+  service: number.set_value
+  target:
+    entity_id: '{{ num_ha_name }}'
+  data:
+    value: '{{ side }}'
 - alias: Fire Last Action event
   event: cube_last_action
   event_data:
