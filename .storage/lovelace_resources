@@ -53,6 +53,11 @@
         "url": "/hacsfiles/lovelace-curtain-card/curtain-card.js?hacstag=509260172013",
         "type": "module",
         "id": "5389afdde2374522a6903262eea505d1"
+      },
+      {
+        "url": "/hacsfiles/HA-Firemote/HA-Firemote.js?hacstag=536329656190",
+        "type": "module",
+        "id": "1c6835d89d0d4604bc6871551de113be"
       }
     ]
   }

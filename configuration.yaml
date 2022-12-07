@@ -27,7 +27,7 @@ logbook:
 logger: !include logger.yaml
 map:
 media_source: !include media.yaml
-# mobile_app:
+mobile_app:
 my:
 person: !include person.yaml
 scene: !include scene.yaml
