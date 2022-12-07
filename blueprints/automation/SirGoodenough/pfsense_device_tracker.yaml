@@ -17,7 +17,7 @@ blueprint:
   input:
     trackees:
       name: Devices to Track
-      description: 'Select all the devices that you woud like to track with this Blueprint.
+      description: 'Select all the devices that you would like to track with this Blueprint.
         Multiples are allowed.'
       selector:
         entity:
@@ -31,19 +31,25 @@ blueprint:
         action: {}
     notify_enable_time:
       name: Time of day to begin notifications
-      description: Set this for the time of day you want to allow notifications to begin.
+      description: 'Set this for the time of day you want to allow notifications to begin.
+
+        Leave as is to always be on.'
       default: 00:00:00
       selector:
         time: {}
     notify_disable_time:
       name: Time of day to end notifications
-      description: Set this for the time of day you want notificatons to end.
+      description: 'Set this for the time of day you want notificatons to end.
+
+        Leave as is to always be on.'
       default: 00:00:00
       selector:
         time: {}
     weekday:
       name: Day of the week to allow notifications
-      description: (#9)
+      description: 'Change options if you want to include or exclude any specific day.
+
+        All days selected by default.'
       default:
       - mon
       - tue
