@@ -1,0 +1,97 @@
+blueprint:
+  name: Notify if Device goes Down.
+  description: 'This is intended to be used with pfSense HACS Integration: 
+  [GitHub - travisghansen/hass-pfsense: pfSense integration with Home Assistant](https://github.com/travisghansen/hass-pfsense)
+   
+  However it could be used with any device tracker.
+  
+  It will create a persistant notification when triggered. 
+  Triggers / notifications can be enabled for a time period each day and/or for 
+  specific days of the week. !env_var 
+  There is also the ability to roll your own specific notification as an action statement.
+  
+  '
+  domain: automation
+  homeassistant:
+    min_version: 2022.5.2
+  input:
+    trackees:
+      name: Devices to Track
+      description: 'Select all the devices that you woud like to track with this Blueprint.
+        Multiples are allowed.'
+      selector:
+        entity:
+          domain: device_tracker
+          multiple: true
+    alt_notify:
+      name: Manual Notifications
+      description: Enter the action yaml for any specific notification or action you would like to perform.
+      default: []
+      selector:
+        action: {}
+    notify_enable_time:
+      name: Time of day to begin notifications
+      description: Set this for the time of day you want to allow notifications to begin.
+      default: 00:00:00
+      selector:
+        time: {}
+    notify_disable_time:
+      name: Time of day to end notifications
+      description: Set this for the time of day you want notificatons to end.
+      default: 00:00:00
+      selector:
+        time: {}
+    weekday:
+      name: Day of the week to allow notifications
+      description: (#9)
+      default:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+      - sat
+      - sun
+      selector:
+        select:
+          options:
+          - label: Monday
+            value: mon
+          - label: Tuesday
+            value: tue
+          - label: Wednesday
+            value: wed
+          - label: Thursday
+            value: thu
+          - label: Friday
+            value: fri
+          - label: Saturday
+            value: sat
+          - label: Sunday
+            value: sun
+          custom_value: false
+          multiple: true
+variables:
+  alt_notify_var: !input alt_notify
+trigger:
+  - platform: state
+    id: go_when_any_of_the_devices_change_from_home_to_anything_else
+    entity_id: !input trackees
+    from: "home"
+condition:
+  - alias: Only allow execution within selected Hours / Weekdays
+    condition: time
+    after: !input 'notify_enable_time'
+    before: !input 'notify_disable_time'
+    weekday: !input 'weekday'
+action:
+  - alias: Notify interested parties
+    service: persistent_notification.create
+    data:
+      title: '{{ states[trigger.to_state.entity_id].name + '' Status'' }}'
+      message: '{{ states[trigger.to_state.entity_id].name + '' is '' + states[trigger.to_state.entity_id].state }}'
+  - alias: Do something on every trigger
+    if: '{{ not alt_notify_var in (''none'', ''null'', ''unavailable'', '''') }}'
+    then: !input 'alt_notify'
+mode: parallel
+max: 10
