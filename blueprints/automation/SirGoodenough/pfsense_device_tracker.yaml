@@ -89,13 +89,13 @@ action:
     service: persistent_notification.create
     data:
       title: '{{ states[trigger.to_state.entity_id].name + '' Status'' }}'
-      message: '{{ states[trigger.to_state.entity_id].name + '' is '' + states[trigger.to_state.entity_id].state }} 
+      message: '{{ states[trigger.to_state.entity_id].name + '' is '' + states[trigger.to_state.entity_id].state }}
 
-      Full Attributes List: 
+        Full Attributes List:
 
-      {{ states[trigger.to_state.entity_id] }}'
+        {{ states[trigger.to_state.entity_id] }}'
   - alias: Do something on every trigger
     if: '{{ not alt_notify_var in (''none'', ''null'', ''unavailable'', '''') }}'
     then: !input 'alt_notify'
 mode: parallel
-max: 10
+max: 15
