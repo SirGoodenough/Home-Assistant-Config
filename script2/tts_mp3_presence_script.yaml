@@ -12,7 +12,7 @@ tts_say_eldrad_reset:
       cloud_language: en-US
   mode: single
   icon: mdi:restart-alert
-tts_say_broadlinkreset:
+tts_say_broadlink_reset:
   alias: TTS_say Broadcom_Reset
   use_blueprint:
     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml

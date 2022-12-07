@@ -1,16 +1,16 @@
 blueprint:
   name: Notify if Device goes Down.
   description: 'This is intended to be used with pfSense HACS Integration: 
-  [GitHub - travisghansen/hass-pfsense: pfSense integration with Home Assistant](https://github.com/travisghansen/hass-pfsense)
-   
-  However it could be used with any device tracker.
-  
-  It will create a persistant notification when triggered. 
-  Triggers / notifications can be enabled for a time period each day and/or for 
-  specific days of the week. !env_var 
-  There is also the ability to roll your own specific notification as an action statement.
-  
-  '
+    [GitHub - travisghansen/hass-pfsense: pfSense integration with Home Assistant](https://github.com/travisghansen/hass-pfsense)
+    
+    However it could be used with any device tracker.
+    
+    It will create a persistant notification when triggered. 
+    Triggers / notifications can be enabled for a time period each day and/or for 
+    specific days of the week. !env_var 
+    There is also the ability to roll your own specific notification as an action statement.
+    
+    '
   domain: automation
   homeassistant:
     min_version: 2022.5.2
@@ -89,7 +89,11 @@ action:
     service: persistent_notification.create
     data:
       title: '{{ states[trigger.to_state.entity_id].name + '' Status'' }}'
-      message: '{{ states[trigger.to_state.entity_id].name + '' is '' + states[trigger.to_state.entity_id].state }}'
+      message: '{{ states[trigger.to_state.entity_id].name + '' is '' + states[trigger.to_state.entity_id].state }} 
+
+      Full Attributes List: 
+
+      {{ states[trigger.to_state.entity_id] }}'
   - alias: Do something on every trigger
     if: '{{ not alt_notify_var in (''none'', ''null'', ''unavailable'', '''') }}'
     then: !input 'alt_notify'

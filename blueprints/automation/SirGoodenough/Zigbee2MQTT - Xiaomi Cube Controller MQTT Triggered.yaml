@@ -1,6 +1,6 @@
 blueprint:
   name: Aqara Magic Cube Zigbee2MQTT MQTT Triggered - 2022-12-01
-  description: 'This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38(+54)
+  description: "This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38(+54)
     unique commands available from the Xiaomi Magic Cube Remote. (Some unique commands
     are available thru templating only. See the related document.)
 
@@ -60,8 +60,8 @@ blueprint:
     be more documentation for rookie users to properly set this up. I had quite a
     few questions and when I saw a few questions in that chat from people struggling,
     I wanted to help. I also had a better idea for troubleshooting info.
-
-    '
+    
+    "
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller%20MQTT%20Triggered.yaml
   domain: automation
   homeassistant:
@@ -69,12 +69,12 @@ blueprint:
   input:
     topic:
       name: Topic
-      description: 'The main MQTT Topic for your cube. 
-      
-      Details on finding the correct topic can be found here: 
-      
-      [Find my Cube Topic](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller%20MQTT%20Triggered.md#-to-make-the-blueprint-work-it-will-need)
-      '
+      description: "The main MQTT Topic for your cube. 
+        
+        Details on finding the correct topic can be found here: 
+        
+        [Find my Cube Topic](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller%20MQTT%20Triggered.md#-to-make-the-blueprint-work-it-will-need)
+        "
       default: "zigbee2mqtt/?"
       selector:
         text:
@@ -99,9 +99,9 @@ blueprint:
         action: {}
     flipped180_face_0:
       name: Group 1 actions 🍎 Flip the cube 180 degrees to face 0
-      description: '**NOTE:** This action is trick to master, and should be used sparingly...
-
-        Face 0 is the one with the ''Aqara'' LOGO'
+      description: "**NOTE:** This action is trick to master, and should be used sparingly...
+        
+        Face 0 is the one with the 'Aqara' LOGO"
       default: []
       selector:
         action: {}
@@ -274,17 +274,17 @@ blueprint:
         action: {}
     shake:
       name: Shake the cube 🍩
-      description: 'This trigger only occurs once in the set-up.
-
-        It can be combined in any group.'
+      description: "This trigger only occurs once in the set-up.
+        
+        It can be combined in any group."
       default: []
       selector:
         action: {}
     fall:
       name: Drop the cube 🍩
-      description: 'This trigger only occurs once in the set-up.
-
-        It can be combined in any group.'
+      description: "This trigger only occurs once in the set-up.
+        
+        It can be combined in any group."
       default: []
       selector:
         action: {}
