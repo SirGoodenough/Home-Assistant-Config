@@ -9,7 +9,7 @@
       last_side_input: input_number.gertle_last
       cube: 171c43498d91c2e5db0aaafba5de9de7
 ## Tarantula
-      fall:
+      drop:
         - type: turn_on
           device_id: d99723186c9d0c8de8475bf9646b8373
           entity_id: switch.plug2
