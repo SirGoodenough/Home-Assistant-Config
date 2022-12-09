@@ -31,6 +31,8 @@ blueprint:
       name: Optional Notification ID
       description: 'This is an optional parameter to be used for notifications to
         mobile devices and other things.
+        This will be converted to all letters and / or numbers with no spaces,
+        so keep that in mind when referencing it later.
         
         If you don''t know what it is, you probably should leave it blank.'
       default: []
@@ -98,6 +100,8 @@ blueprint:
           multiple: true
 variables:
   alt_notify_var: !input alt_notify
+  notification_id_var: !input notification_id 
+  notify_id: '{{ notification_id_var | regex_replace("[^A-Za-z0-9]", "") }}'
 trigger:
   - platform: state
     id: go_when_any_of_the_devices_change_from_home_to_anything_else
@@ -114,7 +118,7 @@ action:
   choose:
   - conditions: '{{ skip_p_notifcation == false }}'
     sequence: []
-  - conditions: '{{ notification_id | length > 0 }}'
+  - conditions: '{{ notify_id | length > 0 }}'
     sequence: 
     - alias: Notify interested parties with Notification ID
       service: persistent_notification.create
@@ -125,7 +129,7 @@ action:
           Full Attributes List:
 
           {{ states[trigger.to_state.entity_id] }}'
-        notification_id: '{{ notification_id }}'
+        notification_id: '{{ notify_id }}'
   default:
     - alias: Notify interested parties without Notifivation ID
       service: persistent_notification.create
