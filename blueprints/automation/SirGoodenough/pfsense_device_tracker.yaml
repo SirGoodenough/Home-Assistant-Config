@@ -46,6 +46,10 @@ blueprint:
         mobile devices and other things.
         This will be converted to all letters and / or numbers with no spaces,
         so keep that in mind when referencing it later.
+
+        If you put an ID in here, the first message that is triggered will lock in 
+        until you clear it. This will prevent any further notifications from this 
+        blueprint until you clear the old message.
         
         If you don''t know what it is, you probably should leave it blank.'
       default: []
@@ -126,9 +130,16 @@ blueprint:
           custom_value: false
           multiple: true
 variables:
+    # Get the alt_notify into a variable to test it for empty later.
   alt_notify_var: !input alt_notify
-  notification_id_var: !input notification_id 
+    # Get the notification_id into a variable.
+  notification_id_var: !input notification_id
+    # Strip weirdness from the user supplied notification_id.
   notify_id: '{{ notification_id_var | regex_replace("[^A-Za-z0-9]", "") }}'
+    # Grab the triggered entity attributes.
+  attr_raw: '{{ states[trigger.to_state.entity_id] }}'
+    # Strip the beginning and end garbage from those attributes.
+  attr: '{{ attr_raw.split(''; '')[1].split(''>'')[0] }}'
 trigger:
   - platform: state
     id: go_when_any_of_the_devices_change_from_home_to_anything_else
@@ -141,13 +152,13 @@ condition:
     before: !input 'notify_disable_time'
     weekday: !input 'weekday'
 action:
-- alias: Persistant Notifications
+- alias: 'Persistant Notifications. Options are skip it, use a notification_id, or default to no id'
   choose:
-  - conditions: '{{ skip_p_notifcation == false }}'
+  - conditions: '{{ skip_p_notification== false }}'
     sequence: []
   - conditions: '{{ notify_id | length > 0 }}'
     sequence: 
-    - alias: Notify interested parties with Notification ID
+    - alias: Notify interested parties WITH notification_id
       service: persistent_notification.create
       data:
         title: '{{ states[trigger.to_state.entity_id].name + '' Status'' }}'
@@ -155,10 +166,16 @@ action:
 
           Full Attributes List:
 
-          {{ states[trigger.to_state.entity_id] }}'
+          {{ ''notification_id='' + notify_id }}
+
+          {% for item in attr.split('' '') %}
+          {{ item }}
+
+          {%- endfor %}
+          '
         notification_id: '{{ notify_id }}'
   default:
-    - alias: Notify interested parties without Notifivation ID
+    - alias: Notify interested parties WITHOUT notification_id
       service: persistent_notification.create
       data:
         title: '{{ states[trigger.to_state.entity_id].name + '' Status'' }}'
@@ -166,7 +183,11 @@ action:
 
           Full Attributes List:
 
-          {{ states[trigger.to_state.entity_id] }}'
+          {% for item in attr.split('' '') %}
+          {{ item }}
+
+          {%- endfor %}
+          '
 - alias: Do something on every trigger
   if: '{{ alt_notify_var | length > 0 }}'
   then: !input 'alt_notify'
