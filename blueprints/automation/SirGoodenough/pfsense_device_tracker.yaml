@@ -169,8 +169,7 @@ action:
           {{ ''notification_id='' + notify_id }}
 
           {% for item in attr.split('' '') %}
-          {{ item }}
-
+          {{ item | replace( '','', ''\n'') | replace( ''@'', ''\n'')}}
           {%- endfor %}
           '
         notification_id: '{{ notify_id }}'
@@ -184,8 +183,7 @@ action:
           Full Attributes List:
 
           {% for item in attr.split('' '') %}
-          {{ item }}
-
+          {{ item | replace( '','', ''\n'') | replace( ''@'', ''\n'')}}
           {%- endfor %}
           '
 - alias: Do something on every trigger
