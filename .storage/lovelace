@@ -3941,7 +3941,7 @@
                   "entity": "sensor.smart_code_with_home_connect_technology_battery_level"
                 },
                 {
-                  "entity": "sensor.gertle_battery"
+                  "entity": "sensor.lumi_lumi_sensor_cube_battery"
                 },
                 {
                   "entity": "sensor.yertle_battery"
