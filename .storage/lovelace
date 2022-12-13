@@ -4831,6 +4831,18 @@
                 }
               ],
               "title": "Gertle"
+            },
+            {
+              "camera_view": "live",
+              "type": "picture-glance",
+              "title": "fire",
+              "image": "https://demo.home-assistant.io/stub_config/kitchen.png",
+              "entities": [
+                {
+                  "entity": "camera.pellet_cam"
+                }
+              ],
+              "camera_image": "camera.pellet_cam"
             }
           ]
         },
