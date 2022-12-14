@@ -10,16 +10,6 @@
           "badges": [],
           "cards": [
             {
-              "type": "entities",
-              "title": "Switch",
-              "state_color": true,
-              "show_header_toggle": false,
-              "entities": [
-                "switch.1000d4bf8f_1",
-                "switch.1000dbf4a6_1"
-              ]
-            },
-            {
               "entities": [
                 {
                   "entity": "sensor.kitchen_temperature_2",
@@ -4747,6 +4737,16 @@
               "show_header_toggle": false,
               "title": "Doc Alert",
               "type": "entities"
+            },
+            {
+              "type": "entities",
+              "title": "Switch",
+              "state_color": true,
+              "show_header_toggle": false,
+              "entities": [
+                "switch.1000d4bf8f_1",
+                "switch.1000dbf4a6_1"
+              ]
             }
           ],
           "icon": "mdi:brain",

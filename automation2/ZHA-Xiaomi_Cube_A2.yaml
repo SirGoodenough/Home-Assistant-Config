@@ -4,7 +4,7 @@
   trace:
      stored_traces: 10
   use_blueprint:
-    path: SirGoodenough/ZHA - Xiaomi Cube Controller.yaml
+    path: SirGoodenough/ZHA-Xiaomi_Cube_Controller.yaml
     input:
       last_side_input: input_number.gertle_last
       cube: 171c43498d91c2e5db0aaafba5de9de7

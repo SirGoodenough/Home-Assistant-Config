@@ -4,7 +4,7 @@
   trace:
     stored_traces: 10
   use_blueprint:
-    path: SirGoodenough/Zigbee2MQTT - Xiaomi Cube Controller MQTT Triggered.yaml
+    path: SirGoodenough/Zigbee2MQTT-Xiaomi_Cube_Controller_MQTT_Triggered.yaml
     input:
       topic: zigbee2mqtt/Yertle
 ## Tarantula

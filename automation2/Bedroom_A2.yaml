@@ -47,7 +47,7 @@
   trace:
     stored_traces: 10
   use_blueprint:
-    path: SirGoodenough/AutoFanControl HA_fan.yaml
+    path: SirGoodenough/AutoFanControl_HA_fan.yaml
     input:
       fan_off_time: '19:00:00'
       fan_control: input_boolean.mayson_cool

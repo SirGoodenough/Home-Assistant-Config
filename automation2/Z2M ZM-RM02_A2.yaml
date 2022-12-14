@@ -4,7 +4,7 @@
     stored_traces: 10
   description: Buttons for Mom's chair
   use_blueprint:
-    path: SirGoodenough/Zigbee2MQTT - ZemiSmart ZM-RM02 Controller.yaml
+    path: SirGoodenough/Zigbee2MQTT-ZemiSmart_ZM-RM02_Controller.yaml
     input:
       remote: sensor.mom_button_action
       tap_1:

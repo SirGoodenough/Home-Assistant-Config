@@ -125,78 +125,6 @@
       entity_id: switch.dust_collector
 
 ####################################################
-# Restart Luton if it stops Pinging                #
-####################################################
-- id: a4d120a1-395e-4053-8ac7-1fd1f7edd41e
-  alias: restart Luton
-  description: Watch Luton and restart it if it's dead.
-  trigger:
-  - platform: state
-    entity_id: input_button.restart_luton
-  - platform: state
-    entity_id:
-    - device_tracker.luton
-    from: home
-    to: not_home
-    for:
-      minutes: 15
-  - platform: state
-    entity_id:
-    - device_tracker.luton
-    from: home
-    to: not_home
-    for:
-      hours: 1
-  - platform: state
-    entity_id:
-    - device_tracker.luton
-    from: home
-    to: not_home
-    for:
-      hours: 2
-  - platform: state
-    entity_id:
-    - device_tracker.luton
-    from: home
-    to: not_home
-    for:
-      hours: 3
-      minutes: 32
-      seconds: 28
-  - platform: state
-    entity_id:
-    - device_tracker.luton
-    from: home
-    to: not_home
-    for:
-      hours: 5
-  - platform: state
-    entity_id:
-    - device_tracker.luton
-    from: home
-    to: not_home
-    for:
-      hours: 6
-  - platform: state
-    entity_id:
-    - device_tracker.luton
-    from: home
-    to: not_home
-    for:
-      hours: 7
-  action:
-  - service: switch.turn_off
-    target:
-      entity_id: switch.luton
-  - service: script.tts_say_luton
-  - delay:
-      minutes: 1
-  - service: switch.turn_on
-    target:
-      entity_id: switch.luton
-  mode: single
-
-####################################################
 # Restart Downstairs Broadlink if its Dead         #
 ####################################################
 - id: 970763ea-a7ba-40e6-9d46-79b21e63996b
@@ -239,20 +167,35 @@
   - service: script.tts_say_broadlink_reset
   mode: single
 
+- id: '0bca4786-e971-442f-bf14-6ef122038dfa'
+  alias: Drall is Down
+  description: Drall Alert
+  use_blueprint:
+    path: SirGoodenough/Device_tracker_Monitor_and_Notifier.yaml
+    input:
+      trackees:
+      - device_tracker.rassilon_mountcadon_duckdns_org_dc_a6_32_a0_43_e7_2
+      - device_tracker.rassilon_mountcadon_duckdns_org_dc_a6_32_a0_43_e6_2
+      alt_notify:
+      - service: script.say_a_thing
+        data:
+          message: Drall is DOWN. Ping the big boned guy.
+          entities: media_player.kitchen_speaker
+
 ####################################################
 # check for blueprint updates                      #
 ####################################################
-# - id: 28062904-bd08-44fc-9021-13d8ad4aa054
-#   alias: _Blueprints Update
-#   description: ""
-#   trigger:
-#     - platform: time_pattern
-#       hours: "3"
-#   condition: []
-#   action:
-#     - service: shell_command.blueprints_update
-#       data: {}
-#   mode: single
+- id: 28062904-bd08-44fc-9021-13d8ad4aa054
+  alias: _Blueprints Update
+  description: ""
+  trigger:
+    - platform: time_pattern
+      hours: "3"
+  condition: []
+  action:
+    - service: shell_command.blueprints_update
+      data: {}
+  mode: single
 
 ####################################################
 # Page DrZzs                                       #
