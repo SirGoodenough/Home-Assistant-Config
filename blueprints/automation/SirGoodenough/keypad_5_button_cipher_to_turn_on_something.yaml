@@ -1,13 +1,21 @@
 blueprint:
-  name: Keypad 5 button cypher to turn on something_2022-05-05
-  description: 'This will accept any 5 button presses or ```Binary Sensor``` detections
-    and use them to preform an action.  RE open a lock, or whatever.
+  name: Keypad 5 button cypher to turn on something - 2022-12-12
+  description: "This will accept any 5 button presses or ```Binary Sensor``` detections and
+    use them to preform an action.  RE open a lock, or whatever.
 
-    [Community link for this blueprint](https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-before-you-turn-on-an-input-boolean/322385)'
+    📩 There is not an official version control system for Blueprints.  However I have 
+    found something that comes pretty close.  It is not perfect, but for **MOST** 
+    Blueprints, it does just fine.  I encourage you to check this script out and use 
+    it to easily check if I have updated this blueprint. 🔗
+
+    [koter84 Blueprint Update Script](https://gist.github.com/koter84/86790850aa63354bda56d041de31dc70#file-readme-md)
+
+
+    [Community link for this blueprint](https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-before-you-turn-on-an-input-boolean/322385)"
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/keypad_5_button_cipher_to_turn_on_something.yaml
   domain: automation
   homeassistant:
-    min_version: 2022.5.0
+    min_version: 2022.5.2
   input:
     button_one:
       name: Button Press One
@@ -53,8 +61,8 @@ blueprint:
           multiple: false
     seq_status:
       name: Control Sequence Status Placeholder
-      description: '```input_number``` - The internal use lock sequence number (set
-        range to 0 to 100) You will need one of these for every copy of this automation,  IE
+      description: '```input_number``` - The internal use lock sequence number (set range
+        to 0 to 100) You will need one of these for every copy of this automation,  IE
         one for every lock code.'
       selector:
         entity:
@@ -110,9 +118,14 @@ action:
   service: input_number.set_value
   data:
     entity_id: !input 'seq_status'
-    value: "{% if seq_status_last < tnow - (5*60) %}\n  {# It's been too long so reset\
-      \ the sequence #}\n  99\n{% else %} \n  {# Timing is good, so accept the value\
-      \ set #}\n  {{ seq_status_val }}\n{% endif %}\n"
+    value: >
+      {% if seq_status_last < tnow - (5*60) %}
+        {# It's been too long so reset the sequence #}
+        99
+      {% else %} 
+        {# Timing is good, so accept the value set #}
+        {{ seq_status_val }}
+      {% endif %}
 - choose:
   - alias: Somebody pushed the first button
     conditions:

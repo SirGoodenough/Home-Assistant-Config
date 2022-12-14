@@ -1,11 +1,11 @@
 blueprint:
-  name: Zigbee2MQTT - ZemiSmart ZM-RM02 Controller - 2022-05-05
+  name: Zigbee2MQTT - ZemiSmart ZM-RM02 Controller - 2022-12-12
   description: 'This Blueprint uses a Zigbee2MQTT built sensor to sort out the 18
-    commands from the ZemiSmart ZM-RM02 Remote.
+    commands from the ZemiSmart ZM-RM02 Remote. 
 
-    The split out of functions gives you the ability to assign local scripts or functions
-    to do the things you want the remote to do. Functions that are left empty will
-    simply do nothing.
+    The split out of functions gives you the ability to assign local scripts or 
+    functions to do the things you want the remote to do. Functions that are left 
+    empty will simply do nothing.
 
 
     There is sample code to make the template sensor in the help file on GitHib named
@@ -18,16 +18,25 @@ blueprint:
     Template sensor can grab it and show you the last action sent. Thie will help  when
     setting up new functions and to troubleshoot strange behaviours.
 
-    '
+    📩 There is not an official version control system for Blueprints.  However I have 
+    found something that comes pretty close.  It is not perfect, but for **MOST** 
+    Blueprints, it does just fine.  I encourage you to check this script out and use 
+    it to easily check if I have updated this blueprint. 🔗
+
+    [koter84 Blueprint Update Script](https://gist.github.com/koter84/86790850aa63354bda56d041de31dc70#file-readme-md)
+
+
+    [Community link for this blueprint](https://community.home-assistant.io/t/zigbee2mqtt-zemismart-zm-rm02-controller/412650)'
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-ZemiSmart_ZM-RM02_Controller.yaml
   domain: automation
   homeassistant:
-    min_version: 2022.5.0
+    min_version: 2022.5.2
   input:
     remote:
       name: Remote
       description: 'The entity to put here is the sensor that Z2M imported that is
-        named like this>
-
+        named like this> 
+        
         ```sensor.XXYour_HameXX_action```'
       selector:
         entity:
@@ -124,7 +133,6 @@ blueprint:
       default: []
       selector:
         action: {}
-  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20ZemiSmart%20ZM-RM02%20Controller.yaml
 mode: queued
 max: 2
 trigger:

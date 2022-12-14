@@ -1,6 +1,6 @@
 blueprint:
-  name: Aqara Magic Cube Zigbee2MQTT MQTT Triggered - 2022-12-01
-  description: "This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38(+54)
+  name: Aqara Magic Cube Zigbee2MQTT MQTT Triggered - 2022-12-12
+  description: 'This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38(+54)
     unique commands available from the Xiaomi Magic Cube Remote. (Some unique commands
     are available thru templating only. See the related document.)
 
@@ -60,21 +60,29 @@ blueprint:
     be more documentation for rookie users to properly set this up. I had quite a
     few questions and when I saw a few questions in that chat from people struggling,
     I wanted to help. I also had a better idea for troubleshooting info.
-    
-    "
-  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller%20MQTT%20Triggered.yaml
+
+    📩 There is not an official version control system for Blueprints.  However I have 
+    found something that comes pretty close.  It is not perfect, but for **MOST** 
+    Blueprints, it does just fine.  I encourage you to check this script out and use 
+    it to easily check if I have updated this blueprint. 🔗
+
+    [koter84 Blueprint Update Script](https://gist.github.com/koter84/86790850aa63354bda56d041de31dc70#file-readme-md)
+
+
+    [Community link for this blueprint](https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203)'
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Xiaomi_Cube_Controller_MQTT_Triggered.yaml
   domain: automation
   homeassistant:
     min_version: 2022.11.0
   input:
     topic:
       name: Topic
-      description: "The main MQTT Topic for your cube. 
+      description: 'The main MQTT Topic for your cube. 
         
         Details on finding the correct topic can be found here: 
         
         [Find my Cube Topic](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller%20MQTT%20Triggered.md#-to-make-the-blueprint-work-it-will-need)
-        "
+        '
       default: "zigbee2mqtt/?"
       selector:
         text:
@@ -99,9 +107,9 @@ blueprint:
         action: {}
     flipped180_face_0:
       name: Group 1 actions 🍎 Flip the cube 180 degrees to face 0
-      description: "**NOTE:** This action is trick to master, and should be used sparingly...
-        
-        Face 0 is the one with the 'Aqara' LOGO"
+      description: '**NOTE:** This action is trick to master, and should be used sparingly...
+
+        Face 0 is the one with the ''Aqara'' LOGO'
       default: []
       selector:
         action: {}
@@ -274,17 +282,17 @@ blueprint:
         action: {}
     shake:
       name: Shake the cube 🍩
-      description: "This trigger only occurs once in the set-up.
-        
-        It can be combined in any group."
+      description: 'This trigger only occurs once in the set-up.
+
+        It can be combined in any group.'
       default: []
       selector:
         action: {}
     fall:
       name: Drop the cube 🍩
-      description: "This trigger only occurs once in the set-up.
-        
-        It can be combined in any group."
+      description: 'This trigger only occurs once in the set-up.
+
+        It can be combined in any group.'
       default: []
       selector:
         action: {}
@@ -639,7 +647,7 @@ action:
       # Get the topic as a variable.
     topic_var: !input topic
       # Generate the Friendly_name from the Topic.
-    friendly_name: '{{ topic_var.split(''/'')[1] | regex_replace("[^A-Za-z0-9]", "")}}'
+    friendly_name: '{{ topic_var.split(''/'')[1] | regex_replace("[^A-Za-z0-9]", "") }}'
       # Generate the device_id from the Friendly_name.
     device_id: '{{ device_id( friendly_name ) }}'
       # Pull out the ieee identifier.

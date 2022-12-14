@@ -1,5 +1,5 @@
 blueprint:
-  name: Auto_Fan_Temperature_Control_for_3-Speed_Fan_MQTT_2022-05-15
+  name: Auto_Fan_Temperature_Control_for_3-Speed_Fan_MQTT-2022-12-12
   description: 'This sets the fan speed for a 3 speed fan (such as an IFAN03/IFAN04)
     based on a room temperature.
 
@@ -15,6 +15,13 @@ blueprint:
     There are action selectors for both the cycle loop and the shutdown loop for adding
     control of heating / cooling sources, or anything else you want Home Assistant
     to do for you.
+
+    📩 There is not an official version control system for Blueprints.  However I have 
+    found something that comes pretty close.  It is not perfect, but for **MOST** 
+    Blueprints, it does just fine.  I encourage you to check this script out and use 
+    it to easily check if I have updated this blueprint. 🔗
+
+    [koter84 Blueprint Update Script](https://gist.github.com/koter84/86790850aa63354bda56d041de31dc70#file-readme-md)
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/auto-fan-temperature-control-for-3-speed-fan-ifanxx-tasmota/326419)'
@@ -274,11 +281,21 @@ action:
         topic: !input 'mqtt_fan_topic'
         qos: 2
         retain: false
-        payload: "{% if room_temp_now_val < room_set_temp_val %} {# Room is cooler\
-          \ than set temp so turn fan OFF. #}\n  0\n\n{% elif room_temp_now_val <\
-          \ (room_set_temp_val + temp_gap_1_to_2_val) %} {# Room is at the temp where\
-          \ the fan should be at LOW speed. #}\n  1\n\n{% elif room_temp_now_val <\
-          \ (room_set_temp_val + temp_gap_1_to_2_val + temp_gap_2_to_3_val) %}  {#\
-          \ Room is at the temp where the fan should be at MEDIUM speed. #}\n  2\n\
-          \n{% else %}  {# Room is warm enough to be on HIGH speed, #}\n  3\n\n{%\
-          \ endif %}"
+        payload: >-
+          {% if room_temp_now_val < room_set_temp_val %}
+          {# Room is cooler than set temp so turn fan OFF. #}
+            0
+
+          {% elif room_temp_now_val < (room_set_temp_val + temp_gap_1_to_2_val) %}
+          {# Room is at the temp where the fan should be at LOW speed. #}
+            1
+
+          {% elif room_temp_now_val < (room_set_temp_val + temp_gap_1_to_2_val + temp_gap_2_to_3_val) %} 
+          {# Room is at the temp where the fan should be at MEDIUM speed. #}
+            2
+
+          {% else %} 
+          {# Room is warm enough to be on HIGH speed, #}
+            3
+
+          {% endif %}
