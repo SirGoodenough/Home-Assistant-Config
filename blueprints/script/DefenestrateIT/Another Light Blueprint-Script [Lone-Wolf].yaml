@@ -1,0 +1,626 @@
+blueprint:
+  name: Another Light Blueprint-Script [Lone-Wolf]
+  source_url: https://gist.github.com/DefenestrateIT/b5a5830c5eb990e651622efda90b4600
+  domain: script
+  description: "My Default Light Blueprint-Script v.1.3 with my take on Profiles.\n
+    Is my take on Light Profiles. This version has the following profiles: \n - Bright
+    \     - (For Day time & Events, I need to be Awake; Bright eyed & bushy tailed).\n
+    - Dimmed      - (For after sunset & before sunrise when i'm (still) thinking about
+    bed, but I will want to be able to read the Funny pages).\n - Night-Light - (For
+    bed/sleep time, & you don't want to wake  everyone else up, but you still want
+    to see in an emergency; how to get to the Fridge)\n - Colour-Loop - (Was to be
+    Aurora-Australis, but colour-loop is easier to remember).\n - Short-Flash - (If
+    you want to get someone's attention).\n - Long-Flash  - (If you REALLY want to
+    get someone's attention).\n - Circadian   - (For the rest of the house at night,
+    & to get everyone in sync @ night with you).\n - Adaptive    - (This works really
+    well with a bed/sleep input_boolean &or A Lux Sensor).\n - Red&Blue    - (works
+    great in conjunction with Alarm Panel Automations).\n - Wake-Up     - (A light.turn_on
+    \ wake up service call).\n - Random      - (A Sorely missed replacement to the
+    light effect).\n - Custom      - (Used for applying custom colour effects, it
+    only has the Transition effect).\n - Themed      - (Theme different rooms, with
+    different colours; with a change every so often).\n - Aurora      - (My Aurora-Australis
+    that I wanted, when I first started this project).\n - Toggle      - (be careful
+    with this Profile, if your lights aren't designed to toggle rapidly).\n - None
+    \       - (Utilise this when using scenes & if you need to disable the light.turn_on
+    Service Call).\n - '.'         - (If you want the script to do nothing).\n\n     -
+    A [PREREQUISITE] of an input_select { Dropdown } with the desired above Profile/s
+    (words) added is required { recommend one for each instance of this Automation
+    }. \n     - A [OPTIONAL] sensor, Device_class: illuminance. Is Available for activating
+    the Adaptive Bright Profile.\n     - A [OPTIONAL] input_boolean { Toggle } is
+    Available for Adaptive Profile Night-Light to work { recommend just the one, that
+    will do }.\n     - I'm assuming you already have some Lights that you wanted to
+    add.\n\n Go to Settings > Devices & Services > Helpers > Create Helper > { Dropdown
+    } &or { Toggle }.\n Replace 'Another' in the name of this script with the name
+    of room/area/device/entity  ( E.g. Office ) light/s, this script is intended to
+    turn on & off [for convenience].\n Designed to be used with A Automation-Script,
+    & that decides IF & WHEN too turn the Light/s On (by calling this script) & Off
+    (by any means you see fit).\n This Blueprint is Inspired & Written in loving annoyance
+    to having to set up my mother; I.e. Robyn's system  on her birthday the 8th of
+    Oct, and in the hope she will be inspired to learn how to do it for her self (As
+    she is an old school coder, [& still wickedly coding] who always saying she loves
+    programming) & so should U!\n P.S. This version [Lone-Wolf] is essentially the
+    same as the [HAssNic's] exceptit is mode: 'restart', if you don't understand the
+    difference, use this version."
+  input:
+    input_target_lights:
+      name: Targeted Lights ( Required )
+      description: '[PREREQUISITE] Lights this Script is Targeted at.'
+      selector:
+        target:
+          entity:
+            domain: light
+    input_select_profile:
+      name: Profile input_select ( Required )
+      description: '[PREREQUISITE] Profile ''input_select'' { Dropdown } the Targeted
+        Light/s will conform to E.g. ''Bright'', ''Dimmed'', ''Night-Light'' ect...'
+      selector:
+        entity:
+          domain: input_select
+          multiple: false
+    input_lux_sensor:
+      name: Illuminance Sensor ( Optional )
+      description: '[Optional] Illuminance (lux) Sensor that trigger''s the ''Adaptive''
+        - ''Profile'' selection between ''Bright'' & ''Dimmed''.'
+      default:
+      selector:
+        entity:
+          domain: sensor
+          device_class: illuminance
+          multiple: false
+    input_lux_value:
+      name: Illuminance value
+      description: Illuminance triggering Bright setting for - Adaptive - Profile.
+      default: 50
+      selector:
+        number:
+          min: 1.0
+          max: 1000.0
+          mode: slider
+          step: 10.0
+    input_adaptive_switch:
+      name: Adaptive - Profile - input_boolean ( Optional )
+      description: '[OPTIONAL] Adaptive Profile Night-Light ''input_boolean'' { Toggle
+        } Switch, is used to switch the Night-Light profile on like a sleep/bed-time
+        switch.'
+      default:
+      selector:
+        entity:
+          domain: input_boolean
+          multiple: false
+    input_sun_before_offset:
+      name: Sunrise - Offset
+      description: Offset the sunrise time.
+      default: '1:00:00'
+      selector:
+        time: {}
+    input_sun_after_offset:
+      name: Sunset - Offset
+      description: Offset the sunset time.
+      default: '-1:00:00'
+      selector:
+        time: {}
+    input_bed_time:
+      name: Circadian - Profile - Bed Time
+      description: The Circadian Profile Night-Light Time, is used as a time to transition
+        to Night Light.
+      default: '22:30:00'
+      selector:
+        time: {}
+    input_wake_up_time:
+      name: Circadian - Profile - Wake Up Time
+      description: The Circadian Profile Wake Up Time, is used as a time to transition
+        to Dimmed or Bright Light; depending on Sunrise time.
+      default: '6:30:00'
+      selector:
+        time: {}
+    input_transition_on:
+      name: Turn On Light Transition Time
+      description: The Light.Turn_On Transition Time, for when a Light is off & is
+        being turned on.
+      default: 0
+      selector:
+        number:
+          min: 0.0
+          max: 300.0
+          mode: slider
+          step: 1.0
+    input_transition_change:
+      name: Change Light Transition Time
+      description: The Light.Turn_On Transition Time, is used when the lights are
+        already on & the profile is being changed.
+      default: 8
+      selector:
+        number:
+          min: 0.0
+          max: 300.0
+          mode: slider
+          step: 1.0
+    input_transition_aurora:
+      name: Aurora - Profile - Transition Time
+      description: The Colour Loop Profile Light.Turn_On Transition Time between colour
+        changes.
+      default: 16
+      selector:
+        number:
+          min: 1.0
+          max: 300.0
+          mode: slider
+          step: 1.0
+    input_loop_transition:
+      name: Colour Loop - Profile - Transition Time
+      description: The Colour Loop Profile Light.Turn_On Transition Time between colour
+        changes.
+      default: 2
+      selector:
+        number:
+          min: 1.0
+          max: 300.0
+          mode: slider
+          step: 1.0
+    input_hue_gain:
+      name: Colour Loop - Profile - Hue Gain
+      description: The Colour Loop Hue Gain, or how much colour changes between repeat
+        loops (recommend using A number that 360 can be divided by, to keep cycles
+        uniform).
+      default: 30
+      selector:
+        number:
+          min: 2.0
+          max: 120.0
+          mode: slider
+          step: 1.0
+    input_transition_toggle:
+      name: Toggle - Profile - Repeat Time
+      description: The Light.Turn_On Transition Time between Flashes (Not as good
+        as i would like but uses the Flash effect to protect lights).
+      default: 4
+      selector:
+        number:
+          min: 1.0
+          max: 300.0
+          mode: slider
+          step: 1.0
+    flash_repeat:
+      name: Flash - Profile - Repeat Time
+      description: The Light.Turn_On Transition Time between Flashes (Not as good
+        as i would like but uses the Flash effect to protect lights).
+      default: 2
+      selector:
+        number:
+          min: 2.0
+          max: 300.0
+          mode: slider
+          step: 1.0
+    input_bright_colour_temp:
+      name: Bright - Profile - Colour Temperature
+      description: The Bright Profile light Colour-Temperature.
+      default: 153
+      selector:
+        color_temp: {}
+    input_bright_brightness:
+      name: Bright - Profile - brightness
+      description: The Bright Profile light brightness.
+      default: 255
+      selector:
+        number:
+          min: 0.0
+          max: 255.0
+          mode: slider
+          step: 1.0
+    input_dimmed_colour_temp:
+      name: Dimmed - Profile - Colour Temperature
+      description: The Dimmed Profile light Colour-Temperature.
+      default: 400
+      selector:
+        color_temp: {}
+    input_dimmed_brightness:
+      name: Dimmed - Profile - Brightness
+      description: The Dimmed Profile light brightness.
+      default: 175
+      selector:
+        number:
+          min: 0.0
+          max: 255.0
+          mode: slider
+          step: 1.0
+    input_sleep_colour_temp:
+      name: Night Light - Profile - Colour Temperature
+      description: The Night Light Profile light Colour-Temperature.
+      default: 500
+      selector:
+        color_temp: {}
+    input_sleep_brightness:
+      name: Night Light - Profile - Brightness
+      description: The Night Light Profile light brightness.
+      default: 25
+      selector:
+        number:
+          min: 0.0
+          max: 255.0
+          mode: slider
+          step: 1.0
+variables:
+  version: Hello World
+  input_hue_gain: !input input_hue_gain
+  input_lux_value: !input input_lux_value
+  input_target: !input input_target_lights
+  input_lux_sensor: !input input_lux_sensor
+  input_transition_on: !input input_transition_on
+  input_select_profile: !input input_select_profile
+  input_adaptive_switch: !input input_adaptive_switch
+  input_sleep_brightness: !input input_sleep_brightness
+  input_transition_toggle: !input input_transition_toggle
+  input_sleep_colour_temp: !input input_sleep_colour_temp
+  input_transition_change: !input input_transition_change
+  input_dimmed_brightness: !input input_dimmed_brightness
+  input_bright_brightness: !input input_bright_brightness
+  input_transition_aurora: !input input_transition_aurora
+  input_dimmed_colour_temp: !input input_dimmed_colour_temp
+  input_bright_colour_temp: !input input_bright_colour_temp
+  target: '{{ v_target if v_target is defined else input_target }}'
+  hue_gain: '{{ v_hue_gain if v_hue_gain is defined else input_hue_gain }}'
+  lux_value: '{{ v_lux_value if v_lux_value is defined else input_lux_value }}'
+  lux_sensor: '{{ v_lux_sensor if v_lux_sensor is defined else input_lux_sensor }}'
+  transition_on: '{{ v_transition_on if v_transition_on is defined else input_transition_on
+    }}'
+  adaptive_switch: '{{ v_adaptive_switch if v_adaptive_switch is defined else input_adaptive_switch
+    }}'
+  profile: '{{ v_profile | lower if v_profile is defined else states ( input_select_profile
+    ) | lower }}'
+  sleep_brightness: '{{ v_sleep_brightness if v_sleep_brightness is defined else input_sleep_brightness
+    }}'
+  transition_change: '{{ v_transition_change if v_transition_change is defined else
+    input_transition_change }}'
+  sleep_colour_temp: '{{ v_sleep_colour_temp if v_sleep_colour_temp is defined else
+    input_sleep_colour_temp }}'
+  dimmed_brightness: '{{ v_dimmed_brightness if v_dimmed_brightness is defined else
+    input_dimmed_brightness }}'
+  bright_brightness: '{{ v_bright_brightness if v_bright_brightness is defined else
+    input_bright_brightness }}'
+  transition_toggle: '{{ v_transition_toggle if v_transition_toggle is defined else
+    input_transition_toggle }}'
+  transition_aurora: '{{ v_transition_aurora if v_transition_aurora is defined else
+    input_transition_aurora }}'
+  dimmed_colour_temp: '{{ v_dimmed_colour_temp if v_dimmed_colour_temp is defined
+    else input_dimmed_colour_temp }}'
+  bright_colour_temp: '{{ v_bright_colour_temp if v_bright_colour_temp is defined
+    else input_bright_colour_temp }}'
+  entities: "{%- set ns = namespace(ret=[]) %} {%- for key in ['device_id', 'area_id',
+    'entity_id'] %}\n  {%- set items = target.get(key, [] )  %}\n  {%- if items %}
+    {#@petroUlegend#}\n    {%- set items = [ items ] if items is string else items
+    %}\n    {%- set filt = key.split('_') | first %}\n    {%- set items = items if
+    filt == 'entity' else items | map ( filt ~ '_entities') | sum ( start = [] ) %}\n
+    \   {%- set ns.ret = ns.ret + [ items ] %}\n  {%- endif %}\n{%- endfor %} {{ ns.ret
+    | sum(start=[]) }}\n"
+  expanded: '{{ expand ( entities ) | map ( attribute = ''entity_id'' ) | select(
+    ''search'' , ''^light'' ) | list }}'
+  filtered: '{{ entities | select( ''search'' , ''^light'' ) | list }}'
+  transitions: '{{ transition_change if lights_test else transition_on }}'
+  adaptive: '{{ adaptive_switch if adaptive_switch is defined else false }}'
+  transition: '{{ v_transition if v_transition is defined else transitions }}'
+  lights: '{{ filtered + expanded }}'
+  lights_test: '{{ lights_on | count > 0 }}'
+  lights_on: '{{ lights | select(''is_state'', ''on'') | list  }}'
+  flash: '{{ ''short'' if profile == ''short-flash'' else ''long'' }}'
+  transition_repeat: "{% if profile == 'aurora' %} \n  {{ transition_aurora }}\n{%
+    elif profile == 'colour-loop'%} \n  {{ dimmed_brightness }} \n{% else %} {{ transitions
+    }} {% endif %}\n"
+  brightness: "{% if profile == 'Bright' %} \n  {{ bright_brightness }} \n{% elif
+    \ profile == 'Night-Light' or profile == 'Sleep' %} \n  {{ sleep_brightness }}
+    \n{% elif profile == 'Dimmed'%} \n  {{ dimmed_brightness }} \n{% else %} 0 {%
+    endif %}\n"
+  colour_temp: "{% if profile == 'Bright' %}\n  {{ bright_colour_temp }} \n{% elif
+    \ profile == 'Night-Light' or profile == 'Sleep' %}\n  {{ sleep_colour_temp }}
+    \n{% elif profile == 'Dimmed'%} \n  {{ dimmed_colour_temp }} \n{% else %} 0 {%
+    endif %}\"\n"
+sequence:
+- choose:
+  - conditions:
+    - condition: or
+      conditions:
+      - condition: template
+        value_template: '{{ is_state ( profile , none ) }}'
+      - condition: template
+        value_template: '{{ profile == ''none'' }}'
+      - condition: template
+        value_template: '{{ profile == ''.'' }}'
+    sequence: []
+  - conditions:
+    - condition: or
+      conditions:
+      - condition: template
+        value_template: '{{ profile == ''temperature'' }}'
+    sequence:
+    - service: light.turn_on
+      data:
+        color_temp: '{{ bright_colour_temp }}'
+        brightness: '{{ brightness }}'
+        transition: '{{ transition }}'
+      target: '{{ target}}'
+  - conditions:
+    - condition: or
+      conditions:
+      - condition: template
+        value_template: '{{ profile == ''toggle'' }}'
+      - condition: template
+        value_template: '{{ profile == ''custom'' }}'
+    sequence:
+    - service: light.turn_on
+      data:
+        transition: '{{ transition_change }}'
+      target: '{{ target}}'
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: '{{ transition_change }}'
+        milliseconds: 0
+    - repeat:
+        while:
+        - condition: template
+          value_template: '{{ lights_test }}'
+        - condition: or
+          conditions:
+          - condition: template
+            value_template: '{{ profile == ''toggle'' }}'
+        sequence:
+        - service: light.toggle
+          data:
+            transition: '{{ transition_change }}'
+          target: '{{ target}}'
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: '{{ transition_change }}'
+            milliseconds: 0
+        - service: light.toggle
+          data:
+            transition: '{{ transition_change }}'
+          target: '{{ target}}'
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: '{{ transition_change }}'
+            milliseconds: 0
+  - conditions:
+    - condition: or
+      conditions:
+      - condition: template
+        value_template: '{{ profile | lower == ''custom'' }}'
+    sequence:
+    - service: light.turn_on
+      data:
+        transition: '{{ transition }}'
+      target: '{{ target}}'
+  - conditions:
+    - condition: or
+      conditions:
+      - condition: template
+        value_template: '{{ profile | lower == ''bright'' }}'
+    sequence:
+    - service: light.turn_on
+      data:
+        color_temp: '{{ bright_colour_temp }}'
+        brightness: '{{ bright_brightness }}'
+        transition: '{{ transition }}'
+      target: '{{ target}}'
+  - conditions:
+    - condition: or
+      conditions:
+      - condition: template
+        value_template: '{{ profile | lower == ''dimmed'' }}'
+    sequence:
+    - service: light.turn_on
+      data:
+        color_temp: '{{ dimmed_colour_temp }}'
+        brightness: '{{ dimmed_brightness }}'
+        transition: '{{ transition }}'
+      target: '{{ target}}'
+  - conditions:
+    - condition: or
+      conditions:
+      - condition: template
+        value_template: '{{ profile == ''night-light'' }}'
+    sequence:
+    - service: light.turn_on
+      data:
+        color_temp: '{{ sleep_colour_temp }}'
+        brightness: '{{ sleep_brightness }}'
+        transition: '{{ transition }}'
+      target: '{{ target}}'
+  - conditions:
+    - condition: or
+      conditions:
+      - condition: template
+        value_template: '{{ profile == ''random'' }}'
+      - condition: template
+        value_template: '{{ profile == ''aurora'' }}'
+    sequence:
+    - repeat:
+        for_each: '{{ lights | reject ( ''in'' , integration_entities ( ''group''
+          ) ) | list }}'
+        sequence:
+        - service: light.turn_on
+          data:
+            hs_color:
+            - '{{ range ( 360 ) | random }}'
+            - '{{ range ( 80 , 100 ) | random }}'
+            brightness_pct: 100
+            transition: '{{ transition if profile != ''aurora'' else transition_aurora
+              }}'
+          target:
+            entity_id: '{{ repeat.item }}'
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: '{{ transition }}'
+        milliseconds: 0
+    - repeat:
+        sequence:
+        - repeat:
+            for_each: '{{ lights_on | reject ( ''in'' , integration_entities ( ''group''
+              ) ) | list }}'
+            sequence:
+            - service: light.turn_on
+              data:
+                hs_color:
+                - '{{ range ( 360 ) | random }}'
+                - '{{ range ( 80 , 100 ) | random }}'
+                brightness_pct: 100
+                transition: '{{ aurora_transition }}'
+              target:
+                entity_id: '{{ repeat.item }}'
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: '{{ aurora_transition }}'
+            milliseconds: 0
+        while:
+        - condition: template
+          value_template: '{{ lights_test }}'
+        - condition: template
+          value_template: '{{ profile | lower == ''aurora'' }}'
+  - conditions:
+    - condition: or
+      conditions:
+      - condition: template
+        value_template: '{{ profile | lower == ''color-loop'' }}'
+      - condition: template
+        value_template: '{{ profile | lower == ''colour-loop'' }}'
+      - condition: template
+        value_template: '{{ profile | lower == ''themed'' }}'
+    sequence:
+    - service: light.turn_on
+      data:
+        hs_color:
+        - '{{ range ( 360 ) | random }}'
+        - '{{ range ( 75 , 100 ) | random }}'
+        brightness_pct: 100
+        transition: '{{ transition }}'
+      target: '{{ target}}'
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: '{{ transition }}'
+        milliseconds: 0
+    - repeat:
+        while:
+        - condition: template
+          value_template: '{{ lights_test }}'
+        - condition: or
+          conditions:
+          - condition: template
+            value_template: '{{ profile | lower == ''color-loop'' }}'
+          - condition: template
+            value_template: '{{ profile | lower == ''colour-loop'' }}'
+        sequence:
+        - service: light.turn_on
+          data:
+            hs_color:
+            - '{{ ( hue_gain + ( repeat.index * hue_gain ) ) % 360 }}'
+            - 100
+            brightness_pct: 100
+            transition: '{{ loop_transition }}'
+          target: '{{ target}}'
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: '{{ loop_transition }}'
+            milliseconds: 0
+  - conditions:
+    - condition: or
+      conditions:
+      - condition: template
+        value_template: '{{ profile | lower == ''flash'' }}'
+      - condition: template
+        value_template: '{{ profile | lower == ''long-flash'' }}'
+      - condition: template
+        value_template: '{{ profile | lower == ''short-flash'' }}'
+    sequence:
+    - service: light.turn_on
+      data:
+        flash: '{{ flash }}'
+      target: '{{ target}}'
+  - conditions:
+    - condition: or
+      conditions:
+      - condition: template
+        value_template: '{{ profile | lower == ''circadian'' }}'
+    sequence:
+    - choose:
+      - conditions:
+        - condition: time
+          after: !input input_bed_time
+          before: !input input_wake_up_time
+        sequence:
+        - service: light.turn_on
+          data:
+            color_temp: '{{ sleep_colour_temp }}'
+            brightness: '{{ sleep_brightness }}'
+            transition: '{{ transition }}'
+          target: '{{ target}}'
+      - conditions:
+        - condition: sun
+          before: sunset
+          after: sunrise
+          before_offset: !input input_sun_before_offset
+          after_offset: !input input_sun_after_offset
+        sequence:
+        - service: light.turn_on
+          data:
+            color_temp: '{{ bright_colour_temp }}'
+            brightness: '{{ bright_brightness }}'
+            transition: '{{ transition }}'
+          target: '{{ target}}'
+      default:
+      - service: light.turn_on
+        data:
+          color_temp: '{{ dimmed_colour_temp }}'
+          brightness: '{{ dimmed_brightness }}'
+          transition: '{{ transition }}'
+        target: '{{ target}}'
+  - conditions:
+    - condition: or
+      conditions:
+      - condition: template
+        value_template: '{{ profile | lower == ''adaptive'' }}'
+    sequence:
+    - choose:
+      - conditions:
+        - condition: template
+          value_template: '{{ adaptive }}'
+        sequence:
+        - service: light.turn_on
+          data:
+            color_temp: '{{ sleep_colour_temp }}'
+            brightness: '{{ sleep_brightness }}'
+            transition: '{{ transition }}'
+          target: '{{ target}}'
+      - conditions:
+        - condition: or
+          conditions:
+          - condition: sun
+            before: sunset
+            after: sunrise
+            before_offset: !input input_sun_before_offset
+            after_offset: !input input_sun_after_offset
+          - condition: template
+            value_template: '{{ states ( lux_sensor ) | int > lux_value }}'
+        sequence:
+        - service: light.turn_on
+          data:
+            color_temp: '{{ bright_colour_temp }}'
+            brightness: '{{ bright_brightness }}'
+            transition: '{{ transition }}'
+          target: '{{ target}}'
+      default:
+      - service: light.turn_on
+        data:
+          color_temp: '{{ dimmed_colour_temp }}'
+          brightness: '{{ dimmed_brightness }}'
+          transition: '{{ transition }}'
+        target: '{{ target}}'
+  default:
+  - service: light.turn_on
+    data: {}
+    target: '{{ target}}'
+mode: restart
