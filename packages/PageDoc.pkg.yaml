@@ -8,7 +8,7 @@ shell_command:
   test_message: curl -X POST -H 'Content-type:application/json' --data '{"message":"{{message}}"}' !secret 'chaloupkabode_alert'
     #
     # This is used as part of the quality control for this.
-    #  Basically I send myself a webhook just like the one send to Doc,
+    #  Basically I send myself a webhook just like the one sent to Doc,
     #  and if I hear it, he should hear it.
     #  You have to create the webhook secret URL on your own HA instance.
     #
