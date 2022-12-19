@@ -190,7 +190,7 @@
   description: ""
   trigger:
     - platform: time_pattern
-      hours: "3"
+      hours: "12"
   condition: []
   action:
     - service: shell_command.blueprints_update
