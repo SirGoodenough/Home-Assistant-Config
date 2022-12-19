@@ -28,6 +28,9 @@
     action:
     - service: script.turn_on
       entity_id: script.garage_outside_lights_on
+    - delay: 01:08:37
+    mode: single
+    max_exceeded: silent
 
   - id: c0193815-32b4-4f26-b2a0-a6cafa05de2f
     alias: Garage Inside Auto Light
