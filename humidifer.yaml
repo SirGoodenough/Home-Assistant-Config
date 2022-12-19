@@ -1,7 +1,7 @@
 ---
   - name: House Humidity
     humidifier: switch.humidifier_2
-    target_sensor: sensor.humidity_net
+    target_sensor: sensor.house_humidity
     min_humidity: 30
     max_humidity: 55
     target_humidity: 40
@@ -15,4 +15,4 @@
     initial_state: true
     # away_humidity: 35
     # away_fixed: True
-    sensor_stale_duration: 00:15:00
+    sensor_stale_duration: 01:00:00

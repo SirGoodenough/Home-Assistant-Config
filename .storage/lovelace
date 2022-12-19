@@ -2832,8 +2832,9 @@
               "entity": "humidifier.house_humidity"
             },
             {
-              "entity": "sensor.house_humidity_main",
+              "hours_to_show": 24,
               "graph": "line",
+              "entity": "sensor.house_humidity",
               "name": "Main Level Mean Humidity",
               "type": "sensor",
               "detail": 2
