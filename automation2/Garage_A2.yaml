@@ -45,3 +45,5 @@
     action:
     - service: script.turn_on
       entity_id: script.garage_inside_lights_on
+    mode: single
+    max_exceeded: silent

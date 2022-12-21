@@ -72,7 +72,8 @@
         "name": "Doc Messages",
         "icon": "mdi:format-list-bulleted",
         "options": [
-          "Screen",
+          "Screen Hidden",
+          "Screen Frozen",
           "Audio",
           "Check Chat",
           "Hi Doc",

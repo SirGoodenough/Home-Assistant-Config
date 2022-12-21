@@ -1,18 +1,9 @@
 shell_command:
-  drzzs_page: curl -X POST -H 'Content-type:application/json' --data '{"message":"SG says {{message}}"}' !secret 'DrZzsPage'
+  generic_page: 'curl -X POST -H ''Content-type:application/json'' --data ''{"message":"{{ message }}"}'' {{ webhook }}'
     #
-    # This is used to send the page webhook to Doc.  
-    #  Edit the "SG says" to something else and get the secret webhook URL from Doc.
-    #  I don't give out his webhooks.
-
-  test_message: curl -X POST -H 'Content-type:application/json' --data '{"message":"{{message}}"}' !secret 'chaloupkabode_alert'
+    # This is used to send the page webhook to Doc. 
     #
-    # This is used as part of the quality control for this.
-    #  Basically I send myself a webhook just like the one sent to Doc,
-    #  and if I hear it, he should hear it.
-    #  You have to create the webhook secret URL on your own HA instance.
-    #
-    # This is optional...
+    # The variables message and webhook are pulled from the calling script. 
 
 automation:
   ####################################################
@@ -32,11 +23,15 @@ automation:
       - "{{ trigger.to_state.state != '' }}"
     action:
       - alias: 'So I hear it (optional)'
-        service: shell_command.test_message
-        data: {"message":"{{ trigger.to_state.state }}"}
-      - alias: So Doc Hears it
-        service: shell_command.drzzs_page
-        data: {"message":"{{ trigger.to_state.state }}"}
+        service: shell_command.generic_page
+        data:
+          message: 'SG says {{ trigger.to_state.state }}'
+          webhook: !secret chaloupkabode_alert
+      # - alias: So Doc Hears it
+      #   service: shell_command.generic_page
+      #   data:
+      #     message: '''SG says '' + {{ trigger.to_state.state }}'
+      #     webhook: !secret 'DrZzsPage
       - alias: Reset the list
         service: input_select.select_option
         data:
@@ -44,6 +39,9 @@ automation:
         target:
           entity_id:
             - input_select.doc_messages
+      #
+      #  Get the secret webhook URL that is stored in a secret from Doc.
+      #   I don't give out his webhooks.
       #
       # This is the magic that sends the messages.
       #  You need to create a input_select helper to reference above.
