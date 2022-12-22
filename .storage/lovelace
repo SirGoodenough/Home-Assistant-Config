@@ -277,7 +277,10 @@
                   "entity": "binary_sensor.side_door_open_433"
                 },
                 {
-                  "entity": "light.main_lights"
+                  "entity": "light.garagesidelight3"
+                },
+                {
+                  "entity": "switch.yard_light_pir"
                 }
               ],
               "title": "Glance",

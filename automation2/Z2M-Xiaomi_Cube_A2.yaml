@@ -22,12 +22,12 @@
       rotate_cw_face_0:
         - service: script.cube_dimmer_control
           data:
-            angle: '{{ trigger.payload_json.angle }}'
+            angle: '{{ trigger.payload_json.action_angle | float(0.0) }}'
             light: light.grp_kitch
       rotate_ccw_face_0:
         - service: script.cube_dimmer_control
           data:
-            angle: '{{ trigger.payload_json.angle }}'
+            angle: '{{ trigger.payload_json.action_angle | float(0.0) }}'
             light: light.grp_kitch
 ## Side dad 1
       doubletap_face_1:
@@ -40,12 +40,12 @@
       rotate_cw_face_3:
         - service: script.cube_long_cw_toggle
           data:
-            angle: '{{ trigger.payload_json.angle }}'
+            angle: '{{ trigger.payload_json.action_angle | float(0.0) }}'
             entity: light.livingroomlight
       rotate_ccw_face_3:
         - service: script.cube_long_ccw_toggle
           data:
-            angle: '{{ trigger.payload_json.angle }}'
+            angle: '{{ trigger.payload_json.action_angle | float(0.0) }}'
             entity: light.mom_light
 ## Side d_light 4
       doubletap_face_4:
