@@ -2,9 +2,7 @@
   - name: "aaatest Target Temp 2"
     unique_id: d81-66cd7556db8c-Fan-Auto-OfficeFancmndFanSpeed-Target-Temp-2
     command_topic: "homeassistant/number/OfficeFancmndFanSpeed/target_temp/cmnd"
-    state_topic: "homeassistant/number/OfficeFancmndFanSpeed/target_temp/state"
 
   - name: "aaatest Target Temp Last 2"
     unique_id: d81-66cd7556db8c-Fan-Auto-OfficeFancmndFanSpeed-Target-Temp-Last-2
-    command_topic: "homeassistant/number/OfficeFancmndFanSpeed/target_temp_lastcmnd"
-    state_topic: "homeassistant/number/OfficeFancmndFanSpeed/target_temp_last/state"
+    command_topic: "homeassistant/number/OfficeFancmndFanSpeed/target_temp_last/cmnd"

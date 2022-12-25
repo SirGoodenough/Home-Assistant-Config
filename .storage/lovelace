@@ -2759,12 +2759,13 @@
               "icon": "mdi:garage"
             },
             {
-              "entity": "sensor.dryer3_si7021_temperature",
+              "hours_to_show": 24,
               "graph": "line",
+              "entity": "sensor.dryer3_si7021_temperature",
               "type": "sensor",
               "detail": 2,
               "icon": "mdi:washing-machine",
-              "name": "Front Basement"
+              "name": "Dryer"
             },
             {
               "type": "entities",
@@ -4847,16 +4848,12 @@
               "title": "Gertle"
             },
             {
-              "camera_view": "live",
-              "type": "picture-glance",
-              "title": "fire",
-              "image": "https://demo.home-assistant.io/stub_config/kitchen.png",
+              "type": "entities",
               "entities": [
-                {
-                  "entity": "camera.pellet_cam"
-                }
+                "select.fan_auto_enable_officefancmndfanspeed",
+                "number.fan_auto_target_officefancmndfanspeed"
               ],
-              "camera_image": "camera.pellet_cam"
+              "title": "Fan Auto Enable Blueprint Helper OfficeFancmndFanSpeed"
             }
           ]
         },
