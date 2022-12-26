@@ -174,10 +174,10 @@ blueprint:
 
         Tasmota flashed IFANxx devices have a topic such as:
 
-        ```cmnd/topic/FanSpeed```
+        ```cmnd/Bedroom_Fan/FanSpeed```
 
         You need to look at **YOUR device** and determine the exact correct topic
-        (sample is ''topic'') to send to the broker to make yours work.'
+        to send to the broker to make yours work.'
       selector:
         text:
           multiline: false

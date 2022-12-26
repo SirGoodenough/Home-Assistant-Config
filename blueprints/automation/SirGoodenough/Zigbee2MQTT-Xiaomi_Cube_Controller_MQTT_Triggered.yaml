@@ -1,5 +1,5 @@
 blueprint:
-  name: Aqara Magic Cube Zigbee2MQTT MQTT Triggered - 2022-12-12
+  name: Aqara Magic Cube Zigbee2MQTT MQTT Triggered - 2022-12-22
   description: 'This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38(+54)
     unique commands available from the Xiaomi Magic Cube Remote. (Some unique commands
     are available thru templating only. See the related document.)
@@ -642,10 +642,10 @@ action:
 - variables:
       # Get the action command.
     action: '{{ trigger.payload_json.action }}'
-      # Get the side.
-    side: '{{ trigger.payload_json.side }}'
       # Get the topic as a variable.
     topic_var: !input topic
+      # Get the side.
+    side: '{{ trigger.payload_json.side }}'
       # Generate the Friendly_name from the Topic.
     friendly_name: '{{ topic_var.split(''/'')[1] | regex_replace("[^A-Za-z0-9]", "") }}'
       # Generate the device_id from the Friendly_name.
