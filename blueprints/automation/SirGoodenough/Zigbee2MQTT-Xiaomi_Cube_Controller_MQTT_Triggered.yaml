@@ -1,5 +1,5 @@
 blueprint:
-  name: Aqara Magic Cube Zigbee2MQTT MQTT Triggered - 2022-12-27
+  name: Aqara Magic Cube Zigbee2MQTT MQTT Triggered - 2022-12-28
   description: 'This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38(+54)
     unique commands available from the Xiaomi Magic Cube Remote. (Some unique commands
     are available thru templating only. See the related document.)
@@ -41,6 +41,13 @@ blueprint:
 
     #### NOTICE: This cube *can* be triggered 124 ways, but only 38(+54) of them are
     unique (with templating).
+    
+
+    ### IF YOU SEE --> TemplateError: Must provide a device or entity ID
+
+    If you get an error like that, The friendly_name in Z2M likely does not match the 
+    friendly_name on HA. To fix go into the Z2M ```Open web UI``` and set the 
+    friendly_name there.  See the blueprint documentation page for details.
 
 
     There is sample code to make the template sensor in the help file on GitHib named
@@ -680,7 +687,7 @@ action:
     mdl: 'Number Helper for Z2M Cube Integration'
     mf: 'SirGoodenough'
     sa: 'house'
-    sw: '2022-12-27'
+    sw: '2022-12-28'
     hw: 'https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT - Xiaomi Cube Controller.yaml'
     cu: 'https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203'
 
