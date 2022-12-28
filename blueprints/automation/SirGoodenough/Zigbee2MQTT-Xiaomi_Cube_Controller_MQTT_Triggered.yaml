@@ -659,13 +659,16 @@ action:
 
       # Set the name of the Number entity.
     num_name: '{{ friendly_name + '' last side'' }}'
-      # Set the rntity_id of the Number entity.
+      # Set the entity_id of the Number entity.
     num_ha_name: '{{ ''number.'' + friendly_name + ''_last_side'' }}'
+      # Get the value of this entity from HA
+    num_ha_val: '{{ states(num_ha_name) | int(0) }}'
 
-      # Get the last_side stored value from Home Assistant that was stored on the last run.
+      # Get the last_side for use in logic below.
     last_side: '
-      {% if is_number( states(num_ha_name) ) %}
-        {{ states(num_ha_name) }}
+      {# The first time it will not be there, so make sure its 0 instead of undefined. #}
+      {% if not num_ha_val in (''none'', ''null'', ''unavailable'', '''') %}
+        {{ num_ha_val }}
       {% else %}
         0
       {% endif %}'
@@ -711,14 +714,8 @@ action:
           ]
         }
       }
-- alias: 'Store the current_side as the last_side for the next trigger'
-  service: number.set_value
-  target:
-    entity_id: '{{ num_ha_name }}'
-  data:
-    value: '{{ side }}'
 
-- alias: Fire Last Action event
+- alias: 'Fire Last Action event. This is for optional troubleshooting data.'
   event: cube_last_action
   event_data:
     action: '{{ action }}'
@@ -728,6 +725,13 @@ action:
     device_id: '{{ device_id }}'
     ieee_id: '{{ ieee_id }}'
     angle: '{{ angle }}'
+
+- alias: 'Store the current_side as the last_side for the next trigger'
+  service: number.set_value
+  target:
+    entity_id: '{{ num_ha_name }}'
+  data:
+    value: '{{ side }}'
 
 - alias: Group 2 🍊 and No Group 🍩 These are action events for ANY Side
   choose:
