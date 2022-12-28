@@ -1,5 +1,5 @@
 blueprint:
-  name: Aqara Magic Cube Zigbee2MQTT MQTT Triggered - 2022-12-22
+  name: Aqara Magic Cube Zigbee2MQTT MQTT Triggered - 2022-12-27
   description: 'This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38(+54)
     unique commands available from the Xiaomi Magic Cube Remote. (Some unique commands
     are available thru templating only. See the related document.)
@@ -70,7 +70,6 @@ blueprint:
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203)'
-  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Xiaomi_Cube_Controller_MQTT_Triggered.yaml
   domain: automation
   homeassistant:
     min_version: 2022.11.0
@@ -664,35 +663,53 @@ action:
     num_ha_name: '{{ ''number.'' + friendly_name + ''_last_side'' }}'
 
       # Get the last_side stored value from Home Assistant that was stored on the last run.
-    last_side: '{{ states(num_ha_name) | int(0) }}'
+    last_side: '
+      {% if is_number( states(num_ha_name) ) %}
+        {{ states(num_ha_name) }}
+      {% else %}
+        0
+      {% endif %}'
+
+      # Set-up for Device parameters once
+    name: '{{ friendly_name + ''_Number_Helper''}}'
+    mdl: 'Number Helper for Z2M Cube Integration'
+    mf: 'SirGoodenough'
+    sa: 'house'
+    sw: '2022-12-27'
+    hw: 'https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT - Xiaomi Cube Controller.yaml'
+    cu: 'https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203'
+
+      # Set Topics once
+    config_topic_2: "{{ 'homeassistant/number/' + ieee_id + '/last_side/config' }}"
+    topic_2: "{{ 'homeassistant/number/' + ieee_id + '/last_side' }}"
 
 - alias: Make number helper to store last side
   service: mqtt.publish
   data:
-    "topic": "{{ 'homeassistant/number/' + ieee_id + '/last_side/config' }}"
+    "topic": "{{ config_topic_2 }}"
     "retain": true
     "payload": >
       { "name": "{{ num_name }}",
         "avty_t": "homeassistant/status",
-        "uniq_id": "{{ friendly_name + '_' + device_id }}",
-        "cmd_t": "{{ 'homeassistant/number/' + ieee_id + '/last_side/cmnd' }}",
-        "sta_t": "{{ 'homeassistant/number/' + ieee_id + '/last_side/state' }}",
-        "dev": {
-            "ids": [
-              "{{ device_id + 'num'}}",
-              "{{ ieee_id_long }}"
-            ],
-            "name": "{{ friendly_name + ' Z2M Blueprint Helper' }}",
-            "mf": "SirGoodenough",
-            "mdl": "Number Helper for Z2M Cube Integration",
-            "sa": "home",
-            "sw": "https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT - Xiaomi Cube Controller.yaml",
-            "cu": "https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203"
-        },
+        "uniq_id": "{{ friendly_name + '-' + device_id }}",
+        "cmd_t": "{{ topic_2 }}",
+        "sta_t": "{{ topic_2 }}",
         "min": "0",
         "max": "6",
         "step": "1",
-        "ret": true
+        "ret": true,
+        "dev": {
+          "name": "{{ name }}",
+          "mdl": "{{ mdl }}",
+          "mf": "{{ mf }}",
+          "sa": "{{ sa }}",
+          "sw": "{{ sw }}",
+          "hw": "{{ hw }}",
+          "cu": "{{ cu }}",
+          "ids": [
+            "{{ ieee_id + '-' + num_name }}"
+          ]
+        }
       }
 - alias: 'Store the current_side as the last_side for the next trigger'
   service: number.set_value
@@ -700,6 +717,7 @@ action:
     entity_id: '{{ num_ha_name }}'
   data:
     value: '{{ side }}'
+
 - alias: Fire Last Action event
   event: cube_last_action
   event_data:
@@ -710,6 +728,7 @@ action:
     device_id: '{{ device_id }}'
     ieee_id: '{{ ieee_id }}'
     angle: '{{ angle }}'
+
 - alias: Group 2 🍊 and No Group 🍩 These are action events for ANY Side
   choose:
   - conditions: '{{ action == "slide" }}'
