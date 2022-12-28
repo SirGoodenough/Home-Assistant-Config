@@ -700,6 +700,7 @@ action:
         "min": "0",
         "max": "6",
         "step": "1",
+        "mode": "box",
         "ret": true,
         "dev": {
           "name": "{{ name }}",
