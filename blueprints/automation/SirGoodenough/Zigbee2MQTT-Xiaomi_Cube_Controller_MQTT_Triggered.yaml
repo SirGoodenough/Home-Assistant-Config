@@ -69,7 +69,8 @@ blueprint:
     [koter84 Blueprint Update Script](https://gist.github.com/koter84/86790850aa63354bda56d041de31dc70#file-readme-md)
 
 
-    [Community link for this blueprint](https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203)'
+    [Community link for this blueprint](https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203)
+    '
   domain: automation
   homeassistant:
     min_version: 2022.11.0
