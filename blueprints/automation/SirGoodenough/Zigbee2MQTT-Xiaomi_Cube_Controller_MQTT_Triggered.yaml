@@ -41,13 +41,14 @@ blueprint:
 
     #### NOTICE: This cube *can* be triggered 124 ways, but only 38(+54) of them are
     unique (with templating).
-    
+
 
     ### IF YOU SEE --> TemplateError: Must provide a device or entity ID
 
     If you get an error like that, The friendly_name in Z2M likely does not match the 
     friendly_name on HA. To fix go into the Z2M ```Open web UI``` and set the 
-    friendly_name there.  See the blueprint documentation page for details.
+    friendly_name there. Setting this in just HA or in Z2M without ticking the update HA
+    box will cause this. See the blueprint documentation page for details.
 
 
     There is sample code to make the template sensor in the help file on GitHib named
