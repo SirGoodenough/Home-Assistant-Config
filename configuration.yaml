@@ -16,7 +16,6 @@ frontend: !include frontend.yaml
 hardware:
 history: !include history.yaml
 homeassistant_alerts:
-# image:
 input_boolean:
 input_button:
 input_datetime:

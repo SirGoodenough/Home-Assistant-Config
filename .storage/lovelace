@@ -3418,7 +3418,7 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "device_tracker.julie_chaloupka"
+                  "entity": "person.julie"
                 },
                 {
                   "entity": "device_tracker.jen_chaloupka"
