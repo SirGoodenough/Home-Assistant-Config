@@ -2631,13 +2631,6 @@
           "badges": [],
           "cards": [
             {
-              "type": "sensor",
-              "entity": "sensor.lrthermostat",
-              "graph": "line",
-              "detail": 2,
-              "name": "Living Room Thermostat"
-            },
-            {
               "hours_to_show": 24,
               "graph": "line",
               "entity": "sensor.furnace_pellet_firebox_temperature",
@@ -2656,12 +2649,19 @@
               "icon": "mdi:temperature-fahrenheit"
             },
             {
-              "entity": "sensor.sonoff_rf_bridge_2_si7021_temperature",
+              "type": "sensor",
+              "entity": "sensor.lrthermostat",
               "graph": "line",
+              "detail": 2,
+              "name": "Living Room Thermostat"
+            },
+            {
+              "hours_to_show": 24,
+              "graph": "line",
+              "entity": "sensor.kitchen_temperature_2",
               "type": "sensor",
               "detail": 2,
-              "icon": "mdi:seat",
-              "name": "Living Room"
+              "icon": "mdi:stove"
             },
             {
               "hours_to_show": 24,
@@ -2682,11 +2682,12 @@
               "icon": "mdi:temperature-fahrenheit"
             },
             {
-              "type": "sensor",
-              "entity": "sensor.brthermostat",
+              "entity": "sensor.sonoff_rf_bridge_2_si7021_temperature",
               "graph": "line",
+              "type": "sensor",
               "detail": 2,
-              "name": "Bedroom AC Unit"
+              "icon": "mdi:seat",
+              "name": "Living Room"
             },
             {
               "hours_to_show": 24,
@@ -2698,19 +2699,11 @@
               "icon": "mdi:temperature-fahrenheit"
             },
             {
-              "hours_to_show": 24,
-              "graph": "line",
-              "entity": "sensor.furnace_return_temperature",
-              "theme": "Dark - Green",
               "type": "sensor",
+              "entity": "sensor.brthermostat",
+              "graph": "line",
               "detail": 2,
-              "icon": "mdi:temperature-fahrenheit"
-            },
-            {
-              "type": "sensor",
-              "entity": "sensor.jen_temperature_temperature",
-              "graph": "line",
-              "detail": 2
+              "name": "Bedroom AC Unit"
             },
             {
               "entity": "sensor.bedroom_fan_si7021_temperature",
@@ -2721,12 +2714,19 @@
               "name": "Bedroom"
             },
             {
+              "type": "sensor",
+              "entity": "sensor.jen_temperature_temperature",
+              "graph": "line",
+              "detail": 2
+            },
+            {
               "hours_to_show": 24,
               "graph": "line",
-              "entity": "sensor.kitchen_temperature_2",
+              "entity": "sensor.furnace_return_temperature",
+              "theme": "Dark - Green",
               "type": "sensor",
               "detail": 2,
-              "icon": "mdi:stove"
+              "icon": "mdi:temperature-fahrenheit"
             },
             {
               "type": "sensor",
@@ -2844,8 +2844,9 @@
               "detail": 2
             },
             {
-              "entity": "sensor.kitchen_humid",
+              "hours_to_show": 24,
               "graph": "line",
+              "entity": "sensor.kitchen_humidity_2",
               "type": "sensor",
               "detail": 2
             },
@@ -2863,14 +2864,16 @@
               "detail": 2
             },
             {
-              "entity": "sensor.furnace_return_humid",
+              "hours_to_show": 24,
               "graph": "line",
+              "entity": "sensor.furnace_return_humidity",
               "type": "sensor",
               "detail": 2
             },
             {
-              "entity": "sensor.furnace_oil_top_humid",
+              "hours_to_show": 24,
               "graph": "line",
+              "entity": "sensor.furnace_oil_top_humidity",
               "type": "sensor",
               "detail": 2
             },
