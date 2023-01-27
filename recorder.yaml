@@ -30,6 +30,7 @@
       - shell_command
       - sonoff
       - switch
+      - template
       - zone
   exclude:
     domains:

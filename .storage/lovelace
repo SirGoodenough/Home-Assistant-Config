@@ -2821,11 +2821,13 @@
           "badges": [],
           "cards": [
             {
+              "show_name": true,
+              "show_icon": true,
               "type": "button",
               "tap_action": {
                 "action": "toggle"
               },
-              "entity": "switch.humidifier_2",
+              "entity": "switch.tasmota2_2",
               "name": "Humidifer Power",
               "icon": "mdi:air-humidifier",
               "icon_height": "50px",
@@ -2851,6 +2853,21 @@
               "detail": 2
             },
             {
+              "hours_to_show": 24,
+              "graph": "line",
+              "type": "sensor",
+              "entity": "sensor.humidity_flow",
+              "detail": 1,
+              "name": "Water Control"
+            },
+            {
+              "hours_to_show": 24,
+              "graph": "line",
+              "entity": "sensor.furnace_return_humidity",
+              "type": "sensor",
+              "detail": 2
+            },
+            {
               "type": "sensor",
               "entity": "sensor.jen_temperature_humidity",
               "graph": "line",
@@ -2864,9 +2881,8 @@
               "detail": 2
             },
             {
-              "hours_to_show": 24,
+              "entity": "sensor.bedroom_humid",
               "graph": "line",
-              "entity": "sensor.furnace_return_humidity",
               "type": "sensor",
               "detail": 2
             },
@@ -2874,12 +2890,6 @@
               "hours_to_show": 24,
               "graph": "line",
               "entity": "sensor.furnace_oil_top_humidity",
-              "type": "sensor",
-              "detail": 2
-            },
-            {
-              "entity": "sensor.bedroom_humid",
-              "graph": "line",
               "type": "sensor",
               "detail": 2
             },
@@ -3604,9 +3614,17 @@
               "tap_action": {
                 "action": "toggle"
               },
-              "entity": "switch.sonoff_s40lite_switch",
+              "entity": "switch.vacuum_sealer_switch",
               "icon_height": "50px",
-              "icon": "mdi:vacuum"
+              "icon": "mdi:vacuum",
+              "hold_action": {
+                "action": "call-service",
+                "service": "switch.turn_off",
+                "data": {},
+                "target": {
+                  "entity_id": "switch.vacuum_sealer_switch"
+                }
+              }
             }
           ],
           "path": "3d",
