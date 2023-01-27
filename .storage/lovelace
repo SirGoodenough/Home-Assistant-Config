@@ -2853,12 +2853,11 @@
               "detail": 2
             },
             {
-              "hours_to_show": 24,
-              "graph": "line",
-              "type": "sensor",
-              "entity": "sensor.humidity_flow",
-              "detail": 1,
-              "name": "Water Control"
+              "type": "entity",
+              "entity": "switch.humidifier_2",
+              "name": "Water Flow",
+              "icon": "mdi:watering-can",
+              "state_color": true
             },
             {
               "hours_to_show": 24,

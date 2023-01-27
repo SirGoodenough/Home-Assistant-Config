@@ -2,9 +2,9 @@
   - name: House Humidity
     humidifier: switch.tasmota2_2
     target_sensor: sensor.furnace_return_humidity
-    min_humidity: 30
+    min_humidity: 40
     max_humidity: 55
-    target_humidity: 40
+    target_humidity: 45
     dry_tolerance: 3
     wet_tolerance: 2
     device_class: "humidifier"
