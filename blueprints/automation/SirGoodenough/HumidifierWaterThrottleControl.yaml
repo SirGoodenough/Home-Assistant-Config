@@ -1,8 +1,6 @@
 blueprint:
-  name: Throttle-your-water-flow-tasmota-2022-12-26
-  description: 'NOT FUNCTIONAL... WIP...
-    NOT FUNCTIONAL... WIP...
-    NOT FUNCTIONAL... WIP...
+  name: Throttle-your-water-flow-tasmota-2023-01-30
+  description: '
 
     This sets the amount of water sent to your Humidifier. 
     You provide a minimum time and maximum time you want the water to run and this will 
@@ -11,7 +9,7 @@ blueprint:
     
     HA is using the Generic Hygrostat integration.  
     
-    My hardware is a Tasmota Sonoff SV sending the 24v to my humidifier water valve. See the 
+    My hardware is a Tasmota Sonoff SV sending the 24v to my humidifier water valve.
 
     ## Tasmota Rules:
 
@@ -21,7 +19,7 @@ blueprint:
 
       rule2
 
-      ```on system#boot do backlog power2 0; var3 200; var2 %var2% endon on POWER2#state=0 do backlog power1 0; rule1 0 endon on POWER2#state=1 do rule1 1 endon```
+      ```on system#boot do backlog power2 0; var2 20 endon on POWER2#state=0 do backlog power1 0; rule1 0 endon on POWER2#state=1 do rule1 1 endon```
 
       rule3
 
@@ -34,12 +32,11 @@ blueprint:
 
     [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
-    NOT FUNCTIONAL... WIP...
-    NOT FUNCTIONAL... WIP...
-    NOT FUNCTIONAL... WIP...
+
+    [Community link for this blueprint](https://community.home-assistant.io/t/humidifier-water-throttle-control/527583)
     '
-  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/HumidifierWaterThrottleControl.yaml
   domain: automation
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/HumidifierWaterThrottleControl.yaml
   homeassistant:
     min_version: 2023.1.0
   input:
@@ -60,7 +57,7 @@ blueprint:
       name: Topic to send the time value to the Tasmota device
       description: 'This is the MQTT Topic needed.
       
-        A topic such as this with your device top topic. We are setting var2 via cmnd:
+        A topic such as this with your device top topic. We are setting var2 vi cmnd:
 
         ```cmnd/humidifier/var2```
 
@@ -70,6 +67,7 @@ blueprint:
       selector:
         text:
           multiline: false
+
     minimum_time:
       name: Floor for time value sent to Tasmota
       description: 'Minimum number of seconds you will allow the water to run.
@@ -150,9 +148,8 @@ action:
       retain: false
       payload: '{{ time_out | round(1) }}'
 
-      # Optional.  Used for troubleshooting only...
   - alias: 'Fire test event'
-    event: Humidifier_test
+    event: aatestg
     event_data:
       min_t_var: '{{ min_t_var }}'
       max_t_var: '{{ max_t_var }}'
