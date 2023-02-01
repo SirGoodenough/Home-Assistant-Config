@@ -38,9 +38,8 @@ blueprint:
     NOT FUNCTIONAL... WIP...
     NOT FUNCTIONAL... WIP...
     '
-  # source_url: 
-  domain: automation
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/HumidifierWaterThrottleControl.yaml
+  domain: automation
   homeassistant:
     min_version: 2023.1.0
   input:
