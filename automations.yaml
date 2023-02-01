@@ -1,6 +1,8 @@
 - id: '1674709536293'
   alias: aaaaattesttT1-Pro-(CTP-R01
   description: testing
+  trace:
+    stored_traces: 10
   use_blueprint:
     path: SirGoodenough/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.yaml
     input:
@@ -30,3 +32,14 @@
         data:
           message: Action Throw
           entities: media_player.kitchen_speaker
+- id: '1674983375635'
+  alias: Humidifier Proportional Control
+  description: Modulate the water flow to the Furnace Humidifer.
+  trace:
+    stored_traces: 10
+  use_blueprint:
+    path: SirGoodenough/HumidifierWaterThrottleControl.yaml
+    input:
+      mqtt_topic: humidifier/cmnd/var2
+      humidifier: humidifier.house_humidity
+      humidity: sensor.house_humidity

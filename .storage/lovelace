@@ -2810,6 +2810,11 @@
               "type": "sensor",
               "entity": "sensor.yertle_device_temperature",
               "detail": 1
+            },
+            {
+              "type": "gauge",
+              "entity": "sensor.testcagl02_device_temperature",
+              "needle": true
             }
           ],
           "icon": "mdi:thermometer-lines",
