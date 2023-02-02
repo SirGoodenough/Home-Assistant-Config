@@ -1283,7 +1283,7 @@
               "hours_to_show": 24,
               "graph": "line",
               "type": "sensor",
-              "entity": "sensor.jen_temp",
+              "entity": "sensor.jen_temperature_temperature",
               "detail": 2,
               "name": "Jen Temperature Graph 24 hrs."
             },
@@ -2751,12 +2751,14 @@
               "icon": "mdi:paper-roll-outline"
             },
             {
-              "entity": "sensor.garage_door_si7021_temperature",
+              "hours_to_show": 24,
               "graph": "line",
+              "entity": "sensor.garage_door_si7021_temperature",
               "theme": "sundown",
               "type": "sensor",
               "detail": 2,
-              "icon": "mdi:garage"
+              "icon": "mdi:garage",
+              "name": "Garage Temp"
             },
             {
               "hours_to_show": 24,
@@ -2845,10 +2847,11 @@
             {
               "hours_to_show": 24,
               "graph": "line",
-              "entity": "sensor.house_humidity",
-              "name": "Main Level Mean Humidity",
+              "entity": "sensor.house_humidity_group",
               "type": "sensor",
-              "detail": 2
+              "detail": 2,
+              "icon": "mdi:water-check",
+              "unit": "%"
             },
             {
               "hours_to_show": 24,
@@ -2879,16 +2882,20 @@
               "name": "Jen's Humidity"
             },
             {
-              "entity": "sensor.livingroom_humid",
+              "hours_to_show": 24,
               "graph": "line",
+              "entity": "sensor.sonoff_rf_bridge_2_si7021_humidity",
               "type": "sensor",
-              "detail": 2
+              "detail": 2,
+              "name": "Living Room Humidity"
             },
             {
-              "entity": "sensor.bedroom_humid",
+              "hours_to_show": 24,
               "graph": "line",
+              "entity": "sensor.bedroom_fan_si7021_humidity",
               "type": "sensor",
-              "detail": 2
+              "detail": 2,
+              "name": "Bedroom Humidity"
             },
             {
               "hours_to_show": 24,
@@ -2898,34 +2905,35 @@
               "detail": 2
             },
             {
-              "entity": "sensor.basement_humid",
+              "hours_to_show": 24,
               "graph": "line",
+              "entity": "sensor.dust_collector_si7021_humidity",
+              "type": "sensor",
+              "detail": 2,
+              "name": "Back Basement Humidity"
+            },
+            {
+              "hours_to_show": 24,
+              "graph": "line",
+              "entity": "sensor.bathoom_si7021_humidity",
               "type": "sensor",
               "detail": 2
             },
             {
-              "entity": "sensor.bathroom_humid",
+              "hours_to_show": 24,
               "graph": "line",
+              "entity": "sensor.dryer3_si7021_humidity",
               "type": "sensor",
-              "detail": 2
+              "detail": 2,
+              "name": "Dryer Humidity"
             },
             {
-              "entity": "sensor.garage_door_si7021_humidity",
+              "hours_to_show": 24,
               "graph": "line",
-              "type": "sensor",
-              "detail": 2
-            },
-            {
-              "entity": "sensor.dryer_humid",
-              "graph": "line",
-              "type": "sensor",
-              "detail": 2
-            },
-            {
               "entity": "sensor.garage_door_si7021_dewpoint",
-              "graph": "line",
               "type": "sensor",
-              "detail": 2
+              "detail": 2,
+              "name": "Garage Humidity"
             }
           ],
           "icon": "mdi:water-percent",
