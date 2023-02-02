@@ -5,16 +5,6 @@
   "data": {
     "items": [
       {
-        "icon": "mdi:water-percent",
-        "id": "target_house_humidity",
-        "max": 50.0,
-        "min": 10.0,
-        "mode": "slider",
-        "name": "Target House Humidity",
-        "step": 1.0,
-        "unit_of_measurement": "percent"
-      },
-      {
         "icon": "mdi:fan",
         "id": "bedroom_auto_temp",
         "max": 80.0,
