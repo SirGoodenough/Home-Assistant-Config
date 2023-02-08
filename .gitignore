@@ -35,6 +35,8 @@ s -lovelace## Ignore all
 !/templates/*.yaml
 !/zigbee2mqtt/
 !/zigbee2mqtt/*.js
+!/.github*
+!/.github/FUNDING.yml
 !/.storage/
 !/.storage/broadlink_remote_*_codes
 !/.storage/image
