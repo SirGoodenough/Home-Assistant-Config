@@ -59,14 +59,10 @@
     attributes:
       friendly_name: "BRthermostat Cool Mode"
 
-  - name: "Humidity NET"
-    unique_id: f568315c-fff5-4dfd-94fe-a19778b7368b
-    state: "{{ states('sensor.house_humidity_main') | float(41) }}"
-    availability: >
-      {% set items = ['sensor.house_humidity_main'] %}
-      {{ expand(items)|rejectattr('state','in',['unknown','unavailable'])
-        |list|count == items|count }}
+  - name: "Humidity group"
+    unique_id: f1f87e72-a9db-4848-bf40-dafd63ece4b3
+    state: "{{ states('sensor.house_humidity_group') | round(1) | float(41.9) }}"
     device_class: humidity
     icon: "mdi:waves-arrow-up"
     attributes:
-      friendly_name: "Humidity NET"
+      friendly_name: "Humidity Group"

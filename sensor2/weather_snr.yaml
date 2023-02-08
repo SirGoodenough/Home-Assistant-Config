@@ -11,3 +11,4 @@
       - cloud_cover
       - apparent_temperature
       - wind_speed
+      - humidity

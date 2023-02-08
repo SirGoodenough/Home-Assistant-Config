@@ -1,5 +1,5 @@
 blueprint:
-  name: Throttle-your-water-flow-tasmota-2023-01-30
+  name: Throttle-your-water-flow-tasmota-2023-02-82
   description: '
 
     This sets the amount of water sent to your Humidifier. 
@@ -153,7 +153,7 @@ condition:
 action:
   - alias: "Wait until Humidifier is not sending water"
     wait_template: '{{ is_state( power_1_var, ''off'' ) }}'
-    timeout: "00:02:00"
+    timeout: "00:01:50"
   - alias: Send the water time.
     service: mqtt.publish
     data:
@@ -163,14 +163,14 @@ action:
       payload: '{{ time_out | round(1) }}'
 
     # Optional for Troubleshooting only...
-  - alias: 'Fire test event'
-    event: Humidifier_event
-    event_data:
-      min_t_var: '{{ min_t_var }}'
-      max_t_var: '{{ max_t_var }}'
-      humidifier: '{{ humidifier }}'
-      set_val: '{{ set_val }}'
-      humidity_now_var: '{{ humidity_now_var }}'
-      humidity_now_val: '{{ humidity_now_val }}'
-      time_raw: '{{ time_raw }}'
-      time_out: '{{ time_out }}'
+  # - alias: 'Fire test event'
+  #   event: Humidifier_event
+  #   event_data:
+  #     min_t_var: '{{ min_t_var }}'
+  #     max_t_var: '{{ max_t_var }}'
+  #     humidifier: '{{ humidifier }}'
+  #     set_val: '{{ set_val }}'
+  #     humidity_now_var: '{{ humidity_now_var }}'
+  #     humidity_now_val: '{{ humidity_now_val }}'
+  #     time_raw: '{{ time_raw }}'
+  #     time_out: '{{ time_out }}'

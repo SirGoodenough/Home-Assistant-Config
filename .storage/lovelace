@@ -2847,11 +2847,12 @@
             {
               "hours_to_show": 24,
               "graph": "line",
-              "entity": "sensor.house_humidity_group",
+              "entity": "sensor.humidity_group",
               "type": "sensor",
               "detail": 2,
               "icon": "mdi:water-check",
-              "unit": "%"
+              "unit": "%",
+              "name": "AVG House Humidity"
             },
             {
               "hours_to_show": 24,
@@ -2907,10 +2908,9 @@
             {
               "hours_to_show": 24,
               "graph": "line",
-              "entity": "sensor.dust_collector_si7021_humidity",
               "type": "sensor",
-              "detail": 2,
-              "name": "Back Basement Humidity"
+              "entity": "sensor.dark_sky_humidity",
+              "detail": 1
             },
             {
               "hours_to_show": 24,
@@ -2918,6 +2918,14 @@
               "entity": "sensor.bathoom_si7021_humidity",
               "type": "sensor",
               "detail": 2
+            },
+            {
+              "hours_to_show": 24,
+              "graph": "line",
+              "entity": "sensor.dust_collector_si7021_humidity",
+              "type": "sensor",
+              "detail": 2,
+              "name": "Back Basement Humidity"
             },
             {
               "hours_to_show": 24,
