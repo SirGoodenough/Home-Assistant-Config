@@ -2941,7 +2941,7 @@
               "entity": "sensor.garage_door_si7021_dewpoint",
               "type": "sensor",
               "detail": 2,
-              "name": "Garage Humidity"
+              "name": "Garage Dewpoint"
             }
           ],
           "icon": "mdi:water-percent",
