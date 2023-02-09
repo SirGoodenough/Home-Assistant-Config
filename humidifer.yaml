@@ -15,4 +15,4 @@
     initial_state: true
     # # away_humidity: 35
     # # away_fixed: True
-    sensor_stale_duration: 08:00:00
+    sensor_stale_duration: 04:00:00
