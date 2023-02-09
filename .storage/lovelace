@@ -2942,6 +2942,13 @@
               "type": "sensor",
               "detail": 2,
               "name": "Garage Dewpoint"
+            },
+            {
+              "hours_to_show": 24,
+              "graph": "line",
+              "type": "sensor",
+              "entity": "sensor.dark_sky_dew_point",
+              "detail": 1
             }
           ],
           "icon": "mdi:water-percent",
