@@ -741,6 +741,15 @@
                   "entity": "light.garageback_light"
                 },
                 {
+                  "entity": "switch.moca_reset"
+                },
+                {
+                  "entity": "device_tracker.moca_h"
+                },
+                {
+                  "entity": "device_tracker.moca_g"
+                },
+                {
                   "entity": "script.work_time"
                 },
                 {
@@ -2942,6 +2951,13 @@
               "type": "sensor",
               "detail": 2,
               "name": "Garage Dewpoint"
+            },
+            {
+              "hours_to_show": 24,
+              "graph": "line",
+              "type": "sensor",
+              "entity": "sensor.dark_sky_dew_point",
+              "detail": 1
             }
           ],
           "icon": "mdi:water-percent",

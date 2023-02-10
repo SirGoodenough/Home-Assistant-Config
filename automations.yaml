@@ -44,3 +44,53 @@
       humidifier: humidifier.house_humidity
       humidity: sensor.house_humidity_group
       power_1: switch.humidifier_2
+- id: '1675983632024'
+  alias: Garage Reset 2
+  description: Reset the House MOCA to get the garage back online
+  use_blueprint:
+    path: SirGoodenough/Device_tracker_Monitor_and_Notifier.yaml
+    input:
+      trackees:
+      - device_tracker.moca_g
+      - device_tracker.moca_h
+      notification_id: GarageGoneReset
+      gone_for:
+        hours: 0
+        minutes: 15
+        seconds: 0
+      alt_notify:
+      - service: persistent_notification.dismiss
+        data:
+          notification_id: GarageGoneReset
+      - choose:
+        - conditions:
+          - condition: state
+            entity_id: device_tracker.moca_g
+            state: home
+          sequence:
+          - service: persistent_notification.dismiss
+            data:
+              notification_id: GarageGoneReset
+        - conditions:
+          - condition: not
+            conditions:
+            - condition: state
+              entity_id: device_tracker.moca_g
+              state: home
+          sequence:
+          - service: switch.turn_off
+            data: {}
+            target:
+              entity_id: switch.moca_reset
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 10
+              milliseconds: 0
+          - service: switch.turn_on
+            data: {}
+            target:
+              entity_id: switch.moca_reset
+          - service: persistent_notification.dismiss
+            data:
+              notification_id: GarageGoneReset

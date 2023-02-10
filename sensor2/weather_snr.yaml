@@ -12,4 +12,4 @@
       - apparent_temperature
       - wind_speed
       - humidity
-      - dewpoint
+      - dew_point
