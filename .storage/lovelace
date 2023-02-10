@@ -741,6 +741,15 @@
                   "entity": "light.garageback_light"
                 },
                 {
+                  "entity": "switch.moca_reset"
+                },
+                {
+                  "entity": "device_tracker.moca_h"
+                },
+                {
+                  "entity": "device_tracker.moca_g"
+                },
+                {
                   "entity": "script.work_time"
                 },
                 {
