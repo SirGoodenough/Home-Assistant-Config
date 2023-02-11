@@ -56,7 +56,7 @@
       notification_id: GarageGoneReset
       gone_for:
         hours: 0
-        minutes: 15
+        minutes: 17
         seconds: 0
       alt_notify:
       - service: persistent_notification.dismiss

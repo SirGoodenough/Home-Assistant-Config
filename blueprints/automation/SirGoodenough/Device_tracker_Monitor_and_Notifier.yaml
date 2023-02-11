@@ -58,6 +58,23 @@ blueprint:
         entity:
           domain: device_tracker
           multiple: true
+    gone_for:
+      name: Time delay before reporting outage
+      description: 'This variable is here to allow a time delay before the
+        Blueprint starts doing anything. Sometimes you have a thing that likes
+        to dissapear for a short time but usually finds it''s way home. 
+        (BUT sometimes doesn''t)
+        Or you are using this Blueprint to run an automatic reset action but
+        need a delay to make sure that there actually is a problem.
+        00:00:00.00 is the default which means as soon as the devices go
+        to away, it triggers.
+        '
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 0
+      selector:
+        duration:
     notification_id:
       name: Optional Notification ID
       description: 'This is an optional parameter to be used for notifications to
@@ -69,7 +86,7 @@ blueprint:
         until you clear it. This will prevent any further notifications from this 
         blueprint until you clear the old message.
         
-        If you don''t know what it is, you probably should leave it blank.'
+        If you don''t know what this is for, you probably should leave it blank.'
       default: []
       selector:
         text: {}
@@ -163,6 +180,7 @@ trigger:
     id: go_when_any_of_the_devices_change_from_home_to_anything_else
     entity_id: !input trackees
     from: "home"
+    for: !input gone_for
 condition:
   - alias: Only allow execution within selected Hours / Weekdays
     condition: time
