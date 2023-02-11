@@ -260,22 +260,22 @@ variables:
   attr: '{{ attr_raw.split(''; '')[1].split(''>'')[0] }}'
 trigger:
   - platform: state
-    id: Level 1
+    id: 'Level 1'
     entity_id: !input trackees
     from: "home"
     for: !input gone_for
   - platform: state
-    id: Level 2
+    id: 'Level 2'
     entity_id: !input trackees
     from: "home"
     for: !input gone_for_longer
   - platform: state
-    id: Level 3
+    id: 'Level 3'
     entity_id: !input trackees
     from: "home"
     for: !input gone_for_still_longer
   - platform: state
-    id: Level 4
+    id: 'Level 4'
     entity_id: !input trackees
     from: "home"
     for: !input gone_for_still_more_longer
