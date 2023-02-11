@@ -91,6 +91,13 @@
             data: {}
             target:
               entity_id: switch.moca_reset
+          - alias: Add a delay so notification stays up while things are rebooting
+              1
+            delay:
+              hours: 0
+              minutes: 3
+              seconds: 11
+              milliseconds: 4
           - alias: Kill the notification assuming it's fixed
             service: persistent_notification.dismiss
             data:
@@ -132,6 +139,13 @@
             data: {}
             target:
               entity_id: switch.moca_reset
+          - alias: Add a delay so notification stays up while things are rebooting
+              2
+            delay:
+              hours: 0
+              minutes: 3
+              seconds: 11
+              milliseconds: 4
           - alias: Kill the notification assuming it's fixed
             service: persistent_notification.dismiss
             data:
@@ -186,11 +200,18 @@
             data: {}
             target:
               entity_id: switch.moca_reset
-          - alias: Kill the notification assuming it's fixed
+          - alias: Add a delay so notification stays up while things are rebooting
+              3
+            delay:
+              hours: 0
+              minutes: 3
+              seconds: 11
+              milliseconds: 4
+          - alias: Kill the notification assuming it''s fixed
             service: persistent_notification.dismiss
             data:
               notification_id: GarageGoneReset
       gone_for_still_more_longer:
-        hours: 0
+        hours: 1
         minutes: 52
         seconds: 0
