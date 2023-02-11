@@ -65,7 +65,7 @@
             entity_id: device_tracker.moca_g
             state: home
           sequence:
-          - alias: 'Magically fixed itself'
+          - alias: Magically fixed itself
             service: persistent_notification.dismiss
             data:
               notification_id: GarageGoneReset
@@ -76,7 +76,7 @@
               entity_id: device_tracker.moca_g
               state: home
           sequence:
-          - alias: 'Turn off the house moca'
+          - alias: Turn off the house moca
             service: switch.turn_off
             data: {}
             target:
@@ -86,12 +86,12 @@
               minutes: 0
               seconds: 10
               milliseconds: 0
-          - alias: 'Turn on the house moca'
+          - alias: Turn on the house moca
             service: switch.turn_on
             data: {}
             target:
               entity_id: switch.moca_reset
-          - alias: 'Kill the notification assuming it''s fixed'
+          - alias: Kill the notification assuming it's fixed
             service: persistent_notification.dismiss
             data:
               notification_id: GarageGoneReset
@@ -106,7 +106,7 @@
             entity_id: device_tracker.moca_g
             state: home
           sequence:
-          - alias: 'Magically fixed itself'
+          - alias: Magically fixed itself
             service: persistent_notification.dismiss
             data:
               notification_id: GarageGoneReset
@@ -117,7 +117,7 @@
               entity_id: device_tracker.moca_g
               state: home
           sequence:
-          - alias: 'Turn off the house moca 2'
+          - alias: Turn off the house moca 2
             service: switch.turn_off
             data: {}
             target:
@@ -127,12 +127,12 @@
               minutes: 0
               seconds: 10
               milliseconds: 0
-          - alias: 'Turn on the house moca 2'
+          - alias: Turn on the house moca 2
             service: switch.turn_on
             data: {}
             target:
               entity_id: switch.moca_reset
-          - alias: 'Kill the notification assuming it''s fixed'
+          - alias: Kill the notification assuming it's fixed
             service: persistent_notification.dismiss
             data:
               notification_id: GarageGoneReset
@@ -147,7 +147,7 @@
             entity_id: device_tracker.moca_g
             state: home
           sequence:
-          - alias: 'Magically fixed itself'
+          - alias: Magically fixed itself
             service: persistent_notification.dismiss
             data:
               notification_id: GarageGoneReset
@@ -158,35 +158,39 @@
               entity_id: device_tracker.moca_g
               state: home
           sequence:
-          - alias: 'Reset house moca and the garage network as 3rd try'
+          - alias: Reset house moca and the garage network as 3rd try
             service: switch.turn_off
             data: {}
             target:
-              entity_id: 
-                - switch.moca_reset
-                - switch.smart_plug_with_two_usb_ports
+              entity_id:
+              - switch.moca_reset
+              - switch.smart_plug_with_two_usb_ports
           - delay:
               hours: 0
               minutes: 0
               seconds: 10
               milliseconds: 0
-          - alias: 'Turn on the garage network'
+          - alias: Turn on the garage network
             service: switch.turn_on
             data: {}
             target:
               entity_id: switch.smart_plug_with_two_usb_ports
-          - alias: 'Wait longer because moca and router has to boot'
+          - alias: Wait longer because moca and router has to boot
             delay:
               hours: 0
               minutes: 5
               seconds: 10
               milliseconds: 0
-          - alias: 'Turn on the house moca 3'
+          - alias: Turn on the house moca 3
             service: switch.turn_on
             data: {}
             target:
               entity_id: switch.moca_reset
-          - alias: 'Kill the notification assuming it''s fixed'
+          - alias: Kill the notification assuming it's fixed
             service: persistent_notification.dismiss
             data:
               notification_id: GarageGoneReset
+      gone_for_still_more_longer:
+        hours: 0
+        minutes: 52
+        seconds: 0
