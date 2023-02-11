@@ -94,3 +94,75 @@
           - service: persistent_notification.dismiss
             data:
               notification_id: GarageGoneReset
+      alt_notify_2:
+      - service: persistent_notification.dismiss
+        data:
+          notification_id: GarageGoneReset
+      - choose:
+        - conditions:
+          - condition: state
+            entity_id: device_tracker.moca_g
+            state: home
+          sequence:
+          - service: persistent_notification.dismiss
+            data:
+              notification_id: GarageGoneReset
+        - conditions:
+          - condition: not
+            conditions:
+            - condition: state
+              entity_id: device_tracker.moca_g
+              state: home
+          sequence:
+          - service: switch.turn_off
+            data: {}
+            target:
+              entity_id: switch.moca_reset
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 10
+              milliseconds: 0
+          - service: switch.turn_on
+            data: {}
+            target:
+              entity_id: switch.moca_reset
+          - service: persistent_notification.dismiss
+            data:
+              notification_id: GarageGoneReset
+      alt_notify_3:
+      - service: persistent_notification.dismiss
+        data:
+          notification_id: GarageGoneReset
+      - choose:
+        - conditions:
+          - condition: state
+            entity_id: device_tracker.moca_g
+            state: home
+          sequence:
+          - service: persistent_notification.dismiss
+            data:
+              notification_id: GarageGoneReset
+        - conditions:
+          - condition: not
+            conditions:
+            - condition: state
+              entity_id: device_tracker.moca_g
+              state: home
+          sequence:
+          - service: switch.turn_off
+            data: {}
+            target:
+              entity_id: switch.moca_reset
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 10
+              milliseconds: 0
+          - service: switch.turn_on
+            data: {}
+            target:
+              entity_id: switch.moca_reset
+          - service: persistent_notification.dismiss
+            data:
+              notification_id: GarageGoneReset

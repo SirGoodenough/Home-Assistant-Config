@@ -59,7 +59,7 @@ blueprint:
           domain: device_tracker
           multiple: true
     gone_for:
-      name: Time delay before reporting outage
+      name: Time delay before reporting outage 1st time
       description: 'This variable is here to allow a time delay before the
         Blueprint starts doing anything. Sometimes you have a thing that likes
         to dissapear for a short time but usually finds it''s way home. 
@@ -71,6 +71,42 @@ blueprint:
         '
       default:
         hours: 0
+        minutes: 0
+        seconds: 0
+      selector:
+        duration:
+    gone_for_longer:
+      name: Time delay before reporting outage 2nd time
+      description: 'This variable is here to allow a time delay before the
+        Blueprint triggers a second time.
+        This means it was off longer than the first delay and whatever
+        you did to recover the first time didn''t work leaving the device
+        ```not home```.
+
+        Is useful if you are using this BP to restart stuck devices.
+        Default is set to an hour but in general use it should be set to
+        a value greater than the first delay.
+        '
+      default:
+        hours: 1
+        minutes: 0
+        seconds: 0
+      selector:
+        duration:
+    gone_for_still_longer:
+      name: Time delay before reporting outage 3rd time
+      description: 'This variable is here to allow a time delay before the
+        Blueprint triggers a third time.
+        This means it was off longer than the first + second delay and whatever
+        you did to recover the first two times didn''t work leaving the device
+        ```not home```.
+
+        Is useful if you are using this BP to restart stuck devices.
+        Default is set to 4 hours but in general use it should be set to
+        a value greater than the second delay.
+        '
+      default:
+        hours: 4
         minutes: 0
         seconds: 0
       selector:
@@ -90,6 +126,48 @@ blueprint:
       default: []
       selector:
         text: {}
+    alt_notify:
+      name: Manual Notifications Level 1
+      description: 'Enter the action yaml for any specific notification or action 
+        you would like to perform. 
+
+        This can be anything from a custom pushbullet or text message, a message 
+        to the system log, a manual event to trigger something else, or a simple 
+        TTS message to your Google Speaker. It can also be all of these things 
+        at once. It could even be something like a reboot command to
+        right the ship. 
+        
+        Any action yaml statement that is valid will be executed.
+        '
+      default: []
+      selector:
+        action: {}
+    alt_notify_2:
+      name: Manual Notifications Level 2
+      description: 'Enter the action yaml for any specific notification or action 
+        you would like to perform. 
+
+        This is what to do after the 2nd trigger delay.
+        Any action yaml statement that is valid will be executed.
+        Default is nothing so only a normal notification will happen with the
+        2nd trigger if left blank.
+        '
+      default: []
+      selector:
+        action: {}
+    alt_notify_3:
+      name: Manual Notifications Level 3
+      description: 'Enter the action yaml for any specific notification or action 
+        you would like to perform. 
+
+        This is what to do after the 3rd trigger delay.
+        Any action yaml statement that is valid will be executed.
+        Default is nothing so only a normal notification will happen with the
+        3nd trigger if left blank.
+        '
+      default: []
+      selector:
+        action: {}
     skip_p_notifcation:
       name: 'Choose to send persistant notification (or not).'
       description: 'on/true means a Persistant Notification is sent, off/false 
@@ -101,21 +179,6 @@ blueprint:
       default: true
       selector:
         boolean:
-    alt_notify:
-      name: Manual Notifications
-      description: 'Enter the action yaml for any specific notification or action 
-        you would like to perform. 
-
-        This can be anything from a custom pushbullet or text message, a message 
-        to the system log, a manual event to trigger something else, or a simple 
-        TTS message to your Google Speaker. It can also be all of these things 
-        at once. It could even be something like a reboot command to right the ship. 
-        
-        Any action yaml statement that is valid will be executed.
-        '
-      default: []
-      selector:
-        action: {}
     notify_enable_time:
       name: Time of day to begin notifications
       description: 'Set this for the time of day you want to allow notifications to begin.
@@ -165,8 +228,12 @@ blueprint:
           custom_value: false
           multiple: true
 variables:
-    # Get the alt_notify into a variable to test it for empty later.
+    # Get the alt_notify_1 into a variable to test it for empty later.
   alt_notify_var: !input alt_notify
+    # Get the alt_notify_2 into a variable to test it for empty later.
+  alt_notify_2_var: !input alt_notify_2
+    # Get the alt_notify_3 into a variable to test it for empty later.
+  alt_notify_3_var: !input alt_notify_3
     # Get the notification_id into a variable.
   notification_id_var: !input notification_id
     # Strip weirdness from the user supplied notification_id.
@@ -177,10 +244,21 @@ variables:
   attr: '{{ attr_raw.split(''; '')[1].split(''>'')[0] }}'
 trigger:
   - platform: state
-    id: go_when_any_of_the_devices_change_from_home_to_anything_else
+    id: Level 1
     entity_id: !input trackees
     from: "home"
     for: !input gone_for
+  - platform: state
+    id: Level 2
+    entity_id: !input trackees
+    from: "home"
+    for: !input gone_for_longer
+  - platform: state
+    id: Level 3
+    entity_id: !input trackees
+    from: "home"
+    for: !input gone_for_still_longer
+
 condition:
   - alias: Only allow execution within selected Hours / Weekdays
     condition: time
@@ -222,8 +300,14 @@ action:
           {{ item | replace( '','', ''\n'') | replace( ''@'', ''\n'')}}
           {%- endfor %}
           '
-- alias: Do something on every trigger
+- alias: Check for Alternate notifications Level 1
   if: '{{ not alt_notify_var in (''none'', ''null'', ''unavailable'', '''') }}'
   then: !input 'alt_notify'
+- alias: Check for Alternate notifications Level 2
+  if: '{{ not alt_notify_2_var in (''none'', ''null'', ''unavailable'', '''') }}'
+  then: !input 'alt_notify_2'
+- alias: Check for Alternate notifications Level 3
+  if: '{{ not alt_notify_3_var in (''none'', ''null'', ''unavailable'', '''') }}'
+  then: !input 'alt_notify_3'
 mode: parallel
 max: 15
