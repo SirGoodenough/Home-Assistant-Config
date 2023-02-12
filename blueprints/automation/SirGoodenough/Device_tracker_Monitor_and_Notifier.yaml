@@ -39,7 +39,7 @@ blueprint:
     [Community link for this blueprint ](https://community.home-assistant.io/t/device-tracker-monitor-notifier/500688)
 
     '
-  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Device_tracker_Monitor_and_Notifier.yaml
+#  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Device_tracker_Monitor_and_Notifier.yaml
   domain: automation
   homeassistant:
     min_version: 2022.11.0
@@ -241,6 +241,7 @@ blueprint:
             value: sun
           custom_value: false
           multiple: true
+
 variables:
     # Get the alt_notify_1 into a variable to test it for empty later.
   alt_notify_var: !input alt_notify
@@ -258,6 +259,7 @@ variables:
   attr_raw: '{{ states[trigger.to_state.entity_id] }}'
     # Strip the beginning and end garbage from those attributes.
   attr: '{{ attr_raw.split(''; '')[1].split(''>'')[0] }}'
+
 trigger:
   - platform: state
     id: level_1
@@ -316,7 +318,7 @@ action:
           {{ item | replace( '','', ''\n'') | replace( ''@'', ''\n'')}}
           {%- endfor %}
           '
-- alias: All the custome code is fired here
+- alias: All the custom code is fired here
   choose:
   - conditions:
     - alias: Check for Alternate Notifications Level 1
