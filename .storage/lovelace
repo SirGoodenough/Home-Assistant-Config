@@ -741,6 +741,9 @@
                   "entity": "light.garageback_light"
                 },
                 {
+                  "entity": "switch.smart_plug_with_two_usb_ports"
+                },
+                {
                   "entity": "switch.moca_reset"
                 },
                 {
