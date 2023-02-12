@@ -317,16 +317,16 @@ action:
           {%- endfor %}
           '
 - alias: Check for Alternate notifications Level 1
-  if: '{{ this.trigger_id == ''level_1'' and not alt_notify_var in (''none'', ''null'', ''unavailable'', '''') }}'
+  if: '{{ trigger_id == ''level_1'' and not alt_notify_var in (''none'', ''null'', ''unavailable'', '''') }}'
   then: !input 'alt_notify'
 - alias: Check for Alternate notifications Level 2
-  if: '{{ this.trigger_id == ''level_2'' and not alt_notify_2_var in (''none'', ''null'', ''unavailable'', '''') }}'
+  if: '{{ trigger_id == ''level_2'' and not alt_notify_2_var in (''none'', ''null'', ''unavailable'', '''') }}'
   then: !input 'alt_notify_2'
 - alias: Check for Alternate notifications Level 3
-  if: '{{ this.trigger_id == ''level_3'' and not alt_notify_3_var in (''none'', ''null'', ''unavailable'', '''') }}'
+  if: '{{ trigger_id == ''level_3'' and not alt_notify_3_var in (''none'', ''null'', ''unavailable'', '''') }}'
   then: !input 'alt_notify_3'
 - alias: Check for Alternate notifications Level 4
-  if: '{{ this.trigger_id == ''level_4'' and not alt_notify_4_var in (''none'', ''null'', ''unavailable'', '''') }}'
+  if: '{{ trigger_id == ''level_4'' and not alt_notify_4_var in (''none'', ''null'', ''unavailable'', '''') }}'
   then: !input 'alt_notify_4'
 mode: parallel
 max: 15
