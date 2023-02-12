@@ -316,17 +316,48 @@ action:
           {{ item | replace( '','', ''\n'') | replace( ''@'', ''\n'')}}
           {%- endfor %}
           '
-- alias: Check for Alternate notifications Level 1
-  if: '{{ trigger_id == ''level_1'' and not alt_notify_var in (''none'', ''null'', ''unavailable'', '''') }}'
-  then: !input 'alt_notify'
-- alias: Check for Alternate notifications Level 2
-  if: '{{ trigger_id == ''level_2'' and not alt_notify_2_var in (''none'', ''null'', ''unavailable'', '''') }}'
-  then: !input 'alt_notify_2'
-- alias: Check for Alternate notifications Level 3
-  if: '{{ trigger_id == ''level_3'' and not alt_notify_3_var in (''none'', ''null'', ''unavailable'', '''') }}'
-  then: !input 'alt_notify_3'
-- alias: Check for Alternate notifications Level 4
-  if: '{{ trigger_id == ''level_4'' and not alt_notify_4_var in (''none'', ''null'', ''unavailable'', '''') }}'
-  then: !input 'alt_notify_4'
+- alias: All the custome code is fired here
+  choose:
+  - conditions:
+    - alias: Check for Alternate Notifications Level 1
+      condition: and
+      conditions:
+      - condition: trigger
+        id: level_1
+      - condition: template
+        value_template:
+          '{{ not alt_notify_var in (''none'', ''null'', ''unavailable'', '''') }}'
+    sequence: !input 'alt_notify'
+  - conditions:
+    - alias: Check for Alternate Notifications Level 2
+      condition: and
+      conditions:
+      - condition: trigger
+        id: level_2
+      - condition: template
+        value_template:
+          '{{ not alt_notify_2_var in (''none'', ''null'', ''unavailable'', '''') }}'
+    sequence: !input 'alt_notify_2'
+  - conditions:
+    - alias: Check for Alternate Notifications Level 3  
+      condition: and
+      conditions:
+      - condition: trigger
+        id: level_3
+      - condition: template
+        value_template:
+          '{{ not alt_notify_3_var in (''none'', ''null'', ''unavailable'', '''') }}'
+    sequence: !input 'alt_notify_3'
+  - conditions:
+    - alias: Check for Alternate Notifications Level 4
+      condition: and
+      conditions:
+      - condition: trigger
+        id: level_4
+      - condition: template
+        value_template:
+          '{{ not alt_notify_4_var in (''none'', ''null'', ''unavailable'', '''') }}'
+    sequence: !input 'alt_notify_4'
+
 mode: parallel
 max: 15
