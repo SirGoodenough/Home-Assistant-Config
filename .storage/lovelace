@@ -1440,6 +1440,20 @@
               "type": "entities"
             },
             {
+              "show_name": true,
+              "show_icon": true,
+              "type": "button",
+              "tap_action": {
+                "action": "toggle"
+              },
+              "entity": "switch.bot_108e",
+              "icon": "mdi:pump-off",
+              "name": "Feeding Pump",
+              "show_state": false,
+              "icon_height": "60px",
+              "theme": "Dark - Purple"
+            },
+            {
               "type": "media-control",
               "entity": "media_player.jenny_s_tv"
             },
@@ -1450,6 +1464,28 @@
             {
               "type": "media-control",
               "entity": "media_player.farg"
+            },
+            {
+              "type": "button",
+              "tap_action": {
+                "action": "call-service",
+                "service": "input_boolean.turn_on",
+                "service_data": {},
+                "target": {
+                  "entity_id": "input_boolean.mist_button"
+                }
+              },
+              "entity": "input_boolean.mist_button",
+              "name": "More Mist!",
+              "hold_action": {
+                "action": "call-service",
+                "service": "input_boolean.turn_off",
+                "service_data": {},
+                "target": {
+                  "entity_id": "input_boolean.mist_button"
+                }
+              },
+              "theme": "Dark Soft UI Violet"
             },
             {
               "type": "button",
@@ -1476,28 +1512,6 @@
                   "entity_id": "input_boolean.pad_enable2"
                 }
               }
-            },
-            {
-              "type": "button",
-              "tap_action": {
-                "action": "call-service",
-                "service": "input_boolean.turn_on",
-                "service_data": {},
-                "target": {
-                  "entity_id": "input_boolean.mist_button"
-                }
-              },
-              "entity": "input_boolean.mist_button",
-              "name": "More Mist!",
-              "hold_action": {
-                "action": "call-service",
-                "service": "input_boolean.turn_off",
-                "service_data": {},
-                "target": {
-                  "entity_id": "input_boolean.mist_button"
-                }
-              },
-              "theme": "Dark Soft UI Violet"
             },
             {
               "show_name": false,
@@ -2916,6 +2930,13 @@
               "hours_to_show": 24,
               "graph": "line",
               "type": "sensor",
+              "entity": "sensor.bt1_kitchen2_humidity",
+              "detail": 2
+            },
+            {
+              "hours_to_show": 24,
+              "graph": "line",
+              "type": "sensor",
               "entity": "sensor.dark_sky_humidity",
               "detail": 1
             },
@@ -2956,6 +2977,13 @@
               "type": "sensor",
               "entity": "sensor.dark_sky_dew_point",
               "detail": 1
+            },
+            {
+              "hours_to_show": 24,
+              "graph": "line",
+              "type": "sensor",
+              "entity": "sensor.bt3_bathroom2_humidity",
+              "detail": 2
             }
           ],
           "icon": "mdi:water-percent",
@@ -4909,6 +4937,15 @@
                 "number.fan_auto_target_officefancmndfanspeed"
               ],
               "title": "Fan Auto Enable Blueprint Helper OfficeFancmndFanSpeed"
+            },
+            {
+              "show_name": true,
+              "show_icon": true,
+              "type": "button",
+              "tap_action": {
+                "action": "toggle"
+              },
+              "entity": "switch.bot_108e"
             }
           ]
         },

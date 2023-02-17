@@ -173,8 +173,8 @@ blueprint:
       selector:
         action: {}
     skip_p_notifcation:
-      name: 'Choose to send persistant notification (or not).'
-      description: 'on/true means a Persistant Notification is sent, off/false 
+      name: 'Choose to send persistent notification (or not).'
+      description: 'on/true means a Persistent Notification is sent, off/false 
         means it is not. 
         If you set this to off and do not add a manual notification method, 
         this blueprint then does nothing.
@@ -183,7 +183,7 @@ blueprint:
       selector:
         boolean:
     notification_id:
-      name: Optional Persistant Notification ID
+      name: Optional Persistent Notification ID
       description: 'This is an optional parameter to be used for notifications to
         mobile devices and other things.
         This will be converted to all letters and / or numbers with no spaces,
@@ -289,7 +289,7 @@ condition:
     before: !input 'notify_disable_time'
     weekday: !input 'weekday'
 action:
-- alias: 'Persistant Notifications. Options are skip it, use a notification_id, or default to no id'
+- alias: 'Persistent Notifications. Options are skip it, use a notification_id, or default to no id'
   choose:
   - conditions: '{{ skip_p_notification== false }}'
     sequence: []

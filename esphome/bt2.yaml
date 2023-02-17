@@ -1,0 +1,48 @@
+esphome:
+  name: bt2
+
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "wDnl96Lgh8GIFsRB4qCi4NH3dGofCgiBrBQ3EChOSlY="
+
+ota:
+  password: "92db2ed9ae685083141dca907acbed12"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Bt2 Fallback Hotspot"
+    password: !secret ap_password
+
+esp32_ble_tracker:
+  scan_parameters:
+    interval: 1100ms
+    window: 1100ms
+    active: true
+
+bluetooth_proxy:
+  active: true
+
+sensor:
+  - platform: dht
+    pin: GPIO21
+    model: AM2302
+    temperature:
+      name: "Bathroom2 Temperature"
+      accuracy_decimals: 1
+    humidity:
+      name: "Bathroom2 Humidity"
+      accuracy_decimals: 1
+    update_interval: 60s

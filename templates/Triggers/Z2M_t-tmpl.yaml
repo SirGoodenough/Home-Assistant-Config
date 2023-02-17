@@ -1,6 +1,8 @@
 - trigger:
     - platform: event
       event_type: cube_last_action
+    - platform: event
+      event_type: zha_cube_last_action
   sensor:
     - name: "Cube Last Action"
       unique_id: 23060243-d556-4949-b36c-6072438aaa7b

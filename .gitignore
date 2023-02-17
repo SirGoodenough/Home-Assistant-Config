@@ -11,6 +11,8 @@ s -lovelace## Ignore all
 !/blueprints/
 !/blueprints/**
 !/blueprints/*.yaml
+!/esphome
+!/esphome/*.yaml
 !/light/
 !/light/*.yaml
 !/mqtt/
@@ -93,15 +95,17 @@ s -lovelace## Ignore all
 !LICENSE
 
 ############# Failsafe  \/ \/ \/ \/ \/ #############
-remote_cmd.yaml
+
+home-assistant.log.*remote_cmd.yaml
 secrets.yaml
 shell_command.yaml
 **/test.yaml
-home-assistant.log.*
-.git-credentials
 /zigbee2mqtt/*.json
 /zigbee2mqtt/*.yaml
 /zigbee2mqtt/.configuration.*
+.esphome
+.exphome/*
+.git-credentials
 
 # Generic ignores
 *.log

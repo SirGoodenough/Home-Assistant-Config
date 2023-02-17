@@ -66,12 +66,12 @@
       - alias: "call Mayson ac set temperature & limit to prevent rate limit outages"
         if: '{{ is_number(state_attr(''climate.gemodule5384_window_ac'', ''temperature''))
           and state_attr(''climate.gemodule5384_window_ac'', ''temperature'') | float(73.1)
-          != states(''input_number.mayson_nap_temperature'') | float(73.1)
+          != states(''input_number.mayson_nap_temperature'') | float(73.2)
           }}'
         then:
           service: script.bedroom_ac_set_temp
           data:
-            Temp: '{{ states(''input_number.mayson_nap_temperature'') | float(73.1) }}'
+            Temp: '{{ states(''input_number.mayson_nap_temperature'') | float(73.3) }}'
       off_action:
       - alias: call shut the AirCon down script
         service: script.bedroom_cooling_off
@@ -103,16 +103,17 @@
           and states(''binary_sensor.ac_enabled'') == true }}'
         then:
           service: script.bedroom_ac_start
-      - delay: 00:00:05
+      - alias: Make sure the device is on before the temperature is set
+        delay: 00:00:05
       - alias: "call bedroom ac set temperature & limit to prevent rate limit outages"
         if: '{{ is_number(state_attr(''climate.gemodule5384_window_ac'', ''temperature''))
           and state_attr(''climate.gemodule5384_window_ac'', ''temperature'') | float(73.1)
-          != states(''input_number.bedroom_auto_temp'') | float(73.1)
+          != states(''input_number.bedroom_auto_temp'') | float(73.2)
           }}'
         then:
           service: script.bedroom_ac_set_temp
           data:
-            Temp: '{{ states(''input_number.bedroom_auto_temp'') | float(73.1) }}'
+            Temp: '{{ states(''input_number.bedroom_auto_temp'') | float(73.3) }}'
       off_action:
       - alias: call shut the AirCon down script
         service: script.bedroom_cooling_off
@@ -151,11 +152,11 @@
     - alias: "call bedroom ac set temperature & limit to prevent rate limit outages"
       if: '{{ is_number(state_attr(''climate.gemodule5384_window_ac'', ''temperature''))
         and state_attr(''climate.gemodule5384_window_ac'', ''temperature'') | float(73.1)
-        != states(''input_number.bedroom_auto_temp'') | float(73.1) }}'
+        != states(''input_number.bedroom_auto_temp'') | float(73.2) }}'
       then:
         service: script.bedroom_ac_set_temp
         data:
-          Temp: '{{ states(''input_number.bedroom_auto_temp'') | float(73.1) }}'
+          Temp: '{{ states(''input_number.bedroom_auto_temp'') | float(73.3) }}'
 
 - id: bc3cbabb-f2e5-4959-816a-26942b894dd6
     # Bedroom Cool Daytime Control Reset

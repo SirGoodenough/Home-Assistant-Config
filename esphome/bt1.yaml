@@ -1,0 +1,48 @@
+esphome:
+  name: bt1
+
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "hKvJxx7+VcLvgQ4gFe6uhbYKZOQYv3GYwlhad4BhpXE="
+
+ota:
+  password: "778ff61164ba4758e98b7e3050acd0b0"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot in case wifi connection fails
+  ap:
+    ssid: "Bt1 Fallback Hotspot"
+    password: !secret ap_password
+
+esp32_ble_tracker:
+  scan_parameters:
+    interval: 1100ms
+    window: 1100ms
+    active: true
+
+bluetooth_proxy:
+  active: true
+    
+sensor:
+  - platform: dht
+    pin: GPIO21
+    model: AM2302
+    temperature:
+      name: "Kitchen2 Temperature"
+      accuracy_decimals: 1
+    humidity:
+      name: "Kitchen2 Humidity"
+      accuracy_decimals: 1
+    update_interval: 60s
