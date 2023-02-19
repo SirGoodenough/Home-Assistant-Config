@@ -40,9 +40,9 @@ sensor:
     pin: GPIO21
     model: AM2302
     temperature:
-      name: "Bathroom2 Temperature"
+      name: "Basement Temperature"
       accuracy_decimals: 1
     humidity:
-      name: "Bathroom2 Humidity"
+      name: "Basement Humidity"
       accuracy_decimals: 1
     update_interval: 60s
