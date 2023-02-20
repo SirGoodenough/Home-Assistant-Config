@@ -180,7 +180,7 @@ tts_mama_left_expo:
       speaker_gender: female
       announcement_message: The Queen has left the Exhibition Center.
   icon: mdi:badge-account
-tts_mama_arrive_wxpo:
+tts_mama_arrive_expo:
   alias: TTS Mama Arrived Expo
   use_blueprint:
     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
