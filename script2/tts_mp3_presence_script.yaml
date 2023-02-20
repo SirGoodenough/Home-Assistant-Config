@@ -192,3 +192,21 @@ tts_mama_arrive_expo:
       speaker_gender: female
       announcement_message: The Queen has entered the Exhibition Center.
   icon: mdi:badge-account
+tts_say_person_cottage:
+  alias: TTS_say_Person_@_Cottage
+  use_blueprint:
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
+    input:
+      GTS_language: en
+      cloud_language: en-GB
+      TTS: tts.cloud_say
+      announcement_message: "I spy, with my little eye, someone at the cottage."
+      speaker_target:
+      - media_player.kitchen_speaker
+      speaker_gender: male
+      # after_action:
+      # - alias: "delay for sounder"
+      #   delay: 00:00:06
+      # - service: script.media_player_back_doorbell_motion
+  mode: single
+  icon: mdi:motion-sensor
