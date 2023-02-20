@@ -168,3 +168,27 @@ tts_say_luton:
       cloud_language: en-US
   mode: single
   icon: mdi:restart-alert
+tts_mama_left_expo:
+  alias: TTS Mama left Expo
+  use_blueprint:
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
+    input:
+      GTS_language: en
+      TTS: tts.cloud_say
+      cloud_language: en-GB
+      speaker_target: media_player.intercom_group
+      speaker_gender: female
+      announcement_message: The Queen has left the Exhibition Center.
+  icon: mdi:badge-account
+tts_mama_arrive_wxpo:
+  alias: TTS Mama Arrived Expo
+  use_blueprint:
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
+    input:
+      GTS_language: en
+      TTS: tts.cloud_say
+      cloud_language: en-GB
+      speaker_target: media_player.intercom_group
+      speaker_gender: female
+      announcement_message: The Queen has entered the Exhibition Center.
+  icon: mdi:badge-account

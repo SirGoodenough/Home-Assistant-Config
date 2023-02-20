@@ -132,3 +132,27 @@
         message: "{{ trigger.json.message }}"
     - service: script.tts_say_person_cottage
   mode: single
+
+- id: fe654e4b-befb-4fdb-a32c-4feb870ba9e4
+  alias: Moms Leaving Expo
+  mode: queued
+  initial_state: on
+  trigger: 
+    platform: zone
+    entity_id: person.julie
+    zone: zone.expo
+    event: leave
+  action:
+    service: script.tts_mama_left_expo
+
+- id: aeec87c6-e7d6-47db-acf2-0d9ffe8add6e
+  alias: Moms Arriving Expo
+  mode: queued
+  initial_state: on
+  trigger: 
+    platform: zone
+    entity_id: person.julie
+    zone: zone.expo
+    event: enter
+  action:
+    service: script.tts_mama_arrive_expo
