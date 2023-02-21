@@ -84,3 +84,16 @@
     - service: script.media_player_washer_alert
     - delay: 00:00:06
     - service: script.tts_wash_machine_done
+
+  - id: '1674983375635'
+    alias: Humidifier Proportional Control
+    description: Modulate the water flow to the Furnace Humidifer.
+    trace:
+      stored_traces: 10
+    use_blueprint:
+      path: SirGoodenough/HumidifierWaterThrottleControl.yaml
+      input:
+        mqtt_topic: humidifier/cmnd/var2
+        humidifier: humidifier.house_humidity
+        humidity: sensor.house_humidity_group
+        power_1: switch.humidifier_2
