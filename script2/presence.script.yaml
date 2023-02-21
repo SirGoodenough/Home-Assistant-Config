@@ -23,7 +23,7 @@
         notification_id: '{{ notify_id }}'
     - alias: Add a delay so notification stays up a while
       delay:
-        minutes: 5
+        seconds: 37
     - alias: Kill the notification
       service: persistent_notification.dismiss
       data:

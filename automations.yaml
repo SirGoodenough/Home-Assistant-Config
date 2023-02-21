@@ -30,15 +30,37 @@
     input:
       people2monitor:
       - person.julie
+      - person.jim
+      - person.jen
       zone2monitor:
       - zone.katy_s_kloset
+      - zone.expo
       enter_action:
       - service: light.toggle
         data: {}
         target:
           entity_id: light.cabinetlight
+      - service: script.turn_on
+        target:
+          entity_id: script.personalert
+        data:
+          variables:
+            people: person.julie
+            place: zone.katy_s_kloset
+            trigg: enter_trigger
+            notify_id: c26746c99ae2
       leave_action:
       - service: light.toggle
         data: {}
         target:
           entity_id: light.cabinetlight
+      - service: script.turn_on
+        target:
+          entity_id: script.personalert
+        data:
+          variables:
+            people: person.julie
+            place: zone.katy_s_kloset
+            trigg: leave_trigger
+            notify_id: c26746c99ae2
+
