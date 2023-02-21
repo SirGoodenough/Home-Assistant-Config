@@ -30,11 +30,8 @@
     input:
       people2monitor:
       - person.julie
-      - person.jim
-      - person.jen
       zone2monitor:
       - zone.katy_s_kloset
-      - zone.expo
       enter_action:
       - service: light.toggle
         data: {}
