@@ -7,25 +7,10 @@
     path: SirGoodenough/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.yaml
     input:
       topic: zigbee2mqtt/testcagl02
-      action_slide_any:
-      - service: script.say_a_thing
-        data:
-          message: Action Slide Any
-          entities: media_player.kitchen_speaker
-      action_rotate_cw_any:
-      - service: script.say_a_thing
-        data:
-          message: Action Clockwise Any
-          entities: media_player.kitchen_speaker
       scene_throw:
       - service: script.say_a_thing
         data:
           message: Scene Throw
-          entities: media_player.kitchen_speaker
-      scene_rotate_ccw_any:
-      - service: script.say_a_thing
-        data:
-          message: Scene counter clockwise any
           entities: media_player.kitchen_speaker
       action_throw:
       - service: script.say_a_thing
