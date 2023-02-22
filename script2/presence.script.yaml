@@ -1,5 +1,5 @@
   personalert:
-    alias: Drop a timed persistant_notification for person alert BP
+    alias: Person alert BP timed persistant_notification
     sequence:
     - alias: Notify interested parties WITH notification_id
       service: persistent_notification.create
