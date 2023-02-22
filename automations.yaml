@@ -43,6 +43,7 @@
           trigg: '{{ trigger.id }}'
           notify_id: '{{ trigger.to_state.context.id }}'
           place: '{% if trigger.zone is defined %} {{ trigger.zone.attributes.friendly_name }} {% else %} No Zone Defined {% endif %}'
+          # place: '{{ trigger.zone.attributes.friendly_name }}'
       leave_action:
       - service: light.toggle
         data: {}
@@ -54,3 +55,4 @@
           trigg: '{{ trigger.id }}'
           notify_id: '{{ trigger.to_state.context.id }}'
           place: '{% if trigger.zone is defined %} {{ trigger.zone.attributes.friendly_name }} {% else %} No Zone Defined {% endif %}'
+          # place: '{{ trigger.zone.attributes.friendly_name }}'
