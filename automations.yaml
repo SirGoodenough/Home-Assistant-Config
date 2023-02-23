@@ -42,8 +42,8 @@
           people: '{{ trigger.to_state.attributes.friendly_name }}'
           trigg: '{{ trigger.id }}'
           notify_id: '{{ trigger.to_state.context.id }}'
-          place: '{% if trigger.zone is defined %} {{ trigger.zone.attributes.friendly_name }} {% else %} No Zone Defined {% endif %}'
-          # place: '{{ trigger.zone.attributes.friendly_name }}'
+          place: '{% if trigger.zone is defined %} {{ trigger.zone.attributes.friendly_name
+            }} {% else %} No Zone Defined {% endif %}'
       leave_action:
       - service: light.toggle
         data: {}
@@ -54,5 +54,22 @@
           people: '{{ trigger.to_state.attributes.friendly_name }}'
           trigg: '{{ trigger.id }}'
           notify_id: '{{ trigger.to_state.context.id }}'
-          place: '{% if trigger.zone is defined %} {{ trigger.zone.attributes.friendly_name }} {% else %} No Zone Defined {% endif %}'
-          # place: '{{ trigger.zone.attributes.friendly_name }}'
+          place: '{% if trigger.zone is defined %} {{ trigger.zone.attributes.friendly_name
+            }} {% else %} No Zone Defined {% endif %}'
+- id: '1677177444493'
+  alias: aaaaaaaaaaaaaaaaaaaaaaabtest zone
+  description: 'gej567ik4etbryd,kfymyj 678k6 6 t '
+  trigger:
+  - platform: state
+    entity_id:
+    - person.julie
+  condition:
+  - condition: zone
+    entity_id: person.julie
+    zone: zone.katy_s_kloset
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.kitchen_down_lights
+  mode: single
