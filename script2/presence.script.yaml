@@ -5,8 +5,9 @@
       service: persistent_notification.create
       data:
         title: '{{ people + '' Status'' }}'
-        message: '{{ ''Regarding: '' + people + ''\nThey are now located at: '' + place +
-          ''\n'' + flip + ''\n\nNotification_id: '' + notify_id }}'
+        message: >
+          {{ 'Regarding: ' + people + '\nThey are now located at: ' + place +
+          '\n' + flip + '\n\nNotification_id: ' + notify_id }}
         notification_id: '{{ notify_id }}'
     - alias: Add a delay so notification stays up a while
         # Pick your own delay time.  If you set it to 0 this script does nothing.
