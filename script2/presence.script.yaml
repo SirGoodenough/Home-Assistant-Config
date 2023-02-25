@@ -23,7 +23,7 @@
       notify_id: f7fa45c9-d780-475a-b5b0-8fca1dd57012
       phase: enter
       flip: >
-        {% if phase == ''leave'' %} They have left their previous location.
+        {% if phase == 'leave' %} They have left their previous location.
         {% else %}
         {% endif %}
     mode: queued
