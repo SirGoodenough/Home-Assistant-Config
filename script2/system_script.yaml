@@ -78,6 +78,5 @@
 #   sequence:
 #     service: script.say_a_thing
 #     data:
-#       message: "message" 1
+#       message: "message"
 #       entities: media_player.kitchen_speaker
-

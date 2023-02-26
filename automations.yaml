@@ -22,56 +22,55 @@
         data: {}
         target:
           entity_id: input_boolean.test_color
-- id: '1676934491362'
-  alias: AAAAApresence
-  description: Automation testing the new presence blueprint
+- id: 7b24d93c-d092-48f9-838d-233746babc21
+  alias: aaaaAAAaaaaAAacc Person Alert Honitor
+  description: Alert when we go places
+  trace:
+    stored_traces: 10
   use_blueprint:
-    path: test/Person_alert_Blueprint.yaml
+    path: SirGoodenough/Person_alert_Blueprint.yaml
     input:
       people2monitor:
       - person.julie
       - person.jen
       - person.jim
       zone2monitor:
+      - zone.home
       - zone.katy_s_kloset
-      - zone.expo
       - zone.follicle_assembly_building
+      - zone.feed_store
+      - zone.nail_shop2
+      - zone.belva
+      - zone.clinic
+      - zone.expo
       enter_action:
-      - service: light.toggle
-        data: {}
-        target:
-          entity_id: light.cabinetlight
-      - service: script.personalert
+      - service: script.personalert_notify
         data:
           person: '{{ states(trigger.to_state.attributes.friendly_name) }}'
           place: '{{ trigger.to_state.state }}'
           notify_id: '{{ trigger.to_state.context.id }}'
           phase: enter
+      - service: script.personalert_audio
+        data:
+          message: >
+            {{ states(trigger.to_state.attributes.friendly_name) +
+              ' has arrived at ' + trigger.to_state.state }}
+          entities: media_player.home_group
       leave_action:
       - service: light.toggle
         data: {}
         target:
           entity_id: light.cabinetlight
-      - service: script.personalert
+      - service: script.personalert_notify
         data:
           person: '{{ states(trigger.to_state.attributes.friendly_name) }}'
           place: '{{ trigger.to_state.state }}'
           notify_id: '{{ trigger.to_state.context.id }}'
           phase: leave
-- id: '1677177444493'
-  alias: aaaaaaaaaaaaaaaaaaaaaaabtest zone
-  description: 'gej567ik4etbryd,kfymyj 678k6 6 t '
-  trigger:
-  - platform: state
-    entity_id:
-    - person.julie
-  condition:
-  - condition: zone
-    entity_id: person.julie
-    zone: zone.katy_s_kloset
-  action:
-  - service: light.toggle
-    data: {}
-    target:
-      entity_id: light.kitchen_down_lights
+      - service: script.personalert_audio
+        data:
+          message: >
+            {{ states(trigger.to_state.attributes.friendly_name) +
+              ' has left ' + trigger.to_state.state }}
+          entities: media_player.home_group
   mode: single

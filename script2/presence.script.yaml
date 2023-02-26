@@ -1,4 +1,4 @@
-  personalert:
+  personalert_notify:
     alias: Person alert BP timed persistant_notification
     sequence:
     - alias: Notify interested parties WITH notification_id
@@ -29,4 +29,30 @@
         {% endif %}
     mode: queued
     icon: mdi:message-alert-outline
+    max: 10
+  personalert_audio:
+    alias: Person alert BP TTS Message & Sound
+    sequence:
+    - alias: script
+      service: tts.cloud_say
+      data:
+        entity_id: "{{ entities }}"
+        message: "{{ message }}"
+        options:
+          gender: female
+        language: en-CA
+    - delay: 00:00:04
+    - alias: MP3 to Speakers
+      service: media_player.play_media
+      data:
+        entity_id: "{{ entities }}"
+        media_content_id: 
+          "media-source://media_source/local/mp3/OK_tone.wav"
+        media_content_type: audio/mp3
+    variables:
+        # Collect variable data and provide default
+      message: "I'm lost"
+      entities: media_player.kitchen_speaker
+    mode: queued
+    icon: mdi:message-alert
     max: 10
