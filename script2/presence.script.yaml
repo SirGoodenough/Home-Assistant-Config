@@ -40,7 +40,7 @@
         message: "{{ message }}"
         options:
           gender: female
-        language: en-CA
+        language: en-GB
     - delay: 00:00:04
     - alias: MP3 to Speakers
       service: media_player.play_media
