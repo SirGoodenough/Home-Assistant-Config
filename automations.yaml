@@ -28,7 +28,7 @@
   trace:
     stored_traces: 10
   use_blueprint:
-    path: SirGoodenough/Person_alert_Blueprint.yaml
+    path: SirGoodenough/Person_Alert_Blueprint.yaml
     input:
       people2monitor:
       - person.julie
@@ -46,31 +46,25 @@
       enter_action:
       - service: script.personalert_notify
         data:
-          person: '{{ states(trigger.to_state.attributes.friendly_name) }}'
+          person: '{{ trigger.to_state.attributes.friendly_name }}'
           place: '{{ trigger.to_state.state }}'
           notify_id: '{{ trigger.to_state.context.id }}'
           phase: enter
       - service: script.personalert_audio
         data:
-          message: >
-            {{ states(trigger.to_state.attributes.friendly_name) +
-              ' has arrived at ' + trigger.to_state.state }}
+          message: "{{ trigger.to_state.attributes.friendly_name + ' has
+            arrived at ' + trigger.to_state.state }}\n"
           entities: media_player.home_group
       leave_action:
-      - service: light.toggle
-        data: {}
-        target:
-          entity_id: light.cabinetlight
       - service: script.personalert_notify
         data:
-          person: '{{ states(trigger.to_state.attributes.friendly_name) }}'
+          person: '{{ trigger.to_state.attributes.friendly_name }}'
           place: '{{ trigger.to_state.state }}'
           notify_id: '{{ trigger.to_state.context.id }}'
           phase: leave
       - service: script.personalert_audio
         data:
-          message: >
-            {{ states(trigger.to_state.attributes.friendly_name) +
-              ' has left ' + trigger.to_state.state }}
+          message: "{{ trigger.to_state.attributes.friendly_name + ' has
+            left ' + trigger.to_state.state }}\n"
           entities: media_player.home_group
   mode: single

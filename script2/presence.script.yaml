@@ -10,7 +10,7 @@
           '\n' + flip + '\n\nNotification_id: ' + notify_id }}
         notification_id: '{{ notify_id }}'
     - alias: Add a delay so notification stays up a while
-        # Pick your own delay time.  If you set it to 0 this script does nothing.
+        # Pick your display time. If you set 0 this notification doesn't show.
       delay:
         seconds: 37
     - alias: Kill the notification
@@ -18,7 +18,7 @@
       data:
         notification_id: '{{ notify_id }}'
     variables:
-        # Collect variable data and provide defaults
+        # Define variable data and provide defaults
       people: placeholder1
       place: placeholder2
       notify_id: f7fa45c9-d780-475a-b5b0-8fca1dd57012
@@ -46,11 +46,11 @@
       service: media_player.play_media
       data:
         entity_id: "{{ entities }}"
-        media_content_id: 
+        media_content_id:
           "media-source://media_source/local/mp3/OK_tone.wav"
         media_content_type: audio/mp3
     variables:
-        # Collect variable data and provide default
+        # Define variable data and provide default (change entities 4 your system)
       message: "I'm lost"
       entities: media_player.kitchen_speaker
     mode: queued
