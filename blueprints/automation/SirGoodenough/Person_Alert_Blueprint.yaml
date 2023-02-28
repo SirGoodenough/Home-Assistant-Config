@@ -1,12 +1,15 @@
 blueprint:
-  name: Person Alert Honitor - 2023-02-26
+  name: Person Alert Honitor - 2023-03-01
   description: 'This is Blueprint that This BluePrint will monitor a person or
     persons, and when they ''enter'' or ''leave'' the zone or zones you pick,
     it will trigger an action for both enter and leave phases.
     Yes, it will watch multiple people and multiple zones at the same time!
 
-    I use this BluePrint to follow family members around during their day so that
-    the family members at home know where their loved ones are.
+    I use this BluePrint to follow family members around during their day so
+      that the family members at home know where their loved ones are.
+      I used this to eliminate over 2 dozen separate Automations and Scripts 
+      in my Home set-up. The multiple person/multiple zone watch ability
+      is the key.
 
     The monitored areas need to be set up as zones in Home Assistant. SEE:
       [HA ZONES LINK](https://www.home-assistant.io/integrations/zone/)
@@ -15,8 +18,8 @@ blueprint:
 
     The person needs LAT/LOG software running to report their location.
     I use Life360, but the Home Assistant App running on their phone will also
-    work. There are likely other location monitoring methods but I am not aquainted
-    with any of them. SEE:
+      work. There are likely other location monitoring methods but I am not
+      aquainted with any of them. SEE:
 
       [![Open your Home Assistant instance and show your people.](https://my.home-assistant.io/badges/people.svg)](https://my.home-assistant.io/redirect/people/)
 
@@ -84,6 +87,19 @@ blueprint:
       default: []
       selector:
         action: {}
+    jump_action:
+      name: Jump known zone to known zone Action
+      description: 'Build the action here that you want to happen when both the 
+        zone they left and the zone they entered is known, but not the same zone.
+        There is a ''Persistent Notification'' example in [The Docs File.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_Alert_Blueprint.md)
+
+        If you want to do a TTS I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml)
+
+        If you want to play a sound effect or music I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.yaml)
+        '
+      default: []
+      selector:
+        action: {}
     enable_time:
       name: Time of day to begin action(s)
       description: 'Set this for the time of day you want to allow action(s) to begin.
@@ -141,10 +157,9 @@ condition:
     value_template: '{{ to_state != from_state }}'
   - alias: Make sure it's not an I'm Lost move
     condition: template
-    value_template: '
-      {{ not to_state in (''unknown'',''unavailable'',''none'',''None'','''') and
-      not from_state in (''unknown'',''unavailable'',''none'',''None'','''') }}
-      '
+    value_template: >
+      {{ not to_state in ('unknown','unavailable','none','None','') and
+      not from_state in ('unknown','unavailable','none','None','') }}
   - alias: Only allow execution within selected Hours / Weekdays
     condition: time
     after: !input 'enable_time'
@@ -164,15 +179,6 @@ variables:
   from_state: '{{ trigger.from_state.state }}'
 
 action:
-# - alias: 'Fire variable reporting event. This is for optional troubleshooting data.'
-#   event: person_alert_variables
-#   event_data:
-#     people2monitor: '{{ people2monitor_var }}'
-#     zone2monitor: '{{ zone2monitor_var }}'
-#     friend_zone: '{{ friend_zone }}'
-#     to_state: '{{ to_state }}'
-#     from_state: '{{ from_state }}'
-
 - alias: Determine if there was an actionable event
   choose:
   - conditions:
@@ -201,6 +207,33 @@ action:
         value_template:
           '{{ not to_state in friend_zone }}'
     sequence: !input leave_action
-
+  - conditions:
+    - alias: Person jumped from known zone to known zone
+      condition: and
+      conditions:
+      - alias: Person left known zone
+        condition: template
+        value_template:
+          '{{ from_state in friend_zone }}'
+      - alias: Person arrived in known zone
+        condition: template
+        value_template:
+          '{{ to_state in friend_zone }}'
+    sequence: !input jump_action
+  default: 
+  - alias: Notify of an error condition
+    service: persistent_notification.create
+    data:
+      title: Condition Unknown
+      message: An nknown condition has occurred. Check the trace.
+      notification_id: 41ef5597-221a-49f5-a986-1e9859aaa557
+  - alias: Add a delay so notification stays up a while
+      # Pick your display time. If you set 0 this notification doesn't show.
+    delay:
+      minutes: 30
+  - alias: Kill the notification
+    service: persistent_notification.dismiss
+    data:
+      notification_id: 41ef5597-221a-49f5-a986-1e9859aaa557
 mode: queued
 max: 10

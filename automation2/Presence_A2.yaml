@@ -1,123 +1,3 @@
-- id: 53e72f6a-8cc9-47f3-936f-2b0b83b78a74
-  alias: Moms Leaving Katys
-  mode: queued
-  initial_state: on
-  trigger: 
-    platform: zone
-    entity_id: person.julie
-    zone: zone.katy_s_kloset
-    event: leave
-  action:
-    service: script.tts_mama_left_katys
-
-- id: 3dfbb928-fed7-40d3-b8f3-adf761c55681
-  alias: Moms Arriving Katys
-  mode: queued
-  initial_state: on
-  trigger: 
-    platform: zone
-    entity_id: person.julie
-    zone: zone.katy_s_kloset
-    event: enter
-  action:
-    service: script.tts_mama_arrive_katys
-
-- id: 9f5e76bb-03e6-413e-90db-a5e0837a76db
-  alias: Moms Leaving Belvas
-  mode: queued
-  initial_state: on
-  trigger: 
-    platform: zone
-    entity_id: person.julie
-    zone: zone.belva
-    event: leave
-  action:
-    service: script.tts_mama_left_belvas
-
-- id: fc9a4503-097d-4ef0-b3f4-23202d707bf8
-  alias: Moms Arriving Belvas
-  mode: queued
-  initial_state: on
-  trigger: 
-    platform: zone
-    entity_id: person.julie
-    zone: zone.belva
-    event: enter
-  action:
-    service: script.tts_mama_arrive_belvas
-
-- id: e6f402c1-7d0e-4907-930d-5765a59785c5
-  alias: Moms Home
-  mode: queued
-  initial_state: on
-  trigger: 
-    platform: zone
-    entity_id: person.julie
-    zone: zone.home
-    event: enter
-  action:
-    service: script.tts_moms_home
-
-- id: ac2c7291-fa80-47b3-b79d-bf044f4f88bc
-  alias: Moms Left
-  mode: queued
-  initial_state: on
-  trigger: 
-    platform: zone
-    entity_id: person.julie
-    zone: zone.home
-    event: leave
-  action:
-    service: script.tts_mom_left
-
-- id: 85a71eb6-9744-45f3-9425-ed7a31e58167
-  alias: Moms Left Nails
-  mode: queued
-  initial_state: on
-  trigger: 
-    platform: zone
-    entity_id: person.julie
-    zone: zone.nail_shop2
-    event: leave
-  action:
-    service: script.tts_mom_left_nails
-
-- id: 6da00e0a-6695-4a38-8d36-a427b35d4be8
-  alias: Moms Left Clinic
-  mode: queued
-  initial_state: on
-  trigger: 
-    platform: zone
-    entity_id: person.julie, person.jim, person.jen
-    zone: zone.clinic
-    event: leave
-  action:
-    service: script.tts_anyone_left_clinic
-
-- id: 77d42f27-865f-4b33-b47c-63bdcc9b78fb
-  alias: Moms Left Follicle Assembly Building
-  mode: queued
-  initial_state: on
-  trigger: 
-    platform: zone
-    entity_id: person.julie
-    zone: zone.follicle_assembly_building
-    event: leave
-  action:
-    service: script.tts_mom_left_fab
-
-- id: f8668a4a-c984-4b77-9b8a-28888ed4dcfb
-  alias: Moms Left Shop
-  mode: queued
-  initial_state: on
-  trigger: 
-    platform: zone
-    entity_id: person.julie
-    zone: zone.feed_store
-    event: leave
-  action:
-    service: script.tts_mom_left_feed_store
-
 - id: 5d87c33d-0599-40f7-a1e2-eec7c4009d38
   alias: Person @ Cottage
   description: Webhook from Cottage that it detects a person
@@ -133,26 +13,146 @@
     - service: script.tts_say_person_cottage
   mode: single
 
-- id: fe654e4b-befb-4fdb-a32c-4feb870ba9e4
-  alias: Moms Leaving Expo
-  mode: queued
-  initial_state: on
-  trigger: 
-    platform: zone
-    entity_id: person.julie
-    zone: zone.expo
-    event: leave
-  action:
-    service: script.tts_mama_left_expo
+# - id: 53e72f6a-8cc9-47f3-936f-2b0b83b78a74
+#   alias: Moms Leaving Katys
+#   mode: queued
+#   initial_state: on
+#   trigger: 
+#     platform: zone
+#     entity_id: person.julie
+#     zone: zone.katy_s_kloset
+#     event: leave
+#   action:
+#     service: script.tts_mama_left_katys
 
-- id: aeec87c6-e7d6-47db-acf2-0d9ffe8add6e
-  alias: Moms Arriving Expo
-  mode: queued
-  initial_state: on
-  trigger: 
-    platform: zone
-    entity_id: person.julie
-    zone: zone.expo
-    event: enter
-  action:
-    service: script.tts_mama_arrive_expo
+# - id: 3dfbb928-fed7-40d3-b8f3-adf761c55681
+#   alias: Moms Arriving Katys
+#   mode: queued
+#   initial_state: on
+#   trigger: 
+#     platform: zone
+#     entity_id: person.julie
+#     zone: zone.katy_s_kloset
+#     event: enter
+#   action:
+#     service: script.tts_mama_arrive_katys
+
+# - id: 9f5e76bb-03e6-413e-90db-a5e0837a76db
+#   alias: Moms Leaving Belvas
+#   mode: queued
+#   initial_state: on
+#   trigger: 
+#     platform: zone
+#     entity_id: person.julie
+#     zone: zone.belva
+#     event: leave
+#   action:
+#     service: script.tts_mama_left_belvas
+
+# - id: fc9a4503-097d-4ef0-b3f4-23202d707bf8
+#   alias: Moms Arriving Belvas
+#   mode: queued
+#   initial_state: on
+#   trigger: 
+#     platform: zone
+#     entity_id: person.julie
+#     zone: zone.belva
+#     event: enter
+#   action:
+#     service: script.tts_mama_arrive_belvas
+
+# - id: e6f402c1-7d0e-4907-930d-5765a59785c5
+#   alias: Moms Home
+#   mode: queued
+#   initial_state: on
+#   trigger: 
+#     platform: zone
+#     entity_id: person.julie
+#     zone: zone.home
+#     event: enter
+#   action:
+#     service: script.tts_moms_home
+
+# - id: ac2c7291-fa80-47b3-b79d-bf044f4f88bc
+#   alias: Moms Left
+#   mode: queued
+#   initial_state: on
+#   trigger: 
+#     platform: zone
+#     entity_id: person.julie
+#     zone: zone.home
+#     event: leave
+#   action:
+#     service: script.tts_mom_left
+
+# - id: 85a71eb6-9744-45f3-9425-ed7a31e58167
+#   alias: Moms Left Nails
+#   mode: queued
+#   initial_state: on
+#   trigger: 
+#     platform: zone
+#     entity_id: person.julie
+#     zone: zone.nail_shop2
+#     event: leave
+#   action:
+#     service: script.tts_mom_left_nails
+
+# - id: 6da00e0a-6695-4a38-8d36-a427b35d4be8
+#   alias: Moms Left Clinic
+#   mode: queued
+#   initial_state: on
+#   trigger: 
+#     platform: zone
+#     entity_id: person.julie, person.jim, person.jen
+#     zone: zone.clinic
+#     event: leave
+#   action:
+#     service: script.tts_anyone_left_clinic
+
+# - id: 77d42f27-865f-4b33-b47c-63bdcc9b78fb
+#   alias: Moms Left Follicle Assembly Building
+#   mode: queued
+#   initial_state: on
+#   trigger: 
+#     platform: zone
+#     entity_id: person.julie
+#     zone: zone.follicle_assembly_building
+#     event: leave
+#   action:
+#     service: script.tts_mom_left_fab
+
+# - id: f8668a4a-c984-4b77-9b8a-28888ed4dcfb
+#   alias: Moms Left Shop
+#   mode: queued
+#   initial_state: on
+#   trigger: 
+#     platform: zone
+#     entity_id: person.julie
+#     zone: zone.feed_store
+#     event: leave
+#   action:
+#     service: script.tts_mom_left_feed_store
+
+# - id: fe654e4b-befb-4fdb-a32c-4feb870ba9e4
+#   alias: Moms Leaving Expo
+#   mode: queued
+#   initial_state: on
+#   trigger: 
+#     platform: zone
+#     entity_id: person.julie
+#     zone: zone.expo
+#     event: leave
+#   action:
+#     service: script.tts_mama_left_expo
+
+# - id: aeec87c6-e7d6-47db-acf2-0d9ffe8add6e
+#   alias: Moms Arriving Expo
+#   mode: queued
+#   initial_state: on
+#   trigger: 
+#     platform: zone
+#     entity_id: person.julie
+#     zone: zone.expo
+#     event: enter
+#   action:
+#     service: script.tts_mama_arrive_expo

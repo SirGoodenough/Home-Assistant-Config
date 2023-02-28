@@ -44,27 +44,46 @@
       - zone.clinic
       - zone.expo
       enter_action:
-      - service: script.personalert_notify
-        data:
-          person: '{{ trigger.to_state.attributes.friendly_name }}'
-          place: '{{ trigger.to_state.state }}'
-          notify_id: '{{ trigger.to_state.context.id }}'
-          phase: enter
-      - service: script.personalert_audio
-        data:
-          message: "{{ trigger.to_state.attributes.friendly_name + ' has
-            arrived at ' + trigger.to_state.state }}\n"
-          entities: media_player.home_group
+      - parallel:
+        - service: script.personalert_notify
+          data:
+            person: '{{ trigger.to_state.attributes.friendly_name }}'
+            place_to: '{{ trigger.to_state.state }}'
+            place_from: '{{ trigger.from_state.state }}'
+            notify_id: '{{ trigger.to_state.context.id }}'
+            phase: enter
+        - service: script.personalert_audio
+          data:
+            message: "{{ trigger.to_state.attributes.friendly_name + ' has
+              arrived at ' + trigger.to_state.state }}\n"
+            entities: media_player.intercom_group
       leave_action:
-      - service: script.personalert_notify
-        data:
-          person: '{{ trigger.to_state.attributes.friendly_name }}'
-          place: '{{ trigger.to_state.state }}'
-          notify_id: '{{ trigger.to_state.context.id }}'
-          phase: leave
-      - service: script.personalert_audio
-        data:
-          message: "{{ trigger.to_state.attributes.friendly_name + ' has
-            left ' + trigger.to_state.state }}\n"
-          entities: media_player.home_group
-  mode: single
+      - parallel:
+        - service: script.personalert_notify
+          data:
+            person: '{{ trigger.from_state.attributes.friendly_name }}'
+            place_to: '{{ trigger.to_state.state }}'
+            place_from: '{{ trigger.from_state.state }}'
+            notify_id: '{{ trigger.from_state.context.id }}'
+            phase: leave
+        - service: script.personalert_audio
+          data:
+            message: "{{ trigger.from_state.attributes.friendly_name + ' has
+              left ' + trigger.from_state.state }}\n"
+            entities: media_player.intercom_group
+      jump_action:
+      - parallel:
+        - service: script.personalert_notify
+          data:
+            person: '{{ trigger.to_state.attributes.friendly_name }}'
+            place_to: '{{ trigger.to_state.state }}'
+            place_from: '{{ trigger.from_state.state }}'
+            notify_id: '{{ trigger.to_state.context.id }}'
+            phase: jump
+        - service: script.personalert_audio
+          data:
+            message: "{{ trigger.to_state.attributes.friendly_name + ' has
+              left ' + trigger.from_state.state + ' and is located at: ' + 
+              trigger.to_state.state }}"
+            entities: media_player.intercom_group
+  mode: parallel
