@@ -54,14 +54,16 @@
       service: tts.cloud_say
       data:
         entity_id: "{{ entities }}"
-        message: "{{ message }}"
+        message: "{{ mess }}"
+        language: "{{ lang }}"
         options:
-          gender: female
-        language: en-GB
+          gender: "{{ gend }}"
     variables:
-        # Define variable data and provide default (change entities 4 your system)
-      message: "I'm lost"
+        # Define variable data and provide default (change 'entities' 4 your system)
       entities: media_player.kitchen_speaker
+      mess: "I'm lost"
+      lang: en-US
+      gend: female
     mode: single
     max_exceeded: silent
     icon: mdi:message-alert-outline

@@ -54,10 +54,12 @@
             phase: enter
         - service: script.personalert_audio
           data:
-            message: '{{ trigger.to_state.attributes.friendly_name +
+            entities: media_player.intercom_group
+            mess: '{{ trigger.to_state.attributes.friendly_name +
               '' has arrived at '' + trigger.to_state.state
               }}'
-            entities: media_player.intercom_group
+            lang: en-GB
+            gend: female
       leave_action:
       - parallel:
         - service: script.personalert_notify
@@ -69,10 +71,12 @@
             phase: leave
         - service: script.personalert_audio
           data:
-            message: '{{ trigger.from_state.attributes.friendly_name +
+            entities: media_player.intercom_group
+            mess: '{{ trigger.from_state.attributes.friendly_name +
               '' has left '' + trigger.from_state.state
               }}'
-            entities: media_player.intercom_group
+            lang: en-GB
+            gend: female
       jump_action:
       - parallel:
         - service: script.personalert_notify
@@ -84,10 +88,85 @@
             phase: jump
         - service: script.personalert_audio
           data:
-            message: '{{ trigger.to_state.attributes.friendly_name +
+            entities: media_player.intercom_group
+            mess: '{{ trigger.to_state.attributes.friendly_name +
               '' has left '' + trigger.from_state.state +
               '' and is located at: '' + trigger.to_state.state
               }}'
+            lang: en-GB
+            gend: female
+  mode: single
+  max_exceeded: silent
+
+
+- id: 8dc284dc-7cef-4ee5-8045-da04bbf495f2
+  alias: aaaaAAAaaaaAAacc Jim Alert Honitor
+  description: Alert when Jim Goes places
+  trace:
+    stored_traces: 20
+  use_blueprint:
+    path: SirGoodenough/Person_Alert_Blueprint.yaml
+    input:
+      people2monitor:
+      - person.jim
+      zone2monitor:
+      - zone.home
+      - zone.katy_s_kloset
+      - zone.feed_store
+      - zone.belva
+      - zone.clinic
+      - zone.expo
+      enter_action:
+      - parallel:
+        - service: script.personalert_notify
+          data:
+            person: '{{ trigger.to_state.attributes.friendly_name }}'
+            place_to: '{{ trigger.to_state.state }}'
+            place_from: '{{ trigger.from_state.state }}'
+            notify_id: '{{ trigger.to_state.context.id }}'
+            phase: enter
+        - service: script.personalert_audio
+          data:
             entities: media_player.intercom_group
+            mess: '{{ trigger.to_state.attributes.friendly_name +
+              '' has arrived at '' + trigger.to_state.state
+              }}'
+            lang: en-CA
+            gend: male
+      leave_action:
+      - parallel:
+        - service: script.personalert_notify
+          data:
+            person: '{{ trigger.from_state.attributes.friendly_name }}'
+            place_to: '{{ trigger.to_state.state }}'
+            place_from: '{{ trigger.from_state.state }}'
+            notify_id: '{{ trigger.from_state.context.id }}'
+            phase: leave
+        - service: script.personalert_audio
+          data:
+            entities: media_player.intercom_group
+            mess: '{{ trigger.from_state.attributes.friendly_name +
+              '' has left '' + trigger.from_state.state
+              }}'
+            lang: en-CA
+            gend: male
+      jump_action:
+      - parallel:
+        - service: script.personalert_notify
+          data:
+            person: '{{ trigger.to_state.attributes.friendly_name }}'
+            place_to: '{{ trigger.to_state.state }}'
+            place_from: '{{ trigger.from_state.state }}'
+            notify_id: '{{ trigger.to_state.context.id }}'
+            phase: jump
+        - service: script.personalert_audio
+          data:
+            entities: media_player.intercom_group
+            mess: '{{ trigger.to_state.attributes.friendly_name +
+              '' has left '' + trigger.from_state.state +
+              '' and is located at: '' + trigger.to_state.state
+              }}'
+            lang: en-CA
+            gend: male
   mode: single
   max_exceeded: silent
