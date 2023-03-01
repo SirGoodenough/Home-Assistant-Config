@@ -26,7 +26,7 @@
   alias: aaaaAAAaaaaAAacc Person Alert Honitor
   description: Alert when we go places
   trace:
-    stored_traces: 10
+    stored_traces: 20
   use_blueprint:
     path: SirGoodenough/Person_Alert_Blueprint.yaml
     input:
@@ -54,8 +54,9 @@
             phase: enter
         - service: script.personalert_audio
           data:
-            message: "{{ trigger.to_state.attributes.friendly_name + ' has
-              arrived at ' + trigger.to_state.state }}\n"
+            message: '{{ trigger.to_state.attributes.friendly_name +
+              '' has arrived at '' + trigger.to_state.state
+              }}'
             entities: media_player.intercom_group
       leave_action:
       - parallel:
@@ -68,8 +69,9 @@
             phase: leave
         - service: script.personalert_audio
           data:
-            message: "{{ trigger.from_state.attributes.friendly_name + ' has
-              left ' + trigger.from_state.state }}\n"
+            message: '{{ trigger.from_state.attributes.friendly_name +
+              '' has left '' + trigger.from_state.state
+              }}'
             entities: media_player.intercom_group
       jump_action:
       - parallel:
@@ -82,8 +84,10 @@
             phase: jump
         - service: script.personalert_audio
           data:
-            message: "{{ trigger.to_state.attributes.friendly_name + ' has
-              left ' + trigger.from_state.state + ' and is located at: ' + 
-              trigger.to_state.state }}"
+            message: '{{ trigger.to_state.attributes.friendly_name +
+              '' has left '' + trigger.from_state.state +
+              '' and is located at: '' + trigger.to_state.state
+              }}'
             entities: media_player.intercom_group
-  mode: parallel
+  mode: single
+  max_exceeded: silent

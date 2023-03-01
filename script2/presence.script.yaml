@@ -1,12 +1,14 @@
   personalert_notify:
+    trace:
+      stored_traces: 10
     alias: Person alert BP timed persistant_notification
     sequence:
     - alias: Notify interested parties with notification_id
       service: persistent_notification.create
       data:
-        title: '{{ people + '' Status'' }}'
+        title: '{{ person + '' Status'' }}'
         message: >
-          {{ 'Regarding: ' + people + '\n' + flip +
+          {{ 'Regarding: ' + person + '\n' + flip +
           '\n\nNotification_id: ' + notify_id }}
         notification_id: '{{ notify_id }}'
     - alias: Add a delay so notification stays up a while
@@ -19,10 +21,10 @@
         notification_id: '{{ notify_id }}'
     variables:
         # Define variable data and provide defaults
-      people: placeholder1
+      person: placeholder1
       place_to: placeholder2
       place_from: placeholder3
-      notify_id: f7fa45c9-d780-475a-b5b0-8fca1dd57012
+      notify_id: 3479f317-f314-43bb-9e20-d6168b14f78c
       phase: enter
       flip: >
         {% if phase == 'jump' %}
@@ -32,10 +34,12 @@
         {% else %}
           'They are now located at: ' {{ place_to }}
         {% endif %}
-    mode: queued
+    mode: single
+    max_exceeded: silent
     icon: mdi:message-alert-outline
-    max: 10
   personalert_audio:
+    trace:
+      stored_traces: 10
     alias: Person alert BP TTS Message & Sound
     sequence:
     - alias: MP3 to Speakers
@@ -46,7 +50,7 @@
           "media-source://media_source/local/mp3/OK_tone.wav"
         media_content_type: audio/mp3
     - delay: 00:00:02
-    - alias: script
+    - alias: TTS script
       service: tts.cloud_say
       data:
         entity_id: "{{ entities }}"
@@ -58,6 +62,6 @@
         # Define variable data and provide default (change entities 4 your system)
       message: "I'm lost"
       entities: media_player.kitchen_speaker
-    mode: queued
-    icon: mdi:message-alert
-    max: 10
+    mode: single
+    max_exceeded: silent
+    icon: mdi:message-alert-outline
