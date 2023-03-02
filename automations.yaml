@@ -33,7 +33,6 @@
       people2monitor:
       - person.julie
       - person.jen
-      - person.jim
       zone2monitor:
       - zone.home
       - zone.katy_s_kloset
@@ -43,6 +42,12 @@
       - zone.belva
       - zone.clinic
       - zone.expo
+      - zone.lakewood
+      - zone.mountain
+      - zone.shawano
+      - zone.somerhome
+      - zone.suring
+      - zone.townsend
       enter_action:
       - parallel:
         - service: script.personalert_notify
@@ -54,12 +59,9 @@
             phase: enter
         - service: script.personalert_audio
           data:
-            entities: media_player.intercom_group
-            mess: '{{ trigger.to_state.attributes.friendly_name +
-              '' has arrived at '' + trigger.to_state.state
-              }}'
+            mess: '{{ trigger.to_state.attributes.friendly_name + '' has arrived at
+              '' + trigger.to_state.state }}'
             lang: en-GB
-            gend: female
       leave_action:
       - parallel:
         - service: script.personalert_notify
@@ -71,12 +73,9 @@
             phase: leave
         - service: script.personalert_audio
           data:
-            entities: media_player.intercom_group
-            mess: '{{ trigger.from_state.attributes.friendly_name +
-              '' has left '' + trigger.from_state.state
-              }}'
+            mess: '{{ trigger.from_state.attributes.friendly_name + '' has left ''
+              + trigger.from_state.state }}'
             lang: en-GB
-            gend: female
       jump_action:
       - parallel:
         - service: script.personalert_notify
@@ -88,17 +87,18 @@
             phase: jump
         - service: script.personalert_audio
           data:
-            entities: media_player.intercom_group
-            mess: '{{ trigger.to_state.attributes.friendly_name +
-              '' has left '' + trigger.from_state.state +
-              '' and is located at: '' + trigger.to_state.state
+            mess: '{{ trigger.to_state.attributes.friendly_name + '' has left '' +
+              trigger.from_state.state + '' and is located at: '' + trigger.to_state.state
               }}'
             lang: en-GB
-            gend: female
+      enable_time: 05:30:18
+      disable_time: '20:27:36'
+      hold_period:
+        hours: 0
+        minutes: 5
+        seconds: 0
   mode: single
   max_exceeded: silent
-
-
 - id: 8dc284dc-7cef-4ee5-8045-da04bbf495f2
   alias: aaaaAAAaaaaAAacc Jim Alert Honitor
   description: Alert when Jim Goes places
@@ -116,6 +116,12 @@
       - zone.belva
       - zone.clinic
       - zone.expo
+      - zone.lakewood
+      - zone.mountain
+      - zone.shawano
+      - zone.suring
+      - zone.somerhome
+      - zone.townsend
       enter_action:
       - parallel:
         - service: script.personalert_notify
@@ -127,10 +133,9 @@
             phase: enter
         - service: script.personalert_audio
           data:
-            entities: media_player.intercom_group
-            mess: '{{ trigger.to_state.attributes.friendly_name +
-              '' has arrived at '' + trigger.to_state.state
-              }}'
+            entities: media_player.home_group
+            mess: '{{ trigger.to_state.attributes.friendly_name + '' has arrived at
+              '' + trigger.to_state.state }}'
             lang: en-CA
             gend: male
       leave_action:
@@ -144,10 +149,9 @@
             phase: leave
         - service: script.personalert_audio
           data:
-            entities: media_player.intercom_group
-            mess: '{{ trigger.from_state.attributes.friendly_name +
-              '' has left '' + trigger.from_state.state
-              }}'
+            entities: media_player.home_group
+            mess: '{{ trigger.from_state.attributes.friendly_name + '' has left ''
+              + trigger.from_state.state }}'
             lang: en-CA
             gend: male
       jump_action:
@@ -161,12 +165,17 @@
             phase: jump
         - service: script.personalert_audio
           data:
-            entities: media_player.intercom_group
-            mess: '{{ trigger.to_state.attributes.friendly_name +
-              '' has left '' + trigger.from_state.state +
-              '' and is located at: '' + trigger.to_state.state
+            entities: media_player.home_group
+            mess: '{{ trigger.to_state.attributes.friendly_name + '' has left '' +
+              trigger.from_state.state + '' and is located at: '' + trigger.to_state.state
               }}'
             lang: en-CA
             gend: male
+      enable_time: 05:29:13
+      disable_time: 08:31:42
+      hold_period:
+        hours: 0
+        minutes: 5
+        seconds: 0
   mode: single
   max_exceeded: silent

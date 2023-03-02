@@ -60,7 +60,7 @@
           gender: "{{ gend }}"
     variables:
         # Define variable data and provide default (change 'entities' 4 your system)
-      entities: media_player.kitchen_speaker
+      entities: media_player.intercom_group
       mess: "I'm lost"
       lang: en-US
       gend: female
