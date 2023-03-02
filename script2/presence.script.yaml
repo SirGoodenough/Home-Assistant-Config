@@ -27,12 +27,12 @@
       notify_id: 3479f317-f314-43bb-9e20-d6168b14f78c
       phase: enter
       flip: >
-        {% if phase == 'jump' %}
-          'They have left: ' {{ place_from }} ' and are now located at: ' {{ place_to }}
-        {% elif phase == 'leave' %} 
-          'They have left: ' {{ place_from }}
+        {% if phase == 'leave' %}
+          They have left: {{ place_from }}
+        {% elif phase == 'enter' %} 
+          They are now located at: {{ place_to }}
         {% else %}
-          'They are now located at: ' {{ place_to }}
+          They have left: {{ place_from }} and are now located at: {{ place_to }}
         {% endif %}
     mode: single
     max_exceeded: silent
@@ -49,7 +49,6 @@
         media_content_id:
           "media-source://media_source/local/mp3/OK_tone.wav"
         media_content_type: audio/mp3
-    - delay: 00:00:02
     - alias: TTS script
       service: tts.cloud_say
       data:
