@@ -50,7 +50,7 @@
           "media-source://media_source/local/mp3/OK_tone.wav"
         media_content_type: audio/mp3
     - alias: Delay to let sounder to complete. Adjust as needed.
-      delay: 00:00:02
+      delay: 00:00:03
     - alias: TTS action call
       service: tts.cloud_say
       data:
