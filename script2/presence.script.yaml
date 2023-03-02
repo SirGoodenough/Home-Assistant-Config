@@ -42,14 +42,16 @@
       stored_traces: 10
     alias: Person alert BP TTS Message & Sound
     sequence:
-    - alias: MP3 to Speakers
+    - alias: Send sound file to Media Player
       service: media_player.play_media
       data:
         entity_id: "{{ entities }}"
         media_content_id:
           "media-source://media_source/local/mp3/OK_tone.wav"
         media_content_type: audio/mp3
-    - alias: TTS script
+    - alias: Delay to let sounder to complete. Adjust as needed.
+      delay: 00:00:02
+    - alias: TTS action call
       service: tts.cloud_say
       data:
         entity_id: "{{ entities }}"
