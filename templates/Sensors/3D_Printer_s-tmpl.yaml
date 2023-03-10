@@ -2,13 +2,21 @@
   #####################################################
   ## 3D Printer Template Sensors                     ##
   #####################################################
-  - name: "octoprint_print_file_short"
-    unique_id: 4c520a38-df7f-459d-b4fc-091499c835b5
+  - name: "tarantula_print_file_short"
+    unique_id: 80c2f947-57e2-4be7-ba5b-01c64e36a987
     state: >
-      {{ states('sensor.octoprint_print_file') | replace('TEVOTPRO-','')
+      {{ states('sensor.tarantulapro_print_file') | replace('TEVOTPRO-','')
         | replace('.gcode','') }}
     attributes:
-      friendly_name: "3D Print File"
+      friendly_name: "Tarantula Print File"
+
+  - name: "shark_print_file_short"
+    unique_id: 8e9c70ec-a1c6-4025-966a-7f55a5e30067
+    state: >
+      {{ states('sensor.shark_print_file') | replace('Lotmaxx-','')
+        | replace('.gcode','') }}
+    attributes:
+      friendly_name: "Shark Print File"
 
       # Replaced with 2022.4.0 functionality
   # - unique_id: octoprint_soc_temperature_in_c
