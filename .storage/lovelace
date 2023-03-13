@@ -2841,8 +2841,9 @@
               "hours_to_show": 24,
               "graph": "line",
               "type": "sensor",
-              "entity": "sensor.deck_temperature",
-              "detail": 2
+              "entity": "sensor.temperature",
+              "detail": 2,
+              "name": "Deck Temperature"
             },
             {
               "hours_to_show": 24,
