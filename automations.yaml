@@ -179,17 +179,4 @@
         seconds: 0
   mode: single
   max_exceeded: silent
-- id: '1678735735752'
-  alias: aAAAAAABBBbb Tarantula BP Buttons
-  description: Test Blueprint
-  use_blueprint:
-    path: SirGoodenough/Octoprint_Discovery_Helper.yaml
-    input:
-      device_name: TarantulaPro
-      device_id: 7fcb2b57-4fac-42c2-93ba-1b2a4b54d366
-      base_topic: octoPrint/tarantula/
-      print_status: sensor.tarantulapro_print_status
-      print_state: binary_sensor.tarantulapro_printing
-      printhead_temp: sensor.tarantulapro_tool_0_temperature
-      octoprint_shutdown: button.tarantulapro_shutdown_system
-      safe_shutdown: button.tarantulapro_cancel_print
+
