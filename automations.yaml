@@ -186,7 +186,7 @@
     path: SirGoodenough/Octoprint_Discovery_Helper.yaml
     input:
       base_topic: octoPrint/tarantula/
-      device_id: 7fcb2b57
+      device_id: 7fcb2b57-4fac-42c2-93ba-1b2a4b54d366a
       device_name: TarantulaPro
       print_status: sensor.tarantulapro_print_status
       print_state: binary_sensor.tarantulapro_printing
