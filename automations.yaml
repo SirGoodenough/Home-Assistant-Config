@@ -193,3 +193,5 @@
       octoprint_shutdown: button.tarantulapro_shutdown_system
       safe_shutdown: button.tarantulapro_safe_shutdown
       printhead_temp: sensor.tarantulapro_tool_0_temperature
+      printer_power_switch:
+      - switch.plug2
