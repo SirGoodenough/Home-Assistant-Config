@@ -1,5 +1,5 @@
 blueprint:
-  name: Octoprint_Discovery_Helper - 2023-03-14
+  name: Octoprint_Safe_Shutdown_Helper- 2023-03-31
   author: SirGoodenough
   description: 'This is Blueprint is provided as a helper for people using the
     Octoprint Plugin called [OctoPrint-HomeAssistant](https://github.com/cmroche/OctoPrint-HomeAssistant).
@@ -48,6 +48,15 @@ blueprint:
       selector:
         text:
           multiline: false
+    printer_power_switch:
+      name: Mains switch that controls the printer power
+      description: 'This needs to be the Home Assistant name of the switch that
+        turns off the power to the printer.
+        '
+      selector:
+        entity:
+          multiple: true
+          domain: switch
     print_status:
       name: print status sensor
       description: 'Sensor that looks like this:
@@ -119,7 +128,7 @@ variables:
   avty_t: '~mqtt'
   pl_avail: 'connected'
   pl_not_avail: 'disconnected'
-  ids: 'octoprint-BP_{{ dv_id }}'
+  ids: 'octoprint-BP-{{ dv_id }}'
   dname: '{{ dv_name }} Blueprint Helper'
   mf: 'SirGoodenough'
   mdl: 'Octoprint_Discovery_Helper'
@@ -128,13 +137,21 @@ variables:
   hw: 'https://TBD'
   cu: 'https://TBD'
     # Button Parameters for MQTT Discovery
+      # User _aux 2 Button
+  a2_local: aux_2
+  a2_c_topic: '{{ ha_topic }}_{{ a2_local | upper }}/config'
+  a2_bname: '{{ dv_name }} {{ a2_local }}'
+  a2_uniq_id: '{{ dv_id }}_{{ a2_local }}'
+  a2_ic: mdi:hand-extended
+  a2_cmd_t: ' {{ printer_topic }}hassControl/commands'
+  a2_pl_prs: '{{ a2_b_cmnd }}'
       # Safe Shutdown Button
   sd_local: safe_shutdown
   sd_c_topic: '{{ ha_topic }}_{{ sd_local | upper }}/config'
   sd_bname: '{{ dv_name }} {{ sd_local }}'
   sd_uniq_id: '{{ dv_id }}_{{ sd_local }}'
-  sd_ic: mdi-power
-  sd_cmd_t: '~/safeShutdown'
+  sd_ic: mdi:power
+  sd_cmd_t: '~BluePrint/safeShutdown'
   sd_pl_prs: 'PRESS'
     # Action variables
   printing_state: !input print_state
@@ -159,9 +176,10 @@ action:
 - alias: Determine if there was an actionable event
   choose:
   - conditions:
-    - alias: Printer NOT running
+    - alias: 'Should we shut this down?'
       and:
-        - condition: template
+        - alias: Printer NOT running
+          condition: template
           value_template: '{{ states( printing_state ) != "on" }}'
         - alias: NOT the start-up trigger
           or:
@@ -180,9 +198,34 @@ action:
         delay: 00:00:59
       - alias: Kill the wall plug
         service: homeassistant.turn_off
-        entity_id: switch.sonoff_s40lite_switch_2
+        entity_id: !input printer_power_switch
 
   default:
+  - alias: User Aux 2 Button Create
+    service: mqtt.publish
+    data:
+      "topic": "{{ a2_c_topic }}"
+      "retain": true
+      "payload": >
+        { "avty_t": "{{ avty_t }}",
+          "pl_avail": "{{ pl_avail }}",
+          "pl_not_avail": "{{ pl_not_avail }}",
+          "dev": {
+            "ids": "{{ ids }}",
+            "name": "{{ dname }}",
+            "mf": "{{ mf }}",
+            "mdl": "{{ mdl }}",
+            "sa": "{{ sa }}",
+            "sw": "{{ sw }}",
+            "hw": "{{ hw }}",
+            "cu": "{{ cu }}"
+          },
+          "name": "{{ a2_bname }}",
+          "uniq_id": "{{ a2_uniq_id }}",
+          "ic": "{{ a2_ic }}",
+          "cmd_t": "{{ a2_cmd_t }}",
+          "pl_prs": "{{ a2_pl_prs }}"
+        }
   - alias: Safe Shutdown Button Create
     service: mqtt.publish
     data:
@@ -212,3 +255,4 @@ action:
 mode: parallel
 max: 5
 max_exceeded: silent
+
