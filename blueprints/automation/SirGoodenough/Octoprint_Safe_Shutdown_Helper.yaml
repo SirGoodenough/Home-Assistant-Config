@@ -134,8 +134,8 @@ variables:
   sd_bname: '{{ dv_name }} {{ sd_local }}'
   sd_uniq_id: '{{ dv_id }}_{{ sd_local }}'
   sd_ic: mdi-power
-  sd_cmd_t: '~/blueprint/shutdown'
-  sd_pl_prs: 'press'
+  sd_cmd_t: '~/safeShutdown'
+  sd_pl_prs: 'PRESS'
     # Action variables
   printing_state: !input print_state
   printer_status: !input print_status
