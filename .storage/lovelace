@@ -1167,33 +1167,6 @@
               "type": "button",
               "theme": "dark_orange",
               "icon_height": "90px"
-            },
-            {
-              "show_name": true,
-              "show_icon": true,
-              "entity": "switch.tarantula_power",
-              "hold_action": {
-                "action": "call-service",
-                "service": "script.tarantula_shutdown",
-                "service_data": {},
-                "target": {}
-              },
-              "icon": "mdi:printer-3d",
-              "name": "Turn Tarantula ON",
-              "tap_action": {
-                "action": "call-service",
-                "service": "switch.turn_on",
-                "service_data": {},
-                "target": {
-                  "entity_id": [
-                    "switch.plug2",
-                    "switch.tarantula_power"
-                  ]
-                }
-              },
-              "type": "button",
-              "theme": "dark_orange",
-              "icon_height": "90px"
             }
           ],
           "icon": "mdi:home-automation",
