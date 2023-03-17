@@ -101,43 +101,20 @@ blueprint:
         entity:
           multiple: false
           domain: button
-    safe_shutdown:
-      name: safe shutdown button
-      description: 'Button that looks like this:
-        ```button.[Home Assistant Discovery Device]_safe_shutdown_button```
-        For the first run of this blueprint install any button so the BP
-        will run. This is a chicken-egg problem where the button will not
-        actually exist UNTIL AFTER the BP is first run. 
-        You will have to come back and change this entry to the actual button
-        created for safe shutdown.
-        It will exist after the BP sucessfully runs triggered by starting
-        Octoprint from off.
-        '
-      default: button.[Home Assistant Discovery Device]_safe_shutdown_button
-      selector:
-        entity:
-          multiple: false
-          domain: button
     home_button: 
       name: Custom command for Home Button
-      description: 'Use this to send a custom GCode command to the printer.'
+      description: 'This is the Marlin Home Command, change as you see fit.'
       default: G28
       selector:
         text:
           multiline: false
     bed_level_button:
       name: Custom GCode command for the Bed Level Button
-      description: 'Use this to send a custom GCode command to the printer.'
+      description: 'This is the Marlin Bed Level Command, change as you see fit.'
       default: G29
       selector:
         text:
           multiline: false
-    present_button:
-      name: Custom jog command for the Presentation Button
-      description: 'Use this to send a custom GCode command to the printer.'
-      default: '{{ { "x": 0, "y": 180, "z": 80, "absolute": 1 } | to_json }}'
-      selector:
-        template:
     aux_1:
       name: Custom GCode command for Aux Button 1
       description: 'Use this to send a custom GCode command to the printer.'
@@ -154,7 +131,6 @@ blueprint:
           multiline: false
 
 variables:
-  printer_topic: !input base_topic
   dv_name: !input device_name
   dv_id: !input device_id
   ha_topic: 'homeassistant/button/{{ dv_id }}'
@@ -177,7 +153,6 @@ variables:
   h_bname: '{{ dv_name }} {{ h_local }}'
   h_uniq_id: '{{ dv_id }}_{{ h_local }}'
   h_ic: mdi:home-switch
-  h_cmd_t: '{{ printer_topic }}hassControl/commands5'
   h_pl_prs: !input home_button
       # Bed Level Button
   bl_local: bed_level
@@ -185,7 +160,6 @@ variables:
   bl_bname: '{{ dv_name }} {{ bl_local }}'
   bl_uniq_id: '{{ dv_id }}_{{ bl_local }}'
   bl_ic: mdi:spirit-level
-  bl_cmd_t: '{{ printer_topic }}hassControl/commands'
   bl_pl_prs: !input bed_level_button
       # Presentation Button
   p_local: presentation
@@ -193,15 +167,13 @@ variables:
   p_bname: '{{ dv_name }} {{ p_local }}'
   p_uniq_id: '{{ dv_id }}_{{ p_local }}'
   p_ic: mdi:gift
-  p_cmd_t: '{{ printer_topic }}hassControl/jog'
-  p_pl_prs: !input present_button
+  p_pl_prs: 'PRESS'
       # User Aux 1 Button
   a1_local: aux_1
   a1_c_topic: '{{ ha_topic }}_{{ a1_local | upper }}/config'
   a1_bname: '{{ dv_name }} {{ a1_local }}'
   a1_uniq_id: '{{ dv_id }}_{{ a1_local }}'
   a1_ic: mdi:hand-extended
-  a1_cmd_t: '{{ printer_topic }}hassControl/commands'
   a1_pl_prs: !input aux_1
       # User _aux 2 Button
   a2_local: aux_2
@@ -209,7 +181,6 @@ variables:
   a2_bname: '{{ dv_name }} {{ a2_local }}'
   a2_uniq_id: '{{ dv_id }}_{{ a2_local }}'
   a2_ic: mdi:hand-extended
-  a2_cmd_t: '{{ printer_topic }}hassControl/commands'
   a2_pl_prs: !input aux_2
       # Safe Shutdown Button
   sd_local: safe_shutdown
@@ -217,11 +188,19 @@ variables:
   sd_bname: '{{ dv_name }} {{ sd_local }}'
   sd_uniq_id: '{{ dv_id }}_{{ sd_local }}'
   sd_dev_cla: restart
-  sd_cmd_t: '{{ printer_topic }}BluePrint/safeShutdown'
   sd_pl_prs: 'PRESS'
     # Action variables
   printing_state: !input print_state
   printer_status: !input print_status
+
+trigger_variables:
+  printer_topic: !input base_topic
+  h_cmd_t: '{{ printer_topic }}hassControl/commands'
+  bl_cmd_t: '{{ printer_topic }}hassControl/commands'
+  p_cmd_t: '{{ printer_topic }}BluePrint/presentation'
+  a1_cmd_t: '{{ printer_topic }}hassControl/commands'
+  a2_cmd_t: '{{ printer_topic }}hassControl/commands'
+  sd_cmd_t: '{{ printer_topic }}BluePrint/safeShutdown'
 
 trigger:
 - platform: state
@@ -234,6 +213,14 @@ trigger:
   below: "40.0"
   above: "35.0"
   for: 00:01:00
+- platform: mqtt
+  topic: '{{ p_cmd_t }}'
+  payload: "PRESS"
+  id: 'Presentation'
+- platform: mqtt
+  topic: '{{ sd_cmd_t }}'
+  payload: "PRESS"
+  id: 'shutdown_pressed'
 # - platform: state
 #   entity_id: !input safe_shutdown
 #   id: "shutdown_pressed"
@@ -260,18 +247,58 @@ action:
       - alias: Hold for the MQTT connection do go away
         wait_template: "{{ is_state( printer_status, 'unavailable' ) }}"
         timeout: "00:05:00"
-      - alias: clear the PRESS
-        service: mqtt.publish
-        data:
-          payload: ""
-          topic: "{{ sd_cmd_t }}"
-          retain: false
       - alias: Hold a bit longer to make sure the PI has stopped
         delay: 00:00:59
       - alias: Kill the wall plug
         service: homeassistant.turn_off
         entity_id: !input printer_power_switch
-
+      - alias: Clear the PRESS
+        service: mqtt.publish
+        data:
+          topic: '{{ sd_cmd_t }}'
+          payload: ""
+          qos: "1"
+          retain: false
+  - conditions:
+    - alias: Presentation Button Pushed
+      condition: trigger
+      id: Presentation
+    sequence:
+      - alias: Jog the Z up a bit
+        service: mqtt.publish
+        data:
+          topic: '{{ printer_topic }}hassControl/jog'
+          payload_template: "{{ { \"z\": 40, \"speed\": 100 } | to_json }}"
+          qos: "1"
+          retain: false
+      - alias: Set to absolute positioning mode
+        service: mqtt.publish
+        data:
+          topic: '{{ printer_topic }}hassControl/commands'
+          payload: G90
+          qos: "1"
+          retain: false
+      - alias: Bring part forward
+        service: mqtt.publish
+        data:
+          topic: '{{ printer_topic }}hassControl/commands'
+          payload: G1 X0 Y180 F3600
+          qos: "1"
+          retain: false
+      - alias: Release the motors
+        service: mqtt.publish
+        data:
+          topic: '{{ printer_topic }}hassControl/commands'
+          payload: M84
+          qos: "1"
+          retain: false
+      - alias: Clear the PRESS
+        service: mqtt.publish
+        data:
+          topic: '{{ p_cmd_t }}'
+          payload: ""
+          qos: "1"
+          retain: false
   default:
   - alias: Home Button Create
     service: mqtt.publish
@@ -349,7 +376,7 @@ action:
           "uniq_id": "{{ p_uniq_id }}",
           "ic": "{{ p_ic }}",
           "cmd_t": "{{ p_cmd_t }}",
-          "pl_prs": {{ p_pl_prs }}
+          "pl_prs": "{{ p_pl_prs }}"
         }
   - alias: User Aux 1 Button Create
     service: mqtt.publish
@@ -433,3 +460,8 @@ mode: parallel
 max: 5
 max_exceeded: silent
 
+# G91 ;relative positioning
+# G1 Z+40 X-20 Y-20 F9000 ;move Z up & x=y away a bit
+# G90 ;absolute positioning
+# G1 X0 Y180 F3600 ;move extruder out of the way by moving the baseplate to the front for easier access to printed object
+# M84 ;steppers off
