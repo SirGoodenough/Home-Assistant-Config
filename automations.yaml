@@ -179,19 +179,24 @@
         seconds: 0
   mode: single
   max_exceeded: silent
-- id: '1678930543277'
-  alias: aaaababababbaabaaababbb bp test
-  description: tarantula sshutdown
+- id: '1678952252648'
+  alias: AAaaaaAAAAaaabbbBBb test
+  description: Tarantula bp test
   use_blueprint:
     path: SirGoodenough/Octoprint_Safe_Shutdown_Helper.yaml
     input:
+      home_button: '["x", "y", "z"]'
+      bed_level_button: G28
+      aux_1: M117 Test Aux1 button yahoo
+      aux_2: M117 Test Aux2 button yippee
       base_topic: octoPrint/tarantula/
       device_id: 7fcb2b57-4fac-42c2-93ba-1b2a4b54d366
       device_name: TarantulaPro
-      print_status: sensor.tarantulapro_print_status
-      print_state: binary_sensor.tarantulapro_printing
-      octoprint_shutdown: button.tarantulapro_shutdown_system
-      safe_shutdown: button.tarantulapro_safe_shutdown
-      printhead_temp: sensor.tarantulapro_tool_0_temperature
       printer_power_switch:
       - switch.plug2
+      - switch.tarantula_power
+      print_status: sensor.tarantulapro_print_status
+      print_state: binary_sensor.tarantulapro_printing
+      printhead_temp: sensor.tarantulapro_tool_0_temperature
+      octoprint_shutdown: button.tarantulapro_shutdown_system
+      safe_shutdown: button.tarantulapro_cancel_print

@@ -121,7 +121,7 @@ blueprint:
     home_button: 
       name: Custom command for Home Button
       description: 'Use this to send a custom GCode command to the printer.'
-      default: ["x", "y", "z"]
+      default: G28
       selector:
         text:
           multiline: false
@@ -176,8 +176,8 @@ variables:
   h_c_topic: '{{ ha_topic }}_{{ h_local | upper }}/config'
   h_bname: '{{ dv_name }} {{ h_local }}'
   h_uniq_id: '{{ dv_id }}_{{ h_local }}'
-  h_ic: mdi:home
-  h_cmd_t: '{{ printer_topic }}hassControl/home'
+  h_ic: mdi:home-switch
+  h_cmd_t: '{{ printer_topic }}hassControl/commands5'
   h_pl_prs: !input home_button
       # Bed Level Button
   bl_local: bed_level
@@ -217,7 +217,7 @@ variables:
   sd_bname: '{{ dv_name }} {{ sd_local }}'
   sd_uniq_id: '{{ dv_id }}_{{ sd_local }}'
   sd_dev_cla: restart
-  sd_cmd_t: '~BluePrint/safeShutdown'
+  sd_cmd_t: '{{ printer_topic }}BluePrint/safeShutdown'
   sd_pl_prs: 'PRESS'
     # Action variables
   printing_state: !input print_state
@@ -234,9 +234,9 @@ trigger:
   below: "40.0"
   above: "35.0"
   for: 00:01:00
-- platform: state
-  entity_id: !input safe_shutdown
-  id: "shutdown_pressed"
+# - platform: state
+#   entity_id: !input safe_shutdown
+#   id: "shutdown_pressed"
 
 action:
 - alias: Determine if there was an actionable event
@@ -260,6 +260,12 @@ action:
       - alias: Hold for the MQTT connection do go away
         wait_template: "{{ is_state( printer_status, 'unavailable' ) }}"
         timeout: "00:05:00"
+      - alias: clear the PRESS
+        service: mqtt.publish
+        data:
+          payload: ""
+          topic: "{{ sd_cmd_t }}"
+          retain: false
       - alias: Hold a bit longer to make sure the PI has stopped
         delay: 00:00:59
       - alias: Kill the wall plug
@@ -323,7 +329,7 @@ action:
     service: mqtt.publish
     data:
       "topic": "{{ p_c_topic }}"
-      "retain": truemdi-hand-extended-outline
+      "retain": true
       "payload": >
         { "~": "{{ printer_topic }}",
           "avty_t": "{{ avty_t }}",
@@ -343,7 +349,7 @@ action:
           "uniq_id": "{{ p_uniq_id }}",
           "ic": "{{ p_ic }}",
           "cmd_t": "{{ p_cmd_t }}",
-          "pl_prs": "{{ p_pl_prs }}"
+          "pl_prs": {{ p_pl_prs }}
         }
   - alias: User Aux 1 Button Create
     service: mqtt.publish

@@ -1211,6 +1211,9 @@
                 },
                 {
                   "entity": "light.grp_kitch"
+                },
+                {
+                  "entity": "light.kitchensink"
                 }
               ],
               "show_header_toggle": false,
