@@ -101,6 +101,58 @@ blueprint:
         entity:
           multiple: true
           domain: switch
+    u_trig_temp:
+      name: Auto Shutdown Upper Trigger
+      description: 'Set this to the temperature that you want the extruder
+        to be at when the auto-shutdown sequence begins.
+
+        Set this to 0 to prevent auto safe shutdown.
+        '
+      default: 40
+      selector:
+        number:
+          min: 0
+          max: 100
+          unit_of_measurement: "\u2103"
+    l_trig_temp:
+      name: Auto Shutdown Lower Trigger
+      description: 'Set this to the temperature that you want the extruder
+        to be at when the auto-shutdown sequence no longer applies.
+
+        ***Set this to a number below the Upper Trigger.***
+
+        This is here so that is you turn your printer on and just want to
+        work on it, the trigger will not shut the printer down.
+        The actual Extruder temperature has to be ABOVE this value to trigger.
+
+        Set this to 0 to allow shutdown anytime the Extruder
+        is below the Upper Trigger.
+        '
+      default: 35
+      selector:
+        number:
+          min: 0
+          max: 100
+          unit_of_measurement: "\u2103"
+    asd_delay:
+      name: Auto Shutdown Delay
+      description: 'This is the timer that starts as soon as the Extruder temperature
+        is in the range between the Upper Trigger and the Lower Trigger.
+
+        If you set this too long & the temperature range too small, the Extruder
+        temperature may not be in the range long enough meaning it never triggers.
+
+        If the time is too short, the Auto Shutdown will trigger as the Extruder
+        heats up for a print, so *some delay is required* for proper results.
+
+        Some trial and error may me needed to get the result you want.
+        '
+      default:
+        hours: 0
+        minutes: 1
+        seconds: 0
+      selector:
+        duration:
     home_button: 
       name: Custom command for Home Button
       description: 'This is the Marlin Home Command, change as you see fit.'
@@ -210,9 +262,9 @@ trigger:
 - platform: numeric_state
   entity_id: !input printhead_temp
   id: "in_range"
-  below: "40.0"
-  above: "35.0"
-  for: 00:01:00
+  below: !input u_trig_temp
+  above: !input l_trig_temp
+  for: !input asd_delay
 - platform: mqtt
   topic: '{{ p_cmd_t }}'
   payload: "PRESS"
@@ -221,9 +273,6 @@ trigger:
   topic: '{{ sd_cmd_t }}'
   payload: "PRESS"
   id: 'shutdown_pressed'
-# - platform: state
-#   entity_id: !input safe_shutdown
-#   id: "shutdown_pressed"
 
 action:
 - alias: Determine if there was an actionable event
