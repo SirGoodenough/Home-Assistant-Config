@@ -179,7 +179,7 @@
         seconds: 0
   mode: single
   max_exceeded: silent
-- id: 2863c4ca-a70d-4f12-9d30-c4609e7ca811
+- id: 29f9fb7d-5421-4746-a66c-961e02f36ee7
   alias: Tarantula Button Blueprint
   description: Additional Buttons for Octoprint
   use_blueprint:
@@ -188,15 +188,14 @@
       base_topic: octoPrint/tarantula/
       device_id: 7fcb2b57-4fac-42c2-93ba-1b2a4b54d366
       device_name: TarantulaPro
-      printer_power_switch:
-      - switch.plug2
-      - switch.tarantula_power
       print_status: sensor.tarantulapro_print_status
       print_state: binary_sensor.tarantulapro_printing
       printhead_temp: sensor.tarantulapro_tool_0_temperature
       octoprint_shutdown: button.tarantulapro_shutdown_system
-      safe_shutdown: button.tarantulapro_cancel_print
-- id: 3fa23928-b07b-46c3-9757-4588610ce7a2
+      printer_power_switch:
+      - switch.plug2
+      - switch.tarantula_power
+- id: 42cd7771-5b42-46f3-9bce-46e8a9bb5ba1
   alias: Shark Button Blueprint
   description: Additional Buttons for Octoprint
   use_blueprint:
@@ -205,9 +204,10 @@
       base_topic: octoPrint/shark/
       device_id: a85cc9fe-8377-40d8-ad35-6d528bd97bba
       device_name: Shark
-      printer_power_switch:
-      - switch.sonoff_s40lite_switch_2
       print_status: sensor.shark_print_status
       print_state: binary_sensor.shark_printing
       printhead_temp: sensor.shark_tool_0_temperature
       octoprint_shutdown: button.shark_shutdown_system
+      printer_power_switch:
+      - switch.sonoff_s40lite_switch_2
+
