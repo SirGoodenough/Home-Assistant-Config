@@ -179,9 +179,9 @@
         seconds: 0
   mode: single
   max_exceeded: silent
-- id: '1678952252648'
-  alias: AAaaaaAAAAaaabbbBBb test
-  description: Tarantula bp test
+- id: 2863c4ca-a70d-4f12-9d30-c4609e7ca811
+  alias: Tarantula Button Blueprint
+  description: Additional Buttons for Octoprint
   use_blueprint:
     path: SirGoodenough/Octoprint_Safe_Shutdown_Helper.yaml
     input:
@@ -196,3 +196,18 @@
       printhead_temp: sensor.tarantulapro_tool_0_temperature
       octoprint_shutdown: button.tarantulapro_shutdown_system
       safe_shutdown: button.tarantulapro_cancel_print
+- id: 3fa23928-b07b-46c3-9757-4588610ce7a2
+  alias: Shark Button Blueprint
+  description: Additional Buttons for Octoprint
+  use_blueprint:
+    path: SirGoodenough/Octoprint_Safe_Shutdown_Helper.yaml
+    input:
+      base_topic: octoPrint/shark/
+      device_id: a85cc9fe-8377-40d8-ad35-6d528bd97bba
+      device_name: Shark
+      printer_power_switch:
+      - switch.sonoff_s40lite_switch_2
+      print_status: sensor.shark_print_status
+      print_state: binary_sensor.shark_printing
+      printhead_temp: sensor.shark_tool_0_temperature
+      octoprint_shutdown: button.shark_shutdown_system

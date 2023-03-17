@@ -30,20 +30,20 @@ blueprint:
           multiline: false
     device_id:
       name: Valuee of the Home Assistant Discovery node id
-      description: 'This needs to be the 
-        ```Discovery settings - Node ID``` 
-        that you added into the Octoprint Homeassistant Discovery Plug-in. 
-        USe the instruction file for details where to find it.
+      description: 'This needs to be the
+        ```Discovery settings - Node ID```
+        that you added into the Octoprint Homeassistant Discovery Plug-in.
+        Use the instruction file for details where to find it.
         '
       selector:
         text:
           multiline: false
     device_name:
       name: Name of the Home Assistant Discovery Device
-      description: 'This needs to be the 
-        ```Device settings - Device name``` 
-        that you added into the Octoprint Homeassistant Discovery Plug-in. 
-        USe the instruction file for details where to find it.
+      description: 'This needs to be the
+        ```Device settings - Device name```
+        that you added into the Octoprint Homeassistant Discovery Plug-in.
+        Use the instruction file for details where to find it.
         '
       selector:
         text:
@@ -268,7 +268,7 @@ action:
         service: mqtt.publish
         data:
           topic: '{{ printer_topic }}hassControl/jog'
-          payload_template: "{{ { \"z\": 40, \"speed\": 100 } | to_json }}"
+          payload_template: "{{ { \"z\": 40, \"speed\": 200 } | to_json }}"
           qos: "1"
           retain: false
       - alias: Set to absolute positioning mode
@@ -282,7 +282,7 @@ action:
         service: mqtt.publish
         data:
           topic: '{{ printer_topic }}hassControl/commands'
-          payload: G1 X0 Y180 F3600
+          payload: G1 X10 Y100 F2000
           qos: "1"
           retain: false
       - alias: Release the motors

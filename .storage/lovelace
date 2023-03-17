@@ -3662,9 +3662,15 @@
                 {
                   "entity": "button.tarantulapro_shutdown_system",
                   "name": "Shutdown System"
-                }
+                },
+                "button.tarantulapro_aux_1",
+                "button.tarantulapro_aux_2",
+                "button.tarantulapro_bed_level",
+                "button.tarantulapro_home",
+                "button.tarantulapro_presentation",
+                "button.tarantulapro_safe_shutdown"
               ],
-              "title": "TarantulaPro"
+              "title": "TarantulaPro Buttons"
             },
             {
               "entities": [
@@ -3717,10 +3723,6 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "switch.shark_camera_snapshot",
-                  "name": "Camera snapshot"
-                },
-                {
                   "entity": "button.shark_cancel_print",
                   "name": "Cancel Print"
                 },
@@ -3747,9 +3749,28 @@
                 {
                   "entity": "button.shark_shutdown_system",
                   "name": "Shutdown System"
+                },
+                {
+                  "entity": "button.shark_aux_1"
+                },
+                {
+                  "entity": "button.shark_aux_2"
+                },
+                {
+                  "entity": "button.shark_bed_level"
+                },
+                {
+                  "entity": "button.shark_home"
+                },
+                {
+                  "entity": "button.shark_presentation"
+                },
+                {
+                  "entity": "button.shark_safe_shutdown"
                 }
               ],
-              "title": "Shark"
+              "title": "Shark Buttons",
+              "show_header_toggle": false
             },
             {
               "show_name": true,
