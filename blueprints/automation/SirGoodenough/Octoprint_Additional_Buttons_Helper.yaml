@@ -1,5 +1,5 @@
 blueprint:
-  name: Octoprint_Safe_Shutdown_Helper- 2023-03-18
+  name: Octoprint_Additional_Buttons_Helper- 2023-03-18
   author: SirGoodenough
   description: 'This is Blueprint is provided as a helper for people using the
     Octoprint Plugin called OctoPrint-HomeAssistant.
@@ -8,7 +8,7 @@ blueprint:
 
     To use this you will need the [OctoPrint-MQTT](https://plugins.octoprint.org/plugins/mqtt/) plug-in installed
     along with the [OctoPrint-HomeAssistant](https://github.com/cmroche/OctoPrint-HomeAssistant) plugin.
-    You will also need to be connected to a MQTT Broker that your Home Assistant
+    You will also need to be connected to an MQTT Broker that your Home Assistant
     instance is also connected to. Set-up for all that is covered within those
     packages.
 
@@ -50,7 +50,7 @@ blueprint:
         text:
           multiline: false
     device_id:
-      name: Valuee of the Home Assistant Discovery node id
+      name: Value of the Home Assistant Discovery node id
       description: 'This needs to be the
         ```Discovery settings - Node ID```
         that you added into the Octoprint Homeassistant Discovery Plug-in.
@@ -218,8 +218,10 @@ blueprint:
 
 variables:
   dv_name: !input device_name
+  asdc_entity: '{{ ''select.''dv_name''_auto_shutdown_ctrl'' }}'
   dv_id: !input device_id
   ha_topic: 'homeassistant/button/{{ dv_id }}'
+  ha_select_topic: 'homeassistant/select/{{ dv_id }}'
     # Device Parameters for MQTT Discovery
   avty_t: '~mqtt'
   pl_avail: 'connected'
@@ -229,8 +231,8 @@ variables:
   mf: 'SirGoodenough'
   mdl: 'Octoprint_Discovery_Helper'
   sa: 'home'
-  sw: '2023-03-14'
-  hw: 'https://TBD'
+  sw: '2023-03-18'
+  hw: 'https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Octoprint_Additional_Buttons_Helper.yaml'
   cu: 'https://TBD'
     # Button Parameters for MQTT Discovery
       # Home Button
@@ -275,6 +277,14 @@ variables:
   sd_uniq_id: '{{ dv_id }}_{{ sd_local }}'
   sd_dev_cla: restart
   sd_pl_prs: 'PRESS'
+      # Auto Shutdown Control
+  asdc_local: auto_shutdown_ctrl
+  asdc_c_topic: '{{ ha_select_topic }}_{{ asdc_local | upper }}/config'
+  asdc_bname: '{{ dv_name }} {{ asdc_local }}'
+  asdc_uniq_id: '{{ dv_id }}_{{ asdc_local }}'
+  asdc_ic: mdi:yin-yang
+  ent_cat: config
+  asdc_ops: '{{ ["enable", "disable"] | to_json }}'
     # Action variables
   printing_state: !input print_state
   printer_status: !input print_status
@@ -287,6 +297,7 @@ trigger_variables:
   a1_cmd_t: '{{ printer_topic }}hassControl/commands'
   a2_cmd_t: '{{ printer_topic }}hassControl/commands'
   sd_cmd_t: '{{ printer_topic }}BluePrint/safeShutdown'
+  asdc_cmd_t: '{{ printer_topic }}BluePrint/autoShutdownControl'
 
 trigger:
 - platform: state
@@ -320,9 +331,11 @@ action:
         - alias: NOT the start-up trigger or the presentation trigger
           or:
           - condition: trigger
-            id: asd_in_range
-          - condition: trigger
             id: shutdown_pressed
+          - and:
+            - condition: trigger
+              id: asd_in_range
+            - condition: '{{ asdc_entity == ''enable'' }}'
     sequence:
       - alias: Shut down Octoprint
         service: button.press
@@ -543,12 +556,33 @@ action:
           "cmd_t": "{{ sd_cmd_t }}",
           "pl_prs": "{{ sd_pl_prs }}"
         }
+  - alias: Auto Shutdown Control
+    service: mqtt.publish
+    data:
+      "topic": "{{ asdc_c_topic }}"
+      "retain": true
+      "payload": >
+        { "~": "{{ printer_topic }}",
+          "avty_t": "{{ avty_t }}",
+          "pl_avail": "{{ pl_avail }}",
+          "pl_not_avail": "{{ pl_not_avail }}",
+          "dev": {
+            "ids": "{{ ids }}",
+            "name": "{{ dname }}",
+            "mf": "{{ mf }}",
+            "mdl": "{{ mdl }}",
+            "sa": "{{ sa }}",
+            "sw": "{{ sw }}",
+            "hw": "{{ hw }}",
+            "cu": "{{ cu }}"
+          },
+          "name": "{{ asdc_bname }}",
+          "uniq_id": "{{ asdc_uniq_id }}",
+          "ic": "{{ asdc_ic }}",
+          "ent_cat": "{{ ent_cat }}",
+          "cmd_t": "{{ asdc_cmd_t }}",
+          "ops": {{ asdc_ops }}
+        }
 mode: parallel
 max: 5
 max_exceeded: silent
-
-# G91 ;relative positioning
-# G1 Z+40 X-20 Y-20 F9000 ;move Z up & x=y away a bit
-# G90 ;absolute positioning
-# G1 X0 Y180 F3600 ;move extruder out of the way by moving the baseplate to the front for easier access to printed object
-# M84 ;steppers off
