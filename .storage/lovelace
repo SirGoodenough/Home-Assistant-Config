@@ -3663,14 +3663,30 @@
                   "entity": "button.tarantulapro_shutdown_system",
                   "name": "Shutdown System"
                 },
-                "button.tarantulapro_aux_1",
-                "button.tarantulapro_aux_2",
-                "button.tarantulapro_bed_level",
-                "button.tarantulapro_home",
-                "button.tarantulapro_presentation",
-                "button.tarantulapro_safe_shutdown"
+                {
+                  "entity": "button.tarantulapro_aux_1"
+                },
+                {
+                  "entity": "button.tarantulapro_aux_2"
+                },
+                {
+                  "entity": "button.tarantulapro_bed_level"
+                },
+                {
+                  "entity": "button.tarantulapro_home"
+                },
+                {
+                  "entity": "button.tarantulapro_presentation"
+                },
+                {
+                  "entity": "button.tarantulapro_safe_shutdown"
+                },
+                {
+                  "entity": "select.tarantulapro_auto_shutdown_ctrl"
+                }
               ],
-              "title": "TarantulaPro Buttons"
+              "title": "TarantulaPro Buttons",
+              "show_header_toggle": false
             },
             {
               "entities": [
@@ -3767,6 +3783,9 @@
                 },
                 {
                   "entity": "button.shark_safe_shutdown"
+                },
+                {
+                  "entity": "select.shark_auto_shutdown_ctrl"
                 }
               ],
               "title": "Shark Buttons",
