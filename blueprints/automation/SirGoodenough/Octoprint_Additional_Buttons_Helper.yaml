@@ -1,4 +1,5 @@
 blueprint:
+  source_url: 'https://raw.githubusercontent.com/SirGoodenough/HA_Blueprints/master/Automations/Octoprint_Additional_Buttons_Helper.yaml'
   name: Octoprint_Additional_Buttons_Helper- 2023-03-18
   author: SirGoodenough
   description: 'This is Blueprint is provided as a helper for people using the
@@ -50,7 +51,7 @@ blueprint:
         text:
           multiline: false
     device_id:
-      name: Value of the Home Assistant Discovery node id
+      name: Valuee of the Home Assistant Discovery node id
       description: 'This needs to be the
         ```Discovery settings - Node ID```
         that you added into the Octoprint Homeassistant Discovery Plug-in.
@@ -218,7 +219,7 @@ blueprint:
 
 variables:
   dv_name: !input device_name
-  asdc_entity: '{{ ''select.''dv_name''_auto_shutdown_ctrl'' }}'
+  asdc_entity: 'select.''{{dv_name}}''_auto_shutdown_ctrl'
   dv_id: !input device_id
   ha_topic: 'homeassistant/button/{{ dv_id }}'
   ha_select_topic: 'homeassistant/select/{{ dv_id }}'
@@ -331,11 +332,9 @@ action:
         - alias: NOT the start-up trigger or the presentation trigger
           or:
           - condition: trigger
+            id: asd_in_range
+          - condition: trigger
             id: shutdown_pressed
-          - and:
-            - condition: trigger
-              id: asd_in_range
-            - condition: '{{ asdc_entity == ''enable'' }}'
     sequence:
       - alias: Shut down Octoprint
         service: button.press
