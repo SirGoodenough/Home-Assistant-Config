@@ -284,7 +284,7 @@ variables:
   asdc_bname: '{{ dv_name }} {{ asdc_local }}'
   asdc_uniq_id: '{{ dv_id }}_{{ asdc_local }}'
   asdc_ic: mdi:yin-yang
-  ent_cat: config
+  asdc_ent_cat: config
   asdc_ops: '{{ ["enable", "disable"] | to_json }}'
     # Action variables
   printing_state: !input print_state
@@ -578,7 +578,7 @@ action:
           "name": "{{ asdc_bname }}",
           "uniq_id": "{{ asdc_uniq_id }}",
           "ic": "{{ asdc_ic }}",
-          "ent_cat": "{{ ent_cat }}",
+          "ent_cat": "{{ asdc_ent_cat }}",
           "cmd_t": "{{ asdc_cmd_t }}",
           "ops": {{ asdc_ops }}
         }
