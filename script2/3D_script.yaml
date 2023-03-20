@@ -25,34 +25,34 @@ show_tarantula_home_hub_image:
         media_content_id: !secret 3D_Static
         media_content_type: "image/jpg"
 
-tarantula_shutdown:
-  alias: Tarantula Shutdown
-  sequence:
-    - alias: Shut down Octoprint
-      service: button.press
-      entity_id: button.tarantulapro_shutdown_system
-    - alias: Hold for the MQTT connection do go away
-      wait_template: "{{ is_state('sensor.tarantulapro_print_status', 'unavailable') }}"
-      timeout: "00:05:00"
-    - alias: Hold a bit longer to make sure the PI has stopped
-      delay: 00:00:30
-    - alias: Kill the wall plug
-      service: switch.turn_off
-      entity_id: 
-        - switch.plug2
-        - switch.tarantula_power
+# tarantula_shutdown:
+#   alias: Tarantula Shutdown
+#   sequence:
+#     - alias: Shut down Octoprint
+#       service: button.press
+#       entity_id: button.tarantulapro_shutdown_system
+#     - alias: Hold for the MQTT connection do go away
+#       wait_template: "{{ is_state('sensor.tarantulapro_print_status', 'unavailable') }}"
+#       timeout: "00:05:00"
+#     - alias: Hold a bit longer to make sure the PI has stopped
+#       delay: 00:00:30
+#     - alias: Kill the wall plug
+#       service: switch.turn_off
+#       entity_id: 
+#         - switch.plug2
+#         - switch.tarantula_power
 
-shark_shutdown:
-  alias: Shark Shutdown
-  sequence:
-    - alias: Shut down Octoprint
-      service: button.press
-      entity_id: button.shark_shutdown_system
-    - alias: Hold for the MQTT connection do go away
-      wait_template: "{{ is_state('sensor.shark_print_status', 'unavailable') }}"
-      timeout: "00:05:00"
-    - alias: Hold a bit longer to make sure the PI has stopped
-      delay: 00:00:30
-    - alias: Kill the wall plug
-      service: switch.turn_off
-      entity_id: switch.sonoff_s40lite_switch_2
+# shark_shutdown:
+#   alias: Shark Shutdown
+#   sequence:
+#     - alias: Shut down Octoprint
+#       service: button.press
+#       entity_id: button.shark_shutdown_system
+#     - alias: Hold for the MQTT connection do go away
+#       wait_template: "{{ is_state('sensor.shark_print_status', 'unavailable') }}"
+#       timeout: "00:05:00"
+#     - alias: Hold a bit longer to make sure the PI has stopped
+#       delay: 00:00:30
+#     - alias: Kill the wall plug
+#       service: switch.turn_off
+#       entity_id: switch.sonoff_s40lite_switch_2

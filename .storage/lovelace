@@ -4363,19 +4363,6 @@
               "needle": true
             },
             {
-              "entity": "sensor.frontlock_rssi",
-              "max": 100,
-              "min": 0,
-              "severity": {
-                "green": 70,
-                "red": 30,
-                "yellow": 50
-              },
-              "theme": "default",
-              "type": "gauge",
-              "needle": true
-            },
-            {
               "entity": "sensor.sidelock_rssi",
               "max": 100,
               "min": 0,
@@ -5196,9 +5183,11 @@
               "entity": "switch.sonoff_s40lite_switch_2",
               "hold_action": {
                 "action": "call-service",
-                "service": "script.shark_shutdown",
-                "data": {},
-                "target": {}
+                "service": "button.press",
+                "target": {
+                  "entity_id": "button.shark_safe_shutdown"
+                },
+                "data": {}
               },
               "icon": "mdi:printer-3d",
               "name": "Turn Shark ON",
@@ -5218,19 +5207,22 @@
             {
               "camera_view": "live",
               "aspect_ratio": "0%",
-              "camera_image": "camera.octoprint",
+              "camera_image": "camera.shark",
               "entities": [
                 {
-                  "entity": "sensor.octoprint_approximate_completion_time"
+                  "entity": "sensor.shark_print_time_left"
+                },
+                {
+                  "entity": "sensor.shark_print_file_short"
                 }
               ],
               "entity": "script.show_tarantula_home_hub_video",
-              "image": "http://192.168.57.2:8080/?action=snapshot",
               "tap_action": {
                 "action": "toggle"
               },
               "title": "Shark",
-              "type": "picture-glance"
+              "type": "picture-glance",
+              "image": "!secret Shark_Snapshot"
             },
             {
               "type": "horizontal-stack",
@@ -5359,9 +5351,13 @@
               "entity": "switch.tarantula_power",
               "hold_action": {
                 "action": "call-service",
-                "service": "script.tarantula_shutdown",
-                "service_data": {},
-                "target": {}
+                "service": "button.press",
+                "target": {
+                  "entity_id": [
+                    "button.tarantulapro_safe_shutdown"
+                  ]
+                },
+                "data": {}
               },
               "icon": "mdi:printer-3d",
               "name": "Turn Tarantula ON",
@@ -5381,21 +5377,24 @@
               "icon_height": "90px"
             },
             {
-              "aspect_ratio": "0%",
-              "camera_image": "camera.octoprint",
               "camera_view": "live",
+              "aspect_ratio": "0%",
+              "camera_image": "camera.tarantula_pro",
               "entities": [
                 {
-                  "entity": "sensor.octoprint_approximate_completion_time"
+                  "entity": "sensor.tarantulapro_print_time_left"
+                },
+                {
+                  "entity": "sensor.tarantula_print_file_short"
                 }
               ],
               "entity": "script.show_tarantula_home_hub_video",
-              "image": "http://192.168.57.2:8080/?action=snapshot",
               "tap_action": {
                 "action": "toggle"
               },
               "title": "Tarantula",
-              "type": "picture-glance"
+              "type": "picture-glance",
+              "image": "!secret Tarantula_Snapshot"
             },
             {
               "type": "horizontal-stack",
