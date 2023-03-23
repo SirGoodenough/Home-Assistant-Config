@@ -896,15 +896,6 @@
                 },
                 {
                   "entity": "sensor.wash_machine_energy_current"
-                },
-                {
-                  "entity": "switch.luton"
-                },
-                {
-                  "entity": "device_tracker.luton"
-                },
-                {
-                  "entity": "input_button.restart_luton"
                 }
               ],
               "show_header_toggle": false,
@@ -1128,6 +1119,16 @@
                 {
                   "type": "media-control",
                   "entity": "media_player.jennys_room_display"
+                },
+                {
+                  "type": "media-control",
+                  "entity": "media_player.fire_tv_192_168_108_206",
+                  "theme": "Dark Pink"
+                },
+                {
+                  "type": "media-control",
+                  "entity": "media_player.fire_tv_192_168_108_232",
+                  "theme": "AMOLED Blue"
                 }
               ],
               "columns": 2,
@@ -1486,7 +1487,8 @@
             },
             {
               "type": "media-control",
-              "entity": "media_player.jennys_room_display"
+              "entity": "media_player.jennys_room_display",
+              "theme": "Dark Pink"
             },
             {
               "type": "media-control",
@@ -1539,6 +1541,11 @@
                   "entity_id": "input_boolean.pad_enable2"
                 }
               }
+            },
+            {
+              "type": "media-control",
+              "entity": "media_player.fire_tv_192_168_108_206",
+              "theme": "Dark Pink"
             },
             {
               "show_name": false,
@@ -1703,157 +1710,6 @@
               "type": "grid",
               "cards": [
                 {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.chromecast_on_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.chromecast_on_sequence",
-                  "name": "Chromecast ON",
-                  "show_icon": false
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.tv_off_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.tv_off_sequence",
-                  "show_icon": false,
-                  "name": "Chromecast OFF"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.firetv_on_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.firetv_on_sequence",
-                  "name": "FireTV ON",
-                  "show_icon": false
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.tv_off_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.tv_off_sequence",
-                  "show_icon": false,
-                  "name": "FireTV OFF"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.ota_tv_on_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.ota_tv_on_sequence",
-                  "name": "OverTheAir ON",
-                  "show_icon": false
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.tv_off_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.tv_off_sequence",
-                  "show_icon": false,
-                  "name": "OverTheAir OFF"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.blueray_on_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.blueray_on_sequence",
-                  "name": "BlueRay ON",
-                  "show_icon": false
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.blueray_off_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.tv_off_sequence",
-                  "name": "BlueRay OFF",
-                  "show_icon": false
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.mecool_on_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.mecool_on_sequence",
-                  "name": "Mecool ON",
-                  "show_icon": false
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.mecool_off_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.tv_off_sequence",
-                  "show_icon": false,
-                  "name": "Mecool OFF"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.audio_tuner_on_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.audio_tuner_on_sequence",
-                  "show_icon": false,
-                  "name": "Audio Tuner ON"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.tv_off_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.tv_off_sequence",
-                  "show_icon": false,
-                  "name": "Audio Tuner OFF"
-                }
-              ],
-              "square": false,
-              "columns": 2
-            },
-            {
-              "type": "grid",
-              "cards": [
-                {
                   "show_name": true,
                   "show_icon": true,
                   "type": "button",
@@ -2003,209 +1859,152 @@
               "type": "grid",
               "cards": [
                 {
-                  "show_name": true,
-                  "show_icon": true,
                   "type": "button",
-                  "entity": "script.br_power",
                   "tap_action": {
-                    "action": "toggle"
+                    "action": "call-service",
+                    "service": "script.chromecast_on_sequence",
+                    "service_data": {},
+                    "target": {}
                   },
-                  "icon_height": "-50px",
-                  "theme": "Dark - Red"
+                  "entity": "script.chromecast_on_sequence",
+                  "name": "Chromecast ON",
+                  "show_icon": false
                 },
                 {
-                  "show_name": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.tv_off_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.tv_off_sequence",
                   "show_icon": false,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "name": "BlueRay Panel"
+                  "name": "Chromecast OFF"
                 },
                 {
                   "type": "button",
                   "tap_action": {
-                    "action": "toggle"
+                    "action": "call-service",
+                    "service": "script.firetv_on_sequence",
+                    "service_data": {},
+                    "target": {}
                   },
-                  "entity": "script.br_eject",
-                  "icon_height": "-50px",
-                  "theme": "Dark - Blue/Purple"
+                  "entity": "script.firetv_on_sequence",
+                  "name": "FireTV ON",
+                  "show_icon": false
                 },
                 {
                   "type": "button",
                   "tap_action": {
-                    "action": "toggle"
+                    "action": "call-service",
+                    "service": "script.tv_off_sequence",
+                    "service_data": {},
+                    "target": {}
                   },
-                  "entity": "script.br_play",
-                  "icon_height": "-50px",
-                  "theme": "Dark - Blue/Purple"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.br_menu",
-                  "icon_height": "-50px",
-                  "theme": "Dark - Blue/Purple"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.br_stop",
-                  "icon_height": "-50px",
-                  "theme": "Dark - Blue/Purple"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.br_back",
-                  "icon_height": "-50px",
-                  "theme": "Dark - Blue/Purple"
-                },
-                {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "icon_height": "-50px",
-                  "theme": "Dark - Blue/Purple",
-                  "entity": "script.br_up",
-                  "icon": "mdi:arrow-up"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.br_home",
-                  "icon_height": "-50px",
-                  "theme": "Dark - Blue/Purple"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.br_left",
-                  "icon_height": "-50px",
-                  "theme": "Dark - Blue/Purple"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.br_enter",
-                  "icon_height": "-50px",
-                  "theme": "Dark - Blue/Purple"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.br_right",
-                  "icon_height": "-50px",
-                  "theme": "Dark - Blue/Purple"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.br_skip_up",
-                  "icon_height": "-50px",
-                  "theme": "Dark - Blue/Purple"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.br_down",
-                  "icon_height": "-50px",
-                  "theme": "Dark - Blue/Purple"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.br_pause",
-                  "icon_height": "-50px",
-                  "theme": "Dark - Blue/Purple"
-                },
-                {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.br_scan_up",
-                  "icon_height": "-50px",
-                  "theme": "Dark - Blue/Purple",
-                  "name": "Scan up"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.br_skip_down",
-                  "icon_height": "-50px",
-                  "theme": "Dark - Blue/Purple"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.br_repeat",
-                  "icon_height": "-50px",
-                  "theme": "Dark - Blue/Purple"
-                },
-                {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.br_scan_down",
-                  "icon_height": "-50px",
-                  "theme": "Dark - Blue/Purple",
-                  "name": "Scan down"
-                },
-                {
-                  "show_name": true,
+                  "entity": "script.tv_off_sequence",
                   "show_icon": false,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "theme": "Dark - Blue/Purple",
-                  "icon_height": "50px"
+                  "name": "FireTV OFF"
                 },
                 {
-                  "show_name": true,
-                  "show_icon": false,
                   "type": "button",
                   "tap_action": {
-                    "action": "toggle"
+                    "action": "call-service",
+                    "service": "script.ota_tv_on_sequence",
+                    "service_data": {},
+                    "target": {}
                   },
-                  "theme": "Dark - Blue/Purple",
-                  "icon": ""
+                  "entity": "script.ota_tv_on_sequence",
+                  "name": "OverTheAir ON",
+                  "show_icon": false
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.tv_off_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.tv_off_sequence",
+                  "show_icon": false,
+                  "name": "OverTheAir OFF"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.blueray_on_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.blueray_on_sequence",
+                  "name": "BlueRay ON",
+                  "show_icon": false
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.blueray_off_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.tv_off_sequence",
+                  "name": "BlueRay OFF",
+                  "show_icon": false
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.mecool_on_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.mecool_on_sequence",
+                  "name": "Mecool ON",
+                  "show_icon": false
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.mecool_off_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.tv_off_sequence",
+                  "show_icon": false,
+                  "name": "Mecool OFF"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.audio_tuner_on_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.audio_tuner_on_sequence",
+                  "show_icon": false,
+                  "name": "Audio Tuner ON"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.tv_off_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.tv_off_sequence",
+                  "show_icon": false,
+                  "name": "Audio Tuner OFF"
                 }
               ],
-              "square": false
+              "square": false,
+              "columns": 2
             },
             {
               "type": "grid",
@@ -2449,178 +2248,30 @@
               "square": false
             },
             {
-              "type": "grid",
-              "cards": [
-                {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.denon_mecool",
-                  "icon_height": "-50px",
-                  "theme": "material_dark_green"
-                },
-                {
-                  "show_name": true,
-                  "show_icon": false,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "name": "MeCool Panel",
-                  "icon_height": "-50px",
-                  "theme": "material_dark_green"
-                },
-                {
-                  "type": "button",
-                  "entity": "script.mc_power",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "icon_height": "-50px",
-                  "theme": "Dark - Red"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.mc_skip_back",
-                  "icon_height": "-50px",
-                  "theme": "material_dark_green"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.mc_e",
-                  "icon_height": "-50px",
-                  "theme": "material_dark_green"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.mc_volume_up",
-                  "icon_height": "-50px",
-                  "theme": "material_dark_green"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.mc_skip_forward",
-                  "icon_height": "-50px",
-                  "theme": "material_dark_green"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.mc_mute",
-                  "icon_height": "-50px",
-                  "theme": "material_dark_green"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.mc_volume_down",
-                  "icon_height": "-50px",
-                  "theme": "material_dark_green"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.mc_home",
-                  "icon_height": "-50px",
-                  "theme": "material_dark_green"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.mc_vert_up",
-                  "icon_height": "-50px",
-                  "theme": "material_dark_green"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.mc_back",
-                  "icon_height": "-50px",
-                  "theme": "material_dark_green"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.mc_horz_left",
-                  "icon_height": "-50px",
-                  "theme": "material_dark_green"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.mc_ok",
-                  "name": "OK",
-                  "icon": "mdi:hand-okay",
-                  "icon_height": "-50px",
-                  "theme": "material_dark_green"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.mc_horz_right",
-                  "icon_height": "-50px",
-                  "theme": "material_dark_green"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.mc_hamburger",
-                  "icon_height": "-50px",
-                  "theme": "material_dark_green"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.mc_vert_down",
-                  "icon_height": "-50px",
-                  "theme": "material_dark_green"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.mc_mouse",
-                  "icon_height": "-50px",
-                  "theme": "material_dark_green"
-                }
-              ],
-              "square": false
+              "type": "custom:firemote-card",
+              "entity": "media_player.fire_tv_192_168_108_206",
+              "device_type": "fire_tv_stick_lite",
+              "compatibility_mode": "default",
+              "app_launch_1": "prime-video",
+              "app_launch_2": "netflix",
+              "app_launch_3": "disney-plus",
+              "app_launch_4": "hulu",
+              "visible_name_text": "Jens TV",
+              "name_position": "top",
+              "scale": "62"
+            },
+            {
+              "show_name": true,
+              "show_icon": true,
+              "type": "button",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "/lovelace/remote-pg2"
+              },
+              "name": "Other Remotes",
+              "icon": "mdi:remote-off",
+              "icon_height": "80px",
+              "theme": "Dark - Light Red"
             },
             {
               "type": "entities",
@@ -5202,7 +4853,7 @@
               "type": "button",
               "theme": "dark_orange",
               "icon_height": "90px",
-              "show_state": true
+              "show_state": false
             },
             {
               "camera_view": "live",
@@ -5453,6 +5104,426 @@
                 "calendar.garbage_collection"
               ],
               "initial_view": "dayGridMonth"
+            }
+          ]
+        },
+        {
+          "theme": "Backend-selected",
+          "icon": "mdi:remote-off",
+          "title": "Remote-PG2",
+          "path": "remote-pg2",
+          "subview": true,
+          "badges": [],
+          "cards": [
+            {
+              "show_name": true,
+              "show_icon": true,
+              "type": "button",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "/lovelace/remotes"
+              },
+              "name": "Back to Main",
+              "icon": "mdi:remote",
+              "icon_height": "80px",
+              "theme": "Dark - Blue"
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "entity": "script.br_power",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "icon_height": "-50px",
+                  "theme": "Dark - Red"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": false,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "name": "BlueRay Panel"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.br_eject",
+                  "icon_height": "-50px",
+                  "theme": "Dark - Blue/Purple"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.br_play",
+                  "icon_height": "-50px",
+                  "theme": "Dark - Blue/Purple"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.br_menu",
+                  "icon_height": "-50px",
+                  "theme": "Dark - Blue/Purple"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.br_stop",
+                  "icon_height": "-50px",
+                  "theme": "Dark - Blue/Purple"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.br_back",
+                  "icon_height": "-50px",
+                  "theme": "Dark - Blue/Purple"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "icon_height": "-50px",
+                  "theme": "Dark - Blue/Purple",
+                  "entity": "script.br_up",
+                  "icon": "mdi:arrow-up"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.br_home",
+                  "icon_height": "-50px",
+                  "theme": "Dark - Blue/Purple"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.br_left",
+                  "icon_height": "-50px",
+                  "theme": "Dark - Blue/Purple"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.br_enter",
+                  "icon_height": "-50px",
+                  "theme": "Dark - Blue/Purple"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.br_right",
+                  "icon_height": "-50px",
+                  "theme": "Dark - Blue/Purple"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.br_skip_up",
+                  "icon_height": "-50px",
+                  "theme": "Dark - Blue/Purple"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.br_down",
+                  "icon_height": "-50px",
+                  "theme": "Dark - Blue/Purple"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.br_pause",
+                  "icon_height": "-50px",
+                  "theme": "Dark - Blue/Purple"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.br_scan_up",
+                  "icon_height": "-50px",
+                  "theme": "Dark - Blue/Purple",
+                  "name": "Scan up"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.br_skip_down",
+                  "icon_height": "-50px",
+                  "theme": "Dark - Blue/Purple"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.br_repeat",
+                  "icon_height": "-50px",
+                  "theme": "Dark - Blue/Purple"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.br_scan_down",
+                  "icon_height": "-50px",
+                  "theme": "Dark - Blue/Purple",
+                  "name": "Scan down"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": false,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "theme": "Dark - Blue/Purple",
+                  "icon_height": "50px"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": false,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "theme": "Dark - Blue/Purple",
+                  "icon": ""
+                }
+              ],
+              "square": false
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.denon_mecool",
+                  "icon_height": "-50px",
+                  "theme": "material_dark_green"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": false,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "name": "MeCool Panel",
+                  "icon_height": "-50px",
+                  "theme": "material_dark_green"
+                },
+                {
+                  "type": "button",
+                  "entity": "script.mc_power",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "icon_height": "-50px",
+                  "theme": "Dark - Red"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.mc_skip_back",
+                  "icon_height": "-50px",
+                  "theme": "material_dark_green"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.mc_e",
+                  "icon_height": "-50px",
+                  "theme": "material_dark_green"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.mc_volume_up",
+                  "icon_height": "-50px",
+                  "theme": "material_dark_green"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.mc_skip_forward",
+                  "icon_height": "-50px",
+                  "theme": "material_dark_green"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.mc_mute",
+                  "icon_height": "-50px",
+                  "theme": "material_dark_green"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.mc_volume_down",
+                  "icon_height": "-50px",
+                  "theme": "material_dark_green"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.mc_home",
+                  "icon_height": "-50px",
+                  "theme": "material_dark_green"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.mc_vert_up",
+                  "icon_height": "-50px",
+                  "theme": "material_dark_green"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.mc_back",
+                  "icon_height": "-50px",
+                  "theme": "material_dark_green"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.mc_horz_left",
+                  "icon_height": "-50px",
+                  "theme": "material_dark_green"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.mc_ok",
+                  "name": "OK",
+                  "icon": "mdi:hand-okay",
+                  "icon_height": "-50px",
+                  "theme": "material_dark_green"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.mc_horz_right",
+                  "icon_height": "-50px",
+                  "theme": "material_dark_green"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.mc_hamburger",
+                  "icon_height": "-50px",
+                  "theme": "material_dark_green"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.mc_vert_down",
+                  "icon_height": "-50px",
+                  "theme": "material_dark_green"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.mc_mouse",
+                  "icon_height": "-50px",
+                  "theme": "material_dark_green"
+                }
+              ],
+              "square": false
+            },
+            {
+              "type": "custom:firemote-card",
+              "entity": "media_player.fire_tv_192_168_108_232",
+              "device_type": "fire_tv_4_series",
+              "compatibility_mode": "default",
+              "app_launch_1": "youtube",
+              "app_launch_2": "netflix",
+              "app_launch_3": "disney-plus",
+              "app_launch_4": "hulu",
+              "app_launch_5": "paramount-plus",
+              "app_launch_6": "prime-video",
+              "scale": "66",
+              "visible_name_text": "LR Remote",
+              "name_position": "top"
             }
           ]
         }

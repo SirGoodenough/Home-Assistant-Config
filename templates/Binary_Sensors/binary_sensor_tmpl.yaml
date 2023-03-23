@@ -6,16 +6,17 @@
     unique_id: ce7cb6b7-c666-494b-aa3c-4ed79b2f1092
     state: >
       {% if ( 
-        states('sun.sun') | is_defined and 
         states('sun.sun.attributes.elevation') | is_defined and
-        states.sun.sun.attributes.elevation | is_number and
-        states('weather.home') | is_defined ) %}
+        states('sensor.openweathermap_cloud_coverage') | is_defined ) %}
           {% set elev = state_attr("sun.sun", "elevation") | int(0) %}
+          {% set cloud = sensor.cloud_cover_average | float(100) %}
           {% if ( elev < 6 ) %}
             true
-          {% elif ( elev < 10 and is_state('weather.home', 'partlycloudy' ) ) %}
+          {% elif ( elev < 10 and cloud > 51 ) %}
             true
-          {% elif ( elev < 15 and not is_state('weather.home', 'sunny' ) ) %}
+          {% elif ( elev < 15 and cloud > 73 ) %}
+            true
+          {% elif ( elev > 14 and cloud > 88 ) %}
             true
           {% else %}
             false
@@ -23,10 +24,11 @@
       {% else %}
         true
       {% endif %}
-      {# This is using the MET integration for weather. Available conditions: #}
-      {# https://github.com/home-assistant/core/blob/70648d6e3b42bb0910e33e5c6a4e1e8c0789d82c/homeassistant/components/met/const.py #}
+      {# This is using openweathermap integration for weather & t-sma Filter. #}
+      {# https://www.home-assistant.io/integrations/openweathermap #}
+      {# https://www.home-assistant.io/integrations/filter/#time-simple-moving-average #}
     availability: >
-      {% set items = ['sun.sun','weather.home'] %}
+      {% set items = ['sun.sun','weather.openweathermap'] %}
       {{ expand(items)|rejectattr('state','in',['unknown','unavailable'])
         |list|count == items|count }}
     icon: mdi:sun-clock
