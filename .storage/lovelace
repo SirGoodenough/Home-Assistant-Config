@@ -2433,10 +2433,12 @@
               "icon": "mdi:temperature-fahrenheit"
             },
             {
-              "type": "sensor",
-              "entity": "sensor.dark_sky_temperature",
+              "hours_to_show": 24,
               "graph": "line",
-              "detail": 2
+              "type": "sensor",
+              "entity": "sensor.openweathermap_temperature",
+              "detail": 2,
+              "unit": "℉"
             },
             {
               "entity": "sensor.dust_collector_si7021_temperature",
