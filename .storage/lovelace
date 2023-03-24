@@ -4858,7 +4858,7 @@
               "show_state": false
             },
             {
-              "camera_view": "live",
+              "camera_view": "auto",
               "aspect_ratio": "0%",
               "camera_image": "camera.shark",
               "entities": [
