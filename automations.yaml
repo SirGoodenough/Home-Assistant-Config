@@ -48,6 +48,7 @@
       - zone.somerhome
       - zone.suring
       - zone.townsend
+      - zone.rose_estate
       enter_action:
       - parallel:
         - service: script.personalert_notify
@@ -122,6 +123,7 @@
       - zone.suring
       - zone.somerhome
       - zone.townsend
+      - zone.rose_estate
       enter_action:
       - parallel:
         - service: script.personalert_notify

@@ -63,7 +63,7 @@
 #     service: script.tts_mama_arrive_belvas
 
 # - id: e6f402c1-7d0e-4907-930d-5765a59785c5
-#   alias: Moms Home
+#   alias: Moms HomeClinic
 #   mode: queued
 #   initial_state: on
 #   trigger: 
