@@ -42,6 +42,11 @@
           data: {}
           target:
             entity_id: button.moms_button3
+      tap_4:
+        - type: toggle
+          device_id: cf7c09c94df6660c92db0d8c6514ae61
+          entity_id: switch.front_door_lock
+          domain: switch
       tap_5:
         - service: light.toggle
           data: {}

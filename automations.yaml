@@ -22,4 +22,3 @@
         data: {}
         target:
           entity_id: input_boolean.test_color
-

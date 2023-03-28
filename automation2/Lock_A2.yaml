@@ -95,16 +95,16 @@
         target:
           entity_id: input_boolean.pad_enable3
 
-  - id: '1652033857383'
-    alias: Front Door
-    description: Front Door Lock Action Zigbee
+  - id: d35ac2ae-4028-4a9a-98d6-3d430c7d98c0
+    alias: Front Door Button Press Lock
+    description: Toggle the Front Door Lock
     trigger:
     - platform: device
       domain: mqtt
-      device_id: 7f2e8fcca0e61e141b4e30043dba8438
+      device_id: f3010f7b4775e03f67810c3e49716e7c
       type: action
       subtype: single
-      discovery_id: 0x00124b00239e5df3 action_single
+      discovery_id: 0x00124b0025164810 action_single
     condition: []
     action:
     - type: toggle
@@ -112,8 +112,3 @@
       entity_id: switch.front_door_lock
       domain: switch
     mode: single
-
-
-            # - (both) switch.front_door_lock & lock.front_door_lock
-            # - lock.side_door
-            # - lock.smart_code_with_home_connect_technology

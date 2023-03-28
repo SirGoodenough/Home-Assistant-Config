@@ -1141,33 +1141,6 @@
               "type": "picture-entity",
               "entity": "lock.front_door_lock",
               "camera_image": "camera.front_door"
-            },
-            {
-              "show_name": true,
-              "show_icon": true,
-              "entity": "switch.tarantula_power",
-              "hold_action": {
-                "action": "call-service",
-                "service": "script.tarantula_shutdown",
-                "service_data": {},
-                "target": {}
-              },
-              "icon": "mdi:printer-3d",
-              "name": "Turn Tarantula ON",
-              "tap_action": {
-                "action": "call-service",
-                "service": "switch.turn_on",
-                "service_data": {},
-                "target": {
-                  "entity_id": [
-                    "switch.plug2",
-                    "switch.tarantula_power"
-                  ]
-                }
-              },
-              "type": "button",
-              "theme": "dark_orange",
-              "icon_height": "90px"
             }
           ],
           "icon": "mdi:home-automation",
@@ -2646,7 +2619,7 @@
               "hours_to_show": 24,
               "graph": "line",
               "type": "sensor",
-              "entity": "sensor.dark_sky_humidity",
+              "entity": "sensor.openweathermap_humidity",
               "detail": 1
             },
             {
@@ -2698,7 +2671,7 @@
               "hours_to_show": 24,
               "graph": "line",
               "type": "sensor",
-              "entity": "sensor.dark_sky_dew_point",
+              "entity": "sensor.openweathermap_dew_point",
               "detail": 1
             },
             {

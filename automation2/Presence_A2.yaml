@@ -40,6 +40,7 @@
       - zone.suring
       - zone.townsend
       - zone.rose_estate
+      - zone.wisconsin_illinois_border
       enter_action:
       - parallel:
         - service: script.personalert_notify
@@ -116,6 +117,7 @@
       - zone.somerhome
       - zone.townsend
       - zone.rose_estate
+      - zone.wisconsin_illinois_border
       enter_action:
       - parallel:
         - service: script.personalert_notify
