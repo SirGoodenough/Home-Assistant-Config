@@ -55,9 +55,6 @@
                   "entity": "switch.dishwasher"
                 },
                 {
-                  "entity": "lock.smart_code_with_home_connect_technology"
-                },
-                {
                   "entity": "binary_sensor.back_door_open_433"
                 },
                 {
@@ -130,9 +127,6 @@
                   "entity": "climate.living_room_2"
                 },
                 {
-                  "entity": "lock.front_door_lock"
-                },
-                {
                   "entity": "input_button.mady_mute_lr_speaker"
                 },
                 {
@@ -182,6 +176,14 @@
               "title": "Living Room",
               "type": "entities",
               "state_color": true
+            },
+            {
+              "show_state": true,
+              "show_name": true,
+              "camera_view": "auto",
+              "type": "picture-entity",
+              "entity": "lock.front_door_lock",
+              "camera_image": "camera.front_door"
             },
             {
               "type": "conditional",
@@ -1133,14 +1135,6 @@
               ],
               "columns": 2,
               "square": false
-            },
-            {
-              "show_state": true,
-              "show_name": true,
-              "camera_view": "auto",
-              "type": "picture-entity",
-              "entity": "lock.front_door_lock",
-              "camera_image": "camera.front_door"
             }
           ],
           "icon": "mdi:home-automation",
