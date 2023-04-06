@@ -1,0 +1,41 @@
+substitutions:
+    name: "ethernettest"
+    board: "esp32dev"
+
+esphome:
+  name: ${name}
+  friendly_name: ${name}
+
+esp32:
+  board: ${board}
+  framework:
+    type: esp-idf
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: !secret encrypt
+
+ota:
+  password: !secret otapw
+
+# ethernet:
+#   type: LAN8720
+#   mdc_pin: GPIO23
+#   mdio_pin: GPIO18
+#   clk_mode: GPIO0_OUT
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "${name} Fallback Hotspot"
+    password: !secret ap_password
+
+bluetooth_proxy:
+  active: true
