@@ -673,6 +673,9 @@
                 },
                 {
                   "entity": "sensor.bathoom_si7021_humidity"
+                },
+                {
+                  "entity": "button.stairs_up"
                 }
               ],
               "show_header_toggle": false,
@@ -1803,11 +1806,13 @@
                   "tap_action": {
                     "action": "toggle"
                   },
-                  "entity": "switch.chromecast",
+                  "entity": "switch.chromecast_reset",
                   "icon_height": "50px",
                   "theme": "Dark - Red"
                 },
                 {
+                  "show_name": true,
+                  "show_icon": true,
                   "type": "button",
                   "tap_action": {
                     "action": "call-service",
@@ -3793,6 +3798,9 @@
                 },
                 {
                   "entity": "binary_sensor.stairway_smoke_battery_low"
+                },
+                {
+                  "entity": "binary_sensor.backdoor_replace_battery_soon"
                 }
               ],
               "show_header_toggle": false,
@@ -3827,10 +3835,16 @@
                   "entity": "sensor.stairway_smoke_battery"
                 },
                 {
-                  "entity": "sensor.front_lock_button_battery"
+                  "entity": "sensor.front_door_button_battery"
                 },
                 {
                   "entity": "sensor.food_center_button_battery"
+                },
+                {
+                  "entity": "sensor.bot_108e_battery"
+                },
+                {
+                  "entity": "sensor.sm_s906u_battery_level"
                 }
               ],
               "title": "Battery State"
@@ -4825,7 +4839,7 @@
               "show_state": false
             },
             {
-              "camera_view": "auto",
+              "camera_view": "live",
               "aspect_ratio": "0%",
               "camera_image": "camera.shark",
               "entities": [
