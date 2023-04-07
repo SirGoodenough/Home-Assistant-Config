@@ -103,8 +103,8 @@ shell_command.yaml
 /zigbee2mqtt/*.json
 /zigbee2mqtt/*.yaml
 /zigbee2mqtt/.configuration.*
-.esphome
-.exphome/*
+**/.esphome
+**/.exphome/*
 
 .git-credentials
 
