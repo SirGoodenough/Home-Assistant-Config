@@ -22,3 +22,38 @@
         data: {}
         target:
           entity_id: input_boolean.test_color
+- id: 29f9fb7d-5421-4746-a66c-961e02f36ee7
+  alias: Tarantula Button Blueprint
+  description: Additional Buttons for Octoprint
+  use_blueprint:
+    path: SirGoodenough/Octoprint_Additional_Buttons_Helper.yaml
+    input:
+      base_topic: octoPrint/tarantula/
+      device_id: 7fcb2b57-4fac-42c2-93ba-1b2a4b54d366
+      device_name: TarantulaPro
+      print_status: sensor.tarantulapro_print_status
+      print_state: binary_sensor.tarantulapro_printing
+      printhead_temp: sensor.tarantulapro_tool_0_temperature
+      octoprint_shutdown: button.tarantulapro_shutdown_system
+      printer_power_switch:
+      - switch.plug2
+      - switch.tarantula_power
+      fil_feed: 338
+      max_y: 240
+- id: 42cd7771-5b42-46f3-9bce-46e8a9bb5ba1
+  alias: Shark Button Blueprint
+  description: Additional Buttons for Octoprint
+  use_blueprint:
+    path: SirGoodenough/Octoprint_Additional_Buttons_Helper.yaml
+    input:
+      base_topic: octoPrint/shark/
+      device_id: a85cc9fe-8377-40d8-ad35-6d528bd97bba
+      device_name: Shark
+      print_status: sensor.shark_print_status
+      print_state: binary_sensor.shark_printing
+      printhead_temp: sensor.shark_tool_0_temperature
+      octoprint_shutdown: button.shark_shutdown_system
+      printer_power_switch:
+      - switch.sonoff_s40lite_switch_2
+      max_y: 235
+      fil_feed: 329
