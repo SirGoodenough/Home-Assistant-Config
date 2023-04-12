@@ -3289,6 +3289,12 @@
                   "name": "Shutdown System"
                 },
                 {
+                  "entity": "button.tarantulapro_safe_shutdown"
+                },
+                {
+                  "entity": "select.tarantulapro_auto_shutdown_ctrl"
+                },
+                {
                   "entity": "button.tarantulapro_aux_1"
                 },
                 {
@@ -3304,10 +3310,10 @@
                   "entity": "button.tarantulapro_presentation"
                 },
                 {
-                  "entity": "button.tarantulapro_safe_shutdown"
+                  "entity": "button.tarantulapro_change_filament"
                 },
                 {
-                  "entity": "select.tarantulapro_auto_shutdown_ctrl"
+                  "entity": "button.tarantulapro_load_filament"
                 }
               ],
               "title": "TarantulaPro Buttons",
@@ -3392,6 +3398,12 @@
                   "name": "Shutdown System"
                 },
                 {
+                  "entity": "button.shark_safe_shutdown"
+                },
+                {
+                  "entity": "select.shark_auto_shutdown_ctrl"
+                },
+                {
                   "entity": "button.shark_aux_1"
                 },
                 {
@@ -3407,10 +3419,10 @@
                   "entity": "button.shark_presentation"
                 },
                 {
-                  "entity": "button.shark_safe_shutdown"
+                  "entity": "button.shark_change_filament"
                 },
                 {
-                  "entity": "select.shark_auto_shutdown_ctrl"
+                  "entity": "button.shark_load_filament"
                 }
               ],
               "title": "Shark Buttons",
