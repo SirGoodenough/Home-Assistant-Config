@@ -96,3 +96,17 @@
         rgb_color: [150,147,90]
         brightness_pct: 55
         entity_id: "{{ trigger.entity_id }}"
+
+####################################################
+# Stair Light Button / PIR                         #
+####################################################
+- id: f1afcd0d-fd1e-4fc0-a1ec-e0a659061b00
+  alias: Toggle Stair UP Light
+  initial_state: on
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.stairs_down
+      to: "on"
+  action:
+    - service: light.toggle
+      entity_id: light.stairway_light

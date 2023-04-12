@@ -30,9 +30,9 @@
         "id": "mist_button"
       },
       {
-        "name": "Bedroom Cool",
-        "icon": "mdi:snowflake",
-        "id": "bedroom_cool"
+        "id": "bedroom_cool",
+        "name": "Bedroom Cool Manual Fan ctrl",
+        "icon": "mdi:snowflake"
       },
       {
         "name": "pad_enable",
