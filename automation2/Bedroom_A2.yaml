@@ -58,7 +58,7 @@
       loop_action:
       - alias: "Start AirCon only if off to prevent rate limit outages"
         if: '{{ states(''climate.gemodule5384_window_ac'') == ''off''
-          and states(''binary_sensor.ac_enabled'') == true }}'
+          and states(''binary_sensor.ac_enabled'') == ''on'' }}'
         then:
           service: script.bedroom_ac_start
       - alias: Make sure the device is on before the temperature is set
@@ -102,7 +102,7 @@
   action:
     - alias: "Start AirCon only if off to prevent rate limit outages"
       if: '{{ states(''climate.gemodule5384_window_ac'') == ''off''
-        and states(''binary_sensor.ac_enabled'') == true }}'
+        and states(''binary_sensor.ac_enabled'') == ''on'' }}'
       then:
         service: script.bedroom_ac_start
     - alias: call bedroom control script
