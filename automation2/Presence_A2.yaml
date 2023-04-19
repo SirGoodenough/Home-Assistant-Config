@@ -168,7 +168,7 @@
             lang: en-CA
             gend: male
       enable_time: 05:29:13
-      disable_time: 08:31:42
+      disable_time: '20:27:36'
       hold_period:
         hours: 0
         minutes: 5

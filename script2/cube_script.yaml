@@ -1,13 +1,31 @@
 cube_dimmer_control:
   description: Template Dimmer Control
-  variables:
-    light:
+  fields:
     angle:
+      name: Angle to represent new brightness
+      description:
+        This is the new angle to be used in the calculation for Brightness
+      required: true
+      example: "-120.7"
+      selector:
+        number:
+          min: -360
+          max: 360
+          step: 0.1
+          mode: box
+    light:
+      name: Light entity to control
+      description: Add the light entity you want to control here
+      required: true
+      selector:
+        entity:
+          multiple: false
+          domain: light
   sequence:
     - service: light.turn_on
       data:
         entity_id: "{{ light }}"
-        brightness_pct: >
+        brightness_pct: >-
           {% set step_size = angle * 0.4 %}
           {# Get brightness as a percent. #}
           {% set cb = (state_attr( light, 'brightness') | float(10) / 255.0) * 100.0 %}
@@ -28,19 +46,43 @@ cube_dimmer_control:
 
 cube_red_color_control:
   description: Control the red part of the color
-  variables:
-    light:
+  fields:
     angle:
+      name: Angle to represent new brightness
+      description:
+        This is the new angle to be used in the calculation for Red Color
+      required: true
+      example: "120.7"
+      selector:
+        number:
+          min: -360
+          max: 360
+          step: 0.1
+          mode: box
+    light:
+      name: Light entity to control
+      description: Add the light entity you want to control here
+      required: true
+      selector:
+        entity:
+          multiple: false
+          domain: light
   sequence:
     - service: light.turn_on
       data_template:
         entity_id: "{{ light }}"
-        rgb_color: >
+        rgb_color: >-
           {% set step_size = angle * 0.6 %}
+              {# Use the 0.6 above to change the sensitivity of the action. #}
+              {# create color variable #}
           {% set color = state_attr(light, 'rgb_color') %}
-          {% set R = color[0] %}
-          {% set B = color[1] %}
-          {% set G = color[2] %}
+              {# create R (red) variable #}
+            {% set R = color[0] %}
+              {# create G (green) variable #}
+            {% set G = color[1] %}
+              {# create B (blue) variable #}
+            {% set B = color[2] %}
+              {# Increment red number based on cube movement #}
           {% set new_red = R + step_size | int(0) %}
           {% if new_red < 0 %}
             {# Make sure it doesn't go negative #}
@@ -53,21 +95,46 @@ cube_red_color_control:
             {{ new_red, B, G }}
           {% endif %}
 
+
 cube_green_color_control:
   description: Control the green part of the color
-  variables:
-    light:
+  fields:
     angle:
+      name: Angle to represent new brightness
+      description:
+        This is the new angle to be used in the calculation for green color
+      required: true
+      example: "120.7"
+      selector:
+        number:
+          min: -360
+          max: 360
+          step: 0.1
+          mode: box
+    light:
+      name: Light entity to control
+      description: Add the light entity you want to control here
+      required: true
+      selector:
+        entity:
+          multiple: false
+          domain: light
   sequence:
     - service: light.turn_on
       data_template:
         entity_id: "{{ light }}"
-        rgb_color: >
+        rgb_color: >-
           {% set step_size = angle * 0.6 %}
+            {# Use the 0.6 above to change the sensitivity of the action. #}
+            {# create color variable #}
           {% set color = state_attr(light, 'rgb_color') %}
+            {# create R (red) variable #}
           {% set R = color[0] %}
+            {# create G (green) variable #}
           {% set G = color[1] %}
+            {# create B (blue) variable #}
           {% set B = color[2] %}
+            {# Increment green number based on cube movement #}
           {% set new_green = G + step_size | int(0) %}
           {% if new_green < 0 %}
             {# Make sure it doesn't go negative #}
@@ -82,19 +149,43 @@ cube_green_color_control:
 
 cube_blue_color_control:
   description: Control the blue part of the color
-  variables:
-    light:
+  fields:
     angle:
+      name: Angle to represent new brightness
+      description:
+        This is the new angle to be used in the calculation for blue color
+      required: true
+      example: "120.7"
+      selector:
+        number:
+          min: -360
+          max: 360
+          step: 0.1
+          mode: box
+    light:
+      name: Light entity to control
+      description: Add the light entity you want to control here
+      required: true
+      selector:
+        entity:
+          multiple: false
+          domain: light
   sequence:
     - service: light.turn_on
       data_template:
         entity_id: "{{ light }}"
-        rgb_color: >
+        rgb_color: >-
           {% set step_size = angle * 0.6 %}
+              {# Use the 0.6 above to change the sensitivity of the action. #}
+              {# create color variable #}
           {% set color = state_attr(light, 'rgb_color') %}
-          {% set R = color[0] %}
-          {% set G = color[1] %}
-          {% set B = color[2] %}
+              {# create R (red) variable #}
+            {% set R = color[0] %}
+              {# create G (green) variable #}
+            {% set G = color[1] %}
+              {# create B (blue) variable #}
+            {% set B = color[2] %}
+              {# Increment blue number based on cube movement #}
           {% set new_blue = B + step_size | int(0) %}
           {% if new_blue < 0 %}
             {# Make sure it doesn't go negative #}
@@ -109,9 +200,26 @@ cube_blue_color_control:
 
 cube_short_cw_toggle:
   description: CW Short Press Toggle
-  variables:
-    entity:
+  fields:
     angle:
+      name: Angle to represent new switch function
+      description:
+        This is the new angle to be used in the calculation for switch function
+      required: true
+      example: "20.7"
+      selector:
+        number:
+          min: 0
+          max: 360
+          step: 0.1
+          mode: box
+    entity:
+      name: Entity to control
+      description: Add the entity you want to control here
+      required: true
+      selector:
+        entity:
+          multiple: false
   sequence:
     - condition: template
       value_template: '{{ angle > 0 <= 100 }}'
@@ -120,9 +228,26 @@ cube_short_cw_toggle:
         entity_id: '{{ entity }}'
 cube_long_cw_toggle:
   description: CW Long Press Toggle
-  variables:
-    entity:
+  fields:
     angle:
+      name: Angle to represent new switch function
+      description:
+        This is the new angle to be used in the calculation for switch function
+      required: true
+      example: "120.7"
+      selector:
+        number:
+          min: 0
+          max: 360
+          step: 0.1
+          mode: box
+    entity:
+      name: Entity to control
+      description: Add the entity you want to control here
+      required: true
+      selector:
+        entity:
+          multiple: false
   sequence:
     - condition: template
       value_template: '{{ angle > 100 }}'
@@ -132,9 +257,26 @@ cube_long_cw_toggle:
 
 cube_short_ccw_toggle:
   description: CCW Short Press Toggle
-  variables:
-    entity:
+  fields:
     angle:
+      name: Angle to represent new switch function
+      description:
+        This is the new angle to be used in the calculation for switch function
+      required: true
+      example: "-20.7"
+      selector:
+        number:
+          min: -360
+          max: 0
+          step: 0.1
+          mode: box
+    entity:
+      name: Entity to control
+      description: Add the entity you want to control here
+      required: true
+      selector:
+        entity:
+          multiple: false
   sequence:
     - condition: template
       value_template: '{{ angle < 0 >= -100 }}'
@@ -143,9 +285,26 @@ cube_short_ccw_toggle:
         entity_id: '{{ entity }}'
 cube_long_ccw_toggle:
   description: CCW Long Press Toggle
-  variables:
-    entity:
+  fields:
     angle:
+      name: Angle to represent new switch function
+      description:
+        This is the new angle to be used in the calculation for switch function
+      required: true
+      example: "-120.7"
+      selector:
+        number:
+          min: -360
+          max: 0
+          step: 0.1
+          mode: box
+    entity:
+      name: Entity to control
+      description: Add the entity you want to control here
+      required: true
+      selector:
+        entity:
+          multiple: false
   sequence:
     - condition: template
       value_template: '{{ angle < -100 }}'
