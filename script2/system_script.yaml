@@ -62,9 +62,24 @@
 
   say_a_thing:
     alias: Get some words from automation and say them
-    variables:
+    fields:
       message:
+        name: Live Message
+        description: This will send the message on-the-fly
+        required: false
+        example: This is where to put your message to be spoken
+        selector:
+          text:
+            multiline: true
+            type: text
       entities:
+        name: Live Media Player
+        description: Change the media player on the fly
+        required: false
+        selector:
+          entity:
+            multiple: true
+            domain: media_player
     sequence:
       - service: tts.cloud_say
         data:
