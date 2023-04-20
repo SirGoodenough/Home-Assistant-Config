@@ -11,9 +11,24 @@
 #####################################################
 jen_needs_help:
   description: "Template message center for Jen"
-  variables:
+  fields:
     message:
+      name: Message
+      description: This will set the message
+      required: false
+      example: "I'm lost"
+      selector:
+        text:
+          multiline: true
+          type: text
     entities:
+      name: Media Player
+      description: Set the media player
+      required: false
+      selector:
+        entity:
+          multiple: true
+          domain: media_player
   sequence:
     - service: tts.cloud_say
       data:
