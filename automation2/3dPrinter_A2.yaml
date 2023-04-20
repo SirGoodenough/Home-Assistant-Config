@@ -45,7 +45,7 @@
       printer_power_switch:
       - switch.plug2
       - switch.tarantula_power
-      fil_feed: 338
+      fil_feed: 368
       max_y: 240
       
 - id: 42cd7771-5b42-46f3-9bce-46e8a9bb5ba1
