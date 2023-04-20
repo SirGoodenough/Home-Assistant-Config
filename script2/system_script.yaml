@@ -15,11 +15,26 @@
 # Mute or Unmute a Google Speaker:                 #
 ####################################################
   google_mute:
+    alias: Select a media device to mute or unmute the audio
     description: "Set status to boolean true to Mute or false to Unmute"
     icon: mdi:volume-source
-    variables:
+    fields:
       entities:
+        name: Media Player 2 mute - unmute
+        description: Set the Google media player you want to mute
+        required: true
+        selector:
+          entity:
+            multiple: false
+            domain: media_player
+            # supported_features: 8
       status:
+        name: Turn the Mute on/off
+        description:
+          Set status to boolean true to Mute or false to Unmute
+        required: true
+        selector:
+          boolean:
     sequence:
       - service: media_player.play_media
         data:
