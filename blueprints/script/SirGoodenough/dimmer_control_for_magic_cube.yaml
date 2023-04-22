@@ -1,0 +1,81 @@
+blueprint:
+  name: dimmer_control_for_magic_cube_and_other_things
+  author: SirGoodenough
+  description: >
+    This script was invented to be used with my Magic Cube Blueprints. I released
+    it as a standalone Script Blueprint because I saw others struggling with how
+    so convert cube rotation to light dimming in other places.
+
+
+    To use this b;ueprint, install it from the source in the normal way.
+    After that add your unique name for the Scrpt, and add an icon and change
+    the entity_id if desired.
+    You should only need to run the blueprint once, as you will be calling the
+    unique name/entity you added above to use the code.
+    This script has no inputs in the Blueprint screen because all the data is
+    added to control the action live at each use.
+
+
+    This requires you call this script wth 2 data values. One is a positive or
+    negative number between 360 and -360 that in the original, represents the
+    input angle from the cube movement. The other data point is the entity of
+    the light or light group that you are trying to control.
+
+    Sample call / use of this script:
+      ```yaml
+      - service: script.cube_dimmer_control
+        data:
+          angle: "{{ trigger.event.data.args.relative_degrees | float(0.0)}}"
+          light: light.bulb1
+      ```
+
+  domain: script
+  homeassistant:
+    min_version: 2023.3.0
+  # source_url: 
+mode: queued
+max: 10
+icon: mdi-lightbulb-on-50
+fields:
+  angle:
+    name: Angle to represent new brightness
+    description:
+      This is the new angle to be used in the calculation for Brightness
+    required: true
+    example: "-120.7"
+    selector:
+      number:
+        min: -360
+        max: 360
+        step: 0.1
+        mode: box
+  light:
+    name: Light entity to control
+    description: Add the light entity you want to control here
+    required: true
+    selector:
+      entity:
+        multiple: false
+        domain: light
+sequence:
+  - service: light.turn_on
+    data:
+      entity_id: "{{ light }}"
+      brightness_pct: >-
+        {% set step_size = angle * 0.4 %}
+        {# Get brightness as a percent. #}
+        {% set cb = (state_attr( light, 'brightness') | float(10) / 255.0) * 100.0 %}
+        {% set new_brightness = cb | int(10) + step_size %}
+        {% if new_brightness < 5 %}
+          {# If it gets really low set to 0. Adjust if needed for your lights. #}
+          0
+        {% elif new_brightness <= 10 %}
+          {# If it's not quite 0, set to a minimum working brightness. #}
+          10
+        {% elif 91 <= new_brightness < (90 + step_size) %}
+          {# If it's almost full brightness, set to 100%. #}
+          100
+        {% else %}
+          {# Send actual calculated value. #}
+          {{ new_brightness }}
+        {% endif %}

@@ -311,3 +311,55 @@ cube_long_ccw_toggle:
     - service: homeassistant.toggle
       target:
         entity_id: '{{ entity }}'
+
+
+cube_long_short_toggle:
+  description: CW Short Press Toggle
+  fields:
+    angle:
+      name: Angle to represent switch function
+      description: >-
+        This is the angle to be used in the calculation for switch function
+      required: true
+      example: "20.7"
+      selector:
+        number:
+          min: -360
+          max: 360
+          step: 0.1
+          mode: box
+    short_entity:
+      name: Entity to control with short rotation
+      description: >-
+        Add the entity you want to control here with a short rotation of cube.
+        One of the long or the short entities are required but not both.
+        If neither are provided it will error.
+      required: false
+      selector:
+        entity:
+          multiple: true
+    long_entity:
+      name: Entity to control with long rotation
+      description: >-
+        Add the entity you want to control here with a long rotation of the cube.
+        One of the long or the short entities are required but not both.
+        If neither are provided it will error.
+      required: false
+      selector:
+        entity:
+          multiple: true
+  sequence:
+    - choose:
+      - conditions:
+        - alias: "Pseudo short press with abs(angle) <= 100"
+          condition: template
+          value_template: "{{ abs(angle) <= 100 }}"
+        sequence:
+          - service: homeassistant.toggle
+            target:
+              entity_id: '{{ short_entity }}'
+      default:
+        - alias: "Pseudo long press with abs(angle) > 100"
+          service: homeassistant.toggle
+          target:
+            entity_id: '{{ long_entity }}'
