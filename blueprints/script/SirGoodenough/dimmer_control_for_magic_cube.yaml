@@ -20,6 +20,10 @@ blueprint:
     negative number between 360 and -360 that in the original, represents the
     input angle from the cube movement. The other data point is the entity of
     the light or light group that you are trying to control.
+    
+    ***NOTE:*** the trigger variable below will be different for Z2M and ZHA
+    and others. Look at my documentation for that cube integration help if
+    you need it.
 
     Sample call / use of this script:
       ```yaml
@@ -35,7 +39,41 @@ blueprint:
   # source_url: 
 mode: queued
 max: 10
-icon: mdi-lightbulb-on-50
+icon: mdi:lightbulb-on-50
+
+inputs:
+  sensi:
+    name: Sensitivity of the cube rotational motion.
+    description: >-
+      This sets how 'fast' the changes happen compared to how far you move
+      the cube.
+      Higher percentage is faster, lower is slower.
+
+      I have found that 40% is a good number, but you can adjust as desired.
+    default: 40
+    unit_of_measurement: "%"
+    selector:
+      number:
+        min: 1
+        max: 200
+        step: 1
+        mode: box
+  min_b:
+    name: Minimum Brighness
+    description: >-
+      This sets the lowest brightness it will set before it turns off.
+      Some bulbs react poorly below a certain percent, you can adjust that here.
+
+      I have found that 10% is a good number, but you can adjust as desired.
+    default: 40
+    unit_of_measurement: "%"
+    selector:
+      number:
+        min: 5
+        max: 90
+        step: 1
+        mode: slider
+
 fields:
   angle:
     name: Angle to represent new brightness
@@ -57,21 +95,30 @@ fields:
       entity:
         multiple: false
         domain: light
+
+  variables:
+      # Get the sensitivity input
+    sensi: !input sensi
+      # Convert raw percentage to decimal for calculations. Default to 0.6.
+    sens_d: "{{ sensi / 100 | default( 0.4 ) }}"
+      # Get the minimum brightness input
+    min_b: !input min_b
+
 sequence:
   - service: light.turn_on
     data:
       entity_id: "{{ light }}"
       brightness_pct: >-
-        {% set step_size = angle * 0.4 %}
+        {% set step_size = angle * sens_d %}
         {# Get brightness as a percent. #}
         {% set cb = (state_attr( light, 'brightness') | float(10) / 255.0) * 100.0 %}
         {% set new_brightness = cb | int(10) + step_size %}
         {% if new_brightness < 5 %}
           {# If it gets really low set to 0. Adjust if needed for your lights. #}
           0
-        {% elif new_brightness <= 10 %}
+        {% elif new_brightness <= min_b %}
           {# If it's not quite 0, set to a minimum working brightness. #}
-          10
+          {{ min_b }}
         {% elif 91 <= new_brightness < (90 + step_size) %}
           {# If it's almost full brightness, set to 100%. #}
           100

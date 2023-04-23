@@ -21,5 +21,5 @@
       - service: script.cube_long_short_toggle
         data:
           angle: '{{ trigger.payload_json.action_angle | float(0.0) }}'
-          long_entity: light.kitchen_down_lights
-          short_entity: light.kitchensink
+          short_entity: light.kitchen_down_lights
+          long_entity: light.kitchensink

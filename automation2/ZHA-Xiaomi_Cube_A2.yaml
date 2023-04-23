@@ -28,36 +28,42 @@
           data:
             angle: '{{ trigger.event.data.args.relative_degrees | default(0) | float(0) }}'
             light: light.grp_studio
-## Side 1 red
-      rotate_cw_face_1:
-        - service: script.cube_red_color_control
+## Side 2 red
+      rotate_cw_face_2:
+        - service: script.cube_color_control
           data:
             angle: '{{ trigger.event.data.args.relative_degrees | default(0) | float(0) }}'
             light: light.grp_studio
-      rotate_ccw_face_1:
-        - service: script.cube_red_color_control
+            t_color: red
+      rotate_ccw_face_2:
+        - service: script.cube_color_control
           data:
             angle: '{{ trigger.event.data.args.relative_degrees | default(0) | float(0) }}'
             light: light.grp_studio
+            t_color: red
 ## Side 4 blue
       rotate_cw_face_4:
-        - service: script.cube_blue_color_control
+        - service: script.cube_color_control
           data:
             angle: '{{ trigger.event.data.args.relative_degrees | default(0) | float(0) }}'
             light: light.grp_studio
+            t_color: blue
       rotate_ccw_face_4:
-        - service: script.cube_blue_color_control
+        - service: script.cube_color_control
           data:
             angle: '{{ trigger.event.data.args.relative_degrees | default(0) | float(0) }}'
             light: light.grp_studio
+            t_color: blue
 ## Side 5 green
       rotate_cw_face_5:
-        - service: script.cube_green_color_control
+        - service: script.cube_color_control
           data:
             angle: '{{ trigger.event.data.args.relative_degrees | default(0) | float(0) }}'
             light: light.grp_studio
+            t_color: green
       rotate_ccw_face_5:
-        - service: script.cube_green_color_control
+        - service: script.cube_color_control
           data:
             angle: '{{ trigger.event.data.args.relative_degrees | default(0) | float(0) }}'
             light: light.grp_studio
+            t_color: green
