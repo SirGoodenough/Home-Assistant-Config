@@ -22,7 +22,7 @@ blueprint:
     the light or light group that you are trying to control.
     The third is to tell the BP id you are controlling the red, the blue,
     or the green part of the color.
-    
+
     ***NOTE:*** the trigger variable below will be different for Z2M and ZHA
     and others. Look at my documentation for that cube integration help if
     you need it.
