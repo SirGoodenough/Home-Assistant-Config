@@ -6,7 +6,6 @@
     unique_id: ce7cb6b7-c666-494b-aa3c-4ed79b2f1092
     state: >
       {% if ( 
-        states('sun.sun.attributes.elevation') | is_defined and
         states('sensor.openweathermap_cloud_coverage') | is_defined ) %}
           {% set elev = state_attr("sun.sun", "elevation") | int(0) %}
           {% set cloud = sensor.cloud_cover_average | float(100) %}
@@ -34,6 +33,31 @@
     icon: mdi:sun-clock
     attributes:
       friendly_name: "Dark Outside"
+
+  - name: 'sunlight_pct'
+    unique_id: 2d79fa6d-8ab2-4f64-9e29-994c49650bd4
+    unit_of_measurement: '%'
+    state: >
+      {%- set elevation = state_attr('sun.sun','elevation') | float %}
+      {%- set cloud_coverage = states('sensor.openweathermap_cloud_coverage') | float %}
+      {%- set cloud_factor = (1 - (0.75 * ( cloud_coverage / 100) ** 3 )) %}
+      {%- set min_elevation = -6 %}
+      {%- set max_elevation = 60 %}
+      {%- set adjusted_elevation = elevation - min_elevation %}
+      {%- set adjusted_elevation = [adjusted_elevation,0] | max %}
+      {%- set adjusted_elevation = [adjusted_elevation,max_elevation - min_elevation] | min %}
+      {%- set adjusted_elevation = adjusted_elevation / (max_elevation - min_elevation) %}
+      {%- set adjusted_elevation = adjusted_elevation %}
+      {%- set adjusted_elevation = adjusted_elevation * 100 %}
+      {%- set brightness = adjusted_elevation * cloud_factor %}
+      {{ brightness | round }}
+    availability: >
+      {% set items = ['sun.sun','weather.openweathermap'] %}
+      {{ expand(items)|rejectattr('state','in',['unknown','unavailable'])
+        |list|count == items|count }}
+    icon: mdi:sun-angle
+    attributes:
+      friendly_name: "Sunlight Percentage"
 
   - name: "Washing Machine"
     unique_id: 0f504a93-327b-4a03-ab93-4fc6aaaecbae
