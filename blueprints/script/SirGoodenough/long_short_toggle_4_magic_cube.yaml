@@ -1,5 +1,5 @@
 blueprint:
-  name: long_short_toggle_4_magic_cube_and_other_things
+  name: long_short_toggle_4_magic_cube_and_other_things - 2023-04-23
   author: SirGoodenough
   domain: script
   homeassistant:

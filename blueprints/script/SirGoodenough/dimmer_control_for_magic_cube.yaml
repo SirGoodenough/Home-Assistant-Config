@@ -1,5 +1,5 @@
 blueprint:
-  name: dimmer_control_for_magic_cube_and_other_things
+  name: dimmer_control_for_magic_cube_and_other_things - 2023-04-23
   author: SirGoodenough
   domain: script
   homeassistant:
@@ -36,7 +36,7 @@ blueprint:
           angle: '{{ trigger.event.data.args.relative_degrees | float(0.0)}}'
           light: light.bulb1
       ```
-  
+
   input:
     sensi:
       name: Sensitivity of the cube rotational motion.

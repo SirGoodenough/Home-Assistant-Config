@@ -1,5 +1,5 @@
 blueprint:
-  name: color_control_for_magic_cube_and_other_things
+  name: color_control_for_magic_cube_and_other_things - 2023-04-23
   author: SirGoodenough
   domain: script
   homeassistant:
