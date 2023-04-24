@@ -31,3 +31,20 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaa_test_bp:
       payload: M84
   icon: mdi:account
   mode: single
+cube_color_conrol:
+  alias: color_control_for_magic_cube_and_other_things
+  use_blueprint:
+    path: SirGoodenough/color_control_4_magic_cube.yaml
+  mode: single
+cube_dimmer:
+  alias: dimmer_control_for_magic_cube_and_other_things
+  use_blueprint:
+    path: SirGoodenough/dimmer_control_for_magic_cube.yaml
+  mode: single
+  icon: mdi:lightbulb-on-30
+cube_long_short:
+  alias: long_short_toggle_4_magic_cube_and_other_things
+  use_blueprint:
+    path: SirGoodenough/long_short_toggle_4_magic_cube.yaml
+  mode: single
+  icon: mdi:toggle-switch-variant
