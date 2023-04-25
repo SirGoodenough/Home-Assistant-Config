@@ -820,7 +820,7 @@
                   "entity": "light.office_track_jim_bulb"
                 },
                 {
-                  "entity": "switch.sonoff_s40lite_switch"
+                  "entity": "switch.vacuum_sealer_switch"
                 },
                 {
                   "entity": "switch.bench_test"
