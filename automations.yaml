@@ -18,7 +18,7 @@
           message: Action Throw
           entities: media_player.kitchen_speaker
       action_rotate_ccw_face_6:
-      - service: script.cube_long_short_toggle
+      - service: script.cube_long_short_control_bp
         data:
           angle: '{{ trigger.payload_json.action_angle | float(0.0) }}'
           short_entity: light.kitchen_down_lights

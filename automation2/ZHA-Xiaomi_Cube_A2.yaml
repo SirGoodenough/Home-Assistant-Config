@@ -19,50 +19,50 @@
         - service: light.toggle
           entity_id: light.grp_studio
       rotate_cw_face_0:
-        - service: script.cube_dimmer_control
+        - service: script.cube_dimmer_control_bp
           data:
             angle: '{{ trigger.event.data.args.relative_degrees | default(0) | float(0) }}'
             light: light.grp_studio
       rotate_ccw_face_0:
-        - service: script.cube_dimmer_control
+        - service: script.cube_dimmer_control_bp
           data:
             angle: '{{ trigger.event.data.args.relative_degrees | default(0) | float(0) }}'
             light: light.grp_studio
 ## Side 2 red
       rotate_cw_face_2:
-        - service: script.cube_color_control
+        - service: script.cube_color_control_bp
           data:
             angle: '{{ trigger.event.data.args.relative_degrees | default(0) | float(0) }}'
             light: light.grp_studio
             t_color: red
       rotate_ccw_face_2:
-        - service: script.cube_color_control
+        - service: script.cube_color_control_bp
           data:
             angle: '{{ trigger.event.data.args.relative_degrees | default(0) | float(0) }}'
             light: light.grp_studio
             t_color: red
 ## Side 4 blue
       rotate_cw_face_4:
-        - service: script.cube_color_control
+        - service: script.cube_color_control_bp
           data:
             angle: '{{ trigger.event.data.args.relative_degrees | default(0) | float(0) }}'
             light: light.grp_studio
             t_color: blue
       rotate_ccw_face_4:
-        - service: script.cube_color_control
+        - service: script.cube_color_control_bp
           data:
             angle: '{{ trigger.event.data.args.relative_degrees | default(0) | float(0) }}'
             light: light.grp_studio
             t_color: blue
 ## Side 5 green
       rotate_cw_face_5:
-        - service: script.cube_color_control
+        - service: script.cube_color_control_bp
           data:
             angle: '{{ trigger.event.data.args.relative_degrees | default(0) | float(0) }}'
             light: light.grp_studio
             t_color: green
       rotate_ccw_face_5:
-        - service: script.cube_color_control
+        - service: script.cube_color_control_bp
           data:
             angle: '{{ trigger.event.data.args.relative_degrees | default(0) | float(0) }}'
             light: light.grp_studio
