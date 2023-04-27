@@ -52,7 +52,7 @@ device_tracker: !include device_tracker.yaml
 ffmpeg: !include ffmpeg.yaml
 generic_hygrostat: !include humidifer.yaml
 group: !include groups.yaml
-hacs: !include hacs.yaml
+# hacs: !include hacs.yaml
 homeassistant: !include homeassistant.yaml
 http: !include http.yaml
 # introduction:

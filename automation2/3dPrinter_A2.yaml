@@ -64,4 +64,4 @@
       printer_power_switch:
       - switch.sonoff_s40lite_switch_2
       max_y: 235
-      fil_feed: 359
+      fil_feed: 371
