@@ -1175,6 +1175,9 @@
                   "entity": "input_select.phone_help"
                 },
                 {
+                  "entity": "fan.jens_new_fan"
+                },
+                {
                   "entity": "light.jens_light"
                 },
                 {
@@ -2260,31 +2263,6 @@
               ],
               "title": "TVRemote",
               "state_color": true
-            }
-          ]
-        },
-        {
-          "title": "Ring",
-          "path": "ring",
-          "icon": "mdi:cctv",
-          "theme": "dark_mint",
-          "type": "panel",
-          "badges": [],
-          "cards": [
-            {
-              "type": "custom:surveillance-card",
-              "thumb_interval": 2,
-              "update_interval": 2,
-              "recording_duration": 10,
-              "focus_motion": true,
-              "camera_view": "live",
-              "show_capture_buttons": true,
-              "cameras": [
-                {
-                  "entity": "camera.front_door",
-                  "motion_entity": "binary_sensor.front_door_motion"
-                }
-              ]
             }
           ]
         },

@@ -9,6 +9,7 @@ automation dev: !include_dir_merge_list ./automationDev/
 bluetooth:
 cloud: !include cloud.yaml
 config:
+conversation:
 counter: !include counter.yaml
 dhcp:
 # energy
@@ -47,7 +48,6 @@ zone: !include zones.yaml
 # All the other stuff not covered in the default_config:
 
 camera: !include camera.yaml
-conversation:
 device_tracker: !include device_tracker.yaml
 ffmpeg: !include ffmpeg.yaml
 generic_hygrostat: !include humidifer.yaml
