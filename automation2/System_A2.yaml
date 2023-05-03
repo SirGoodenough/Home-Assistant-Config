@@ -104,8 +104,6 @@
       event: start
   action:
     - delay: 00:00:22
-    - alias: get bluetooth going
-      service: remote_command_line.bt_restart
     - alias: Make sure EZ Buttons are active
       service: script.tasmota_ez_button_for_update_and_restart_all_2022_01_07a
     - delay: 00:00:22
