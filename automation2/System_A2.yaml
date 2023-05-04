@@ -421,6 +421,10 @@
 #   trigger:
 #   - platform: webhook
 #     webhook_id: -xsuvHvmEc19Cfnnvpt_sHvbV
+    # allowed_methods:
+    #   - POST
+    #   - PUT
+    # local_only: false
 #   condition: []
 #   action:
 #     - service: tts.cloud_say

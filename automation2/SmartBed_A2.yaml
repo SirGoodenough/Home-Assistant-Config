@@ -10,18 +10,34 @@
       id: poop
 #      id: test1thru4
       webhook_id: !secret "PoopUP"
+      allowed_methods:
+        - POST
+        - PUT
+      local_only: true
     - platform: webhook
       id: poop_done
 #      id: test1thru4
       webhook_id: !secret "PoopDOWN"
+      allowed_methods:
+        - POST
+        - PUT
+      local_only: true
     - platform: webhook
       id: cares_up
 #      id: test1thru4
       webhook_id: !secret "CaresUP"
+      allowed_methods:
+        - POST
+        - PUT
+      local_only: true
     - platform: webhook
       id: cares_down
 #      id: test1thru4
       webhook_id: !secret "CaresDOWN"
+      allowed_methods:
+        - POST
+        - PUT
+      local_only: true
     - platform: state
       id: poop
       entity_id: input_boolean.poop
