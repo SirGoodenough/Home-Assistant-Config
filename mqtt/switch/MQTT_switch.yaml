@@ -1,12 +1,9 @@
 ---
-  #####################################################
-  # 3D Printer switch                                 #
-  #####################################################
-  - name: "Tarantula Power"
-    unique_id: eab2eee7-39c4-4881-ab1d-342d64ca2c23
-    state_topic: "plug2/stat/POWER1"
-    command_topic: "plug2/cmnd/POWER1"
-    availability_topic: "plug2/tele/LWT"
+  - name: "Jens Mist Speed Control"
+    unique_id: 14880efb-658a-4f89-8d3f-a2e37e36e514
+    state_topic: "JensNeb/stat/POWER3"
+    command_topic: "JensNeb/cmnd/POWER3"
+    availability_topic: "JensNeb/tele/LWT"
     state_on: "ON"
     state_off: "OFF"
     payload_on: "ON"

@@ -687,16 +687,10 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "fan.bedroom_fan",
-                  "IsOffColor": "#F88416",
-                  "IsOnLowColor": "#E78E85",
-                  "IsOnMedColor": "#E54234",
-                  "IsOnHiColor": "red",
-                  "customTheme": true,
-                  "customSetpoints": true,
-                  "hiPercentage": 100,
-                  "name": "Bedroom Fan",
-                  "type": "custom:fan-percent-button-row"
+                  "entity": "fan.bedroom_fan"
+                },
+                {
+                  "entity": "sensor.bedroom_fanspeed"
                 },
                 {
                   "entity": "light.bedroom_light"
@@ -706,9 +700,6 @@
                 },
                 {
                   "entity": "input_boolean.bedroom_auto_fan"
-                },
-                {
-                  "entity": "sensor.bedroom_fanspeed"
                 },
                 {
                   "entity": "input_number.bedroom_auto_temp"
@@ -793,16 +784,7 @@
             {
               "entities": [
                 {
-                  "entity": "fan.office_fan",
-                  "IsOffColor": "#F88416",
-                  "IsOnLowColor": "#E78E85",
-                  "IsOnMedColor": "#E54234",
-                  "IsOnHiColor": "red",
-                  "customTheme": true,
-                  "customSetpoints": true,
-                  "hiPercentage": 100,
-                  "name": "Office Fan",
-                  "type": "custom:fan-percent-button-row"
+                  "entity": "fan.office_fan"
                 },
                 {
                   "entity": "sensor.office_fanspeed"
@@ -1151,16 +1133,7 @@
             {
               "entities": [
                 {
-                  "entity": "fan.jens_new_fan",
-                  "IsOffColor": "#2E253F",
-                  "IsOnHiColor": "#D3C5EC",
-                  "IsOnLowColor": "#6A2FD3",
-                  "IsOnMedColor": "#9F7BDF",
-                  "customTheme": true,
-                  "customSetpoints": true,
-                  "hiPercentage": 100,
-                  "name": "George",
-                  "type": "custom:fan-percent-button-row"
+                  "entity": "fan.jens_new_fan"
                 },
                 {
                   "entity": "sensor.jennys_new_fanspeed"
@@ -1173,9 +1146,6 @@
                 },
                 {
                   "entity": "input_select.phone_help"
-                },
-                {
-                  "entity": "fan.jens_new_fan"
                 },
                 {
                   "entity": "light.jens_light"
@@ -1405,32 +1375,16 @@
                   "entity": "fan.jens_mist"
                 },
                 {
+                  "entity": "switch.jens_neb_speed_control"
+                },
+                {
+                  "entity": "sensor.jens_mist_speed"
+                },
+                {
                   "entity": "switch.jensneb_light"
                 },
                 {
-                  "entity": "fan.jens_mist",
-                  "isTwoSpeedFan": true,
-                  "reverseButtons": true,
-                  "customTheme": true,
-                  "isOffColor": "#2E252F",
-                  "isOnHiColor": "#ff8500",
-                  "isOnLowColor": "#ff6500",
-                  "buttonInactiveColor": "#050505",
-                  "customSetpoints": true,
-                  "lowPercentage": 50,
-                  "hiPercentage": 100,
-                  "name": "Jens Mist speed",
-                  "type": "custom:fan-percent-button-row"
-                },
-                {
-                  "entity": "light.jensneb_light_mode",
-                  "customOnText": "lock",
-                  "customOffText": "cycle",
-                  "isOnColor": "#ff6500",
-                  "isOffColor": "#050505",
-                  "name": "NightLite Mode",
-                  "type": "custom:toggle-control-button-row",
-                  "customTheme": true
+                  "entity": "light.jensneb_light_mode"
                 },
                 {
                   "entity": "binary_sensor.aromatherapy_water"

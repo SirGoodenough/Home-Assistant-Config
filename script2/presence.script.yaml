@@ -73,7 +73,6 @@ personalert_notify:
       {% else %}
         They have left: {{ place_from }} and are now located at: {{ place_to }}
       {% endif %}
-
   sequence:
   - alias: Notify interested parties with notification_id
     service: persistent_notification.create
@@ -144,7 +143,6 @@ personalert_audio:
     mess: "I'm lost"
     lang: en-US
     gend: female
-
   sequence:
   - alias: Send sound file to Media Player
     service: media_player.play_media

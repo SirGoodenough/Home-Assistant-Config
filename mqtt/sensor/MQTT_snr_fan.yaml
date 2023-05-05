@@ -58,3 +58,19 @@
       {% else %}
         {{ states('sensor.bedroom_fanspeed') }}
       {% endif %}
+
+  - unique_id: 6d5a9d68-d061-401f-ba8b-b33e05901b41
+    name: "Jens Mist Speed"
+    state_topic: "JensNeb/stat/POWER3"
+    value_template: >-
+      {% if value is defined %}
+        {% if value == "ON" -%}
+          HIGH
+        {%- elif value == "OFF" -%}
+          LOW
+        {%- else -%}
+          {{ value }}
+        {%- endif %}
+      {% else %}
+        {{ states('sensor.jens_mist_speed') }}
+      {% endif %}
