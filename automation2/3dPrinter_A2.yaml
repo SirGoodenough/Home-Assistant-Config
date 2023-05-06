@@ -44,7 +44,6 @@
       octoprint_shutdown: button.tarantulapro_shutdown_system
       printer_power_switch:
       - switch.plug2
-      - switch.tarantula_power
       fil_feed: 368
       max_y: 240
       
