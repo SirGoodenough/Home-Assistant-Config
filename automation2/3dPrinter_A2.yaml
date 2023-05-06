@@ -21,7 +21,6 @@
   trigger:
     platform: state
     entity_id: 
-      - switch.tarantula_power
       - switch.plug2
       - switch.sonoff_s40lite_switch_2
     from: "on"
