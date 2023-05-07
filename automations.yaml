@@ -23,3 +23,13 @@
           angle: '{{ trigger.payload_json.action_angle | float(0.0) }}'
           short_entity: light.kitchen_down_lights
           long_entity: light.kitchensink
+- id: '1683451572484'
+  alias: aaaaa  ed testAqara Cube face-based
+  description: test eds stuff
+  trace:
+    stored_traces: 20
+  use_blueprint:
+    path: EdwardTFN/aqara-cube-zha-simplified-face-based-device-control.yaml
+    input:
+      last_face_input: input_number.gertle_last
+      cube: 171c43498d91c2e5db0aaafba5de9de7
