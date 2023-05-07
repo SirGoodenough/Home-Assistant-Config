@@ -4840,7 +4840,7 @@
             {
               "show_name": true,
               "show_icon": true,
-              "entity": "switch.tarantula_power",
+              "entity": "switch.plug2",
               "hold_action": {
                 "action": "call-service",
                 "service": "button.press",
