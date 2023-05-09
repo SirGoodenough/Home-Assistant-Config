@@ -693,6 +693,9 @@
                   "entity": "sensor.bedroom_fanspeed"
                 },
                 {
+                  "entity": "binary_sensor.bedroom"
+                },
+                {
                   "entity": "light.bedroom_light"
                 },
                 {
@@ -709,12 +712,6 @@
                 },
                 {
                   "entity": "sensor.bedroom_fan_si7021_humidity"
-                },
-                {
-                  "entity": "binary_sensor.bedroom"
-                },
-                {
-                  "entity": "binary_sensor.battery_low_bedroom_door"
                 },
                 {
                   "entity": "input_number.mayson_nap_temperature"

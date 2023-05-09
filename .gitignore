@@ -118,24 +118,25 @@ shell_command.yaml
 __pycache__
 
 # Directory (contents) ignores
-/blueprints/automation/test**
-/blueprints/script/test**
-/deps**
-/image**
-/pop.git**
-/Purgatory**
-/themes**
-/www**
-/zigbee2mqtt/old**
-/zigbee2mqtt/log**
-/.storage/auth**
-/.storage/cloud**
-/.storage/core**
-/.storage/hacs**
-/.storage/http
+/config/blueprints/automation/test**
+/config/blueprints/script/test**
+/config/Purgatory**
+/config/script2/lock_script_secret.yaml
+/config/themes**
+/config/www**
+/config/zigbee2mqtt/old**
+/config/zigbee2mqtt/log**
+/config/.storage/auth**
+/config/.storage/cloud**
+/config/.storage/core**
+/config/.storage/hacs**
+/config/.storage/http
+*/deps**
+*/image**
+*/pop.git**
 *test**
 
 # Ignore files created by IDE's
-/.vscode**
-/.theia**
-/.Trash**
+*&/.vscode**
+*/.theia**
+*/.Trash**

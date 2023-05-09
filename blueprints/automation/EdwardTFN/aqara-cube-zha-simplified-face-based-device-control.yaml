@@ -5,17 +5,10 @@ blueprint:
   input:
     last_face_input:
       name: Last face up numeric helper
-      description: Please select a Numeric Helper to be used to record the last face
-        up.
-      # selector:
-      #   entity:
-      #     domain:
-      #     - input_number
-      #   multiple: false
+      description: Please select a Numeric Helper to be used to record the last face up.
       selector:
         entity:
           domain: input_number
-          multiple: false
     cube:
       name: Aqara Cube
       description: Select the Aqara Cube device
@@ -23,7 +16,6 @@ blueprint:
         device:
           integration: zha
           manufacturer: LUMI
-          multiple: false
     face_1_flip:
       name: Flip to face 1
       description: Actions to execute when the cube is flipped to face 1 in the top.
@@ -32,22 +24,19 @@ blueprint:
         action: {}
     face_1_knock:
       name: Knock face 1
-      description: Actions to execute when the cube is knocked with face 1 in the
-        top.
+      description: Actions to execute when the cube is knocked with face 1 in the top.
       default: []
       selector:
         action: {}
     face_1_rotate_counter_clockwise:
       name: Rotate counter-clockwise face 1
-      description: Actions to execute when the cube rotates counter-clockwise with
-        face 1 in the top.
+      description: Actions to execute when the cube rotates counter-clockwise with face 1 in the top.
       default: []
       selector:
         action: {}
     face_1_rotate_clockwise:
       name: Rotate clockwise face 1
-      description: Actions to execute when the cube rotates clockwise with face 1
-        in the top.
+      description: Actions to execute when the cube rotates clockwise with face 1 in the top.
       default: []
       selector:
         action: {}
@@ -65,22 +54,19 @@ blueprint:
         action: {}
     face_2_knock:
       name: Knock face 2
-      description: Actions to execute when the cube is knocked with face 2 in the
-        top.
+      description: Actions to execute when the cube is knocked with face 2 in the top.
       default: []
       selector:
         action: {}
     face_2_rotate_counter_clockwise:
       name: Rotate counter-clockwise face 2
-      description: Actions to execute when the cube rotates counter-clockwise with
-        face 2 in the top.
+      description: Actions to execute when the cube rotates counter-clockwise with face 2 in the top.
       default: []
       selector:
         action: {}
     face_2_rotate_clockwise:
       name: Rotate clockwise face 2
-      description: Actions to execute when the cube rotates clockwise with face 2
-        in the top.
+      description: Actions to execute when the cube rotates clockwise with face 2 in the top.
       default: []
       selector:
         action: {}
@@ -98,22 +84,19 @@ blueprint:
         action: {}
     face_3_knock:
       name: Knock face 3
-      description: Actions to execute when the cube is knocked with face 3 in the
-        top.
+      description: Actions to execute when the cube is knocked with face 3 in the top.
       default: []
       selector:
         action: {}
     face_3_rotate_counter_clockwise:
       name: Rotate counter-clockwise face 3
-      description: Actions to execute when the cube rotates counter-clockwise with
-        face 3 in the top.
+      description: Actions to execute when the cube rotates counter-clockwise with face 3 in the top.
       default: []
       selector:
         action: {}
     face_3_rotate_clockwise:
       name: Rotate clockwise face 3
-      description: Actions to execute when the cube rotates clockwise with face 3
-        in the top.
+      description: Actions to execute when the cube rotates clockwise with face 3 in the top.
       default: []
       selector:
         action: {}
@@ -131,22 +114,19 @@ blueprint:
         action: {}
     face_4_knock:
       name: Knock face 4
-      description: Actions to execute when the cube is knocked with face 4 in the
-        top.
+      description: Actions to execute when the cube is knocked with face 4 in the top.
       default: []
       selector:
         action: {}
     face_4_rotate_counter_clockwise:
       name: Rotate counter-clockwise face 4
-      description: Actions to execute when the cube rotates counter-clockwise with
-        face 4 in the top.
+      description: Actions to execute when the cube rotates counter-clockwise with face 4 in the top.
       default: []
       selector:
         action: {}
     face_4_rotate_clockwise:
       name: Rotate clockwise face 4
-      description: Actions to execute when the cube rotates clockwise with face 4
-        in the top.
+      description: Actions to execute when the cube rotates clockwise with face 4 in the top.
       default: []
       selector:
         action: {}
@@ -164,22 +144,19 @@ blueprint:
         action: {}
     face_5_knock:
       name: Knock face 5
-      description: Actions to execute when the cube is knocked with face 5 in the
-        top.
+      description: Actions to execute when the cube is knocked with face 5 in the top.
       default: []
       selector:
         action: {}
     face_5_rotate_counter_clockwise:
       name: Rotate counter-clockwise face 5
-      description: Actions to execute when the cube rotates counter-clockwise with
-        face 5 in the top.
+      description: Actions to execute when the cube rotates counter-clockwise with face 5 in the top.
       default: []
       selector:
         action: {}
     face_5_rotate_clockwise:
       name: Rotate clockwise face 5
-      description: Actions to execute when the cube rotates clockwise with face 5
-        in the top.
+      description: Actions to execute when the cube rotates clockwise with face 5 in the top.
       default: []
       selector:
         action: {}
@@ -197,22 +174,19 @@ blueprint:
         action: {}
     face_6_knock:
       name: Knock face 6
-      description: Actions to execute when the cube is knocked with face 6 in the
-        top.
+      description: Actions to execute when the cube is knocked with face 6 in the top.
       default: []
       selector:
         action: {}
     face_6_rotate_counter_clockwise:
       name: Rotate counter-clockwise face 6
-      description: Actions to execute when the cube rotates counter-clockwise with
-        face 6 in the top.
+      description: Actions to execute when the cube rotates counter-clockwise with face 6 in the top.
       default: []
       selector:
         action: {}
     face_6_rotate_clockwise:
       name: Rotate clockwise face 6
-      description: Actions to execute when the cube rotates clockwise with face 6
-        in the top.
+      description: Actions to execute when the cube rotates clockwise with face 6 in the top.
       default: []
       selector:
         action: {}
@@ -237,9 +211,13 @@ action:
     flip_degrees: '{{ trigger.event.data.args.flip_degrees | default(0) }}'
     relative_degrees: '{{ trigger.event.data.args.relative_degrees | default(0) }}'
     temp_last_face_input: !input last_face_input
-    activated_face: '{{ iif((command == ''slide'' or command == ''knock'' or command
-      == ''flip''), trigger.event.data.args.activated_face, states(temp_last_face_input))
-      | int(0) }}'
+    activated_face: '{{ iif((command == ''slide'' or command == ''knock'' or command == ''flip''), trigger.event.data.args.activated_face, states(temp_last_face_input)) | int(0) }}'
+    #activated_face: |-
+      #{% if command == 'slide' or command == 'knock' or command == 'flip' %}
+        #{{ trigger.event.data.args.activated_face | int(0) }}
+      #{% else %}
+        #{{ states(temp_last_face_input) | int(0) }}
+      #{% endif %}
 - service: input_number.set_value
   target:
     entity_id: !input last_face_input
@@ -247,123 +225,124 @@ action:
     value: '{{ activated_face }}'
 - choose:
   - conditions:
-    - '{{ activated_face == 1 }}'
+      - '{{ activated_face == 1 }}'
     sequence:
-    - choose:
-      - conditions:
-        - '{{ command == ''flip'' }}'
-        sequence: !input face_1_flip
-      - conditions:
-        - '{{ command == ''knock'' }}'
-        sequence: !input face_1_knock
-      - conditions:
-        - '{{ command == ''rotate_left'' }}'
-        sequence: !input face_1_rotate_counter_clockwise
-      - conditions:
-        - '{{ command == ''rotate_right'' }}'
-        sequence: !input face_1_rotate_clockwise
-      - conditions:
-        - '{{ command == ''slide'' }}'
-        sequence: !input face_1_slide
-      default: []
+      - choose:
+        - conditions:
+            - '{{ command == ''flip'' }}'
+          sequence: !input face_1_flip
+        - conditions:
+            - '{{ command == ''knock'' }}'
+          sequence: !input face_1_knock
+        - conditions:
+            - '{{ command == ''rotate_left'' }}'
+          sequence: !input face_1_rotate_counter_clockwise
+        - conditions:
+            - '{{ command == ''rotate_right'' }}'
+          sequence: !input face_1_rotate_clockwise
+        - conditions:
+            - '{{ command == ''slide'' }}'
+          sequence: !input face_1_slide
+        default: []
   - conditions:
-    - '{{ activated_face == 2 }}'
+      - '{{ activated_face == 2 }}'
     sequence:
-    - choose:
-      - conditions:
-        - '{{ command == ''flip'' }}'
-        sequence: !input face_2_flip
-      - conditions:
-        - '{{ command == ''knock'' }}'
-        sequence: !input face_2_knock
-      - conditions:
-        - '{{ command == ''rotate_left'' }}'
-        sequence: !input face_2_rotate_counter_clockwise
-      - conditions:
-        - '{{ command == ''rotate_right'' }}'
-        sequence: !input face_2_rotate_clockwise
-      - conditions:
-        - '{{ command == ''slide'' }}'
-        sequence: !input face_2_slide
-      default: []
+      - choose:
+        - conditions:
+            - '{{ command == ''flip'' }}'
+          sequence: !input face_2_flip
+        - conditions:
+            - '{{ command == ''knock'' }}'
+          sequence: !input face_2_knock
+        - conditions:
+            - '{{ command == ''rotate_left'' }}'
+          sequence: !input face_2_rotate_counter_clockwise
+        - conditions:
+            - '{{ command == ''rotate_right'' }}'
+          sequence: !input face_2_rotate_clockwise
+        - conditions:
+            - '{{ command == ''slide'' }}'
+          sequence: !input face_2_slide
+        default: []
   - conditions:
-    - '{{ activated_face == 3 }}'
+      - '{{ activated_face == 3 }}'
     sequence:
-    - choose:
-      - conditions:
-        - '{{ command == ''flip'' }}'
-        sequence: !input face_3_flip
-      - conditions:
-        - '{{ command == ''knock'' }}'
-        sequence: !input face_3_knock
-      - conditions:
-        - '{{ command == ''rotate_left'' }}'
-        sequence: !input face_3_rotate_counter_clockwise
-      - conditions:
-        - '{{ command == ''rotate_right'' }}'
-        sequence: !input face_3_rotate_clockwise
-      - conditions:
-        - '{{ command == ''slide'' }}'
-        sequence: !input face_3_slide
-      default: []
+      - choose:
+        - conditions:
+            - '{{ command == ''flip'' }}'
+          sequence: !input face_3_flip
+        - conditions:
+            - '{{ command == ''knock'' }}'
+          sequence: !input face_3_knock
+        - conditions:
+            - '{{ command == ''rotate_left'' }}'
+          sequence: !input face_3_rotate_counter_clockwise
+        - conditions:
+            - '{{ command == ''rotate_right'' }}'
+          sequence: !input face_3_rotate_clockwise
+        - conditions:
+            - '{{ command == ''slide'' }}'
+          sequence: !input face_3_slide
+        default: []
   - conditions:
-    - '{{ activated_face == 4 }}'
+      - '{{ activated_face == 4 }}'
     sequence:
-    - choose:
-      - conditions:
-        - '{{ command == ''flip'' }}'
-        sequence: !input face_4_flip
-      - conditions:
-        - '{{ command == ''knock'' }}'
-        sequence: !input face_4_knock
-      - conditions:
-        - '{{ command == ''rotate_left'' }}'
-        sequence: !input face_4_rotate_counter_clockwise
-      - conditions:
-        - '{{ command == ''rotate_right'' }}'
-        sequence: !input face_4_rotate_clockwise
-      - conditions:
-        - '{{ command == ''slide'' }}'
-        sequence: !input face_4_slide
-      default: []
+      - choose:
+        - conditions:
+            - '{{ command == ''flip'' }}'
+          sequence: !input face_4_flip
+        - conditions:
+            - '{{ command == ''knock'' }}'
+          sequence: !input face_4_knock
+        - conditions:
+            - '{{ command == ''rotate_left'' }}'
+          sequence: !input face_4_rotate_counter_clockwise
+        - conditions:
+            - '{{ command == ''rotate_right'' }}'
+          sequence: !input face_4_rotate_clockwise
+        - conditions:
+            - '{{ command == ''slide'' }}'
+          sequence: !input face_4_slide
+        default: []
   - conditions:
-    - '{{ activated_face == 5 }}'
+      - '{{ activated_face == 5 }}'
     sequence:
-    - choose:
-      - conditions:
-        - '{{ command == ''flip'' }}'
-        sequence: !input face_5_flip
-      - conditions:
-        - '{{ command == ''knock'' }}'
-        sequence: !input face_5_knock
-      - conditions:
-        - '{{ command == ''rotate_left'' }}'
-        sequence: !input face_5_rotate_counter_clockwise
-      - conditions:
-        - '{{ command == ''rotate_right'' }}'
-        sequence: !input face_5_rotate_clockwise
-      - conditions:
-        - '{{ command == ''slide'' }}'
-        sequence: !input face_5_slide
-      default: []
+      - choose:
+        - conditions:
+            - '{{ command == ''flip'' }}'
+          sequence: !input face_5_flip
+        - conditions:
+            - '{{ command == ''knock'' }}'
+          sequence: !input face_5_knock
+        - conditions:
+            - '{{ command == ''rotate_left'' }}'
+          sequence: !input face_5_rotate_counter_clockwise
+        - conditions:
+            - '{{ command == ''rotate_right'' }}'
+          sequence: !input face_5_rotate_clockwise
+        - conditions:
+            - '{{ command == ''slide'' }}'
+          sequence: !input face_5_slide
+        default: []
   - conditions:
-    - '{{ activated_face == 6 }}'
+      - '{{ activated_face == 6 }}'
     sequence:
-    - choose:
-      - conditions:
-        - '{{ command == ''flip'' }}'
-        sequence: !input face_6_flip
-      - conditions:
-        - '{{ command == ''knock'' }}'
-        sequence: !input face_6_knock
-      - conditions:
-        - '{{ command == ''rotate_left'' }}'
-        sequence: !input face_6_rotate_counter_clockwise
-      - conditions:
-        - '{{ command == ''rotate_right'' }}'
-        sequence: !input face_6_rotate_clockwise
-      - conditions:
-        - '{{ command == ''slide'' }}'
-        sequence: !input face_6_slide
-      default: []
+      - choose:
+        - conditions:
+            - '{{ command == ''flip'' }}'
+          sequence: !input face_6_flip
+        - conditions:
+            - '{{ command == ''knock'' }}'
+          sequence: !input face_6_knock
+        - conditions:
+            - '{{ command == ''rotate_left'' }}'
+          sequence: !input face_6_rotate_counter_clockwise
+        - conditions:
+            - '{{ command == ''rotate_right'' }}'
+          sequence: !input face_6_rotate_clockwise
+        - conditions:
+            - '{{ command == ''slide'' }}'
+          sequence: !input face_6_slide
+        default: []
   default: []
+

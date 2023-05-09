@@ -13,6 +13,16 @@
         "name": "Mady Mute LR Speaker",
         "icon": "mdi:volume-off",
         "id": "mady_mute_lr_speaker"
+      },
+      {
+        "id": "master_lock",
+        "name": "73d0a12795794f00a3151f9000b0ffc9",
+        "icon": "mdi:home-lock"
+      },
+      {
+        "id": "master_unlock",
+        "name": "16ef2409ed7a49d7be0cd89ec6a4d2db",
+        "icon": "mdi:home-lock-open"
       }
     ]
   }

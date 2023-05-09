@@ -27,7 +27,10 @@
       - service: lock.unlock
         target:
           entity_id: lock.front_door_lock
-
+      - delay: 5
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.pad_enable
 
   - id: b193fbf4-4b43-4fa1-942e-9d31a2b47fc1
     alias: All Door Keypad Unlock
@@ -53,6 +56,8 @@
         entity_id: input_boolean.pad_enable2
         from: "off"
         to: "on"
+      - platform: state
+        entity_id: !secret Lad134620-837c-4f51-9c29-07325432d63f
     action:
       - service: lock.unlock
         target:
@@ -86,6 +91,8 @@
         entity_id: input_boolean.pad_enable3
         from: "off"
         to: "on"
+      - platform: state
+        entity_id: !secret L35993d38-2f27-410d-bfd3-97c533d0a0e3
     action:
       - service: lock.lock
         target:
