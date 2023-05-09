@@ -1,0 +1,42 @@
+esphome:
+  name: bt2
+
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: !secret encrypt
+
+ota:
+  password: !secret otapw
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Bt2 Fallback Hotspot"
+    password: !secret ap_password
+
+bluetooth_proxy:
+  active: true
+
+sensor:
+  - platform: dht
+    pin: GPIO21
+    model: AM2302
+    temperature:
+      name: "Basement Temperature"
+      accuracy_decimals: 1
+    humidity:
+      name: "Basement Humidity"
+      accuracy_decimals: 1
+    update_interval: 60s

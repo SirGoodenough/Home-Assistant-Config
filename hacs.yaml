@@ -1,0 +1,4 @@
+---
+  token: !secret HACS_GIT_Code
+  theme: true
+  python_script: true

@@ -1,0 +1,433 @@
+---
+  ####################################################
+  #                                                  #
+  #            Temperatures                          #
+  #                                                  #
+  ####################################################
+
+  sensor.house_humidity_main:
+    friendly_name: "Main Level Humidity"
+    icon: mdi:water-percent
+    device_class: humidity
+    unit_of_measurement: '%'
+
+  switch.humidifier_2:
+    friendly_name: "Main Level Humidifier"
+    icon: mdi:air-humidifier
+
+  input_number.target_humidity:
+    unit_of_measurement: percent
+    icon: mdi:water-percent
+
+  ####################################################
+  #                                                  #
+  #            Miscellanous Icons                    #
+  #                                                  #
+  ####################################################
+
+  script.upstairs_bath_heater_off:
+    icon: mdi:radiator-off
+
+  script.upstairs_bath_heater_on:
+    icon: mdi:radiator
+
+  script.upstairs_bath_heater_watchdog:
+    icon: mdi:radiator-off
+
+  script.bathroom_heater_auto_on:
+    icon: mdi:radiator
+
+  script.christmas:
+    icon: mdi:toggle-switch
+
+  script.heavenly_peace:
+    icon: mdi:toggle-switch-off
+
+  script.outside_christmas_on:
+    icon: mdi:toggle-switch-outline
+
+  script.outside_christmas_off:
+    icon: mdi:toggle-switch-off-outline
+
+  script.dishwasher_on:
+    icon: mdi:dishwasher
+
+  script.dishwasher_off:
+    icon: mdi:dishwasher
+
+  script.doors_close_all:
+    icon: mdi:door-closed
+
+  script.dust_collector_on:
+    icon: mdi:silo
+
+  script.dust_collector_off:
+    icon: mdi:silo
+
+  script.dust_collector_watchdog:
+    icon: mdi:silo
+
+  script.garage_lights_on:
+    icon: mdi:garage
+
+  script.garage_lights_off:
+    icon: mdi:garage
+
+  script.garage_lights_on_lock:
+    icon: mdi:garage
+
+  script.garage_lights_on_lock_timeout:
+    icon: mdi:garage
+
+  script.garage_lights_start_timeout:
+    icon: mdi:garage
+
+  script.garage_lights_run_timeout:
+    icon: mdi:garage
+
+  script.jen_needs_help_level1:
+    icon: mdi:lifebuoy
+
+  script.jen_needs_help_level1a:
+    icon: mdi:help-rhombus
+
+  script.jen_needs_help_level2:
+    icon: mdi:help-network
+
+  script.switcha1_on:
+    icon: mdi:flash
+
+  script.switcha1_off:
+    icon: mdi:flash-off
+
+  script.switcha2_on:
+    icon: mdi:flash
+
+  script.switcha2_off:
+    icon: mdi:flash-off
+
+  script.switcha3_on:
+    icon: mdi:flash
+
+  script.switcha3_off:
+    icon: mdi:flash-off
+
+  script.switchb1_on:
+    icon: mdi:flash
+
+  script.switchb1_off:
+    icon: mdi:flash-off
+
+  script.switchb2_on:
+    icon: mdi:flash
+
+  script.switchb2_off:
+    icon: mdi:flash-off
+
+  script.switchb3_on:
+    icon: mdi:flash
+
+  script.switchb3_off:
+    icon: mdi:flash-off
+
+  script.chill_time:
+    icon: mdi:home-lightbulb
+
+  script.work_time:
+    icon: mdi:home-lightbulb
+
+  script.party_time:
+    icon: mdi:home-lightbulb
+
+  switch.moms_chair:
+    icon: mdi:vibrate   
+
+  timer.flushtime2:
+    friendly_name: "2 Minute Timer"
+
+  timer.flushtime10:
+    friendly_name: "10 Minute Timer"
+
+  ####################################################
+  #                                                  #
+  #                  Jennys TV                       #
+  #                                                  #
+  ####################################################
+
+  script.vizio_j_av:
+    friendly_name: "Jens TV Input AV"
+    icon: mdi:video-input-component
+
+  script.vizio_j_ch_down:
+    friendly_name: "Jens TV Ch Down"
+    icon: mdi:arrow-down-bold-outline
+
+  script.vizio_j_ch_up:
+    friendly_name: "Jens TV Ch Up"
+    icon: mdi:arrow-up-bold-outline
+
+  script.vizio_j_hdmi:
+    friendly_name: "Jens TV HDMI Toggle"
+    icon: mdi:video-input-hdmi
+
+  script.vizio_j_input:
+    friendly_name: "Jens TV Input"
+    icon: mdi:shape-outline
+
+  script.vizio_j_mute:
+    friendly_name: "Jens TV Mute"
+    icon: mdi:volume-off
+
+  script.vizio_j_power:
+    friendly_name: "Jens TV Power"
+    icon: mdi:power
+    assumed_state: false
+
+  script.vizio_j_tv:
+    friendly_name: "Jens TV Toggle"
+    icon: mdi:television-box
+
+  script.vizio_j_vol_down:
+    friendly_name: "Jens Vol Down"
+    icon: mdi:volume-minus
+
+  script.vizio_j_vol_up:
+    friendly_name: "Jens Vol Up"
+    icon: mdi:volume-plus
+
+
+  ####################################################
+  #                                                  #
+  #               Jens Room Reciever                 #
+  #                                                  #
+  ####################################################
+
+  script.denon_blue_ray:
+    friendly_name: "Blueray Input"
+    icon: mdi:disc-player
+
+  script.denon_chromecast:
+    friendly_name: "Chromecast Input"
+    icon: mdi:cast-connected
+
+  script.denon_firetv:
+    friendly_name: "FireTV Input"
+    icon: mdi:remote-tv
+
+  script.denon_mecool:
+    friendly_name: "MeCool Input"
+    icon: mdi:android
+
+  script.denon_mute:
+    friendly_name: "Jens Rec Mute"
+    icon: mdi:volume-off
+
+  script.denon_power:
+    friendly_name: "Jens Rec Power"
+    icon: mdi:power-plug
+
+  script.denon_reciever_band:
+    friendly_name: "Tuner Band"
+    icon: mdi:radio-fm
+
+  script.denon_tune:
+    friendly_name: "Tuner Freq Up"
+    icon: mdi:arrow-up-bold-hexagon-outline
+
+  script.denon_tune_search:
+    friendly_name: "Tuner Freq Search"
+    icon: mdi:radio-tower
+
+  script.denon_tuner:
+    friendly_name: "Tuner Input Audio"
+    icon: mdi:radio
+
+  script.denon_tv_audio:
+    friendly_name: "TV Audio Input"
+    icon: mdi:television-box
+
+  script.denon_volume_down:
+    friendly_name: "Jens Rec Vol Down"
+    icon: mdi:volume-minus
+
+  script.denon_volume_up:
+    friendly_name: "Jens Rec Vol Up"
+    icon: mdi:volume-plus
+
+  script.denon_multeq_out:
+    friendly_name: "Multi CH Out"
+    icon: mdi:speaker-multiple
+
+  script.denon_dvneq_out:
+    friendly_name: "DV-EQ Out "
+    icon: mdi:speaker-multiple
+
+  script.denon_a_dsx_out:
+    friendly_name: "A-DSX Out"
+    icon: mdi:speaker-multiple
+
+  script.denon_standard_out:
+    friendly_name: "Standard Out"
+    icon: mdi:speaker
+
+  script.denon_d_st_out:
+    friendly_name: "D-ST Out"
+    icon: mdi:speaker-multiple
+
+  script.denon_simulation_out:
+    friendly_name: "Simulation Out"
+    icon: mdi:speaker-multiple
+
+  script.denon_pure_out:
+    friendly_name: "Pure Stereo Out"
+    icon: mdi:speaker
+
+
+  ####################################################
+  #                                                  #
+  #                    MeCool                        #
+  #                                                  #
+  ####################################################
+
+  script.mc_power:
+    friendly_name: "MeCool Power"
+    icon: mdi:power
+
+  script.mc_skip_back:
+    friendly_name: "MeCool Skip"
+    icon: mdi:skip-backward
+
+  script.mc_e:
+    friendly_name: "MeCool E"
+    icon: mdi:alpha-e-circle-outline
+
+  script.mc_volume_up:
+    friendly_name: "MeCool Vol"
+    icon: mdi:volume-plus
+
+  script.mc_skip_forward:
+    friendly_name: "MeCool Skip"
+    icon: mdi:skip-forward
+
+  script.mc_mute:
+    friendly_name: "MeCool Mute"
+    icon: mdi:volume-mute
+
+  script.mc_volume_down:
+    friendly_name: "MeCool Vol"
+    icon: mdi:volume-minus
+
+  script.mc_home:
+    friendly_name: "MeCool Home"
+    icon: mdi:home
+
+  script.mc_vert_up:
+    friendly_name: "MeCool Up"
+    icon: mdi:arrow-up
+
+  script.mc_back:
+    friendly_name: "MeCool Back"
+    icon: mdi:undo
+
+  script.mc_horz_left:
+    friendly_name: "MeCool Left"
+    icon: mdi:arrow-left
+
+  script.mc_ok:
+    friendly_name: "JMeCool OK"
+    icon: mdi:hand-okay
+
+  script.mc_horz_right:
+    friendly_name: "MeCool Right"
+    icon: mdi:arrow-right
+
+  script.mc_hamburger:
+    friendly_name: "MeCool Hamburger"
+    icon: mdi:menu
+
+  script.mc_vert_down:
+    friendly_name: "MeCool Down"
+    icon: mdi:arrow-down
+
+  script.mc_mouse:
+    friendly_name: "MeCool Mouse"
+    icon: mdi:mouse
+
+
+  ####################################################
+  #                                                  #
+  #                   BlueRay                        #
+  #                                                  #
+  ####################################################
+
+  script.br_power:
+    friendly_name: "BlueRay Power"
+    icon: mdi:power
+
+  script.br_eject:
+    friendly_name: "BlueRay Eject"
+    icon: mdi:eject
+
+  script.br_play:
+    friendly_name: "BlueRay Play"
+    icon: mdi:alpha-e-circle-outline
+
+  script.br_menu:
+    friendly_name: "BlueRay Hamburger"
+    icon: mdi:menu
+
+  script.br_stop:
+    friendly_name: "BlueRay Stop"
+    icon: mdi:stop
+
+  script.br_back:
+    friendly_name: "BlueRay Back"
+    icon: mdi:undo
+
+  script.br_up:
+    friendly_name: "BlueRay Up"
+    icon: mdi:volume-minus
+
+  script.br_home:
+    friendly_name: "BlueRay Home"
+    icon: mdi:home
+
+  script.br_left:
+    friendly_name: "BlueRay Left"
+    icon: mdi:arrow-left
+
+  script.br_enter:
+    friendly_name: "BlueRay Enter"
+    icon: mdi:keyboard-return
+
+  script.br_right:
+    friendly_name: "BlueRay Right"
+    icon: mdi:arrow-right
+
+  script.br_skip_up:
+    friendly_name: "BlueRay Skip"
+    icon: mdi:skip-forward
+
+  script.br_down:
+    friendly_name: "BlueRay Down"
+    icon: mdi:arrow-down
+
+  script.br_pause:
+    friendly_name: "BlueRay Pause"
+    icon: mdi:pause
+
+  script.br_scan_up:
+    friendly_name: "BlueRay Scan"
+    icon: mdi:fast-forward
+
+  script.br_skip_down:
+    friendly_name: "BlueRay Skip"
+    icon: mdi:skip-backward
+
+  script.br_repeat:
+    friendly_name: "BlueRay Repeat"
+    icon: mdi:repeat
+
+  script.br_scan_down:
+    friendly_name: "BlueRay Scan"
+    icon: mdi:rewind

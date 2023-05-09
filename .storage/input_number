@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "input_number",
+  "data": {
+    "items": [
+      {
+        "icon": "mdi:fan",
+        "id": "bedroom_auto_temp",
+        "max": 80.0,
+        "min": 70.0,
+        "mode": "slider",
+        "name": "Bedroom Auto Temp",
+        "step": 1.0,
+        "unit_of_measurement": "F"
+      },
+      {
+        "min": 0.0,
+        "max": 100.0,
+        "name": "Lock State",
+        "mode": "box",
+        "icon": "mdi:lock",
+        "step": 1.0,
+        "id": "lock_state"
+      },
+      {
+        "min": 0.0,
+        "max": 100.0,
+        "name": "lock_state2",
+        "mode": "box",
+        "step": 1.0,
+        "id": "lock_state2",
+        "icon": "mdi:lock"
+      },
+      {
+        "min": 0.0,
+        "max": 100.0,
+        "name": "lock_state3",
+        "mode": "box",
+        "step": 1.0,
+        "id": "lock_state3",
+        "icon": "mdi:lock"
+      },
+      {
+        "min": 1.0,
+        "max": 100.0,
+        "name": "test target temp",
+        "icon": "mdi:thermometer",
+        "unit_of_measurement": " Degrees",
+        "step": 1.0,
+        "mode": "slider",
+        "id": "test_target_temp"
+      },
+      {
+        "min": 65.0,
+        "max": 90.0,
+        "name": "Mayson Nap Temperature",
+        "unit_of_measurement": "ºF",
+        "mode": "slider",
+        "step": 1.0,
+        "id": "mayson_nap_temperature",
+        "icon": "mdi:temperature-fahrenheit"
+      },
+      {
+        "min": 0.0,
+        "max": 6.0,
+        "name": "Gertle Last",
+        "icon": "mdi:border-inside",
+        "mode": "box",
+        "step": 1.0,
+        "id": "gertle_last"
+      }
+    ]
+  }
+}

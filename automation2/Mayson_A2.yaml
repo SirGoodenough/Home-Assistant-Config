@@ -1,0 +1,76 @@
+###################################################
+# Blueprint  Bedroom Fan Mayson                   #
+###################################################
+- id: f1d396f5-8f40-42b2-8d17-e9a6159c5ce2
+  alias: "Mayson's Naptime Auto Fan"
+  description: 'Set the Temperature for Naptime'
+  trace:
+    stored_traces: 10
+  use_blueprint:
+    path: SirGoodenough/AutoFanControl_HA_fan.yaml
+    input:
+      fan_off_time: '19:00:00'
+      fan_control: input_boolean.mayson_cool
+      room_temp_now: sensor.bedroom_fan_si7021_temperature
+      room_set_temp: input_number.mayson_nap_temperature
+      fan_on_time: '10:00:00'
+      fan: fan.bedroom_fan
+      loop_action:
+      - alias: "Start AirCon only if off to prevent rate limit outages"
+        if: '{{ states(''climate.gemodule5384_window_ac'') == ''off''
+          and states(''binary_sensor.ac_enabled'') == ''on'' }}'
+        then:
+          service: script.bedroom_ac_start
+      - alias: Make sure the device is on before the temperature is set
+        delay: 00:00:05
+      - alias: "call Mayson ac set temperature & limit to prevent rate limit outages"
+        if: '{{ is_number(state_attr(''climate.gemodule5384_window_ac'', ''temperature''))
+          and state_attr(''climate.gemodule5384_window_ac'', ''temperature'') | float(73.1)
+          != states(''input_number.mayson_nap_temperature'') | float(73.2)
+          }}'
+        then:
+          service: script.bedroom_ac_set_temp
+          data:
+            Temp: '{{ states(''input_number.mayson_nap_temperature'') | float(73.3) }}'
+      off_action:
+      - alias: call shut the AirCon down script
+        service: script.bedroom_cooling_off
+      - alias: Make sure the control boolean is off
+        service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.mayson_cool
+
+####################################################
+# Silence Speakers, AC on                          #
+####################################################
+- id: c61050df-d8b7-46db-9150-7137cf6f3b92
+  alias: Silence Bedroom & Bathroom Speakers
+  initial_state: on
+  mode: restart
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.stairs_up
+      to: "on"
+    - platform: state
+      entity_id: button.stairs_up
+  action:
+    - alias: Mute bathroom
+      service: script.google_mute
+      data:
+        status: true
+        entities: media_player.bathroom_speaker, media_player.bedroom_speaker, media_player.office_jamz
+    - alias: Enable the room temperature control
+      service: input_boolean.turn_on
+      target:
+        entity_id: input_boolean.mayson_cool
+    - alias: How long to be quiet and cooled
+      delay: 06:00:00
+    - alias: Unmute bathroom
+      service: script.google_mute
+      data:
+        status: false
+        entities: media_player.bathroom_speaker, media_player.bedroom_speaker, media_player.office_jamz
+    - alias: Disable the room temperature control
+      service: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.mayson_cool

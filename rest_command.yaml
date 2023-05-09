@@ -1,0 +1,4 @@
+---
+  tasmoadmin_backup:
+    url: !secret Tasmo_Admin_Backup
+    method: GET

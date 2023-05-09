@@ -1,0 +1,41 @@
+---
+  #####################################################
+  #                                                   #
+  # Bathroom                                          #
+  #                                                   #
+  #####################################################
+  #####################################################
+  # Bathroom Heater watchdog                          #
+  #####################################################
+  upstairs_bath_heater_watchdog:
+    mode: restart
+    alias: Bathroom Heater watchdog
+    sequence:
+      - alias: "Wait until switch is off or the timeout"
+        wait_template: "{{ is_state('switch.aeotec_dsc26103_micro_switch_2nd_edition_switch', 'off') }}"
+        timeout: "01:00:00"
+      - service: script.upstairs_bath_heater_off
+
+  #####################################################
+  # Turn on Upstairs Bathroom Heater                  #
+  #####################################################
+  upstairs_bath_heater_on:
+    alias: Turn on Upstairs Bathroom Heater
+    sequence:
+      - service: switch.turn_on
+        entity_id: switch.aeotec_dsc26103_micro_switch_2nd_edition_switch
+      - alias: "Start Watchdog"
+        service: script.upstairs_bath_heater_watchdog
+
+  #####################################################
+  # Turn off Upstairs Bathroom Heater                 #
+  #####################################################
+  upstairs_bath_heater_off:
+    alias: Turn off Upstairs Bathroom Heater
+    sequence:
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.bathroom_heater_auto_on
+      - service: switch.turn_off
+        entity_id: switch.aeotec_dsc26103_micro_switch_2nd_edition_switch
+
+

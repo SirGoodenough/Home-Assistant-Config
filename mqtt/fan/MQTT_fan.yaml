@@ -1,0 +1,25 @@
+---
+  - name: "Jens Mist"
+    unique_id: b5f92e68-a4a8-463d-8816-26a0fa340d9b
+    availability_topic: "JensNeb/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    state_topic: "JensNeb/tele/STATE"
+    state_value_template: "{{ value_json.POWER1 }}"
+    command_topic: "JensNeb/cmnd/POWER1"
+    payload_on: "ON"
+    payload_off: "OFF"
+    percentage_state_topic: "JensNeb/tele/STATE"
+    percentage_value_template: >
+        {% set forces_diffusion={"OFF":1,"ON":2} %}
+        {{ forces_diffusion[value_json.POWER3] if value_json.POWER1!='OFF' else 0 }}
+    percentage_command_topic: "JensNeb/cmnd/POWER3"
+    percentage_command_template: >
+        {% set forces_diffusion={0:"OFF",1:"OFF",2:"ON"} %}
+        {{ forces_diffusion[value] }}
+    speed_range_max: 2
+    qos: 1
+    retain: false
+    # speeds:
+    #   - low
+    #   - high

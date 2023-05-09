@@ -1,0 +1,5 @@
+---
+  smartbed:
+    title: SmartBed
+    icon: mdi:bed
+    url: !secret SmartBed

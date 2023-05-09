@@ -1,0 +1,56 @@
+---
+  # db_url: !secret MariaDB_Path
+  purge_keep_days: 3
+  include:
+    domains:
+      - automation
+      - alert
+      - binary_sensor
+      - button
+      - cover
+      - climate
+      - fan
+      - generic_hygrostat
+      - input_button
+      - input_boolean
+      - input_number
+      - input_select
+      - life360
+      - light
+      - lock
+      - media_player
+      - mqtt
+      - notify
+      - octoprint
+      - person
+      - rest_command
+      - ring
+      - script
+      - sensor
+      - shell_command
+      - sonoff
+      - switch
+      - template
+      - zone
+  exclude:
+    domains:
+      - group
+      - camera
+      - cloud
+      - counter
+      - hacs
+      - logger
+      - media
+      - sun
+      - timer
+      - updater # Don't save updater
+      - weather
+    entities:
+      - automation.rfbridge_1_demultiplexer # Very noisy if automations are on
+      - group.weather # Don't save weather
+      - sensor.date # Don't record date and time
+      - sensor.time # Don't care time
+      - sensor.date_time_iso # Noisy
+      - sensor.time_formatted # Noisy
+      - sensor.sun_state # Don't Need it either
+      - sun.sun # Don't do sun data

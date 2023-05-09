@@ -1,0 +1,13 @@
+---
+  #####################################################
+  # Dryer Complete Signal                             #
+  #####################################################
+  - name: "Dryer"
+    unique_id: 1f3bc54d-b40d-400a-812a-bcfc828fbac2
+    device_class: power
+    state_topic: Dryer3/stat/POWER2
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    availability_topic: Dryer3/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline

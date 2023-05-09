@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace_resources",
+  "data": {
+    "items": [
+      {
+        "url": "/hacsfiles/HA-Firemote/HA-Firemote.js?hacstag=5363296562110",
+        "type": "module",
+        "id": "b1e6ba845bf24b3ea2936b4829a77b03"
+      },
+      {
+        "url": "/hacsfiles/fan-percent-button-row/fan-percent-button-row.js?hacstag=34575320520",
+        "type": "module",
+        "id": "f0dc140698174f878e5e5ac3c8636763"
+      },
+      {
+        "url": "/hacsfiles/flipdown-timer-card/flipdown-timer-card.js?hacstag=42308207104",
+        "type": "module",
+        "id": "6dbf3e5e8c5c4596b32b8e3813938280"
+      },
+      {
+        "url": "/hacsfiles/lovelace-curtain-card/curtain-card.js?hacstag=509260172013",
+        "type": "module",
+        "id": "862f61f98ecf448a990bd24d72ca9486"
+      },
+      {
+        "url": "/hacsfiles/toggle-control-button-row/toggle-control-button-row.js?hacstag=32603392113",
+        "type": "module",
+        "id": "ab4e1b28490c4c1884224d6584c37819"
+      }
+    ]
+  }
+}

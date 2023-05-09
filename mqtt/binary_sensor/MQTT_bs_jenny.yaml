@@ -1,0 +1,23 @@
+---
+  ####################################################
+  # Neb sensor                                       #
+  ####################################################
+  - name: "Water you GOT"
+    unique_id: 80f495f5-7bd3-4268-881d-110bc7a54c7a
+    device_class: problem
+    state_topic: JensNeb/stat/POWER4
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    availability_topic: JensNeb/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - name: "RGB Effect"
+    unique_id: df1910f5-e057-409f-b117-adec29a1b119
+    device_class: motion
+    state_topic: JensNeb/stat/POWER5
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    availability_topic: JensNeb/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline

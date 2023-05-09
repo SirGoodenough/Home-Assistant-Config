@@ -1,0 +1,15 @@
+---
+  #####################################################
+  # Sensors (433mhz)                                  #
+  #####################################################
+  - name: "Basement Smoke Alarm"
+    unique_id: bcb34d78-3f52-42e5-9adc-af985d4df17a
+    device_class: smoke
+    state_topic: rf433/BasementSmoke
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    off_delay: 3600
+    force_update: false
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline

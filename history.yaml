@@ -1,0 +1,9 @@
+---
+  exclude:
+    domains:
+  #    - automation
+      - weblink
+      - updater
+    entities:
+      - sensor.last_boot
+      - sensor.date

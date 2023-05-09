@@ -1,0 +1,3 @@
+- platform: ffmpeg
+  name: pellet_cam
+  input: /dev/input/video0

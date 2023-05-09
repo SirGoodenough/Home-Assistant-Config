@@ -1,0 +1,8 @@
+---
+  flushtime2:
+    duration: '00:01:00'
+    icon: mdi:needle
+
+  flushtime10:
+    duration: '00:10:00'
+    icon: mdi:needle

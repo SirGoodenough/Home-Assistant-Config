@@ -1,0 +1,5 @@
+---
+  username: !secret EWELink_login
+  password: !secret EWELink_password
+  reload: always  # update device list every time HA starts
+  default_class: switch  # changes the default class of all devices

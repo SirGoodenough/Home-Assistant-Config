@@ -1,0 +1,210 @@
+---
+#####################################################
+#                                                   #
+# Switches                                          #
+#                                                   #
+#####################################################
+
+#####################################################
+# Basement Hall PIR                                 #
+#####################################################
+- id: d4556acf-439c-426a-98b7-b58a411c660f
+  alias: Basement Hall PIR
+  initial_state: on
+  trigger:
+    - platform: state
+      entity_id:
+        - binary_sensor.basement_way_d_pir
+      to: "on"
+    - platform: state
+      entity_id:
+        - binary_sensor.basement_way_u_pir
+      to: "on"
+  action:
+    - service: mqtt.publish
+      data:
+        topic: bhall/cmnd/POWER2
+        payload: 1
+
+####################################################
+# DnRemote                                         #
+####################################################
+- id: 666506a1-81d8-4db3-b735-c8e6cb888c33
+  alias: KitchenDown Toggle button_dnremote1
+  initial_state: on
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.dnremote1
+      to: "on"
+  action:
+    - service: light.toggle
+      entity_id: light.stairway_light
+
+- id: d82bf999-0a81-4761-8192-c1d4fe6a7b1c
+  alias: KitchenDown Toggle button_dnremote2
+  initial_state: on
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.dnremote2
+      to: "on"
+  action:
+    - service: light.toggle
+      entity_id: light.kitchen_down_lights
+
+- id: fd42e2d0-4ecd-4c90-808e-8a064dc79ed2
+  alias: KitchenSink Toggle button_dnremote5
+  initial_state: on
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.dnremote5
+      to: "on"
+  action:
+    - service: light.toggle
+      entity_id: light.kitchensink
+
+- id: 11941451-10b7-4021-846a-613b8f920238
+  alias: Outside button_dnremote4
+  initial_state: on
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.dnremote4
+      to: "on"
+  action:
+    - service: light.toggle
+      entity_id: light.garagetop_light_switch
+
+- id: 58e44e55-e295-46e7-95bb-7e37208fa5ec
+  alias: Garage button_dnremote9
+  initial_state: on
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.dnremote9
+      to: "on"
+  action:
+    - service: light.toggle
+      entity_id: light.garagefront_light
+
+- id: b013a8fc-eacf-4249-96cf-bf0cfb8b8e87
+  alias: Cabinet_light
+  initial_state: on
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.dnremote8
+      to: "on"
+  action:
+    - service: light.toggle
+      entity_id: light.cabinetlight
+
+- id: a45bfcbc-2afc-403b-b359-0b9ea4a2908c
+  alias: jims_computer_light_dnremoteC
+  initial_state: on
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.dnremotec
+      to: "on"
+  action:
+    - service: light.toggle
+      entity_id: light.jims_computer_light
+
+#####################################################
+# Kitchen Long Press                                #
+#####################################################
+- id: 47ee67be-946b-4b8a-964a-622884e06f11
+  alias: Kitchen down lights long press
+  initial_state: on
+  trigger:
+    platform: mqtt
+    topic: KitchenSink/LongToggle
+  action:
+    - service: light.toggle
+      entity_id: light.kitchen_down_lights
+
+####################################################
+# Office Light Button                              #
+####################################################
+- id: 36d673e0-6732-4c89-9c05-e99ec815b58d
+  alias: Toggle Office Light 1
+  initial_state: on
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.office_light_1
+      to: "on"
+  action:
+    - service: light.toggle
+      entity_id: light.grp_mom_office
+
+- id: f00ef2fa-fec8-41ee-99a1-6548227b0e69
+  alias: Toggle Office Light 2
+  initial_state: on
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.office_light_2
+      to: "on"
+  action:
+    - service: light.toggle
+      entity_id:
+        - light.office_track_jim_bulb
+
+####################################################
+# Porch / Hall Lights                              #
+####################################################
+- id: d84904da-2592-42d8-abdd-e453ea1640ab
+  alias: Trigger Front Porch Light
+  initial_state: on
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.front_door_open_433
+      to: "on"
+  action:
+    - service: light.turn_on
+      entity_id: light.fp_socket
+
+- id: 2635151e-3fbb-4fe5-b00c-55b9a0393753
+  alias: Trigger Back Porch Light
+  initial_state: on
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.back_door_open_433
+      to: "on"
+  action:
+    - service: light.turn_on
+      entity_id: light.b_porch_socket
+
+- id: 341558ae-4f1f-4796-8a89-1667571593d9
+  alias: Trigger Basement Hall Light
+  initial_state: on
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.side_door_open_433
+      to: "on"
+  action:
+    - service: light.turn_on
+      entity_id:
+        - light.bmt_hall_socketu
+        - light.bmt_hall_socketd
+
+- id: edaafacf-6c34-47d2-9dda-bcea8d4232a4
+  alias: Broadcom Brick Reset
+  description: 'Reset the dam RM3 that is mose always offline. POS!'
+  trigger:
+  - platform: state
+    entity_id:
+    - input_button.broadlink_rm3_reset
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 26a0f288f760db5d58d9723a73dc9f7d
+    entity_id: switch.sonoff_1000dbf4a6_1
+    domain: switch
+  - service: script.media_player_boink
+    data: {}
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - type: turn_on
+    device_id: 26a0f288f760db5d58d9723a73dc9f7d
+    entity_id: switch.sonoff_1000dbf4a6_1
+    domain: switch
+  mode: single

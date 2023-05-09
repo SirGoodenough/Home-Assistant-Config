@@ -1,0 +1,19 @@
+- trigger:
+    - platform: time_pattern
+      id: This will it update every night
+      hours: "0"
+      minutes: "0"
+    - platform: homeassistant
+      id: This will update it at HA start
+      event: start
+  sensor:
+      - name: "xmas_season_enable"
+        unique_id: c5086efc-dc1c-4f85-b04a-21fa74bba5ab
+        state:  >
+          {% set today = states('sensor.date').split('-') %}
+          {% set month = today[1]|int %}
+          {% set day = today[2]|int %}
+          {{ month > 10 or
+              month == 1 and day <= 5 }}
+        attributes:
+          friendly_name: "Christmas Season Enable"

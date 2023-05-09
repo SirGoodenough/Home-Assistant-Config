@@ -1,0 +1,98 @@
+shell_command:
+  generic_page: 'curl -X POST -H ''Content-type:application/json'' --data ''{"message":"{{ message }}"}'' {{ webhook }}'
+    #
+    # This is used to send the page webhook to Doc. 
+    #
+    # The variables message and webhook are pulled from the calling script. 
+
+automation:
+  ####################################################
+  # Page DrZzs                                       #
+  ####################################################
+  - id: 626ef3ae-aa7c-4c57-bfc8-ec3c834cd5e6
+    alias: Doc Message List
+    mode: single
+    max_exceeded: silent
+    initial_state: on
+    trigger:
+      - platform: state
+        entity_id: input_select.doc_messages
+    condition:
+      and:
+      - "{{ trigger.to_state.state != 'off' }}"
+      - "{{ trigger.to_state.state != '' }}"
+    action:
+      - alias: 'So I hear it (optional)'
+        service: shell_command.generic_page
+        data:
+          message: 'Sent {{ trigger.to_state.state }}'
+          webhook: !secret chaloupkabode_alert
+      - alias: So Doc Hears it
+        service: shell_command.generic_page
+        data:
+          message: 'SG says {{ trigger.to_state.state }}'
+          webhook: !secret DrZzsPage
+      - alias: Reset the list
+        service: input_select.select_option
+        data:
+          option: "off"
+        target:
+          entity_id:
+            - input_select.doc_messages
+      #
+      # Get the secret webhook URL that is stored in a secret from Doc.
+      #  I don't give out his webhooks.
+      #
+      # This is the magic that sends the messages.
+      #  You need to create a input_select helper to reference above.
+      #  The last item on the list needs to be the word "off".
+      #  That is used in the magic.
+      #  The other words are what you are sending to Doc on the page command.
+      #  I have things like check chat, camera, hi, stuff like that.
+      #  The repeating part of the message should be changed for other people
+      #  like mine has "SG says". Then Doc knows who's talking to him.
+      #
+      # The 'So I hear it' service is part of the optional quality control
+      #  check in the other automation, and you can skip if you don't want
+      #  to hear what you selected come out of your speaker as well.
+      #
+      # The logic is you have the input_select in your dashboard somewhere.
+      #  You go in and select one of the messages to send from the list you made.
+      #  The change to the list selection triggers the automation and sends
+      #  the message selected. The automation then sets the list back to "off"
+      #  so that you can select something again.
+      #  The "off" selection is prevented from sending a trigger
+      #  if you select it from the list.
+
+  ####################################################
+  # Test Page Local                                  #
+  ####################################################
+  - id: a67f47dc-209c-4198-b885-c81179bf0dc1
+    alias: webhook_to_tts
+    description: Push a message to a speaker as sent from a webhook.
+    trigger:
+    - platform: webhook
+      webhook_id: -xsuvHvmEc19Cfnnvpt_sHvbV
+      allowed_methods:
+        - POST
+        - PUT
+      local_only: false
+    condition: []
+    action:
+      - service: tts.cloud_say
+        data:
+          entity_id: media_player.kitchen_speaker
+          message: '{{ trigger.json.message }}'
+          language: en-CA
+          options:
+            gender: male
+    mode: queued
+      #
+      # This one is optional and I use it as a test of each page sent.
+      #  It is the same automation Doc uses on his end to play the message you send.
+      #  I have created a local to my system webhook and I send the message to my local
+      #  and to Doc's. That way I hear what he hears.
+      #
+      # If you don't have Nabu-Casa, change the media player code to your liking.
+      #
+      # Call it quality control...

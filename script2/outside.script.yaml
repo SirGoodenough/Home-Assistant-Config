@@ -1,0 +1,63 @@
+---
+  #####################################################
+  # Outside Lights on                                 #
+  #####################################################
+  garage_outside_lights_on:
+    alias: Outside Lights on
+    sequence:
+      - service: light.turn_on
+        data:
+          entity_id: 
+            - light.garagesidelight3_switch
+            - light.garagetop_light_switch
+            - light.fp_rf_relay
+            - light.b_porch_relay
+
+  #####################################################
+  # Outside Lights off                                #
+  #####################################################
+  garage_outside_lights_off:
+    alias: Outside Lights off
+    sequence:
+      - service: light.turn_off
+        data:
+          entity_id: 
+            - light.garagesidelight3
+            - light.garagetop_light
+            - light.fp_socket
+            - light.b_porch_socket
+
+  #####################################################
+  # Outside Lights Party Mode                         #
+  #####################################################
+  party_time:
+    alias: Party Time
+    sequence:
+    - service: mqtt.publish
+      data:
+        "topic": "Yard/cmnd/event"
+        "payload": "PARTY"
+    - service: script.turn_on
+      entity_id:
+        - script.garage_outside_lights_on
+
+  #####################################################
+  # Outside & Garage Lights Chill Mode                #
+  #####################################################
+  chill_time:
+    alias: Chill Time
+    sequence:
+    - alias: Outside Lights to normal mode
+      service: mqtt.publish
+      data:
+        "topic": "Yard/cmnd/event"
+        "payload": "CHILL"
+    - alias: Inside Garage Lights to normal mode
+      service: mqtt.publish
+      data:
+        "topic": "Garage/cmnd/event"
+        "payload": "CHILL"
+    - alias: Outside Lights off
+      service: script.turn_on
+      entity_id:
+        - script.garage_outside_lights_off
