@@ -100,11 +100,11 @@ home-assistant.log.*remote_cmd.yaml
 **secrets.yaml
 shell_command.yaml
 **/test.yaml
-/zigbee2mqtt/*.json
-/zigbee2mqtt/*.yaml
-/zigbee2mqtt/.configuration.*
-**/.esphome
-**/.exphome/*
+/config/zigbee2mqtt/*.json
+/config/zigbee2mqtt/*.yaml
+/config/zigbee2mqtt/.configuration.*
+**/esphome
+**/esphome/*
 
 .git-credentials
 
