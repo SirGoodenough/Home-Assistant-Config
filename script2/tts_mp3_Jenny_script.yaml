@@ -50,14 +50,11 @@ tts_final_flush:
       cloud_language: en-AU
       speaker_gender: male
       speaker_target: media_player.jen_group
-      announcement_message: '{{ ("This ain''t a song for the broken-hearted","No silent
-        prayer for faith-departed","And i ain''t gonna be just a face in the crowd","You''re
-        gonna hear my voice when i shout it out loud","It''s my life. It''s now or
-        never.","But i ain''t gonna live forever.","I just want to live while I''m
-        alive","My heart is like an open highway","Like Frankie said, i did it my
-        way","It''s now or never.","Yeah, this is for the ones who stood their ground","For
-        Tommy and Gina, who never backed down","Tomorrow''s getting harder, make no
-        mistake","Luck ain''t even lucky, got to make your own break") |random }}'
+      announcement_message: >-
+        {% set I = range(0, 3) | random | int(0) %}
+        {% set source = states.sensor.qotd.attributes.entries[I]['title'] %}
+        {% set quote = states.sensor.qotd.attributes.entries[I]['summary'] %}
+        {{ quote + ".\n  quote by " + source }}
   icon: mdi:paper-roll-outline
 tts_mister_message:
   alias: TTS Mister Message
