@@ -136,6 +136,10 @@
       {% else %}
         {{ states( alarmtype ) }}
       {% endif %}
+    availability: >-
+      {% from 'avail.jinja' import avail %}
+      {{- avail(['sensor.smart_code_with_home_connect_technology_alarmtype',
+      'sensor.smart_code_with_home_connect_technology_alarmlevel']) | bool -}}
 
 ##### Kwikset Lock Alarm Codes:
 ##### source:

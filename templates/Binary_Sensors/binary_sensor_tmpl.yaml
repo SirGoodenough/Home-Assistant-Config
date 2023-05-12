@@ -4,11 +4,11 @@
   #####################################################
   - name: 'Dark Outside'
     unique_id: ce7cb6b7-c666-494b-aa3c-4ed79b2f1092
-    state: >
-      {% if ( 
+    state: >-
+      {% if (
         states('sensor.openweathermap_cloud_coverage') | is_defined ) %}
           {% set elev = state_attr("sun.sun", "elevation") | int(0) %}
-          {% set cloud = sensor.cloud_cover_average | float(100) %}
+          {% set cloud = 'sensor.cloud_cover_average' | float(100) %}
           {% if ( elev < 6 ) %}
             true
           {% elif ( elev < 10 and cloud > 51 ) %}
@@ -26,10 +26,9 @@
       {# This is using openweathermap integration for weather & t-sma Filter. #}
       {# https://www.home-assistant.io/integrations/openweathermap #}
       {# https://www.home-assistant.io/integrations/filter/#time-simple-moving-average #}
-    availability: >
-      {% set items = ['sun.sun','weather.openweathermap'] %}
-      {{ expand(items)|rejectattr('state','in',['unknown','unavailable'])
-        |list|count == items|count }}
+    availability: >-
+      {% from 'avail.jinja' import avail %}
+      {{- avail(['sun.sun','sensor.openweathermap_cloud_coverage','sensor.cloud_cover_average']) | bool -}}
     icon: mdi:sun-clock
     attributes:
       friendly_name: "Dark Outside"
@@ -37,7 +36,7 @@
   - name: 'sunlight_pct'
     unique_id: 2d79fa6d-8ab2-4f64-9e29-994c49650bd4
     unit_of_measurement: '%'
-    state: >
+    state: >-
       {%- set elevation = state_attr('sun.sun','elevation') | float %}
       {%- set cloud_coverage = states('sensor.openweathermap_cloud_coverage') | float %}
       {%- set cloud_factor = (1 - (0.75 * ( cloud_coverage / 100) ** 3 )) %}
@@ -51,10 +50,9 @@
       {%- set adjusted_elevation = adjusted_elevation * 100 %}
       {%- set brightness = adjusted_elevation * cloud_factor %}
       {{ brightness | round }}
-    availability: >
-      {% set items = ['sun.sun','weather.openweathermap'] %}
-      {{ expand(items)|rejectattr('state','in',['unknown','unavailable'])
-        |list|count == items|count }}
+    availability: >-
+      {% from 'avail.jinja' import avail %}
+      {{- avail(['sun.sun','weather.openweathermap_cloud_coverage']) | bool -}}
     icon: mdi:sun-angle
     attributes:
       friendly_name: "Sunlight Percentage"
@@ -64,7 +62,7 @@
     device_class: power
     delay_off:
       minutes: 7
-    state: >
+    state: >-
       {% if (is_number('sensor.wash_machine_energy_current')) %}
         {% if (states('sensor.wash_machine_energy_current') | float( 0.06 ) > 0.085) %}
           true
@@ -74,17 +72,16 @@
       {% else %}
         false
       {% endif %}
-    availability: >
-      {% set items = ['sensor.wash_machine_energy_current'] %}
-      {{ expand(items)|rejectattr('state','in',['unknown','unavailable'])
-        |list|count == items|count }}
+    availability: >-
+      {% from 'avail.jinja' import avail %}
+      {{- avail(['sensor.wash_machine_energy_current']) | bool -}}
     icon: mdi:power
     attributes:
       friendly_name: "Washing Machine"
 
   - name: 'AC Enabled'
     unique_id: f885f9fd-b280-439b-81f0-3fdd713393f5
-    state: >
+    state: >-
       {% if (
         states('weather.home') | is_defined ) and
         states('weather.home.attributes.temperature') | is_defined %}
@@ -99,10 +96,9 @@
       {% endif %}
       {# This is using the MET integration for weather. Available conditions #}
       {# https://github.com/home-assistant/core/blob/70648d6e3b42bb0910e33e5c6a4e1e8c0789d82c/homeassistant/components/met/const.py #}
-    availability: >
-      {% set items = ['weather.home'] %}
-      {{ expand(items)|rejectattr('state','in',['unknown','unavailable'])
-        |list|count == items|count }}
+    availability: >-
+      {% from 'avail.jinja' import avail %}
+      {{- avail(['weather.home.attributes.temperature']) | bool -}}
     icon: mdi:snowflake-alert
     attributes:
       friendly_name: "AC Enabled"

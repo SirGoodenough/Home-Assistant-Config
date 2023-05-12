@@ -7,6 +7,9 @@
     state: >
       {{ states('sensor.tarantulapro_print_file') | replace('TEVOTPRO-','')
         | replace('.gcode','') }}
+    availability: >-
+      {% from 'avail.jinja' import avail %}
+      {{- avail(['sensor.tarantulapro_print_file']) | bool -}}
     attributes:
       friendly_name: "Tarantula Print File"
 
@@ -15,19 +18,8 @@
     state: >
       {{ states('sensor.shark_print_file') | replace('Lotmaxx-','')
         | replace('.gcode','') }}
+    availability: >-
+      {% from 'avail.jinja' import avail %}
+      {{- avail(['sensor.shark_print_file']) | bool -}}
     attributes:
       friendly_name: "Shark Print File"
-
-      # Replaced with 2022.4.0 functionality
-  # - unique_id: octoprint_soc_temperature_in_c
-  #   state: >
-  #     {{ "%.2f"|format((( states("sensor.octoprint_soc_temperature")
-  #       | float(0) ) -32) *5/9) }}
-  #   availability: >
-  #     {% set items = ['sensor.octoprint_soc_temperature'] %}
-  #     {{ expand(items)|rejectattr('state','in',['unknown','unavailable'])
-  #       |list|count == items|count }}
-  #   attributes:
-  #     friendly_name: "3D PI CPU"
-  #   device_class: temperature
-  #   unit_of_measurement: C

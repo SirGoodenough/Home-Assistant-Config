@@ -5,9 +5,9 @@
 automation: !include automations.yaml
 automation manual: !include_dir_merge_list ./automation2/
 automation dev: !include_dir_merge_list ./automationDev/
+assist_pipeline:
 # backup:
 bluetooth:
-cloud: !include cloud.yaml
 config:
 conversation:
 counter: !include counter.yaml
@@ -17,6 +17,7 @@ frontend: !include frontend.yaml
 hardware:
 history: !include history.yaml
 homeassistant_alerts:
+cloud: !include cloud.yaml
 image_upload:
 input_boolean:
 input_button:

@@ -1,3 +1,0 @@
-{% macro avail(entity_list) %}
-{{ (expand(entity_list)|rejectattr('state','in',['unknown','unavailable',''])|entity_list|count == entity_list|count) | default(0) }}
-{% endmacro %}
