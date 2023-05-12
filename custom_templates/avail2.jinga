@@ -1,0 +1,3 @@
+{% macro avail2(entity_list) %}
+false
+{% endmacro %}
