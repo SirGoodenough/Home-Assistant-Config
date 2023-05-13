@@ -15,7 +15,8 @@ dhcp:
 # energy
 frontend: !include frontend.yaml
 hardware:
-history: !include history.yaml
+history:
+# history: !include history.yaml
 homeassistant_alerts:
 cloud: !include cloud.yaml
 image_upload:

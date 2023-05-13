@@ -5,8 +5,8 @@
   #                                                  #
   ####################################################
 
-  sensor.house_humidity_main:
-    friendly_name: "Main Level Humidity"
+  sensor.humidity_group:
+    friendly_name: "House Humidity"
     icon: mdi:water-percent
     device_class: humidity
     unit_of_measurement: '%'
@@ -21,7 +21,7 @@
 
   ####################################################
   #                                                  #
-  #            Miscellanous Icons                    #
+  #           Miscellaneous Icons                    #
   #                                                  #
   ####################################################
 

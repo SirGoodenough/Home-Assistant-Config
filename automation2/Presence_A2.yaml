@@ -1,4 +1,4 @@
-- id: 5d87c33d-0599-40f7-a1e2-eec7c4009d38
+- id: e037105b-eb19-4f36-b789-4cb18af321f7
   alias: Person @ Cottage
   description: Webhook from Cottage that it detects a person
   trigger:
@@ -7,7 +7,7 @@
     allowed_methods:
       - POST
       - PUT
-    local_only: fakse
+    local_only: false
   condition: []
   action:
     - alias: "Notify phone(s)"
