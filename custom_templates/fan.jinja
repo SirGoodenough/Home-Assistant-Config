@@ -2,7 +2,7 @@
     {# The entity is the HA entity name of the sensor calling this template. #}
     {#   This is needed if the fan gets a RESULT that is not FanSpeed, like Buzzer. #}
     {#   The return will be whatever the sensor value currently is. #}
-    {# speed is the value_json from the RESULT topic. #}
+    {# speed is the value_json.FanSpeed from the RESULT topic. #}
     {#   This responds immediately on command so don't have to wait for the tele. #}
   {% if speed | is_number %}
     {% if speed== 1 %}
