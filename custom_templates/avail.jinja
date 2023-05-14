@@ -1,4 +1,8 @@
 {% macro avail(entity_list) %}
+    {# This get a list of entities. #}
+    {# The number of entities are counted. #}
+    {# The number of entities that are not unknown, unavailable, or empty are counted. #}
+    {# If the 2 counts are the same true is returned, else false, defaults to false. #}
   {{ ( expand(entity_list)|rejectattr('state','in',['unknown','unavailable',''])
     | list|count == entity_list|count ) | default (false) }}
 {% endmacro %}

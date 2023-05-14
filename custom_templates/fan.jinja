@@ -1,0 +1,20 @@
+{% macro fanspeed(entity,speed) %}
+    {# The entity is the HA entity name of the sensor calling this template. #}
+    {#   This is needed if the fan gets a RESULT that is not FanSpeed, like Buzzer. #}
+    {#   The return will be whatever the sensor value currently is. #}
+    {# speed is the value_json from the RESULT topic. #}
+    {#   This responds immediately on command so don't have to wait for the tele. #}
+  {% if speed | is_number %}
+    {% if speed== 1 %}
+      33
+    {% elif speed == 2 %}
+      66
+    {% elif speed == 3 %}
+      100
+    {% else %}
+      0
+    {% endif %}
+  {% else %}
+    {{ states(entity) }}
+  {% endif %}
+{% endmacro %}
