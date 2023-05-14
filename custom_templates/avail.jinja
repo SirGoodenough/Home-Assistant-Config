@@ -2,11 +2,3 @@
   {{ ( expand(entity_list)|rejectattr('state','in',['unknown','unavailable',''])
     | list|count == entity_list|count ) | default (false) }}
 {% endmacro %}
-
-{% macro avail2() %}
-  {{ true }}
-{% endmacro %}
-
-{% macro groot() %}
-  {{ "I am Groot" }}
-{% endmacro %}
