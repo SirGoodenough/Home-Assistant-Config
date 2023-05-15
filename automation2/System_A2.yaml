@@ -1,8 +1,8 @@
-#####################################################
-#                                                   #
-# System                                            #
-#                                                   #
-#####################################################
+####################################################
+#                                                  #
+# System                                           #
+#                                                  #
+####################################################
 
 ####################################################
 # Sonoff Bridge Demultiplexer                      #
@@ -14,44 +14,56 @@
   mode: queued
   # Gets info from RF-Bridges and sends them to the python script to generate
   #   individual MQTT topics for them.
-  #  Codes recieved from room devices.
   trigger:
     - platform: mqtt
       topic: RFBridge/tele/RESULT
     - platform: mqtt
       topic: RFBridge2/tele/RESULT
-  condition:
-    - condition: template
-      value_template: >
-        {{ trigger.payload_json is defined and
-          trigger.payload_json.RfReceived is defined and 
-          trigger.payload_json.RfReceived.Data is defined }}
   action:
-    service: python_script.rfbridge2_demux
-    data:
-      payload: "{{trigger.payload_json.RfReceived.Data}}"
+    - choose:
+      - alias: Codes received from room devices (RECEIVE).
+        conditions:
+        - condition: template
+          value_template: >-
+            {{ trigger.payload_json is defined and
+              trigger.payload_json.RfReceived is defined and 
+              trigger.payload_json.RfReceived.Data is defined }}
+          sequence:
+          - service: python_script.rfbridge2_demux
+            data:
+              payload: "{{trigger.payload_json.RfReceived.Data}}"
+      - alias: Codes generated from RF-Bridges (SEND).
+        conditions:
+        - condition: template
+          value_template: >-
+            {{ trigger.payload_json is defined and
+              trigger.payload_json.RfCode is defined }}
+          sequence:
+          - service: python_script.rfbridge2_demux
+            data:
+              payload: "{{trigger.payload_json.RfCode}}"
 
-- id: d6ad7aff-f806-4c75-ab1e-886cba8ef2f9
-  initial_state: on
-  alias: rfbridge_RfCode_demultiplexer
-  mode: queued
-  # Gets info from RF-Bridges and sends them to the python script to generate
-  #   individual MQTT topics for them.
-  #  Codes generated from RF-Bridges.
-  trigger:
-    - platform: mqtt
-      topic: RFBridge/tele/RESULT
-    - platform: mqtt
-      topic: RFBridge2/tele/RESULT
-  condition:
-    - condition: template
-      value_template: >
-        {{ trigger.payload_json is defined and
-          trigger.payload_json.RfCode is defined }}
-  action:
-    service: python_script.rfbridge2_demux
-    data:
-      payload: "{{trigger.payload_json.RfCode}}"
+# - id: d6ad7aff-f806-4c75-ab1e-886cba8ef2f9
+#   initial_state: on
+#   alias: rfbridge_RfCode_demultiplexer
+#   mode: queued
+#   # Gets info from RF-Bridges and sends them to the python script to generate
+#   #   individual MQTT topics for them.
+#   #  
+#   trigger:
+#     - platform: mqtt
+#       topic: RFBridge/tele/RESULT
+#     - platform: mqtt
+#       topic: RFBridge2/tele/RESULT
+#   condition:
+#     - condition: template
+#       value_template: >
+#         {{ trigger.payload_json is defined and
+#           trigger.payload_json.RfCode is defined }}
+#   action:
+#     service: python_script.rfbridge2_demux
+#     data:
+#       payload: "{{trigger.payload_json.RfCode}}"
 
 ####################################################
 # Dark out?                                        #
@@ -103,6 +115,10 @@
     - platform: homeassistant
       event: start
   action:
+    - alias: Make sure the Mayson Cool doesn't start by itself again
+      service: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.mayson_cool
     - delay: 00:00:22
     - alias: Make sure EZ Buttons are active
       service: script.tasmota_ez_button_for_update_and_restart_all_2022_01_07a
