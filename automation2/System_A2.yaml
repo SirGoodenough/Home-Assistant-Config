@@ -24,7 +24,7 @@
       - alias: Codes received from room devices (RECEIVE).
         conditions:
         - condition: template
-          value_template: >-
+          value_template: >
             {{ trigger.payload_json is defined and
               trigger.payload_json.RfReceived is defined and 
               trigger.payload_json.RfReceived.Data is defined }}
@@ -35,7 +35,7 @@
       - alias: Codes generated from RF-Bridges (SEND).
         conditions:
         - condition: template
-          value_template: >-
+          value_template: >
             {{ trigger.payload_json is defined and
               trigger.payload_json.RfCode is defined }}
           sequence:
