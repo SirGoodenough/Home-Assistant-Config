@@ -336,10 +336,6 @@
                   "entity": "sensor.bedroom_fan_si7021_temperature",
                   "name": "Bedroom Ceiling Temperature",
                   "detail": 2
-                },
-                {
-                  "type": "entity",
-                  "entity": "sensor.brthermostat"
                 }
               ]
             },
