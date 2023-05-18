@@ -14,56 +14,45 @@
   mode: queued
   # Gets info from RF-Bridges and sends them to the python script to generate
   #   individual MQTT topics for them.
+  #   RECIEVE
   trigger:
     - platform: mqtt
       topic: RFBridge/tele/RESULT
     - platform: mqtt
       topic: RFBridge2/tele/RESULT
+  condition:
+    - condition: template
+      value_template: >
+        {{ trigger.payload_json is defined and
+          trigger.payload_json.RfReceived is defined and 
+          trigger.payload_json.RfReceived.Data is defined }}
   action:
-    - choose:
-      - alias: Codes received from room devices (RECEIVE).
-        conditions:
-        - condition: template
-          value_template: >
-            {{ trigger.payload_json is defined and
-              trigger.payload_json.RfReceived is defined and 
-              trigger.payload_json.RfReceived.Data is defined }}
-          sequence:
-          - service: python_script.rfbridge2_demux
-            data:
-              payload: "{{trigger.payload_json.RfReceived.Data}}"
-      - alias: Codes generated from RF-Bridges (SEND).
-        conditions:
-        - condition: template
-          value_template: >
-            {{ trigger.payload_json is defined and
-              trigger.payload_json.RfCode is defined }}
-          sequence:
-          - service: python_script.rfbridge2_demux
-            data:
-              payload: "{{trigger.payload_json.RfCode}}"
+    service: python_script.rfbridge2_demux
+    data:
+      payload: "{{trigger.payload_json.RfReceived.Data}}"
 
-# - id: d6ad7aff-f806-4c75-ab1e-886cba8ef2f9
-#   initial_state: on
-#   alias: rfbridge_RfCode_demultiplexer
-#   mode: queued
-#   # Gets info from RF-Bridges and sends them to the python script to generate
-#   #   individual MQTT topics for them.
-#   #  
-#   trigger:
-#     - platform: mqtt
-#       topic: RFBridge/tele/RESULT
-#     - platform: mqtt
-#       topic: RFBridge2/tele/RESULT
-#   condition:
-#     - condition: template
-#       value_template: >
-#         {{ trigger.payload_json is defined and
-#           trigger.payload_json.RfCode is defined }}
-#   action:
-#     service: python_script.rfbridge2_demux
-#     data:
-#       payload: "{{trigger.payload_json.RfCode}}"
+
+- id: d6ad7aff-f806-4c75-ab1e-886cba8ef2f9
+  initial_state: on
+  alias: rfbridge_RfCode_demultiplexer
+  mode: queued
+  # Gets info from RF-Bridges and sends them to the python script to generate
+  #   individual MQTT topics for them.
+  #   SEND
+  trigger:
+    - platform: mqtt
+      topic: RFBridge/tele/RESULT
+    - platform: mqtt
+      topic: RFBridge2/tele/RESULT
+  condition:
+    - condition: template
+      value_template: >
+        {{ trigger.payload_json is defined and
+          trigger.payload_json.RfCode is defined }}
+  action:
+    service: python_script.rfbridge2_demux
+    data:
+      payload: "{{trigger.payload_json.RfCode}}"
 
 ####################################################
 # Dark out?                                        #

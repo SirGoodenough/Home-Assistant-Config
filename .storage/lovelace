@@ -4912,7 +4912,6 @@
             },
             {
               "camera_view": "live",
-              "aspect_ratio": "0%",
               "camera_image": "camera.tarantula_pro",
               "entities": [
                 {
