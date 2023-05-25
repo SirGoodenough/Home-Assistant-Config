@@ -18,7 +18,7 @@ hardware:
 history:
 # history: !include history.yaml
 homeassistant_alerts:
-cloud: !include cloud.yaml
+cloud:
 image_upload:
 input_boolean:
 input_button:

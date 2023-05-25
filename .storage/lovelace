@@ -728,6 +728,9 @@
                 {
                   "entity": "input_boolean.mayson_cool",
                   "secondary_info": "last-changed"
+                },
+                {
+                  "entity": "input_boolean.ac_enabled"
                 }
               ],
               "title": "Bedroom",
@@ -1135,6 +1138,16 @@
               ],
               "columns": 2,
               "square": false
+            },
+            {
+              "type": "entities",
+              "entities": [
+                "binary_sensor.bmtthermostat",
+                "sensor.kitchen_humidity_2",
+                "sensor.kitchen_temperature_2",
+                "binary_sensor.wkrmthermostat"
+              ],
+              "title": "ThermoPI"
             }
           ],
           "icon": "mdi:home-automation",
@@ -2258,7 +2271,7 @@
                   "entity": "input_button.broadlink_rm3_reset"
                 },
                 {
-                  "entity": "device_tracker.rassilon_mountcadon_duckdns_org_c8_f7_42_21_a6_a8_2"
+                  "entity": "device_tracker.rassilon_c8_f7_42_21_a6_a8"
                 }
               ],
               "title": "TVRemote",
@@ -4537,65 +4550,6 @@
           "badges": [],
           "cards": [
             {
-              "type": "grid",
-              "cards": [
-                {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "light.jims_computer_light"
-                },
-                {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "light.jims_computer_light"
-                },
-                {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "light.jims_computer_light"
-                },
-                {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "light.jims_computer_light"
-                },
-                {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "light.jims_computer_light"
-                },
-                {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "light.jims_computer_light"
-                }
-              ]
-            },
-            {
               "type": "entities",
               "entities": [
                 {
@@ -4626,13 +4580,17 @@
               "title": "Fan Auto Enable Blueprint Helper OfficeFancmndFanSpeed"
             },
             {
-              "show_name": true,
-              "show_icon": true,
-              "type": "button",
-              "tap_action": {
-                "action": "toggle"
-              },
-              "entity": "switch.bot_108e"
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "type": "entities",
+                  "entities": [
+                    {
+                      "entity": "input_number.aaaaaatest_wh_control"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },

@@ -5,7 +5,7 @@
   - name: "tarantula_print_file_short"
     unique_id: 80c2f947-57e2-4be7-ba5b-01c64e36a987
     state: >
-      {{ states('sensor.tarantulapro_print_file') | replace('TEVOTPRO-','')
+      {{ states('sensor.tarantulapro_print_file') | regex_replace("^[^_]*_","")
         | replace('.gcode','') }}
     availability: >-
       {% from 'avail.jinja' import avail %}
@@ -16,7 +16,7 @@
   - name: "shark_print_file_short"
     unique_id: 8e9c70ec-a1c6-4025-966a-7f55a5e30067
     state: >
-      {{ states('sensor.shark_print_file') | replace('Lotmaxx-','')
+      {{ states('sensor.shark_print_file') | regex_replace("^[^_]*_","")
         | replace('.gcode','') }}
     availability: >-
       {% from 'avail.jinja' import avail %}

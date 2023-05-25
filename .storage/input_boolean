@@ -155,9 +155,9 @@
         "id": "bed_cares_down"
       },
       {
+        "id": "mayson_cool",
         "name": "Mayson Cool",
-        "icon": "mdi:fan-auto",
-        "id": "mayson_cool"
+        "icon": "mdi:fan-auto"
       },
       {
         "name": "Poop",
@@ -188,6 +188,11 @@
         "name": "Poop Down",
         "icon": "mdi:paper-roll-outline",
         "id": "poop_down"
+      },
+      {
+        "id": "ac_enabled",
+        "name": "Seasonal AC Enabled",
+        "icon": "mdi:air-conditioner"
       }
     ]
   }
