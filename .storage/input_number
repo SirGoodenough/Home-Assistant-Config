@@ -74,7 +74,7 @@
         "id": "aaaaaatest_wh_control",
         "min": 60.0,
         "max": 145.0,
-        "name": "aaaaaatest wh control",
+        "name": "Water Heater Temp Control",
         "icon": "mdi:thermostat",
         "step": 5.0,
         "mode": "slider"

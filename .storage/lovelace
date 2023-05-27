@@ -909,57 +909,6 @@
               "state_color": true
             },
             {
-              "entities": [
-                {
-                  "entity": "light.b_porch_socket"
-                },
-                {
-                  "entity": "light.fp_socket"
-                },
-                {
-                  "entity": "light.garagetop_light"
-                },
-                {
-                  "entity": "light.garagesidelight3",
-                  "secondary_info": "last-changed"
-                },
-                {
-                  "entity": "script.garage_outside_lights_on"
-                },
-                {
-                  "entity": "script.garage_outside_lights_off"
-                },
-                {
-                  "entity": "binary_sensor.back_door_pir"
-                },
-                {
-                  "entity": "binary_sensor.yard_light_pir",
-                  "secondary_info": "last-changed"
-                },
-                {
-                  "entity": "binary_sensor.back_door_motion"
-                },
-                {
-                  "entity": "binary_sensor.front_door_pir"
-                },
-                {
-                  "entity": "binary_sensor.front_door_motion"
-                },
-                {
-                  "entity": "script.chill_time"
-                },
-                {
-                  "entity": "script.party_time"
-                },
-                {
-                  "entity": "binary_sensor.dark_outside"
-                }
-              ],
-              "show_header_toggle": true,
-              "title": "Outside",
-              "type": "entities"
-            },
-            {
               "type": "grid",
               "cards": [
                 {
@@ -1138,16 +1087,6 @@
               ],
               "columns": 2,
               "square": false
-            },
-            {
-              "type": "entities",
-              "entities": [
-                "binary_sensor.bmtthermostat",
-                "sensor.kitchen_humidity_2",
-                "sensor.kitchen_temperature_2",
-                "binary_sensor.wkrmthermostat"
-              ],
-              "title": "ThermoPI"
             }
           ],
           "icon": "mdi:home-automation",
@@ -4580,17 +4519,76 @@
               "title": "Fan Auto Enable Blueprint Helper OfficeFancmndFanSpeed"
             },
             {
-              "type": "vertical-stack",
-              "cards": [
+              "entities": [
                 {
-                  "type": "entities",
-                  "entities": [
-                    {
-                      "entity": "input_number.aaaaaatest_wh_control"
-                    }
-                  ]
+                  "entity": "light.b_porch_socket"
+                },
+                {
+                  "entity": "light.fp_socket"
+                },
+                {
+                  "entity": "light.garagetop_light"
+                },
+                {
+                  "entity": "light.garagesidelight3",
+                  "secondary_info": "last-changed"
+                },
+                {
+                  "entity": "script.garage_outside_lights_on"
+                },
+                {
+                  "entity": "script.garage_outside_lights_off"
+                },
+                {
+                  "entity": "binary_sensor.back_door_pir"
+                },
+                {
+                  "entity": "binary_sensor.yard_light_pir",
+                  "secondary_info": "last-changed"
+                },
+                {
+                  "entity": "binary_sensor.back_door_motion"
+                },
+                {
+                  "entity": "binary_sensor.front_door_pir"
+                },
+                {
+                  "entity": "binary_sensor.front_door_motion"
+                },
+                {
+                  "entity": "script.chill_time"
+                },
+                {
+                  "entity": "script.party_time"
+                },
+                {
+                  "entity": "binary_sensor.dark_outside"
                 }
-              ]
+              ],
+              "show_header_toggle": true,
+              "title": "Outside",
+              "type": "entities"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "binary_sensor.bmtthermostat"
+                },
+                {
+                  "entity": "sensor.kitchen_humidity_2"
+                },
+                {
+                  "entity": "sensor.kitchen_temperature_2"
+                },
+                {
+                  "entity": "binary_sensor.wkrmthermostat"
+                },
+                {
+                  "entity": "input_number.aaaaaatest_wh_control"
+                }
+              ],
+              "title": "ThermoPI"
             }
           ]
         },
