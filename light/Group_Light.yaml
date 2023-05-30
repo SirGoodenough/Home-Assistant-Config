@@ -61,5 +61,5 @@
     name: Studio
     unique_id: 0468c9fb-d0af-409f-bb28-dc173b9175cf
     entities:
-      - light.office_5
-      - light.office_6
+      - light.3a_smart_home_de_lxt56_ls27lx1_7_light
+      - light.feibit_inc_co_fb56_zcw11hg1_4_light
