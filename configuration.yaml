@@ -50,7 +50,12 @@ zone: !include zones.yaml
 # All the other stuff not covered in the default_config:
 
 camera: !include camera.yaml
-command_line: !include command_line.yaml
+command_line:
+  #- binary_sensor: !include_dir_merge_list command_line/binary_sensor/
+  #- cover: !include_dir_merge_list command_line/cover/
+  #- notify: !include_dir_merge_list command_line/notify/
+  - sensor: !include_dir_merge_named command_line/sensor/
+  #- switch: !include_dir_merge_list command_line/switch/
 device_tracker: !include device_tracker.yaml
 ffmpeg: !include ffmpeg.yaml
 generic_hygrostat: !include humidifer.yaml

@@ -1,6 +1,0 @@
-  # Count the lines of YAML in my set-up
-- sensor:
-  name: lines
-  unique_id: 4d677d66-68d8-43db-9c63-e715ecb5997f
-  scan_interval: 600
-  command: find . -name "*.yaml" -not -path "*/custom_components/*" -not -path "*/Purgatory/*" | xargs wc -l | grep "total" | grep "[0-9]*" -o
