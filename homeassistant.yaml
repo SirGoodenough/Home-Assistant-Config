@@ -15,6 +15,11 @@
         - !secret ZT_Network
         - !secret HA_Cottage_Net
   packages: !include_dir_named ./packages/
+  media_dirs:
+    local: /media
+    music: /media/int-sdb1
+    movies: /media/int-sb2/movies
+    tv: /media/int-sb2/tv
 
 #  external_url: !secret HA_Base_External
 #  internal_url: !secret HA_Base

@@ -29,7 +29,7 @@ input_text:
 logbook:
 logger: !include logger.yaml
 map:
-media_source: !include media.yaml
+media_source:
 mobile_app:
 my:
 person: !include person.yaml
@@ -50,6 +50,7 @@ zone: !include zones.yaml
 # All the other stuff not covered in the default_config:
 
 camera: !include camera.yaml
+command_line: !include command_line.yaml
 device_tracker: !include device_tracker.yaml
 ffmpeg: !include ffmpeg.yaml
 generic_hygrostat: !include humidifer.yaml

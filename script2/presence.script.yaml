@@ -3,6 +3,12 @@ personalert_notify:
   trace:
     stored_traces: 10
   fields:
+    testConstant:
+      name: Constant selector example
+      selector:
+        constant:
+          label: Enabled
+          value: true
     person:
       name: People to watch
       description:
