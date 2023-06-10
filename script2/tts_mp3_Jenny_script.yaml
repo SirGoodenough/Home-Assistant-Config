@@ -91,7 +91,6 @@ tts_final_flush:
         {% from 'avail.jinja' import avail %}
         {%- if avail(['sensor.qotd','sensor.qotd.attributes.entries[0]']) | bool -%}
           {% set I = range(0, 3) | random | int(0) %}
-          {{ I }}
           {% set source = states.sensor.qotd.attributes.entries[I]['title'] %}
           {% set quote = states.sensor.qotd.attributes.entries[I]['summary'] %}
         {% else %}
