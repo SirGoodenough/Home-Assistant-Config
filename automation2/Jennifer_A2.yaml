@@ -55,7 +55,7 @@
       service: media_player.volume_set
       data:
         entity_id: media_player.jennys_room_display
-        volume_level: .5
+        volume_level: .75
 
 #####################################################
 # Jens Mister                                       #

@@ -6,20 +6,46 @@ tts_first_flush:
       GTS_language: en
       TTS: tts.cloud_say
       cloud_language: de-DE
-      speaker_gender: female
+      speaker_gender: male
       speaker_target: media_player.jen_group
-      announcement_message: '{{ ("Es ist alles gleich, nur die Namen ändern sich","Jeder
-        Tag, es scheint, als würden wir vergeuden","Ein anderer Ort, wo die Gesichter so sind
-        kalt","Ich würde die ganze Nacht fahren, nur um nach Hause zu kommen","Ich bin ein Cowboy. Auf einem Stahl
-        Pferd reite ich. Ich bin gesucht. Tot oder lebendig","Manchmal schlafe ich, manchmal ist es
-        tagelang nicht","Die Menschen, die ich treffe, gehen immer getrennte Wege","Manchmal
-        du sagst den Tag an der Flasche, die du trinkst","Und Zeiten, in denen du allein bist,
-        Nun, alles, was Sie tun, ist zu denken","Oh, und ich reite. Yeah.","Und ich gehe durch diese Straßen.
-        Eine geladene Sechssaiter auf meinem Rücken" "Ich spiele für immer. Weil ich vielleicht nicht schaffe
-        it back","Ich war überall. Ich stehe immer noch aufrecht","Ich habe eine Million gesehen
-        Gesichter und ich habe sie alle gerockt","Und ich werde gesucht. (gesucht). tot oder lebendig","Und
-        Ich reite. (und ich reite). tot oder lebendig","Ich fahre immer noch. (Ich fahre immer noch). tot
-        oder lebendig") |random }}'
+      announcement_message: >-
+        {{ (
+          "Hallo Dunkelheit, mein alter Freund",
+          "Ich bin wieder gekommen, um mit dir zu reden",
+          "Weil eine Vision sich sanft schleicht",
+          "Während ich schlief, hinterließ sie ihre Samen",
+          "Und die Vision, die sich in meinem Gehirn festsetzte",
+          "Bleibt immer noch", "Im Klang der Stille",
+          "In ruhelosen Träumen ging ich allein",
+          "Enge Straßen aus Kopfsteinpflaster",
+          "Unter dem Heiligenschein einer Straßenlaterne",
+          "Ich drehte meinen Kragen der Kälte und Feuchtigkeit zu.",
+          "Als meine Augen vom Blitz eines Neonlichts durchbohrt wurden",
+          "Das teilte die Nacht",
+          "Und der Klang der Stille berührte",
+          "Und im nackten Licht sah ich",
+          "Zehntausend Menschen, vielleicht mehr.",
+          "Menschen reden, ohne zu sprechen",
+          "Menschen hören, ohne zuzuhören",
+          "Menschen schreiben Lieder, die Stimmen niemals teilen",
+          "Niemand hat es gewagt",
+          "Störe den Klang der Stille",
+          "Narren sagten: Ich, du weißt es nicht",
+          "Die Stille wächst wie ein Krebsgeschwür",
+          "Höre meine Worte, damit ich dich lehre",
+          "Nimm meine Arme, damit ich dich erreichen kann",
+          "Aber meine Worte fielen wie stille Regentropfen",
+          "Und hallten in den Quellen der Stille wider",
+          "Und das Volk verneigte sich und betete",
+          "Zu dem Neongott, den sie geschaffen hatten",
+          "Und das Schild ließ seine Warnung aufblitzen",
+          "In den Worten, die es formte",
+          "Und das Schild sagte: Die Worte der Propheten.",
+          "Sind an den Wänden der U-Bahn geschrieben",
+          "Und in Mietshäusern",
+          "Und in den Klängen der Stille geflüstert."
+        ) | random }}
+
   icon: mdi:toilet
 tts_middle_flush:
   alias: TTS Middle Flush
@@ -28,17 +54,28 @@ tts_middle_flush:
     input:
       GTS_language: en
       TTS: tts.cloud_say
-      cloud_language: '{{ ("en-GB", "en-US","en-AU") |random }}'
+      cloud_language: '{{ ("en-IN","en-IE") | random }}'
       speaker_gender: male
       speaker_target: media_player.jen_group
-      announcement_message: '{{ ("So close, no matter how far","Couldn''t be much
-        more from the heart","Forever trusting who we are","And nothing else matters","Never
-        opened myself this way","Life is ours, we live it our way","All these words,
-        i don''t just say","Trust i seek and i find in you","Every day for us something
-        new","Open mind for a different view","Never cared for what they do","Never
-        cared for what they know","But i know","It couldn''t be much more from the
-        heart","I never opened myself this way","Never cared for what they say","Never
-        cared for games they play","And i know, yeah, yeah") |random }}'
+      announcement_message: >-
+        {{ (
+          "So close, no matter how far",
+          "Couldn''t be much more from the heart",
+          "Forever trusting who we are",
+          "And nothing else matters",
+          "Life is ours, we live it our way",
+          "All these words, i don''t just say",
+          "Trust i seek and i find in you",
+          "Every day for us something new",
+          "Open mind for a different view",
+          "I never opened myself this way",
+          "Never cared for what they say",
+          "Never cared for games they play",
+          "Never cared for what they do",
+          "Never cared for what they know",
+          "But i know",
+          "And i know, yeah, yeah"
+        ) | random }}'
   icon: mdi:paper-roll
 tts_final_flush:
   alias: TTS Final Flush
@@ -47,15 +84,30 @@ tts_final_flush:
     input:
       GTS_language: en
       TTS: tts.cloud_say
-      cloud_language: en-AU
+      cloud_language: '{{ ("en-GB","en-US","en-AU","en-CA","en-IN","en-IE") | random }}'
       speaker_gender: male
       speaker_target: media_player.jen_group
       announcement_message: >-
-        {% set I = range(0, 3) | random | int(0) %}
-        {% set source = states.sensor.qotd.attributes.entries[I]['title'] %}
-        {% set quote = states.sensor.qotd.attributes.entries[I]['summary'] %}
-        {{ quote + ".\n  quote by " + source }}
-  icon: mdi:paper-roll-outline
+        {% from 'avail.jinja' import avail %}
+        {%- if avail(['sensor.qotd','sensor.qotd.attributes.entries[0]']) | bool -%}
+          {% set I = range(0, 3) | random | int(0) %}
+          {{ I }}
+          {% set source = states.sensor.qotd.attributes.entries[I]['title'] %}
+          {% set quote = states.sensor.qotd.attributes.entries[I]['summary'] %}
+        {% else %}
+          {% set source = "Chaloupka abode" %}
+          {% set quote = (
+            "That damn sensor is down, again.",
+            "There is no stupid quote today.",
+            "Quotes are silly, I'm just going to say something random.",
+            "How about I tell you a Dad joke instead?",
+            "Hey Google, what time is it?",
+            "Alexa, what time is it?"
+            )
+            | random
+          %}
+          {% endif %}
+        {{ quote + ".\n  quote by " + source }}  icon: mdi:paper-roll-outline
 tts_mister_message:
   alias: TTS Mister Message
   use_blueprint:
@@ -119,15 +171,4 @@ tts_bed_cares_warning:
   icon: mdi:sign-caution
 
 
-  # It''s all the same, only the names will change","Every
-  #       day, it seems we''re wastin'' away","Another place, where the faces are so
-  #       cold","I''d drive all night just to get back home","I''m a cowboy. On a steel
-  #       horse i ride. I''m wanted. Dead or alive","Sometimes i sleep, sometimes, it''s
-  #       not for days","The people i meet always go their separate ways","Sometimes
-  #       you tell the day by the bottle that you drink","And times when you''re alone,
-  #       well, all you do is think","Oh, and i ride.  Yeah.","And i walk these streets.
-  #       A loaded six-string on my back","I play for keeps. ''Cause i might not make
-  #       it back","I''ve been everywhere. Still I''m standing tall","I''ve seen a million
-  #       faces and I''ve rocked them all","And I''m wanted. (wanted). dead or alive","And
-  #       i ride. (and i ride). dead or alive","I still drive. (I still drive). dead
-  #       or alive
+

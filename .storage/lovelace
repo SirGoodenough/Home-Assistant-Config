@@ -4597,6 +4597,9 @@
                   "entity": "binary_sensor.wkrmthermostat"
                 },
                 {
+                  "entity": "binary_sensor.bmtthermostat"
+                },
+                {
                   "entity": "input_number.aaaaaatest_wh_control"
                 }
               ],

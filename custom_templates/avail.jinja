@@ -1,8 +1,15 @@
 {% macro avail(entity_list) %}
-    {# This get a list of entities. #}
-    {# The number of entities are counted. #}
-    {# The number of entities that are not unknown, unavailable, or empty are counted. #}
-    {# If the 2 counts are the same true is returned, else false, defaults to false. #}
-  {{ ( expand(entity_list)|rejectattr('state','in',['unknown','unavailable',''])
-    | list|count == entity_list|count ) | default (false) }}
+  {# This expects a list of entities.
+      The number of entities are counted.
+      The number of entities that are NOT unknown, unavailable, empty, or none are counted.
+      If the 2 counts are the same true is returned, else false, defaults to false.
+      REMEMBER!!
+      This always returns text, so cast to bool on the other end to be certain of the result.
+      SAMPLE USAGE:
+      {% from 'avail.jinja' import avail %}
+      {%- if avail(['sensor.qotd','sensor.qotd.attributes.entries[0]']) | bool -%}
+  #}
+  {{ ( expand(entity_list)|rejectattr('state','in',['unknown','unavailable','','none'])
+    |list|count == entity_list|count )
+  | default (false) }}
 {% endmacro %}
