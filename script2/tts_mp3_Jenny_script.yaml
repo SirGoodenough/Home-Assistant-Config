@@ -2,7 +2,7 @@ tts_first_flush:
   alias: TTS First Flush
   use_blueprint:
     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
-    input:
+    input: 
       GTS_language: en
       TTS: tts.cloud_say
       cloud_language: de-DE
@@ -45,7 +45,6 @@ tts_first_flush:
           "Und in Mietshäusern",
           "Und in den Klängen der Stille geflüstert."
         ) | random }}
-
   icon: mdi:toilet
 tts_middle_flush:
   alias: TTS Middle Flush
@@ -54,7 +53,7 @@ tts_middle_flush:
     input:
       GTS_language: en
       TTS: tts.cloud_say
-      cloud_language: '{{ ("en-IN","en-IE") | random }}'
+      cloud_language: "en-AU"
       speaker_gender: male
       speaker_target: media_player.jen_group
       announcement_message: >-
@@ -75,7 +74,7 @@ tts_middle_flush:
           "Never cared for what they know",
           "But i know",
           "And i know, yeah, yeah"
-        ) | random }}'
+        ) | random }}
   icon: mdi:paper-roll
 tts_final_flush:
   alias: TTS Final Flush
@@ -84,7 +83,7 @@ tts_final_flush:
     input:
       GTS_language: en
       TTS: tts.cloud_say
-      cloud_language: '{{ ("en-GB","en-US","en-AU","en-CA","en-IN","en-IE") | random }}'
+      cloud_language: "en-CA"
       speaker_gender: male
       speaker_target: media_player.jen_group
       announcement_message: >-
@@ -96,17 +95,16 @@ tts_final_flush:
         {% else %}
           {% set source = "Chaloupka abode" %}
           {% set quote = (
-            "That damn sensor is down, again.",
-            "There is no stupid quote today.",
-            "Quotes are silly, I'm just going to say something random.",
-            "How about I tell you a Dad joke instead?",
-            "Hey Google, what time is it?",
-            "Alexa, what time is it?"
-            )
-            | random
-          %}
+            "That damn sensor is down, again",
+            "There is no stupid quote today",
+            "Quotes are silly, I'm just going to say something random",
+            "How about I tell you a Dad joke instead",
+            "Hey Google, what time is it",
+            "Alexa, what time is it"
+          ) | random %}
           {% endif %}
-        {{ quote + ".\n  quote by " + source }}  icon: mdi:paper-roll-outline
+        {{ quote + ".\n  quote by " + source }}
+      icon: mdi:paper-roll-outline
 tts_mister_message:
   alias: TTS Mister Message
   use_blueprint:
