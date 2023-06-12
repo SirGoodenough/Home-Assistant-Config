@@ -1,5 +1,6 @@
 tts_first_flush:
   alias: TTS First Flush
+  icon: mdi:toilet
   use_blueprint:
     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input: 
@@ -45,9 +46,9 @@ tts_first_flush:
           "Und in Mietshäusern",
           "Und in den Klängen der Stille geflüstert."
         ) | random }}
-  icon: mdi:toilet
 tts_middle_flush:
   alias: TTS Middle Flush
+  icon: mdi:paper-roll
   use_blueprint:
     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
@@ -59,11 +60,11 @@ tts_middle_flush:
       announcement_message: >-
         {{ (
           "So close, no matter how far",
-          "Couldn''t be much more from the heart",
+          "Couldn't be much more from the heart",
           "Forever trusting who we are",
           "And nothing else matters",
           "Life is ours, we live it our way",
-          "All these words, i don''t just say",
+          "All these words, i don't just say",
           "Trust i seek and i find in you",
           "Every day for us something new",
           "Open mind for a different view",
@@ -75,9 +76,9 @@ tts_middle_flush:
           "But i know",
           "And i know, yeah, yeah"
         ) | random }}
-  icon: mdi:paper-roll
 tts_final_flush:
   alias: TTS Final Flush
+  icon: mdi:paper-roll-outline
   use_blueprint:
     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
@@ -104,9 +105,9 @@ tts_final_flush:
           ) | random %}
           {% endif %}
         {{ quote + ".\n  quote by " + source }}
-      icon: mdi:paper-roll-outline
 tts_mister_message:
   alias: TTS Mister Message
+  icon: mdi:sprinkler-fire
   use_blueprint:
     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
@@ -116,25 +117,25 @@ tts_mister_message:
       speaker_gender: male
       speaker_target: media_player.intercom_group
       announcement_message: No juice in the Bucket, mate.  Time to add the Vegemite.
-  icon: mdi:sprinkler-fire
 media_player_jens_neb:
   alias: Media Player Jens Neb
+  icon: mdi:fountain
   use_blueprint:
     path: SirGoodenough/play_media_file_script.yaml
     input:
       speaker_target: media_player.kitchen_speaker
       file_2_play: media-source://media_source/local/mp3/Mister.mp3
-  icon: mdi:fountain
 media_player_gong:
   alias: Media Player Gong
+  icon: mdi:ear-hearing
   use_blueprint:
     path: SirGoodenough/play_media_file_script.yaml
     input:
       speaker_target: media_player.jen_group
       file_2_play: media-source://media_source/local/mp3/Metal_Gong-Dianakc-109711828.mp3
-  icon: mdi:ear-hearing
 tts_bed_cares_warning:
   alias: TTS Jens Bed Cares Warning
+  icon: mdi:sign-caution
   use_blueprint:
     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
@@ -165,7 +166,3 @@ tts_bed_cares_warning:
       - delay: 00:00:05
       after_action:
       - delay: 00:00:06
-  icon: mdi:sign-caution
-
-
-
