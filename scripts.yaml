@@ -48,3 +48,31 @@ cube_long_short_control_bp:
     path: SirGoodenough/long_short_toggle_4_magic_cube.yaml
   mode: single
   icon: mdi:toggle-switch-variant
+'1686852435513':
+  alias: Moca Reset Serverroom 2
+  use_blueprint:
+    path: SirGoodenough/device_reset.yaml
+    input:
+      target_entity:
+      - switch.moca_reset
+      time_off:
+        hours: 0
+        minutes: 1
+        seconds: 59
+        days: 0
+  mode: single
+  icon: mdi:garage
+reset_garage_serverroom_2:
+  alias: Reset Garage Serverroom 2
+  use_blueprint:
+    path: SirGoodenough/device_reset.yaml
+    input:
+      target_entity:
+      - switch.smart_plug_with_two_usb_ports
+      time_off:
+        hours: 0
+        minutes: 0
+        seconds: 37
+        days: 0
+  mode: single
+  icon: mdi:garage

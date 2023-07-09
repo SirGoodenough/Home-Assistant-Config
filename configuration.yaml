@@ -81,7 +81,7 @@ python_script:
 recorder: !include recorder.yaml
 remote_command_line: !include remote_cmd.yaml
 rest_command: !include rest_command.yaml
-ring: !include ring.yaml
+# ring: !include ring.yaml
 sensor: !include_dir_merge_list ./sensor2/
 shell_command: !include shell_command.yaml
 sonoff: !include sonoff.yaml

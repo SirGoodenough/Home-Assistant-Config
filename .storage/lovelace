@@ -2177,15 +2177,17 @@
             {
               "type": "custom:firemote-card",
               "entity": "media_player.fire_tv_192_168_108_206",
+              "device_family": "amazon-fire",
               "device_type": "fire_tv_stick_lite",
               "compatibility_mode": "default",
-              "app_launch_1": "prime-video",
-              "app_launch_2": "netflix",
-              "app_launch_3": "disney-plus",
-              "app_launch_4": "hulu",
+              "scale": "64",
+              "app_launch_1": "paramount-plus",
+              "app_launch_2": "peacock",
+              "app_launch_3": "hulu",
+              "app_launch_4": "discovery-plus",
               "visible_name_text": "Jens TV",
               "name_position": "top",
-              "scale": "62"
+              "visible_name_text_color": "#ed333b"
             },
             {
               "show_name": true,
@@ -3669,6 +3671,132 @@
           "badges": [],
           "cards": [
             {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_absolute_pressure",
+                  "name": "Absolute Pressure"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_daily_rain_rate_piezo",
+                  "name": "Daily Rain Rate Piezo"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_dewpoint",
+                  "name": "Dewpoint"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_event_rain_rate_piezo",
+                  "name": "Event Rain Rate Piezo"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_feels_like_temperature",
+                  "name": "Feels like Temperature"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_hourly_rain_rate_piezo",
+                  "name": "Hourly Rain Rate Piezo"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_humidity",
+                  "name": "Humidity"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_indoor_dewpoint",
+                  "name": "Indoor Dewpoint"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_indoor_humidity",
+                  "name": "Indoor Humidity"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_indoor_temperature",
+                  "name": "Indoor Temperature"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_last_lightning_strike",
+                  "name": "Last Lightning strike"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_lightning_strike_distance",
+                  "name": "Lightning strike distance"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_lightning_strikes",
+                  "name": "Lightning strikes"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_max_daily_wind_gust",
+                  "name": "Max Daily Wind Gust"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_monthly_rain_rate_piezo",
+                  "name": "Monthly Rain Rate Piezo"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_outdoor_temperature",
+                  "name": "Outdoor Temperature"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_rain_rate_piezo",
+                  "name": "Rain Rate Piezo"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_relative_pressure",
+                  "name": "Relative Pressure"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_solar_lux",
+                  "name": "Solar Lux"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_solar_radiation",
+                  "name": "Solar Radiation"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_uv_index",
+                  "name": "UV Index"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_weekly_rain_rate_piezo",
+                  "name": "Weekly Rain Rate Piezo"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_wh57_battery",
+                  "name": "WH57 Battery"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_wh90_battery",
+                  "name": "WH90 Battery"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_wh90_capacitor",
+                  "name": "WH90 Capacitor"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_wind_direction",
+                  "name": "Wind Direction"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_wind_gust",
+                  "name": "Wind Gust"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_wind_speed",
+                  "name": "Wind Speed"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_windchill",
+                  "name": "Windchill"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_yearly_rain_rate_piezo",
+                  "name": "Yearly Rain Rate Piezo"
+                }
+              ],
+              "title": "ChaloupkaAbode Weather"
+            },
+            {
               "entities": [
                 {
                   "entity": "binary_sensor.dark_outside"
@@ -3695,21 +3823,15 @@
               "type": "entities"
             },
             {
+              "type": "iframe",
+              "url": "https://www.home-assistant.io",
+              "aspect_ratio": "50%"
+            },
+            {
               "type": "weather-forecast",
               "entity": "weather.home",
               "show_forecast": false,
               "theme": "Animated Weather Card"
-            },
-            {
-              "type": "weather-forecast",
-              "entity": "weather.home_hourly",
-              "show_forecast": false,
-              "theme": "Animated Weather Card"
-            },
-            {
-              "type": "iframe",
-              "url": "https://www.home-assistant.io",
-              "aspect_ratio": "50%"
             }
           ],
           "icon": "mdi:weather-lightning",
