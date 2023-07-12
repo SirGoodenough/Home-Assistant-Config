@@ -2180,7 +2180,7 @@
               "device_family": "amazon-fire",
               "device_type": "fire_tv_stick_lite",
               "compatibility_mode": "default",
-              "scale": "64",
+              "scale": "111",
               "app_launch_1": "paramount-plus",
               "app_launch_2": "peacock",
               "app_launch_3": "hulu",
@@ -5496,7 +5496,7 @@
               "app_launch_4": "hulu",
               "app_launch_5": "paramount-plus",
               "app_launch_6": "prime-video",
-              "scale": "66",
+              "scale": "90",
               "visible_name_text": "LR Remote",
               "name_position": "top"
             }
