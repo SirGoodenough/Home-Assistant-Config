@@ -88,8 +88,7 @@ tts_final_flush:
       speaker_gender: male
       speaker_target: media_player.jen_group
       announcement_message: >-
-        {% from 'avail.jinja' import avail %}
-        {%- if avail(['sensor.qotd','sensor.qotd.attributes.entries[0]']) | bool -%}
+        {%- if states.sensor.qotd.attributes.entries[3] | default('') -%}
           {% set I = range(0, 3) | random | int(0) %}
           {% set source = states.sensor.qotd.attributes.entries[I]['title'] %}
           {% set quote = states.sensor.qotd.attributes.entries[I]['summary'] %}
