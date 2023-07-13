@@ -34,9 +34,9 @@ sensor:
     pin: GPIO21
     model: AM2302
     temperature:
-      name: "Basement Temperature"
+      name: "Garage Temperature"
       accuracy_decimals: 1
     humidity:
-      name: "Basement Humidity"
+      name: "Garage Humidity"
       accuracy_decimals: 1
     update_interval: 60s
