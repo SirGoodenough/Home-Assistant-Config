@@ -193,6 +193,11 @@
         "id": "ac_enabled",
         "name": "Seasonal AC Enabled",
         "icon": "mdi:air-conditioner"
+      },
+      {
+        "id": "rain",
+        "name": "Rain",
+        "icon": "mdi:weather-rainy"
       }
     ]
   }

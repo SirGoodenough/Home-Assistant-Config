@@ -56,7 +56,12 @@ tts_front_doorbell:
       cloud_language: en-US
       speaker_gender: male
       speaker_target: media_player.intercom_group
-      announcement_message: Someone is at the front door
+      announcement_message: >
+        {% if 'state.input_boolean.rain' %}
+          "It's raining. Please check for packages front door."
+        {% else %}
+          "Someone rang the front doorbell."
+        {% endif %} 
   icon: mdi:doorbell-video
 media_player_front_doorbell_motion:
   alias: Media Player Front DoorBell Motion
@@ -64,7 +69,12 @@ media_player_front_doorbell_motion:
     path: SirGoodenough/play_media_file_script.yaml
     input:
       speaker_target: media_player.intercom_group
-      file_2_play: media-source://media_source/local/mp3/Ring_-_Windchimes.mp3
+      file_2_play: >
+        {% if 'state.input_boolean.rain' %}
+          media-source://media_source/local/mp3/big-rain-drops-2-6824.mp3
+        {% else %}
+          media-source://media_source/local/mp3/Ring_-_Windchimes.mp3
+        {% endif %}
   icon: mdi:motion-sensor
 media_player_front_doorbell_ding:
   alias: Media Player Front DoorBell Ding

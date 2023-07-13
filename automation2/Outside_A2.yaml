@@ -20,3 +20,54 @@
         seconds: 15
     action:
     - service: script.media_player_mail
+
+  - id: 7cd36a72-c114-4141-b167-0641cdb1a43f
+    alias: Is it raining?
+    initial_state: on
+    trigger:
+      - platform: time_pattern
+        minutes: 14
+    action:
+    if:
+      - alias: Rain detected
+        condition: numeric_state
+        entity_id: sensor.gw2000b_v2_2_4_hourly_rain_rate_piezo
+        above: 0
+    then:
+      - alias: "Toggle to on"
+        service: input_boolean.turn_on
+        data:
+          entity_id: input_boolean.rain
+    else:
+      - alias: "Toggle to off"
+        service: input_boolean.turn_off
+        data:
+          entity_id: input_boolean.rain
+
+  - id: 01cf2959-f88c-4d21-bd7c-ad0b7a364482
+    alias: Announce when rain starts and if raining in the morning
+    initial_state: on
+    trigger:
+      - platform: state
+        entity_id: input_boolean.rain
+        from: "off"
+        to: "on"
+        id: event_announce
+      - platform: time
+        at: "6:01:11"
+        id: morning_announce
+      - platform: time
+        at: "9:22:51"
+        id: morning_announce_sg
+    condition:
+      and:
+        - alias: "Send the message if the Boss is not sleeping"
+          condition: time
+          after: "6:00:42"
+          before: "22:08:17"
+        - alias: "Cancel the morning announce if not raining"
+          condition: state
+          entity_id: input_boolean.rain
+          state: "on"
+    action:
+      service: script.tts_its_raining
