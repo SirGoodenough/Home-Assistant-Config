@@ -8,8 +8,14 @@ tts_side_doorbell:
       cloud_language: en-US
       speaker_gender: male
       speaker_target: media_player.intercom_group
-      announcement_message: Someone is at the side door
+      announcement_message: >
+        {% if states('input_boolean.rain') == 'on' %}
+          "It's raining. Please check side door for packages."
+        {% else %}
+          "Someone rang the side doorbell."
+        {% endif %} 
   icon: mdi:bell-circle-outline
+
 media_player_side_doorbell:
   alias: Media Player Side DoorBell
   use_blueprint:
@@ -17,6 +23,7 @@ media_player_side_doorbell:
     input:
       speaker_target: media_player.home_group
   icon: mdi:bell-circle
+
 media_player_back_doorbell_motion:
   alias: Media Player Back DoorBell Motion
   use_blueprint:
@@ -26,6 +33,7 @@ media_player_back_doorbell_motion:
       "media-source://media_source/local/mp3/steps.mp3")|random }}'
       speaker_target: media_player.intercom_group
   icon: mdi:motion-sensor
+
 tts_back_doorbell:
   alias: TTS Back Doorbell
   use_blueprint:
@@ -36,8 +44,14 @@ tts_back_doorbell:
       cloud_language: en-US
       speaker_gender: male
       speaker_target: media_player.intercom_group
-      announcement_message: Someone is at the back door
+      announcement_message: >
+        {% if states('input_boolean.rain') == 'on' %}
+          "It's raining. Please check Back door for packages."
+        {% else %}
+          "Someone rang the back doorbell."
+        {% endif %} 
   icon: mdi:doorbell
+
 media_player_back_doorbell_ding:
   alias: Media Player Back DoorBell Ding
   use_blueprint:
@@ -46,6 +60,7 @@ media_player_back_doorbell_ding:
       speaker_target: media_player.home_group
       file_2_play: media-source://media_source/local/mp3/doorbell-2.mp3
   icon: mdi:doorbell-video
+
 tts_front_doorbell:
   alias: TTS Front Doorbell
   use_blueprint:
@@ -57,12 +72,13 @@ tts_front_doorbell:
       speaker_gender: male
       speaker_target: media_player.intercom_group
       announcement_message: >
-        {% if 'state.input_boolean.rain' %}
-          "It's raining. Please check for packages front door."
+        {% if states('input_boolean.rain') == 'on' %}
+          "It's raining. Please check front door for packages."
         {% else %}
           "Someone rang the front doorbell."
         {% endif %} 
   icon: mdi:doorbell-video
+
 media_player_front_doorbell_motion:
   alias: Media Player Front DoorBell Motion
   use_blueprint:
@@ -70,12 +86,13 @@ media_player_front_doorbell_motion:
     input:
       speaker_target: media_player.intercom_group
       file_2_play: >
-        {% if 'state.input_boolean.rain' %}
+        {% if states('input_boolean.rain') == 'on' %}
           media-source://media_source/local/mp3/big-rain-drops-2-6824.mp3
         {% else %}
           media-source://media_source/local/mp3/Ring_-_Windchimes.mp3
         {% endif %}
   icon: mdi:motion-sensor
+
 media_player_front_doorbell_ding:
   alias: Media Player Front DoorBell Ding
   use_blueprint:

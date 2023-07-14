@@ -91,6 +91,21 @@
         addon: 3490a758_remote_backup
 
 ####################################################
+# check for blueprint updates                      #
+####################################################
+- id: 28062904-bd08-44fc-9021-13d8ad4aa054
+  alias: _Blueprints Update
+  description: ""
+  trigger:
+    - platform: time_pattern
+      hours: "12"
+  condition: []
+  action:
+    - service: shell_command.blueprints_update
+      data: {}
+  mode: single
+
+####################################################
 # MQTT Restart Tasmota                             #
 ####################################################
 ####    Use this automation to get all your devices in sync, including
@@ -170,6 +185,9 @@
   - service: script.tts_say_broadlink_reset
   mode: single
 
+####################################################
+# Restart Drail if its Dead                        #
+####################################################
 - id: '0bca4786-e971-442f-bf14-6ef122038dfa'
   alias: Drall is Down
   description: Drall Alert
@@ -186,20 +204,8 @@
           entities: media_player.kitchen_speaker
 
 ####################################################
-# check for blueprint updates                      #
+# Restart Garage if its Dead                       #
 ####################################################
-- id: 28062904-bd08-44fc-9021-13d8ad4aa054
-  alias: _Blueprints Update
-  description: ""
-  trigger:
-    - platform: time_pattern
-      hours: "12"
-  condition: []
-  action:
-    - service: shell_command.blueprints_update
-      data: {}
-  mode: single
-
 - id: '1675983632024'
   alias: Garage Reset 2
   description: Reset the House MOCA to get the garage back online
@@ -220,10 +226,10 @@
           and:
           - condition: state
             entity_id: device_tracker.moca_g
-            state: home
+            state: "home"
           - condition: state
             entity_id: device_tracker.moca_h
-            state: home
+            state: "home"
           sequence:
           - alias: Magically fixed itself
             service: persistent_notification.dismiss
@@ -235,24 +241,24 @@
             conditions:
             - condition: state
               entity_id: device_tracker.moca_g
-              state: home
+              state: "home"
           - condition: not
             conditions:
             - condition: state
               entity_id: device_tracker.moca_h
-              state: home
+              state: "home"
           sequence:
           - alias: Voice outage 1
             service: script.say_a_thing
             data:
               message: Garage outage 1. First try.
               entities: media_player.kitchen_speaker
-          - alias: Reset the house moca
-            service: script.moca_reset_serverroom_2
+          - alias: Reset the moca
+            service: reset_garage_serverroom_2
           - alias: Add a delay so notification stays up while things are rebooting
             delay:
               hours: 0
-              minutes: 3
+              minutes: 4
               seconds: 11
               milliseconds: 4
           - alias: Kill the notification assuming it's fixed
@@ -269,10 +275,10 @@
           and:
           - condition: state
             entity_id: device_tracker.moca_g
-            state: home
+            state: "home"
           - condition: state
             entity_id: device_tracker.moca_h
-            state: home
+            state: "home"
           sequence:
           - alias: Magically fixed itself
             service: persistent_notification.dismiss
@@ -284,25 +290,25 @@
             conditions:
             - condition: state
               entity_id: device_tracker.moca_g
-              state: home
+              state: "home"
           - condition: not
             conditions:
             - condition: state
               entity_id: device_tracker.moca_h
-              state: home
+              state: "home"
           sequence:
           - alias: Voice outage 2
             service: script.say_a_thing
             data:
               message: Garage outage 2. Second try.
               entities: media_player.kitchen_speaker
-          - alias: Reset the house moca
-            service: script.moca_reset_serverroom_2
+          - alias: Reset the moca
+            service: reset_garage_serverroom_2
           - alias: Add a delay so notification stays up while things are rebooting
               2
             delay:
               hours: 0
-              minutes: 3
+              minutes: 4
               seconds: 11
               milliseconds: 4
           - alias: Kill the notification assuming it's fixed
@@ -319,10 +325,10 @@
           and:
           - condition: state
             entity_id: device_tracker.moca_g
-            state: home
+            state: "home"
           - condition: state
             entity_id: device_tracker.moca_h
-            state: home
+            state: "home"
           sequence:
           - alias: Magically fixed itself
             service: persistent_notification.dismiss
@@ -334,24 +340,20 @@
             conditions:
             - condition: state
               entity_id: device_tracker.moca_g
-              state: home
+              state: "home"
           - condition: not
             conditions:
             - condition: state
               entity_id: device_tracker.moca_h
-              state: home
+              state: "home"
           sequence:
           - alias: Voice outage 3
             service: script.say_a_thing
             data:
               message: Garage outage 3. Final try.
               entities: media_player.kitchen_speaker
-          - alias: Reset house moca and the garage network as 3rd try
-            parallel:
-              - alias: Reset the house moca
-                service: script.moca_reset_serverroom_2
-              - alias: Reset the garage server
-                service: script.reset_garage_serverroom_2
+          - alias: Reset the moca
+            service: reset_garage_serverroom_2
           - alias: Add a delay so notification stays up while things are rebooting
             delay:
               hours: 0
@@ -372,87 +374,3 @@
         data:
           message: Garage is dead!
           entities: media_player.kitchen_speaker
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# ####################################################
-# # Page DrZzs                                       #
-# ####################################################
-# - id: a67f47dc-209c-4198-b885-c81179bf0dc1
-#   alias: webhook_to_tts
-#   description: Push a message to a speaker as sent from a webhook.
-#   trigger:
-#   - platform: webhook
-#     webhook_id: -xsuvHvmEc19Cfnnvpt_sHvbV
-    # allowed_methods:
-    #   - POST
-    #   - PUT
-    # local_only: false
-#   condition: []
-#   action:
-#     - service: tts.cloud_say
-#       data:
-#         entity_id: media_player.kitchen_speaker
-#         message: '{{ trigger.json.message }}'
-#         options:
-#           gender: male
-#         language: en-CA
-#   mode: queued
-#       # Sending the webhook via shell_command integration: curl -X POST -H 'Content-type:application/json' --data '{"message":"{{message}}"}' https://hooks.nabu.casa/gAAA_and_the_rest_of_the_URL_here
-
-# - id: 626ef3ae-aa7c-4c57-bfc8-ec3c834cd5e6
-#   alias: Doc Message List
-#   mode: single
-#   max_exceeded: silent
-#   initial_state: on
-#   trigger:
-#     - platform: state
-#       entity_id: input_select.doc_messages
-#   condition:
-#     or:
-#     - "{{ trigger.to_state.state != '' }}"
-#     - "{{ trigger.to_state.state != 'off' }}"
-#   action:
-#     - alias: So I hear it
-#       service: shell_command.test_message
-#       data: {"message":"{{ trigger.to_state.state }}"}
-#     - alias: So Doc Hears it
-#       service: shell_command.drzzs_page
-#       data: {"message":"{{ trigger.to_state.state }}"}
-#     - alias: Reset the list
-#       service: input_select.select_option
-#       data:
-#         option: "off"
-#       target:
-#         entity_id:
-#           - input_select.doc_messages
-
-# - alias: say a thing
-#   sequence:
-#     service: script.say_a_thing
-#     data:
-#       message: message 1
-#       entities: media_player.kitchen_speaker

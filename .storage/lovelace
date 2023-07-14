@@ -749,6 +749,12 @@
                   "entity": "switch.moca_reset"
                 },
                 {
+                  "entity": "switch.moca_g"
+                },
+                {
+                  "entity": "script.reset_garage_serverroom_2"
+                },
+                {
                   "entity": "device_tracker.moca_h"
                 },
                 {

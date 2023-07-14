@@ -1,5 +1,24 @@
 ---
   #####################################################
+  # Garage Moca Reset                                 #
+  #####################################################
+  reset_garage_serverroom_2:
+    alias: Reset Garage Serverroom 2
+    use_blueprint:
+      path: SirGoodenough/device_reset.yaml
+      input:
+        target_entity:
+        - switch.moca_reset
+        - switch.moca_g
+        time_off:
+          hours: 0
+          minutes: 2
+          seconds: 21
+          days: 0
+    mode: single
+    icon: mdi:garage
+
+  #####################################################
   # Inner Garage Lights Work Mode                     #
   #####################################################
   work_time:

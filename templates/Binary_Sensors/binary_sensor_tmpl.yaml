@@ -4,58 +4,21 @@
   #####################################################
   - name: 'Dark Outside'
     unique_id: ce7cb6b7-c666-494b-aa3c-4ed79b2f1092
-    state: >-
-      {% if (
-        states('sensor.openweathermap_cloud_coverage') | is_defined ) %}
-          {% set elev = state_attr("sun.sun", "elevation") | int(0) %}
-          {% set cloud = 'sensor.cloud_cover_average' | float(100) %}
-          {% if ( elev < 6 ) %}
-            true
-          {% elif ( elev < 10 and cloud > 51 ) %}
-            true
-          {% elif ( elev < 15 and cloud > 73 ) %}
-            true
-          {% elif ( elev > 14 and cloud > 88 ) %}
-            true
-          {% else %}
-            false
-          {% endif %}
-      {% else %}
+    state: >
+      {# Create a dead zone to prevent oscillations. #}
+      {%- if states('sensor.gw2000b_v2_2_4_solar_lux') | float(0) > 8000 %}
+        false
+      {%- elif states('sensor.gw2000b_v2_2_4_solar_lux') | float(0) < 6000 %}
         true
-      {% endif %}
-      {# This is using openweathermap integration for weather & t-sma Filter. #}
-      {# https://www.home-assistant.io/integrations/openweathermap #}
-      {# https://www.home-assistant.io/integrations/filter/#time-simple-moving-average #}
+      {% else %}
+        {{ states('binary_sensor.dark_outside') }}
+      {%- endif %}
     availability: >-
       {% from 'avail.jinja' import avail %}
-      {{- avail(['sun.sun','sensor.openweathermap_cloud_coverage','sensor.cloud_cover_average']) | bool -}}
+      {{- avail(['sensor.gw2000b_v2_2_4_solar_lux']) | bool -}}
     icon: mdi:sun-clock
     attributes:
       friendly_name: "Dark Outside"
-
-  - name: 'sunlight_pct'
-    unique_id: 2d79fa6d-8ab2-4f64-9e29-994c49650bd4
-    unit_of_measurement: '%'
-    state: >-
-      {%- set elevation = state_attr('sun.sun','elevation') | float %}
-      {%- set cloud_coverage = states('sensor.openweathermap_cloud_coverage') | float %}
-      {%- set cloud_factor = (1 - (0.75 * ( cloud_coverage / 100) ** 3 )) %}
-      {%- set min_elevation = -6 %}
-      {%- set max_elevation = 60 %}
-      {%- set adjusted_elevation = elevation - min_elevation %}
-      {%- set adjusted_elevation = [adjusted_elevation,0] | max %}
-      {%- set adjusted_elevation = [adjusted_elevation,max_elevation - min_elevation] | min %}
-      {%- set adjusted_elevation = adjusted_elevation / (max_elevation - min_elevation) %}
-      {%- set adjusted_elevation = adjusted_elevation %}
-      {%- set adjusted_elevation = adjusted_elevation * 100 %}
-      {%- set brightness = adjusted_elevation * cloud_factor %}
-      {{ brightness | round }}
-    availability: >-
-      {% from 'avail.jinja' import avail %}
-      {{- avail(['sun.sun','weather.openweathermap_cloud_coverage']) | bool -}}
-    icon: mdi:sun-angle
-    attributes:
-      friendly_name: "Sunlight Percentage"
 
   - name: "Washing Machine"
     unique_id: 0f504a93-327b-4a03-ab93-4fc6aaaecbae
@@ -102,3 +65,34 @@
     icon: mdi:snowflake-alert
     attributes:
       friendly_name: "AC Enabled"
+
+  # - name: 'Dark Outside'
+  #   unique_id: ce7cb6b7-c666-494b-aa3c-4ed79b2f1092
+  #   state: >-
+  #     {% if (
+  #       states('sensor.openweathermap_cloud_coverage') | is_defined ) %}
+  #         {% set elev = state_attr("sun.sun", "elevation") | int(0) %}
+  #         {% set cloud = 'sensor.cloud_cover_average' | float(100) %}
+  #         {% if ( elev < 6 ) %}
+  #           true
+  #         {% elif ( elev < 10 and cloud > 51 ) %}
+  #           true
+  #         {% elif ( elev < 15 and cloud > 73 ) %}
+  #           true
+  #         {% elif ( elev > 14 and cloud > 88 ) %}
+  #           true
+  #         {% else %}
+  #           false
+  #         {% endif %}
+  #     {% else %}
+  #       true
+  #     {% endif %}
+  #     {# This is using openweathermap integration for weather & t-sma Filter. #}
+  #     {# https://www.home-assistant.io/integrations/openweathermap #}
+  #     {# https://www.home-assistant.io/integrations/filter/#time-simple-moving-average #}
+  #   availability: >-
+  #     {% from 'avail.jinja' import avail %}
+  #     {{- avail(['sun.sun','sensor.openweathermap_cloud_coverage','sensor.cloud_cover_average']) | bool -}}
+  #   icon: mdi:sun-clock
+  #   attributes:
+  #     friendly_name: "Dark Outside"

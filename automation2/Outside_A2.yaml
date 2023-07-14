@@ -23,23 +23,26 @@
 
   - id: 7cd36a72-c114-4141-b167-0641cdb1a43f
     alias: Is it raining?
-    initial_state: on
+    initial_state: true
+    description: "check the rain sensor to see if it's raining"
+    mode: single
     trigger:
       - platform: time_pattern
-        minutes: 14
-    action:
+        minutes: /20
+    condition: []
+    action: null
     if:
       - alias: Rain detected
         condition: numeric_state
         entity_id: sensor.gw2000b_v2_2_4_hourly_rain_rate_piezo
         above: 0
     then:
-      - alias: "Toggle to on"
+      - alias: Toggle to on
         service: input_boolean.turn_on
         data:
           entity_id: input_boolean.rain
     else:
-      - alias: "Toggle to off"
+      - alias: Toggle to off
         service: input_boolean.turn_off
         data:
           entity_id: input_boolean.rain
