@@ -767,13 +767,19 @@
                   "entity": "script.chill_time"
                 },
                 {
+                  "entity": "sensor.garage_temperature"
+                },
+                {
                   "entity": "sensor.garage_door_si7021_temperature"
                 },
                 {
-                  "entity": "sensor.garage_door_si7021_dewpoint"
+                  "entity": "sensor.garage_humidity"
                 },
                 {
                   "entity": "sensor.garage_door_si7021_humidity"
+                },
+                {
+                  "entity": "sensor.garage_door_si7021_dewpoint"
                 },
                 {
                   "entity": "binary_sensor.yard_light_pir"
