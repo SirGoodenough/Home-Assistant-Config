@@ -5,7 +5,7 @@
     name: QOTD
     feed_url: 'https://www.brainyquote.com/link/quotebr.rss'
     date_format: '%a, %b %d %I:%M %p'
-    show_topn: 4
+    show_topn: 1
     scan_interval:
       hours: 12
     inclusions:

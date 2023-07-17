@@ -88,10 +88,10 @@ tts_final_flush:
       speaker_gender: male
       speaker_target: media_player.jen_group
       announcement_message: >-
-        {%- if states.sensor.qotd.attributes.entries[3] | default('') -%}
-          {% set I = range(0, 3) | random | int(0) %}
-          {% set source = states.sensor.qotd.attributes.entries[I]['title'] %}
-          {% set quote = states.sensor.qotd.attributes.entries[I]['summary'] %}
+        {% set _qotd = states.sensor.qotd.attributes.entries[0] | default('') %}
+        {% if _qotd %}
+          {% set source = _qotd['title'] %}
+          {% set quote = _qotd['summary'] %}
         {% else %}
           {% set source = "Chaloupka abode" %}
           {% set quote = (
@@ -100,7 +100,10 @@ tts_final_flush:
             "Quotes are silly, I'm just going to say something random",
             "How about I tell you a Dad joke instead",
             "Hey Google, what time is it",
-            "Alexa, what time is it"
+            "Alexa, what time is it",
+            "Menu today: Spam, spam, spam, spam, spam, baked beans, & spam.",
+            "The password is, 'obelisk'.",
+            "retro-bio-cyberpunk-abra-ka-dabra monkey business."
           ) | random %}
           {% endif %}
         {{ quote + ".\n  quote by " + source }}
