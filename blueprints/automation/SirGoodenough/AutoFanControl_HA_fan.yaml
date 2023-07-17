@@ -27,7 +27,6 @@ blueprint:
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/auto-fan-temperature-control-for-3-speed-fan-ifanxx-tasmota/326419)'
-  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl_HA_fan.yaml
   domain: automation
   homeassistant:
     min_version: 2023.3.0
@@ -250,7 +249,7 @@ action:
         id: go_if_the_control_is_switched_off
     sequence:
     - alias: Do something when the fan stop condition triggers
-      if: '{{ not my_off_action in (''none'', ''null'', ''unavailable'', '''') }}'
+      if: '{{ my_off_action | default("") }}'
       then: !input 'off_action'
     - alias: Stop the fan
       service: fan.turn_off
@@ -270,7 +269,7 @@ action:
         weekday: !input 'weekday'
     sequence:
     - alias: Do something on every fan set speed condition trigger
-      if: '{{ not my_loop_action in (''none'', ''null'', ''unavailable'', '''') }}'
+      if: '{{ my_loop_action | default("") }}'
       then: !input 'loop_action'
     - alias: Set the fan speed based on the sensor temperature
       service: fan.set_percentage

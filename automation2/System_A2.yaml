@@ -223,30 +223,34 @@
       alt_notify:
       - choose:
         - conditions:
-          and:
-          - condition: state
-            entity_id: device_tracker.moca_g
-            state: "home"
-          - condition: state
-            entity_id: device_tracker.moca_h
-            state: "home"
+          - alias: Check for both devices home
+            condition: and
+            conditions:
+              - condition: state
+                entity_id: device_tracker.moca_g
+                state: "home"
+              - condition: state
+                entity_id: device_tracker.moca_h
+                state: "home"
           sequence:
-          - alias: Magically fixed itself
-            service: persistent_notification.dismiss
-            data:
-              notification_id: GarageGoneReset
+            - alias: Magically fixed itself
+              service: persistent_notification.dismiss
+              data:
+                notification_id: GarageGoneReset
         - conditions:
-          or:
-          - condition: not
+          - alias: Check for both devices home
+            condition: or
             conditions:
-            - condition: state
-              entity_id: device_tracker.moca_g
-              state: "home"
-          - condition: not
-            conditions:
-            - condition: state
-              entity_id: device_tracker.moca_h
-              state: "home"
+              - condition: not
+                conditions:
+                - condition: state
+                  entity_id: device_tracker.moca_g
+                  state: "home"
+              - condition: not
+                conditions:
+                - condition: state
+                  entity_id: device_tracker.moca_h
+                  state: "home"
           sequence:
           - alias: Voice outage 1
             service: script.say_a_thing
@@ -254,7 +258,7 @@
               message: Garage outage 1. First try.
               entities: media_player.kitchen_speaker
           - alias: Reset the moca
-            service: reset_garage_serverroom_2
+            service: script.reset_garage_serverroom_2
           - alias: Add a delay so notification stays up while things are rebooting
             delay:
               hours: 0
@@ -272,30 +276,34 @@
       alt_notify_2:
       - choose:
         - conditions:
-          and:
-          - condition: state
-            entity_id: device_tracker.moca_g
-            state: "home"
-          - condition: state
-            entity_id: device_tracker.moca_h
-            state: "home"
+          - alias: Check for both devices home
+            condition: and
+            conditions:
+              - condition: state
+                entity_id: device_tracker.moca_g
+                state: "home"
+              - condition: state
+                entity_id: device_tracker.moca_h
+                state: "home"
           sequence:
-          - alias: Magically fixed itself
-            service: persistent_notification.dismiss
-            data:
-              notification_id: GarageGoneReset
+            - alias: Magically fixed itself
+              service: persistent_notification.dismiss
+              data:
+                notification_id: GarageGoneReset
         - conditions:
-          or:
-          - condition: not
+          - alias: Check for both devices home
+            condition: or
             conditions:
-            - condition: state
-              entity_id: device_tracker.moca_g
-              state: "home"
-          - condition: not
-            conditions:
-            - condition: state
-              entity_id: device_tracker.moca_h
-              state: "home"
+              - condition: not
+                conditions:
+                - condition: state
+                  entity_id: device_tracker.moca_g
+                  state: "home"
+              - condition: not
+                conditions:
+                - condition: state
+                  entity_id: device_tracker.moca_h
+                  state: "home"
           sequence:
           - alias: Voice outage 2
             service: script.say_a_thing
@@ -303,9 +311,8 @@
               message: Garage outage 2. Second try.
               entities: media_player.kitchen_speaker
           - alias: Reset the moca
-            service: reset_garage_serverroom_2
+            service: script.reset_garage_serverroom_2
           - alias: Add a delay so notification stays up while things are rebooting
-              2
             delay:
               hours: 0
               minutes: 4
@@ -322,30 +329,34 @@
       alt_notify_3:
       - choose:
         - conditions:
-          and:
-          - condition: state
-            entity_id: device_tracker.moca_g
-            state: "home"
-          - condition: state
-            entity_id: device_tracker.moca_h
-            state: "home"
+          - alias: Check for both devices home
+            condition: and
+            conditions:
+              - condition: state
+                entity_id: device_tracker.moca_g
+                state: "home"
+              - condition: state
+                entity_id: device_tracker.moca_h
+                state: "home"
           sequence:
-          - alias: Magically fixed itself
-            service: persistent_notification.dismiss
-            data:
-              notification_id: GarageGoneReset
+            - alias: Magically fixed itself
+              service: persistent_notification.dismiss
+              data:
+                notification_id: GarageGoneReset
         - conditions:
-          or:
-          - condition: not
+          - alias: Check for both devices home
+            condition: or
             conditions:
-            - condition: state
-              entity_id: device_tracker.moca_g
-              state: "home"
-          - condition: not
-            conditions:
-            - condition: state
-              entity_id: device_tracker.moca_h
-              state: "home"
+              - condition: not
+                conditions:
+                - condition: state
+                  entity_id: device_tracker.moca_g
+                  state: "home"
+              - condition: not
+                conditions:
+                - condition: state
+                  entity_id: device_tracker.moca_h
+                  state: "home"
           sequence:
           - alias: Voice outage 3
             service: script.say_a_thing
@@ -353,7 +364,7 @@
               message: Garage outage 3. Final try.
               entities: media_player.kitchen_speaker
           - alias: Reset the moca
-            service: reset_garage_serverroom_2
+            service: script.reset_garage_serverroom_2
           - alias: Add a delay so notification stays up while things are rebooting
             delay:
               hours: 0

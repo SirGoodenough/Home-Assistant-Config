@@ -28,24 +28,25 @@
     mode: single
     trigger:
       - platform: time_pattern
-        minutes: /20
+        minutes: "/20"
     condition: []
-    action: null
-    if:
-      - alias: Rain detected
-        condition: numeric_state
-        entity_id: sensor.gw2000b_v2_2_4_hourly_rain_rate_piezo
-        above: 0
-    then:
-      - alias: Toggle to on
-        service: input_boolean.turn_on
-        data:
-          entity_id: input_boolean.rain
-    else:
-      - alias: Toggle to off
-        service: input_boolean.turn_off
-        data:
-          entity_id: input_boolean.rain
+    action: 
+      - if:
+          - alias: Rain detected
+            condition: numeric_state
+            entity_id: sensor.gw2000b_v2_2_4_hourly_rain_rate_piezo
+            above: 0
+        then:
+          - alias: Toggle to on
+            service: input_boolean.turn_on
+            data:
+              entity_id: input_boolean.rain
+        else:
+          - alias: Toggle to off
+            service: input_boolean.turn_off
+            data:
+              entity_id: input_boolean.rain
+
 
   - id: 01cf2959-f88c-4d21-bd7c-ad0b7a364482
     alias: Announce when rain starts and if raining in the morning
