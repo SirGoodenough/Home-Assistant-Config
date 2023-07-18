@@ -23,29 +23,3 @@
           angle: '{{ trigger.payload_json.action_angle | float(0.0) }}'
           short_entity: light.kitchen_down_lights
           long_entity: light.kitchensink
-
-- id: '1689630614247'
-  alias: aaasfgdfafdasfgdafgdarIs it raining?
-  description: check the rain sensor to see if it's raining
-  trigger:
-  - platform: time_pattern
-    minutes: /20
-  condition: []
-  action:
-  - if:
-    - alias: Rain detected
-      condition: numeric_state
-      entity_id: sensor.gw2000b_v2_2_4_hourly_rain_rate_piezo
-      above: 0
-    then:
-    - alias: Toggle to on
-      service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.rain
-    else:
-    - alias: Toggle to off
-      service: input_boolean.turn_off
-      data:
-        entity_id: input_boolean.rain
-  mode: single
-  initial_state: true

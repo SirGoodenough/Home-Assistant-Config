@@ -47,7 +47,6 @@
             data:
               entity_id: input_boolean.rain
 
-
   - id: 01cf2959-f88c-4d21-bd7c-ad0b7a364482
     alias: Announce when rain starts and if raining in the morning
     initial_state: on
