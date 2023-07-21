@@ -340,6 +340,60 @@
               ]
             },
             {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "fan.bedroom_fan",
+                  "IsOffColor": "#F88416",
+                  "IsOnLowColor": "#E78E85",
+                  "IsOnMedColor": "#E54234",
+                  "IsOnHiColor": "red",
+                  "customTheme": true,
+                  "customSetpoints": true,
+                  "hiPercentage": 100,
+                  "name": "Bedroom Fan",
+                  "type": "custom:fan-percent-button-row"
+                },
+                {
+                  "entity": "sensor.bedroom_fanspeed"
+                },
+                {
+                  "entity": "binary_sensor.bedroom"
+                },
+                {
+                  "entity": "light.bedroom_light"
+                },
+                {
+                  "entity": "input_boolean.bedroom_cool"
+                },
+                {
+                  "entity": "input_boolean.bedroom_auto_fan"
+                },
+                {
+                  "entity": "input_number.bedroom_auto_temp"
+                },
+                {
+                  "entity": "sensor.bedroom_fan_si7021_temperature"
+                },
+                {
+                  "entity": "sensor.bedroom_fan_si7021_humidity"
+                },
+                {
+                  "entity": "input_number.mayson_nap_temperature"
+                },
+                {
+                  "entity": "input_boolean.mayson_cool",
+                  "secondary_info": "last-changed"
+                },
+                {
+                  "entity": "input_boolean.ac_enabled"
+                }
+              ],
+              "title": "Bedroom",
+              "state_color": true,
+              "show_header_toggle": false
+            },
+            {
               "type": "conditional",
               "conditions": [
                 {
@@ -684,60 +738,6 @@
               "state_color": true
             },
             {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "fan.bedroom_fan",
-                  "IsOffColor": "#F88416",
-                  "IsOnLowColor": "#E78E85",
-                  "IsOnMedColor": "#E54234",
-                  "IsOnHiColor": "red",
-                  "customTheme": true,
-                  "customSetpoints": true,
-                  "hiPercentage": 100,
-                  "name": "Bedroom Fan",
-                  "type": "custom:fan-percent-button-row"
-                },
-                {
-                  "entity": "sensor.bedroom_fanspeed"
-                },
-                {
-                  "entity": "binary_sensor.bedroom"
-                },
-                {
-                  "entity": "light.bedroom_light"
-                },
-                {
-                  "entity": "input_boolean.bedroom_cool"
-                },
-                {
-                  "entity": "input_boolean.bedroom_auto_fan"
-                },
-                {
-                  "entity": "input_number.bedroom_auto_temp"
-                },
-                {
-                  "entity": "sensor.bedroom_fan_si7021_temperature"
-                },
-                {
-                  "entity": "sensor.bedroom_fan_si7021_humidity"
-                },
-                {
-                  "entity": "input_number.mayson_nap_temperature"
-                },
-                {
-                  "entity": "input_boolean.mayson_cool",
-                  "secondary_info": "last-changed"
-                },
-                {
-                  "entity": "input_boolean.ac_enabled"
-                }
-              ],
-              "title": "Bedroom",
-              "state_color": true,
-              "show_header_toggle": false
-            },
-            {
               "entities": [
                 {
                   "entity": "light.garagefront_light"
@@ -926,10 +926,6 @@
                 {
                   "type": "media-control",
                   "entity": "media_player.jen_group"
-                },
-                {
-                  "type": "media-control",
-                  "entity": "media_player.common_group_2"
                 },
                 {
                   "type": "media-control",
