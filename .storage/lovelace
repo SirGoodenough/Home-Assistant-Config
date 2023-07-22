@@ -817,6 +817,9 @@
                   "type": "custom:fan-percent-button-row"
                 },
                 {
+                  "entity": "input_boolean.fan_test"
+                },
+                {
                   "entity": "sensor.office_fanspeed"
                 },
                 {

@@ -23,3 +23,19 @@
           angle: '{{ trigger.payload_json.action_angle | float(0.0) }}'
           short_entity: light.kitchen_down_lights
           long_entity: light.kitchensink
+- id: '1689973948504'
+  alias: aaaaaaaaaaa office fan test
+  description: testing tasmota 0123 speed ctrl
+  use_blueprint:
+    path: SirGoodenough/AutoFanControl_HA_fan.yaml
+    input:
+      fan_control: input_boolean.fan_test
+      room_temp_now: sensor.lumi_lumi_sensor_cube_aqgl01_device_temperature
+      room_set_temp: input_number.mayson_nap_temperature
+      fan: fan.office_fan
+      loop_action: []
+      off_action:
+      - service: light.toggle
+        data: {}
+        target:
+          entity_id: light.kitchensink

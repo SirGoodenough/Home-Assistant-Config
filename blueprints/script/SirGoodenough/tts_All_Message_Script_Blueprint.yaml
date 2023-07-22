@@ -86,35 +86,24 @@ blueprint:
         action: {}
     TTS:
       name: Text to Speech Processor
-      description: >
-        ### Required on ALL \*_say platforms
-
-        Select the configured TTS engine for media_player notifications. [SEE for details](https://www.home-assistant.io/integrations/#text-to-speech)
+      description:
+        "Required on ALL *_say platforms. Select the configured TTS engine
+        for media_player notifications. SEE for details: ( https://www.home-assistant.io/integrations/#text-to-speech
+        )"
       selector:
         select:
           options:
-            - label: https://brands.home-assistant.io/_/amazon_polly/logo@2x.png tts.amazon_polly_say
-              value: tts.amazon_polly_say
-            - label: tts.baidu_say
-              value: tts.baidu_say
-            - label: tts.cloud_say
-              value: tts.cloud_say
-            - label: tts.google_cloud_say
-              value: tts.google_cloud_say
-            - label: tts.google_translate_say
-              value: tts.google_translate_say
-            - label: tts.marytts_say
-              value: tts.marytts_say
-            - label: tts.microsoft_say
-              value: tts.microsoft_say
-            - label: tts.picotts_say
-              value: tts.picotts_say
-            - label: tts.voicerss_say
-              value: tts.voicerss_say
-            - label: tts.watson_tts_say
-              value: tts.watson_tts_say
-            - label: tts.yandextts_say
-              value: tts.yandextts_say
+            - tts.amazon_polly_say
+            - tts.baidu_say
+            - tts.cloud_say
+            - tts.google_cloud_say
+            - tts.google_translate_say
+            - tts.marytts_say
+            - tts.microsoft_say
+            - tts.picotts_say
+            - tts.voicerss_say
+            - tts.watson_tts_say
+            - tts.yandextts_say
           custom_value: false
           multiple: false
     announcement_message:
