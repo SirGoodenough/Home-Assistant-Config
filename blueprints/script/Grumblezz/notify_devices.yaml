@@ -1,6 +1,23 @@
 blueprint:
   name: Notify Mobile App Devices
-  description: >-
+  domain: script
+  homeassistant:
+    min_version: 2023.6.0
+  source_url: https://github.com/Grumblezz/Home-Assistant-Notify-Mobile-Companion-App-Devices/blob/main/notify_devices.yaml
+  author: Grumblezz
+  input:
+    notify_message_actions_text:
+      name: Android Only - Enter a custom Text to Speech text used to anounch the actions, when your device is connected to the Android Auto.
+      description: When you mobile device is connect to Android Auto then you can enable the 'Android Only - Notify using TTS whilst using Andriod Auto?'. And when you have actions defined then you can announce them by this introduction sentence. [The TTS current support is limited to the current Text To Speech locale set on the device](https://companion.home-assistant.io/docs/notifications/notifications-basic#text-to-speech-notifications).
+      default: Select one of the following actions on your phone
+      selector:
+        select:
+          options:
+            - Select 1 of the following actions on your phone
+            - Selecteer 1 van de volgende acties op je telefoon
+          custom_value: true
+          multiple: false
+  description: |-
     **Struggling to make use of the notification options of the [Home Assistant Companion App](https://companion.home-assistant.io/) on your mobile device?**
     **Then this script can help you in the right direction.**
     ***
@@ -14,7 +31,7 @@ blueprint:
        * Away
        * Both (Home and Away)
      * Send notifications to Android and iOS devices (!). The script then filters the input to what is supported per platform. Thus Android features are not send to iOS devices and visa versa.
-     * Send notifications with actionable actions. The script then filters the actions per  platform. Thus Android actions are not send to iOS devices and visa versa.
+     * Send notifications with actionable actions. The script then filters the actions per platform. Thus Android actions are not send to iOS devices and visa versa.
      * Support notifications with camera images/live feed for camera devices, also for [Google Nest camera devices](https://www.home-assistant.io/integrations/nest/) (!).
     ***
     ### Background ###
@@ -76,7 +93,7 @@ blueprint:
       data_sticky: true
       data_camera: camera.name
     ```
-     Sends a Nest camera image file 
+    Sends a Nest camera image file 
     ```
     service: script.notify_devices
     data:
@@ -133,13 +150,11 @@ blueprint:
           title: "Call - iOS only"
           uri: "tel:2125551212"
     ```
-  domain: script
-  homeassistant:
-    min_version: 2022.1.0
-  source_url: https://github.com/Grumblezz/Home-Assistant-Notify-Mobile-Companion-App-Devices/blob/main/notify_devices.yaml
+
 mode: parallel
 max: 10
 icon: mdi:cellphone-message
+
 fields:
   notify_devices:
     name: Device to notify
@@ -147,11 +162,12 @@ fields:
     required: false
     selector:
       device:
+        filter:
+          - integration: mobile_app
         multiple: true
-        integration: mobile_app
   notify_home_or_away:
     name: Notify those that are Home or Away?
-    required: false
+    required: true
     example: Both
     selector:
       select:
@@ -163,16 +179,23 @@ fields:
           - Both
   data_notification_icon:
     name: Android Only - Notification icon (Optional)
-    required: false
     description: Changing the default notification status bar icon
+    required: false
     example: mdi:motion-outline
     selector:
       icon: null
+  data_notification_color:
+    name: Android Only - Color of the notification icon (Optional)
+    description: In Android you can set the color of the notification icon
+    required: false
+    example: "[255,0,0]"
+    selector:
+      color_rgb: null
   notify_title:
     name: Notification title (Optional)
     description: Notification title, required when used with TTS
-    example: Frontdoor
     required: false
+    example: Frontdoor
     selector:
       template: null
   data_subtitle:
@@ -186,8 +209,8 @@ fields:
         type: text
   notify_message:
     name: Notification message
-    required: true
     description: Notification message
+    required: true
     example: There is somebody at the door!
     selector:
       select:
@@ -199,6 +222,14 @@ fields:
           - There is somebody in the garden!
         custom_value: true
         multiple: false
+  notify_in_car_using_tts:
+    name: Android Only - Notify using TTS whilst using Andriod Auto? (Optional)
+    description: Upgrade the notification message to a TTS message, when the `binary_sensor.###_android_auto` is `on`. This can be useful whilst driving with Android Auto that the notification that you are sending is announched via TTS.
+    required: false
+    example: >-
+      true
+    selector:
+      boolean: null
   data_group:
     name: Notification grouping (Optional)
     description: Combine notification together visually.
@@ -213,8 +244,8 @@ fields:
         custom_value: true
         multiple: false
   data_channel:
-    name: Notification channel (Optional)
-    description: Notification channel
+    name: Android Only - Notification channel (Optional)
+    description: Notification channels allows users to separate their notifications easily (i.e. alarm vs laundry) so they can customize aspects like what type of sound is made and a lot of other device specific features.Devices running Android 8.0+ are able to create and manage notification channels on the fly using automations. Once a channel is created you can navigate to your notification settings and you will find the newly created channel, from there you can customize the behavior based on what your device allows.
     required: false
     example: Motion
     selector:
@@ -236,7 +267,7 @@ fields:
         multiple: false
   data_tag:
     name: Notification tag (Optional)
-    description: Notification tag
+    description: Replace an existing notification by using a tag for the notification. All subsequent notifications will take the place of a notification with the same tag.
     required: false
     example: backyard-motion-detected
     selector:
@@ -273,8 +304,8 @@ fields:
         multiple: false
   data_visibility:
     name: Android Only - Lock Screen Visibility (Optional)
-    required: false
     description: How much of a notification is visible on the lock screen
+    required: false
     example: public
     selector:
       select:
@@ -287,22 +318,25 @@ fields:
   data_sticky:
     name: Android Only - Keep notification? (Optional)
     description: Keep the notification from being dismissed when the user selects it
-    example: true
     required: false
+    example: >-
+      true
     selector:
       boolean: null
   data_persistent:
     name: Android Only - Persistent notification? (Optional)
     description: Persistent notifications are notifications that cannot be dismissed by swiping away. It requires the Notification tag to be set. If not set it will set it to persistent.
-    example: true
     required: false
+    example: >-
+      true
     selector:
       boolean: null
   data_timeout:
     name: Android Only - Timeout message in seconds (Optional)
     description: How many seconds a notification will be shown on a users device before being removed/dismissed automatically.
     required: false
-    example: 120
+    example: >-
+      120
     selector:
       number:
         min: 0
@@ -310,31 +344,38 @@ fields:
         step: 10
         mode: slider
   data_chronometer:
-    name: Android Only - Notifications with a count up/down timer (Optional)
+    name: Android Only - The timestamp of the notification (Optional)
     example: '"{{now()+timedelta(minutes=1)}}"'
-    description: Show a count up/down timer. Notification will not disappear when the timer reaches 0. Instead, it will continue decrementing into negative values.
+    description: Shows a timestamp. Notification will not disappear when the timer reaches 0. Instead, it will continue decrementing into negative values.
     required: false
     selector:
       datetime: null
-  data_notification_color:
-    name: Android Only - Color of the notification icon (Optional)
+  data_chronometer_enable:
+    name: Android Only - (when combined with data_chronometer) Enable the Notifications timer with a count up/down timer (Optional)
+    description: Show a count up/down timer. Notification will not disappear when the timer reaches 0. Instead, it will continue decrementing into negative values.
     required: false
-    description: In Android you can set the color of the notification icon
-    example: "[255,0,0]"
+    example: >-
+      true
     selector:
-      color_rgb: null
+      boolean: null
   data_critical:
     name: iOS Only - Critical notification? (Optional)
     description: Critical alerts always appear at the top of your lock screen above all other notifications, and play a sound even if Do Not Disturb is enabled or the iPhone is muted.
-    example: true
     required: false
+    example: >-
+      true
     selector:
       boolean: null
   data_ios_sound:
     name: iOS Only - Sounds? (Optional)
-    description: Adding a custom sound to a notification allows you to easily identify the notification without even looking at your device. You must use the full filename (including extension) in the payload. If "iOS Only - Sound Volume Level" is not defined, then it will set the default sound level to 50%
-    example: US-EN-Morgan-Freeman-Roommate-Is-Arriving.wav
+    description:
+      TTS is [not supported on iOS](https://companion.home-assistant.io/docs/notifications/notifications-basic#text-to-speech-notifications) so the workaround is by using custom sounds.
+      For more information click [here](https://companion.home-assistant.io/docs/notifications/notification-sounds#custom-push-notification-sounds).
+      Adding a custom sound to a notification allows you to easily identify the notification without even looking at your device.
+      You must use the full filename (including extension) in the payload.
+      If "iOS Only - Sound Volume Level" is not defined, then it will set the default sound level to 50%
     required: false
+    example: US-EN-Morgan-Freeman-Roommate-Is-Arriving.wav
     selector:
       select:
         options:
@@ -735,7 +776,8 @@ fields:
     name: iOS Only - Sound Volume Level (Optional)
     description: The volume level of notification, were 1 equal to 100% volume. It requires iOS only - Sounds to be defined.
     required: false
-    example: 0.5
+    example: >-
+      0.5
     selector:
       number:
         min: 0
@@ -746,7 +788,8 @@ fields:
     name: iOS Only - Badge (Optional)
     required: false
     description: Set the app icon badge in the payload. It will make the app icon badge show the number
-    example: 5
+    example: >-
+      5
     selector:
       number:
         min: 0
@@ -786,7 +829,8 @@ fields:
     required: false
     selector:
       entity:
-        domain: camera
+        filter:
+          domain: camera
   data_clickaction:
     name: Entity ID to navigate to (Optional)
     description: The Entity to navigate to when clicking on the notification
@@ -817,428 +861,515 @@ fields:
       - action: "URI" # Must be set to URI if you plan to use a URI
         title: "Open Url"
         uri: "https://google.com" # URL to open when action is selected, can also be a lovelace view/dashboard
-    description: See https://companion.home-assistant.io/docs/notifications/actionable-notifications#building-actionable-notifications
+    description: See [building-actionable-notifications](https://companion.home-assistant.io/docs/notifications/actionable-notifications#building-actionable-notifications)
     required: false
     selector:
       object: null
 sequence:
   - variables:
       all_devices: >-
-        {% if notify_devices is defined %}
-        {# If the user uses the field "notify_devices" then use that/those device(s) #}
-        {{ notify_devices }}
-        {% else %}
-        {# If the user does not use the field "notify_devices" then find the device_tracker(s) that use the integration mobile_app #}
-        {% set ns_devices=namespace( device_id=[] ) %}
-        {% for e in (integration_entities("mobile_app")|select("search","device_tracker")|list) %}
-        {% set ns_devices.device_id=ns_devices.device_id+[device_id(e)] %}
-        {% endfor %}
-        {{ ns_devices.device_id }}
-        {% endif %}
+        {%- if notify_devices is defined -%}
+        {#- If the user uses the field "notify_devices" then use that/those device(s) -#}
+        {%- set all_devices=notify_devices -%}
+        {%- else -%}
+        {#- If the user does not use the field "notify_devices" then find the device_tracker(s) that use the integration mobile_app -#}
+        {%- set ns_devices=namespace( device_id=[] ) -%}
+        {%- for e in (integration_entities("mobile_app")|select("search","device_tracker")|list) -%}
+        {%- set ns_devices.device_id=ns_devices.device_id+[device_id(e)] -%}
+        {%- endfor -%}
+        {%- set all_devices=ns_devices.device_id -%}
+        {%- endif -%}
+        {{all_devices}}
       notify_devices_home: >-
-        {# filter "all_devices" whether those that have the state "home" #}
-        {% set ns_devices=namespace( device_id=[] ) %}
-        {% for device_id in all_devices %}
-        {% if states((device_entities(device_id)|select("search","device_tracker")|list)[0]) == "home" %}
-        {% set ns_devices.device_id=ns_devices.device_id + [device_id] %}
-        {% endif %}
-        {% endfor %}
-        {{ ns_devices.device_id }}
+        {#- filter "all_devices" whether those that have the state "home" -#}
+        {%- set ns_devices_home=namespace( device_id=[] ) -%}
+        {%- for device_id in all_devices -%}
+        {%- if states((device_entities(device_id)|select("search","device_tracker")|list)[0]) == "home" -%}
+        {%- set ns_devices_home.device_id=ns_devices_home.device_id + [device_id] -%}
+        {%- endif -%}
+        {%- endfor -%}
+        {%- set notify_devices_home=ns_devices_home.device_id -%}
+        {{notify_devices_home}}
       notify_devices_away: >-
-        {# filter "all_devices" whether those that do not have the state "home" #}
-        {% set ns_devices=namespace( device_id=[]) %}
-        {% for device_id in all_devices %}
-        {% if states((device_entities(device_id)|select("search","device_tracker")|list)[0]) != "home" %}
-        {% set ns_devices.device_id=ns_devices.device_id + [device_id] %}
-        {% endif %}
-        {% endfor %}
-        {{ ns_devices.device_id }}
+        {#- filter "all_devices" whether those that do not have the state "home" -#}
+        {%- set ns_devices_away=namespace( device_id=[]) -%}
+        {%- for device_id in all_devices -%}
+        {%- if states((device_entities(device_id)|select("search","device_tracker")|list)[0]) != "home" -%}
+        {%- set ns_devices_away.device_id=ns_devices_away.device_id + [device_id] -%}
+        {%- endif -%}
+        {%- endfor -%}
+        {%- set notify_devices_away=ns_devices_away.device_id -%}
+        {{notify_devices_away}}
       notify_devices: >-
-        {% if notify_home_or_away is not defined or notify_home_or_away not in ["Home","Away","Both"] %}
-        {% set notify_home_or_away="Both" %}
-        {% endif %}
-        {# Finally, let the value "notify_home_or_away" control which list should used #}
-        {% if notify_home_or_away == "Home" %}{{ notify_devices_home }}{% endif %}
-        {% if notify_home_or_away == "Away" %}{{ notify_devices_away }}{% endif %}
-        {% if notify_home_or_away == "Both" %}{{ all_devices }}{% endif %}
+        {%- if notify_home_or_away is not defined or notify_home_or_away not in ["Home","Away","Both"] -%}
+        {%- set notify_home_or_away="Both" -%}
+        {%- endif -%}
+        {#- Finally, let the value "notify_home_or_away" control which list should used -#}
+        {%- if notify_home_or_away == "Home" -%}{%- set notify_devices=notify_devices_home -%}{%- endif -%}
+        {%- if notify_home_or_away == "Away" -%}{%- set notify_devices=notify_devices_away -%}{%- endif -%}
+        {%- if notify_home_or_away == "Both" -%}{%- set notify_devices=all_devices -%}{%- endif -%}
+        {{notify_devices}}
   - repeat:
       for_each: "{{notify_devices}}"
       sequence:
         - variables:
             entity_id: >-
-              {{((device_entities(repeat.item)|select("search","device_tracker")|list)[0])}}
-            manufacturer: '{{device_attr(repeat.item,"manufacturer")}}'
-            service: notify.mobile_app_{{entity_id|replace("device_tracker.","")}}
-            device_name: '{{device_attr(repeat.item,"name")}}'
+              {%- set entity_id=((device_entities(repeat.item)|select("search","device_tracker")|list)[0]) -%}
+              {{entity_id}}
+            manufacturer: >-
+              {%- set manufacturer=device_attr(repeat.item,"manufacturer") -%}
+              {{manufacturer}}
+            service: >-
+              {%- set service='notify.mobile_app_'~(entity_id|replace("device_tracker.","")) -%}
+              {{service}}
+            device_name: >-
+              {%- set device_name=device_attr(repeat.item,"name") -%}
+              {{device_name}}
+            entities: >-
+              {%- set entities=device_entities(repeat.item) -%}
+              {{entities}}
             do_not_disturb: >-
-              {# ============== #}
-              {# IN DEVELOPMENT #}
-              {# ============== #}
-              {# Usefull for a condition to skip the notification #}
-              {# It requires the following entities of the device to be enabled: #}
-              {# -------------- #}
-              {# Apple #}
-              {# -------------- #}
-              {# * binary_sensor.<device>_focus = off/on #}
-              {# -------------- #}
-              {# Android #}
-              {# -------------- #}
-              {# * sensor.<device>_ringer_mode = normal/vibrate #}
-              {# * sensor.<device>_do_not_disturb_sensor = off/priority_only #}
-              {# * sensor.<device>_audio_mode = normal/in_call #}
-              {# * binary_sensor.<device>_music_active = off/on #}
-              {# ============== #}
-              {% set entities=device_entities(repeat.item) %}
-              {% set ns=namespace(results=[]) %}
-              {# build a list of true and false statements #}
-              {% if manufacturer == "Apple" %}
-              {# -------------- #}
-              {# Apple #}
-              {# -------------- #}
-              {# check if the entity_id binary_sensor.<device>_focus is enabled #}
-              {% if(entities|select("search","_focus")|list|count==1) %}
-              {# binary_sensor.<device>_focus = off/on #}
-              {% set setfocus=states((entities|select("search","_focus")|list)[0]) %}
-              {% set ns.results=ns.results+[(focus=="on")] %}
-              {% endif %}
-              {% else %}
-              {# -------------- #}
-              {# Android #}
-              {# -------------- #}
-              {# check if the entity_id sensor.<device>_ringer_mode is enabled #}
-              {% if (entities|select("search","_ringer_mode")|list|count==1) %}
-              {% set ringer_mode=states((entities|select("search","_ringer_mode")|list)[0]) %}
-              {% set ns.results=ns.results+[(ringer_mode!="normal")] %}
-              {% endif%}
-              {# check if the entity_id sensor.<device>_do_not_disturb_sensor is enabled #}
-              {% if (entities|select("search","_do_not_disturb_sensor")|list|count==1) %}
-              {% set do_not_disturb_sensor=states((entities|select("search","_do_not_disturb_sensor")|list)[0]) %}
-              {% set ns.results=ns.results+[(do_not_disturb_sensor!="off")] %}
-              {% endif%}
-              {# check if the entity_id sensor.<device>_audio_mode is enabled #}
-              {% if (entities|select("search","_audio_mode")|list|count==1) %}
-              {% set audio_mode=states((entities|select("search","_audio_mode")|list)[0]) %}
-              {% set ns.results=ns.results+[(audio_mode!="normal")] %}
-              {% endif %}
-              {# check if the entity_id binary_sensor.<device>_music_active is enabled #}
-              {% if (entities|select("search","_music_active")|list|count==1) %}
-              {% set music_active=states((entities|select("search","_music_active")|list)[0]) %}
-              {% set ns.results=ns.results+[(music_active=="on")] %}
-              {% endif %}
-              {% endif %}
-              {# from the list of true and false statements only check the true statements #}
-              {# if there are true statements then it results in true otherwise false #}
-              {{ns.results|select("equalto",True)|list|count>0}}
+              {#- ============== -#}
+              {#- IN DEVELOPMENT -#}
+              {#- ============== -#}
+              {#- Usefull for a condition to skip the notification -#}
+              {#- It requires the following entities of the device to be enabled: -#}
+              {#- -------------- -#}
+              {#- Apple          -#}
+              {#- -------------- -#}
+              {#- * binary_sensor.<device>_focus = off/on -#}
+              {#- -------------- -#}
+              {#- Android        -#}
+              {#- -------------- -#}
+              {#- * sensor.<device>_ringer_mode = normal/vibrate -#}
+              {#- * sensor.<device>_do_not_disturb_sensor = off/priority_only -#}
+              {#- * sensor.<device>_audio_mode = normal/in_call -#}
+              {#- * binary_sensor.<device>_music_active = off/on -#}
+              {#- ============== -#}
+              {%- set entities=device_entities(repeat.item) -%}
+              {%- set ns=namespace(results=[]) -%}
+              {#- build a list of true and false statements -#}
+              {%- if manufacturer == "Apple" -%}
+              {#- -------------- -#}
+              {#- Apple          -#}
+              {#- -------------- -#}
+              {#- check if the entity_id binary_sensor.<device>_focus is enabled -#}
+              {%- if(entities|select("search","_focus")|list|count==1) -%}
+              {#- binary_sensor.<device>_focus = off/on -#}
+              {%- set focus=states((entities|select("search","_focus")|list)[0]) -%}
+              {%- set ns.results=ns.results+[(focus=="on")] -%}
+              {%- endif -%}
+              {%- else -%}
+              {#- -------------- -#}
+              {#- Android        -#}
+              {#- -------------- -#}
+              {#- check if the entity_id sensor.<device>_ringer_mode is enabled -#}
+              {%- if (entities|select("search","_ringer_mode")|list|count==1) -%}
+              {%- set ringer_mode=states((entities|select("search","_ringer_mode")|list)[0]) -%}
+              {%- set ns.results=ns.results+[(ringer_mode!="normal")] -%}
+              {%- endif -%}
+              {#- check if the entity_id sensor.<device>_do_not_disturb_sensor is enabled -#}
+              {%- if (entities|select("search","_do_not_disturb_sensor")|list|count==1) -%}
+              {%- set do_not_disturb_sensor=states((entities|select("search","_do_not_disturb_sensor")|list)[0]) -%}
+              {%- set ns.results=ns.results+[(do_not_disturb_sensor!="off")] -%}
+              {%- endif -%}
+              {#- check if the entity_id sensor.<device>_audio_mode is enabled -#}
+              {%- if (entities|select("search","_audio_mode")|list|count==1) -%}
+              {%- set audio_mode=states((entities|select("search","_audio_mode")|list)[0]) -%}
+              {%- set ns.results=ns.results+[(audio_mode!="normal")] -%}
+              {%- endif -%}
+              {#- check if the entity_id binary_sensor.<device>_music_active is enabled -#}
+              {%- if (entities|select("search","_music_active")|list|count==1) -%}
+              {%- set music_active=states((entities|select("search","_music_active")|list)[0]) -%}
+              {%- set ns.results=ns.results+[(music_active=="on")] -%}
+              {%- endif -%}
+              {%- endif -%}
+              {#- from the list of true and false statements only check the true statements -#}
+              {#- if there are true statements then it results in true otherwise false -#}
+              {%- set do_not_disturb=ns.results|select("equalto",True)|list|count>0 -%}
+              {{do_not_disturb}}
+            notify_car_ui: >-
+              {%- set notify_car_ui=false -%}
+              {%- if manufacturer != "Apple" -%}
+              {%- if entities is defined and (entities|count>=1) and (entities|select('search','_android_auto')|list|count==1) -%}
+              {%- set notify_car_ui=iif(states((entities|select("search","_android_auto")|list)[0])=="on",true,false) -%}
+              {%- endif -%}
+              {%- endif -%}
+              {{notify_car_ui}}
         - variables:
             servicedata: >-
-        - variables:
-            servicedata: >-
-              {# object which stores all options #}
-              {% set ns=namespace(servicedata=[],data=[],push=[],sound=[],actions=[],hex_color="#") %}
-              {# https://companion.home-assistant.io/docs/notifications/notifications-basic/#notification-channels #}
-              {% if data_channel is defined %}
-              {% set ns.data=ns.data+[("channel",data_channel)] %}
-              {% endif %}
-              {# https://companion.home-assistant.io/docs/notifications/notifications-basic/#text-to-speech-notifications #}
-              {% if notify_title is defined and (notify_message|upper)=="TTS" %}
-              {% set ns.data=ns.data+[("tts_text",notify_title)] %}
-              {% endif %}
-              {# By default Text To Speech notifications use the music stream so they will bypass the ringer mode on the device as long as the device's volume is not set to 0. You have the option of using media_stream: alarm_stream to have your notification spoken regardless of music volume. #}
-              {% if data_device_ring is defined and (data_device_ring|lower) in ["on","max"] %}
-              {% set data_importance="high" %}
-              {# https://companion.home-assistant.io/docs/notifications/critical-notifications#android-text-to-speech-alarm-stream #}
-              {% if (data_device_ring|lower)=="on" and (notify_message|upper)=="TTS" %}
-              {% set ns.data=ns.data+[("media_stream","alarm_stream")] %}
-              {% endif %}
-              {% if (data_device_ring|lower)=="on" and (notify_message|upper)!="TTS" %}
-              {% set ns.data=ns.data+[("channel","alarm_stream")] %}
-              {% endif %}
-              {# https://companion.home-assistant.io/docs/notifications/critical-notifications#android-text-to-speech-alarm-stream-max-volume #}
-              {% if (data_device_ring|lower)=="max" and (notify_message|upper)=="TTS" %}
-              {% set ns.data=ns.data+[("media_stream","alarm_stream_max")] %}
-              {% set data_importance="max" %}
-              {% endif %}
-              {% endif %}
-              {# https://companion.home-assistant.io/docs/notifications/notifications-basic#notification-icon #}
-              {# making sure that the value contains mdi: , otherwise skipping #}
-              {% if manufacturer!="Apple" and data_notification_icon is defined and ([data_notification_icon]|select("search","mdi:")|list)|count==1 %}
-              {% set ns.data=ns.data+[("notification_icon",data_notification_icon)] %}
-              {% endif %}
-              {# https://companion.home-assistant.io/docs/notifications/notifications-basic#grouping #}
-              {% if data_group is defined %}
-              {% set ns.data=ns.data+[("group",data_group)] %}
-              {% endif %}
-              {# https://companion.home-assistant.io/docs/notifications/notifications-basic#replacing #}
-              {% if data_tag is defined %}
-              {% set ns.data=ns.data+[("tag",data_tag)] %}
-              {% endif %}
-              {% if manufacturer!="Apple" and data_persistent is defined %}
-              {# https://companion.home-assistant.io/docs/notifications/notifications-basic#persistent-notification #}
-              {# making sure that an boolean is specified, otherwise skipping #}
-              {% if data_persistent is boolean %}
-              {% set data_persistent=bool(data_persistent) %}
-              {% set ns.data=ns.data+[("persistent",data_persistent)] %}
-              {% endif %}
-              {# Clearing persistant notifications require you to define a tag (value does not matter). If the user forgets to set the tag then the default value will be: "persistent" #}
-              {% if bool(data_persistent)==true and data_tag is not defined%}
-              {% set ns.data=ns.data+[("tag","persistent")] %}
-              {% endif %}
-              {% endif %}
-              {% if data_tag is defined and data_tag=="persistent" and (notify_message|lower)!="clear_notification" %}
-              {% set ns.data=ns.data+[("persistent",true)] %}
-              {% endif %}
-              {# https://companion.home-assistant.io/docs/notifications/notifications-basic/#subtitle--subject #}
-              {% if data_subtitle is defined%}
-              {% if manufacturer=="Apple" %}
-              {# Apple uses "subtitle" #}
-              {% set ns.data=ns.data+[("subtitle",data_subtitle)] %}
-              {% endif %}
-              {% if manufacturer!="Apple" %}
-              {# Android uses "subject" #}
-              {% set ns.data=ns.data+[("subject",data_subtitle)] %}
-              {% endif %}
-              {% endif %}
-              {# https://companion.home-assistant.io/docs/notifications/notifications-basic/#notification-color #}
-              {% if manufacturer!="Apple" and data_notification_color is defined %}
-              {# The rgb color object selector spits it out as list with r,g and b [255,0,0]. This conflicts with the notification-color documentation, which requires HEX values. It has now been fixed. Thanks to https://github.com/velijv/home-assistant-color-helpers#rgb-to-hex #}
-              {# Converting the list of [r,g,b] to hex #}
-              {% for color in data_notification_color %}
-              {% set ns.hex_color=ns.hex_color+('%02x'%color) %}
-              {% endfor %}
-              {% set ns.data=ns.data+[("color",ns.hex_color)] %}
-              {% endif %}
-              {# https://companion.home-assistant.io/docs/notifications/notifications-basic#notification-sensitivity--lock-screen-visibility #}
-              {% if manufacturer!="Apple" and data_visibility is defined %}
-              {# making sure that data_visibility is either one of the three, otherwise skipping #}
-              {% if data_visibility|lower in ["public","private","secret"] %}
-              {% set ns.data=ns.data+[("visibility",data_visibility|lower)] %}
-              {% endif %}
-              {% endif %}
-              {# https://companion.home-assistant.io/docs/notifications/notifications-basic#opening-a-url #}
-              {% if manufacturer!="Apple" %}
-              {% if data_clickaction is defined and states(data_clickaction)!="unknown" %}
-              {% set ns.data=ns.data+[("clickAction","entityId:"~data_clickaction)] %}
-              {% endif %}
-              {% if data_clickaction_url is defined %}
-              {% set ns.data=ns.data+[("clickAction",data_clickaction_url)] %}
-              {% endif %}
-              {% endif %}
-              {% if manufacturer=="Apple" and data_clickaction_url is defined and not (
-                data_clickaction_url is search("app://",ignorecase=False) or 
-                data_clickaction_url is search("intent://",ignorecase=False) or 
-                data_clickaction_url is search("deep-link://",ignorecase=False) or 
-                data_clickaction_url is search("entityId:",ignorecase=False) or 
-                data_clickaction_url is search("settings://",ignorecase=False)
-              ) %}
-              {% set ns.data=ns.data+[("url",data_clickaction_url)] %}
-              {% endif %}
-              {# https://companion.home-assistant.io/docs/notifications/notifications-basic#chronometer-notifications #}
-              {# Sometime the data_chronometer is set to data_chronometer="undefined 00:00:00". this will fix this issue #}
-              {% if manufacturer!="Apple" and data_chronometer is defined and data_chronometer!="undefined 00:00:00" and (as_timestamp(data_chronometer,default=0)|float()>0 or strptime(data_chronometer, 'undefined %H:%M:%S',default=0)!=0) %}
-              {% if strptime(data_chronometer, 'undefined %H:%M:%S',default=0)!=0 %}
-              {% set when=as_timestamp(strptime(data_chronometer, 'undefined %H:%M:%S').replace(year=now().year,month=now().month,day=now().day))|float %}
-              {% else %}
-              {% set when=as_timestamp(data_chronometer,default=as_timestamp(now()))|float()%}
-              {% endif %}
-              {% set ns.data=ns.data+[("chronometer",true)] %}
-              {% set ns.data=ns.data+[("when",when)] %}
-              {% endif %}
-              {# https://companion.home-assistant.io/docs/notifications/critical-notifications/#ios #}
-              {% if manufacturer=="Apple" and data_critical is defined %}
-              {% if bool(data_critical)==true %}
-              {% set ns.sound=ns.sound+[("name","default")] %}
-              {% set ns.sound=ns.sound+[("critical",1)] %}
-              {% if data_ios_sound_volumelevel is defined and is_number(data_ios_sound_volumelevel) %}
-              {% set ns.sound=ns.sound+[("volume",(data_ios_sound_volumelevel|float))] %}
-              {% else %}
-              {% set ns.sound=ns.sound+[("volume",1)] %}
-              {% endif %}
-              {% endif %}
-              {% endif %}
-              {# https://companion.home-assistant.io/docs/notifications/notifications-basic#notification-channel-importance #}
-              {% if data_importance is defined and data_importance|lower in ["max","high","default","low","min"] %}
-              {# Priority (Android 7.1 and lower) #}
-              {% set ns.data=ns.data+[("priority",(data_importance|lower))] %}
-              {# Importance (Android 8.0 and higher) #} 
-              {% if data_importance=="max" %}
-              {% set data_importance="high" %}
-              {% endif %}
-              {% set ns.data=ns.data+[("importance",(data_importance|lower))] %}
-              {% if data_importance=="high" %}
-              {% set ns.data=ns.data+[("ttl",(0|int))] %}
-              {% endif %}
-              {% endif %}
-              {# https://companion.home-assistant.io/docs/notifications/notifications-basic#notification-timeout #}
-              {% if manufacturer!="Apple" and data_timeout is defined and data_timeout is is_number%}
-              {% set ns.data=ns.data+[("timeout",(data_timeout|int))] %}
-              {% endif %}
-              {# https://companion.home-assistant.io/docs/notifications/notifications-basic#sticky-notification #}
-              {% if data_sticky is defined and data_sticky|lower in [true,false,"true","false",0,1,"0","1","yes","no","enable","disable"] %}
-              {% set ns.data=ns.data+[("sticky",bool(data_sticky))] %}
-              {% endif %}
-              {# https://companion.home-assistant.io/docs/notifications/notification-attachments #}
-              {# The data_camera can accept various options, but the results are different for Android or iOS #}
-              {# Examples: #}
-              {#  * data_camera: camera.name #}
-              {#  * data_camera: /api/nest/event_media/{{ trigger.event.data.device_id }}/{{ trigger.event.data.nest_event_id }}/thumbnail #}
-              {#  * data_camera: /api/nest/event_media/{{ trigger.event.data.device_id }}/{{ trigger.event.data.nest_event_id }} #}
-              {#  * data_camera: /media/local/video.mp4 #}
-              {#  * data_camera: https://example.com/video.mp4 #}
-              {#  * data_camera: /media/local/photo.jpg #}
-              {#  * data_camera: https://example.com/image.jpg #}
-              {#  * data_camera: /media/local/audio.mp3 #}
-              {#  * data_camera: https://example.com/audio.mp3 #}
-              {% if data_camera is defined %}
-                {#  * data_camera: camera.name #}
-                {% if states(data_camera)!="unknown" %}
-                  {% if manufacturer!="Apple" %}
-                  {# https://companion.home-assistant.io/docs/notifications/notification-attachments#automatic-snapshots #}
-                  {% set ns.data=ns.data+[("image","/api/camera_proxy/"~data_camera)] %}
-                  {% else %}
-                  {# https://companion.home-assistant.io/docs/notifications/dynamic-content#camera-stream #}
-                  {% set ns.data=ns.data+[("entity_id",data_camera)] %}
-                  {% endif %}
-                {% endif %}
-                {# https://www.home-assistant.io/integrations/nest/#media-attachments #}
-                {# * image is data_camera: /api/nest/event_media/{{ trigger.event.data.device_id }}/{{ trigger.event.data.nest_event_id }}/thumbnail #}
-                {# * video is data_camera: /api/nest/event_media/{{ trigger.event.data.device_id }}/{{ trigger.event.data.nest_event_id }} #}
-                {% if states(data_camera) == "unknown" and data_camera is search("/api/nest/event_media/",ignorecase=False) %}
-                  {% if states(data_camera) == "unknown" and data_camera is search("/thumbnail",ignorecase=False) %}
-                    {% set ns.data=ns.data+[("image",data_camera)] %}
-                    {% set ns.data=ns.data+[("video",(data_camera|replace("/thumbnail","")))] %}
-                  {% endif %}
-                  {% if states(data_camera) == "unknown" and (data_camera|regex_match('^((\/)(\w+)){5}$', ignorecase=False)) %}
-                    {% set ns.data=ns.data+[("video",data_camera)] %}
-                  {% endif %}
-                {% endif %}
-                {# https://companion.home-assistant.io/docs/notifications/notification-attachments#downloading #}
-                {# check if data_camera is an allowed format from the media_source or www folder #}
-                {% if data_camera is search("/media/local/",ignorecase=true) or data_camera is search("/local/",ignorecase=true) or data_camera is search("https://",ignorecase=true) or data_camera is search("http://",ignorecase=true) %}
-                  
-                  {# check if it is an allowed format for the image type: https://companion.home-assistant.io/docs/notifications/notification-attachments#supported-media-types #}
-                  {% if data_camera is search(".jpg",ignorecase=true) or 
-                        data_camera is search(".gif",ignorecase=true) or 
-                        data_camera is search(".png",ignorecase=true) %}
-                    {% set ns.data=ns.data+[("image",data_camera)] %}
-                  {% endif %}
-                  {# check if it is an allowed format for the video type: https://companion.home-assistant.io/docs/notifications/notification-attachments#supported-media-types #}
-                  {% if data_camera is search(".mp4",ignorecase=true) or 
-                        data_camera is search(".mpeg",ignorecase=true) or 
-                        data_camera is search(".avi",ignorecase=true) %}
-                    {% set ns.data=ns.data+[("video",data_camera)] %}
-                  {% endif %}
-                  
-                  {# audio is only supported by iOS devices #} 
-                  {# check if it is an allowed format for the video audio: https://companion.home-assistant.io/docs/notifications/notification-attachments#supported-media-types #}
-                  {% if manufacturer=="Apple" and (
-                        data_camera is search(".mp3",ignorecase=true) or 
-                        data_camera is search(".aiff",ignorecase=true) or 
-                        data_camera is search(".wav",ignorecase=true) 
-                  ) %}
-                    {% set ns.data=ns.data+[("audio",data_camera)] %}
-                  {% endif %}
-                {% endif %}
-              {% endif %}
-              {# https://companion.home-assistant.io/docs/notifications/notification-sounds #}
-              {# https://companion.home-assistant.io/docs/notifications/notifications-basic#sounds #}
-              {% if manufacturer=="Apple" and data_ios_sound is defined %}
-              {% set ns.sound=ns.sound+[("name",data_ios_sound)] %}
-              {% endif %}
-              {# https://companion.home-assistant.io/docs/notifications/critical-notifications#ios #}
-              {% if manufacturer=="Apple" and data_critical is defined and data_critical==True %}
-              {% if data_ios_sound_volumelevel is not defined %}
-              {# have an default value incase the data_ios_sound_volumelevel is not defined #}
-              {% set data_ios_sound_volumelevel=1 %}
-              {% endif %}
-              {% set ns.sound=ns.sound+[("volume",(data_ios_sound_volumelevel|float))] %}
-              {% set ns.sound=ns.sound+[("critical",1)] %}
-              {% endif %}
-              {% if manufacturer=="Apple" and data_ios_sound_volumelevel is defined and data_ios_sound_volumelevel is is_number %}
-              {% set ns.sound=ns.sound+[("volume",(data_ios_sound_volumelevel|float))] %}
-              {% endif %}
-              {# https://companion.home-assistant.io/docs/notifications/notifications-basic#badge #}
-              {% if manufacturer=="Apple" and data_ios_badge is defined and data_ios_badge is is_number%}
-              {% set ns.push=ns.push+[("badge",(data_ios_badge|int))] %}
-              {% endif %}
-              {# https://companion.home-assistant.io/docs/notifications/notifications-basic#interruption-level #}
-              {% if manufacturer=="Apple" and data_ios_interruption_level is defined %}
-              {% if data_ios_interruption_level|lower is not in ["passive","active","time-sensitive","critical"] %}
-              {# have an default value incase the data_ios_interruption_level is not correct #}
-              {% set data_ios_interruption_level="active" %}
-              {% endif %}
-              {% set ns.push=ns.push+[("interruption-level",(data_ios_interruption_level|lower))] %}
-              {% endif %}
-              {# https://companion.home-assistant.io/docs/notifications/notifications-basic#presentation-options #}
-              {% if manufacturer=="Apple" and data_ios_presentation_options is defined %}
-              {# check if the value(s) is allowed. It can contain one or more values #}
-              {% set allowed_values=["alert","badge","sound"] %}
-              {% set list=namespace(allowed_value=[]) %}
-              {% if (data_ios_presentation_options|lower) is in allowed_values %}
-              {% set list.allowed_value=list.allowed_value+[(data_ios_presentation_options|lower)] %}
-              {% else %}
-              {% for value in data_ios_presentation_options %}
-              {% if (value|lower) is in allowed_values %}
-              {% set list.allowed_value=list.allowed_value+[(value|lower)] %}
-              {% endif %}
-              {% endfor %}
-              {% endif %}
-              {% set ns.data=ns.data+[("presentation_options",list.allowed_value)] %}
-              {% endif %}
-              {# https://companion.home-assistant.io/docs/notifications/actionable-notifications #}
-              {# Android and iOS accept different type of actions, and this will filter those that are allowed per OS (according to the docs) #}
-              {% if data_actions is defined%}
-              {% for action in data_actions %}
-              {# https://companion.home-assistant.io/docs/notifications/actionable-notifications#uri-values #}
-              {# exclude certain uri values if the device is iOS #}
-              {% if manufacturer=="Apple" and action['uri'] is defined and  (
-                action['uri'] is search("app://",ignorecase=False) or 
-                action['uri'] is search("intent://",ignorecase=False) or 
-                action['uri'] is search("deep-link://",ignorecase=False) or 
-                action['uri'] is search("entityId:",ignorecase=False) or 
-                action['uri'] is search("settings://",ignorecase=False)
-              ) %}
-              {%else%}
-              {%if manufacturer!="Apple" and (
-                action['action']=="CALL" or 
-                action['action']=="OPEN"
-                ) and (
-                action['uri'] is search("https://",ignorecase=False) or 
-                action['uri'] is search("tel:",ignorecase=False)
-                ) %}
-              {%else%}
-              {%set ns.actions=ns.actions+[(action)] %}
-              {% endif %}
-              {% endif %}
-              {%endfor%}
-              {% if ns.actions|count>=1%}
-              {% set ns.data=ns.data+[("actions",ns.actions)] %}
-              {% endif %}
-              {% endif %}
-              {# Finally add the sound to the push object as an DICT #}
-              {% if (ns.sound|count)>=1 %}
-              {% set ns.push=ns.push+[("sound",dict.from_keys(ns.sound))] %}
-              {% endif %}
-              {# Finally add the push to the data object as an DICT #}
-              {% if (ns.push|count)>=1 %}
-              {% set ns.data=ns.data+[("push",dict.from_keys(ns.push))] %}
-              {% endif %}
-              {# message and title are basic entries, but title is optional #}
-              {% if notify_title is defined and (notify_message|upper)!="TTS"%}
-              {% set ns.servicedata=ns.servicedata+[("title",notify_title)] %}
-              {% endif %}
-              {# make sure that the message: <value> has an default value or is formatted correctly #}
-              {% if notify_message is not defined %}
-              {% set notify_message="Hello World" %}
-              {% endif %}
-              {% if (notify_message|upper)=="TTS" %}
-              {% set notify_message="TTS" %}
-              {% endif %}
-              {% if (notify_message|lower)=="clear_notification" %}
-              {% set notify_message=(notify_message|lower) %}
-              {% endif %}
-              {% set ns.servicedata=ns.servicedata+[("message",notify_message)] %}
-              {% set ns.servicedata=ns.servicedata+[("data",dict.from_keys(ns.data))] %}
-              {# Finally show the results as an DICT #}
-              {{dict.from_keys(ns.servicedata)}}
-        - service: "{{service}}"
-          data: "{{servicedata}}"
+              {# object which stores all options -#}
+              {%- set ns=namespace(servicedata=[],data=[],push=[],sound=[],actions=[],hex_color="#") -%}
+
+              {%- if notify_message is not defined -%}
+              {%- set notify_message='The `notify_message` field was not defined. What have you forgotten this time 🙂?' -%}
+              {%- endif -%}
+
+              {#- https://companion.home-assistant.io/docs/notifications/notifications-basic/#android-auto-visibility-beta -#}
+              {%- if manufacturer!="Apple" and notify_car_ui is defined and bool(notify_car_ui,false)==true and notify_message is defined and notify_message!='TTS' -%}
+              {%- set ns.data=ns.data+[("car_ui",bool(notify_car_ui,false))] -%}
+              {%- endif -%}
+
+              {#- https://companion.home-assistant.io/docs/notifications/notifications-basic/#notification-channels -#}
+              {%- if data_channel is defined -%}
+              {%- set ns.data=ns.data+[("channel",data_channel)] -%}
+              {%- endif -%}
+              {#- https://companion.home-assistant.io/docs/notifications/notifications-basic/#text-to-speech-notifications -#}
+              {%- if notify_title is defined and (notify_message|upper)=="TTS" -%}
+              {%- set ns.data=ns.data+[("tts_text",notify_title)] -%}
+              {%- endif -%}
+              {#- By default Text To Speech notifications use the music stream so they will bypass the ringer mode on the device as long as the device's volume is not set to 0. You have the option of using media_stream: alarm_stream to have your notification spoken regardless of music volume. -#}
+              {%- if data_device_ring is defined and (data_device_ring|lower) in ["on","max"] -%}
+              {%- set data_importance="high" -%}
+              {#- https://companion.home-assistant.io/docs/notifications/critical-notifications#android-text-to-speech-alarm-stream -#}
+              {%- if (data_device_ring|lower)=="on" and (notify_message|upper)=="TTS" -%}
+              {%- set ns.data=ns.data+[("media_stream","alarm_stream")] -%}
+              {%- endif -%}
+              {%- if (data_device_ring|lower)=="on" and (notify_message|upper)!="TTS" -%}
+              {%- set ns.data=ns.data+[("channel","alarm_stream")] -%}
+              {%- endif -%}
+              {#- https://companion.home-assistant.io/docs/notifications/critical-notifications#android-text-to-speech-alarm-stream-max-volume -#}
+              {%- if (data_device_ring|lower)=="max" and (notify_message|upper)=="TTS" -%}
+              {%- set ns.data=ns.data+[("media_stream","alarm_stream_max")] -%}
+              {%- set data_importance="max" -%}
+              {%- endif -%}
+              {%- endif -%}
+              {#- https://companion.home-assistant.io/docs/notifications/notifications-basic#notification-icon -#}
+              {#- making sure that the value contains mdi: , otherwise skipping -#}
+              {%- if manufacturer!="Apple" and data_notification_icon is defined and ([data_notification_icon]|select("search","mdi:")|list)|count==1 -%}
+              {%- set ns.data=ns.data+[("notification_icon",data_notification_icon)] -%}
+              {%- endif -%}
+              {#- https://companion.home-assistant.io/docs/notifications/notifications-basic#grouping -#}
+              {%- if data_group is defined -%}
+              {%- set ns.data=ns.data+[("group",data_group)] -%}
+              {%- endif -%}
+              {#- https://companion.home-assistant.io/docs/notifications/notifications-basic#replacing -#}
+              {%- if data_tag is defined -%}
+              {%- set ns.data=ns.data+[("tag",data_tag)] -%}
+              {%- endif -%}
+              {%- if manufacturer!="Apple" and data_persistent is defined -%}
+              {#- https://companion.home-assistant.io/docs/notifications/notifications-basic#persistent-notification -#}
+              {#- making sure that an boolean is specified, otherwise skipping -#}
+              {%- if data_persistent is boolean -%}
+              {%- set data_persistent=bool(data_persistent,false) -%}
+              {%- set ns.data=ns.data+[("persistent",data_persistent)] -%}
+              {%- endif -%}
+              {#- Clearing persistant notifications require you to define a tag (value does not matter). If the user forgets to set the tag then the default value will be: "persistent" -#}
+              {%- if bool(data_persistent,false)==true and data_tag is not defined -%}
+              {%- set ns.data=ns.data+[("tag","persistent")] -%}
+              {%- endif -%}
+              {%- endif -%}
+              {%- if data_tag is defined and data_tag=="persistent" and (notify_message|lower)!="clear_notification" -%}
+              {%- set ns.data=ns.data+[("persistent",true)] -%}
+              {%- endif -%}
+              {#- https://companion.home-assistant.io/docs/notifications/notifications-basic/#subtitle--subject -#}
+              {%- if data_subtitle is defined -%}
+              {%- if manufacturer=="Apple" -%}
+              {#- Apple uses "subtitle" -#}
+              {%- set ns.data=ns.data+[("subtitle",data_subtitle)] -%}
+              {%- endif -%}
+              {%- if manufacturer!="Apple" -%}
+              {#- Android uses "subject" -#}
+              {%- set ns.data=ns.data+[("subject",data_subtitle)] -%}
+              {%- endif -%}
+              {%- endif -%}
+              {#- https://companion.home-assistant.io/docs/notifications/notifications-basic/#notification-color -#}
+              {%- if manufacturer!="Apple" and data_notification_color is defined -%}
+              {#- The rgb color object selector spits it out as list with r,g and b [255,0,0]. This conflicts with the notification-color documentation, which requires HEX values. It has now been fixed. Thanks to https://github.com/velijv/home-assistant-color-helpers#rgb-to-hex -#}
+              {#- Converting the list of [r,g,b] to hex -#}
+              {%- for color in data_notification_color -%}
+              {%- set ns.hex_color=ns.hex_color+('%02x'%color) -%}
+              {%- endfor -%}
+              {%- set ns.data=ns.data+[("color",ns.hex_color)] -%}
+              {%- endif -%}
+              {#- https://companion.home-assistant.io/docs/notifications/notifications-basic#notification-sensitivity--lock-screen-visibility -#}
+              {%- if manufacturer!="Apple" and data_visibility is defined -%}
+              {#- making sure that data_visibility is either one of the three, otherwise skipping -#}
+              {%- if data_visibility|lower in ["public","private","secret"] -%}
+              {%- set ns.data=ns.data+[("visibility",data_visibility|lower)] -%}
+              {%- endif -%}
+              {%- endif -%}
+              {#- https://companion.home-assistant.io/docs/notifications/notifications-basic#opening-a-url -#}
+              {%- if manufacturer!="Apple" -%}
+              {%- if data_clickaction is defined and states(data_clickaction)!="unknown" -%}
+              {%- set ns.data=ns.data+[("clickAction","entityId:"~data_clickaction)] -%}
+              {%- endif -%}
+              {%- if data_clickaction_url is defined -%}
+              {%- set ns.data=ns.data+[("clickAction",data_clickaction_url)] -%}
+              {%- endif -%}
+              {%- endif -%}
+              {%- if manufacturer=="Apple" and data_clickaction_url is defined and not (
+              data_clickaction_url is search("app://",ignorecase=False) or 
+              data_clickaction_url is search("intent://",ignorecase=False) or 
+              data_clickaction_url is search("deep-link://",ignorecase=False) or 
+              data_clickaction_url is search("entityId:",ignorecase=False) or 
+              data_clickaction_url is search("settings://",ignorecase=False)
+              ) -%}
+              {%- set ns.data=ns.data+[("url",data_clickaction_url)] -%}
+              {%- endif -%}
+              {#- https://companion.home-assistant.io/docs/notifications/notifications-basic#chronometer-notifications -#}
+              {#- Sometime the data_chronometer is set to data_chronometer="undefined 00:00:00". this will fix this issue -#}
+              {%- if manufacturer!="Apple" and data_chronometer is defined and data_chronometer!="undefined 00:00:00" and (as_timestamp(data_chronometer,default=0)|float()>0 or strptime(data_chronometer, 'undefined %H:%M:%S',default=0)!=0) -%}
+              {%- if strptime(data_chronometer, 'undefined %H:%M:%S',default=0)!=0 -%}
+              {%- set when=as_timestamp(strptime(data_chronometer, 'undefined %H:%M:%S').replace(year=now().year,month=now().month,day=now().day))|float -%}
+              {%- else -%}
+              {%- set when=as_timestamp(data_chronometer,default=as_timestamp(now()))|float() -%}
+              {%- endif -%}
+
+              {%- if data_chronometer_enable is defined and bool(data_chronometer_enable,false)==true -%}
+              {%- set ns.data=ns.data+[("chronometer",true)] -%}
+              {%- endif -%}
+
+              {%- set ns.data=ns.data+[("when",(when|int|string()))] -%}
+              {%- endif -%}
+              {#- https://companion.home-assistant.io/docs/notifications/critical-notifications/#ios -#}
+              {%- if manufacturer=="Apple" and data_critical is defined -%}
+              {%- if bool(data_critical,false)==true -%}
+              {%- set ns.sound=ns.sound+[("name","default")] -%}
+              {%- set ns.sound=ns.sound+[("critical",1)] -%}
+              {%- if data_ios_sound_volumelevel is defined and is_number(data_ios_sound_volumelevel) -%}
+              {%- set ns.sound=ns.sound+[("volume",(data_ios_sound_volumelevel|float))] -%}
+              {%- else -%}
+              {%- set ns.sound=ns.sound+[("volume",1)] -%}
+              {%- endif -%}
+              {%- endif -%}
+              {%- endif -%}
+              {#- https://companion.home-assistant.io/docs/notifications/notifications-basic#notification-channel-importance -#}
+              {%- if data_importance is defined and data_importance|lower in ["max","high","default","low","min"] -%}
+              {#- Priority (Android 7.1 and lower) -#}
+              {%- set ns.data=ns.data+[("priority",(data_importance|lower))] -%}
+              {#- Importance (Android 8.0 and higher) -#} 
+              {%- if data_importance=="max" -%}
+              {%- set data_importance="high" -%}
+              {%- endif -%}
+              {%- set ns.data=ns.data+[("importance",(data_importance|lower))] -%}
+              {%- if data_importance=="high" -%}
+              {%- set ns.data=ns.data+[("ttl",(0|int))] -%}
+              {%- endif -%}
+              {%- endif -%}
+              {#- https://companion.home-assistant.io/docs/notifications/notifications-basic#notification-timeout -#}
+              {%- if manufacturer!="Apple" and data_timeout is defined and data_timeout is is_number -%}
+              {%- set ns.data=ns.data+[("timeout",(data_timeout|int))] -%}
+              {%- endif -%}
+              {#- https://companion.home-assistant.io/docs/notifications/notifications-basic#sticky-notification -#}
+              {%- if data_sticky is defined and data_sticky|lower in [true,false,"true","false",0,1,"0","1","yes","no","enable","disable"] -%}
+              {%- set ns.data=ns.data+[("sticky",bool(data_sticky,false))] -%}
+              {%- endif -%}
+              {#- https://companion.home-assistant.io/docs/notifications/notification-attachments -#}
+              {#- The data_camera can accept various options, but the results are different for Android or iOS -#}
+              {#- Examples: -#}
+              {#- * data_camera: camera.name -#}
+              {#- * data_camera: /api/nest/event_media/{{ trigger.event.data.device_id }}/{{ trigger.event.data.nest_event_id }}/thumbnail -#}
+              {#- * data_camera: /api/nest/event_media/{{ trigger.event.data.device_id }}/{{ trigger.event.data.nest_event_id }} -#}
+              {#- * data_camera: /media/local/video.mp4 -#}
+              {#- * data_camera: https://example.com/video.mp4 -#}
+              {#- * data_camera: /media/local/photo.jpg -#}
+              {#- * data_camera: https://example.com/image.jpg -#}
+              {#- * data_camera: /media/local/audio.mp3 -#}
+              {#- * data_camera: https://example.com/audio.mp3 -#}
+              {%- if data_camera is defined -%}
+              {#- * data_camera: camera.name -#}
+              {%- if states(data_camera)!="unknown" -%}
+                {%- if manufacturer!="Apple" -%}
+                {#- https://companion.home-assistant.io/docs/notifications/notification-attachments#automatic-snapshots -#}
+                {%- set ns.data=ns.data+[("image","/api/camera_proxy/"~data_camera)] -%}
+                {%- else -%}
+                {#- https://companion.home-assistant.io/docs/notifications/dynamic-content#camera-stream -#}
+                {%- set ns.data=ns.data+[("entity_id",data_camera)] -%}
+                {%- endif -%}
+              {%- endif -%}
+              {#- https://www.home-assistant.io/integrations/nest/#media-attachments -#}
+              {#- * image is data_camera: /api/nest/event_media/{{ trigger.event.data.device_id }}/{{ trigger.event.data.nest_event_id }}/thumbnail -#}
+              {#- * video is data_camera: /api/nest/event_media/{{ trigger.event.data.device_id }}/{{ trigger.event.data.nest_event_id }} -#}
+              {%- if states(data_camera) == "unknown" and data_camera is search("/api/nest/event_media/",ignorecase=False) -%}
+                {%- if states(data_camera) == "unknown" and data_camera is search("/thumbnail",ignorecase=False) -%}
+                {%- set ns.data=ns.data+[("image",data_camera)] -%}
+                {%- set ns.data=ns.data+[("video",(data_camera|replace("/thumbnail","")))] -%}
+                {%- endif -%}
+                {%- if states(data_camera) == "unknown" and (data_camera|regex_match('^((\/)(\w+)){5}$', ignorecase=False)) -%}
+                {%- set ns.data=ns.data+[("video",data_camera)] -%}
+                {%- endif -%}
+              {%- endif -%}
+              {#- https://companion.home-assistant.io/docs/notifications/notification-attachments#downloading -#}
+              {#- check if data_camera is an allowed format from the media_source or www folder -#}
+              {%- if data_camera is search("/media/local/",ignorecase=true) or data_camera is search("/local/",ignorecase=true) or data_camera is search("https://",ignorecase=true) or data_camera is search("http://",ignorecase=true) -%}
+                
+                {#- check if it is an allowed format for the image type: https://companion.home-assistant.io/docs/notifications/notification-attachments#supported-media-types -#}
+                {%- if data_camera is search(".jpg",ignorecase=true) or 
+                  data_camera is search(".gif",ignorecase=true) or 
+                  data_camera is search(".png",ignorecase=true) -%}
+                {%- set ns.data=ns.data+[("image",data_camera)] -%}
+                {%- endif -%}
+                {#- check if it is an allowed format for the video type: https://companion.home-assistant.io/docs/notifications/notification-attachments#supported-media-types -#}
+                {%- if data_camera is search(".mp4",ignorecase=true) or 
+                  data_camera is search(".mpeg",ignorecase=true) or 
+                  data_camera is search(".avi",ignorecase=true) -%}
+                {%- set ns.data=ns.data+[("video",data_camera)] -%}
+                {%- endif -%}
+                
+                {#- audio is only supported by iOS devices -#} 
+                {#- check if it is an allowed format for the video audio: https://companion.home-assistant.io/docs/notifications/notification-attachments#supported-media-types -#}
+                {%- if manufacturer=="Apple" and (
+                  data_camera is search(".mp3",ignorecase=true) or 
+                  data_camera is search(".aiff",ignorecase=true) or 
+                  data_camera is search(".wav",ignorecase=true) 
+                ) -%}
+                {%- set ns.data=ns.data+[("audio",data_camera)] -%}
+                {%- endif -%}
+              {%- endif -%}
+              {%- endif -%}
+              {#- https://companion.home-assistant.io/docs/notifications/notification-sounds -#}
+              {#- https://companion.home-assistant.io/docs/notifications/notifications-basic#sounds -#}
+              {%- if manufacturer=="Apple" and data_ios_sound is defined -%}
+              {%- set ns.sound=ns.sound+[("name",data_ios_sound)] -%}
+              {%- endif -%}
+              {#- https://companion.home-assistant.io/docs/notifications/critical-notifications#ios -#}
+              {%- if manufacturer=="Apple" and data_critical is defined and data_critical==True -%}
+              {%- if data_ios_sound_volumelevel is not defined -%}
+              {#- have an default value incase the data_ios_sound_volumelevel is not defined -#}
+              {%- set data_ios_sound_volumelevel=1 -%}
+              {%- endif -%}
+              {%- set ns.sound=ns.sound+[("volume",(data_ios_sound_volumelevel|float))] -%}
+              {%- set ns.sound=ns.sound+[("critical",1)] -%}
+              {%- endif -%}
+              {%- if manufacturer=="Apple" and data_ios_sound_volumelevel is defined and data_ios_sound_volumelevel is is_number -%}
+              {%- set ns.sound=ns.sound+[("volume",(data_ios_sound_volumelevel|float))] -%}
+              {%- endif -%}
+              {#- https://companion.home-assistant.io/docs/notifications/notifications-basic#badge -#}
+              {%- if manufacturer=="Apple" and data_ios_badge is defined and data_ios_badge is is_number -%}
+              {%- set ns.push=ns.push+[("badge",(data_ios_badge|int))] -%}
+              {%- endif -%}
+              {#- https://companion.home-assistant.io/docs/notifications/notifications-basic#interruption-level -#}
+              {%- if manufacturer=="Apple" and data_ios_interruption_level is defined -%}
+              {%- if data_ios_interruption_level|lower is not in ["passive","active","time-sensitive","critical"] -%}
+              {#- have an default value incase the data_ios_interruption_level is not correct -#}
+              {%- set data_ios_interruption_level="active" -%}
+              {%- endif -%}
+              {%- set ns.push=ns.push+[("interruption-level",(data_ios_interruption_level|lower))] -%}
+              {%- endif -%}
+              {#- https://companion.home-assistant.io/docs/notifications/notifications-basic#presentation-options -#}
+              {%- if manufacturer=="Apple" and data_ios_presentation_options is defined -%}
+              {#- check if the value(s) is allowed. It can contain one or more values -#}
+              {%- set allowed_values=["alert","badge","sound"] -%}
+              {%- set list=namespace(allowed_value=[]) -%}
+              {%- if (data_ios_presentation_options|lower) is in allowed_values -%}
+              {%- set list.allowed_value=list.allowed_value+[(data_ios_presentation_options|lower)] -%}
+              {%- else -%}
+              {%- for value in data_ios_presentation_options -%}
+              {%- if (value|lower) is in allowed_values -%}
+              {%- set list.allowed_value=list.allowed_value+[(value|lower)] -%}
+              {%- endif -%}
+              {%- endfor -%}
+              {%- endif -%}
+              {%- set ns.data=ns.data+[("presentation_options",list.allowed_value)] -%}
+              {%- endif -%}
+              {#- https://companion.home-assistant.io/docs/notifications/actionable-notifications -#}
+              {#- Android and iOS accept different type of actions, and this will filter those that are allowed per OS (according to the docs) -#}
+              {%- if data_actions is defined -%}
+              {%- for action in data_actions -%}
+              {#- https://companion.home-assistant.io/docs/notifications/actionable-notifications#uri-values -#}
+              {#- exclude certain uri values if the device is iOS -#}
+              {%- if manufacturer=="Apple" and action['uri'] is defined and (
+              action['uri'] is search("app://",ignorecase=False) or 
+              action['uri'] is search("intent://",ignorecase=False) or 
+              action['uri'] is search("deep-link://",ignorecase=False) or 
+              action['uri'] is search("entityId:",ignorecase=False) or 
+              action['uri'] is search("settings://",ignorecase=False)
+              ) -%}
+              {%- else -%}
+              {%- if manufacturer!="Apple" and (
+              action['action']=="CALL" or 
+              action['action']=="OPEN"
+              ) and (
+              action['uri'] is search("https://",ignorecase=False) or 
+              action['uri'] is search("tel:",ignorecase=False)
+              ) -%}
+              {%- else -%}
+              {%- set ns.actions=ns.actions+[(action)] -%}
+              {%- endif -%}
+              {%- endif -%}
+              {%- endfor%}
+              {%- if ns.actions|count>=1 -%}
+              {%- set ns.data=ns.data+[("actions",ns.actions)] -%}
+              {%- endif -%}
+              {%- endif -%}
+              {#- Finally add the sound to the push object as an DICT -#}
+              {%- if (ns.sound|count)>=1 -%}
+              {%- set ns.push=ns.push+[("sound",dict.from_keys(ns.sound))] -%}
+              {%- endif -%}
+              {#- Finally add the push to the data object as an DICT -#}
+              {%- if (ns.push|count)>=1 -%}
+              {%- set ns.data=ns.data+[("push",dict.from_keys(ns.push))] -%}
+              {%- endif -%}
+              {#- message and title are basic entries, but title is optional -#}
+              {%- if notify_title is defined and (notify_message|upper)!="TTS" -%}
+              {%- set ns.servicedata=ns.servicedata+[("title",notify_title)] -%}
+              {%- endif -%}
+              {#- make sure that the message: <value> has an default value or is formatted correctly -#}
+              {%- if notify_message is not defined -%}
+              {%- set notify_message="Hello World" -%}
+              {%- endif -%}
+              {%- if (notify_message|upper)=="TTS" -%}
+              {%- set notify_message="TTS" -%}
+              {%- endif -%}
+              {%- if (notify_message|lower)=="clear_notification" -%}
+              {%- set notify_message=(notify_message|lower) -%}
+              {%- endif -%}
+              {%- set ns.servicedata=ns.servicedata+[("message",notify_message)] -%}
+              {%- set ns.servicedata=ns.servicedata+[("data",dict.from_keys(ns.data))] -%}
+              {#- Finally show the results as an DICT -#}
+              {%- set servicedata=dict.from_keys(ns.servicedata) -%}
+              {{- servicedata }}
+        - choose:
+            - conditions:
+                - condition: template
+                  value_template: >-
+                    {{not (manufacturer=="Apple" and notify_title is defined and (notify_message|upper)=="TTS" and data_ios_sound is not defined)}}
+              sequence:
+                - service: "{{service}}"
+                  data: "{{servicedata}}"
+        - choose:
+            - conditions:
+                - condition: template
+                  value_template: >-
+                    {{manufacturer != "Apple" and 
+                    entities is defined and 
+                    (entities|select('search','_android_auto')|list|count==1) and 
+                    (states((entities|select("search","_android_auto")|list)[0])=="on") and 
+                    notify_in_car_using_tts is defined and 
+                    bool(notify_in_car_using_tts,false)==true and 
+                    notify_message is defined and 
+                    notify_message!='TTS'}}
+              sequence:
+                - variables:
+                    notify_message_actions_text: !input notify_message_actions_text
+                    servicedata: >-
+                      {#- If actions are defined then process each action title and add it to the notify_message -#}
+                      {% if servicedata['data'] is not defined %}
+                      {%- set servicedata=dict((servicedata),**({'data':{}})) -%}
+                      {%endif%}
+
+                      {%- if servicedata['data'] is defined and servicedata['data']['actions'] is defined -%}
+                      {%- set ns=namespace(actions=[]) -%}
+                      {%- for action in servicedata['data']['actions'] -%}
+                      {%- set ns.actions=ns.actions+[(action['title'])] -%}
+                      {%- endfor -%}
+                      {%- if notify_message_actions_text is not defined or notify_message_actions_text==None -%}
+                      {%- set notify_message_actions_text='Select one of the following actions on your phone' -%}
+                      {%- endif -%}
+                      {%- set notify_message_actions='. '~notify_message_actions_text~': '~ns.actions|join(', or ')-%}
+                      {%- set notify_message=notify_message~notify_message_actions -%}
+                      {%- endif -%}
+
+                      {#- Create a data dict with the previous servicedata['data'] information and add to the data the tts_text -#}
+                      {#- The tts_text is what will be used for TTS -#}
+                      {%- set servicedata=dict((servicedata),**({'data':dict(servicedata['data'],**{'tts_text':notify_message})})) -%}
+
+                      {#- Create the whole servicedata dict with the previous data information and replace the message with the TTS value -#}
+                      {%- set servicedata=dict((servicedata),**({'message':'TTS'})) -%}
+
+                      {#- Finally remove the old title from the dict -#}
+                      {%- set servicedata=dict.from_keys(servicedata.items()|rejectattr('0','in','title')|list)%}
+                      {{servicedata}}
+                - service: "{{service}}"
+                  data: "{{servicedata}}"

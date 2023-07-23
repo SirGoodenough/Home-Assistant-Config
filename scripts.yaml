@@ -31,14 +31,12 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaa_test_bp:
       payload: M84
   icon: mdi:account
   mode: single
-  
 cube_color_control_bp:
   alias: color_control_4_magic_cube_and_other_things
   use_blueprint:
     path: SirGoodenough/color_control_4_magic_cube.yaml
     input: {}
   mode: single
-
 cube_dimmer_control_bp:
   alias: dimmer_control_4_magic_cube_and_other_things
   use_blueprint:
@@ -46,7 +44,6 @@ cube_dimmer_control_bp:
     input: {}
   mode: single
   icon: mdi:lightbulb-on-30
-
 cube_long_short_control_bp:
   alias: long_short_toggle_4_magic_cube_and_other_things
   use_blueprint:
@@ -54,4 +51,8 @@ cube_long_short_control_bp:
     input: {}
   mode: single
   icon: mdi:toggle-switch-variant
-
+volume_kitchen:
+  alias: Volume kitchen
+  use_blueprint:
+    path: SirGoodenough/volume_4_magic_cube.yaml
+  icon: mdi:volume-equal
