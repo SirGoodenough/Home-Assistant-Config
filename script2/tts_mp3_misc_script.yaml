@@ -52,14 +52,3 @@ media_player_boink:
       file_2_play: media-source://media_source/local/mp3/sfx-boing3.mp3
   icon: mdi:ear-hearing
 
-tts_its_raining:
-  alias: TTS It's Raining
-  use_blueprint:
-    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
-    input:
-      TTS: tts.cloud_say
-      announcement_message: Rain has started
-      speaker_target: media_player.home_group
-      speaker_gender: female
-      cloud_language: en-IE
-  icon: mdi:weather-rainy

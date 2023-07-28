@@ -51,8 +51,8 @@ cube_long_short_control_bp:
     input: {}
   mode: single
   icon: mdi:toggle-switch-variant
-volume_kitchen:
-  alias: Volume kitchen
+aaaaaaaaabbbbbtestvolume:
+  alias: aaaaaaaaabbbbbtestvolume
   use_blueprint:
-    path: SirGoodenough/volume_4_magic_cube.yaml
-  icon: mdi:volume-equal
+    path: SirGoodenough/cube_volume_test_1.yaml
+  icon: mdi:knob

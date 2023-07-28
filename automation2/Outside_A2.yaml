@@ -21,6 +21,9 @@
     action:
     - service: script.media_player_mail
 
+  #####################################################
+  # Weather Rain                                      #
+  #####################################################
   - id: 7cd36a72-c114-4141-b167-0641cdb1a43f
     alias: Is it raining?
     initial_state: true
@@ -58,7 +61,7 @@
         id: event_announce
       - platform: time
         at: "6:01:11"
-        id: morning_announce
+        id: morning_announce_julie
       - platform: time
         at: "9:22:51"
         id: morning_announce_sg
@@ -74,3 +77,27 @@
           state: "on"
     action:
       service: script.tts_its_raining
+
+  #####################################################
+  # Weather Lightning                                 #
+  #####################################################
+  - id: '931215c8-a0ad-44ae-8c14-e6a7eb457e50'
+    alias: Lightning Detected
+    description: Lightning Detector shows lightning closeby
+    mode: single
+    max_exceeded: silent
+    trigger:
+    - platform: numeric_state
+      entity_id: sensor.gw2000b_v2_2_4_lightning_strike_distance
+      below: 6
+      above: 0
+    condition: []
+    action:
+    - alias: "Announce the alert"
+      service: script.tts_say_lightning
+    - alias: "Hold so that we don't have repeated notifications"
+      delay:
+        hours: 0
+        minutes: 30
+        seconds: 0
+        milliseconds: 0

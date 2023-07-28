@@ -20,9 +20,22 @@
       action_rotate_ccw_face_6:
       - service: script.cube_long_short_control_bp
         data:
-          angle: '{{ trigger.payload_json.action_angle | float(0.0) }}'
+          angle: '{{ trigger.payload_json.action_angle | default(0.1) | float(0.2)
+            }}'
           short_entity: light.kitchen_down_lights
           long_entity: light.kitchensink
+      scene_rotate_cw_face_3:
+      - service: script.aaaaaaaaabbbbbtestvolume
+        data:
+          angle: '{{ trigger.payload_json.action_angle | default(0.1) | float(0.2)
+            }}'
+          mp: media_player.kitchen_speaker
+      scene_rotate_ccw_face_3:
+      - service: script.aaaaaaaaabbbbbtestvolume
+        data:
+          angle: '{{ trigger.payload_json.action_angle | default(0.1) | float(0.2)
+            }}'
+          mp: media_player.kitchen_speaker
 - id: '1689973948504'
   alias: aaaaaaaaaaa office fan test
   description: testing tasmota 0123 speed ctrl

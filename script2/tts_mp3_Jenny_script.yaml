@@ -7,10 +7,10 @@ tts_first_flush:
       GTS_language: en
       TTS: tts.cloud_say
       cloud_language: de-DE
-      speaker_gender: male
+      speaker_gender: female
       speaker_target: media_player.jen_group
       announcement_message: >-
-        {{ (
+        {{ ( 
           "Hallo Dunkelheit, mein alter Freund",
           "Ich bin wieder gekommen, um mit dir zu reden",
           "Weil eine Vision sich sanft schleicht",
