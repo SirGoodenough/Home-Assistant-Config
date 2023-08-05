@@ -103,6 +103,7 @@
   action:
     - service: shell_command.blueprints_update
       data: {}
+      enabled: false
   mode: single
 
 ####################################################
