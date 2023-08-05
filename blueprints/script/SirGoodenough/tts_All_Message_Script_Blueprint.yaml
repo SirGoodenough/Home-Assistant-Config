@@ -122,7 +122,8 @@ blueprint:
       selector:
         entity:
           multiple: true
-          domain: media_player
+          filter:
+            - domain: light media_player
     speaker_gender:
       name: Speaker Gender
       description:
@@ -482,7 +483,8 @@ fields:
     selector:
       entity:
         multiple: true
-        domain: media_player
+        filter:
+          - domain: light media_player
 variables:
     # Do something before sending the TTS
   my_b4_action: !input "b4_action"

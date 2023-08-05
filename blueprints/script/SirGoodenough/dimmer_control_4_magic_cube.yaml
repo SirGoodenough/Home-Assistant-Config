@@ -91,7 +91,8 @@ fields:
     selector:
       entity:
         multiple: false
-        domain: light
+        filter:
+          - domain: light
 
 variables:
     # Get the sensitivity input

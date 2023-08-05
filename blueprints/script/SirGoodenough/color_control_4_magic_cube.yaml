@@ -76,8 +76,9 @@ fields:
     example: light.grp_studio
     selector:
       entity:
+        filter:
+          - domain: light
         multiple: false
-        domain: light
   t_color:
     name: Target Color
     description: Pick the  Red, Green, or Blue as the color you want to tweak.
