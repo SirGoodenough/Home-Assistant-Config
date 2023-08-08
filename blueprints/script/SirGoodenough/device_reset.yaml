@@ -1,9 +1,9 @@
 blueprint:
-  name: device_reset_script - 2023-06-15
+  name: device_reset_script - 2023-08-07
   author: SirGoodenough
   domain: script
   homeassistant:
-    min_version: 2023.3.0
+    min_version: 2023.8.0
   # source_url: 
   description: >
     This script was invented to be used with my Device Tracker-Monitor-Notifier
@@ -23,7 +23,8 @@ blueprint:
           multiple: true
     time_off:
       name: How long the thing should be off 
-      description: How long the thing should be off to make certain it gets a
+      description: >
+        How long the thing should be off to make certain it gets a
         proper reset. I'm defaulting at 30 seconds,
         but anything is reasonable depending on the device.
         After the delay the thing will be turned back on.
