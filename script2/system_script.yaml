@@ -26,8 +26,9 @@
         selector:
           entity:
             multiple: false
-            domain: media_player
-            # supported_features: 8
+            filter:
+              domain: media_player
+              # supported_features: 8
       status:
         name: Turn the Mute on/off
         description:
@@ -94,7 +95,8 @@
         selector:
           entity:
             multiple: true
-            domain: media_player
+            filter:
+              domain: media_player
     sequence:
       - service: tts.cloud_say
         data:
