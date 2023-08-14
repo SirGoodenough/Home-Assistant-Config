@@ -414,11 +414,14 @@
               }
             },
             {
+              "show_current": true,
+              "show_forecast": true,
               "type": "weather-forecast",
               "entity": "weather.home",
               "name": "Chaloupka Abode",
               "theme": "Animated Weather Card",
-              "secondary_info_attribute": "wind_speed"
+              "secondary_info_attribute": "wind_speed",
+              "forecast_type": "legacy"
             },
             {
               "type": "conditional",
@@ -5113,6 +5116,17 @@
               "icon": "mdi:remote",
               "icon_height": "80px",
               "theme": "Dark - Blue"
+            },
+            {
+              "type": "custom:firemote-card",
+              "entity": "media_player.android_tv_192_168_108_205",
+              "device_family": "nvidia-shield",
+              "device_type": "shield-tv-pro-2019",
+              "compatibility_mode": "default",
+              "android_tv_remote_entity": "",
+              "app_launch_1": "youtube",
+              "visible_name_text": "Farg",
+              "name_position": "top"
             },
             {
               "type": "grid",
