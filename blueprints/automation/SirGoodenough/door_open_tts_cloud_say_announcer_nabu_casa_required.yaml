@@ -12,7 +12,7 @@ blueprint:
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/door-open-tts-cloud-say-announcer-nabu-casa-required/316046)
-  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml
+#  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml
   homeassistant:
     min_version: 2023.8.0
   domain: automation
@@ -195,6 +195,34 @@ action:
         message: !input 'announcement_message'
         options:
           gender: !input 'speaker_gender'
+          voice: >-
+            {{ (
+              "JennyNeural",
+              "AIGenerate1Neural",
+              "AIGenerate2Neural",
+              "AmberNeural",
+              "AnaNeural",
+              "AriaNeural",
+              "AshleyNeural",
+              "BrandonNeural",
+              "ChristopherNeural",
+              "CoraNeural",
+              "DavisNeural",
+              "ElizabethNeural",
+              "EricNeural",
+              "GuyNeural",
+              "JacobNeural",
+              "JaneNeural",
+              "JasonNeural",
+              "JennyMultilingualNeural",
+              "MichelleNeural",
+              "MonicaNeural",
+              "NancyNeural",
+              "RogerNeural",
+              "SaraNeural",
+              "SteffanNeural",
+              "TonyNeural"
+            ) | random }}
         language: !input 'speaker_language'
     until:
     - condition: state
@@ -206,6 +234,34 @@ action:
     message: !input 'final_message'
     options:
       gender: !input 'speaker_gender'
+      voice: >-
+        {{ (
+          "JennyNeural",
+          "AIGenerate1Neural",
+          "AIGenerate2Neural",
+          "AmberNeural",
+          "AnaNeural",
+          "AriaNeural",
+          "AshleyNeural",
+          "BrandonNeural",
+          "ChristopherNeural",
+          "CoraNeural",
+          "DavisNeural",
+          "ElizabethNeural",
+          "EricNeural",
+          "GuyNeural",
+          "JacobNeural",
+          "JaneNeural",
+          "JasonNeural",
+          "JennyMultilingualNeural",
+          "MichelleNeural",
+          "MonicaNeural",
+          "NancyNeural",
+          "RogerNeural",
+          "SaraNeural",
+          "SteffanNeural",
+          "TonyNeural"
+        ) | random }}
     language: !input 'speaker_language'
 
 mode: single
