@@ -156,7 +156,7 @@ blueprint:
       default: 10
       selector:
         number:
-          min: 0.0
+          min: 4.0
           max: 7200.0
           unit_of_measurement: seconds
           step: 1.0
@@ -176,6 +176,10 @@ trigger:
   from: 'off'
   to: 'on'
 
+variables:
+    # Convert !input to variable
+  cooldown: !input cooldown
+
 condition:
   - alias: Active time for the announcement
     condition: time
@@ -188,47 +192,67 @@ action:
 - alias: Repeat the sequence UNTIL the door is closed
   repeat:
     sequence:
-    - delay: !input 'cooldown'
-    - service: tts.cloud_say
-      data:
-        entity_id: !input 'speaker_target'
-        message: !input 'announcement_message'
-        options:
-          gender: !input 'speaker_gender'
-          voice: >-
-            {{ (
-              "JennyNeural",
-              "AIGenerate1Neural",
-              "AIGenerate2Neural",
-              "AmberNeural",
-              "AnaNeural",
-              "AriaNeural",
-              "AshleyNeural",
-              "BrandonNeural",
-              "ChristopherNeural",
-              "CoraNeural",
-              "DavisNeural",
-              "ElizabethNeural",
-              "EricNeural",
-              "GuyNeural",
-              "JacobNeural",
-              "JaneNeural",
-              "JasonNeural",
-              "JennyMultilingualNeural",
-              "MichelleNeural",
-              "MonicaNeural",
-              "NancyNeural",
-              "RogerNeural",
-              "SaraNeural",
-              "SteffanNeural",
-              "TonyNeural"
-            ) | random }}
-        language: !input 'speaker_language'
+    - alias: This is the delay broke into 2 sec incr so it can be interupted.
+      repeat:
+        while:
+          - condition: state
+            entity_id: !input 'door_entity'
+            state: "on"
+          - condition: template
+            value_template: >-
+              {{ repeat.index < cooldown/2 }}"
+        sequence:
+          - delay: 00:00:02
+    - if:
+      - alias: Sensor is still on
+        condition: state
+        entity_id: !input 'door_entity'
+        state: "on"
+      then:
+      - alias: Send announcement message (potentially again)
+        service: tts.cloud_say
+        data:
+          entity_id: !input 'speaker_target'
+          message: !input 'announcement_message'
+          options:
+            gender: !input 'speaker_gender'
+            voice: >-
+              {{ (
+                "JennyNeural",
+                "AIGenerate1Neural",
+                "AIGenerate2Neural",
+                "AmberNeural",
+                "AnaNeural",
+                "AriaNeural",
+                "AshleyNeural",
+                "BrandonNeural",
+                "ChristopherNeural",
+                "CoraNeural",
+                "DavisNeural",
+                "ElizabethNeural",
+                "EricNeural",
+                "GuyNeural",
+                "JacobNeural",
+                "JaneNeural",
+                "JasonNeural",
+                "JennyMultilingualNeural",
+                "MichelleNeural",
+                "MonicaNeural",
+                "NancyNeural",
+                "RogerNeural",
+                "SaraNeural",
+                "SteffanNeural",
+                "TonyNeural"
+              ) | random }}
+          language: !input 'speaker_language'
+      - alias: Delay to make sure the message can complete.
+        delay: 00:00:10
     until:
     - condition: state
       entity_id: !input 'door_entity'
       state: 'off'
-- service: tts.cloud_say
+- alias: Always try to say thanks at the end. Leave message empty for quiet
+  service: tts.cloud_say
   data:
     entity_id: !input 'speaker_target'
     message: !input 'final_message'
