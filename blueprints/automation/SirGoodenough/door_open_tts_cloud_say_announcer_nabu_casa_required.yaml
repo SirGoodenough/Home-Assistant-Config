@@ -195,7 +195,6 @@ action:
         message: !input 'announcement_message'
         options:
           gender: !input 'speaker_gender'
-          voice: ChristopherNeural
         language: !input 'speaker_language'
     until:
     - condition: state
@@ -207,7 +206,6 @@ action:
     message: !input 'final_message'
     options:
       gender: !input 'speaker_gender'
-      voice: ChristopherNeural
     language: !input 'speaker_language'
 
 mode: single

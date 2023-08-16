@@ -25,41 +25,29 @@
           short_entity: light.kitchen_down_lights
           long_entity: light.kitchensink
       scene_rotate_cw_face_3:
-      - service: script.aaaaaaaaabbbbbtestvolume
+      - service: script.volume4cube
         data:
           angle: '{{ trigger.payload_json.action_angle | default(0.1) | float(0.2)
             }}'
           mp: media_player.kitchen_speaker
       scene_rotate_ccw_face_3:
-      - service: script.aaaaaaaaabbbbbtestvolume
+      - service: script.volume4cube
         data:
           angle: '{{ trigger.payload_json.action_angle | default(0.1) | float(0.2)
             }}'
           mp: media_player.kitchen_speaker
-- id: '1689973948504'
-  alias: aaaaaaaaaaa office fan test
-  description: testing tasmota 0123 speed ctrl
+- id: '1692033269574'
+  alias: aaaaaaaa test door
+  description: add voice to door test
   use_blueprint:
-    path: SirGoodenough/AutoFanControl_HA_fan.yaml
+    path: SirGoodenough/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml
     input:
-      fan_control: input_boolean.fan_test
-      room_temp_now: sensor.lumi_lumi_sensor_cube_aqgl01_device_temperature
-      room_set_temp: input_number.mayson_nap_temperature
-      fan: fan.office_fan
-      loop_action: []
-      off_action:
-      - service: light.toggle
-        data: {}
-        target:
-          entity_id: light.kitchensink
-- id: '1690133105124'
-  description: ''
-  trigger: []
-  condition: []
-  action:
-  - service: media_player.volume_set
-    data:
-      volume_level: 0.74
-    target:
-      entity_id: media_player.kitchen_speaker
-  mode: single
+      door_entity:
+      - binary_sensor.back_door_open_433
+      start_time: 08:00:00
+      end_time: '22:00:00'
+      speaker_target:
+      - media_player.kitchen_speaker
+      speaker_gender: male
+      speaker_language: en-US
+      cooldown: 120

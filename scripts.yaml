@@ -51,8 +51,8 @@ cube_long_short_control_bp:
     input: {}
   mode: single
   icon: mdi:toggle-switch-variant
-aaaaaaaaabbbbbtestvolume:
-  alias: aaaaaaaaabbbbbtestvolume
+volume4cube:
+  alias: Volume4Cube
   use_blueprint:
-    path: SirGoodenough/cube_volume_test_1.yaml
+    path: SirGoodenough/volume_control_4_magic_cube.yaml
   icon: mdi:knob
