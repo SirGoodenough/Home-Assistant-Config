@@ -176,10 +176,6 @@ trigger:
   from: 'off'
   to: 'on'
 
-variables:
-    # Convert !input to variable
-  cooldown: !input cooldown
-
 condition:
   - alias: Active time for the announcement
     condition: time
@@ -189,6 +185,11 @@ condition:
     condition: !input additional_conditions
 
 action:
+- variables:
+      # Convert !inputs to variables
+    cooldown: !input cooldown
+    doorS: !input door_entity
+
 - alias: Repeat the sequence UNTIL the door is closed
   repeat:
     sequence:
@@ -199,18 +200,16 @@ action:
             entity_id: !input 'door_entity'
             state: "on"
           - condition: template
-            value_template: >-
-              {{ repeat.index < cooldown/2 }}"
+            value_template: "{{ repeat.index < cooldown/2 }}"
         sequence:
           - delay: 00:00:02
-    - if:
-      - alias: Sensor is still on
-        condition: state
+    - alias: Send announcement message (potentially again)
+      if: 
+      - condition: state
         entity_id: !input 'door_entity'
         state: "on"
       then:
-      - alias: Send announcement message (potentially again)
-        service: tts.cloud_say
+      - service: tts.cloud_say
         data:
           entity_id: !input 'speaker_target'
           message: !input 'announcement_message'
