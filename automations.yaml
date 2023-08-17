@@ -51,3 +51,28 @@
       speaker_gender: male
       speaker_language: en-US
       cooldown: 120
+      speaker_voice: '{{ ("JennyNeural",
+        "AIGenerate1Neural",
+        "AIGenerate2Neural",
+        "AmberNeural",
+        "AnaNeural",
+        "AriaNeural",
+        "AshleyNeural",
+        "BrandonNeural",
+        "ChristopherNeural",
+        "CoraNeural",
+        "DavisNeural",
+        "ElizabethNeural",
+        "EricNeural",
+        "GuyNeural",
+        "JacobNeural",
+        "JaneNeural",
+        "JasonNeural",
+        "JennyMultilingualNeural",
+        "MichelleNeural",
+        "MonicaNeural",
+        "NancyNeural",
+        "RogerNeural",
+        "SaraNeural",
+        "SteffanNeural",
+        "TonyNeural") | random }}'
