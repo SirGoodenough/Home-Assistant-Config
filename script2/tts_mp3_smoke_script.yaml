@@ -5,7 +5,7 @@ tts_smoke_detected_in_the_basement:
     input:
       GTS_language: en
       TTS: tts.cloud_say
-      cloud_language: en-US
+      nabu_azure_language: en-US
       speaker_gender: female
       speaker_target: media_player.intercom_group, media_player.bedroom_speaker
       announcement_message: 'Smoke Detected in the Basement! Smoke Detected in the
@@ -18,7 +18,7 @@ tts_smoke_detected_upstairs:
     input:
       GTS_language: en
       TTS: tts.cloud_say
-      cloud_language: en-US
+      nabu_azure_language: en-US
       speaker_gender: female
       speaker_target: media_player.intercom_group, media_player.bedroom_speaker
       announcement_message: 'Smoke Detected upstairs! Smoke Detected upstairs! 

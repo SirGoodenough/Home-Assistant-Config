@@ -5,7 +5,7 @@ tts_wash_machine_done:
     input:
       GTS_language: en
       TTS: tts.cloud_say
-      cloud_language: en-US
+      nabu_azure_language: en-US
       speaker_gender: female
       speaker_target: media_player.intercom_group
       announcement_message: Washing Cycle Has Completed
@@ -17,7 +17,7 @@ tts_dryer_done:
     input:
       GTS_language: en
       TTS: tts.cloud_say
-      cloud_language: en-US
+      nabu_azure_language: en-US
       speaker_gender: female
       speaker_target: media_player.intercom_group
       announcement_message: The clothes are dry

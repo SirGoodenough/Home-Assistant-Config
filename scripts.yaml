@@ -31,3 +31,13 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaa_test_bp:
       payload: M84
   icon: mdi:account
   mode: single
+aaaaaaaaaaaaaatest_new_voice_all_message:
+  alias: aaaaaaaaaaaaaatest new voice all message
+  use_blueprint:
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
+    input:
+      TTS: tts.cloud_say
+      speaker_target:
+      - media_player.kitchen_speaker
+      nabu_azure_voice: AnaNeural
+  icon: mdi:account

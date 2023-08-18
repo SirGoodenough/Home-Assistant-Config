@@ -5,7 +5,7 @@ tts_tarantula_off:
     input:
       GTS_language: en
       TTS: tts.cloud_say
-      cloud_language: en-AU
+      nabu_azure_language: en-AU
       speaker_gender: male
       speaker_target: media_player.kitchen_speaker
       announcement_message: The Forge has been disabled
@@ -17,7 +17,7 @@ tts_tarantula_print_complete:
     input:
       GTS_language: en
       TTS: tts.cloud_say
-      cloud_language: en-CA
+      nabu_azure_language: en-CA
       speaker_gender: male
       speaker_target: media_player.kitchen_speaker
       announcement_message: The Forge is ready for more work

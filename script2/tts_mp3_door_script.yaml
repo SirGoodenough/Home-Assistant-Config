@@ -5,7 +5,7 @@ tts_side_doorbell:
     input:
       GTS_language: en
       TTS: tts.cloud_say
-      cloud_language: en-US
+      nabu_azure_language: en-US
       speaker_gender: male
       speaker_target: media_player.intercom_group
       announcement_message: >
@@ -41,7 +41,7 @@ tts_back_doorbell:
     input:
       GTS_language: en
       TTS: tts.cloud_say
-      cloud_language: en-US
+      nabu_azure_language: en-US
       speaker_gender: male
       speaker_target: media_player.intercom_group
       announcement_message: >
@@ -68,7 +68,7 @@ tts_front_doorbell:
     input:
       GTS_language: en
       TTS: tts.cloud_say
-      cloud_language: en-US
+      nabu_azure_language: en-US
       speaker_gender: male
       speaker_target: media_player.intercom_group
       announcement_message: >

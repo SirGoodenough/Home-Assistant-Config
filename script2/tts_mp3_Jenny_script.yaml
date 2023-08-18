@@ -6,7 +6,7 @@ tts_first_flush:
     input: 
       GTS_language: en
       TTS: tts.cloud_say
-      cloud_language: de-DE
+      nabu_azure_language: de-DE
       speaker_gender: female
       speaker_target: media_player.jen_group
       announcement_message: >-
@@ -54,7 +54,7 @@ tts_middle_flush:
     input:
       GTS_language: en
       TTS: tts.cloud_say
-      cloud_language: "en-AU"
+      nabu_azure_language: "en-AU"
       speaker_gender: male
       speaker_target: media_player.jen_group
       announcement_message: >-
@@ -84,7 +84,7 @@ tts_final_flush:
     input:
       GTS_language: en
       TTS: tts.cloud_say
-      cloud_language: "en-CA"
+      nabu_azure_language: "en-CA"
       speaker_gender: male
       speaker_target: media_player.jen_group
       announcement_message: >-
@@ -115,7 +115,7 @@ tts_mister_message:
     input:
       GTS_language: en
       TTS: tts.cloud_say
-      cloud_language: en-AU
+      nabu_azure_language: en-AU
       speaker_gender: male
       speaker_target: media_player.intercom_group
       announcement_message: No juice in the Bucket, mate.  Time to add the Vegemite.
@@ -143,7 +143,7 @@ tts_bed_cares_warning:
     input:
       GTS_language: en
       TTS: tts.cloud_say
-      cloud_language: en-IN
+      nabu_azure_language: en-IN
       speaker_gender: '{{ ("female","male") | random }}'
       speaker_target: media_player.jennys_room_display
       announcement_message: "Make sure the tray is secured to launch position.  Bed is about to launch."

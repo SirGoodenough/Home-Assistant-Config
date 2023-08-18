@@ -7,7 +7,7 @@ tts_its_raining:
       announcement_message: Rain has started
       speaker_target: media_player.home_group
       speaker_gender: female
-      cloud_language: en-IE
+      nabu_azure_language: en-IE
   icon: mdi:weather-rainy
 
 tts_say_lightning:
