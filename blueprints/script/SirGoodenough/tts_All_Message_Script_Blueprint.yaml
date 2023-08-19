@@ -1,60 +1,9 @@
 blueprint:
-  name: TTS_say_Message-2023-08-23-b1
+  name: Door open tts.cloud_say announcer (Nabu-Casa required) - 2023-08-17
   author: SirGoodenough
   description: >
-    📣 This is a script that can use any of the 11 integrated TTS Platforms
-    in Home Assistant to send a message to a media player. Some will require Google
-    Type Speakers, some will require Non-Google type speakers.
-
-
-    These integrations are listed here. Please refer to these pages for care and feeding
-    of the *tts_say method you choose. ⛓ https://www.home-assistant.io/integrations/#text-to-speech
-
-
-    This blueprint **WILL NOT** set-up TTS for you. You will be given the opportunity
-    to add the incorrect options that will **NOT** allow your TTS to function. Your
-    best road to success will be to add a TTS session with UI, and only after that
-    is successfully talking to you should you take the languages and options that
-    work there and apply them in this Blueprint. The safest thing to do other than
-    that is to start with the basic sonfiguration for the TTS_say integration that
-    you are using and add options one at a time.
-
-
-    The very basic requirements are for you to provide the *tts_say method that you
-    have installed and tested, the entity that you want to send it to, and the message
-    you want to send. Beyond that likely involves trial and error that may best be
-    done in the Developer Tools Services area here: 
-    [![Open your Home Assistant instance and show your service developer tools.](https://my.home-assistant.io/badges/developer_services.svg)](https://my.home-assistant.io/redirect/developer_services/)
-
-
-    I have added an action statement both before and after the main TTS call. You
-    can choose to ignore these, or you can use them to change volume, add a 
-    media player to play a doorbell, turn on a light, add a delay, 
-    whatever you want to do.
-
-
-    The Scripts produced by this blueprint can be called from an automation & variable
-    values for the message and the media_player can be sent on the fly. For details
-    [check out the instructions here](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.md#calling).
-
-
-    ### ⚠️ This Blueprint makes the assumption that you already have a tested & proven
-    TTS integration installed and you know how it works and how to use it ⚠️
-
-
-    You will need to verify that the name you have given to the TTS integration in
-    your system configuration is the Default name or you need to change this blueprint
-    to use the custom name you have set in the tts: section of configuration.yaml.
-
-
-    This will be a way to streamline your automations and scripts. It provides specific
-    services that can be called with a single line service call. This is contrasted
-    to the multiline service calls of repeating values spread throughout your configuration.
-
-
-    In addition it puts all your TTS specific code in 1 spot, the blueprint, and that
-    allows it to be called over and over. Plus it gives you one place, the blueprint,
-    to repair issues should they arrise. 🔚
+    This uses tts.cloud_say from Nabu-Casa to tell you a door is open too
+    long and a door has been closed.
 
     📩 There is not an official version control system for Blueprints. However I have
     found something that comes pretty close. It is not perfect, but for **MOST**
@@ -62,119 +11,107 @@ blueprint:
     it to easily check if I have updated this blueprint. 🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 
-    [Community link for this blueprint](https://community.home-assistant.io/t/tts-script-blueprint-for-all-11-ha-core-tts-flavors/400700)
-
-  domain: script
+    [Community link for this blueprint](https://community.home-assistant.io/t/door-open-tts-cloud-say-announcer-nabu-casa-required/316046)
   homeassistant:
     min_version: 2023.8.0
+  domain: automation
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml
   input:
-    b4_action:
-      name: Action before TTS
+    door_entity:
+      name: 'Door Sensor (or any binary_sensor will do...)'
       description: >
-        This is intended to add a volume control action or whatever you want
-        to do before sending the TTS message
-      default: []
-      selector:
-        action: {}
-    after_action:
-      name: Action after TTS
-      description: >
-        This is intended to add a volume control action or whatever you want
-        to do after sending the TTS message
-      default: []
-      selector:
-        action: {}
-    TTS:
-      name: Text to Speech Processor
-      description: >
-        ### Required on ALL \*_say platforms
-
-        Select the configured TTS engine for media_player notifications. [SEE for details](https://www.home-assistant.io/integrations/#text-to-speech)
-      selector:
-        select:
-          options:
-            - tts.amazon_polly_say
-            - tts.baidu_say
-            - tts.cloud_say
-            - tts.google_cloud_say
-            - tts.google_translate_say
-            - tts.marytts_say
-            - tts.microsoft_say
-            - tts.picotts_say
-            - tts.voicerss_say
-            - tts.watson_tts_say
-            - tts.yandextts_say
-          custom_value: false
-          multiple: false
-    announcement_message:
-      name: Spoken Message
-      description: >
-        ### Required on ALL \*_say platforms
-
-        Type your message here:
-      default: '{{ ("Random test one","Random test two","Random test three") | random }}'
-      selector:
-        text:
-          multiline: true
-    speaker_target:
-      name: Entity(s) to speak thru
-      description: >
-        ### Required on ALL \*_say platforms
-
-        Be sure to select the correct type / brand of device for the TTS you are using. 
-        Not All speakers work with all TTS engines
+        Entity that initiates the announcement. Actually any entity that changes
+        its state from off to on will work here, You would just need to enter the
+        entity manually if it's not a binary sensor.
+        However this BP is expecting 'on' or 'off' as the available states.
       selector:
         entity:
           multiple: true
           filter:
+            - domain: binary_sensor
+    start_time:
+      name: StartTime
+      description: >
+        Time of day you want to enable the announcement each day.
+
+
+        Leave at 12:00:00 if you want it to always be on.
+      selector:
+        time: {}
+      default: 00:00:00
+    end_time:
+      name: EndTime
+      description: >
+        Time of day you want to disable the announcement each day. 
+
+
+        Leave at 12:00:00 if you want it to always be on.
+      selector:
+        time: {}
+      default: 00:00:00
+    weekday:
+      name: Day of the week to use the Automation
+      description: >
+        Day(s) of the week you want to enable the announcement. 
+
+
+        Leave at default all selected if you want it to always be on.
+      default:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
+      selector:
+        select:
+          options:
+          - label: Monday
+            value: mon
+          - label: Tuesday
+            value: tue
+          - label: Wednesday
+            value: wed
+          - label: Thursday
+            value: thu
+          - label: Friday
+            value: fri
+          - label: Saturday
+            value: sat
+          - label: Sunday
+            value: sun
+          custom_value: false
+          multiple: true
+    speaker_target:
+      name: Speaker
+      description: Entity to announce event on
+      selector:
+        entity:
+          filter:
             - domain: media_player
+          multiple: true
     speaker_gender:
       name: Speaker Gender
-      description: >
-        ### Required on MOST \*_say platforms
-
-        Select speaker gender male or female.
-        May not work with all TTS engines.
-      default: []
+      description: Select speaker gender male or female
+      default: female
       selector:
         select:
           options:
-          - label: Female
-            value: female
-          - label: Male
-            value: male
-          - label: Neutral (Does not work on all flavors)
-            value: neutral
+          - female
+          - male
           custom_value: false
           multiple: false
-    baidu_person:
-      name: Baidu Person Code
-      description: >
-        Used only on tts_baidu_say platform. [More Info here.](https://www.home-assistant.io/integrations/baidu/)
-        This is the voice code of the speaker.
-      default: []
-      selector:
-        select:
-          options:
-            - "0"
-            - "1"
-            - "3"
-            - "4"
-            - "5"
-            - "103"
-            - "106"
-            - "110"
-            - "111"
-          custom_value: false
-          multiple: false
-    nabu_azure_language:
-      name: tts_cloud (nabu Casa) Language
+    speaker_language:
+      name: Speaker Language
       description: >
         Select Language code. [See here for Details](https://www.nabucasa.com/config/tts/)
 
         This defaults to en-US (english/US). However all the languages available on
         2023-8-17 were put into the pick list. 
 
+
+        ***NOTE: It is possible that not all Languages will give you both Genders.***
       default: en-US
       selector:
         select:
@@ -322,8 +259,8 @@ blueprint:
             - zu-ZA
           custom_value: false
           multiple: false
-    nabu_azure_voice:
-      name: tts_cloud (nabu Casa) Voice
+    speaker_voice:
+      name: Voice of the speaker
       description: >  
         ***Here you need to be careful.***
 
@@ -372,538 +309,114 @@ blueprint:
       selector:
         text:
           multiline: true
-    cloud_language:
-      name: TTS Cloud Language
-      description: >
-        This is for tts.google_cloud_say. Select
-        Language code. [See this.](https://www.nabucasa.com/config/tts) This defaults
-        to en-US as english/US. All the languages available on 2023-7-17
-        were put into the pick list. 
-        
-        *NOTE: It is possible that not all Languages will give you both Genders.*
-      default: []
-      selector:
-        select:
-          options:
-            - ar-EG
-            - ar-SA
-            - bg-BG
-            - ca-ES
-            - zh-HK
-            - zh-CN
-            - zh-TW
-            - hr-HR
-            - cs-CZ
-            - da-DK
-            - nl-NL
-            - en-AU
-            - en-CA
-            - en-IN
-            - en-IE
-            - en-GB
-            - en-US
-            - et-EE
-            - fi-FI
-            - fr-CA
-            - fr-FR
-            - fr-CH
-            - de-AT
-            - de-DE
-            - de-CH
-            - el-GR
-            - he-IL
-            - hi-IN
-            - hu-HU
-            - id-ID
-            - it-IT
-            - ja-JP
-            - ko-KR
-            - ms-MY
-            - nb-NO
-            - pl-PL
-            - pt-BR
-            - pt-PT
-            - ro-RO
-            - ru-RU
-            - sk-SK
-            - sl-SI
-            - es-MX
-            - es-ES
-            - sv-SE
-            - ta-IN
-            - te-IN
-            - th-TH
-            - tr-TR
-            - vi-VN
-          custom_value: false
-          multiple: false
-    Google_Cloud_Voice:
-      name: Google Cloud Voice Code
-      description: >
-        Used only with tts.google_cloud_say platform. [Pick from here](https://cloud.google.com/text-to-speech/docs/voices)
-        This is the voice code of the speaker. The default is: "en-US-Wavenet-F". 
-        [Refer here](https://www.home-assistant.io/integrations/google_cloud) for more information.
-      default: []
-    Google_Cloud_Profile:
-      name: Google Cloud Profile
-      description: >
-        Used only on tts.google_cloud_say platform. [Pick from here](https://cloud.google.com/text-to-speech/docs/audio-profiles)
-        This is a parameter to match the output to the sound of the speaker. [Refer here](https://www.home-assistant.io/integrations/google_cloud)
-        for more information.
-      default: []
-      selector:
-        select:
-          options:
-            - wearable-class-device
-            - handset-class-device
-            - headphone-class-device
-            - small-bluetooth-speaker-class-device
-            - medium-bluetooth-speaker-class-device
-            - large-home-entertainment-class-device
-            - large-automotive-class-device
-            - telephony-class-application
-          custom_value: false
-          multiple: false
-    GTS_language:
-      name: TTS Google Translate Say Language
-      description: >
-        This is for tts.google_translate_say only. Check the complete list
-        of [supported languages](https://cloud.google.com/text-to-speech/docs/voices) for allowed values.
-        The 2 letter lead acronym [example- en for english] is all that is used
-        here. The >2 letter ones do not work...]  All the languages available on 2023-7-17
-        were put into the pick list.
-        
-        This defaults to ```en``` [english]
-      default: en
-      selector:
-        select:
-          options:
-            - af
-            - ak
-            - am
-            - ar
-            - as
-            - ay
-            - az
-            - be
-            - bg
-            - bm
-            - bn
-            - bs
-            - ca
-            - co
-            - cs
-            - cy
-            - da
-            - de
-            - dv
-            - ee
-            - el
-            - en
-            - eo
-            - es
-            - et
-            - eu
-            - fa
-            - fi
-            - fr
-            - fy
-            - ga
-            - gd
-            - gl
-            - gn
-            - gu
-            - ha
-            - hi
-            - hr
-            - ht
-            - hu
-            - hy
-            - id
-            - ig
-            - is
-            - it
-            - ja
-            - jv
-            - jw
-            - ka
-            - kk
-            - km
-            - kn
-            - ko
-            - ku
-            - ky
-            - la
-            - lb
-            - lg
-            - ln
-            - lo
-            - lt
-            - lv
-            - mg
-            - mi
-            - mk
-            - ml
-            - mn
-            - mr
-            - ms
-            - mt
-            - my
-            - ne
-            - nl
-            - "no"
-            - ny
-            - om
-            - or
-            - pa
-            - pl
-            - ps
-            - pt
-            - qu
-            - ro
-            - ru
-            - rw
-            - sa
-            - sd
-            - si
-            - sk
-            - sl
-            - sm
-            - sn
-            - so
-            - sq
-            - sr
-            - st
-            - su
-            - sv
-            - sw
-            - ta
-            - te
-            - tg
-            - th
-            - ti
-            - tk
-            - tl
-            - tr
-            - ts
-            - tt
-            - ug
-            - uk
-            - ur
-            - uz
-            - vi
-            - xh
-            - yi
-            - yo
-            - zu
-          custom_value: true
-          multiple: false
-    marytts_language:
-      name: Language option for tts.marytts_say
-      description:  >
-        Used only on tts.marytts_say. [More Info Here](https://www.home-assistant.io/integrations/marytts)
-        All the languages available on 2023-7-17 were put into the pick list.
-        Select speaker Language:
-      default: []
-      selector:
-        select:
-          options:
-            - de
-            - en_GB
-            - en_US
-            - fr
-            - it
-            - lb
-            - ru
-            - sv
-            - te
-            - tr
-          custom_value: false
-          multiple: false
-    picotts_language:
-      name: Language option for tts.picotts_say
-      description: >
-        Used only on tts.picotts_say. [More Info Here](https://www.home-assistant.io/integrations/picotts)
-        All the languages available on 2023-7-17 were put into the pick list.
-        Select speaker Language:
-      default: []
-      selector:
-        select:
-          options:
-            - en-US
-            - en-GB
-            - de-DE
-            - es-ES
-            - fr-FR
-            - it-IT
-          custom_value: false
-          multiple: false
-    voicerss_language:
-      name: Language option for tts.voicerss_say
-      description: >
-        Used only on tts.voicerss_say. [More Info Here](https://www.home-assistant.io/integrations/voicerss)
-        All the languages available on 2023-7-17 were put into the pick list.
-        Select speaker Language. [SEE for details](https://www.voicerss.org/api).
-      default: []
-      selector:
-        select:
-          options:
-            - ar-eg
-            - ar-sa
-            - bg-bg
-            - ca-es
-            - zh-cn
-            - zh-hk
-            - zh-tw
-            - hr-hr
-            - cs-cz
-            - da-dk
-            - nl-be
-            - nl-nl
-            - en-au
-            - en-ca
-            - en-gb
-            - en-in
-            - en-ie
-            - en-us
-            - fi-fi
-            - fr-ca
-            - fr-fr
-            - fr-ch
-            - de-at
-            - de-de
-            - de-ch
-            - el-gr
-            - he-il
-            - hi-in
-            - hu-hu
-            - id-id
-            - it-it
-            - ja-jp
-            - ko-kr
-            - ms-my
-            - nb-no
-            - pl-pl
-            - pt-br
-            - pt-pt
-            - ro-ro
-            - ru-ru
-            - sk-sk
-            - sl-si
-            - es-mx
-            - es-es
-            - sv-se
-            - ta-in
-            - th-th
-            - tr-tr
-            - vi-vn
-          custom_value: false
-          multiple: false
-    voicerss_format:
-      name: Message format option for tts.voicerss_say
-      description: >
-        Used only on tts.voicerss_say. Select message format. [More Info Here](https://www.home-assistant.io/integrations/voicerss)
-        There were too many to do a selector. [SEE for details](https://www.voicerss.org/api).
-      default: []
-    yandextts_language:
-      name: Language option for tts.yandextts_say
-      description: >
-        Used only on tts.yandextts_say. 
-        All the languages available on 2023-7-17 were put into the pick list.
-        Select speaker Language. [SEE for Details](https://www.home-assistant.io/integrations/yandextts).
-      default: []
-      selector:
-        select:
-          options:
-            - en-US
-            - ru-RU
-            - uk-UK
-            - tr-TR
-          custom_value: false
-          multiple: false
-    yandextts_voice:
-      name: Voice option for tts.yandextts_say
-      description: >
-        Used only on tts.yandextts_say. Select speaker Voice. [SEE for Details](https://www.home-assistant.io/integrations/yandextts).
-      default: []
-      selector:
-        select:
-          options:
-            - jane
-            - oksana
-            - alyss
-            - omazh
-            - silaerkan
-            - nastya
-            - sasha
-            - tanya
-            - tatyana_abramova
-            - voicesearch
-            - zombie
-            - zahar
-            - ermil
-            - levitan
-            - ermilov
-            - kolya
-            - kostya
-            - nick
-            - erkanyavas
-            - zhenya
-            - anton_samokhvalov
-            - ermil_with_tuning
-            - robot
-            - dude
-            - smoky
-          custom_value: false
-          multiple: false
-    yandextts_emotion:
-      name: Emotion option for tts.yandextts_say
-      description: >
-        Used only on tts.yandextts_say. Select speaker Emotion. [SEE for Details](https://www.home-assistant.io/integrations/yandextts).
-      default: []
-      selector:
-        select:
-          options:
-            - neutral
-            - evil
-            - good
-          custom_value: false
-          multiple: false
+    announcement_message:
+      name: Announcement message
+      description: >  
+        What to say when door is opened
 
-fields:
-  live_message:
-    name: Live Message
-    description: This will change the default message on-the-fly
-    required: false
-    example: This is where to put your message to be spoken
-    default: This is where to put your message to be spoken
-    selector:
-      text:
-        multiline: true
-        type: text
-  live_speaker:
-    name: Live Media Player
-    description: Change the default media player on the fly
-    required: false
-    selector:
-      entity:
-        multiple: true
-        filter:
-          domain: media_player
+        This can be set to "" if you do not want a message while sensor is active.
+      default: Your Barn Door has been left open.
+      selector:
+        text:
+          multiline: true
+    final_message:
+      name: Final message
+      description: >
+        What to say when door is closed.
 
-variables:
-    # Do something before sending the TTS
-  my_b4_action: !input "b4_action"
-    # Do something after sending the TTS
-  my_after_action: !input "after_action"
-    # Get the Integration for templating
-  my_tts: !input "TTS"
-    # Get the message to select from !input or live data
-  announcement_message: !input "announcement_message"
-  my_message: '{% if live_message %} {{ live_message }} {% else %} {{ announcement_message }} {% endif %}'
-    # Get the speaker to select from !input or live data
-  speaker_target: !input speaker_target
-  my_speaker:  '{% if live_speaker %} {{ live_speaker }} {% else %} {{ speaker_target }} {% endif %}'
-    # Get the value for templating
-  baidu_person_val: !input "baidu_person"
-  my_baidu_person: "{{ baidu_person_val | int(0) }}"
+        This can be set to "" if you do not want a message after the sensor is reset.
+      default: Thank you for closing the barn door.
+      selector:
+        text:
+          multiline: true
+    cooldown:
+      name: Announcement cooldown
+      description: >
+        The minimum number of seconds needed before AND between between
+        announcements.
 
-sequence:
-  - alias: Do something before the TTS Command
-    if: "{{ not my_b4_action in ('none', 'null', 'unavailable', '') }}"
-    then: !input "b4_action"
-  - alias: "Main TTS Choose Statement"
-    choose:
-      - conditions: '{{ my_tts == "tts.amazon_polly_say" }}'
+        This is your initial delay and pause between messages...
+      default: 10
+      selector:
+        number:
+          min: 4.0
+          max: 7200.0
+          unit_of_measurement: seconds
+          step: 1.0
+          mode: slider
+    additional_conditions:
+      name: Additional conditions
+      description: |
+        Extra conditions you may want to add to this automation 
+        (Example: Home occupied, TV on, etc)
+      default: []
+      selector:
+        condition:
+
+trigger:
+  platform: state
+  entity_id: !input door_entity
+  from: 'off'
+  to: 'on'
+
+condition:
+  - alias: Only allow execution within selected Hours / Weekdays
+    condition: time
+    after: !input start_time
+    before: !input end_time
+    weekday: !input weekday
+  - alias: User pick
+    condition: !input additional_conditions
+
+action:
+- variables:
+      # Convert !inputs to variables
+    cooldown: !input cooldown
+    doorS: !input door_entity
+
+- alias: Repeat the sequence UNTIL the door is closed
+  repeat:
+    sequence:
+    - alias: This is the delay broke into 2 sec incr so it can be interupted.
+      repeat:
+        while:
+          - condition: state
+            entity_id: !input door_entity
+            state: "on"
+          - condition: template
+            value_template: "{{ repeat.index < cooldown/2 }}"
         sequence:
-          - service: tts.amazon_polly_say
-            data:
-              entity_id: "{{ my_speaker }}"
-              message: "{{ my_message }}"
-      - conditions: '{{ my_tts == "tts.baidu_say" }}'
-        sequence:
-          - service: tts.baidu_say
-            data:
-              entity_id: "{{ my_speaker }}"
-              message: "{{ my_message }}"
-              options:
-                person: "{{ my_baidu_person }}"
-      - conditions: '{{ my_tts == "tts.cloud_say" }}'
-        sequence:
-          - service: tts.cloud_say
-            data:
-              entity_id: "{{ my_speaker }}"
-              message: "{{ my_message }}"
-              options:
-                gender: !input speaker_gender
-                voice: !input nabu_azure_voice
-              language: !input nabu_azure_language
-      - conditions: '{{ my_tts == "tts.google_cloud_say" }}'
-        sequence:
-          - service: tts.google_cloud_say
-            data:
-              entity_id: "{{ my_speaker }}"
-              message: "{{ my_message }}"
-              options:
-                voice: !input Google_Cloud_Voice
-                gender: !input speaker_gender
-                profiles: !input Google_Cloud_Profile
-              language: !input cloud_language
-      - conditions: '{{ my_tts == "tts.marytts_say" }}'
-        sequence:
-          - service: tts.marytts_say
-            data:
-              entity_id: "{{ my_speaker }}"
-              message: "{{ my_message }}"
-              language: !input marytts_language
-      - conditions: '{{ my_tts == "tts.microsoft_say" }}'
-        sequence:
-          - service: tts.microsoft_say
-            data:
-              entity_id: "{{ my_speaker }}"
-              message: "{{ my_message }}"
-      - conditions: '{{ my_tts == "tts.picotts_say" }}'
-        sequence:
-          - service: tts.picotts_say
-            data:
-              entity_id: "{{ my_speaker }}"
-              message: "{{ my_message }}"
-              language: !input picotts_language
-      - conditions: '{{ my_tts == "tts.voicerss_say" }}'
-        sequence:
-          - service: tts.voicerss_say
-            data:
-              entity_id: "{{ my_speaker }}"
-              message: "{{ my_message }}"
-              options:
-                format: !input voicerss_format
-              language: !input voicerss_language
-      - conditions: '{{ my_tts == "tts.watson_tts_say" }}'
-        sequence:
-          - service: tts.watson_tts_say
-            data:
-              entity_id: "{{ my_speaker }}"
-              message: "{{ my_message }}"
-      - conditions: '{{ my_tts == "tts.yandextts_say" }}'
-        sequence:
-          - service: tts.yandextts_say
-            data:
-              entity_id: "{{ my_speaker }}"
-              message: "{{ my_message }}"
-              options:
-                voice: !input yandextts_voice
-                emotion: !input yandextts_emotion
-              language: !input yandextts_language
-    default:
-      - alias: Home Assistant Default tts.google_translate_say selected
-        service: tts.google_translate_say
+          - delay: 00:00:02
+    - alias: Send announcement message (potentially again)
+      if: 
+      - condition: state
+        entity_id: !input door_entity
+        state: "on"
+      then:
+      - service: tts.cloud_say
         data:
-          entity_id: "{{ my_speaker }}"
-          message: "{{ my_message }}"
-          language: !input GTS_language
-  - alias: Do something after the TTS Command
-    if: "{{ not my_after_action in ('none', 'null', 'unavailable', '') }}"
-    then: !input "after_action"
+          entity_id: !input speaker_target
+          message: !input announcement_message
+          options:
+            gender: !input speaker_gender
+            voice: !input speaker_voice
+          language: !input speaker_language
+      - alias: Delay to make sure the message can complete.
+        delay: 00:00:10
+    until:
+    - condition: state
+      entity_id: !input door_entity
+      state: 'off'
+- alias: Always try to say thanks at the end. Leave message empty for quiet
+  service: tts.cloud_say
+  data:
+    entity_id: !input speaker_target
+    message: !input final_message
+    options:
+      gender: !input speaker_gender
+      voice: !input speaker_voice
+    language: !input speaker_language
 
 mode: queued
-icon: mdi-message-processing-outline
+max: 10
+max_exceeded: silent
