@@ -17,9 +17,9 @@
   packages: !include_dir_named ./packages/
   media_dirs:
     local: /media
-    music: /media/int-sdb1/Music
-    movies: /media/int-sdb2/Movies
-    tv: /media/int-sdb2/TV
+    # music: /media/int-sdb1/Music
+    # movies: /media/int-sdb2/Movies
+    # tv: /media/int-sdb2/TV
 
 #  external_url: !secret HA_Base_External
 #  internal_url: !secret HA_Base
