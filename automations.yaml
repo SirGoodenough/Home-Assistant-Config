@@ -51,28 +51,19 @@
       speaker_gender: male
       speaker_language: en-US
       cooldown: 120
-      speaker_voice: '{{ ("JennyNeural",
-        "AIGenerate1Neural",
-        "AIGenerate2Neural",
-        "AmberNeural",
-        "AnaNeural",
-        "AriaNeural",
-        "AshleyNeural",
-        "BrandonNeural",
-        "ChristopherNeural",
-        "CoraNeural",
-        "DavisNeural",
-        "ElizabethNeural",
-        "EricNeural",
-        "GuyNeural",
-        "JacobNeural",
-        "JaneNeural",
-        "JasonNeural",
-        "JennyMultilingualNeural",
-        "MichelleNeural",
-        "MonicaNeural",
-        "NancyNeural",
-        "RogerNeural",
-        "SaraNeural",
-        "SteffanNeural",
-        "TonyNeural") | random }}'
+      speaker_voice: '{{ ("JennyNeural", "AIGenerate1Neural", "AIGenerate2Neural",
+        "AmberNeural", "AnaNeural", "AriaNeural", "AshleyNeural", "BrandonNeural",
+        "ChristopherNeural", "CoraNeural", "DavisNeural", "ElizabethNeural", "EricNeural",
+        "GuyNeural", "JacobNeural", "JaneNeural", "JasonNeural", "JennyMultilingualNeural",
+        "MichelleNeural", "MonicaNeural", "NancyNeural", "RogerNeural", "SaraNeural",
+        "SteffanNeural", "TonyNeural") | random }}'
+      final_message: Thank you for closing the {{("rocket", "outhouse", "Audi", "rectory",
+        "barn", "chicken coops", "van down by the rivers", "Walmart", "amazon", "fish
+        shantys", "workshop", "monistary", "bee hive", "bird cage", "freezer", "refrigerator",
+        "vacuum chambers", "emergency room", "dumpster", "manure pits", "spa", "heavens",
+        "bistro", "candy factory", "garage") | random }} door.
+      announcement_message: Your {{("rocket", "outhouse", "Audi", "rectory", "barn",
+        "chicken coops", "van down by the rivers", "Walmart", "amazon", "fish shantys",
+        "workshop", "monistary", "bee hive", "bird cage", "freezer", "refrigerator",
+        "vacuum chambers", "emergency room", "dumpster", "manure pits", "spa", "heavens",
+        "bistro", "candy factory", "garage") | random }} door has been left open.
