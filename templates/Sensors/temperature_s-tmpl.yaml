@@ -56,7 +56,7 @@
 
   - name: "Humidity group"
     unique_id: f1f87e72-a9db-4848-bf40-dafd63ece4b3
-    state: "{{ states('sensor.house_humidity_group') | round(1) | float(41.9) }}"
+    state: "{{ states('sensor.house_humidity_group') | default(41.8) | float(41.9) }}"
     device_class: humidity
     icon: "mdi:waves-arrow-up"
     attributes:
