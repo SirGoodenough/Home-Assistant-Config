@@ -11,7 +11,7 @@
     unit_of_measurement: "°F"
     icon: "mdi:thermostat-box"
     attributes:
-      friendly_name: LRthermostat
+      friendly_name: "LRthermostat"
 
   - name: "LRthermostat Heat State"
     unique_id: c21b57a7-34df-483b-8521-4844a04fe49d
@@ -42,7 +42,7 @@
     unit_of_measurement: "°F"
     icon: "mdi:thermostat-box"
     attributes:
-      friendly_name: BRthermostat
+      friendly_name: "BRthermostat"
 
   - name: "BRthermostat Cool Mode"
     unique_id: 0a26fddd-d1ec-48fc-9984-61feb1d1e5c1
