@@ -9,7 +9,9 @@
       {% from 'avail.jinja' import avail %}
       {%- if avail(['sensor.qotd','sensor.qotd.attributes.entries[0]']) | bool -%}
   #}
-  {{ ( expand(entity_list)|rejectattr('state','in',['unknown','unavailable','','none'])
-    |list|count == entity_list|count )
-  | default (false) }}
+  {%- if entity_list is iterable -%}
+    {{- entity_list | select('has_value') | list | count == entity_list | count -}}
+  {%- else -%}
+    false
+  {%- endif -%}
 {% endmacro %}

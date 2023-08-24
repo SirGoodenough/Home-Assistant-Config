@@ -10,18 +10,18 @@ tts_wash_machine_done:
       speaker_target: media_player.intercom_group
       announcement_message: Washing Cycle Has Completed
   icon: mdi:washing-machine-off
-tts_dryer_done:
-  alias: TTS Dryer Done
-  use_blueprint:
-    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
-    input:
-      GTS_language: en
-      TTS: tts.cloud_say
-      nabu_azure_language: en-US
-      speaker_gender: female
-      speaker_target: media_player.intercom_group
-      announcement_message: The clothes are dry
-  icon: mdi:tumble-dryer-off
+# tts_dryer_done:
+#   alias: TTS Dryer Done
+#   use_blueprint:
+#     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
+#     input:
+#       GTS_language: en
+#       TTS: tts.cloud_say
+#       nabu_azure_language: en-US
+#       speaker_gender: female
+#       speaker_target: media_player.intercom_group
+#       announcement_message: The clothes are dry
+#   icon: mdi:tumble-dryer-off
 media_player_dryer_alert:
   alias: Media Player Dryer Alert
   use_blueprint:
