@@ -1,70 +1,70 @@
 - binary_sensor:
-  #####################################################
-  # Weather                                           #
-  #####################################################
-  - name: 'Dark Outside'
-    unique_id: ce7cb6b7-c666-494b-aa3c-4ed79b2f1092
-    state: >
-      {# Create a dead zone to prevent oscillations. #}
-      {%- if states('sensor.gw2000b_v2_2_4_solar_lux') | float(0) > 8000 %}
-        false
-      {%- elif states('sensor.gw2000b_v2_2_4_solar_lux') | float(0) < 6000 %}
-        true
-      {% else %}
-        {{ states('binary_sensor.dark_outside') }}
-      {%- endif %}
-    availability: >-
-      {% from 'avail.jinja' import avail %}
-      {{- avail(['sensor.gw2000b_v2_2_4_solar_lux']) | bool -}}
-    icon: mdi:sun-clock
-    attributes:
-      friendly_name: "Dark Outside"
-
-  - name: "Washing Machine"
-    unique_id: 0f504a93-327b-4a03-ab93-4fc6aaaecbae
-    device_class: power
-    delay_off:
-      minutes: 7
-    state: >-
-      {% if (is_number('sensor.wash_machine_energy_current')) %}
-        {% if (states('sensor.wash_machine_energy_current') | float( 0.06 ) > 0.085) %}
+    #####################################################
+    # Weather                                           #
+    #####################################################
+    - name: "Dark Outside"
+      unique_id: ce7cb6b7-c666-494b-aa3c-4ed79b2f1092
+      state: >
+        {# Create a dead zone to prevent oscillations. #}
+        {%- if states('sensor.gw2000b_v2_2_4_solar_lux') | float(0) > 8000 %}
+          false
+        {%- elif states('sensor.gw2000b_v2_2_4_solar_lux') | float(0) < 6000 %}
           true
         {% else %}
-          false
-        {% endif %}
-      {% else %}
-        false
-      {% endif %}
-    availability: >-
-      {% from 'avail.jinja' import avail %}
-      {{- avail(['sensor.wash_machine_energy_current']) | bool -}}
-    icon: mdi:power
-    attributes:
-      friendly_name: "Washing Machine"
+          {{ states('binary_sensor.dark_outside') }}
+        {%- endif %}
+      availability: >-
+        {% from 'availability_template.jinja' import avail %}
+        {{- avail(['sensor.gw2000b_v2_2_4_solar_lux']) | bool -}}
+      icon: mdi:sun-clock
+      attributes:
+        friendly_name: "Dark Outside"
 
-  - name: 'AC Enabled'
-    unique_id: f885f9fd-b280-439b-81f0-3fdd713393f5
-    state: >-
-      {% if (
-        states('weather.home') | is_defined ) and
-        states('weather.home.attributes.temperature') | is_defined %}
-          {% set temp = 'weather.home.attributes.temperature' | int( 41 ) %}
-          {% if ( temp > 40 ) %}
+    - name: "Washing Machine"
+      unique_id: 0f504a93-327b-4a03-ab93-4fc6aaaecbae
+      device_class: power
+      delay_off:
+        minutes: 7
+      state: >-
+        {% if (is_number('sensor.wash_machine_energy_current')) %}
+          {% if (states('sensor.wash_machine_energy_current') | float( 0.06 ) > 0.085) %}
             true
           {% else %}
             false
           {% endif %}
-      {% else %}
-        true
-      {% endif %}
-      {# This is using the MET integration for weather. Available conditions #}
-      {# https://github.com/home-assistant/core/blob/70648d6e3b42bb0910e33e5c6a4e1e8c0789d82c/homeassistant/components/met/const.py #}
-    availability: >-
-      {% from 'avail.jinja' import avail %}
-      {{- avail(['weather.home.attributes.temperature']) | bool -}}
-    icon: mdi:snowflake-alert
-    attributes:
-      friendly_name: "AC Enabled"
+        {% else %}
+          false
+        {% endif %}
+      availability: >-
+        {% from 'availability_template.jinja' import avail %}
+        {{- avail(['sensor.wash_machine_energy_current']) | bool -}}
+      icon: mdi:power
+      attributes:
+        friendly_name: "Washing Machine"
+
+    - name: "AC Enabled"
+      unique_id: f885f9fd-b280-439b-81f0-3fdd713393f5
+      state: >-
+        {% if (
+          states('weather.home') | is_defined ) and
+          states('weather.home.attributes.temperature') | is_defined %}
+            {% set temp = 'weather.home.attributes.temperature' | int( 41 ) %}
+            {% if ( temp > 40 ) %}
+              true
+            {% else %}
+              false
+            {% endif %}
+        {% else %}
+          true
+        {% endif %}
+        {# This is using the MET integration for weather. Available conditions #}
+        {# https://github.com/home-assistant/core/blob/70648d6e3b42bb0910e33e5c6a4e1e8c0789d82c/homeassistant/components/met/const.py #}
+      availability: >-
+        {% from 'availability_template.jinja' import avail %}
+        {{- avail(['weather.home.attributes.temperature']) | bool -}}
+      icon: mdi:snowflake-alert
+      attributes:
+        friendly_name: "AC Enabled"
 
   # - name: 'Dark Outside'
   #   unique_id: ce7cb6b7-c666-494b-aa3c-4ed79b2f1092
@@ -91,7 +91,7 @@
   #     {# https://www.home-assistant.io/integrations/openweathermap #}
   #     {# https://www.home-assistant.io/integrations/filter/#time-simple-moving-average #}
   #   availability: >-
-  #     {% from 'avail.jinja' import avail %}
+  #     {% from 'availability_template.jinja' import avail %}
   #     {{- avail(['sun.sun','sensor.openweathermap_cloud_coverage','sensor.cloud_cover_average']) | bool -}}
   #   icon: mdi:sun-clock
   #   attributes:

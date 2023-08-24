@@ -1,149 +1,149 @@
 - sensor:
-  - name: "Lock Back Door Mode"
-    unique_id: a54df078-9846-4dbd-aac5-7a733a3db22a
-    attributes:
-      friendly_name: "Lock Back Door Mode"
-    icon: >-
-      {% set alarmtype = "sensor.smart_code_with_home_connect_technology_alarmtype" %}
-      {% if is_state( alarmtype, "0") %}
-        mdi:help
-      {% elif is_state( alarmtype, "9") %}
-        mdi:lock-alert
-      {% elif is_state( alarmtype, "22") %}
-        mdi:lock-open-outline
-      {% elif is_state( alarmtype, "21") %}
-        mdi:lock-outline
-      {% elif is_state( alarmtype, "22") %}
-        mdi:lock-open-outline
-      {% elif is_state( alarmtype, "26") %}
-        mdi:lock
-      {% elif is_state( alarmtype, "27") %}
-        mdi:lock
-      {% elif is_state( alarmtype, "16") %}
-        mdi:lock
-      {% elif is_state( alarmtype, "17") %}
-        mdi:lock-alert-outline
-      {% elif is_state( alarmtype, "18") %}
-        mdi:account-lock-outline
-      {% elif is_state( alarmtype, "19") %}
-        mdi:account-lock-open-outline
-      {% elif is_state( alarmtype, "23") %}
-        mdi:emoticon-dead
-      {% elif is_state( alarmtype, "24") %}
-        mdi:lock
-      {% elif is_state( alarmtype, "25") %}
-        mdi:lock-open
-      {% elif is_state( alarmtype, "112") %}
-        mdi:lock-plus
-      {% elif is_state( alarmtype, "32") %}
-        mdi:lock-remove
-      {% elif is_state( alarmtype, "161") %}
-        mdi:lock-alert-outline
-      {% elif is_state( alarmtype, "162") %}
-        mdi:lock-alert
-      {% elif is_state( alarmtype, "167") %}
-        mdi:battery-30
-      {% elif is_state( alarmtype, "168") %}
-        mdi:battery-10
-      {% elif is_state( alarmtype, "169") %}
-        mdi:battery-alert-variant
-      {% elif is_state( alarmtype, "unknown") %}
-        mdi:help
-      {% else %}
-        mdi:cancel
-      {% endif %}
-    state: >-
-      {% set alarmtype = "sensor.smart_code_with_home_connect_technology_alarmtype" %}
-      {% set alarmlevel = "sensor.smart_code_with_home_connect_technology_alarmlevel" %}
-      {% if is_state( alarmtype, "0") %}
-        No Status Reported
-      {% elif is_state( alarmtype, "9") %}
-        Lock Jammed
-      {% elif is_state( alarmtype, "21") %}
-        Manual Lock
-      {% elif is_state( alarmtype, "22") %}
-        Manual Unlock
-      {% elif is_state( alarmtype, "26") %}
-        Auto Jammed
-      {% elif is_state( alarmtype, "27") %}
-        Auto Locked
-      {% elif is_state( alarmtype, "16") %}
-        Keypad Unlock
-      {% elif is_state( alarmtype, "17") %}
-        Keypad Jammed
-      {% elif is_state( alarmtype, "18") %}
-        {% if is_state( alarmlevel, "1") %}
-          Locked by House
-        {% elif is_state( alarmlevel, "2") %}
-          Locked by Dad
-        {% elif is_state( alarmlevel, "3") %}
-          Locked by Mom
-        {% elif is_state( alarmlevel, "4") %}
-          Locked by Carol
-        {% elif is_state( alarmlevel, "5") %}
-          Locked by Bill
+    - name: "Lock Back Door Mode"
+      unique_id: a54df078-9846-4dbd-aac5-7a733a3db22a
+      attributes:
+        friendly_name: "Lock Back Door Mode"
+      icon: >-
+        {% set alarmtype = "sensor.smart_code_with_home_connect_technology_alarmtype" %}
+        {% if is_state( alarmtype, "0") %}
+          mdi:help
+        {% elif is_state( alarmtype, "9") %}
+          mdi:lock-alert
+        {% elif is_state( alarmtype, "22") %}
+          mdi:lock-open-outline
+        {% elif is_state( alarmtype, "21") %}
+          mdi:lock-outline
+        {% elif is_state( alarmtype, "22") %}
+          mdi:lock-open-outline
+        {% elif is_state( alarmtype, "26") %}
+          mdi:lock
+        {% elif is_state( alarmtype, "27") %}
+          mdi:lock
+        {% elif is_state( alarmtype, "16") %}
+          mdi:lock
+        {% elif is_state( alarmtype, "17") %}
+          mdi:lock-alert-outline
+        {% elif is_state( alarmtype, "18") %}
+          mdi:account-lock-outline
+        {% elif is_state( alarmtype, "19") %}
+          mdi:account-lock-open-outline
+        {% elif is_state( alarmtype, "23") %}
+          mdi:emoticon-dead
+        {% elif is_state( alarmtype, "24") %}
+          mdi:lock
+        {% elif is_state( alarmtype, "25") %}
+          mdi:lock-open
+        {% elif is_state( alarmtype, "112") %}
+          mdi:lock-plus
+        {% elif is_state( alarmtype, "32") %}
+          mdi:lock-remove
+        {% elif is_state( alarmtype, "161") %}
+          mdi:lock-alert-outline
+        {% elif is_state( alarmtype, "162") %}
+          mdi:lock-alert
+        {% elif is_state( alarmtype, "167") %}
+          mdi:battery-30
+        {% elif is_state( alarmtype, "168") %}
+          mdi:battery-10
+        {% elif is_state( alarmtype, "169") %}
+          mdi:battery-alert-variant
+        {% elif is_state( alarmtype, "unknown") %}
+          mdi:help
         {% else %}
-          "Unknown Code Lock " {{ states( alarmlevel ) }}
+          mdi:cancel
         {% endif %}
-      {% elif is_state( alarmtype, "19") %}
-        {% if is_state( alarmlevel, "1") %}
-          Unlocked by House
-        {% elif is_state( alarmlevel, "2") %}
-          Unlocked by Dad
-        {% elif is_state( alarmlevel, "3") %}
-          Unlocked by Mom
-        {% elif is_state( alarmlevel, "4") %}
-          Unlocked by Carol
-        {% elif is_state( alarmlevel, "5") %}
-          Unlocked by Bill
+      state: >-
+        {% set alarmtype = "sensor.smart_code_with_home_connect_technology_alarmtype" %}
+        {% set alarmlevel = "sensor.smart_code_with_home_connect_technology_alarmlevel" %}
+        {% if is_state( alarmtype, "0") %}
+          No Status Reported
+        {% elif is_state( alarmtype, "9") %}
+          Lock Jammed
+        {% elif is_state( alarmtype, "21") %}
+          Manual Lock
+        {% elif is_state( alarmtype, "22") %}
+          Manual Unlock
+        {% elif is_state( alarmtype, "26") %}
+          Auto Jammed
+        {% elif is_state( alarmtype, "27") %}
+          Auto Locked
+        {% elif is_state( alarmtype, "16") %}
+          Keypad Unlock
+        {% elif is_state( alarmtype, "17") %}
+          Keypad Jammed
+        {% elif is_state( alarmtype, "18") %}
+          {% if is_state( alarmlevel, "1") %}
+            Locked by House
+          {% elif is_state( alarmlevel, "2") %}
+            Locked by Dad
+          {% elif is_state( alarmlevel, "3") %}
+            Locked by Mom
+          {% elif is_state( alarmlevel, "4") %}
+            Locked by Carol
+          {% elif is_state( alarmlevel, "5") %}
+            Locked by Bill
+          {% else %}
+            "Unknown Code Lock " {{ states( alarmlevel ) }}
+          {% endif %}
+        {% elif is_state( alarmtype, "19") %}
+          {% if is_state( alarmlevel, "1") %}
+            Unlocked by House
+          {% elif is_state( alarmlevel, "2") %}
+            Unlocked by Dad
+          {% elif is_state( alarmlevel, "3") %}
+            Unlocked by Mom
+          {% elif is_state( alarmlevel, "4") %}
+            Unlocked by Carol
+          {% elif is_state( alarmlevel, "5") %}
+            Unlocked by Bill
+          {% else %}
+            "Unknown Code Lock " {{ states( alarmlevel ) }}
+          {% endif %}
+        {% elif is_state( alarmtype, "23") %}
+          Controller Jammed
+        {% elif is_state( alarmtype, "24") %}
+          Controller Locked
+        {% elif is_state( alarmtype, "25") %}
+          Controller Opened
+        {% elif is_state( alarmtype, "112") %}
+          "New User Code " {{ states( alarmlevel ) }}
+        {% elif is_state( alarmtype, "32") %}
+          All User Codes deleted
+        {% elif is_state( alarmtype, "161") %}
+          Failed User Code attempt
+        {% elif is_state( alarmtype, "162") %}
+          {% if is_state( alarmlevel, "1") %}
+            Locked by House
+          {% elif is_state( alarmlevel, "2") %}
+            Locked by Dad
+          {% elif is_state( alarmlevel, "3") %}
+            Locked by Mom
+          {% elif is_state( alarmlevel, "4") %}
+            Locked by Carol
+          {% elif is_state( alarmlevel, "5") %}
+            Locked by Bill
+          {% else %}
+            "Unknown Code Lock " {{ states( alarmlevel ) }}
+          {% endif %}
+        {% elif is_state( alarmtype, "167") %}
+          Low battery level
+        {% elif is_state( alarmtype, "168") %}
+          Critical battery level
+        {% elif is_state( alarmtype, "169") %}
+          Battery level too low to operate lock
+        {% elif is_state( alarmtype, "unknown") %}
+          None Reported
         {% else %}
-          "Unknown Code Lock " {{ states( alarmlevel ) }}
+          {{ states( alarmtype ) }}
         {% endif %}
-      {% elif is_state( alarmtype, "23") %}
-        Controller Jammed
-      {% elif is_state( alarmtype, "24") %}
-        Controller Locked
-      {% elif is_state( alarmtype, "25") %}
-        Controller Opened
-      {% elif is_state( alarmtype, "112") %}
-        "New User Code " {{ states( alarmlevel ) }}
-      {% elif is_state( alarmtype, "32") %}
-        All User Codes deleted
-      {% elif is_state( alarmtype, "161") %}
-        Failed User Code attempt
-      {% elif is_state( alarmtype, "162") %}
-        {% if is_state( alarmlevel, "1") %}
-          Locked by House
-        {% elif is_state( alarmlevel, "2") %}
-          Locked by Dad
-        {% elif is_state( alarmlevel, "3") %}
-          Locked by Mom
-        {% elif is_state( alarmlevel, "4") %}
-          Locked by Carol
-        {% elif is_state( alarmlevel, "5") %}
-          Locked by Bill
-        {% else %}
-          "Unknown Code Lock " {{ states( alarmlevel ) }}
-        {% endif %}
-      {% elif is_state( alarmtype, "167") %}
-        Low battery level
-      {% elif is_state( alarmtype, "168") %}
-        Critical battery level
-      {% elif is_state( alarmtype, "169") %}
-        Battery level too low to operate lock
-      {% elif is_state( alarmtype, "unknown") %}
-        None Reported
-      {% else %}
-        {{ states( alarmtype ) }}
-      {% endif %}
-    availability: >-
-      {% from 'avail.jinja' import avail %}
-      {{- avail(['sensor.smart_code_with_home_connect_technology_alarmtype',
-      'sensor.smart_code_with_home_connect_technology_alarmlevel']) | bool -}}
+      availability: >-
+        {% from 'availability_template.jinja' import avail %}
+        {{- avail(['sensor.smart_code_with_home_connect_technology_alarmtype',
+        'sensor.smart_code_with_home_connect_technology_alarmlevel']) | bool -}}
 
 ##### Kwikset Lock Alarm Codes:
 ##### source:
-  ##### http://s7d5.scene7.com/is/content/BDHHI/ApplicationNote-UsingASCII-Z-Wave-Locks
+##### http://s7d5.scene7.com/is/content/BDHHI/ApplicationNote-UsingASCII-Z-Wave-Locks
 # 021 001 Lock Secured using Keyed cylinder or inside thumb-turn
 # 022 001 Lock Un-Secured using Keyed cylinder or inside thumb-turn
 # 026 001 Lock Auto Secured – Bolt Jammed (Not fully extended)
@@ -212,8 +212,8 @@
 #             Battery Critical
 #           {% elif is_state('sensor.front_door_lock_alarmtype', '169') %}
 #             Battery Too Low To Operate Lock
-#           {% elif is_state('sensor.basement_door_lock_alarmtype', 'unknown') %}           
-#             None Reported                                              
+#           {% elif is_state('sensor.basement_door_lock_alarmtype', 'unknown') %}
+#             None Reported
 #           {% else %}
 #             Unknown alarm type: {{ states('sensor.front_door_lock_alarmtype') }}
 #           {% endif %}

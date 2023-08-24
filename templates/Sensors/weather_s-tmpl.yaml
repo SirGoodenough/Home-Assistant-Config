@@ -1,41 +1,41 @@
 - sensor:
-  #####################################################
-  ## Weather Template Sensors                        ##
-  #####################################################
-  - name: sun_state
-    unique_id: f2ef3978-8f60-4f49-9ce5-1198306412fd
-    state: > 
-      {% if is_state('sun.sun', 'above_horizon') %}
-        up
-      {% else %}
-        down
-      {% endif %}
-    availability: >-
-      {% from 'avail.jinja' import avail %}
-      {{- avail(['sun.sun']) | bool -}}
-    attributes:
-      friendly_name: "Sun State"
+    #####################################################
+    ## Weather Template Sensors                        ##
+    #####################################################
+    - name: sun_state
+      unique_id: f2ef3978-8f60-4f49-9ce5-1198306412fd
+      state: >
+        {% if is_state('sun.sun', 'above_horizon') %}
+          up
+        {% else %}
+          down
+        {% endif %}
+      availability: >-
+        {% from 'availability_template.jinja' import avail %}
+        {{- avail(['sun.sun']) | bool -}}
+      attributes:
+        friendly_name: "Sun State"
 
-  - name: 'sunlight_pct'
-    unique_id: 73c41a24-55ed-41ce-aec5-4d0b839a4991
-    unit_of_measurement: '%'
-    state: >-
-      {%- set elevation = state_attr('sun.sun','elevation') | float %}
-      {%- set cloud_coverage = states('sensor.openweathermap_cloud_coverage') | float %}
-      {%- set cloud_factor = (1 - (0.75 * ( cloud_coverage / 100) ** 3 )) %}
-      {%- set min_elevation = -6 %}
-      {%- set max_elevation = 60 %}
-      {%- set adjusted_elevation = elevation - min_elevation %}
-      {%- set adjusted_elevation = [adjusted_elevation,0] | max %}
-      {%- set adjusted_elevation = [adjusted_elevation,max_elevation - min_elevation] | min %}
-      {%- set adjusted_elevation = adjusted_elevation / (max_elevation - min_elevation) %}
-      {%- set adjusted_elevation = adjusted_elevation %}
-      {%- set adjusted_elevation = adjusted_elevation * 100 %}
-      {%- set brightness = adjusted_elevation * cloud_factor %}
-      {{ brightness | round }}
-    availability: >-
-      {% from 'avail.jinja' import avail %}
-      {{- avail(['sun.sun','weather.openweathermap']) | bool -}}
-    icon: mdi:sun-angle
-    attributes:
-      friendly_name: "Sunlight Percentage"
+    - name: "sunlight_pct"
+      unique_id: 73c41a24-55ed-41ce-aec5-4d0b839a4991
+      unit_of_measurement: "%"
+      state: >-
+        {%- set elevation = state_attr('sun.sun','elevation') | float %}
+        {%- set cloud_coverage = states('sensor.openweathermap_cloud_coverage') | float %}
+        {%- set cloud_factor = (1 - (0.75 * ( cloud_coverage / 100) ** 3 )) %}
+        {%- set min_elevation = -6 %}
+        {%- set max_elevation = 60 %}
+        {%- set adjusted_elevation = elevation - min_elevation %}
+        {%- set adjusted_elevation = [adjusted_elevation,0] | max %}
+        {%- set adjusted_elevation = [adjusted_elevation,max_elevation - min_elevation] | min %}
+        {%- set adjusted_elevation = adjusted_elevation / (max_elevation - min_elevation) %}
+        {%- set adjusted_elevation = adjusted_elevation %}
+        {%- set adjusted_elevation = adjusted_elevation * 100 %}
+        {%- set brightness = adjusted_elevation * cloud_factor %}
+        {{ brightness | round }}
+      availability: >-
+        {% from 'availability_template.jinja' import avail %}
+        {{- avail(['sun.sun','weather.openweathermap']) | bool -}}
+      icon: mdi:sun-angle
+      attributes:
+        friendly_name: "Sunlight Percentage"
