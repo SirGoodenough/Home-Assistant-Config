@@ -10,6 +10,9 @@
       {% else %}
         down
       {% endif %}
+    availability: >-
+      {% from 'avail.jinja' import avail %}
+      {{- avail(['sun.sun']) | bool -}}
     attributes:
       friendly_name: "Sun State"
 
@@ -36,4 +39,3 @@
     icon: mdi:sun-angle
     attributes:
       friendly_name: "Sunlight Percentage"
-
