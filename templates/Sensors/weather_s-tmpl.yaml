@@ -35,7 +35,7 @@
         {{ brightness | round }}
       availability: >-
         {% from 'availability_template.jinja' import avail %}
-        {{- avail(['sun.sun','weather.openweathermap']) | bool -}}
+        {{- avail(['sun.sun','sensor.openweathermap_cloud_coverage']) | bool -}}
       icon: mdi:sun-angle
       attributes:
         friendly_name: "Sunlight Percentage"
