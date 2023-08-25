@@ -10,7 +10,8 @@
       {%- if avail(['sensor.qotd','sensor.qotd.attributes.entries[0]']) | bool -%}
   #}
   {%- if entity_list is iterable -%}
-    {{- entity_list | map('states') | reject('in', ['unknown','unavailable','','none']) | list | count == entity_list | count -}}
+    {{- entity_list | map('states') | reject('in', ['unknown','unavailable','','none'])
+     | list | count == entity_list | count -}}
   {%- else -%}
     false 
   {%- endif -%}
