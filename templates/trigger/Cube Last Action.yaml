@@ -1,0 +1,16 @@
+- trigger:
+    - platform: event
+      event_type: cube_last_action
+    - platform: event
+      event_type: zha_cube_last_action
+  sensor:
+    - name: "Cube Last Action"
+      unique_id: 23060243-d556-4949-b36c-6072438aaa7b
+      icon: mdi:eye-refresh-outline
+      attributes:
+        friendly_name: "Cube Action"
+      state: >
+        {{ trigger.event.data.friendly_name }} - 
+        {{ trigger.event.data.action }} - 
+        {{ trigger.event.data.side }} frm 
+        {{ trigger.event.data.last_side }}

@@ -1,0 +1,13 @@
+- trigger:
+    - platform: event
+      event_type: rm02_last_action
+  sensor:
+    - name: "RM02 Last Action"
+      unique_id: 5fc06932-35e6-4e57-90df-1514f885e454
+      icon: mdi:eye-refresh-outline
+      attributes:
+        friendly_name: "RM02 Action"
+      state: >
+        {{ trigger.event.data.friendly_name }} - 
+        {{ trigger.event.data.event }}
+        {{ trigger.event.data.last_side }}
