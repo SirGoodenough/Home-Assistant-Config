@@ -3221,6 +3221,11 @@
               "icon": "mdi:file-check"
             },
             {
+              "type": "entity",
+              "entity": "sensor.shark_print_file_short",
+              "icon": "mdi:file-check"
+            },
+            {
               "type": "entities",
               "entities": [
                 {
@@ -3325,11 +3330,6 @@
               "name": "Shark Extruder Temperature"
             },
             {
-              "type": "entity",
-              "entity": "sensor.shark_print_file_short",
-              "icon": "mdi:file-check"
-            },
-            {
               "type": "entities",
               "entities": [
                 {
@@ -3392,25 +3392,6 @@
               "show_header_toggle": false
             },
             {
-              "show_name": true,
-              "show_icon": true,
-              "type": "button",
-              "tap_action": {
-                "action": "toggle"
-              },
-              "entity": "switch.vacuum_sealer_switch",
-              "icon_height": "50px",
-              "icon": "mdi:vacuum",
-              "hold_action": {
-                "action": "call-service",
-                "service": "switch.turn_off",
-                "data": {},
-                "target": {
-                  "entity_id": "switch.vacuum_sealer_switch"
-                }
-              }
-            },
-            {
               "type": "horizontal-stack",
               "cards": [
                 {
@@ -3450,6 +3431,25 @@
                   "theme": "Dark - Yellow"
                 }
               ]
+            },
+            {
+              "show_name": true,
+              "show_icon": true,
+              "type": "button",
+              "tap_action": {
+                "action": "toggle"
+              },
+              "entity": "switch.vacuum_sealer_switch",
+              "icon_height": "50px",
+              "icon": "mdi:vacuum",
+              "hold_action": {
+                "action": "call-service",
+                "service": "switch.turn_off",
+                "data": {},
+                "target": {
+                  "entity_id": "switch.vacuum_sealer_switch"
+                }
+              }
             }
           ],
           "path": "3d",
