@@ -4,10 +4,22 @@
     ########################################################################
     - name: "time_formatted"
       unique_id: 33e69a29-de1b-4dfb-a68d-3be26018917e
-      state: "{{ as_timestamp(states('sensor.date_time_iso')) | timestamp_custom('%A %B %-m, %I:%M %p, default=0') }}"
+      state: "{{ as_timestamp(states('sensor.date_time_iso')) | timestamp_custom('%A %B %-m, %I:%M %p') }}"
       availability: >-
         {% from 'availability_template.jinja' import avail %}
         {{- avail(['sensor.date_time_iso']) | bool -}}
       attributes:
         friendly_name: "Date and time"
       icon: mdi:calendar-clock
+
+    # Keep track how many days have past since a date
+    - name: "SG Epoc"
+      unique_id: 84950bc8-b741-4322-bcde-69a3d1bea936
+      state: >-
+        {% from 'easy_time.jinja' import easy_time_between %}
+        {{- easy_time_between(states('sensor.date_time_iso'), '1959-11-14', max_period='day') -}}
+      availability: >-
+        {% from 'availability_template.jinja' import avail %}
+        {{- avail(['sensor.date_time_iso']) | bool -}}
+      attributes:
+        friendly_name: "SG Epoc"

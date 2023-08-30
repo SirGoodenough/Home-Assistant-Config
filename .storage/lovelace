@@ -3163,6 +3163,10 @@
               ],
               "show_header_toggle": false,
               "title": "People"
+            },
+            {
+              "type": "entity",
+              "entity": "sensor.sg_epoc"
             }
           ],
           "icon": "mdi:human-greeting",
