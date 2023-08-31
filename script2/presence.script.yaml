@@ -202,8 +202,8 @@ personalert_audio:
     _entities: media_player.intercom_group
     _mess: "I'm lost"
     _lang: en-US
-    _gend: female
-    _voice: ""
+    _gend: male
+    _voice: "BrandonNeural"
 
   sequence:
   - alias: Send sound file to Media Player
