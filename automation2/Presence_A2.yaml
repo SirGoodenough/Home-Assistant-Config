@@ -324,11 +324,11 @@
               trigger.from_state.state + '' and is located at: '' + trigger.to_state.state
               }}'
             lang: en-AU
-      enable_time: 05:30:18
+      enable_time: '13:30:18'
       disable_time: '20:27:36'
       hold_period:
         hours: 0
-        minutes: 5
+        minutes: 15
         seconds: 0
   mode: queued
   max: 10
