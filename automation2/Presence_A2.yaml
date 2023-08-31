@@ -56,8 +56,10 @@
         - service: script.personalert_audio
           data:
             entities: media_player.home_group
-            mess: '{{ trigger.to_state.attributes.friendly_name + '' has arrived at
-              '' + trigger.to_state.state }}'
+            mess: >-
+              {{ trigger.to_state.attributes.friendly_name + ' has arrived at '
+                + trigger.to_state.state
+              }}
             lang: en-GB
             voice: >-
               {{ (
@@ -88,8 +90,10 @@
         - service: script.personalert_audio
           data:
             entities: media_player.home_group
-            mess: '{{ trigger.from_state.attributes.friendly_name + '' has left ''
-              + trigger.from_state.state }}'
+            mess: >-
+              {{ trigger.from_state.attributes.friendly_name + ' has left '
+                + trigger.from_state.state
+              }}
             lang: en-GB
             voice: >-
               {{ (
@@ -120,9 +124,11 @@
         - service: script.personalert_audio
           data:
             entities: media_player.home_group
-            mess: '{{ trigger.to_state.attributes.friendly_name + '' has left '' +
-              trigger.from_state.state + '' and is located at: '' + trigger.to_state.state
-              }}'
+            mess: >-
+              {{ trigger.to_state.attributes.friendly_name + ' has left '
+                + trigger.from_state.state + ' and is located at: '
+                + trigger.to_state.state
+              }}
             lang: en-GB
             voice: >-
               {{ (
