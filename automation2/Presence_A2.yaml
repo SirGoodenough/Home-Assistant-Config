@@ -59,6 +59,23 @@
             mess: '{{ trigger.to_state.attributes.friendly_name + '' has arrived at
               '' + trigger.to_state.state }}'
             lang: en-GB
+            voice: >-
+              {{ (
+                "LibbyNeural",
+                "AbbiNeural",
+                "AlfieNeural",
+                "BellaNeural",
+                "ElliotNeural",
+                "EthanNeural",
+                "HollieNeural",
+                "MaisieNeural",
+                "NoahNeural",
+                "OliverNeural",
+                "OliviaNeural",
+                "RyanNeural",
+                "SoniaNeural",
+                "ThomasNeural"
+              ) | random }}
       leave_action:
       - parallel:
         - service: script.personalert_notify
@@ -74,6 +91,23 @@
             mess: '{{ trigger.from_state.attributes.friendly_name + '' has left ''
               + trigger.from_state.state }}'
             lang: en-GB
+            voice: >-
+              {{ (
+                "LibbyNeural",
+                "AbbiNeural",
+                "AlfieNeural",
+                "BellaNeural",
+                "ElliotNeural",
+                "EthanNeural",
+                "HollieNeural",
+                "MaisieNeural",
+                "NoahNeural",
+                "OliverNeural",
+                "OliviaNeural",
+                "RyanNeural",
+                "SoniaNeural",
+                "ThomasNeural"
+              ) | random }}
       jump_action:
       - parallel:
         - service: script.personalert_notify
@@ -90,6 +124,23 @@
               trigger.from_state.state + '' and is located at: '' + trigger.to_state.state
               }}'
             lang: en-GB
+            voice: >-
+              {{ (
+                "LibbyNeural",
+                "AbbiNeural",
+                "AlfieNeural",
+                "BellaNeural",
+                "ElliotNeural",
+                "EthanNeural",
+                "HollieNeural",
+                "MaisieNeural",
+                "NoahNeural",
+                "OliverNeural",
+                "OliviaNeural",
+                "RyanNeural",
+                "SoniaNeural",
+                "ThomasNeural"
+              ) | random }}
       enable_time: 05:30:18
       disable_time: '20:27:36'
       hold_period:
@@ -143,6 +194,8 @@
             lang: en-CA
             gend: male
       leave_action:
+      - alias: Delay for when traveling together.
+        delay: 00:00:30
       - parallel:
         - service: script.personalert_notify
           data:
@@ -159,6 +212,8 @@
             lang: en-CA
             gend: male
       jump_action:
+      - alias: Delay for when traveling together.
+        delay: 00:00:30
       - parallel:
         - service: script.personalert_notify
           data:
@@ -212,6 +267,8 @@
       - zone.rose_estate
       - zone.wisconsin_illinois_border
       enter_action:
+      - alias: Delay for when traveling together.
+        delay: 00:01:00
       - parallel:
         - service: script.personalert_notify
           data:
@@ -225,8 +282,10 @@
             entities: media_player.home_group
             mess: '{{ trigger.to_state.attributes.friendly_name + '' has arrived at
               '' + trigger.to_state.state }}'
-            lang: en-GB
+            lang: en-AU
       leave_action:
+      - alias: Delay for when traveling together.
+        delay: 00:01:00
       - parallel:
         - service: script.personalert_notify
           data:
@@ -240,8 +299,10 @@
             entities: media_player.home_group
             mess: '{{ trigger.from_state.attributes.friendly_name + '' has left ''
               + trigger.from_state.state }}'
-            lang: en-GB
+            lang: en-AU
       jump_action:
+      - alias: Delay for when traveling together.
+        delay: 00:01:00
       - parallel:
         - service: script.personalert_notify
           data:
@@ -256,7 +317,7 @@
             mess: '{{ trigger.to_state.attributes.friendly_name + '' has left '' +
               trigger.from_state.state + '' and is located at: '' + trigger.to_state.state
               }}'
-            lang: en-GB
+            lang: en-AU
       enable_time: 05:30:18
       disable_time: '20:27:36'
       hold_period:

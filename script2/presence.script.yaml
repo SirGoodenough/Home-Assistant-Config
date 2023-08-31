@@ -203,7 +203,7 @@ personalert_audio:
     _mess: "I'm lost"
     _lang: en-US
     _gend: male
-    _voice: "BrandonNeural"
+    _voice: []
 
   sequence:
   - alias: Send sound file to Media Player
