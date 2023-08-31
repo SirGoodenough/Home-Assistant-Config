@@ -7,10 +7,30 @@ tts_first_flush:
       GTS_language: en
       TTS: tts.cloud_say
       nabu_azure_language: de-DE
-      speaker_gender: female
+      nabu_azure_voice: >-
+        {{ (
+          "KatjaNeural",
+          "AmalaNeural",
+          "BerndNeural",
+          "ChristophNeural",
+          "ConradNeural",
+          "ElkeNeural",
+          "GiselaNeural",
+          "KasperNeural",
+          "KillianNeural",
+          "KlarissaNeural",
+          "KlausNeural",
+          "LouisaNeural",
+          "MajaNeural",
+          "RalfNeural",
+          "TanjaNeural"
+        ) | random }}
       speaker_target: media_player.jen_group
       announcement_message: >-
-        {{ ( 
+        {{ (
+          "sechzehn Monde",
+          "achtzehn Monde",
+          "siebzehn Monde",
           "Hallo Dunkelheit, mein alter Freund",
           "Ich bin wieder gekommen, um mit dir zu reden",
           "Weil eine Vision sich sanft schleicht",
@@ -55,14 +75,32 @@ tts_middle_flush:
       GTS_language: en
       TTS: tts.cloud_say
       nabu_azure_language: "en-AU"
-      speaker_gender: male
-      speaker_target: media_player.jen_group
+      nabu_azure_voice: >-
+        {{ (
+          "NatashaNeural",
+          "AnnetteNeural",
+          "CarlyNeural",
+          "DarrenNeural",
+          "DuncanNeural",
+          "ElsieNeural",
+          "FreyaNeural",
+          "JoanneNeural",
+          "KenNeural",
+          "KimNeural",
+          "NeilNeural",
+          "TimNeural",
+          "TinaNeural",
+          "WilliamNeural"
+        ) | random }}
+        speaker_target: media_player.jen_group
       announcement_message: >-
         {{ (
           "So close, no matter how far",
           "Couldn't be much more from the heart",
           "Forever trusting who we are",
           "And nothing else matters",
+          "eight teen moons",
+          "eight teen tears".
           "Life is ours, we live it our way",
           "All these words, i don't just say",
           "Trust i seek and i find in you",
@@ -84,8 +122,24 @@ tts_final_flush:
     input:
       GTS_language: en
       TTS: tts.cloud_say
-      nabu_azure_language: "en-CA"
-      speaker_gender: male
+      nabu_azure_language: "en-GB"
+      nabu_azure_voice: >-
+        {{ (
+          "LibbyNeural",
+          "AbbiNeural",
+          "AlfieNeural",
+          "BellaNeural",
+          "ElliotNeural",
+          "EthanNeural",
+          "HollieNeural",
+          "MaisieNeural",
+          "NoahNeural",
+          "OliverNeural",
+          "OliviaNeural",
+          "RyanNeural",
+          "SoniaNeural",
+          "ThomasNeural"
+        ) | random }}
       speaker_target: media_player.jen_group
       announcement_message: >-
         {% set _qotd = states.sensor.qotd.attributes.entries[0] | default('') %}
