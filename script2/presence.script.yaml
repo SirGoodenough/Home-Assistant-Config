@@ -68,9 +68,9 @@ personalert_notify:
     _notify_id: 3479f317-f314-43bb-9e20-d6168b14f78c
     _phase: enter
     flip: >
-      {% if phase == 'leave' %}
+      {% if phase | default(_phase) == 'leave' %}
         They have left: {{ place_from | default(_place_from) }}
-      {% elif phase == 'enter' %} 
+      {% elif phase | default(_phase) == 'enter' %} 
         They are now located at: {{ place_to | default(_place_to) }}
       {% else %}
         They have left: {{ place_from | default(_place_from) }} and are now located at: {{ place_to | default(_place_to) }}
