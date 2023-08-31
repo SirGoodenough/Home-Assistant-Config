@@ -92,7 +92,7 @@ tts_middle_flush:
           "TinaNeural",
           "WilliamNeural"
         ) | random }}
-        speaker_target: media_player.jen_group
+      speaker_target: media_player.jen_group
       announcement_message: >-
         {{ (
           "So close, no matter how far",
