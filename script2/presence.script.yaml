@@ -59,30 +59,32 @@ personalert_notify:
             - enter
             - leave
             - jump
+
   variables:
       # Define variable data and provide defaults
-    person: placeholder1
-    place_to: placeholder2
-    place_from: placeholder3
-    notify_id: 3479f317-f314-43bb-9e20-d6168b14f78c
-    phase: enter
+    _person: placeholder1
+    _place_to: placeholder2
+    _place_from: placeholder3
+    _notify_id: 3479f317-f314-43bb-9e20-d6168b14f78c
+    _phase: enter
     flip: >
       {% if phase == 'leave' %}
-        They have left: {{ place_from }}
+        They have left: {{ place_from | default(_place_from) }}
       {% elif phase == 'enter' %} 
-        They are now located at: {{ place_to }}
+        They are now located at: {{ place_to | default(_place_to) }}
       {% else %}
-        They have left: {{ place_from }} and are now located at: {{ place_to }}
+        They have left: {{ place_from | default(_place_from) }} and are now located at: {{ place_to | default(_place_to) }}
       {% endif %}
+
   sequence:
   - alias: Notify interested parties with notification_id
     service: persistent_notification.create
     data:
-      title: '{{ person + '' Status'' }}'
+      title: '{{ person | default(_person) + '' Status'' }}'
       message: >
-        {{ 'Regarding: ' + person + '\n' + flip +
-        '\n\nNotification_id: ' + notify_id }}
-      notification_id: '{{ notify_id }}'
+        {{ 'Regarding: ' + person | default(_person) + '\n' + flip +
+        '\n\nNotification_id: ' + notify_id | default(_notify_id) }}
+      notification_id: '{{ notify_id | default(_notify_id) }}'
   - alias: Add a delay so notification stays up a while
       # Pick your display time. If you set 0 this notification doesn't show.
     delay:
@@ -90,7 +92,8 @@ personalert_notify:
   - alias: Kill the notification
     service: persistent_notification.dismiss
     data:
-      notification_id: '{{ notify_id }}'
+      notification_id: '{{ notify_id | default(_notify_id) }}'
+
   mode: single
   max_exceeded: silent
   icon: mdi:message-alert-outline
@@ -221,7 +224,7 @@ personalert_audio:
       options:
         gender: "{{ gend | default(_gend) }}"
         voice: "{{ voice | default(_voice) }}"
-        
+
   mode: single
   max_exceeded: silent
   icon: mdi:message-alert-outline

@@ -12,9 +12,6 @@
             {
               "entities": [
                 {
-                  "entity": "sensor.sunlight_pct_2"
-                },
-                {
                   "entity": "sensor.kitchen_temperature_2",
                   "secondary_info": "last-updated"
                 },
@@ -117,9 +114,6 @@
             },
             {
               "entities": [
-                {
-                  "entity": "sensor.sunlight_pct_2"
-                },
                 {
                   "entity": "sensor.sonoff_rf_bridge_2_si7021_temperature",
                   "name": "LivingRoom Temp",
@@ -243,7 +237,7 @@
               "type": "glance",
               "entities": [
                 {
-                  "entity": "sensor.hacs"
+                  "entity": "sensor.sunlight_pct_2"
                 },
                 {
                   "entity": "sensor.garbage_2"
