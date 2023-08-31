@@ -91,17 +91,22 @@
         addon: 3490a758_remote_backup
 
 ####################################################
-# check for blueprint updates                      #
+# Check for backend updates                        #
 ####################################################
 - id: 28062904-bd08-44fc-9021-13d8ad4aa054
-  alias: _Blueprints Update
+  alias: Backend Update
   description: ""
   trigger:
     - platform: time_pattern
       hours: "12"
   condition: []
   action:
-    - service: shell_command.blueprints_update
+    - alias: Blueprints update
+      service: shell_command.blueprints_update
+      data: {}
+      enabled: false
+    - alias: MP3 File backup
+      service: shell_command.mp3_update
       data: {}
       enabled: false
   mode: single
