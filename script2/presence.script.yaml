@@ -221,6 +221,7 @@ personalert_audio:
       options:
         gender: "{{ gend | default(_gend) }}"
         voice: "{{ voice | default(_voice) }}"
+        
   mode: single
   max_exceeded: silent
   icon: mdi:message-alert-outline
