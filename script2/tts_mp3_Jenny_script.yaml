@@ -66,6 +66,7 @@ tts_first_flush:
           "Und in Mietshäusern",
           "Und in den Klängen der Stille geflüstert."
         ) | random }}
+
 tts_middle_flush:
   alias: TTS Middle Flush
   icon: mdi:paper-roll
@@ -100,7 +101,7 @@ tts_middle_flush:
           "Forever trusting who we are",
           "And nothing else matters",
           "eight teen moons",
-          "eight teen teers".
+          "eight teen teers",
           "Life is ours, we live it our way",
           "All these words, i don't just say",
           "Trust i seek and i find in you",
@@ -114,6 +115,7 @@ tts_middle_flush:
           "But i know",
           "And i know, yeah, yeah"
         ) | random }}
+
 tts_final_flush:
   alias: TTS Final Flush
   icon: mdi:paper-roll-outline

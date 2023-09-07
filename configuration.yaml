@@ -32,6 +32,7 @@ map:
 media_source:
 mobile_app:
 my:
+network:
 person: !include person.yaml
 scene: !include scene.yaml
 schedule:
