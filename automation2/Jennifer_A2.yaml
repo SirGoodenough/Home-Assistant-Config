@@ -137,15 +137,3 @@
             data:
               message: "{{ trigger.to_state.state }}"
  
-- id: a166e468-63ec-4215-b4c2-2e3d1d1cc384
-  alias: Jen Message List
-  mode: single
-  initial_state: on
-  trigger:
-    - platform: state
-      entity_id: switch.bot_108e
-  action:
-    service: script.jen_needs_help
-    data:
-      message: "Feeding pump has been disabled"
-      entities: media_player.intercom_group
