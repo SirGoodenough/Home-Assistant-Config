@@ -726,12 +726,6 @@
                   "entity": "binary_sensor.bathroom"
                 },
                 {
-                  "entity": "sensor.bathoom_si7021_temperature"
-                },
-                {
-                  "entity": "sensor.bathoom_si7021_humidity"
-                },
-                {
                   "entity": "button.stairs_up"
                 }
               ],
@@ -4018,19 +4012,6 @@
               "needle": true
             },
             {
-              "entity": "sensor.dishwasher_rssi",
-              "max": 100,
-              "min": 0,
-              "severity": {
-                "green": 70,
-                "red": 30,
-                "yellow": 50
-              },
-              "theme": "default",
-              "type": "gauge",
-              "needle": true
-            },
-            {
               "entity": "sensor.garagefront_light_rssi",
               "max": 100,
               "min": 0,
@@ -4159,19 +4140,6 @@
               "needle": true
             },
             {
-              "entity": "sensor.bathroom_rssi",
-              "max": 100,
-              "min": 0,
-              "severity": {
-                "green": 70,
-                "red": 0,
-                "yellow": 50
-              },
-              "theme": "default",
-              "type": "gauge",
-              "needle": true
-            },
-            {
               "entity": "sensor.dust_collector_rssi",
               "max": 100,
               "min": 0,
@@ -4276,13 +4244,13 @@
               "needle": true
             },
             {
-              "entity": "sensor.humidifier_rssi",
+              "entity": "sensor.sonoff_rf_bridge_1_rssi_2",
               "max": 100,
               "min": 0,
               "severity": {
                 "green": 70,
-                "red": 30,
-                "yellow": 50
+                "yellow": 50,
+                "red": 30
               },
               "theme": "default",
               "type": "gauge",
@@ -4390,6 +4358,107 @@
                 "yellow": 50,
                 "red": 30
               }
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.bulb1_signal"
+                },
+                {
+                  "entity": "sensor.jens_new_fan_signal"
+                },
+                {
+                  "entity": "sensor.plug2_signal"
+                },
+                {
+                  "entity": "sensor.plug3_signal"
+                },
+                {
+                  "entity": "sensor.sidelock_signal"
+                },
+                {
+                  "entity": "sensor.jensneb_signal"
+                },
+                {
+                  "entity": "sensor.mom_light_signal"
+                },
+                {
+                  "entity": "sensor.benchstrip_signal"
+                },
+                {
+                  "entity": "sensor.sonoff_rf_bridge_1_signal_2"
+                },
+                {
+                  "entity": "sensor.growlight2_signal"
+                },
+                {
+                  "entity": "sensor.kitchenfan_signal"
+                },
+                {
+                  "entity": "sensor.office_fan_signal"
+                },
+                {
+                  "entity": "sensor.bedroom_fan_signal"
+                },
+                {
+                  "entity": "sensor.fp_rf_relay_signal"
+                },
+                {
+                  "entity": "sensor.garage_door_signal"
+                },
+                {
+                  "entity": "sensor.kitchensink_signal"
+                },
+                {
+                  "entity": "sensor.serverstrip_signal"
+                },
+                {
+                  "entity": "sensor.cabinetlight_signal"
+                },
+                {
+                  "entity": "sensor.wash_machine_signal"
+                },
+                {
+                  "entity": "sensor.stairtoplight_signal"
+                },
+                {
+                  "entity": "sensor.b_porch_socket_signal"
+                },
+                {
+                  "entity": "sensor.back_door_wifi_signal_strength"
+                },
+                {
+                  "entity": "sensor.garagetop_light_signal"
+                },
+                {
+                  "entity": "sensor.livingroomlight_signal"
+                },
+                {
+                  "entity": "sensor.front_door_wifi_signal_strength"
+                },
+                {
+                  "entity": "sensor.garageback_light_signal"
+                },
+                {
+                  "entity": "sensor.garagesidelight3_signal"
+                },
+                {
+                  "entity": "sensor.garagefront_light_signal"
+                },
+                {
+                  "entity": "sensor.sonoff_rf_bridge_1_signal"
+                },
+                {
+                  "entity": "sensor.sonoff_rf_bridge_2_signal"
+                },
+                {
+                  "entity": "sensor.bmt_hall_rf_socket_d_signal"
+                },
+                {
+                  "entity": "sensor.bmt_hall_rf_socket_u_signal"
+                }
+              ]
             }
           ],
           "icon": "mdi:signal-variant",
