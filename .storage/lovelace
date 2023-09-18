@@ -3394,7 +3394,7 @@
                     "action": "navigate",
                     "navigation_path": "/lovelace/3d"
                   },
-                  "theme": "Dark - Red",
+                  "theme": "Dark Orange",
                   "icon": "mdi:backburger",
                   "name": "Back"
                 },
@@ -3408,7 +3408,7 @@
                   },
                   "name": "Tarantula Tank",
                   "icon": "mdi:spider",
-                  "theme": "Dark - Blue"
+                  "theme": "Dark Green"
                 },
                 {
                   "show_name": true,
@@ -3420,7 +3420,7 @@
                   },
                   "icon": "mdi:shark",
                   "name": "Shark",
-                  "theme": "Dark - Yellow"
+                  "theme": "Dark Turqoise"
                 }
               ]
             },
@@ -4956,7 +4956,7 @@
                     "action": "navigate",
                     "navigation_path": "/lovelace/3d"
                   },
-                  "theme": "Dark - Red",
+                  "theme": "Dark Orange",
                   "icon": "mdi:backburger",
                   "name": "Back"
                 },
@@ -4970,7 +4970,7 @@
                   },
                   "name": "Tarantula Tank",
                   "icon": "mdi:spider",
-                  "theme": "Dark - Blue"
+                  "theme": "Dark Green"
                 },
                 {
                   "show_name": true,
@@ -4982,7 +4982,7 @@
                   },
                   "icon": "mdi:shark",
                   "name": "Shark",
-                  "theme": "Dark - Yellow"
+                  "theme": "Dark Turqoise"
                 }
               ]
             }
@@ -5124,7 +5124,7 @@
                     "action": "navigate",
                     "navigation_path": "/lovelace/3d"
                   },
-                  "theme": "Dark - Red",
+                  "theme": "Dark Orange",
                   "icon": "mdi:backburger",
                   "name": "Back"
                 },
@@ -5138,7 +5138,7 @@
                   },
                   "name": "Tarantula Tank",
                   "icon": "mdi:spider",
-                  "theme": "Dark - Blue"
+                  "theme": "Dark Green"
                 },
                 {
                   "show_name": true,
@@ -5150,7 +5150,7 @@
                   },
                   "icon": "mdi:shark",
                   "name": "Shark",
-                  "theme": "Dark - Yellow"
+                  "theme": "Dark Turqoise"
                 }
               ]
             }

@@ -2,6 +2,7 @@
   - platform: group
     name: Main Lights
     unique_id: 3503acba-9956-4951-b651-6385024ba170
+    all: true
     entities:
       - light.kneelight
       - light.jens_light
@@ -21,6 +22,7 @@
   - platform: group
     name: Dad Lights
     unique_id: d6e23f4b-a9cf-4b11-bac4-77bfc9a5d82a
+    all: true
     entities:
       - light.jims_computer_light_2
       - light.kneelight
@@ -30,6 +32,7 @@
   - platform: group
     name: Food Center
     unique_id: 0a7413ea-ee9e-4cdb-95c7-cbefcff87e6f
+    all: true
     entities:
       - light.counter_1
       - light.counter_2
@@ -39,6 +42,7 @@
   - platform: group
     name: Jens Color
     unique_id: f55a37e1-0358-4295-843c-fe31143c83cc
+    all: true
     entities:
       - light.bulb1
       - light.jens_led_bed
@@ -46,6 +50,7 @@
   - platform: group
     name: D Lights
     unique_id: 9fa921ea-7795-46ba-a850-bf85113e5f4d
+    all: true
     entities:
       - light.kneelight
       - light.jims_computer_light_2
@@ -53,6 +58,7 @@
   - platform: group
     name: Mom Office
     unique_id: a449deed-b1d4-4186-81af-a6697ed9d201
+    all: true
     entities:
       - light.office_fan_light
       - light.plug3
@@ -60,6 +66,7 @@
   - platform: group
     name: Studio
     unique_id: 0468c9fb-d0af-409f-bb28-dc173b9175cf
+    all: true
     entities:
       - light.3a_smart_home_de_lxt56_ls27lx1_7_light
       - light.feibit_inc_co_fb56_zcw11hg1_4_light

@@ -112,3 +112,28 @@
 #     data:
 #       message: "message"
 #       entities: media_player.kitchen_speaker
+
+  flash-a-light:
+    alias: make a light flash as an indicator of something
+    fields:
+      entities:
+        name: Light to flash
+        description: make a light flash
+        required: true
+        selector:
+          entity:
+            multiple: true
+            filter:
+              domain: light
+    sequence:
+    - service: light.turn_on
+      data: {}
+      target:
+        entity_id: "{{ entities }}"
+    - delay:
+        seconds: 1
+        milliseconds: 500
+    - service: light.turn_off
+      data: {}
+      target:
+        entity_id: "{{ entities }}"

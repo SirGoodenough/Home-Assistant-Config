@@ -36,6 +36,16 @@
           angle: '{{ trigger.payload_json.action_angle | default(0.1) | float(0.2)
             }}'
           mp: media_player.kitchen_speaker
+      scene_rotate_cw_face_4:
+      - service: input_boolean.turn_on
+        data: {}
+        target:
+          entity_id: input_boolean.test_color
+      scene_rotate_ccw_face_4:
+      - service: input_boolean.turn_off
+        data: {}
+        target:
+          entity_id: input_boolean.test_color
 - id: '1692033269574'
   alias: aaaaaaaa test door
   description: add voice to door test
@@ -45,7 +55,7 @@
       door_entity:
       - binary_sensor.back_door_open_433
       start_time: 08:00:00
-      end_time: '22:00:00'
+      end_time: 00:00:00
       speaker_target:
       - media_player.kitchen_speaker
       speaker_gender: male
