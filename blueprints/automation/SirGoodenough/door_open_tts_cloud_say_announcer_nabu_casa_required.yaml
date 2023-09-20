@@ -15,7 +15,7 @@ blueprint:
   homeassistant:
     min_version: 2023.8.0
   domain: automation
-  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml
+#  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml
   input:
     door_entity:
       name: 'Door Sensor (or any binary_sensor will do...)'
@@ -359,6 +359,11 @@ trigger:
   from: 'off'
   to: 'on'
 
+variables:
+    # Convert !inputs to variables
+  cooldown: !input cooldown
+  door_open: !input door_entity
+
 condition:
   - alias: Only allow execution within selected Hours / Weekdays
     condition: time
@@ -369,29 +374,17 @@ condition:
     condition: !input additional_conditions
 
 action:
-- variables:
-      # Convert !inputs to variables
-    cooldown: !input cooldown
-    doorS: !input door_entity
-
 - alias: Repeat the sequence UNTIL the door is closed
   repeat:
     sequence:
     - alias: This is the delay broke into 2 sec incr so it can be interupted.
       repeat:
         while:
-          - condition: state
-            entity_id: !input door_entity
-            state: "on"
-          - condition: template
-            value_template: "{{ repeat.index < cooldown/2 }}"
+          - "{{ is_state( door_open,'on' ) and repeat.index < cooldown/2 }}"
         sequence:
           - delay: 00:00:02
     - alias: Send announcement message (potentially again)
-      if: 
-      - condition: state
-        entity_id: !input door_entity
-        state: "on"
+      if: "{{ is_state( door_open,'on' ) }}"
       then:
       - service: tts.cloud_say
         data:
@@ -403,10 +396,7 @@ action:
           language: !input speaker_language
       - alias: Delay to make sure the message can complete.
         delay: 00:00:10
-    until:
-    - condition: state
-      entity_id: !input door_entity
-      state: 'off'
+    until: "{{ is_state( door_open,'off' ) }}"
 - alias: Always try to say thanks at the end. Leave message empty for quiet
   service: tts.cloud_say
   data:
@@ -416,7 +406,4 @@ action:
       gender: !input speaker_gender
       voice: !input speaker_voice
     language: !input speaker_language
-
-mode: queued
-max: 10
-max_exceeded: silent
+mode: restart

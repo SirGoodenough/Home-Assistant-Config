@@ -113,7 +113,7 @@
 #       message: "message"
 #       entities: media_player.kitchen_speaker
 
-  flash-a-light:
+  flash_a_light:
     alias: make a light flash as an indicator of something
     fields:
       entities:
