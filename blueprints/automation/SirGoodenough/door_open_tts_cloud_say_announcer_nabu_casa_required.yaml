@@ -377,7 +377,7 @@ action:
 - alias: Repeat the sequence UNTIL the door is closed
   repeat:
     sequence:
-    - alias: This is the delay broke into 2 sec incr so it can be interupted.
+    - alias: This is the delay broke into 2 sec incr so it can be interrupted.
       repeat:
         while: >
           {{ door_open | map('states') | select('eq','on') | list | count > 0
@@ -399,7 +399,7 @@ action:
       - alias: Delay to make sure the message can complete.
         delay: 00:00:10
     until: >
-     {{ door_open | map('states') | select('eq','on') | list | count == 0 }}
+      {{ door_open | map('states') | select('eq','on') | list | count == 0 }}
 - alias: Always try to say thanks at the end. Leave message empty for quiet
   service: tts.cloud_say
   data:

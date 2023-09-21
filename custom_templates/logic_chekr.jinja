@@ -1,9 +1,10 @@
-
 {% macro true_any(entity_list) %}
-  {# This expects a list of entities.
+  {# This expects a list of entities. This means [] brackets
+      OR if your entities are pulled from a BluePrint entity selector,
+      that is already a list and you do not need the brackets.
       The number of entities that are one of:
       ['true','True','yes','Yes','YES','on','ON','t','T','y','Y']
-      are counted.
+      is counted.
       If there are one or more that match, 
       true is returned, else false, defaults to false.
     REMEMBER!!
@@ -25,10 +26,12 @@
 {% endmacro %}
 
 {% macro false_any(entity_list) %}
-  {# This expects a list of entities.
+  {# This expects a list of entities. This means [] brackets
+      OR if your entities are pulled from a BluePrint entity selector,
+      that is already a list and you do not need the brackets.
       The number of entities that are one of:
       ['false','False','no','No','NO','off','OFF','f','F','n','N']
-      are counted.
+      is counted.
       If there are one or more that match, 
       true is returned, else false, defaults to false.
     REMEMBER!!
@@ -50,10 +53,12 @@
 {% endmacro %}
 
 {% macro true_one(entity_list) %}
-  {# This expects a list of entities.
+  {# This expects a list of entities. This means [] brackets
+      OR if your entities are pulled from a BluePrint entity selector,
+      that is already a list and you do not need the brackets.
       The number of entities that are one of:
       ['true','True','yes','Yes','YES','on','ON','t','T','y','Y']
-      are counted.
+      is counted.
       If there is only one that matches, 
       true is returned, else false, defaults to false.
     REMEMBER!!
@@ -75,11 +80,13 @@
 {% endmacro %}
 
 {% macro true_all(entity_list) %}
-  {# This expects a list of entities.
+  {# This expects a list of entities. This means [] brackets
+      OR if your entities are pulled from a BluePrint entity selector,
+      that is already a list and you do not need the brackets.
       The number of entities are counted.
       The number of entities that are one of:
       ['true','True','yes','Yes','YES','on','ON','t','T','y','Y']
-      are counted.
+      is counted.
       If the 2 counts are the same, true is returned, else false,
       defaults to false.
     REMEMBER!!
@@ -101,10 +108,12 @@
 {% endmacro %}
 
 {% macro false_one(entity_list) %}
-  {# This expects a list of entities.
+  {# This expects a list of entities. This means [] brackets
+      OR if your entities are pulled from a BluePrint entity selector,
+      that is already a list and you do not need the brackets.
       The number of entities that are one of:
       ['false','False','no','No','NO','off','OFF','f','F','n','N']
-      are counted.
+      is counted.
       If there is only one that matches, true is returned,
       else false, defaults to false.
     REMEMBER!!
@@ -126,11 +135,13 @@
 {% endmacro %}
 
 {% macro false_all(entity_list) %}
-  {# This expects a list of entities.
+  {# This expects a list of entities. This means [] brackets
+      OR if your entities are pulled from a BluePrint entity selector,
+      that is already a list and you do not need the brackets.
       The number of entities are counted.
       The number of entities that are one of:
       ['false','False','no','No','NO','off','OFF','f','F','n','N']
-      are counted.
+      is counted.
       If the 2 counts are the same, true is returned, else false,
       defaults to false.
     REMEMBER!!
