@@ -379,12 +379,14 @@ action:
     sequence:
     - alias: This is the delay broke into 2 sec incr so it can be interupted.
       repeat:
-        while:
-          - "{{ is_state( door_open,'on' ) and repeat.index < cooldown/2 }}"
+        while: >
+          {{ door_open | map('states') | select('eq','on') | list | count > 0
+            and repeat.index < cooldown/2 }}
         sequence:
           - delay: 00:00:02
     - alias: Send announcement message (potentially again)
-      if: "{{ is_state( door_open,'on' ) }}"
+      if: >
+        {{ door_open | map('states') | select('eq','on') | list | count > 0 }}
       then:
       - service: tts.cloud_say
         data:
@@ -396,7 +398,8 @@ action:
           language: !input speaker_language
       - alias: Delay to make sure the message can complete.
         delay: 00:00:10
-    until: "{{ is_state( door_open,'off' ) }}"
+    until: >
+     {{ door_open | map('states') | select('eq','on') | list | count == 0 }}
 - alias: Always try to say thanks at the end. Leave message empty for quiet
   service: tts.cloud_say
   data:

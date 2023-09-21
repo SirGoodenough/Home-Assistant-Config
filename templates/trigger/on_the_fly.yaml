@@ -17,6 +17,7 @@
             {{ dict(current.items() | rejectattr('0', 'eq', trigger.event.data.key)) }}
           {% endif %}
 
+# https://community.home-assistant.io/t/wth-cant-input-helpers-be-read-only-in-ui/467562/13?u=sir_goodenough
 # To set a variable (reusing the key will overwrite the previous value)
 
 # action:

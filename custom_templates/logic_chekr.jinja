@@ -1,0 +1,152 @@
+
+{% macro true_any(entity_list) %}
+  {# This expects a list of entities.
+      The number of entities that are one of:
+      ['true','True','yes','Yes','YES','on','ON','t','T','y','Y']
+      are counted.
+      If there are one or more that match, 
+      true is returned, else false, defaults to false.
+    REMEMBER!!
+      This always returns text, so cast to bool on the other end to be certain
+      of the result.
+      Use of the - character in the return template ensures no unwanted spacing
+      is pulled back with your answer.
+    SAMPLE USAGE:
+      {% from 'logic_chekr.jinja' import true_any %}
+      {{- true_any(['entity_1','entity_2']) | bool -}}
+  #}
+  {%- if entity_list is iterable -%}
+    {{- entity_list | map('states') 
+    | select('in', ['true','True','yes','Yes','YES','on','ON','t','T','y','Y'])
+    | list | count > 0 -}}
+  {%- else -%}
+    false 
+  {%- endif -%}
+{% endmacro %}
+
+{% macro false_any(entity_list) %}
+  {# This expects a list of entities.
+      The number of entities that are one of:
+      ['false','False','no','No','NO','off','OFF','f','F','n','N']
+      are counted.
+      If there are one or more that match, 
+      true is returned, else false, defaults to false.
+    REMEMBER!!
+      This always returns text, so cast to bool on the other end to be certain
+      of the result.
+      Use of the - character in the return template ensures no unwanted spacing
+      is pulled back with your answer.
+    SAMPLE USAGE:
+      {% from 'logic_chekr.jinja' import false_any %}
+      {{- false_any(['entity_1','entity_2']) | bool -}}
+  #}
+  {%- if entity_list is iterable -%}
+    {{- entity_list | map('states') 
+    | select('in', ['false','False','no','No','NO','off','OFF','f','F','n','N'])
+    | list | count > 0 -}}
+  {%- else -%}
+    false 
+  {%- endif -%}
+{% endmacro %}
+
+{% macro true_one(entity_list) %}
+  {# This expects a list of entities.
+      The number of entities that are one of:
+      ['true','True','yes','Yes','YES','on','ON','t','T','y','Y']
+      are counted.
+      If there is only one that matches, 
+      true is returned, else false, defaults to false.
+    REMEMBER!!
+      This always returns text, so cast to bool on the other end to be certain
+      of the result.
+      Use of the - character in the return template ensures no unwanted spacing
+      is pulled back with your answer.
+    SAMPLE USAGE:
+      {% from 'logic_chekr.jinja' import true_one %}
+      {{- true_one(['entity_1','entity_2]') | bool -}}
+  #}
+  {%- if entity_list is iterable -%}
+    {{- entity_list | map('states') 
+    | select('in', ['true','True','yes','Yes','YES','on','ON','t','T','y','Y'])
+    | list | count == 1 -}}
+  {%- else -%}
+    false 
+  {%- endif -%}
+{% endmacro %}
+
+{% macro true_all(entity_list) %}
+  {# This expects a list of entities.
+      The number of entities are counted.
+      The number of entities that are one of:
+      ['true','True','yes','Yes','YES','on','ON','t','T','y','Y']
+      are counted.
+      If the 2 counts are the same, true is returned, else false,
+      defaults to false.
+    REMEMBER!!
+      This always returns text, so cast to bool on the other end to be certain
+      of the result.
+      Use of the - character in the return template ensures no unwanted spacing
+      is pulled back with your answer.
+    SAMPLE USAGE:
+      {% from 'logic_chekr.jinja' import true_all %}
+      {{- true_all(['entity_1','entity_2']) | bool -}}
+  #}
+  {%- if entity_list is iterable -%}
+    {{- entity_list | map('states') 
+    | select('in', ['true','True','yes','Yes','YES','on','ON','t','T','y','Y'])
+    | list | count == entity_list | count -}}
+  {%- else -%}
+    false 
+  {%- endif -%}
+{% endmacro %}
+
+{% macro false_one(entity_list) %}
+  {# This expects a list of entities.
+      The number of entities that are one of:
+      ['false','False','no','No','NO','off','OFF','f','F','n','N']
+      are counted.
+      If there is only one that matches, true is returned,
+      else false, defaults to false.
+    REMEMBER!!
+      This always returns text, so cast to bool on the other end to be certain
+      of the result.
+      Use of the - character in the return template ensures no unwanted spacing
+      is pulled back with your answer.
+    SAMPLE USAGE:
+      {% from 'logic_chekr.jinja' import false_one %}
+      {{- false_one(['entity_1','entity_2']) | bool -}}
+  #}
+  {%- if entity_list is iterable -%}
+    {{- entity_list | map('states') 
+    | select('in', ['false','False','no','No','NO','off','OFF','f','F','n','N'])
+    | list | count == 1 -}}
+  {%- else -%}
+    false 
+  {%- endif -%}
+{% endmacro %}
+
+{% macro false_all(entity_list) %}
+  {# This expects a list of entities.
+      The number of entities are counted.
+      The number of entities that are one of:
+      ['false','False','no','No','NO','off','OFF','f','F','n','N']
+      are counted.
+      If the 2 counts are the same, true is returned, else false,
+      defaults to false.
+    REMEMBER!!
+      This always returns text, so cast to bool on the other end to be certain
+      of the result.
+      Use of the - character in the return template ensures no unwanted spacing
+      is pulled back with your answer.
+    SAMPLE USAGE:
+      {% from 'logic_chekr.jinja' import false_all %}
+      {{- false_all(['entity_1','entity_2']) | bool -}}
+  #}
+  {%- if entity_list is iterable -%}
+    {{- entity_list | map('states') 
+    | select('in', ['false','False','no','No','NO','off','OFF','f','F','n','N'])
+    | list | count == entity_list | count -}}
+  {%- else -%}
+    false 
+  {%- endif -%}
+{% endmacro %}
