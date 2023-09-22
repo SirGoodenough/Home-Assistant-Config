@@ -29,6 +29,40 @@ blueprint:
           multiple: true
           filter:
             - domain: binary_sensor
+    reminded:
+      name: 'Did I remind you?'
+      default:
+      description: >
+        This is optional.
+        Original behavior of this BluePrint was that every time you close the door,
+        the action to thank you for closing the door is activated. This is fine
+        for some things, but in a door that you go in and out of a lot, it gets
+        annoying when your Google thanks you everytime the door closes.
+
+        So to get around that currently your choise is to leave the door close 
+        announcement empty and therefore silent, which I don't like.
+        This is a new way to handle that problem.
+        
+        You can leave this at the default (empty) and the behavior of the BP will
+        be exactly what it was in the past. This ensures your old set-up will not
+        break if you upgrade the BluePrint.
+
+        Or if you create an 'input_boolean'/'toggle' helper and put the name in
+        here, the behavior will be the door is silent as long as you do not
+        exceed the time it takes to get to the warning message that the door is
+        open. If that warning message triggers once, it will then thank you after
+        you close it.
+
+        So normal door operation it's just a door. If you leave it open too long,
+        it reminds you it is still open, and when you eventually close it,
+        it will thank you for closing it.
+
+        Create a helper and select it here for that style of action.
+      selector:
+        entity:
+          multiple: false
+          filter:
+            - domain: input_boolean
     start_time:
       name: StartTime
       description: >
@@ -359,11 +393,6 @@ trigger:
   from: 'off'
   to: 'on'
 
-variables:
-    # Convert !inputs to variables
-  cooldown: !input cooldown
-  door_open: !input door_entity
-
 condition:
   - alias: Only allow execution within selected Hours / Weekdays
     condition: time
@@ -374,23 +403,30 @@ condition:
     condition: !input additional_conditions
 
 action:
+- variables:
+      # Convert !inputs to variables
+    cooldown: !input cooldown
+    _reminded: !input reminded
+
+
 - alias: Repeat the sequence UNTIL the door is closed
   repeat:
     sequence:
-    - alias: This is the delay broke into 2 sec incr so it can be interrupted.
+    - alias: This is the delay broke into 2 sec incr so it can be interupted.
       repeat:
-        while: >
-          {{ door_open | map('states') | 
-            select('in', ['true','True','yes','Yes','YES','on','ON'])
-            | list | count > 0
-            and repeat.index < cooldown/2 }}
+        while:
+          - condition: state
+            entity_id: !input door_entity
+            state: "on"
+          - condition: template
+            value_template: "{{ repeat.index < cooldown/2 }}"
         sequence:
           - delay: 00:00:02
     - alias: Send announcement message (potentially again)
-      if: >
-        {{ door_open | map('states') | 
-          select('in', ['true','True','yes','Yes','YES','on','ON'])
-          | list | count > 0 }}
+      if: 
+      - condition: state
+        entity_id: !input door_entity
+        state: "on"
       then:
       - service: tts.cloud_say
         data:
@@ -402,10 +438,10 @@ action:
           language: !input speaker_language
       - alias: Delay to make sure the message can complete.
         delay: 00:00:10
-    until: >
-      {{ door_open | map('states') | 
-        select('in', ['true','True','yes','Yes','YES','on','ON'])
-        | list | count == 0 }}
+    until:
+    - condition: state
+      entity_id: !input door_entity
+      state: 'off'
 - alias: Always try to say thanks at the end. Leave message empty for quiet
   service: tts.cloud_say
   data:
@@ -415,4 +451,5 @@ action:
       gender: !input speaker_gender
       voice: !input speaker_voice
     language: !input speaker_language
+
 mode: restart
