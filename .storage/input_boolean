@@ -198,6 +198,11 @@
         "id": "rain",
         "name": "Rain",
         "icon": "mdi:weather-rainy"
+      },
+      {
+        "id": "reminded",
+        "name": "reminded",
+        "icon": "mdi:door-open"
       }
     ]
   }

@@ -1,5 +1,5 @@
 blueprint:
-  name: Door open tts.cloud_say announcer (Nabu-Casa required) - 2023-08-17
+  name: Door open tts.cloud_say announcer (Nabu-Casa required) - 2023-09-22
   author: SirGoodenough
   description: >
     This uses tts.cloud_say from Nabu-Casa to tell you a door is open too
@@ -15,7 +15,7 @@ blueprint:
   homeassistant:
     min_version: 2023.8.0
   domain: automation
-#  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml
   input:
     door_entity:
       name: 'Door Sensor (or any binary_sensor will do...)'
@@ -39,7 +39,7 @@ blueprint:
         for some things, but in a door that you go in and out of a lot, it gets
         annoying when your Google thanks you everytime the door closes.
 
-        So to get around that currently your choise is to leave the door close 
+        So to get around that currently your choice is to leave the door close 
         announcement empty and therefore silent, which I don't like.
         This is a new way to handle that problem.
         
@@ -393,6 +393,11 @@ trigger:
   from: 'off'
   to: 'on'
 
+variables:
+    # Convert !inputs to variables
+  cooldown: !input cooldown
+  reminded: !input reminded
+
 condition:
   - alias: Only allow execution within selected Hours / Weekdays
     condition: time
@@ -403,11 +408,12 @@ condition:
     condition: !input additional_conditions
 
 action:
-- variables:
-      # Convert !inputs to variables
-    cooldown: !input cooldown
-    _reminded: !input reminded
-
+- alias: Set the flag to false if 'reminded' exists.
+  if: "{{ reminded[0] is defined }}"
+  then:
+    service: input_boolean.turn_off
+    target:
+      entity_id: !input reminded
 
 - alias: Repeat the sequence UNTIL the door is closed
   repeat:
@@ -428,28 +434,44 @@ action:
         entity_id: !input door_entity
         state: "on"
       then:
-      - service: tts.cloud_say
-        data:
-          entity_id: !input speaker_target
-          message: !input announcement_message
-          options:
-            gender: !input speaker_gender
-            voice: !input speaker_voice
-          language: !input speaker_language
+      - parallel:
+        - service: tts.cloud_say
+          data:
+            entity_id: !input speaker_target
+            message: !input announcement_message
+            options:
+              gender: !input speaker_gender
+              voice: !input speaker_voice
+            language: !input speaker_language
+        - alias: Set to true if 'reminded' exists because a warning was now issued.
+          if: "{{ reminded[0] is defined }}"
+          then:
+            service: input_boolean.turn_on
+            target:
+              entity_id: !input reminded
       - alias: Delay to make sure the message can complete.
         delay: 00:00:10
+
     until:
     - condition: state
       entity_id: !input door_entity
       state: 'off'
-- alias: Always try to say thanks at the end. Leave message empty for quiet
-  service: tts.cloud_say
-  data:
-    entity_id: !input speaker_target
-    message: !input final_message
-    options:
-      gender: !input speaker_gender
-      voice: !input speaker_voice
-    language: !input speaker_language
+
+- alias: Say thanks at the end when appropriate. Leave message empty for always quiet.
+  if: 
+    or:
+      - "{{ reminded[0] is not defined }}"
+      - and:
+        - "{{ reminded[0] is defined }}"
+        - "{{ expand(reminded)[0].state == 'on'}}"
+  then:
+    - service: tts.cloud_say
+      data:
+        entity_id: !input speaker_target
+        message: !input final_message
+        options:
+          gender: !input speaker_gender
+          voice: !input speaker_voice
+        language: !input speaker_language
 
 mode: restart

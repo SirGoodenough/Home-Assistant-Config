@@ -77,3 +77,4 @@
         "workshop", "monistary", "bee hive", "bird cage", "freezer", "refrigerator",
         "vacuum chambers", "emergency room", "dumpster", "manure pits", "spa", "heavens",
         "bistro", "candy factory", "garage") | random }} door has been left open.
+      reminded: input_boolean.reminded
