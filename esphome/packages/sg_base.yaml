@@ -1,0 +1,49 @@
+# The stuff I need in all my espHome devices. 
+# I reserve the right to overwrite any at any time.
+# Path to file: esphome/packages/sg_base.yaml
+
+substitutions:
+  name: chaloupkaabode-esphpme
+  friendly_name: Another Brick in the Wall
+  frame_type: esp-idf
+
+esphome:
+  name: ${name}
+  friendly_name: ${friendly_name}
+  name_add_mac_suffix: true
+
+esp32:
+  board: ${board}
+  framework:
+    type: esp-idf
+
+  # Enable logging
+logger:
+
+  # Enable Home Assistant API
+api:
+  encryption:
+    key: !secret encrypt
+
+ota:
+  password: !secret otapw
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "${name} Fallback Hotspot"
+    password: !secret ap_password
+
+button:
+  - platform: safe_mode
+    name: "Safe Mode Boot ${name} ${friendly_name}"
+    entity_category: diagnostic
+  - platform: restart
+    name: "Restart ${name} ${friendly_name}"
+    entity_category: diagnostic
+  - platform: shutdown
+    name: "Shutdown ${name} ${friendly_name}"
+    entity_category: diagnostic
