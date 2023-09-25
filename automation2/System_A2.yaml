@@ -95,11 +95,11 @@
 ####################################################
 - id: 28062904-bd08-44fc-9021-13d8ad4aa054
   alias: Backend Update
-  description: ""
+  description: "Keep stuff up to date"
+  initial_state: on
   trigger:
     - platform: time_pattern
       hours: "12"
-  condition: []
   action:
     - alias: Blueprints update
       service: shell_command.blueprints_update
