@@ -16,108 +16,59 @@
       entity_id: binary_sensor.stairway_smoke_smoke
       domain: binary_sensor
       id: upstairs
+
+    variables:
+      scene_id: "color_flip_{{ this.context.id }}"
+
     action:
     - service: script.media_player_fire_alert
-    - service: light.turn_on
-      data:
-        transition: 0
-        rgb_color: [255,255,255]
-        brightness_pct: 80
-        entity_id: light.grp_kitch,light.grp_jens_color
-    - delay: 00:00:01
-    - service: light.turn_on
-      data:
-        transition: 0
-        rgb_color: [255,0,0]
-        brightness_pct: 100
-        entity_id: light.grp_kitch,light.grp_jens_color
     - delay: 00:00:03
-    - service: light.turn_on
+    - service: scene.create
       data:
-        transition: 0
-        rgb_color: [255,255,255]
-        brightness_pct: 80
-        entity_id: light.grp_kitch,light.grp_jens_color
-    - delay: 00:00:01
-    - service: light.turn_on
-      data:
-        transition: 0
-        rgb_color: [255,0,0]
-        brightness_pct: 100
-        entity_id: light.grp_kitch,light.grp_jens_color
-    - delay: 00:00:03
-    - service: light.turn_on
-      data:
-        transition: 0
-        rgb_color: [255,255,255]
-        brightness_pct: 80
-        entity_id: light.grp_kitch,light.grp_jens_color
-    - delay: 00:00:01
-    - service: light.turn_on
-      data:
-        transition: 0
-        rgb_color: [255,0,0]
-        brightness_pct: 100
-        entity_id: light.grp_kitch,light.grp_jens_color
-    - delay: 00:00:03
-    - service: script.turn_on
+        scene_id: "{{ scene_id }}"
+        snapshot_entities: 
+          - light.grp_kitch
+          - light.grp_jens_color
+    - repeat:
+        count: 2
+        sequence:
+        - repeat:
+            count: 3
+            sequence:
+            - service: script.color_flip
+              data:
+                color: [255,255,255]
+                bright_pct: 80
+                entities: light.grp_kitch,light.grp_jens_color
+            - delay: 00:00:01
+            - service: script.color_flip
+              data:
+                color: [255,0,0]
+                bright_pct: 100
+                entities: light.grp_kitch,light.grp_jens_color
+            - delay: 00:00:03
+        - service: script.turn_on
+          target:
+            entity_id: >
+              {% if trigger.id == 'basement' %}
+                script.tts_smoke_detected_in_the_basement
+              {% else %}
+                script.tts_smoke_detected_upstairs
+              {% endif %}
+    - service: scene.turn_on
       target:
-        entity_id: >
-          {% if trigger.id == 'basement' %}
-            script.tts_smoke_detected_in_the_basement
-          {% else %}
-            script.tts_smoke_detected_upstairs
-          {% endif %}
-    - service: light.turn_on
+        entity_id: "scene.{{ scene_id }}"
       data:
-        transition: 0
-        rgb_color: [255,255,255]
-        brightness_pct: 80
-        entity_id: light.grp_kitch,light.grp_jens_color
-    - delay: 00:00:01
-    - service: light.turn_on
-      data:
-        transition: 0
-        rgb_color: [255,0,0]
-        brightness_pct: 100
-        entity_id: light.grp_kitch,light.grp_jens_color
-    - delay: 00:00:03
-    - service: light.turn_on
-      data:
-        transition: 0
-        rgb_color: [255,255,255]
-        brightness_pct: 80
-        entity_id: light.grp_kitch,light.grp_jens_color
-    - delay: 00:00:01
-    - service: light.turn_on
-      data:
-        transition: 0
-        rgb_color: [255,0,0]
-        brightness_pct: 100
-        entity_id: light.grp_kitch,light.grp_jens_color
-    - delay: 00:00:03
-    - service: light.turn_on
-      data:
-        transition: 0
-        rgb_color: [255,255,255]
-        brightness_pct: 80
-        entity_id: light.grp_kitch,light.grp_jens_color
-    - delay: 00:00:01
-    - service: light.turn_on
-      data:
-        transition: 0
-        rgb_color: [255,0,0]
-        brightness_pct: 100
-        entity_id: light.grp_kitch,light.grp_jens_color
-    - delay: 00:00:03
-    - service: light.turn_off
-      data:
-        transition: 0
-        entity_id: light.grp_kitch,light.grp_jens_color
-    - delay: 00:00:01
-    - service: light.turn_on
-      data:
-        transition: 0
-        rgb_color: [255,20,147]
-        brightness_pct: 88
-        entity_id: light.grp_jens_color
+        transition: 2.5
+
+    # - service: light.turn_off
+    #   data:
+    #     transition: 4
+    #     entity_id: light.grp_kitch,light.grp_jens_color
+    # - delay: 00:00:01
+    # - service: light.turn_on
+    #   data:
+    #     transition: 4
+    #     rgb_color: [255,20,147]
+    #     brightness_pct: 88
+    #     entity_id: light.grp_jens_color

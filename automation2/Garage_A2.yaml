@@ -21,14 +21,16 @@
       platform: state
       from: 'off'
       to: 'on'
-    condition:
-      condition: state
-      entity_id: binary_sensor.dark_outside
-      state: 'on'
+    condition: >
+      {% from 'logic_chekr.jinja' import true_all %}
+      {{- true_all( ['binary_sensor.dark_outside'] ) | bool -}}
+      # condition: state
+      # entity_id: binary_sensor.dark_outside
+      # state: 'on'
     action:
     - service: script.turn_on
       entity_id: script.garage_outside_lights_on
-    - delay: 01:08:37
+    - delay: 00:17:37
     mode: single
     max_exceeded: silent
 

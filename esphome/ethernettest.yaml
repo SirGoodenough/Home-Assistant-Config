@@ -1,10 +1,11 @@
 substitutions:
     name: "ethernettest"
     board: "esp32dev"
+    friendly_name: Desk Queen
 
 esphome:
   name: ${name}
-  friendly_name: ${name}
+  friendly_name: ${friendly_name}
 
 esp32:
   board: ${board}
@@ -39,3 +40,14 @@ wifi:
 
 bluetooth_proxy:
   active: true
+
+button:
+  - platform: safe_mode
+    name: "Safe Mode Boot ${name} ${friendly_name}"
+    entity_category: diagnostic
+  - platform: restart
+    name: "Restart ${name} ${friendly_name}"
+    entity_category: diagnostic
+  - platform: shutdown
+    name: "Shutdown ${name} ${friendly_name}"
+    entity_category: diagnostic

@@ -1,8 +1,14 @@
+substitutions:
+    name: "bt3"
+    board: "esp32dev"
+    friendly_name: Bathroom2
+
 esphome:
-  name: bt3
+  name: ${name}
+  friendly_name: ${friendly_name}
 
 esp32:
-  board: esp32dev
+  board: ${board}
   framework:
     type: esp-idf
   
@@ -23,7 +29,7 @@ wifi:
 
   # Enable fallback hotspot in case wifi connection fails
   ap:
-    ssid: "Bt3 Fallback Hotspot"
+    ssid: "${name} Fallback Hotspot"
     password: !secret ap_password
 
 bluetooth_proxy:
@@ -34,9 +40,20 @@ sensor:
     pin: GPIO21
     model: AM2302
     temperature:
-      name: "Bathroom2 Temperature"
+      name: "${friendly_name} Temperature"
       accuracy_decimals: 1
     humidity:
-      name: "Bathroom2 Humidity"
+      name: "${friendly_name} Humidity"
       accuracy_decimals: 1
     update_interval: 60s
+
+button:
+  - platform: safe_mode
+    name: "Safe Mode Boot ${name} ${friendly_name}"
+    entity_category: diagnostic
+  - platform: restart
+    name: "Restart ${name} ${friendly_name}"
+    entity_category: diagnostic
+  - platform: shutdown
+    name: "Shutdown ${name} ${friendly_name}"
+    entity_category: diagnostic

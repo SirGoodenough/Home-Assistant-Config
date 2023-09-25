@@ -8,7 +8,6 @@
       - POST
       - PUT
     local_only: false
-  condition: []
   action:
     - alias: "Notify phone(s)"
       service: notify.message_dad

@@ -12,7 +12,9 @@
     service: script.turn_on
     data:
       entity_id: >
-        {% if is_state('input_boolean.christmas', 'on') %}
+        {% from 'logic_chekr.jinja' import true_all %}
+        {%- if true_all( ['input_boolean.christmas'] ) | bool -%}
+        {# if is_state('input_boolean.christmas', 'on') %} #}
           script.inside_christmas
         {% else %}
           script.heavenly_peace
@@ -26,10 +28,12 @@
       entity_id: binary_sensor.blue_remote_c
       from: "off"
       to: "on"
-  condition:
-    - condition: state
-      entity_id: sensor.xmas_season_enable
-      state: "True"
+  condition: >
+    {% from 'logic_chekr.jinja' import true_all %}
+    {{- true_all( ['sensor.xmas_season_enable'] ) | bool -}}
+    # - condition: state
+    #   entity_id: sensor.xmas_season_enable
+    #   state: "True"
   action:
     - service: script.turn_on
       entity_id: script.inside_christmas
@@ -42,10 +46,12 @@
       entity_id: binary_sensor.blue_remote_d
       from: "off"
       to: "on"
-  condition:
-    - condition: state
-      entity_id: sensor.xmas_season_enable
-      state: "True"
+  condition: >
+    {% from 'logic_chekr.jinja' import true_all %}
+    {{- true_all( ['sensor.xmas_season_enable'] ) | bool -}}
+    # - condition: state
+    #   entity_id: sensor.xmas_season_enable
+    #   state: "True"
   action:
     - service: script.turn_on
       entity_id: script.heavenly_peace
@@ -65,10 +71,12 @@
       entity_id: binary_sensor.blue_remote_a
       from: "off"
       to: "on"
-  condition:
-    - condition: state
-      entity_id: sensor.xmas_season_enable
-      state: "True"
+  condition: >
+    {% from 'logic_chekr.jinja' import true_all %}
+    {{- true_all( ['sensor.xmas_season_enable'] ) | bool -}}
+    # - condition: state
+    #   entity_id: sensor.xmas_season_enable
+    #   state: "True"
   action:
     - service: switch.turn_on
       entity_id: switch.outside_christmas
@@ -115,14 +123,17 @@
   trigger:
     platform: homeassistant
     event: start
-  condition:
-    and:
-    - condition: state
-      entity_id: sensor.xmas_season_enable
-      state: "True"
-    - condition: state
-      entity_id: binary_sensor.dark_outside
-      state: "on"
+  condition: >
+    {% from 'logic_chekr.jinja' import true_all %}
+    {{- true_all( ['sensor.xmas_season_enable',
+      'binary_sensor.dark_outside'] ) | bool -}}
+    # and:
+    # - condition: state
+    #   entity_id: sensor.xmas_season_enable
+    #   state: "True"
+    # - condition: state
+    #   entity_id: binary_sensor.dark_outside
+    #   state: "on"
   action:
     - service: switch.turn_on
       entity_id: switch.outside_christmas
@@ -143,10 +154,12 @@
   trigger:
     platform: homeassistant
     event: start
-  condition:
-    - condition: state
-      entity_id: binary_sensor.dark_outside
-      state: "off"
+  condition: >
+    {% from 'logic_chekr.jinja' import false_all %}
+    {{- false_all( ['binary_sensor.dark_outside'] ) | bool -}}
+    # - condition: state
+    #   entity_id: binary_sensor.dark_outside
+    #   state: "off"
   action:
     - service: switch.turn_off
       entity_id: switch.outside_christmas
@@ -174,7 +187,9 @@
       entity_id: sensor.xmas_season_enable
   action:
     - service: >
-        {% if is_state('sensor.xmas_season_enable', 'True') %}
+        {% from 'logic_chekr.jinja' import true_all %}
+        {%- if true_all( ['sensor.xmas_season_enable'] ) | bool -%}
+        {# if is_state('sensor.xmas_season_enable', 'True') %} #}
           automation.turn_on
         {% else %}
           automation.turn_off

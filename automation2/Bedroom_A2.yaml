@@ -94,11 +94,13 @@
       platform: state
       entity_id: input_boolean.bedroom_cool
       to: "on"
-  condition:
-    - alias: Daytime as needed control
-      condition: state
-      entity_id: input_boolean.bedroom_cool
-      state: "on"
+  condition: >
+    {% from 'logic_chekr.jinja' import true_all %}
+    {{- true_all( ['input_boolean.bedroom_cool'] ) | bool -}}
+    # - alias: Daytime as needed control
+    #   condition: state
+    #   entity_id: input_boolean.bedroom_cool
+    #   state: "on"
   action:
     - alias: "Start AirCon only if off to prevent rate limit outages"
       if: '{{ states(''climate.gemodule5384_window_ac'') != ''cool''

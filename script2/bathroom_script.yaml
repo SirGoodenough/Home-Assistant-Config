@@ -12,7 +12,10 @@
     alias: Bathroom Heater watchdog
     sequence:
       - alias: "Wait until switch is off or the timeout"
-        wait_template: "{{ is_state('switch.aeotec_dsc26103_micro_switch_2nd_edition_switch', 'off') }}"
+        wait_template: >
+          {% from 'logic_chekr.jinja' import false_all %}
+          {{- false_all( ['switch.micro_switch_g2'] ) | bool -}}
+          {# is_state('switch.micro_switch_g2', 'off') }} #}
         timeout: "01:00:00"
       - service: script.upstairs_bath_heater_off
 
@@ -23,7 +26,7 @@
     alias: Turn on Upstairs Bathroom Heater
     sequence:
       - service: switch.turn_on
-        entity_id: switch.aeotec_dsc26103_micro_switch_2nd_edition_switch
+        entity_id: switch.micro_switch_g2
       - alias: "Start Watchdog"
         service: script.upstairs_bath_heater_watchdog
 
@@ -36,6 +39,6 @@
       - service: input_boolean.turn_off
         entity_id: input_boolean.bathroom_heater_auto_on
       - service: switch.turn_off
-        entity_id: switch.aeotec_dsc26103_micro_switch_2nd_edition_switch
+        entity_id: switch.micro_switch_g2
 
 

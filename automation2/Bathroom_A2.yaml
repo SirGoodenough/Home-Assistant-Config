@@ -7,7 +7,7 @@
   initial_state: on
   trigger:
     - platform: state
-      entity_id: switch.aeotec_dsc26103_micro_switch_2nd_edition_switch
+      entity_id: switch.micro_switch_g2
       to: "on"
   action:
     - service: script.upstairs_bath_heater_watchdog
@@ -18,12 +18,14 @@
   initial_state: on
   trigger:
     platform: numeric_state
-    entity_id: sensor.bathoom_si7021_temperature
+    entity_id: sensor.bt3_bathroom2_temperature
     above: 85
-  condition:
-    condition: state
-    entity_id: switch.aeotec_dsc26103_micro_switch_2nd_edition_switch
-    state: "on"
+  condition: >
+    {% from 'logic_chekr.jinja' import true_all %}
+    {{- true_all( ['switch.micro_switch_g2'] ) | bool -}}
+    # condition: state
+    # entity_id: switch.micro_switch_g2
+    # state: "on"
   action:
     - service: script.upstairs_bath_heater_off
     - service: script.media_player_bathroom
@@ -35,14 +37,16 @@
   initial_state: on
   trigger:
     platform: state
-    entity_id: switch.aeotec_dsc26103_micro_switch_2nd_edition_switch
+    entity_id: switch.micro_switch_g2
     to: "on"
     for:
       minutes: 2
-  condition:
-    condition: state
-    entity_id: binary_sensor.bathroom
-    state: "on"
+  condition: >
+    {% from 'logic_chekr.jinja' import true_all %}
+    {{- true_all( ['binary_sensor.bathroom'] ) | bool -}}
+    # condition: state
+    # entity_id: binary_sensor.bathroom
+    # state: "on"
   action:
     - service: script.upstairs_bath_heater_off
     - service: script.media_player_bathroom
@@ -62,7 +66,7 @@
         entity_id: person.julie
         state: "Home"
       - condition: numeric_state
-        entity_id: sensor.openweathermap_feels_like_temperature
+        entity_id: sensor.gw2000b_v2_2_4_feels_like_temperature
         below: 40
   action:
     - service: script.upstairs_bath_heater_on
