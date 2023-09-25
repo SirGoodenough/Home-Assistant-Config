@@ -44,6 +44,3 @@ button:
   - platform: restart
     name: "Restart ${name} ${friendly_name}"
     entity_category: diagnostic
-  - platform: shutdown
-    name: "Shutdown ${name} ${friendly_name}"
-    entity_category: diagnostic
