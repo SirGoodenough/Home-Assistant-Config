@@ -125,10 +125,6 @@
     - platform: homeassistant
       event: start
   action:
-    - alias: Make sure the Mayson Cool doesn't start by itself again
-      service: input_boolean.turn_off
-      target:
-        entity_id: input_boolean.mayson_cool
     - delay: 00:00:22
     - alias: Make sure EZ Buttons are active
       service: script.tasmota_ez_button_for_update_and_restart_all_2022_01_07a
@@ -149,6 +145,10 @@
     - alias: Make sure Dust Collector is off
       service: switch.turn_off
       entity_id: switch.dust_collector
+    - alias: Make sure the Mayson Cool doesn't start by itself again
+      service: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.mayson_cool
 
 ####################################################
 # Restart Downstairs Broadlink if its Dead         #
