@@ -10,6 +10,13 @@ packages:
 esphome:
   name_add_mac_suffix: false
 
+api:
+  encryption:
+    key: !secret bt1encrypt
+
+ota:
+  password: !secret bt1otapw
+
 bluetooth_proxy:
   active: true
 
