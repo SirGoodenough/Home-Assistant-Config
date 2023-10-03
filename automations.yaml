@@ -46,21 +46,20 @@
         data: {}
         target:
           entity_id: input_boolean.test_color
-- id: '1692033269574'
-  alias: aaaaaaaa test door
-  description: add voice to door test
+- id: '1696281099994'
+  alias: aaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbggggggggggggggggggggggDoor
+    open tts.cloud_say announcer (Uses Piper Addon OR Nabu-Casa Cloud) - 2023-10-02-beta
+  description: ''
   use_blueprint:
-    path: SirGoodenough/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml
+    path: test/TestDoorPiperBeta.yaml
     input:
       door_entity:
       - binary_sensor.back_door_open_433
-      start_time: 08:00:00
-      end_time: 00:00:00
       speaker_target:
       - media_player.kitchen_speaker
       speaker_gender: male
       speaker_language: en-US
-      cooldown: 120
+      cooldown: 12
       speaker_voice: '{{ ("JennyNeural", "AIGenerate1Neural", "AIGenerate2Neural",
         "AmberNeural", "AnaNeural", "AriaNeural", "AshleyNeural", "BrandonNeural",
         "ChristopherNeural", "CoraNeural", "DavisNeural", "ElizabethNeural", "EricNeural",
@@ -78,3 +77,7 @@
         "vacuum chambers", "emergency room", "dumpster", "manure pits", "spa", "heavens",
         "bistro", "candy factory", "garage") | random }} door has been left open.
       reminded: input_boolean.reminded
+      tts_service: piper
+      piper_voice: '{{ ("en_US-lessac-medium","en_US-amy-low","en_US-amy-medium","en_US-arctic-medium","en_US-danny-low","en_US-joe-medium","en_US-kathleen-low","en_US-kusal-medium","en_US-l2arctic-medium","en_US-lessac-high","en_US-lessac-low","en_US-lessac-medium","en_US-libritts-high","en_US-libritts_r-medium","en_US-ryan-high","en_US-ryan-low","en_US-ryan-medium")
+        | random }}'
+

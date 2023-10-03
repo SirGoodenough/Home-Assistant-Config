@@ -1,13 +1,10 @@
-tts_dryer_done:
-  alias: TTS Dryer Done
+'1696064657548':
+  alias: aaaaaaaaaaaaaaaaaaaaaaaaaaapiperwlanandvoice
   use_blueprint:
-    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
+    path: test/tts_All.yaml
     input:
-      GTS_language: en
-      TTS: tts.cloud_say
-      nabu_azure_language: en-US
-      speaker_gender: female
-      speaker_target: media_player.intercom_group
-      announcement_message: The clothes are dry
-      nabu_azure_voice: SaraNeural
-  icon: mdi:tumble-dryer-off
+      speaker_target:
+      - media_player.kitchen_speaker
+      TTS: Piper
+      piper_voice: '{{ ("en_US-lessac-medium","en_US-amy-low","en_US-amy-medium","en_US-arctic-medium","en_US-danny-low","en_US-joe-medium","en_US-kathleen-low","en_US-kusal-medium","en_US-l2arctic-medium","en_US-lessac-high","en_US-lessac-low","en_US-lessac-medium","en_US-libritts-high","en_US-libritts_r-medium","en_US-ryan-high","en_US-ryan-low","en_US-ryan-medium")
+        | random }}'
