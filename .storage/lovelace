@@ -1238,6 +1238,12 @@
                 },
                 {
                   "entity": "script.jen_closed_curtain_position"
+                },
+                {
+                  "entity": "sensor.jens_window_curtain_battery"
+                },
+                {
+                  "entity": "sensor.jens_kitchen_curtain_battery"
                 }
               ]
             },

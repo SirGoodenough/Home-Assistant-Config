@@ -331,3 +331,29 @@
         seconds: 0
   mode: queued
   max: 10
+
+- id: 39718152-fe48-443f-8581-26ba8cd77a94
+  alias: Back Door Open
+  description: 'Let us know the back door is open.'
+  use_blueprint:
+    path: test/TestDoorPiperBeta.yaml
+    input:
+      door_entity:
+      - binary_sensor.back_door_open_433
+      speaker_target:
+      - media_player.kitchen_speaker
+      speaker_gender: male
+      speaker_language: en-US
+      cooldown: 120
+      speaker_voice: '{{ ("JennyNeural", "AIGenerate1Neural", "AIGenerate2Neural",
+        "AmberNeural", "AnaNeural", "AriaNeural", "AshleyNeural", "BrandonNeural",
+        "ChristopherNeural", "CoraNeural", "DavisNeural", "ElizabethNeural", "EricNeural",
+        "GuyNeural", "JacobNeural", "JaneNeural", "JasonNeural", "JennyMultilingualNeural",
+        "MichelleNeural", "MonicaNeural", "NancyNeural", "RogerNeural", "SaraNeural",
+        "SteffanNeural", "TonyNeural") | random }}'
+      final_message: Thank you for closing the back door.
+      announcement_message: Your back door has been left open.
+      reminded: input_boolean.reminded
+      tts_service: nabu
+      piper_voice: '{{ ("en_US-lessac-medium","en_US-amy-low","en_US-amy-medium","en_US-arctic-medium","en_US-danny-low","en_US-joe-medium","en_US-kathleen-low","en_US-kusal-medium","en_US-l2arctic-medium","en_US-lessac-high","en_US-lessac-low","en_US-lessac-medium","en_US-libritts-high","en_US-libritts_r-medium","en_US-ryan-high","en_US-ryan-low","en_US-ryan-medium")
+        | random }}'

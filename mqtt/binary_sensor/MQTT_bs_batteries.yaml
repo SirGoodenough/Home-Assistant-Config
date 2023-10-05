@@ -101,13 +101,54 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - name: "Battery Low RF433 Side Door Inside"
-    unique_id: a2608212-066d-43ab-b27c-013c5ba7c3a0
+  - name: "Battery Low Porch Freezer"
+    unique_id: 705fc5d3-10c9-4faa-9d36-f42c6171d2e4
     device_class: battery
-    state_topic: rf433/BatteryLowSideDoorI
+    device:
+      name: "Porch Freezer Open 433"
+      identifiers: 1483b8e5-72ca-488c-88c0-7e35150b0caa
+      manufacturer: SirGoodenough
+      model: Door Sensor
+      via_device: RF-Bridge Cluster
+    state_topic: rf433/BatteryLowPFreezer
     payload_on: 'ON'
     payload_off: 'OFF'
     force_update: false
     availability_topic: RFBridge2/tele/LWT
     payload_available: Online
     payload_not_available: Offline
+
+  - name: "Battery Low Kitchen Freezer"
+    unique_id: 3bba924d-56a3-4f79-90c5-5ebe327544e1
+    device_class: battery
+    device:
+      name: "Kitchen Freezer Open 433"
+      identifiers: 92fe470e-2ee2-40f2-9ddd-a4dbd464949a
+      manufacturer: SirGoodenough
+      model: Door Sensor
+      via_device: RF-Bridge Cluster
+    state_topic: rf433/BatteryLowKFreezer
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    force_update: false
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - name: "Battery Low Kitchen Fridge"
+    unique_id: 0a490cd0-8f18-4847-88d7-274d9d9dc546
+    device_class: battery
+    device:
+      name: "Kitchen Fridge Open 433"
+      identifiers: 09c0b715-8eee-48c5-ba30-b8d8f758c8e3
+      manufacturer: SirGoodenough
+      model: Door Sensor
+      via_device: RF-Bridge Cluster
+    state_topic: rf433/BatteryLowKFridge
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    force_update: false
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+

@@ -46,38 +46,71 @@
         data: {}
         target:
           entity_id: input_boolean.test_color
-- id: '1696281099994'
-  alias: aaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbggggggggggggggggggggggDoor
-    open tts.cloud_say announcer (Uses Piper Addon OR Nabu-Casa Cloud) - 2023-10-02-beta
-  description: ''
+- id: '1696495980412'
+  alias: Cold Storage Door Monitor
+  description: Warn if the Kitchen Fridge/Freezer or the Porch Freezer has been left
+    open.
   use_blueprint:
-    path: test/TestDoorPiperBeta.yaml
+    path: SirGoodenough/AutoFanControl_MQTT.yaml
     input:
       door_entity:
-      - binary_sensor.back_door_open_433
+      - binary_sensor.kitchen_fridge_open_433
+      - binary_sensor.kitchen_freezer_open_433
+      - binary_sensor.porch_freezer_open_433
+      reminded: input_boolean.cold_reminded
       speaker_target:
       - media_player.kitchen_speaker
-      speaker_gender: male
-      speaker_language: en-US
-      cooldown: 12
-      speaker_voice: '{{ ("JennyNeural", "AIGenerate1Neural", "AIGenerate2Neural",
-        "AmberNeural", "AnaNeural", "AriaNeural", "AshleyNeural", "BrandonNeural",
-        "ChristopherNeural", "CoraNeural", "DavisNeural", "ElizabethNeural", "EricNeural",
-        "GuyNeural", "JacobNeural", "JaneNeural", "JasonNeural", "JennyMultilingualNeural",
-        "MichelleNeural", "MonicaNeural", "NancyNeural", "RogerNeural", "SaraNeural",
-        "SteffanNeural", "TonyNeural") | random }}'
-      final_message: Thank you for closing the {{("rocket", "outhouse", "Audi", "rectory",
-        "barn", "chicken coops", "van down by the rivers", "Walmart", "amazon", "fish
-        shantys", "workshop", "monistary", "bee hive", "bird cage", "freezer", "refrigerator",
-        "vacuum chambers", "emergency room", "dumpster", "manure pits", "spa", "heavens",
-        "bistro", "candy factory", "garage") | random }} door.
-      announcement_message: Your {{("rocket", "outhouse", "Audi", "rectory", "barn",
-        "chicken coops", "van down by the rivers", "Walmart", "amazon", "fish shantys",
-        "workshop", "monistary", "bee hive", "bird cage", "freezer", "refrigerator",
-        "vacuum chambers", "emergency room", "dumpster", "manure pits", "spa", "heavens",
-        "bistro", "candy factory", "garage") | random }} door has been left open.
-      reminded: input_boolean.reminded
-      tts_service: piper
-      piper_voice: '{{ ("en_US-lessac-medium","en_US-amy-low","en_US-amy-medium","en_US-arctic-medium","en_US-danny-low","en_US-joe-medium","en_US-kathleen-low","en_US-kusal-medium","en_US-l2arctic-medium","en_US-lessac-high","en_US-lessac-low","en_US-lessac-medium","en_US-libritts-high","en_US-libritts_r-medium","en_US-ryan-high","en_US-ryan-low","en_US-ryan-medium")
-        | random }}'
+      piper_voice: '{{("en_US-lessac-medium","en_US-amy-low","en_US-amy-medium","en_US-arctic-medium","en_US-danny-low","en_US-joe-medium","en_US-kathleen-low","en_US-kusal-medium","en_US-l2arctic-medium","en_US-lessac-high","en_US-lessac-low","en_US-lessac-medium","en_US-libritts-high","en_US-libritts_r-medium","en_US-ryan-high","en_US-ryan-low","en_US-ryan-medium")|random}}'
+      tts_service: nabu
+      announcement_message: Your {{ door }} has been left open.
+      cooldown: 6
+      final_message: Thank you for closing the {{ door }}.
+      speaker_voice: '{{ ("JennyNeural",
 
+        "AIGenerate1Neural",
+
+        "AIGenerate2Neural",
+
+        "AmberNeural",
+
+        "AnaNeural",
+
+        "AriaNeural",
+
+        "AshleyNeural",
+
+        "BrandonNeural",
+
+        "ChristopherNeural",
+
+        "CoraNeural",
+
+        "DavisNeural",
+
+        "ElizabethNeural",
+
+        "EricNeural",
+
+        "GuyNeural",
+
+        "JacobNeural",
+
+        "JaneNeural",
+
+        "JasonNeural",
+
+        "JennyMultilingualNeural",
+
+        "MichelleNeural",
+
+        "MonicaNeural",
+
+        "NancyNeural",
+
+        "RogerNeural",
+
+        "SaraNeural",
+
+        "SteffanNeural",
+
+        "TonyNeural") | random }}'

@@ -203,6 +203,11 @@
         "id": "reminded",
         "name": "reminded",
         "icon": "mdi:door-open"
+      },
+      {
+        "id": "cold_reminded",
+        "name": "Cold Reminded",
+        "icon": "mdi:fridge-alert-outline"
       }
     ]
   }

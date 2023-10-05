@@ -120,3 +120,51 @@
     availability_topic: RFBridge2/tele/LWT
     payload_available: Online
     payload_not_available: Offline
+
+  - name: "Kitchen Freezer"
+    unique_id: f2e07333-50c4-4813-9677-1e3a4719abff
+    device_class: door
+    device:
+      name: "Kitchen Freezer Open 433"
+      identifiers: 92fe470e-2ee2-40f2-9ddd-a4dbd464949a
+      manufacturer: SirGoodenough
+      via_device: RF-Bridge Cluster
+    state_topic: rf433/KFreezer
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    force_update: false
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - name: "Kitchen Fridge"
+    unique_id: e2c574c3-f720-4573-8bc6-81d0c9fc970e
+    device_class: door
+    device:
+      name: "Kitchen Fridge Open 433"
+      identifiers: 09c0b715-8eee-48c5-ba30-b8d8f758c8e3
+      manufacturer: SirGoodenough
+      via_device: RF-Bridge Cluster
+    state_topic: rf433/KFridge
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    force_update: false
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
+
+  - name: "Porch Freezer"
+    unique_id: c534abcc-f181-457b-8755-b602377c907a
+    device_class: door
+    device:
+      name: "Porch Freezer Open 433"
+      identifiers: 1483b8e5-72ca-488c-88c0-7e35150b0caa
+      manufacturer: SirGoodenough
+      via_device: RF-Bridge Cluster
+    state_topic: rf433/PFreezer
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    force_update: false
+    availability_topic: RFBridge2/tele/LWT
+    payload_available: Online
+    payload_not_available: Offline
