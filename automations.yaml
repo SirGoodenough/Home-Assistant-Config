@@ -51,7 +51,7 @@
   description: Warn if the Kitchen Fridge/Freezer or the Porch Freezer has been left
     open.
   use_blueprint:
-    path: SirGoodenough/AutoFanControl_MQTT.yaml
+    path: SirGoodenough/door_open_tts_cloud_say_and_Piper_announcer_Piper_OR_nabu_casa_required.yaml
     input:
       door_entity:
       - binary_sensor.kitchen_fridge_open_433
@@ -60,10 +60,15 @@
       reminded: input_boolean.cold_reminded
       speaker_target:
       - media_player.kitchen_speaker
+      - media_player.garage_speaker
+      - media_player.living_room_speaker
+      - media_player.workroom_speaker
+      - media_player.office_speaker_1
+      - media_player.basement_speaker
       piper_voice: '{{("en_US-lessac-medium","en_US-amy-low","en_US-amy-medium","en_US-arctic-medium","en_US-danny-low","en_US-joe-medium","en_US-kathleen-low","en_US-kusal-medium","en_US-l2arctic-medium","en_US-lessac-high","en_US-lessac-low","en_US-lessac-medium","en_US-libritts-high","en_US-libritts_r-medium","en_US-ryan-high","en_US-ryan-low","en_US-ryan-medium")|random}}'
-      tts_service: nabu
+      tts_service: piper
       announcement_message: Your {{ door }} has been left open.
-      cooldown: 6
+      cooldown: 63
       final_message: Thank you for closing the {{ door }}.
       speaker_voice: '{{ ("JennyNeural",
 

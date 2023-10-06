@@ -24,9 +24,14 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - name: "Battery Low RF433 Back Door"
+  - name: "Battery Low Back Door"
     unique_id: b58a62e0-7e2c-4544-9ec9-2ed84764ca7a
     device_class: battery
+    device:
+      name: "Back Door Open 433"
+      identifiers: 041c5f6a-072f-4d0c-9c08-b566867e5db4
+      manufacturer: SirGoodenough
+      via_device: RF-Bridge Cluster
     state_topic: rf433/BatteryLowBackDoorI
     payload_on: 'ON'
     payload_off: 'OFF'

@@ -2,9 +2,14 @@
   #####################################################
   # Door Switches (433mhz)                            #
   #####################################################
-  - name: "Back Door Open 433"
+  - name: "Back Door"
     unique_id: d963beae-6b02-490b-b098-0d356c457c79
     device_class: door
+    device:
+      name: "Back Door Open 433"
+      identifiers: 041c5f6a-072f-4d0c-9c08-b566867e5db4
+      manufacturer: SirGoodenough
+      via_device: RF-Bridge Cluster
     state_topic: rf433/BackDoorI
     payload_on: 'ON'
     payload_off: 'OFF'
