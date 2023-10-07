@@ -224,3 +224,14 @@ tts_bed_cares_warning:
       - delay: 00:00:05
       after_action:
       - delay: 00:00:06
+tts_stop:
+  alias: TTS Stop
+  use_blueprint:
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
+    input:
+      TTS: Piper
+      announcement_message: Stop
+      speaker_target:
+      - media_player.jennys_room_display
+      piper_voice: en_US-danny-low
+  icon: mdi:traffic-light

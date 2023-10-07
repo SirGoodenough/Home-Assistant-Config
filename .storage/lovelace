@@ -1185,12 +1185,32 @@
               "entity": "timer.flushtime10"
             },
             {
-              "type": "button",
-              "tap_action": {
-                "action": "toggle"
-              },
-              "entity": "input_boolean.flush2",
-              "icon_height": "40px"
+              "type": "horizontal-stack",
+              "cards": [
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "input_boolean.flush2",
+                  "icon_height": "30px"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.tts_stop",
+                    "target": {},
+                    "data": {}
+                  },
+                  "entity": "script.tts_stop",
+                  "icon_height": "30px"
+                }
+              ]
             },
             {
               "type": "horizontal-stack",
