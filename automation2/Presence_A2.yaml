@@ -243,7 +243,7 @@
       disable_time: '20:27:36'
       hold_period:
         hours: 0
-        minutes: 5
+        minutes: 6
         seconds: 0
   mode: queued
   max: 10
