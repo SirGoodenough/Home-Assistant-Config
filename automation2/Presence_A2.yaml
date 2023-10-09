@@ -14,6 +14,8 @@
       data:
         message: "{{ trigger.json.message }}"
     - service: script.tts_say_person_cottage
+      data:
+        live_message: " {{ trigger.json.message }}, with my little eye, at the cottage"
   mode: single
 
 - id: f091f054-39aa-4cc3-83c7-8c99a2d5dbb0

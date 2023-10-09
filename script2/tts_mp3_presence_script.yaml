@@ -21,6 +21,7 @@ tts_say_person_cottage:
       GTS_language: en
       nabu_azure_language: en-GB
       TTS: tts.cloud_say
+        # This message should be using the one sent in as data. Edit there.
       announcement_message: "I spy, with my little eye, someone at the cottage."
       speaker_target:
       - media_player.kitchen_speaker
