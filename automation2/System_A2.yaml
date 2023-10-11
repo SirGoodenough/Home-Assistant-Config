@@ -99,16 +99,16 @@
   initial_state: on
   trigger:
     - platform: time_pattern
-      hours: "12"
+      hours: "11"
   action:
     - alias: Blueprints update
       service: shell_command.blueprints_update
       data: {}
-      enabled: false
+      enabled: true
     - alias: MP3 File backup
       service: shell_command.mp3_update
       data: {}
-      enabled: false
+      enabled: true
   mode: single
 
 ####################################################

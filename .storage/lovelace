@@ -1666,6 +1666,15 @@
           "badges": [],
           "cards": [
             {
+              "type": "custom:firemote-card",
+              "entity": "media_player.fire_tv_192_168_108_207",
+              "device_family": "amazon-fire",
+              "device_type": "fire_tv_stick_4k_max",
+              "compatibility_mode": "default",
+              "app_launch_1": "paramount-plus",
+              "app_launch_2": "peacock"
+            },
+            {
               "type": "grid",
               "cards": [
                 {
@@ -1817,155 +1826,20 @@
               "square": false
             },
             {
-              "type": "grid",
-              "cards": [
+              "type": "entities",
+              "entities": [
                 {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.chromecast_on_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.chromecast_on_sequence",
-                  "name": "Chromecast ON",
-                  "show_icon": false
+                  "entity": "switch.sonoff_1000dbf4a6_1"
                 },
                 {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.tv_off_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.tv_off_sequence",
-                  "show_icon": false,
-                  "name": "Chromecast OFF"
+                  "entity": "input_button.broadlink_rm3_reset"
                 },
                 {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.firetv_on_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.firetv_on_sequence",
-                  "name": "FireTV ON",
-                  "show_icon": false
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.tv_off_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.tv_off_sequence",
-                  "show_icon": false,
-                  "name": "FireTV OFF"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.ota_tv_on_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.ota_tv_on_sequence",
-                  "name": "OverTheAir ON",
-                  "show_icon": false
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.tv_off_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.tv_off_sequence",
-                  "show_icon": false,
-                  "name": "OverTheAir OFF"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.blueray_on_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.blueray_on_sequence",
-                  "name": "BlueRay ON",
-                  "show_icon": false
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.blueray_off_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.tv_off_sequence",
-                  "name": "BlueRay OFF",
-                  "show_icon": false
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.mecool_on_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.mecool_on_sequence",
-                  "name": "Mecool ON",
-                  "show_icon": false
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.mecool_off_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.tv_off_sequence",
-                  "show_icon": false,
-                  "name": "Mecool OFF"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.audio_tuner_on_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.audio_tuner_on_sequence",
-                  "show_icon": false,
-                  "name": "Audio Tuner ON"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.tv_off_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.tv_off_sequence",
-                  "show_icon": false,
-                  "name": "Audio Tuner OFF"
+                  "entity": "device_tracker.rassilon_c8_f7_42_21_a6_a8"
                 }
               ],
-              "square": false,
-              "columns": 2
+              "title": "TVRemote",
+              "state_color": true
             },
             {
               "type": "grid",
@@ -2209,19 +2083,155 @@
               "square": false
             },
             {
-              "type": "custom:firemote-card",
-              "entity": "media_player.fire_tv_192_168_108_206",
-              "device_family": "amazon-fire",
-              "device_type": "fire_tv_stick_lite",
-              "compatibility_mode": "default",
-              "scale": "111",
-              "app_launch_1": "paramount-plus",
-              "app_launch_2": "peacock",
-              "app_launch_3": "hulu",
-              "app_launch_4": "discovery-plus",
-              "visible_name_text": "Jens TV",
-              "name_position": "top",
-              "visible_name_text_color": "#ed333b"
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.chromecast_on_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.chromecast_on_sequence",
+                  "name": "Chromecast ON",
+                  "show_icon": false
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.tv_off_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.tv_off_sequence",
+                  "show_icon": false,
+                  "name": "Chromecast OFF"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.firetv_on_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.firetv_on_sequence",
+                  "name": "FireTV ON",
+                  "show_icon": false
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.tv_off_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.tv_off_sequence",
+                  "show_icon": false,
+                  "name": "FireTV OFF"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.ota_tv_on_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.ota_tv_on_sequence",
+                  "name": "OverTheAir ON",
+                  "show_icon": false
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.tv_off_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.tv_off_sequence",
+                  "show_icon": false,
+                  "name": "OverTheAir OFF"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.blueray_on_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.blueray_on_sequence",
+                  "name": "BlueRay ON",
+                  "show_icon": false
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.blueray_off_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.tv_off_sequence",
+                  "name": "BlueRay OFF",
+                  "show_icon": false
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.mecool_on_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.mecool_on_sequence",
+                  "name": "Mecool ON",
+                  "show_icon": false
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.mecool_off_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.tv_off_sequence",
+                  "show_icon": false,
+                  "name": "Mecool OFF"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.audio_tuner_on_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.audio_tuner_on_sequence",
+                  "show_icon": false,
+                  "name": "Audio Tuner ON"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.tv_off_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.tv_off_sequence",
+                  "show_icon": false,
+                  "name": "Audio Tuner OFF"
+                }
+              ],
+              "square": false,
+              "columns": 2
             },
             {
               "show_name": true,
@@ -2235,22 +2245,6 @@
               "icon": "mdi:remote-off",
               "icon_height": "80px",
               "theme": "Dark - Light Red"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "switch.sonoff_1000dbf4a6_1"
-                },
-                {
-                  "entity": "input_button.broadlink_rm3_reset"
-                },
-                {
-                  "entity": "device_tracker.rassilon_c8_f7_42_21_a6_a8"
-                }
-              ],
-              "title": "TVRemote",
-              "state_color": true
             }
           ]
         },
