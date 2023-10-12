@@ -105,19 +105,15 @@
   action:
     - alias: Blueprints update
       service: shell_command.blueprints_update
-      data: {}
       enabled: true
     - parallel:
       - alias: pull in new blueprint code if any were loaded
         service: automation.reload
-        data: {}
       - alias: pull in new blueprint code if any were loaded
         service: script.reload
-        data: {}
 
     - alias: MP3 File backup
       service: shell_command.mp3_update
-      data: {}
       enabled: true
   mode: single
 
