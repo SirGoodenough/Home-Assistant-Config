@@ -46,6 +46,7 @@
         data: {}
         target:
           entity_id: input_boolean.test_color
+      action_flip_from_any_to_face_2: []
 - id: '1696495980412'
   alias: Cold Storage Door Monitor
   description: Warn if the Kitchen Fridge/Freezer or the Porch Freezer has been left
