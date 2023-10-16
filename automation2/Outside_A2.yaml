@@ -1,5 +1,34 @@
 ---
   #####################################################
+  # Outside Lights                                    #
+  #####################################################
+  - id: 87aed16a-da9b-420e-83af-369c40a06bda
+    alias: 3-Way and Yard Light PIR ON
+    initial_state: on
+    trigger:
+    - entity_id: binary_sensor.yard_light_pir
+      platform: state
+      from: 'off'
+      to: 'on'
+    - entity_id: binary_sensor.back_door_motion
+      platform: state
+      from: 'off'
+      to: 'on'
+    - entity_id: binary_sensor.garage_side_door_open
+      platform: state
+      from: 'off'
+      to: 'on'
+    condition:
+      - >
+        {% from 'logic_chekr.jinja' import true_all %}
+        {{- true_all( ['binary_sensor.dark_outside'] ) | bool -}}
+    action:
+    - service: script.turn_on
+      entity_id: script.garage_outside_lights_on
+    - delay: 00:17:37
+    mode: single
+    max_exceeded: silent
+  #####################################################
   # Mailbox                                           #
   #####################################################
   - id: 9ba99be0-57e0-4232-b746-936bc339e64f

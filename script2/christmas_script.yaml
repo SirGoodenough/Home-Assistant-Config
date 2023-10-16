@@ -7,12 +7,10 @@
     sequence:
       choose:
         - alias: "Don't light me up if it's not enabled"
-          conditions: >
-            {% from 'logic_chekr.jinja' import true_all %}
-            {{- true_all( ['sensor.xmas_season_enable'] ) | bool -}}
-          # - condition: state
-          #   entity_id: sensor.xmas_season_enable
-          #   state: "True"
+          conditions:
+            - >
+              {% from 'logic_chekr.jinja' import true_all %}
+              {{- true_all( ['sensor.xmas_season_enable'] ) | bool -}}
           sequence:
             - service: light.turn_off
               entity_id: 

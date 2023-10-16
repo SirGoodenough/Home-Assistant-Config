@@ -20,12 +20,10 @@
     platform: numeric_state
     entity_id: sensor.bt3_bathroom2_temperature
     above: 85
-  condition: >
-    {% from 'logic_chekr.jinja' import true_all %}
-    {{- true_all( ['switch.micro_switch_g2'] ) | bool -}}
-    # condition: state
-    # entity_id: switch.micro_switch_g2
-    # state: "on"
+  condition:
+    - >
+      {% from 'logic_chekr.jinja' import true_all %}
+      {{- true_all( ['switch.micro_switch_g2'] ) | bool -}}
   action:
     - service: script.upstairs_bath_heater_off
     - service: script.media_player_bathroom
@@ -41,12 +39,10 @@
     to: "on"
     for:
       minutes: 2
-  condition: >
-    {% from 'logic_chekr.jinja' import true_all %}
-    {{- true_all( ['binary_sensor.bathroom'] ) | bool -}}
-    # condition: state
-    # entity_id: binary_sensor.bathroom
-    # state: "on"
+  condition:
+    - >
+      {% from 'logic_chekr.jinja' import true_all %}
+      {{- true_all( ['binary_sensor.bathroom'] ) | bool -}}
   action:
     - service: script.upstairs_bath_heater_off
     - service: script.media_player_bathroom
