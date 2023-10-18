@@ -12,11 +12,14 @@
             {
               "entities": [
                 {
-                  "entity": "sensor.kitchen_temperature_2",
+                  "entity": "sensor.ethernettest_kitchen_temperature",
                   "secondary_info": "last-updated"
                 },
                 {
-                  "entity": "sensor.kitchen_humidity_2"
+                  "entity": "sensor.ethernettest_kitchen_humidity"
+                },
+                {
+                  "entity": "sensor.ethernettest_kitchen_co2"
                 },
                 {
                   "entity": "sensor.yertle_last_action_a"
@@ -1084,7 +1087,7 @@
                 },
                 {
                   "type": "media-control",
-                  "entity": "media_player.fire_tv_192_168_108_206",
+                  "entity": "media_player.fire_tv_192_168_108_207",
                   "theme": "Dark Pink"
                 },
                 {

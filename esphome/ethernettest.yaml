@@ -12,3 +12,24 @@ esphome:
 
 bluetooth_proxy:
   active: true
+
+i2c:
+  sda: 14
+  scl: 13
+  scan: true
+  id: bus_a
+
+sensor:
+  - platform: scd30
+    co2:
+      name: "Kitchen CO2"
+      accuracy_decimals: 1
+    temperature:
+      name: "Kitchen Temperature"
+      accuracy_decimals: 1
+    humidity:
+      name: "Kitchen Humidity"
+      accuracy_decimals: 1
+    temperature_offset: 0.0 °C
+    address: 0x61
+    update_interval: 60s

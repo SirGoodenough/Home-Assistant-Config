@@ -18,7 +18,7 @@
       id: upstairs
 
     variables:
-      scene_id: "color_flip_{{ this.context.id }}"
+      scene_id: "color_flip_{{ this.context.id | lower}}"
 
     action:
     - service: script.media_player_fire_alert
