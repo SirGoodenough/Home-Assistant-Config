@@ -1,6 +1,5 @@
 substitutions:
   name: "bt3"
-  board: "esp32dev"
   friendly_name: Bathroom2
   frame_type: esp-idf
 

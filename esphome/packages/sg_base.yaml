@@ -6,6 +6,7 @@ substitutions:
   name: chaloupkaabode-esphpme
   friendly_name: Another Brick in the Wall
   frame_type: esp-idf
+  board: esp32dev
 
 esphome:
   name: ${name}
@@ -41,7 +42,7 @@ time:
   # Sync time with HA
   - platform: homeassistant
     id: time_homeassistant
-    timezone: "Europe/Amsterdam"
+    timezone: "America/Chicago"
     on_time_sync:
       - component.update: sensor_uptime_timestamp
 

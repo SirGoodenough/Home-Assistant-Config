@@ -568,6 +568,65 @@
               "type": "conditional",
               "conditions": [
                 {
+                  "entity": "sensor.bot_108e_battery",
+                  "state": "20"
+                }
+              ],
+              "card": {
+                "show_name": true,
+                "show_icon": true,
+                "type": "button",
+                "tap_action": {
+                  "action": "more-info"
+                },
+                "entity": "sensor.bot_108e_battery",
+                "icon": "mdi:battery-20-bluetooth"
+              }
+            },
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "entity": "sensor.jens_kitchen_curtain_battery",
+                  "state": "20"
+                }
+              ],
+              "card": {
+                "show_name": true,
+                "show_icon": true,
+                "type": "button",
+                "tap_action": {
+                  "action": "more-info"
+                },
+                "entity": "sensor.jens_kitchen_curtain_battery",
+                "icon": "mdi:battery-check",
+                "show_state": true
+              }
+            },
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "entity": "sensor.jens_window_curtain_battery",
+                  "state": "20"
+                }
+              ],
+              "card": {
+                "show_name": true,
+                "show_icon": true,
+                "type": "button",
+                "tap_action": {
+                  "action": "more-info"
+                },
+                "entity": "sensor.jens_window_curtain_battery",
+                "icon": "mdi:battery-check",
+                "show_state": true
+              }
+            },
+            {
+              "type": "conditional",
+              "conditions": [
+                {
                   "entity": "binary_sensor.battery_low_garage_door_open",
                   "state": "on"
                 }
@@ -591,6 +650,27 @@
               "type": "conditional",
               "conditions": [
                 {
+                  "entity": "binary_sensor.battery_low_garage_side_door",
+                  "state": "on"
+                }
+              ],
+              "card": {
+                "type": "button",
+                "tap_action": {
+                  "action": "call-service",
+                  "service": "python_script.battery_clear",
+                  "service_data": {},
+                  "target": {}
+                },
+                "entity": "binary_sensor.battery_low_garage_side_door",
+                "name": "Garage Side Door Battery",
+                "icon": "mdi:battery-alert-variant-outline"
+              }
+            },
+            {
+              "type": "conditional",
+              "conditions": [
+                {
                   "entity": "binary_sensor.battery_low_bathroom",
                   "state": "on"
                 }
@@ -607,27 +687,6 @@
                 },
                 "entity": "binary_sensor.battery_low_bathroom",
                 "name": "Bathroom Battery RF433",
-                "icon": "mdi:battery-alert-variant-outline"
-              }
-            },
-            {
-              "type": "conditional",
-              "conditions": [
-                {
-                  "entity": "binary_sensor.battery_low_garage_side_door",
-                  "state": "on"
-                }
-              ],
-              "card": {
-                "type": "button",
-                "tap_action": {
-                  "action": "call-service",
-                  "service": "python_script.battery_clear",
-                  "service_data": {},
-                  "target": {}
-                },
-                "entity": "binary_sensor.battery_low_garage_side_door",
-                "name": "Garage Side Door Battery",
                 "icon": "mdi:battery-alert-variant-outline"
               }
             },
@@ -3959,6 +4018,15 @@
                 },
                 {
                   "entity": "sensor.sm_s906u_battery_level"
+                },
+                {
+                  "entity": "sensor.jens_window_curtain_battery"
+                },
+                {
+                  "entity": "sensor.jens_kitchen_curtain_battery"
+                },
+                {
+                  "entity": "sensor.mom_s_phone_battery_level"
                 }
               ],
               "title": "Battery State"

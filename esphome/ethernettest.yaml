@@ -1,6 +1,5 @@
 substitutions:
   name: "ethernettest"
-  board: "esp32dev"
   friendly_name: Desk Queen
   frame_type: esp-idf
 

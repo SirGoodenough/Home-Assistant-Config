@@ -1,6 +1,5 @@
 substitutions:
   name: "bt2"
-  board: "esp32dev"
   friendly_name: Garage
   frame_type: esp-idf
 
