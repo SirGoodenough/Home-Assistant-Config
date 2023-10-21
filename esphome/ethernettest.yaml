@@ -29,6 +29,8 @@ sensor:
     humidity:
       name: "Kitchen Humidity"
       accuracy_decimals: 1
-    temperature_offset: 0.0 °C
+      filters:
+        - offset: -14.0
+    temperature_offset: 1.8 °C
     address: 0x61
     update_interval: 60s

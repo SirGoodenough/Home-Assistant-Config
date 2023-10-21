@@ -55,9 +55,6 @@
                   "entity": "switch.kitchenfan"
                 },
                 {
-                  "entity": "switch.dishwasher"
-                },
-                {
                   "entity": "binary_sensor.back_door_open_433"
                 },
                 {
@@ -114,6 +111,18 @@
                 "icon": "mdi:smoke-detector-alert",
                 "theme": "dark_red"
               }
+            },
+            {
+              "show_name": true,
+              "show_icon": true,
+              "type": "button",
+              "tap_action": {
+                "action": "toggle"
+              },
+              "entity": "switch.dishwasher",
+              "icon": "mdi:dishwasher",
+              "icon_height": "60px",
+              "show_state": false
             },
             {
               "entities": [
