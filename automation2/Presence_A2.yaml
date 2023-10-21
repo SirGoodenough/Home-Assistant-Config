@@ -27,7 +27,8 @@
     path: SirGoodenough/Person_Alert_Blueprint.yaml
     input:
       people2monitor:
-      - person.julie
+      - person.julieZigbee over wifi
+
       zone2monitor:
       - zone.home
       - zone.katy_s_kloset
@@ -39,15 +40,16 @@
       - zone.elkhorn
       - zone.expo
       - zone.lakewood
+      - zone.m_h_s_dream_society
+      - zone.moms_house
       - zone.mountain
       - zone.piesler_ranch
       - zone.retzer_nature_center
+      - zone.rose_estate
       - zone.shawano
       - zone.somerhome
       - zone.suring
       - zone.townsend
-      - zone.rose_estate
-      - zone.wisconsin_illinois_border
       enter_action:
       - parallel:
         - service: script.personalert_notify
@@ -179,15 +181,16 @@
       - zone.elkhorn
       - zone.expo
       - zone.lakewood
+      - zone.m_h_s_dream_society
+      - zone.moms_house
       - zone.mountain
       - zone.piesler_ranch
       - zone.retzer_nature_center
+      - zone.rose_estate
       - zone.shawano
       - zone.suring
       - zone.somerhome
       - zone.townsend
-      - zone.rose_estate
-      - zone.wisconsin_illinois_border
       enter_action:
       - alias: Delay for when traveling together.
         delay: 00:00:30
@@ -273,15 +276,16 @@
       - zone.elkhorn
       - zone.expo
       - zone.lakewood
+      - zone.m_h_s_dream_society
+      - zone.moms_house
       - zone.mountain
       - zone.piesler_ranch
       - zone.retzer_nature_center
+      - zone.rose_estate
       - zone.shawano
       - zone.somerhome
       - zone.suring
       - zone.townsend
-      - zone.rose_estate
-      - zone.wisconsin_illinois_border
       enter_action:
       - alias: Delay for when traveling together.
         delay: 00:01:00
