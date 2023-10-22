@@ -27,7 +27,7 @@
     path: SirGoodenough/Person_Alert_Blueprint.yaml
     input:
       people2monitor:
-      - person.julieZigbee over wifi
+      - person.julie
 
       zone2monitor:
       - zone.home

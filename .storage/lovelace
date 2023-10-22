@@ -1194,6 +1194,9 @@
                   "entity": "sensor.jennys_new_fanspeed"
                 },
                 {
+                  "entity": "switch.jens_happy_spot"
+                },
+                {
                   "entity": "input_select.no_bedroom_help"
                 },
                 {
