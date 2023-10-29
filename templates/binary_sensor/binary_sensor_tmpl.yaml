@@ -48,8 +48,8 @@
         {% if (
           states('weather.home') | is_defined ) and
           states('weather.home.attributes.temperature') | is_defined %}
-            {% set temp = 'weather.home.attributes.temperature' | int( 41 ) %}
-            {% if ( temp > 40 ) %}
+            {% set temp = 'weather.home.attributes.temperature' | int( 49 ) %}
+            {% if ( temp > 50 ) %}
               true
             {% else %}
               false

@@ -120,3 +120,19 @@
         "SteffanNeural",
 
         "TonyNeural") | random }}'
+- id: '1698354921351'
+  alias: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabelysning 231025
+  description: client stuff
+  use_blueprint:
+    path: test/blah_test.yaml
+    input:
+      tidmorgon: 00:00:00
+      tidmorgon_monday: 00:00:00
+      tidslackamorgon: 00:00:00
+      tidmorgonhelg: 00:00:00
+      tidkvall: 00:00:00
+      lux: sensor.gw2000b_v2_2_4_solar_lux
+      light_taget:
+      - light.b_porch_relay
+      switch_target:
+      - switch.b2

@@ -116,6 +116,37 @@ jen_closed_curtain_position:
       data:
         position: '{{ range(0, 2) | random }}'
 
+reset_nag:
+  alias: Jens button to stop door nags.
+  sequence:
+    - parallel:
+      - service: mqtt.publish
+        data:
+          topic: rf433/KFridge
+          payload: 'OFF'
+      - service: mqtt.publish
+        data:
+          topic: rf433/PFreezer
+          payload: 'OFF'
+      - service: mqtt.publish
+        data:
+          topic: rf433/KFreezer
+          payload: 'OFF'
+      - service: mqtt.publish
+        data:
+          topic: rf433/BackDoorI
+          payload: 'OFF'
+    - service: script.media_player_boink
+
+feeding_pump_silence:
+  alias: Make the Feeding Fump beep stop.
+  sequence:
+    - service: switch.toggle
+      target:
+        entity_id: switch.bot_108e
+    - service: script.media_player_boink
+
+
 
 #####################################################
 # TV Control                                        #

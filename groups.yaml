@@ -16,7 +16,6 @@
 
   esphome_restart:
     name: ehrestart
-      - button.bt1_restart_bt1_kitchen2
       - button.bt2_restart_bt2_garage
       - button.bt3_restart_bt3_bathroom2
-      - button.ethernettest_restart_ethernettest_desk_queen
+      - button.ethernettest_restart_ethernettest_kitchen
