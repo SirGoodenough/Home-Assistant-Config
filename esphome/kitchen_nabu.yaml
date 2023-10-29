@@ -1,0 +1,69 @@
+substitutions:
+  name: "kitchen_nabu"
+  friendly_name: KitchenNabu
+  frame_type: esp-idf
+
+packages:
+  device_base: !include /config/esphome/packages/sg_base.yaml
+
+# source: https://gist.github.com/EverythingSmartHome/055fbdde31a607ef9d695d5cac780e94
+#         https://www.youtube.com/watch?v=zhlIaBG3Ldo
+
+esphome:
+  name_add_mac_suffix: false
+  on_boot:
+    - priority: -100
+      then:
+        - wait_until: api.connected
+        - delay: 1s
+        - if:
+            condition:
+              switch.is_on: use_wake_word
+            then:
+              - voice_assistant.start_continuous:
+
+i2s_audio:
+  i2s_lrclk_pin: GPIO27
+  i2s_bclk_pin: GPIO26
+
+microphone:
+  - platform: i2s_audio
+    adc_type: external
+    i2s_din_pin: GPIO13
+    pdm: false
+    id: mic
+
+# speaker:
+#   - platform: i2s_audio
+#     id: big_speaker
+#     dac_type: external
+#     i2s_dout_pin: GPIO25
+#     mode: mono
+
+voice_assistant:
+  microphone: mic
+  use_wake_word: false
+  noise_suppression_level: 2
+  auto_gain: 31dBFS
+  volume_multiplier: 2.0
+#   speaker: big_speaker
+  id: assist
+
+switch:
+  - platform: template
+    name: Use wake word
+    optimistic: true
+    restore_mode: RESTORE_DEFAULT_ON
+    entity_category: config
+    on_turn_on:
+      - lambda: id(assist).set_use_wake_word(true);
+      - if:
+          condition:
+            not:
+              - voice_assistant.is_running
+          then:
+            - voice_assistant.start_continuous
+    on_turn_off:
+      - voice_assistant.stop
+      - lambda: id(assist).set_use_wake_word(false);
+    id: use_wake_word

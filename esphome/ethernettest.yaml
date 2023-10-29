@@ -34,10 +34,9 @@ sensor:
     temperature_offset: 1.8 °C
     address: 0x61
     update_interval: 68s
+
   # GP2Y1010AU0F sensor in the Keyestudio KS0196 PM2.5 Dust Sensor Module.
   - platform: adc
-    # internal: true
-    id: vcc
     name: "${friendly_name} VCC"
     update_interval: never
     accuracy_decimals: 5
@@ -48,8 +47,9 @@ sensor:
     filters:
       - multiply: 7.031746
       # Ratio from the voltage divider made to get VCC below 1.0 V
+    id: vcc
+
   - platform: adc
-    id: aq
     name: "${friendly_name} Dust Sensor"
     accuracy_decimals: 2
     device_class: pm25
@@ -61,17 +61,18 @@ sensor:
           window_size: 5
           send_every: 5
       - lambda: return (17000.0 * (x * (id(vcc).state / 1024.0))) - 0.1;
+    id: aq
 
 switch:
   # GP2Y1010AU0F sensor in the Keyestudio KS0196 PM2.5 Dust Sensor Module.
   - platform: gpio
     internal: true
-    id: led
     name: "${friendly_name} Dust Sensor Sample"
     pin:
       number: 16
       inverted: true
     restore_mode: ALWAYS_OFF
+    id: led
 
 interval:
   # GP2Y1010AU0F sensor in the Keyestudio KS0196 PM2.5 Dust Sensor Module.

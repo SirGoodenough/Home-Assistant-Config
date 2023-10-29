@@ -16,7 +16,8 @@ esphome:
 esp32:
   board: ${board}
   framework:
-    type: esp-idf
+    type: ${frame_type}
+    version: recommended
 
   # Enable logging
 logger:
@@ -59,9 +60,9 @@ sensor:
   # Uptime sensor (internal only).
   - platform: uptime
     id: sensor_uptime
+    
   # Uptime timestamp
   - platform: template
-    id: sensor_uptime_timestamp
     name: "Uptime"
     device_class: "timestamp"
     accuracy_decimals: 0
@@ -72,6 +73,8 @@ sensor:
       );
       return timestamp;
     entity_category: diagnostic
+    id: sensor_uptime_timestamp
+
   # WiFi Signal sensor.
   - platform: wifi_signal
     name: WiFi Signal
