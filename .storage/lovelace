@@ -28,31 +28,7 @@
                   "entity": "sensor.yertle_last_action_a"
                 },
                 {
-                  "entity": "light.grp_kitch"
-                },
-                {
-                  "entity": "light.grp_dad_lights"
-                },
-                {
-                  "entity": "light.jims_computer_light_2"
-                },
-                {
-                  "entity": "light.cabinetlight"
-                },
-                {
-                  "entity": "light.grp_d_lights"
-                },
-                {
-                  "entity": "light.kitchensink"
-                },
-                {
-                  "entity": "light.kitchen_down_lights"
-                },
-                {
                   "entity": "light.growlight2"
-                },
-                {
-                  "entity": "light.b_porch_socket"
                 },
                 {
                   "entity": "switch.kitchenfan"
@@ -67,12 +43,43 @@
                   "entity": "sensor.yertle_device_temperature"
                 },
                 {
-                  "entity": "sensor.ethernettest_kitchen_dust_sensor"
+                  "entity": "switch.dishwasher"
+                },
+                {
+                  "entity": "switch.humidifier"
                 }
               ],
-              "show_header_toggle": true,
+              "show_header_toggle": false,
               "title": "Kitchen",
               "type": "entities",
+              "state_color": true
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "light.kitchen_down_lights"
+                },
+                {
+                  "entity": "light.grp_kitch"
+                },
+                {
+                  "entity": "light.grp_d_lights"
+                },
+                {
+                  "entity": "light.grp_dad_lights"
+                },
+                {
+                  "entity": "light.jims_computer_light"
+                },
+                {
+                  "entity": "light.cabinetlight"
+                },
+                {
+                  "entity": "light.kitchensink"
+                }
+              ],
+              "title": "Kitchen Lights",
               "state_color": true
             },
             {
@@ -117,18 +124,6 @@
                 "icon": "mdi:smoke-detector-alert",
                 "theme": "dark_red"
               }
-            },
-            {
-              "show_name": true,
-              "show_icon": true,
-              "type": "button",
-              "tap_action": {
-                "action": "toggle"
-              },
-              "entity": "switch.dishwasher",
-              "icon": "mdi:dishwasher",
-              "icon_height": "60px",
-              "show_state": false
             },
             {
               "entities": [
@@ -2581,8 +2576,8 @@
               "tap_action": {
                 "action": "toggle"
               },
-              "entity": "switch.tasmota2_2",
-              "name": "Humidifer Power",
+              "entity": "switch.humidifier_enable",
+              "name": "Humidifer Power (sw2)",
               "icon": "mdi:air-humidifier",
               "icon_height": "50px",
               "theme": "dark_orange"
@@ -2602,25 +2597,25 @@
               "name": "AVG House Humidity"
             },
             {
-              "graph": "line",
-              "hours_to_show": 24,
-              "entity": "sensor.ethernettest_kitchen_humidity",
-              "type": "sensor",
-              "detail": 2
-            },
-            {
               "type": "entity",
-              "entity": "switch.humidifier_2",
-              "name": "Water Flow",
+              "entity": "switch.humidifier",
+              "name": "Water Flow (sw1)",
               "icon": "mdi:watering-can",
               "state_color": true
             },
             {
-              "hours_to_show": 24,
               "graph": "line",
+              "hours_to_show": 24,
+              "entity": "sensor.ethernettest_kitchen_humidity",
+              "type": "sensor",
+              "detail": 1
+            },
+            {
+              "graph": "line",
+              "hours_to_show": 24,
               "entity": "sensor.furnace_return_humidity",
               "type": "sensor",
-              "detail": 2
+              "detail": 1
             },
             {
               "type": "sensor",
@@ -2630,27 +2625,27 @@
               "name": "Jen's Humidity"
             },
             {
-              "hours_to_show": 24,
               "graph": "line",
+              "hours_to_show": 24,
               "entity": "sensor.sonoff_rf_bridge_2_si7021_humidity",
               "type": "sensor",
-              "detail": 2,
+              "detail": 1,
               "name": "Living Room Humidity"
             },
             {
-              "hours_to_show": 24,
               "graph": "line",
+              "hours_to_show": 24,
               "entity": "sensor.bedroom_fan_si7021_humidity",
               "type": "sensor",
-              "detail": 2,
+              "detail": 1,
               "name": "Bedroom Humidity"
             },
             {
-              "hours_to_show": 24,
               "graph": "line",
+              "hours_to_show": 24,
               "entity": "sensor.furnace_oil_top_humidity",
               "type": "sensor",
-              "detail": 2
+              "detail": 1
             },
             {
               "graph": "line",
@@ -2664,14 +2659,14 @@
               "hours_to_show": 24,
               "entity": "sensor.bt3_bathroom2_humidity",
               "type": "sensor",
-              "detail": 2
+              "detail": 1
             },
             {
-              "hours_to_show": 24,
               "graph": "line",
+              "hours_to_show": 24,
               "entity": "sensor.dust_collector_si7021_humidity",
               "type": "sensor",
-              "detail": 2,
+              "detail": 1,
               "name": "Back Basement Humidity"
             },
             {
@@ -2682,27 +2677,27 @@
               "detail": 1
             },
             {
-              "hours_to_show": 24,
               "graph": "line",
+              "hours_to_show": 24,
               "type": "sensor",
               "entity": "sensor.garage_door_si7021_humidity",
-              "detail": 2,
+              "detail": 1,
               "name": "Garage Humidity"
             },
             {
-              "hours_to_show": 24,
               "graph": "line",
+              "hours_to_show": 24,
               "entity": "sensor.garage_door_si7021_dewpoint",
               "type": "sensor",
-              "detail": 2,
+              "detail": 1,
               "name": "Garage Dewpoint"
             },
             {
-              "hours_to_show": 24,
               "graph": "line",
+              "hours_to_show": 24,
               "entity": "sensor.dryer3_si7021_humidity",
               "type": "sensor",
-              "detail": 2,
+              "detail": 1,
               "name": "Dryer Humidity"
             },
             {

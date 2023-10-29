@@ -96,4 +96,4 @@
         mqtt_topic: humidifier/cmnd/var2
         humidifier: humidifier.house_humidity
         humidity: sensor.house_humidity_group
-        power_1: switch.humidifier_2
+        power_1: switch.humidifier_enable

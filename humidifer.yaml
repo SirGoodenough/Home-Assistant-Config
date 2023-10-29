@@ -1,6 +1,6 @@
 ---
   - name: House Humidity
-    humidifier: switch.tasmota2_2
+    humidifier: switch.humidifier_enable
     target_sensor: sensor.humidity_group
     min_humidity: 20
     max_humidity: 55
