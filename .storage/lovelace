@@ -16,6 +16,9 @@
                   "secondary_info": "last-updated"
                 },
                 {
+                  "entity": "sensor.yertle_device_temperature"
+                },
+                {
                   "entity": "sensor.ethernettest_kitchen_humidity"
                 },
                 {
@@ -28,25 +31,22 @@
                   "entity": "sensor.yertle_last_action_a"
                 },
                 {
+                  "entity": "binary_sensor.back_door_pir"
+                },
+                {
+                  "entity": "binary_sensor.back_door_open_433"
+                },
+                {
+                  "entity": "switch.humidifier"
+                },
+                {
                   "entity": "light.growlight2"
                 },
                 {
                   "entity": "switch.kitchenfan"
                 },
                 {
-                  "entity": "binary_sensor.back_door_open_433"
-                },
-                {
-                  "entity": "binary_sensor.back_door_pir"
-                },
-                {
-                  "entity": "sensor.yertle_device_temperature"
-                },
-                {
                   "entity": "switch.dishwasher"
-                },
-                {
-                  "entity": "switch.humidifier"
                 }
               ],
               "show_header_toggle": false,
@@ -58,16 +58,13 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "light.kitchen_down_lights"
+                  "entity": "light.kitchensink"
                 },
                 {
                   "entity": "light.grp_kitch"
                 },
                 {
-                  "entity": "light.grp_d_lights"
-                },
-                {
-                  "entity": "light.grp_dad_lights"
+                  "entity": "light.kitchen_down_lights"
                 },
                 {
                   "entity": "light.jims_computer_light"
@@ -76,7 +73,10 @@
                   "entity": "light.cabinetlight"
                 },
                 {
-                  "entity": "light.kitchensink"
+                  "entity": "light.grp_d_lights"
+                },
+                {
+                  "entity": "light.grp_dad_lights"
                 }
               ],
               "title": "Kitchen Lights",
@@ -137,16 +137,28 @@
                   "name": "Living Room Hunidity"
                 },
                 {
+                  "entity": "binary_sensor.front_door_open_433"
+                },
+                {
                   "entity": "climate.living_room_2"
                 },
                 {
-                  "entity": "input_button.mady_mute_lr_speaker"
+                  "entity": "binary_sensor.upstairs_pir"
                 },
                 {
                   "entity": "light.mom_light"
                 },
                 {
                   "entity": "light.livingroomlight"
+                },
+                {
+                  "entity": "sensor.rm02_last_action"
+                },
+                {
+                  "entity": "light.stairway_switch"
+                },
+                {
+                  "entity": "light.stairway_light"
                 },
                 {
                   "entity": "button.moms_button2"
@@ -158,31 +170,19 @@
                   "entity": "button.moms_button1"
                 },
                 {
-                  "entity": "light.stairway_switch"
-                },
-                {
-                  "entity": "light.stairway_light"
-                },
-                {
-                  "entity": "binary_sensor.front_door_open_433"
-                },
-                {
                   "entity": "light.fp_socket"
                 },
                 {
-                  "entity": "binary_sensor.upstairs_pir"
+                  "entity": "light.mom_chair"
                 },
                 {
-                  "entity": "light.mom_chair"
+                  "entity": "input_button.mady_mute_lr_speaker"
                 },
                 {
                   "entity": "input_boolean.christmas"
                 },
                 {
                   "entity": "switch.outside_christmas"
-                },
-                {
-                  "entity": "sensor.rm02_last_action"
                 }
               ],
               "show_header_toggle": true,
