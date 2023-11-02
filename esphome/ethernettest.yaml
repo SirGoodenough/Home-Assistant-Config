@@ -6,6 +6,12 @@ substitutions:
 packages:
   device_base: !include /config/esphome/packages/sg_base.yaml
 
+wifi:
+  manual_ip:
+    gateway: !secret chaloupkaabode_gateway
+    subnet: !secret chaloupkaabode_subnet
+    static_ip: !secret ethernettest_IP
+
 esphome:
   name_add_mac_suffix: false
 

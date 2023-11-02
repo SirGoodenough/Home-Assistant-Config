@@ -40,13 +40,22 @@
                   "entity": "switch.humidifier"
                 },
                 {
-                  "entity": "light.growlight2"
-                },
-                {
                   "entity": "switch.kitchenfan"
                 },
                 {
                   "entity": "switch.dishwasher"
+                },
+                {
+                  "entity": "light.growlight2"
+                },
+                {
+                  "entity": "script.reset_nag"
+                },
+                {
+                  "entity": "script.feeding_pump_silence"
+                },
+                {
+                  "entity": "binary_sensor.kitchennabu_9907cc_kitchennabu_pir_sensor"
                 }
               ],
               "show_header_toggle": false,
@@ -61,16 +70,16 @@
                   "entity": "light.kitchensink"
                 },
                 {
-                  "entity": "light.grp_kitch"
+                  "entity": "light.jims_computer_light"
+                },
+                {
+                  "entity": "light.cabinetlight"
                 },
                 {
                   "entity": "light.kitchen_down_lights"
                 },
                 {
-                  "entity": "light.jims_computer_light"
-                },
-                {
-                  "entity": "light.cabinetlight"
+                  "entity": "light.grp_kitch"
                 },
                 {
                   "entity": "light.grp_d_lights"

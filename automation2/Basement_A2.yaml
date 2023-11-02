@@ -97,3 +97,4 @@
         humidifier: humidifier.house_humidity
         humidity: sensor.house_humidity_group
         power_1: switch.humidifier_enable
+        scalar: 2.8

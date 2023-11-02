@@ -1,9 +1,9 @@
-# The stuff I need in all my espHome devices. 
+# The stuff I need in all my espHome devices at the cottage. 
 # I reserve the right to overwrite any at any time.
 # Path to file: esphome/packages/sg_base.yaml
 
 substitutions:
-  name: chaloupkaabode-esphome
+  name: cottage-esphome
   friendly_name: Another Brick in the Wall
   frame_type: esp-idf
   board: esp32dev
@@ -25,10 +25,10 @@ logger:
   # Enable Home Assistant API
 api:
   encryption:
-    key: !secret chaloupkaabode_encrypt
+    key: !secret cottage_encrypt
 
 ota:
-  password: !secret chaloupkaabode_otapw
+  password: !secret cottage_otapw
 
 wifi:
   ssid: !secret chaloupkaabode_wifi_ssid
