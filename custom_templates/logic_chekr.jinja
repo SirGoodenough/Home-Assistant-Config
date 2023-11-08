@@ -18,9 +18,7 @@
       {{- true_any(['entity_1','entity_2']) | bool -}}
   #}
   {# First tests to make sure this is a list #}
-  {%- if entity_list is iterable and
-    (entity_list is not string and entity_list is not mapping)
-  -%}
+  {%- if entity_list is list -%}
     {{- entity_list | map('states') 
     | map('bool', null) | select('eq', True)
     | list | count > 0 -}}
@@ -49,9 +47,7 @@
       {{- false_any(['entity_1','entity_2']) | bool -}}
   #}
   {# First tests to make sure this is a list #}
-  {%- if entity_list is iterable and
-    (entity_list is not string and entity_list is not mapping)
-  -%}
+  {%- if entity_list is list -%}
     {{- entity_list | map('states') 
     | map('bool', null) | select('eq', False)
     | list | count > 0 -}}
@@ -80,9 +76,7 @@
       {{- true_one(['entity_1','entity_2]') | bool -}}
   #}
   {# First tests to make sure this is a list #}
-  {%- if entity_list is iterable and
-    (entity_list is not string and entity_list is not mapping)
-  -%}
+  {%- if entity_list is list -%}
     {{- entity_list | map('states') 
     | map('bool', null) | select('eq', True)
     | list | count == 1 -}}
@@ -112,9 +106,7 @@
       {{- true_all(['entity_1','entity_2']) | bool -}}
   #}
   {# First tests to make sure this is a list #}
-  {%- if entity_list is iterable and
-    (entity_list is not string and entity_list is not mapping)
-  -%}
+  {%- if entity_list is list -%}
     {{- entity_list | map('states') 
     | map('bool', True) | select('eq', True)
     | list | count == entity_list | count -}}
@@ -143,9 +135,7 @@
       {{- false_one(['entity_1','entity_2']) | bool -}}
   #}
   {# First tests to make sure this is a list #}
-  {%- if entity_list is iterable and
-    (entity_list is not string and entity_list is not mapping)
-  -%}
+  {%- if entity_list is list -%}
     {{- entity_list | map('states') 
     | map('bool', null) | select('eq', False)
     | list | count == 1 -}}
@@ -175,9 +165,7 @@
       {{- false_all(['entity_1','entity_2']) | bool -}}
   #}
   {# First tests to make sure this is a list #}
-  {%- if entity_list is iterable and
-    (entity_list is not string and entity_list is not mapping)
-  -%}
+  {%- if entity_list is list -%}
     {{- entity_list | map('states') 
     | map('bool', False) | select('eq', False)
     | list | count == entity_list | count -}}

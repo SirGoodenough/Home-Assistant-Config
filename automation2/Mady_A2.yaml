@@ -22,3 +22,16 @@
       data:
         status: false
         entities: media_player.living_room_speaker
+
+####################################################
+# Food Center Lights to Random                     #
+####################################################
+- id: 7ea380be-f1af-4788-81b8-457b45a41d12
+  alias: Kids flip the lights
+  initial_state: on
+  mode: restart
+  trigger:
+    - platform: state
+      entity_id: sensor.kids_lights_action
+  action:
+    - service: script.random_color
