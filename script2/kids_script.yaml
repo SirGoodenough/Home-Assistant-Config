@@ -8,20 +8,15 @@ random_color:
       example: light.grp_kitch
       default: light.grp_kitch
       selector:
-        entity:
-          multiple: false
-          filter:
+        target:
+          entity:
             domain: light
   sequence:
   - service: light.turn_on
     data:
-      rgb_color: >-
-        - {# Set red color #}
-          {{ range(0, 255) | random }}
-        - {# Set green color #}
-        - {{ range(0, 255) | random }}
-        - {# Set blue color #}
-        - {{ range(0, 255) | random }}
+      hs_color: 
+        - "{{ 0.1(range(3599)|random) | float }}"
+        - "{{ 0.1(range(999)|random) | float }}"
     target:
       entity_id: "{{ light }}"
   mode: single
