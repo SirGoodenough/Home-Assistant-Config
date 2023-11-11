@@ -1261,10 +1261,10 @@
             },
             {
               "type": "custom:flipdown-timer-card",
-              "name": "Timer 10",
+              "name": "Timer 0.5",
               "show_error": false,
               "show_title": true,
-              "duration": "00:10:00",
+              "duration": "00:00:30",
               "styles": {
                 "button": {
                   "location": "hide"
@@ -1275,7 +1275,7 @@
                   "fontsize": "2rem"
                 }
               },
-              "entity": "timer.flushtime10"
+              "entity": "timer.thirtysecond"
             },
             {
               "type": "horizontal-stack",
@@ -4921,6 +4921,44 @@
                 }
               ],
               "title": "ThermoPI"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.furnace_oil_firebox_temperature",
+                  "name": "Furnace Oil Firebox Temperature"
+                },
+                {
+                  "entity": "sensor.furnace_oil_top_humidity",
+                  "name": "Furnace Oil Top Humidity"
+                },
+                {
+                  "entity": "sensor.furnace_oil_top_temperature",
+                  "name": "Furnace Oil Top Temperature"
+                },
+                {
+                  "entity": "sensor.furnace_pellet_firebox_temperature",
+                  "name": "Furnace Pellet Firebox Temperature"
+                },
+                {
+                  "entity": "sensor.furnace_pellet_top_temperature",
+                  "name": "Furnace Pellet Top Temperature"
+                },
+                {
+                  "entity": "sensor.furnace_register_temperature",
+                  "name": "Furnace Register Temperature"
+                },
+                {
+                  "entity": "sensor.furnace_return_humidity",
+                  "name": "Furnace Return Humidity"
+                },
+                {
+                  "entity": "sensor.furnace_return_temperature",
+                  "name": "Furnace Return Temperature"
+                }
+              ],
+              "title": "ThermoPI Furnace"
             }
           ]
         },

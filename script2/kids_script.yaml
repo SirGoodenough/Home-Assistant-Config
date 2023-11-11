@@ -8,16 +8,26 @@ random_color:
       example: light.grp_kitch
       default: light.grp_kitch
       selector:
-        target:
-          entity:
-            domain: light
+        entity:
+          domain: light
+  variables:
+    light: light.grp_kitch
   sequence:
   - service: light.turn_on
+    entity_id: light.grp_kitch
     data:
-      hs_color: 
-        - "{{ 0.1(range(3599)|random) | float }}"
-        - "{{ 0.1(range(999)|random) | float }}"
-    target:
-      entity_id: "{{ light }}"
+      hs_color: >-
+        {% set H = 0.01*(range(36000)|random) | float(0) | round(2) %}
+        {% set S = 0.01*(range(10000)|random) | float(0) | round(2) %}
+        [{{ H }}, {{ S }}]
+      # xy_color: >-
+      #   {% set X = 0.001*(range(1000)|random) | float(0) | round(3) %}
+      #   {% set Y = 0.001*(range(1000)|random) | float(0) | round(3) %}
+      #   [{{ X }}, {{ Y }}]
+      # rgb_color: >-
+      #   {% set R = (range(255)|random) | int(0) %}
+      #   {% set G = (range(255)|random) | int(0) %}
+      #   {% set B = (range(255)|random) | int(0) %}
+      #   [{{ R }}, {{ G }}, {{ B }}]
   mode: single
   icon: mdi:traffic-light-outline
