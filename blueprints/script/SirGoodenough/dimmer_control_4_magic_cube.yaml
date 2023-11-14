@@ -1,5 +1,5 @@
 blueprint:
-  name: dimmer_control_4_magic_cube_and_other_things - 2023-10-28-beta
+  name: dimmer_control_4_magic_cube_and_other_things - 2023-11-14
   author: SirGoodenough
   domain: script
   homeassistant:
@@ -162,7 +162,7 @@ variables:
   transition_var: >-
     {% if is_number(transition) %}
       {{ transition }}
-    {% elsif is_number(trans_i) %}
+    {% elif is_number(trans_i) %}
       {{ trans_i }}
     {% else %}
       "none"
