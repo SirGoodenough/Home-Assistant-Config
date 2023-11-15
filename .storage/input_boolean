@@ -208,6 +208,16 @@
         "id": "cold_reminded",
         "name": "Cold Reminded",
         "icon": "mdi:fridge-alert-outline"
+      },
+      {
+        "id": "bed_down_reset",
+        "name": "Bed Down Reset",
+        "icon": "mdi:lock-reset"
+      },
+      {
+        "id": "bed_flat_to_enter",
+        "name": "Bed Enter",
+        "icon": "mdi:location-enter"
       }
     ]
   }

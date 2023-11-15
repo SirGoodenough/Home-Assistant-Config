@@ -1706,6 +1706,9 @@
                 },
                 {
                   "entity": "input_boolean.bed_down_six"
+                },
+                {
+                  "entity": "input_boolean.bed_down_reset"
                 }
               ]
             },
@@ -1741,6 +1744,9 @@
                 },
                 {
                   "entity": "input_boolean.bed_stop"
+                },
+                {
+                  "entity": "input_boolean.bed_flat_to_enter"
                 }
               ]
             },

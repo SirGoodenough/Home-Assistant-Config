@@ -154,6 +154,16 @@
       from: "off"
       to: "on"
     - platform: state
+      id: bed_down_reset
+      entity_id: input_boolean.bed_restart
+      from: "off"
+      to: "on"
+    - platform: state
+      id: bed_enter
+      entity_id: input_boolean.bed_flat_to_enter
+      from: "off"
+      to: "on"
+    - platform: state
       id: bed_stop
       entity_id: input_boolean.bed_stop
       from: "off"
@@ -469,6 +479,36 @@
           data:
             url: !secret SmartBed_URL
             cmnd: 'button/0?timeout=10'
+      - alias: bed down reset
+        conditions:
+        - condition: trigger
+          id: bed_down_reset
+        sequence:
+        - alias: Send the bed_down 17
+          service: shell_command.bed
+          data:
+            url: !secret SmartBed_URL
+            cmnd: 'button/5?timeout=17'
+        - alias: Send the bed_up 0.7
+          service: shell_command.bed
+          data:
+            url: !secret SmartBed_URL
+            cmnd: 'button/4?timeout=0.7'
+      - alias: bed enter
+        conditions:
+        - condition: trigger
+          id: bed_enter
+        sequence:
+        - alias: Send the head_down-knees_down 20
+          service: shell_command.bed
+          data:
+            url: !secret SmartBed_URL
+            cmnd: 'button/8?timeout=20'
+        - alias: Send the bed_head_up 17
+          service: shell_command.bed
+          data:
+            url: !secret SmartBed_URL
+            cmnd: 'button/0?timeout=17'
       - alias: bed_stop
         conditions:
         - condition: trigger
