@@ -38,13 +38,13 @@
 
     - alias: Start the last Timer and play last message then wait for timer to end
       service: timer.start
-      entity_id: timer.flushtime10
+      entity_id: timer.thirtysecond
     - service: script.tts_final_flush
     - wait_for_trigger:
         - platform: event
           event_type: timer.finished
           event_data:
-            entity_id: timer.flushtime10
+            entity_id: timer.thirtysecond
 
     - alias: Gong the end of the last timer
       service: script.media_player_gong
