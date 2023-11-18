@@ -932,14 +932,15 @@
 
 {% macro random_xy() %}
 {#-
-  This will return a string that will convert to a list for a
+  This will return a CSV string that will convert to a list for a
     random color in the x,y format.
-  Be sure to convert this to a list when you use it on the other end.
+  Be sure to convert this to a list when you use it on the other end
+  because it arrives as a CSV string.
   
   SAMPLE USAGE:
     {% from 'color_multi_tool.jinja' import random_xy %}
     {% set _rxy = random_xy().split(",") | list -%}
-    {{ [_rxy[0]|float(0)|round(3),_rxy[1]|float(0)|round(3)] }}
+    [{{ _rxy[0]|float(0)|round(2) }}, {{ _rxy[1]|float(0)|round(2) }}]
 -#}
 
 {%- set X = 0.001*(range(1000)|random) -%}
@@ -950,14 +951,15 @@
 
 {% macro random_hs() %}
 {#-
-  This will return a string that will convert to a list for a
+  This will return a CSV string that will convert to a list for a
     random color in the h,s format.
-  Be sure to convert this to a list when you use it on the other end.
-  
+  Be sure to convert this to a list when you use it on the other end
+  because it arrives as a CSV string.
+
   SAMPLE USAGE:
     {% from 'color_multi_tool.jinja' import random_hs %}
     {% set _rhs = random_hs().split(",") | list -%}
-    {{ [_rhs[0]|float(0)|round(2),_rhs[1]|float(0)|round(2)] }}
+    [{{ _rhs[0]|float(0)|round(2) }}, {{ _rhs[1]|float(0)|round(2) }}]
 -#}
 {%- set H = 0.01*(range(36000)|random) -%}
 {%- set S = 0.01*(range(10000)|random) -%}
@@ -967,14 +969,15 @@
 
 {% macro random_rgb() %}
 {#-
-  This will return a string that will convert to a list for a
+  This will return a CSV string that will convert to a list for a
     random color in the rgb format.
-  Be sure to convert this to a list when you use it on the other end.
+  Be sure to convert this to a list when you use it on the other end
+  because it arrives as a CSV string.
   
   SAMPLE USAGE:
     {% from 'color_multi_tool.jinja' import random_rgb %}
-    {% set _rrgb = random_hs().split(",") | list -%}
-    {{ [_rrgb[0]|int(0),_rrgb[1]|int(0),_rrgb[2]|int(0)] }}
+    {% set _rrgb = random_rgb().split(",") | list -%}
+    [{{ _rrgb[0]|int(0) }}, {{ _rrgb[1]|int(0) }}, {{ _rrgb[2]|int(0) }}]
 -#}
 {%- set R = (range(255)|random) -%}
 {%- set G = (range(255)|random) -%}
