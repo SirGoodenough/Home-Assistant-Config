@@ -2540,13 +2540,6 @@
               "detail": 1
             },
             {
-              "hours_to_show": 24,
-              "graph": "line",
-              "type": "sensor",
-              "entity": "sensor.bt3_bathroom2_temperature",
-              "detail": 2
-            },
-            {
               "type": "entities",
               "entities": [
                 {

@@ -28,7 +28,7 @@ random_color:
       # xy_color: >-
       #   {% from 'color_multi_tool.jinja' import random_xy %}
       #   {% set _rxy = random_xy().split(",") | list -%}
-      #   [{{ _rxy[0]|float(0)|round(2) }}, {{ _rxy[1]|float(0)|round(2) }}]
+      #   [{{ _rxy[0]|float(0)|round(3) }}, {{ _rxy[1]|float(0)|round(3) }}]
       # xy_color: >-
       #   {% set X = 0.001*(range(1000)|random) | float(0) | round(3) %}
       #   {% set Y = 0.001*(range(1000)|random) | float(0) | round(3) %}
