@@ -120,22 +120,6 @@
         "SteffanNeural",
 
         "TonyNeural") | random }}'
-- id: '1698354921351'
-  alias: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabelysning 231025
-  description: client stuff
-  use_blueprint:
-    path: test/blah_test.yaml
-    input:
-      tidmorgon: 00:00:00
-      tidmorgon_monday: 00:00:00
-      tidslackamorgon: 00:00:00
-      tidmorgonhelg: 00:00:00
-      tidkvall: 00:00:00
-      lux: sensor.gw2000b_v2_2_4_solar_lux
-      light_taget:
-      - light.b_porch_relay
-      switch_target:
-      - switch.b2
 - id: '1699644276218'
   alias: aaaaaKids flip the lights
   description: ''
@@ -149,3 +133,18 @@
         entity_id: light.grp_kitch
   initial_state: 'on'
   mode: restart
+- id: '1700817665116'
+  alias: Thermostat Ramp
+  description: Creep the thermostat up to prevent use of oil furnace.
+  use_blueprint:
+    path: SirGoodenough/Stage_1_Temperature_Control.yaml
+    input:
+      climate_e: climate.living_room_2
+      maxTemp: 70
+      ramp_start_time: 05:19:15
+      ramp_end_time: 07:48:54
+      rampRate: 0.9
+      interval:
+        hours: 0
+        minutes: 3
+        seconds: 18

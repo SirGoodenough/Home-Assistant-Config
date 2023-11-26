@@ -1,0 +1,47 @@
+# ####################################################
+# # Slope Heat up in the morning                     #
+# ###################################################
+# - id: b1de0368-26a9-49b9-8a1e-1bb9e01f536c
+#   alias: Morning Heat Slope
+#   initial_state: on
+#   trigger:
+#     - platform: time
+#       at: 08:26:10
+#   action:
+#     - alias: "Repeat bumping the temp until you hit the top or the time is up"
+#       repeat:
+#         while:
+#           - alias: Stop when at maxTemp
+#             condition: numeric_state
+#             entity_id: sensor.lrthermostat
+#             below: 75.5
+#           # - alias: "Don't try after endTime."
+#           #   condition: time
+#           #   before: input_datetime.morning_heat
+#         sequence:
+#           - if:
+#             - alias: If the actual is above set point
+#               condition: template
+#               value_template: >-
+#                 {{ state_attr("climate.living_room_2", "current_temperature")
+#                 < state_attr("climate.living_room_2", "temperature") }}
+#             then:
+#             - alias: Bump the temp up at rampRate
+#               service: climate.set_temperature
+#               data:
+#                 temperature: >-
+#                   {{ state_attr("climate.living_room_2", "current_temperature")
+#                   | float(65.3) + rampRate }}
+#               target:
+#                 entity_id: climate.living_room_2
+#             - alias: "Don't cycle faster than interval"
+#               delay: "{{ interval }}"
+#   variables:
+#       # seconds between re-setting the thermostat
+#     interval: 180
+#       # Stop the sequence if you get to this temp
+#     maxTemp: 75.5
+#       # Stop the sequence if it get to this time
+#     endTime: 07:58:29
+#       # Set to current temp plus this number each time.
+#     rampRate: 1.5

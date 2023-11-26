@@ -80,10 +80,12 @@
     - delay: "00:00:30"
     - service: switch.turn_on
       entity_id: switch.outside_christmas
-    - type: turn_on
-      device_id: 3b684bb57737b5259c8a2e5a95d9844a
-      entity_id: light.christmas_tree
-      domain: light
+    - delay: "00:00:30"
+    - service: switch.turn_on
+      entity_id: switch.outside_christmas
+    - delay: "00:00:30"
+    - service: switch.turn_on
+      entity_id: switch.outside_christmas
 
 - id: e457e864-1b80-42e1-991b-902f62109afe
   alias: Turn off Christmas lights at dawn
@@ -106,10 +108,12 @@
     - delay: "00:00:30"
     - service: switch.turn_off
       entity_id: switch.outside_christmas
-    - type: turn_off
-      device_id: 3b684bb57737b5259c8a2e5a95d9844a
-      entity_id: light.christmas_tree
-      domain: light
+    - delay: "00:00:30"
+    - service: switch.turn_off
+      entity_id: switch.outside_christmas
+    - delay: "00:00:30"
+    - service: switch.turn_off
+      entity_id: switch.outside_christmas
 
 - id: 6fb0180a-e42e-45fc-a550-fa95a2726148
   alias: Power state on HA start-up outside christmas dark
@@ -131,10 +135,12 @@
     - delay: "00:00:30"
     - service: switch.turn_on
       entity_id: switch.outside_christmas
-    - type: turn_on
-      device_id: 3b684bb57737b5259c8a2e5a95d9844a
-      entity_id: light.christmas_tree
-      domain: light
+    - delay: "00:00:30"
+    - service: switch.turn_on
+      entity_id: switch.outside_christmas
+    - delay: "00:00:30"
+    - service: switch.turn_on
+      entity_id: switch.outside_christmas
 
 - id: 221db31c-ea90-4db1-9dd4-4ad3f3cd3452
   alias: Power state on HA start-up outside christmas day
@@ -155,10 +161,12 @@
     - delay: "00:00:30"
     - service: switch.turn_off
       entity_id: switch.outside_christmas
-    - type: turn_off
-      device_id: 3b684bb57737b5259c8a2e5a95d9844a
-      entity_id: light.christmas_tree
-      domain: light
+    - delay: "00:00:30"
+    - service: switch.turn_off
+      entity_id: switch.outside_christmas
+    - delay: "00:00:30"
+    - service: switch.turn_off
+      entity_id: switch.outside_christmas
 
 ####################################################
 # Seasonally Allow Automations                     #
