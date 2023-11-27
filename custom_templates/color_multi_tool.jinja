@@ -738,7 +738,7 @@
   
   SAMPLE USAGE:
     {% from 'color_multi_tool.jinja' import rgb2xy %}
-    {% set _rgb2xy = random_xy().split(",") | list -%}
+    {% set _rgb2xy = rgb2xy(rgbl).split(",") | list -%}
     [{{ _rgbxy[0]|float(0)|round(3) }}, {{ _rgbxy[1]|float(0)|round(3) }}]
 
   REMEMBER:
@@ -748,9 +748,9 @@
 -#}
 {#- First tests to make sure this is a list -#}
 {%- if rgbl is list -%}
-  {%- set iR = rgbl[0] -%}
-  {%- set iG = rgbl[1] -%}
-  {%- set iB = rgbl[2] -%}
+  {%- set iR = rgbl[0] | int(0) -%}
+  {%- set iG = rgbl[1] | int(0) -%}
+  {%- set iB = rgbl[2] | int(0) -%}
   {%- if iR + iG + iB != 0 -%}
     {%- set R = iR / 255 -%}
     {%- set B = iB / 255 -%}
@@ -794,4 +794,74 @@
   {%- set Y = 0.0 -%}
 {%- endif -%}
 {{ X | round(3) }},{{ Y | round(3) }}
+{% endmacro %}
+
+
+{% macro xy2rgb(xyl) %}
+{#-
+  This will return a CSV string that will convert to a list in the rgb format
+    from the xy list provided.
+  Be sure to convert this to a list when you use it on the other end
+    because it arrives as a CSV string.
+  Code lifted directly from the Home Assistant core github November, 2023 at
+    https://github.com/home-assistant/core/blob/dev/homeassistant/util/color.py.
+  
+  SAMPLE USAGE:
+    {% from 'color_multi_tool.jinja' import xy2rgb %}
+    {% set _xy2rgb = xy2rgb(xyl).split(",") | list -%}
+    [{{ _xy2rgb[0]|int(0) }}, {{ _xy2rgb[1]|int(0) }}, {{ _xy2rgb[2]|int(0) }}]
+
+  REMEMBER:
+    Everything returned from a macro template is a string, so for
+    conventional usage of colors the result needs to be converted to a
+    list as shown in the example above.
+-#}
+{#- First tests to make sure this is a list -#}
+{%- if xyl is list -%}
+  {%- set vX = xyl[0] | int(0) -%}
+  {%- set vY = xyl[1] + 0.00000000001 | int(0) -%}
+  {%- set Y = 1 -%}
+  {%- set X = (Y / vY) * vX -%}
+  {%- set Z = (Y / vY) * (1 - vX - vY) -%}
+    {#- Convert to RGB using Wide RGB D65 conversion. -#}
+  {%- set r = X * 1.656492 - Y * 0.354851 - Z * 0.255038 -%}
+  {%- set g = -X * 0.707196 + Y * 1.655397 + Z * 0.036152 -%}
+  {%- set b = X * 0.051713 - Y * 0.121364 + Z * 1.011530 -%}
+    {#- Apply reverse gamma correction. -#}
+  {%- if (r <= 0.0031308)) -%}
+    {%- set 12.92 * r -%}
+  {%- else -%}
+    {%- ((1.0 + 0.055) * (r ** (1.0 / 2.4)) - 0.055) -%}
+  {%- endif -%}
+
+  {%- if (g <= 0.0031308)) -%}
+    {%- set 12.92 * g -%}
+  {%- else -%}
+    {%- ((1.0 + 0.055) * (g ** (1.0 / 2.4)) - 0.055) -%}
+  {%- endif -%}
+
+  {%- if (b <= 0.0031308)) -%}
+    {%- set 12.92 * b -%}
+  {%- else -%}
+    {%- ((1.0 + 0.055) * (b ** (1.0 / 2.4)) - 0.055) -%}
+  {%- endif -%}
+    {#- Bring all negative components to zero. -#}
+  {%- set r = [0, r] | max -%}
+  {%- set g = [0, g] | max -%}
+  {%- set b = [0, b] | max -%}
+    {#- If one component is greater than 1, weight components by that value. -#}
+  {%- set max_component = [r, g, b] | max -%}
+  {%- if max_component > 1 -%}
+    {%- set r = r / max_component -%}
+    {%- set g = g / max_component -%}
+    {%- set b = b / max_component -%}
+  {%- endif -%}
+  {%- set R = (r * 255) | int(0) -%}
+  {%- set G = (g * 255) | int(0) -%}
+  {%- set B = (b * 255) | int(0) -%}
+{%- else -%}
+  {%- set R = 0 -%}
+  {%- set G = 0 -%}
+  {%- set B = 0 -%}
+{{ R }},{{ G }},{{ B }}
 {% endmacro %}
