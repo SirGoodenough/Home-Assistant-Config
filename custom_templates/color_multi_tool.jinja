@@ -796,7 +796,6 @@
 {{ X | round(3) }},{{ Y | round(3) }}
 {% endmacro %}
 
-
 {% macro xy2rgb(xyl) %}
 {#-
   This will return a CSV string that will convert to a list in the rgb format
@@ -816,10 +815,11 @@
     conventional usage of colors the result needs to be converted to a
     list as shown in the example above.
 -#}
-{#- First tests to make sure this is a list -#}
+{#- First a test to make sure this is a list -#}
 {%- if xyl is list -%}
-  {%- set vX = xyl[0] | int(0) -%}
-  {%- set vY = xyl[1] + 0.00000000001 | int(0) -%}
+  {%- set vX = xyl[0] | float(0) -%}
+  {%- set vY = xyl[1] | float(0.00000000001) -%}
+  {%- set vY = vY + 0.00000000001 -%}
   {%- set Y = 1 -%}
   {%- set X = (Y / vY) * vX -%}
   {%- set Z = (Y / vY) * (1 - vX - vY) -%}
@@ -828,19 +828,19 @@
   {%- set g = -X * 0.707196 + Y * 1.655397 + Z * 0.036152 -%}
   {%- set b = X * 0.051713 - Y * 0.121364 + Z * 1.011530 -%}
     {#- Apply reverse gamma correction. -#}
-  {%- if (r <= 0.0031308)) -%}
+  {%- if r <= 0.0031308 -%}
     {%- set r = 12.92 * r -%}
   {%- else -%}
     {%- set r = ((1.0 + 0.055) * (r ** (1.0 / 2.4)) - 0.055) -%}
   {%- endif -%}
 
-  {%- if (g <= 0.0031308)) -%}
+  {%- if g <= 0.0031308 -%}
     {%- set g = 12.92 * g -%}
   {%- else -%}
     {%- set g = ((1.0 + 0.055) * (g ** (1.0 / 2.4)) - 0.055) -%}
   {%- endif -%}
 
-  {%- if (b <= 0.0031308)) -%}
+  {%- if b <= 0.0031308 -%}
     {%- set b = 12.92 * b -%}
   {%- else -%}
     {%- set b = ((1.0 + 0.055) * (b ** (1.0 / 2.4)) - 0.055) -%}
@@ -864,5 +864,83 @@
   {%- set R = 0 -%}
   {%- set G = 0 -%}
   {%- set B = 0 -%}
+{%- endif -%}
+{{ R }},{{ G }},{{ B }}
+{% endmacro %}
+
+{% macro hs2rgb(hsl) %}
+{#-
+  This will return a CSV string that will convert to a list in the rgb format
+    from the xy list provided.
+  Be sure to convert this to a list when you use it on the other end
+    because it arrives as a CSV string.
+  Code lifted directly from the Home Assistant core github November, 2023 at
+    https://github.com/home-assistant/core/blob/dev/homeassistant/util/color.py.
+
+  SAMPLE USAGE:
+    {% from 'color_multi_tool.jinja' import hs2rgb %}
+    {% set _hs2rgb = hs2rgb(hsl).split(",") | list -%}
+    {{ [_hs2rgb[0]|int(0),_hs2rgb[1]|int(0),_hs2rgb[2]|int(0)] }}
+
+  REMEMBER:
+    Everything returned from a macro template is a string, so for
+    conventional usage of colors the result needs to be converted to a
+    list as shown in the example above.
+-#}
+{#- First a test to make sure this is a list -#}
+{%- if hsl is list -%}
+  {%- set fH = hsl[0] | float(0) -%}
+  {%- set fS = hsl[1] | float(0) -%}
+  {%- set fB = 100 -%}
+  {%- if fS != 0.0 -%}
+    {%- set r = 0 -%}
+    {%- set g = 0 -%}
+    {%- set b = 0 -%}
+    {%- set h = fH / 60 -%}
+    {%- set f = h - ((h + 0.5) | int(0)) -%}
+    {%- set p = fB * (1 - fS) -%}
+    {%- set q = fB * (1 - fS * f) -%}
+    {%- set t = fB * (1 - (fS * (1 - f))) -%}
+    {%- if h | int == 0 -%}
+      {%- set r = (fB * 255) | int(0) -%}
+      {%- set g = (t * 255) | int(0) -%}
+      {%- set b = (p * 255) | int(0) -%}
+    {%- elif h | int == 1 -%}
+      {%- set r = (q * 255) | int(0) -%}
+      {%- set g = (fB * 255) | int(0) -%}
+      {%- set b = (p * 255) | int(0) -%}
+    {%- elif h | int == 2 -%}
+      {%- set r = (p * 255) | int(0) -%}
+      {%- set g = (fB * 255) | int(0) -%}
+      {%- set b = (t * 255) | int(0) -%}
+    {%- elif h | int == 3 -%}
+      {%- set r = (p * 255) | int(0) -%}
+      {%- set g = (q * 255) | int(0) -%}
+      {%- set b = (fB* 255) | int(0) -%}
+    {%- elif h | int == 4 -%}
+      {%- set r = (t * 255) | int(0) -%}
+      {%- set g = (p * 255) | int(0) -%}
+      {%- set b = (fB * 255) | int(0) -%}
+    {%- elif h | int == 5 -%}
+      {%- set r = (fB * 255) | int(0) -%}
+      {%- set g = (p * 255) | int(0) -%}
+      {%- set b = (q * 255) | int(0) -%}
+    {%- endif -%}
+    {%- set R = r -%}
+    {%- set G = g -%}
+    {%- set B = b -%}
+  {%- else -%}
+    {#- Color started as black -#}
+    {%- set fV = (fB * 255) | int(0) -%}
+    {%- set R = fV -%}
+    {%- set G = fV -%}
+    {%- set B = fV -%}
+  {%- endif -%}
+{%- else -%}
+  {#- Input was not a list -#}
+  {%- set R = 0 -%}
+  {%- set G = 0 -%}
+  {%- set B = 0 -%}
+{%- endif -%}
 {{ R }},{{ G }},{{ B }}
 {% endmacro %}
