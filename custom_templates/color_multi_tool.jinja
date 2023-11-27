@@ -809,7 +809,7 @@
   SAMPLE USAGE:
     {% from 'color_multi_tool.jinja' import xy2rgb %}
     {% set _xy2rgb = xy2rgb(xyl).split(",") | list -%}
-    [{{ _xy2rgb[0]|int(0) }}, {{ _xy2rgb[1]|int(0) }}, {{ _xy2rgb[2]|int(0) }}]
+    {{ [_xy2rgb[0]|int(0),_xy2rgb[1]|int(0),_xy2rgb[2]|int(0)] }}
 
   REMEMBER:
     Everything returned from a macro template is a string, so for
@@ -829,21 +829,21 @@
   {%- set b = X * 0.051713 - Y * 0.121364 + Z * 1.011530 -%}
     {#- Apply reverse gamma correction. -#}
   {%- if (r <= 0.0031308)) -%}
-    {%- set 12.92 * r -%}
+    {%- set r = 12.92 * r -%}
   {%- else -%}
-    {%- ((1.0 + 0.055) * (r ** (1.0 / 2.4)) - 0.055) -%}
+    {%- set r = ((1.0 + 0.055) * (r ** (1.0 / 2.4)) - 0.055) -%}
   {%- endif -%}
 
   {%- if (g <= 0.0031308)) -%}
-    {%- set 12.92 * g -%}
+    {%- set g = 12.92 * g -%}
   {%- else -%}
-    {%- ((1.0 + 0.055) * (g ** (1.0 / 2.4)) - 0.055) -%}
+    {%- set g = ((1.0 + 0.055) * (g ** (1.0 / 2.4)) - 0.055) -%}
   {%- endif -%}
 
   {%- if (b <= 0.0031308)) -%}
-    {%- set 12.92 * b -%}
+    {%- set b = 12.92 * b -%}
   {%- else -%}
-    {%- ((1.0 + 0.055) * (b ** (1.0 / 2.4)) - 0.055) -%}
+    {%- set b = ((1.0 + 0.055) * (b ** (1.0 / 2.4)) - 0.055) -%}
   {%- endif -%}
     {#- Bring all negative components to zero. -#}
   {%- set r = [0, r] | max -%}
@@ -860,6 +860,7 @@
   {%- set G = (g * 255) | int(0) -%}
   {%- set B = (b * 255) | int(0) -%}
 {%- else -%}
+  {#- Input was not a list -#}
   {%- set R = 0 -%}
   {%- set G = 0 -%}
   {%- set B = 0 -%}
