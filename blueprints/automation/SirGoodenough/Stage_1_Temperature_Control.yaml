@@ -107,11 +107,32 @@ blueprint:
             value: sun
           custom_value: false
           multiple: true
+    occ_test:
+      name: Enable the Occupancy test?
+      description: |
+        This BluePrind can take into consideration if a zone is occupied.
+        To enable this feature, select yes.
+        To ignore this feature select no.
+      default: false
+      selector:
+        boolean:
+    t_zone:
+      name: Zone to monitor for occupancy
+      description: |
+        If you said yes above, then you enter the zome to monitoe here.
+        Default zone is home. Change to another zone if you want to.
+        If you said no above, this section has no effect on your BluePrint.
+      default: zone.home
+      selector:
+        entity:
+          filter:
+            - domain: zone
+          multiple: false
     additional_conditions:
       name: Additional conditions
       description: |
         Extra conditions you may want to add to this automation 
-        (Example: Home occupied, TV on, etc)
+        (Example: It is the heating season, etc.)
       default: []
       selector:
         condition:
@@ -119,6 +140,10 @@ blueprint:
 trigger:
   - platform: time
     at: !input ramp_start_time
+    id: time_start
+  - platform: homeassistant
+    event: start
+    id: ha_restart
 
 variables:
   _climate_e: !input climate_e
@@ -130,15 +155,33 @@ variables:
   _ramp_end_time: !input ramp_end_time
     # Set to current temp plus this number each time.
   _rampRate: !input rampRate
+    # Should we run the occupancy test?
+  _occ_test: !input occ_test
+    # Zone to use for occulancy test
+  _t_zone: !input t_zone
 
 condition: 
-  - alias: Only allow execution on selected Weekdays
+  - alias: 'Only allow execution on selected Weekdays and (for HA restart) time period'
     condition: time
-    weekday: !input 'weekday'
+    after: !input ramp_start_time
+    before: !input ramp_end_time
+    weekday: !input weekday
   - alias: Bail if over maxTemp
     condition: template
     value_template: >-
       {{ state_attr(_climate_e, "current_temperature") < _maxTemp }}
+  - alias: "Occupancy: Pass if occ_test is false or occ_test is true & zone > 0."
+    condition: template
+    value_template: >-
+      {% if _occ_test %}
+        {% if _t_zone > 0 %}
+          true
+        {% else %}
+          false
+        {% endif %}
+      {% else %}
+        true
+      {% endif %}
   - alias: User pick
     condition: !input additional_conditions
 
@@ -163,7 +206,7 @@ action:
             <= _maxTemp
             and
             state_attr(_climate_e, "temperature")
-            != [state_attr(_climate_e, "current_temperature")
+            < [state_attr(_climate_e, "current_temperature")
             | float(_maxTemp - _rampRate) + _rampRate,
             _maxTemp] | min }}
           then:
@@ -180,5 +223,4 @@ action:
           else:
             - alias: One minute delay before recycle
               delay: 60
-
-mode: restart
+mode: single

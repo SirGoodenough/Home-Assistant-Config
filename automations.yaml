@@ -71,55 +71,12 @@
       announcement_message: Your {{ door }} has been left open.
       cooldown: 63
       final_message: Thank you for closing the {{ door }}.
-      speaker_voice: '{{ ("JennyNeural",
-
-        "AIGenerate1Neural",
-
-        "AIGenerate2Neural",
-
-        "AmberNeural",
-
-        "AnaNeural",
-
-        "AriaNeural",
-
-        "AshleyNeural",
-
-        "BrandonNeural",
-
-        "ChristopherNeural",
-
-        "CoraNeural",
-
-        "DavisNeural",
-
-        "ElizabethNeural",
-
-        "EricNeural",
-
-        "GuyNeural",
-
-        "JacobNeural",
-
-        "JaneNeural",
-
-        "JasonNeural",
-
-        "JennyMultilingualNeural",
-
-        "MichelleNeural",
-
-        "MonicaNeural",
-
-        "NancyNeural",
-
-        "RogerNeural",
-
-        "SaraNeural",
-
-        "SteffanNeural",
-
-        "TonyNeural") | random }}'
+      speaker_voice: '{{ ("JennyNeural", "AIGenerate1Neural", "AIGenerate2Neural",
+        "AmberNeural", "AnaNeural", "AriaNeural", "AshleyNeural", "BrandonNeural",
+        "ChristopherNeural", "CoraNeural", "DavisNeural", "ElizabethNeural", "EricNeural",
+        "GuyNeural", "JacobNeural", "JaneNeural", "JasonNeural", "JennyMultilingualNeural",
+        "MichelleNeural", "MonicaNeural", "NancyNeural", "RogerNeural", "SaraNeural",
+        "SteffanNeural", "TonyNeural") | random }}'
 - id: '1699644276218'
   alias: aaaaaKids flip the lights
   description: ''
@@ -147,4 +104,4 @@
       interval:
         hours: 0
         minutes: 3
-        seconds: 18
+        seconds: 19

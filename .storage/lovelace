@@ -2507,14 +2507,19 @@
               "icon": "mdi:paper-roll-outline"
             },
             {
-              "hours_to_show": 24,
               "graph": "line",
+              "hours_to_show": 24,
               "entity": "sensor.garage_door_si7021_temperature",
               "theme": "sundown",
               "type": "sensor",
               "detail": 2,
-              "icon": "mdi:garage",
-              "name": "Garage Temp"
+              "icon": "mdi:garage"
+            },
+            {
+              "graph": "line",
+              "type": "sensor",
+              "entity": "sensor.garage_temperature",
+              "detail": 2
             },
             {
               "hours_to_show": 24,
@@ -2593,7 +2598,8 @@
             },
             {
               "type": "humidifier",
-              "entity": "humidifier.house_humidity"
+              "entity": "humidifier.house_humidity",
+              "theme": "Fluent Orange"
             },
             {
               "hours_to_show": 24,
@@ -2681,21 +2687,6 @@
             {
               "graph": "line",
               "hours_to_show": 24,
-              "type": "sensor",
-              "entity": "sensor.gw2000b_v2_2_4_dewpoint",
-              "detail": 1
-            },
-            {
-              "graph": "line",
-              "hours_to_show": 24,
-              "type": "sensor",
-              "entity": "sensor.garage_door_si7021_humidity",
-              "detail": 1,
-              "name": "Garage Humidity"
-            },
-            {
-              "graph": "line",
-              "hours_to_show": 24,
               "entity": "sensor.garage_door_si7021_dewpoint",
               "type": "sensor",
               "detail": 1,
@@ -2704,16 +2695,30 @@
             {
               "graph": "line",
               "hours_to_show": 24,
-              "entity": "sensor.dryer3_si7021_humidity",
               "type": "sensor",
-              "detail": 1,
-              "name": "Dryer Humidity"
+              "entity": "sensor.garage_door_si7021_humidity",
+              "detail": 1
             },
             {
               "graph": "line",
               "type": "sensor",
-              "entity": "sensor.dust_collector_si7021_humidity",
+              "entity": "sensor.garage_humidity",
               "detail": 1
+            },
+            {
+              "graph": "line",
+              "hours_to_show": 24,
+              "type": "sensor",
+              "entity": "sensor.gw2000b_v2_2_4_dewpoint",
+              "detail": 1
+            },
+            {
+              "graph": "line",
+              "hours_to_show": 24,
+              "entity": "sensor.dryer3_si7021_humidity",
+              "type": "sensor",
+              "detail": 1,
+              "name": "Dryer Humidity"
             }
           ],
           "icon": "mdi:water-percent",
