@@ -619,7 +619,6 @@
 -#}
 {%- set _color_dict = _nameMap._rgb | random -%}
 {{- _color_dict.color -}}
-
 {% endmacro %}
 
 {% macro random_xy() %}
@@ -643,7 +642,6 @@
 {%- set X = 0.001*(range(1000)|random) -%}
 {%- set Y = 0.001*(range(1000)|random) -%}
 {{ X }},{{ Y }}
-
 {% endmacro %}
 
 {% macro random_hs() %}
@@ -666,7 +664,6 @@
 {%- set H = 0.01*(range(36000)|random) -%}
 {%- set S = 0.01*(range(10000)|random) -%}
 {{ H }},{{ S }}
-
 {% endmacro %}
 
 {% macro random_rgb() %}
@@ -690,7 +687,6 @@
 {%- set G = (range(255)|random) -%}
 {%- set B = (range(255)|random) -%}
 {{ R }},{{ G }},{{ B }}
-
 {% endmacro %}
 
 {% macro name2rgb(color_name) %}
@@ -718,11 +714,84 @@
     conventional usage of colors the result needs to be converted to a
     list as shown in the example above.
 -#}
-
-{%- set _color = color_name | regex_replace('[^a-z]', '') -%}
-{%- set R = _nameMap['_rgb'] | selectattr('color', 'eq', _color) | map(attribute='r') | first | default([]) -%}
-{%- set G = _nameMap['_rgb'] | selectattr('color', 'eq', _color) | map(attribute='g') | first | default([]) -%}
-{%- set B = _nameMap['_rgb'] | selectattr('color', 'eq', _color) | map(attribute='b') | first | default([]) -%}
+{%- if color_name is string_like -%}
+  {%- set _color = color_name | regex_replace('[^a-z]', '') -%}
+  {%- set R = _nameMap['_rgb'] | selectattr('color', 'eq', _color) | map(attribute='r') | first | default([]) -%}
+  {%- set G = _nameMap['_rgb'] | selectattr('color', 'eq', _color) | map(attribute='g') | first | default([]) -%}
+  {%- set B = _nameMap['_rgb'] | selectattr('color', 'eq', _color) | map(attribute='b') | first | default([]) -%}
+{%- else -%}
+  {%- set R = 0 -%}
+  {%- set G = 0 -%}
+  {%- set B = 0 -%}
+{%- endif -%}
 {{ R }},{{ G }},{{ B }}
+{% endmacro %}
 
+{% macro rgb2xy(rgbl) %}
+{#-
+  This will return a CSV string that will convert to a list in the x,y format
+    from the rgb list provided.
+  Be sure to convert this to a list when you use it on the other end
+    because it arrives as a CSV string.
+  Code lifted directly from the Home Assistant core github November, 2023 at
+    https://github.com/home-assistant/core/blob/dev/homeassistant/util/color.py.
+  
+  SAMPLE USAGE:
+    {% from 'color_multi_tool.jinja' import rgb2xy %}
+    {% set _rgb2xy = random_xy().split(",") | list -%}
+    [{{ _rgbxy[0]|float(0)|round(3) }}, {{ _rgbxy[1]|float(0)|round(3) }}]
+
+  REMEMBER:
+    Everything returned from a macro template is a string, so for
+    conventional usage of colors the result needs to be converted to a
+    list as shown in the example above.
+-#}
+{# First tests to make sure this is a list #}
+{%- if rgbl is list -%}
+  {%- set iR = rgbl[0] -%}
+  {%- set iG = rgbl[1] -%}
+  {%- set iB = rgbl[2] -%}
+  {%- if iR + iG + iB != 0 -%}
+    {%- set R = iR / 255 -%}
+    {%- set B = iB / 255 -%}
+    {%- set G = iG / 255 -%}
+      {#- Gamma correction -#}
+    {%- if (R > 0.04045) -%}
+      {%- set R = ((R + 0.055) / (1.0 + 0.055) ** 2.4) -%}
+    {%- else -%}
+      {%- set R = (R / 12.92) -%}
+    {%- endif -%}
+
+    {%- if (G > 0.04045) -%}
+      {%- set G = ((G + 0.055) / (1.0 + 0.055) ** 2.4) -%}
+    {%- else -%}
+      {%- set G = (G / 12.92) -%}
+    {%- endif -%}
+
+    {%- if (B > 0.04045) -%}
+      {%- set B = ((B + 0.055) / (1.0 + 0.055) ** 2.4) -%}
+    {%- else -%}
+      {%- set B = (B / 12.92) -%}
+    {%- endif -%}
+      {#- Wide RGB D65 conversion formula -#}
+    {%- set X = R * 0.664511 + G * 0.154324 + B * 0.162028 -%}
+    {%- set Y = R * 0.283881 + G * 0.668433 + B * 0.047685 -%}
+    {%- set Z = R * 0.000088 + G * 0.072310 + B * 0.986039 -%}
+      {#- Convert XYZ to xy #}
+    {%- set x = X / (X + Y + Z) -%}
+    {%- set y = Y / (X + Y + Z) -%}
+      {#- Change the output names to match this macro -#}
+    {%- set X = x -%}
+    {%- set Y = y -%}
+  {%- else -%}
+    {#- Color started as black -#}
+    {%- set X = 0.0 -%}
+    {%- set Y = 0.0 -%}
+  {%- endif -%}
+{%- else -%}
+  {#- Input was not a list -#}
+  {%- set X = 0.0 -%}
+  {%- set Y = 0.0 -%}
+{%- endif -%}
+{{ X | round(3) }},{{ Y | round(3) }}
 {% endmacro %}
