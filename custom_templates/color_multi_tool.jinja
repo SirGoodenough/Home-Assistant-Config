@@ -639,8 +639,8 @@
     list as shown in the example above.
 -#}
 
-{%- set X = 0.001*(range(1000)|random) -%}
-{%- set Y = 0.001*(range(1000)|random) -%}
+{%- set X = 0.001*(range(1000)|random) | float(0) -%}
+{%- set Y = 0.001*(range(1000)|random) | float(0) -%}
 {{ X }},{{ Y }}
 {% endmacro %}
 
@@ -661,8 +661,8 @@
     conventional usage of colors the result needs to be converted to a
     list as shown in the example above.
 -#}
-{%- set H = 0.01*(range(36000)|random) -%}
-{%- set S = 0.01*(range(10000)|random) -%}
+{%- set H = 0.01*(range(36000)|random) | float(0) -%}
+{%- set S = 0.01*(range(10000)|random) | float(0) -%}
 {{ H }},{{ S }}
 {% endmacro %}
 
@@ -683,9 +683,9 @@
     conventional usage of colors the result needs to be converted to a
     list as shown in the example above.
 -#}
-{%- set R = (range(255)|random) -%}
-{%- set G = (range(255)|random) -%}
-{%- set B = (range(255)|random) -%}
+{%- set R = (range(255)|random) | int(0) -%}
+{%- set G = (range(255)|random) | int(0) -%}
+{%- set B = (range(255)|random) | int(0) -%}
 {{ R }},{{ G }},{{ B }}
 {% endmacro %}
 
@@ -735,6 +735,7 @@
     because it arrives as a CSV string.
   Code lifted directly from the Home Assistant core github November, 2023 at
     https://github.com/home-assistant/core/blob/dev/homeassistant/util/color.py.
+  Brightness is assumed to be 100%
   
   SAMPLE USAGE:
     {% from 'color_multi_tool.jinja' import rgb2xy %}
@@ -804,6 +805,7 @@
     because it arrives as a CSV string.
   Code lifted directly from the Home Assistant core github November, 2023 at
     https://github.com/home-assistant/core/blob/dev/homeassistant/util/color.py.
+  Brightness is assumed to be 100%
   
   SAMPLE USAGE:
     {% from 'color_multi_tool.jinja' import xy2rgb %}
@@ -876,6 +878,7 @@
     because it arrives as a CSV string.
   Code lifted directly from the Home Assistant core github November, 2023 at
     https://github.com/home-assistant/core/blob/dev/homeassistant/util/color.py.
+  Brightness is assumed to be 100%
 
   SAMPLE USAGE:
     {% from 'color_multi_tool.jinja' import hs2rgb %}
@@ -889,15 +892,15 @@
 -#}
 {#- First a test to make sure this is a list -#}
 {%- if hsl is list -%}
-  {%- set fH = hsl[0] | float(0) -%}
-  {%- set fS = hsl[1] | float(0) -%}
-  {%- set fB = 100 -%}
+  {%- set fH = (hsl[0] | float(0)) -%}
+  {%- set fS = (hsl[1] | float(0)) / 100 -%}
+  {%- set fB = 1 -%}
   {%- if fS != 0.0 -%}
     {%- set r = 0 -%}
     {%- set g = 0 -%}
     {%- set b = 0 -%}
     {%- set h = fH / 60 -%}
-    {%- set f = h - ((h + 0.5) | int(0)) -%}
+    {%- set f = h - (h | round(1, 'floor')) -%}
     {%- set p = fB * (1 - fS) -%}
     {%- set q = fB * (1 - fS * f) -%}
     {%- set t = fB * (1 - (fS * (1 - f))) -%}
@@ -930,7 +933,7 @@
     {%- set G = g -%}
     {%- set B = b -%}
   {%- else -%}
-    {#- Color started as black -#}
+    {#- Color started as white -#}
     {%- set fV = (fB * 255) | int(0) -%}
     {%- set R = fV -%}
     {%- set G = fV -%}
@@ -944,3 +947,98 @@
 {%- endif -%}
 {{ R }},{{ G }},{{ B }}
 {% endmacro %}
+
+
+{% macro rgb2hs(rgbl) %}
+{#-
+  This will return a CSV string that will convert to a list in the x,y format
+    from the rgb list provided.
+  Be sure to convert this to a list when you use it on the other end
+    because it arrives as a CSV string.
+  Code lifted directly from the here November, 2023 at
+    https://www.cs.rit.edu/~ncs/color/t_convert.html#RGB%20to%20HSV%20&%20HSV%20to%20RGB.
+  Brightness is assumed to be 100%
+  
+  SAMPLE USAGE:
+    {% from 'color_multi_tool.jinja' import rgb2hs %}
+    {% set _rgb2hs = rgb2hs(rgbl).split(",") | list -%}
+    [{{ _rgb2hs[0]|float(0)|round(3) }}, {{ _rgb2hs[1]|float(0)|round(3) }}]
+
+  REMEMBER:
+    Everything returned from a macro template is a string, so for
+    conventional usage of colors the result needs to be converted to a
+    list as shown in the example above.
+-#}
+{#- First tests to make sure this is a list -#}
+{%- if rgbl is list -%}
+  {%- set r = rgbl[0] | int(0) -%}
+  {%- set g = rgbl[1] | int(0) -%}
+  {%- set b = rgbl[2] | int(0) -%}
+  {%- if r + g + b != 0 -%}
+    {%- set min = [r, g, b] | min -%}
+    {%- set max = [r, g, b] | max -%}
+  {#- Set brightness to 100% -#}
+    {#- set _V = max (alternate) -#}
+    {%- set _V = 255 -%}
+  {#- Calculate S -#}
+    {%- set delta = max-min -%}
+    {%- set _S = (delta / max) * 100 -%}
+  {#- Calculate H -#}
+    {%- if r == max -%}
+      {#- between yellow & magenta -#}
+      {%- set _H = ( g - b ) / delta -%}
+    {%- elif g == max -%}
+      {#- between cyan & yellow -#}
+      {%- set _H = 2 + ( b - r ) / delta -%}
+    {%- else -%}
+      {#- between magenta & cyan -#}
+      {%- set _H = 4 + ( r - g ) / delta -%}
+    {%- endif -%}
+    {%- set _H = _H * 60 -%}
+    {%- if _H < 0 -%}
+      {%- set _H = _H + 360 -%}
+    {%- endif -%}
+  {#- Calculated output -#}
+    {%- set H = _H -%}
+    {%- set S = _S -%}
+    {%- set V = _V -%}
+  {%- else -%}
+    {#- Color started as black -#}
+    {%- set H = 0.0 -%}
+    {%- set S = 0.0 -%}
+    {%- set V = 0.0 -%}
+  {%- endif -%}
+{%- else -%}
+  {#- Input was not a list -#}
+  {%- set H = 0.0 -%}
+  {%- set S = 0.0 -%}
+  {%- set V = 0.0 -%}
+{%- endif -%}
+{{ H | round(3) }},{{ S | round(3) }}
+{% endmacro %}
+
+{#-
+Testing Code for developer console:
+{% from 'color_multi_tool.jinja' import random_name, random_xy, random_hs, random_rgb, name2rgb, rgb2xy, xy2rgb, hs2rgb, rgb2hs %}
+macro random name: {{ random_name() }}
+macro random xy list: {% set _rxy = random_xy().split(",") | list -%}
+{{ [_rxy[0]|float|round(3),_rxy[1]|float|round(3)] }}
+macro random hs list: {% set _rhs = random_hs().split(",") | list -%}
+{{ [_rhs[0]|float|round(2),_rhs[1]|float|round(2)] }}
+macro random rgb list: {% set _rrgb = random_rgb().split(",") | list -%}
+{{ [_rrgb[0]|int(0),_rrgb[1]|int(0),_rrgb[2]|int(0)] }}
+
+macro name to rgb list: {% set _nrgb_name = random_name() %}
+{%- set _nrgb = name2rgb(_nrgb_name).split(",") | list -%}
+{{- _nrgb_name -}}
+{{ [_nrgb[0]|int(0),_nrgb[1]|int(0),_nrgb[2]|int(0)] }}
+macro rgb to xy list: {% set _rgb2zy = rgb2xy(_nrgb).split(",") | list -%}
+{{ [_rgb2zy[0]|float|round(3),_rgb2zy[1]|float|round(3)] }}
+macro xy to rgb list: {% set _xy2rgb = xy2rgb(_rgb2zy).split(",") | list -%}
+{{ [_xy2rgb[0]|int(0),_xy2rgb[1]|int(0),_xy2rgb[2]|int(0)] }}
+
+macro hs to rgb list: {% set _hs2rgb = hs2rgb(_rhs).split(",") | list -%}
+{{ [_hs2rgb[0]|int(0),_hs2rgb[1]|int(0),_hs2rgb[2]|int(0)] }}
+macro rgb to hs list: {% set _rgb2hs = rgb2hs(_hs2rgb).split(",") | list -%}
+{{[ _rgb2hs[0]|float(0)|round(3),_rgb2hs[1]|float(0)|round(3)] }}
+-#}
