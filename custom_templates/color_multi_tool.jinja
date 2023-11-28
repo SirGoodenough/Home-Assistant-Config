@@ -631,7 +631,7 @@
   SAMPLE USAGE:
     {% from 'color_multi_tool.jinja' import random_xy %}
     {% set _rxy = random_xy().split(",") | list -%}
-    {{ [_rxy[0]|float|round(3),_rxy[1]|float|round(3)] }}
+    {{ _rxy }}
 
   REMEMBER:
     Everything returned from a macro template is a string, so for
@@ -639,9 +639,9 @@
     list as shown in the example above.
 -#}
 
-{%- set X = 0.001*(range(1000)|random) | float(0) -%}
-{%- set Y = 0.001*(range(1000)|random) | float(0) -%}
-{{ X }},{{ Y }}
+{%- set X = (0.001*(range(1000)|random)) | round(3, 'floor') | float(0) -%}
+{%- set Y = (0.001*(range(1000)|random)) | round(3, 'floor') | float(0) -%}
+{{- X -}},{{- Y -}}
 {% endmacro %}
 
 {% macro random_hs() %}
@@ -654,16 +654,16 @@
   SAMPLE USAGE:
     {% from 'color_multi_tool.jinja' import random_hs %}
     {% set _rhs = random_hs().split(",") | list -%}
-    {{ [_rhs[0]|float|round(2),_rhs[1]|float|round(2)] }}
+    {{ _rhs }}
 
   REMEMBER:
     Everything returned from a macro template is a string, so for
     conventional usage of colors the result needs to be converted to a
     list as shown in the example above.
 -#}
-{%- set H = 0.01*(range(36000)|random) | float(0) -%}
-{%- set S = 0.01*(range(10000)|random) | float(0) -%}
-{{ H }},{{ S }}
+{%- set H = 0.01*(range(36000)|random) | round(2, 'floor') | float(0) -%}
+{%- set S = 0.01*(range(10000)|random) | round(2, 'floor') | float(0) -%}
+{{- H -}},{{- S -}}
 {% endmacro %}
 
 {% macro random_rgb() %}
@@ -676,7 +676,7 @@
   SAMPLE USAGE:
     {% from 'color_multi_tool.jinja' import random_rgb %}
     {% set _rrgb = random_rgb().split(",") | list -%}
-    {{ [_rrgb[0]|int(0),_rrgb[1]|int(0),_rrgb[2]|int(0)] }}
+    {{ _rrgb }}
 
   REMEMBER:
     Everything returned from a macro template is a string, so for
@@ -686,7 +686,7 @@
 {%- set R = (range(255)|random) | int(0) -%}
 {%- set G = (range(255)|random) | int(0) -%}
 {%- set B = (range(255)|random) | int(0) -%}
-{{ R }},{{ G }},{{ B }}
+{{- R -}},{{- G -}},{{- B -}}
 {% endmacro %}
 
 {% macro name2rgb(color_name) %}
@@ -707,7 +707,7 @@
   
   SAMPLE USAGE:
     {% from 'color_multi_tool.jinja' import name2rgb %}
-    {{- name2rgb(color_name) -}}
+    {{ name2rgb(color_name) }}
 
   REMEMBER:
     Everything returned from a macro template is a string, so for
@@ -724,7 +724,7 @@
   {%- set G = 0 -%}
   {%- set B = 0 -%}
 {%- endif -%}
-{{ R }},{{ G }},{{ B }}
+{{- R -}},{{- G -}},{{- B -}}
 {% endmacro %}
 
 {% macro rgb2xy(rgbl) %}
@@ -739,7 +739,7 @@
   
   SAMPLE USAGE:
     {% from 'color_multi_tool.jinja' import rgb2xy %}
-    {% set _rgb2xy = rgb2xy(rgbl).split(",") | list -%}
+    {% set _rgb2zy = rgb2xy(_nrgb).split(",") | list -%}
     {{ [_rgb2zy[0]|float|round(3),_rgb2zy[1]|float|round(3)] }}
 
   REMEMBER:
@@ -782,8 +782,8 @@
     {%- set x = X / (X + Y + Z) -%}
     {%- set y = Y / (X + Y + Z) -%}
       {#- Change the output names to match this macro -#}
-    {%- set X = x -%}
-    {%- set Y = y -%}
+    {%- set X = x | float(0) | round(3) -%}
+    {%- set Y = y | float(0) | round(3) -%}
   {%- else -%}
     {#- Color started as black -#}
     {%- set X = 0.0 -%}
@@ -794,7 +794,7 @@
   {%- set X = 0.0 -%}
   {%- set Y = 0.0 -%}
 {%- endif -%}
-{{ X | round(3) }},{{ Y | round(3) }}
+{{- X -}},{{- Y -}}
 {% endmacro %}
 
 {% macro xy2rgb(xyl) %}
@@ -867,7 +867,7 @@
   {%- set G = 0 -%}
   {%- set B = 0 -%}
 {%- endif -%}
-{{ R }},{{ G }},{{ B }}
+{{- R -}},{{- G -}},{{- B -}}
 {% endmacro %}
 
 {% macro hs2rgb(hsl) %}
@@ -929,15 +929,15 @@
       {%- set g = (p * 255) | int(0) -%}
       {%- set b = (q * 255) | int(0) -%}
     {%- endif -%}
-    {%- set R = r -%}
-    {%- set G = g -%}
-    {%- set B = b -%}
+    {%- set R = r | int(0) -%}
+    {%- set G = g | int(0) -%}
+    {%- set B = b | int(0) -%}
   {%- else -%}
     {#- Color started as white -#}
     {%- set fV = (fB * 255) | int(0) -%}
-    {%- set R = fV -%}
-    {%- set G = fV -%}
-    {%- set B = fV -%}
+    {%- set R = fV | int(0) -%}
+    {%- set G = fV | int(0) -%}
+    {%- set B = fV | int(0) -%}
   {%- endif -%}
 {%- else -%}
   {#- Input was not a list -#}
@@ -945,7 +945,7 @@
   {%- set G = 0 -%}
   {%- set B = 0 -%}
 {%- endif -%}
-{{ R }},{{ G }},{{ B }}
+{{- R -}},{{- G -}},{{- B -}}
 {% endmacro %}
 
 
@@ -999,9 +999,9 @@
       {%- set _H = _H + 360 -%}
     {%- endif -%}
   {#- Calculated output -#}
-    {%- set H = _H -%}
-    {%- set S = _S -%}
-    {%- set V = _V -%}
+    {%- set H = _H | float(0) | round(3) -%}
+    {%- set S = _S | float(0) | round(3) -%}
+    {%- set V = _V | float(0) | round(3) -%}
   {%- else -%}
     {#- Color started as black -#}
     {%- set H = 0.0 -%}
@@ -1014,8 +1014,85 @@
   {%- set S = 0.0 -%}
   {%- set V = 0.0 -%}
 {%- endif -%}
-{{ H | round(3) }},{{ S | round(3) }}
+{{- H -}},{{- S -}}
 {% endmacro %}
+
+{% macro hs2xy(hsl) %}
+{#-
+  This will return a CSV string that will convert to a list in the hs format
+    from the xy list provided.
+  Be sure to convert this to a list when you use it on the other end
+    because it arrives as a CSV string.
+  This converter uses other templates provided in this Custom Jinja Template.
+  Brightness is assumed to be 100%
+
+  SAMPLE USAGE:
+    {% from 'color_multi_tool.jinja' import hs2xy %}
+    {% set _hs2xy = hs2xy(hsl).split(",") | list -%}
+    {{ _hs2xy }}
+
+  REMEMBER:
+    Everything returned from a macro template is a string, so for
+    conventional usage of colors the result needs to be converted to a
+    list as shown in the example above.
+-#}
+{#- First a test to make sure this is a list -#}
+{%- if hsl is list -%}
+  {%- set _hs2rgb = hs2rgb(hsl).split(",") | list -%}
+  {%- set _rgb2xy = rgb2xy(_hs2rgb).split(",") | list -%}
+{#- Calculated output -#}
+  {%- set X = _rgb2xy[0] | float(0.0) | round(3) -%}
+  {%- set Y = _rgb2xy[1] | float(0.0) | round(3) -%}
+{%- else -%}
+  {#- Input was not a list -#}
+  {%- set X = 0.0 -%}
+  {%- set Y = 0.0 -%}
+{%- endif -%}
+{{- X -}},{{- Y -}}
+{% endmacro %}
+
+
+{% macro xy2hs(xyl) %}
+{#-
+  This will return a CSV string that will convert to a list in the hs format
+    from the xy list provided.
+  Be sure to convert this to a list when you use it on the other end
+    because it arrives as a CSV string.
+  This converter uses other templates provided in this Custom Jinja Template.
+  Brightness is assumed to be 100%
+
+  SAMPLE USAGE:
+    {% from 'color_multi_tool.jinja' import xy2hs %}
+    {% set _xy2hs = xy2hs(xyl).split(",") | list -%}
+    {{ _xy2hs }}
+
+  REMEMBER:
+    Everything returned from a macro template is a string, so for
+    conventional usage of colors the result needs to be converted to a
+    list as shown in the example above.
+-#}
+{#- First a test to make sure this is a list -#}
+{%- if xyl is list -%}
+  {%- set _xy2rgb = xy2rgb(xyl).split(",") | list -%}
+  {%- set _rgb2hs = rgb2hs(_xy2rgb).split(",") | list -%}
+{#- Calculated output -#}
+  {%- set H = _rgb2hs[0] | float(0.0) | round(3) -%}
+  {%- set S = _rgb2hs[1] | float(0.0) | round(3) -%}
+{%- else -%}
+  {#- Input was not a list -#}
+  {%- set H = 0.0 -%}
+  {%- set S = 0.0 -%}
+{%- endif -%}
+{{- H -}},{{- S -}}
+{% endmacro %}
+
+
+
+
+
+
+
+
 
 {#-
 Testing Code for developer console:
