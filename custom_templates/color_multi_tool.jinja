@@ -1036,10 +1036,12 @@
 {#- First a test to make sure this is a list -#}
 {%- if hsl is list -%}
   {%- set _hs2rgb = hs2rgb(hsl).split(",") | list -%}
-  {%- set _rgb2xy = rgb2xy(_hs2rgb).split(",") | list -%}
+  {%- set _hs2rgb_list = [_hs2rgb[0]|int(0),_hs2rgb[1]|int(0),_hs2rgb[2]|int(0)] -%}}
+  {%- set _rgb2xy = rgb2xy(_hs2rgb_list).split(",") | list -%}
+  {%- set _rgb2xy_list = [_rgb2zy[0]|float(0)|round(3),_rgb2zy[1]|float(0)|round(3)] -%}
 {#- Calculated output -#}
-  {%- set X = _rgb2xy[0] | float(0.0) | round(3) -%}
-  {%- set Y = _rgb2xy[1] | float(0.0) | round(3) -%}
+  {%- set X = _rgb2xy_list[0] | float(0.0) | round(3) -%}
+  {%- set Y = _rgb2xy_list[1] | float(0.0) | round(3) -%}
 {%- else -%}
   {#- Input was not a list -#}
   {%- set X = 0.0 -%}
@@ -1070,10 +1072,12 @@
 {#- First a test to make sure this is a list -#}
 {%- if xyl is list -%}
   {%- set _xy2rgb = xy2rgb(xyl).split(",") | list -%}
-  {%- set _rgb2hs = rgb2hs(_xy2rgb).split(",") | list -%}
+  {%- set _xy2rgb_list = [_xy2rgb[0]|int(0),_xy2rgb[1]|int(0),_xy2rgb[2]|int(0)] -%}
+  {%- set _rgb2hs = rgb2hs(_xy2rgb_list).split(",") | list -%}
+  {%- set _rgb2hs_list = [_rgb2hs[0]|float(0)|round(3),_rgb2hs[1]|float(0)|round(3)] -%}
 {#- Calculated output -#}
-  {%- set H = _rgb2hs[0] | float(0.0) | round(3) -%}
-  {%- set S = _rgb2hs[1] | float(0.0) | round(3) -%}
+  {%- set H = _rgb2hs_list[0] | float(0.0) | round(3) -%}
+  {%- set S = _rgb2hs_list[1] | float(0.0) | round(3) -%}
 {%- else -%}
   {#- Input was not a list -#}
   {%- set H = 0.0 -%}
@@ -1112,11 +1116,11 @@ macro xy to rgb list: {% set _xy2rgb = xy2rgb(_rgb2zy).split(",") | list -%}
 macro hs to rgb list: {% set _hs2rgb = hs2rgb(_rhs).split(",") | list -%}
 {{ [_hs2rgb[0]|int(0),_hs2rgb[1]|int(0),_hs2rgb[2]|int(0)] }}
 macro rgb to hs list: {% set _rgb2hs = rgb2hs(_hs2rgb).split(",") | list -%}
-{{[ _rgb2hs[0]|float(0)|round(3),_rgb2hs[1]|float(0)|round(3)] }}
+{{ [_rgb2hs[0]|float(0)|round(3),_rgb2hs[1]|float(0)|round(3)] }}
 
 macro xy to hs list: {% set _xy2hs = xy2hs(_rxy).split(",") | list -%}
-{{[ _xy2hs[0]|float(0)|round(3),_xy2hs[1]|float(0)|round(3)] }}
+{{ [_xy2hs[0]|float(0)|round(3),_xy2hs[1]|float(0)|round(3)] }}
 macro hs to xy list: {% set _hs2xy = hs2xy(_xy2hs).split(",") | list -%}
-{{[ _hs2xy[0]|float(0)|round(3),_hs2xy[1]|float(0)|round(3)] }}
+{{ [_hs2xy[0]|float(0)|round(3),_hs2xy[1]|float(0)|round(3)] }}
 
 -#}
