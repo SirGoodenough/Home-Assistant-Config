@@ -97,10 +97,10 @@
     path: SirGoodenough/Stage_1_Temperature_Control.yaml
     input:
       climate_e: climate.living_room_2
-      maxTemp: 69.5
+      maxTemp: 69.7
       ramp_start_time: 05:19:15
       ramp_end_time: 07:48:54
-      rampRate: 0.7
+      rampRate: 0.3
       interval:
         hours: 0
         minutes: 2

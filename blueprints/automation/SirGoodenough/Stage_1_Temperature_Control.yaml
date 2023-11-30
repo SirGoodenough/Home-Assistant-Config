@@ -206,7 +206,7 @@ action:
             <= _maxTemp
             and
             state_attr(_climate_e, "temperature")
-            < [state_attr(_climate_e, "current_temperature")
+            <= [state_attr(_climate_e, "current_temperature")
             | float(_maxTemp - _rampRate) + _rampRate,
             _maxTemp] | min }}
           then:

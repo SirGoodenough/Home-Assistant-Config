@@ -158,7 +158,7 @@
       disable_time: '20:27:36'
       hold_period:
         hours: 0
-        minutes: 5
+        minutes: 2
         seconds: 0
   mode: queued
   max: 10
@@ -252,7 +252,7 @@
       disable_time: '20:27:36'
       hold_period:
         hours: 0
-        minutes: 6
+        minutes: 3
         seconds: 0
   mode: queued
   max: 10

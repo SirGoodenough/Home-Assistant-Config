@@ -141,7 +141,7 @@ reset_nag:
 feeding_pump_silence:
   alias: Make the Feeding Fump beep stop.
   sequence:
-    - service: switch.toggle
+    - service: switch.turn_off
       target:
         entity_id: switch.bot_108e
     - service: script.media_player_boink
