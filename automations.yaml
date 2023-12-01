@@ -100,7 +100,7 @@
       maxTemp: 69.7
       ramp_start_time: 05:19:15
       ramp_end_time: 07:48:54
-      rampRate: 0.3
+      rampRate: 1
       interval:
         hours: 0
         minutes: 2

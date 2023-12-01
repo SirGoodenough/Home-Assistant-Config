@@ -18,10 +18,12 @@
       id: upstairs
 
     variables:
+      # Generate a randon scene ID
       scene_id: "color_flip_{{ this.context.id | lower }}"
 
     action:
-    - service: script.media_player_fire_alert
+    - alias: make some noise on the speakers
+      service: script.media_player_fire_alert
     - delay: 00:00:03
     - service: scene.create
       data:
@@ -47,7 +49,8 @@
                 bright_pct: 100
                 entities: light.grp_kitch,light.grp_jens_color
             - delay: 00:00:03
-        - service: script.turn_on
+        - alias: Voice alert to say where the problem is
+          service: script.turn_on
           target:
             entity_id: >
               {% if trigger.id == 'basement' %}

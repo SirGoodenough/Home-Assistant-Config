@@ -51,11 +51,12 @@ blueprint:
           max: 5
           unit_of_measurement: Degrees
           mode: slider
-          step: 0.1
+          step: 0.5
     interval:
       name: Hold Period
       description: >
         Set this delay between thermostat temp setting events.
+        If it changes the goal set temp, it waits this long before it rechecks.
         Basically this rate limits stuff.
       default:
         hours: 0
@@ -147,17 +148,17 @@ trigger:
 
 variables:
   _climate_e: !input climate_e
-    # seconds between re-setting the thermostat
+    # Seconds between re-setting the thermostat.
   _interval: !input interval
-    # Stop the sequence if you get to this temp
+    # Stop the sequence if you get to this temp.
   _maxTemp: !input maxTemp
-    # Stop the sequence if it get to this time
+    # Stop the sequence if it get to this time.
   _ramp_end_time: !input ramp_end_time
     # Set to current temp plus this number each time.
   _rampRate: !input rampRate
     # Should we run the occupancy test?
   _occ_test: !input occ_test
-    # Zone to use for occulancy test
+    # Zone to use for occulancy test only used if _occ_test is true.
   _t_zone: !input t_zone
 
 condition: 
@@ -206,7 +207,7 @@ action:
             <= _maxTemp
             and
             state_attr(_climate_e, "temperature")
-            <= [state_attr(_climate_e, "current_temperature")
+            != [state_attr(_climate_e, "current_temperature")
             | float(_maxTemp - _rampRate) + _rampRate,
             _maxTemp] | min }}
           then:
