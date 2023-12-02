@@ -1,5 +1,5 @@
 blueprint:
-  name: State 1 temperature ramp control-2023-11-22
+  name: State 1 temperature ramp control-2023-12-02
   author: SirGoodenough
   description: >
     This ramps up the thermostat just enough at a time to keep your stage 2 
@@ -7,14 +7,15 @@ blueprint:
     the morning when the system is recovering from overnight thermostat set-back,
     and you don't want it to kick in the stage 2 expensive heat source.
 
+    There is an optional facility to disable this based on zone occupancy.
+    Also there is a roll-your-own condition statement for things I haven't thought of.
 
     📩 There is not an official version control system for Blueprints. However I have
     found something that comes pretty close. It is not perfect, but for **MOST**
     Blueprints, it does just fine. I encourage you to check this script out and use
     it to easily check if I have updated this blueprint. 🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
-
-    [Community link for this blueprint]()
+    [Community link for this blueprint](https://community.home-assistant.io/t/stage-1-temperature-control-for-climate-entity/649401)
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Stage_1_Temperature_Control.yaml
   homeassistant:
     min_version: 2023.8.0
@@ -80,7 +81,7 @@ blueprint:
         time: {}
     weekday:
       name: Day of the week to use the Automation
-      description: (#9)
+      description: Control temp on these days with this automation.
       default:
         - mon
         - tue
