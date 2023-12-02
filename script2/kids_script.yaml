@@ -20,32 +20,5 @@ random_color:
         {% from 'color_multi_tool.jinja' import random_hs %}
         {% set _rhs = random_hs().split(",") | list -%}
         [{{ _rhs[0]|float(0)|round(2) }}, {{ _rhs[1]|float(0)|round(2) }}]
-      # hs_color: >-
-      #   {% set H = 0.01*(range(36000)|random) | float(0) | round(2) %}
-      #   {% set S = 0.01*(range(10000)|random) | float(0) | round(2) %}
-      #   [{{ H }}, {{ S }}]
-
-      # xy_color: >-
-      #   {% from 'color_multi_tool.jinja' import random_xy %}
-      #   {% set _rxy = random_xy().split(",") | list -%}
-      #   [{{ _rxy[0]|float(0)|round(3) }}, {{ _rxy[1]|float(0)|round(3) }}]
-      # xy_color: >-
-      #   {% set X = 0.001*(range(1000)|random) | float(0) | round(3) %}
-      #   {% set Y = 0.001*(range(1000)|random) | float(0) | round(3) %}
-      #   [{{ X }}, {{ Y }}]
-
-      # rgb_color: >-
-      #   {% from 'color_multi_tool.jinja' import random_rgb %}
-      #   {% set _rrgb = random_rgb().split(",") | list -%}
-      #   [{{ _rrgb[0]|int(0) }}, {{ _rrgb[1]|int(0) }}, {{ _rrgb[2]|int(0) }}]
-      # rgb_color: >-
-      #   {% set R = (range(255)|random) | int(0) %}
-      #   {% set G = (range(255)|random) | int(0) %}
-      #   {% set B = (range(255)|random) | int(0) %}
-      #   [{{ R }}, {{ G }}, {{ B }}]
-
-      # color_name: >-
-      #   {% from 'color_multi_tool.jinja' import random_name %}
-      #   {{- random_name() -}}
   mode: single
   icon: mdi:traffic-light-outline
