@@ -18,7 +18,7 @@
       id: upstairs
 
     variables:
-      # Generate a randon scene ID
+      # Generate a random scene ID
       scene_id: "color_flip_{{ this.context.id | lower }}"
 
     action:
