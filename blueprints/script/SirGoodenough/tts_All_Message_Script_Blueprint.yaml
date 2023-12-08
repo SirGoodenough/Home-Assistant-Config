@@ -1,5 +1,5 @@
 blueprint:
-  name: TTS_say_Message-2023-09-29
+  name: TTS_say_Message-2023-12-07
   author: SirGoodenough
   description: >
     📣 This is a script that can use any of the 11 integrated TTS Platforms
@@ -65,7 +65,7 @@ blueprint:
     [Community link for this blueprint](https://community.home-assistant.io/t/tts-script-blueprint-for-all-11-ha-core-tts-flavors/400700)
 
   domain: script
-  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml
+  # source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml
   homeassistant:
     min_version: 2023.8.0
   input:
@@ -929,22 +929,32 @@ fields:
           domain: media_player
 
 variables:
-    # Do something before sending the TTS
+# Do something before sending the TTS
   my_b4_action: !input "b4_action"
-    # Do something after sending the TTS
+# Do something after sending the TTS
   my_after_action: !input "after_action"
-    # Get the Integration for templating
+# Get the Integration for templating
   my_tts: !input "TTS"
-    # Get the message to select from !input or live data
+# Get the message to select from !input or live data
   announcement_message: !input "announcement_message"
-  my_message: '{% if live_message %} {{ live_message }} {% else %} {{ announcement_message }} {% endif %}'
-    # Get the speaker to select from !input or live data
+  my_message: >
+    {% if live_message is defined %}
+      {{ live_message }}
+    {% else %}
+      {{ announcement_message }}
+    {% endif %}
+# Get the speaker to select from !input or live data
   speaker_target: !input speaker_target
-  my_speaker:  '{% if live_speaker %} {{ live_speaker }} {% else %} {{ speaker_target }} {% endif %}'
-    # Get baidu values for templating
+  my_speaker: >
+    {% if live_speaker is defined %}
+      {{ live_speaker }}
+    {% else %}
+      {{ speaker_target }}
+    {% endif %}
+# Get baidu values for templating
   baidu_person_val: !input "baidu_person"
   my_baidu_person: "{{ baidu_person_val | int(0) }}"
-    # Get Piper value for templating
+# Get Piper value for templating
   piper_voice: !input piper_voice
 
 sequence:

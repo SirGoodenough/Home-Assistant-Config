@@ -1542,7 +1542,7 @@
                   "customTheme": true
                 },
                 {
-                  "entity": "light.jensneb_light_mode"
+                  "entity": "light.jens_night_light"
                 },
                 {
                   "entity": "binary_sensor.aromatherapy_water"
@@ -2573,6 +2573,23 @@
                 }
               ],
               "title": "ThermoPI Furnace"
+            },
+            {
+              "graph": "line",
+              "type": "sensor",
+              "entity": "sensor.gw2000b_v2_2_4_outdoor_temperature",
+              "detail": 2,
+              "icon": "mdi:home-thermometer-outline",
+              "name": "Outside pole"
+            },
+            {
+              "graph": "line",
+              "type": "sensor",
+              "entity": "sensor.gw2000b_v2_2_4_feels_like_temperature",
+              "detail": 2,
+              "name": "outside Feels Like",
+              "icon": "mdi:home-thermometer",
+              "hours_to_show": 1
             }
           ],
           "icon": "mdi:thermometer-lines",

@@ -1,5 +1,5 @@
 blueprint:
-  name: Media Player Script Blueprint 2023-08-07
+  name: Media Player Script Blueprint 2023-12-07
   author: SirGoodenough
   description: >
     This provides a way to play canned media files with the big 
@@ -14,7 +14,7 @@ blueprint:
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/script-blueprint-to-play-media-player-files-not-an-automation-blueprint/371988)
-  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.yaml
+  # source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.yaml
   domain: script
   homeassistant:
     min_version: 2023.8.0
@@ -89,15 +89,30 @@ fields:
         type: text
 
 variables:
-    # Get the speaker to select from !input or live data
+# Get the speaker to select from !input or live data
   speaker_target: !input speaker_target
-  my_speaker: '{% if otf_speaker_target %} {{ otf_speaker_target }} {% else %} {{ speaker_target }} {% endif %}'
-    # Get the media file to select from !input or live data
+  my_speaker: >
+    {% if not otf_speaker_target in ("none", "null", "unavailable", "") %}
+      {{ otf_speaker_target }}
+    {% else %}
+      {{ speaker_target }}
+    {% endif %}
+# Get the media file to select from !input or live data
   file_2_play: !input file_2_play
-  my_file_2_play: '{% if otf_file_2_play %} {{ otf_file_2_play }} {% else %} {{ file_2_play }} {% endif %}'
-    # Get the media type to select from !input or live data
+  my_file_2_play: >
+    {% if not otf_file_2_play in ("none", "null", "unavailable", "") %}
+      {{ otf_file_2_play }}
+    {% else %}
+      {{ file_2_play }}
+    {% endif %}
+# Get the media type to select from !input or live data
   media_type: !input media_type
-  my_media_type: '{% if otf_media_type %} {{ otf_media_type }} {% else %} {{ media_type }} {% endif %}'
+  my_media_type: >
+    {% if not otf_media_type in ("none", "null", "unavailable", "") %}
+      {{ otf_media_type }}
+    {% else %}
+      {{ media_type }}
+    {% endif %}
 
 sequence:
 - alias: Media Player Blueprint Script
