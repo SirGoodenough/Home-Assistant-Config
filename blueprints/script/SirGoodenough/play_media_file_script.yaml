@@ -92,35 +92,41 @@ variables:
 # Get the speaker to select from !input or live data
   speaker_target: !input speaker_target
   my_speaker: >
-    {% if not otf_speaker_target in ("none", "null", "unavailable", "") %}
+    {% if not states(otf_speaker_target) in ["unknown", "unavailable", "none", "null", ""] %}
       {{ otf_speaker_target }}
-    {% else %}
+    {% elif not states(speaker_target) in ["unknown", "unavailable", "none", "null", ""] %}
       {{ speaker_target }}
+    {% else %}
+      "unknown: No valid entity provided. play_media_file_script.yaml"
     {% endif %}
 # Get the media file to select from !input or live data
   file_2_play: !input file_2_play
   my_file_2_play: >
-    {% if not otf_file_2_play in ("none", "null", "unavailable", "") %}
+    {% if not otf_file_2_play in ["unknown", "unavailable", "none", "null", ""] %}
       {{ otf_file_2_play }}
-    {% else %}
+    {% elif not file_2_play in ["unknown", "unavailable", "none", "null", ""] %}
       {{ file_2_play }}
+    {% else %}
+      "unknown: No filename provided. play_media_file_script.yaml"
     {% endif %}
 # Get the media type to select from !input or live data
   media_type: !input media_type
   my_media_type: >
-    {% if not otf_media_type in ("none", "null", "unavailable", "") %}
+    {% if not otf_media_type in ["unknown", "unavailable", "none", "null", ""] %}
       {{ otf_media_type }}
-    {% else %}
+    {% elif not media_type in ["unknown", "unavailable", "none", "null", ""] %}
       {{ media_type }}
+    {% else %}
+      "unknown: No media_type name provided. play_media_file_script.yaml"
     {% endif %}
 
 sequence:
-- alias: Media Player Blueprint Script
-  service: media_player.play_media
-  data:
-    entity_id: "{{my_speaker}}"
-    media_content_id: "{{my_file_2_play}}"
-    media_content_type: "{{my_media_type}}"
+  - alias: Media Player Blueprint Script
+    service: media_player.play_media
+    data:
+      entity_id: "{{my_speaker}}"
+      media_content_id: "{{my_file_2_play}}"
+      media_content_type: "{{my_media_type}}"
 
 mode: queued
 icon: mdi-music-clef-bass

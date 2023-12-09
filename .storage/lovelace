@@ -3059,6 +3059,21 @@
                 }
               ],
               "title": "Bedroom"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "light.wled"
+                },
+                {
+                  "entity": "select.wled_playlist"
+                },
+                {
+                  "entity": "select.wled_preset"
+                }
+              ],
+              "title": "In_Tree"
             }
           ],
           "icon": "mdi:lightbulb-outline",
