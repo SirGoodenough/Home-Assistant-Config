@@ -28,43 +28,9 @@ tts_first_flush:
       speaker_target: media_player.jen_group
       announcement_message: >-
         {{ (
-          "sechzehn Monde",
-          "achtzehn Monde",
-          "siebzehn Monde",
-          "Hallo Dunkelheit, mein alter Freund",
-          "Ich bin wieder gekommen, um mit dir zu reden",
-          "Weil eine Vision sich sanft schleicht",
-          "Während ich schlief, hinterließ sie ihre Samen",
-          "Und die Vision, die sich in meinem Gehirn festsetzte",
-          "Bleibt immer noch", "Im Klang der Stille",
-          "In ruhelosen Träumen ging ich allein",
-          "Enge Straßen aus Kopfsteinpflaster",
-          "Unter dem Heiligenschein einer Straßenlaterne",
-          "Ich drehte meinen Kragen der Kälte und Feuchtigkeit zu.",
-          "Als meine Augen vom Blitz eines Neonlichts durchbohrt wurden",
-          "Das teilte die Nacht",
-          "Und der Klang der Stille berührte",
-          "Und im nackten Licht sah ich",
-          "Zehntausend Menschen, vielleicht mehr.",
-          "Menschen reden, ohne zu sprechen",
-          "Menschen hören, ohne zuzuhören",
-          "Menschen schreiben Lieder, die Stimmen niemals teilen",
-          "Niemand hat es gewagt",
-          "Störe den Klang der Stille",
-          "Narren sagten: Ich, du weißt es nicht",
-          "Die Stille wächst wie ein Krebsgeschwür",
-          "Höre meine Worte, damit ich dich lehre",
-          "Nimm meine Arme, damit ich dich erreichen kann",
-          "Aber meine Worte fielen wie stille Regentropfen",
-          "Und hallten in den Quellen der Stille wider",
-          "Und das Volk verneigte sich und betete",
-          "Zu dem Neongott, den sie geschaffen hatten",
-          "Und das Schild ließ seine Warnung aufblitzen",
-          "In den Worten, die es formte",
-          "Und das Schild sagte: Die Worte der Propheten.",
-          "Sind an den Wänden der U-Bahn geschrieben",
-          "Und in Mietshäusern",
-          "Und in den Klängen der Stille geflüstert."
+          "Jenny will ein anderes Lied",
+          "Jenny übersetzt nicht gern Sachen",
+          "Jenny hat dieses Lied satt."
         ) | random }}
 
 tts_middle_flush:

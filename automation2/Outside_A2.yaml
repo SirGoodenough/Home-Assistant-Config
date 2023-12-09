@@ -25,7 +25,6 @@
     action:
     - service: script.turn_on
       entity_id: script.garage_outside_lights_on
-    - delay: 00:17:37
     mode: single
     max_exceeded: silent
   #####################################################
