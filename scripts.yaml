@@ -22,3 +22,13 @@ aaaaaaaaaaaterst_climate:
     rampRate: 1.5
   mode: single
   alias: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaclimate2
+media_player_gong:
+  alias: Media Player Gong
+  icon: mdi:ear-hearing
+  use_blueprint:
+    path: SirGoodenough/play_media_file_script.yaml
+    input:
+      speaker_target:
+      - media_player.basement_speaker
+      - media_player.kitchen_speaker
+      file_2_play: media-source://media_source/local/mp3/Metal_Gong-Dianakc-109711828.mp3

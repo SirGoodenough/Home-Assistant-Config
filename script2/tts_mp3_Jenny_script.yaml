@@ -66,8 +66,6 @@ tts_middle_flush:
           "Couldn't be much more from the heart",
           "Forever trusting who we are",
           "And nothing else matters",
-          "eight teen moons",
-          "eight teen teers",
           "Life is ours, we live it our way",
           "All these words, i don't just say",
           "Trust i seek and i find in you",
@@ -149,14 +147,14 @@ media_player_jens_neb:
     input:
       speaker_target: media_player.kitchen_speaker
       file_2_play: media-source://media_source/local/mp3/Mister.mp3
-media_player_gong:
-  alias: Media Player Gong
-  icon: mdi:ear-hearing
-  use_blueprint:
-    path: SirGoodenough/play_media_file_script.yaml
-    input:
-      speaker_target: media_player.jen_group
-      file_2_play: media-source://media_source/local/mp3/Metal_Gong-Dianakc-109711828.mp3
+# media_player_gong:
+#   alias: Media Player Gong
+#   icon: mdi:ear-hearing
+#   use_blueprint:
+#     path: SirGoodenough/play_media_file_script.yaml
+#     input:
+#       speaker_target: media_player.jen_group
+#       file_2_play: media-source://media_source/local/mp3/Metal_Gong-Dianakc-109711828.mp3
 tts_bed_cares_warning:
   alias: TTS Jens Bed Cares Warning
   icon: mdi:sign-caution
