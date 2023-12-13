@@ -86,7 +86,7 @@ blueprint:
 
     [Community link for this blueprint](https://community.home-assistant.io/t/zigbee2mqtt-aqara-magic-cube-t1-pro-ctp-r01-xiaomi-lumi-cagl02/525111)
 
-  # source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.yaml
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.yaml
   domain: automation
   homeassistant:
     min_version: 2023.8.0
@@ -1358,8 +1358,7 @@ action:
                   - parallel:
                       - !input "action_flipped90_any"
                       - alias: These are flip to specific side from any side events
-                        choose:
-                          <<: &flip1
+                        choose: &flip1
                           - conditions: "{{ side == 1 }}"
                             sequence: !input "action_flip_from_any_to_face_1"
                           - conditions: "{{ side == 2 }}"
@@ -1378,7 +1377,7 @@ action:
                       - !input "action_flipped180_any"
                       - alias: These are flip to specific side from any side events
                         choose:
-                          <<: *flip1
+                          *flip1
           - alias: 🫳 ACTION MODE 🫳 Group 1 🍎 These are action events based on the action broken down by side
             choose:
               - conditions: '{{ action == "slide" }}'
