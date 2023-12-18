@@ -97,11 +97,23 @@
     path: SirGoodenough/Stage_1_Temperature_Control.yaml
     input:
       climate_e: climate.living_room_2
-      maxTemp: 69.7
-      ramp_start_time: 05:19:15
-      ramp_end_time: 07:48:54
+      maxTemp: 70.2
+      ramp_start_time: 04:52:15
+      ramp_end_time: 08:15:54
       rampRate: 1
       interval:
         hours: 0
         minutes: 2
         seconds: 19
+- id: '1702550432838'
+  alias: aaMotion Light Control with Illuminance
+  description: ''
+  use_blueprint:
+    path: test/custest.yaml
+    input:
+      ttest:
+      - platform: state
+        entity_id:
+        - binary_sensor.back_door_pir
+        to: 'on'
+      light_switch: light.b_porch_relay

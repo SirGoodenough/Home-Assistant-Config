@@ -315,7 +315,17 @@
               "cards": [
                 {
                   "type": "thermostat",
-                  "entity": "climate.living_room_2"
+                  "entity": "climate.living_room_2",
+                  "features": [
+                    {
+                      "style": "dropdown",
+                      "hvac_modes": [
+                        "off",
+                        "heat"
+                      ],
+                      "type": "climate-hvac-modes"
+                    }
+                  ]
                 },
                 {
                   "type": "sensor",
