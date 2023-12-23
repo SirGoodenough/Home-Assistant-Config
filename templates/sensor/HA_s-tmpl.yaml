@@ -64,6 +64,6 @@
         friendly_name: "Swt"
     - name: template_count
       unique_id: ca5cdd70-9031-4edf-856f-b7613cf0dd75
-      state: "{{ states | map(attribute='entity_id') | map('regex_search','.template') | select('true') | list }}"
+      state: "{{ states | map(attribute='entity_id') | map('regex_search','.template') | select('true') | list | count }}"
       attributes:
         friendly_name: "Tmpl"
