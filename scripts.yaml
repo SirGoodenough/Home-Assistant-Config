@@ -32,3 +32,17 @@ media_player_gong:
       - media_player.basement_speaker
       - media_player.kitchen_speaker
       file_2_play: media-source://media_source/local/mp3/Metal_Gong-Dianakc-109711828.mp3
+'1703533342759':
+  alias: switch light patch
+  use_blueprint:
+    path: test/tts_All.yaml
+    input:
+      switch_trigger_id: switch.b3
+      light_trigger_id: light.bedroom_light
+'1703534622849':
+  alias: switch light patch
+  use_blueprint:
+    path: test/tts_All.yaml
+    input:
+      switch_trigger_id: switch.micro_switch_g2
+      light_trigger_id: light.bmt_hall_socketd

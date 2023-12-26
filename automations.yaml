@@ -117,3 +117,12 @@
         - binary_sensor.back_door_pir
         to: 'on'
       light_switch: light.b_porch_relay
+- id: '1703536254011'
+  alias: switch light patch
+  description: ''
+  use_blueprint:
+    path: test/switch light patch.yaml
+    input:
+      switch_trigger_id: switch.b3
+      light_trigger_id:
+        entity_id: light.b_porch_relay
