@@ -597,8 +597,9 @@
               "type": "conditional",
               "conditions": [
                 {
+                  "condition": "numeric_state",
                   "entity": "sensor.bot_108e_battery",
-                  "state": "20"
+                  "below": 21
                 }
               ],
               "card": {
@@ -616,8 +617,9 @@
               "type": "conditional",
               "conditions": [
                 {
+                  "condition": "numeric_state",
                   "entity": "sensor.jens_kitchen_curtain_battery",
-                  "state": "20"
+                  "below": 26
                 }
               ],
               "card": {
@@ -628,7 +630,7 @@
                   "action": "more-info"
                 },
                 "entity": "sensor.jens_kitchen_curtain_battery",
-                "icon": "mdi:battery-check",
+                "icon": "mdi:battery-30",
                 "show_state": true
               }
             },
@@ -636,8 +638,9 @@
               "type": "conditional",
               "conditions": [
                 {
+                  "condition": "numeric_state",
                   "entity": "sensor.jens_window_curtain_battery",
-                  "state": "20"
+                  "below": 26
                 }
               ],
               "card": {
@@ -648,8 +651,28 @@
                   "action": "more-info"
                 },
                 "entity": "sensor.jens_window_curtain_battery",
-                "icon": "mdi:battery-check",
+                "icon": "mdi:battery-30",
                 "show_state": true
+              }
+            },
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "condition": "numeric_state",
+                  "entity": "sensor.silence_battery",
+                  "below": 21
+                }
+              ],
+              "card": {
+                "show_name": true,
+                "show_icon": true,
+                "type": "button",
+                "tap_action": {
+                  "action": "more-info"
+                },
+                "entity": "sensor.silence_battery",
+                "icon": "mdi:battery-20-bluetooth"
               }
             },
             {
@@ -723,8 +746,9 @@
               "type": "conditional",
               "conditions": [
                 {
+                  "condition": "numeric_state",
                   "entity": "sensor.lumi_lumi_sensor_cube_battery",
-                  "state": "20"
+                  "below": 21
                 }
               ],
               "card": {
@@ -740,15 +764,16 @@
                 },
                 "show_state": true,
                 "name": "Gertle Low Battery",
-                "icon": "mdi:battery-check-outline"
+                "icon": "mdi:battery-30"
               }
             },
             {
               "type": "conditional",
               "conditions": [
                 {
-                  "entity": "binary_sensor.stairway_smoke_battery_low",
-                  "state": "true"
+                  "condition": "numeric_state",
+                  "entity": "sensor.stairway_smoke_battery",
+                  "below": 21
                 }
               ],
               "card": {
@@ -760,7 +785,7 @@
                 },
                 "entity": "sensor.stairway_smoke_battery",
                 "name": "UpSmoke Low Battery",
-                "icon": "mdi:battery-check-outline",
+                "icon": "mdi:battery-20",
                 "show_state": true,
                 "hold_action": {
                   "action": "none"
@@ -782,8 +807,9 @@
               "type": "conditional",
               "conditions": [
                 {
+                  "condition": "numeric_state",
                   "entity": "sensor.yertle_battery",
-                  "state": "20"
+                  "below": 21
                 }
               ],
               "card": {
@@ -795,7 +821,7 @@
                 },
                 "entity": "sensor.yertle_battery",
                 "name": "Yertle Low Battery",
-                "icon": "mdi:battery-check-outline",
+                "icon": "mdi:battery-30",
                 "show_state": true,
                 "hold_action": {
                   "action": "none"
