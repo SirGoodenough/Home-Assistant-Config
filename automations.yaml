@@ -105,24 +105,7 @@
         hours: 0
         minutes: 2
         seconds: 19
-- id: '1702550432838'
-  alias: aaMotion Light Control with Illuminance
-  description: ''
-  use_blueprint:
-    path: test/custest.yaml
-    input:
-      ttest:
-      - platform: state
-        entity_id:
-        - binary_sensor.back_door_pir
-        to: 'on'
-      light_switch: light.b_porch_relay
-- id: '1703536254011'
-  alias: switch light patch
-  description: ''
-  use_blueprint:
-    path: test/switch light patch.yaml
-    input:
-      switch_trigger_id: switch.b3
-      light_trigger_id:
-        entity_id: light.b_porch_relay
+      additional_conditions:
+      - condition: numeric_state
+        entity_id: sensor.furnace_pellet_firebox_temperature
+        above: 199.9
