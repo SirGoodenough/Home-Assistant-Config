@@ -513,7 +513,7 @@ for help sorting this out.
 
 {% macro chkXY(_xyl) %}
 {#- Is the XY list Valid? 
-This will test a list to make sure it’s a valid RGB color list.
+This will test a list to make sure it’s a valid XY color list.
 
 First we need to make sure it’s a list, and that the list has 2 members.
 Then we need to test that each member is a number, and between 0 & 1.
@@ -539,11 +539,11 @@ for help sorting this out.
 
 {% macro chkHS(_hsl) %}
 {#- Is the XY list Valid? 
-This will test a list to make sure it’s a valid RGB color list.
+This will test a list to make sure it’s a valid HS color list.
 
 First we need to make sure it’s a list, and that the list has 2 members.
 Then we need to test that each member is a number.
-The first one has to be 0 to 100, the second one has to be 0 to
+The first one has to be 0 to 100, the second one has to be 0 to 360.
 If all that is true return True.
 If any is not true, return False.
 Development credit to @123 on the
@@ -1206,11 +1206,12 @@ A (using #8) macro hs to xy list: {% set _hs2xyA = hs2xy(_rgb2hs8_list).split(",
 {%- set _xy2hs9_list = [_xy2hs9[0]|float(0)|round(3),_xy2hs9[1]|float(0)|round(3)] %}
 {{- _hs2xyA_list }} -> {{ _xy2hs9_list }}
 
+Test the tests by changing the list values:
 {%- set _rgbl = [255,165,0] %}
-{{ chkRGB(_rgbl) | bool }}
+Check RGB: {{ chkRGB(_rgbl) | bool }}
 {%- set _xyl = [0.497,0.472] %}
-{{ chkXY(_xyl) | bool }}
+check XY : {{ chkXY(_xyl) | bool }}
 {%- set _hsl = [38.824,100.0] %}
-{{ chkHS(_hsl) | bool }}
+Check HS : {{ chkHS(_hsl) | bool }}
 
 #}
