@@ -144,7 +144,7 @@
     conventional usage of colors the result needs to be converted to a
     list as shown in the example above.
 #}
-{%- if chkRGB(rgbl) %}
+{%- if chkRGB(rgbl) | bool %}
   {%- set iR = rgbl[0] | int(0) %}
   {%- set iG = rgbl[1] | int(0) %}
   {%- set iB = rgbl[2] | int(0) %}
@@ -214,7 +214,7 @@
     list as shown in the example above.
 #}
 {#- First a test to make sure this is a list #}
-{%- if chkXY(xyl) %}
+{%- if chkXY(xyl) | bool %}
   {%- set vX = xyl[0] | float(0) %}
   {%- set vY = xyl[1] | float(0.00000000001) %}
   {%- set vY = vY + 0.00000000001 %}
@@ -287,7 +287,7 @@
     list as shown in the example above.
 #}
 {#- First a test to make sure this is a list #}
-{%- if chkHS(hsl) %}
+{%- if chkHS(hsl) | bool %}
   {%- set fH = (hsl[0] | float(0)) %}
   {%- set fS = (hsl[1] | float(0)) / 100 %}
   {%- set fB = 1 %}
@@ -365,7 +365,7 @@
     list as shown in the example above.
 #}
 {#- First tests to make sure this is a list #}
-{%- if chkRGB(rgbl) %}
+{%- if chkRGB(rgbl) | bool %}
   {%- set r = rgbl[0] | int(0) %}
   {%- set g = rgbl[1] | int(0) %}
   {%- set b = rgbl[2] | int(0) %}
@@ -432,7 +432,7 @@
     list as shown in the example above.
 #}
 {#- First a test to make sure this is a list #}
-{%- if chkHS(hsl) %}
+{%- if chkHS(hsl) | bool %}
   {%- set _hs2rgb = hs2rgb(hsl).split(",") | list %}
   {%- set _hs2rgb_list = [_hs2rgb[0]|int(0),_hs2rgb[1]|int(0),_hs2rgb[2]|int(0)] | list %}
   {%- set _rgb2xy = rgb2xy(_hs2rgb_list).split(",") | list %}
@@ -468,7 +468,7 @@
     list as shown in the example above.
 #}
 {#- First a test to make sure this is a list #}
-{%- if chkXY(xyl) %}
+{%- if chkXY(xyl) | bool %}
   {%- set _xy2rgb = xy2rgb(xyl).split(",") | list %}
   {%- set _xy2rgb_list = [_xy2rgb[0]|int(0),_xy2rgb[1]|int(0),_xy2rgb[2]|int(0)] | list %}
   {%- set _rgb2hs = rgb2hs(_xy2rgb_list).split(",") | list %}
@@ -495,6 +495,14 @@ If any is not true, return False.
 Development credit to @Didgeridrew and @jeffcrum on the
 [Home Assistant Community Forums](https://community.home-assistant.io/t/help-with-test-of-a-list-of-numbers/664839/3)
 for help sorting this out.
+
+  SAMPLE USAGE:
+    {% from 'color_multi_tool.jinja' import chkRGB %}
+    {{ chkRGB([255,165,0]) | bool }}
+
+  REMEMBER:
+    This always returns text, so cast to bool on the other end to be
+    certain of the result.
 #}
 {%- if _rgbl is list and _rgbl | count == 3 %}
 {%- for clr in _rgbl if is_number(clr) and int(clr,0) == clr and 0 <= clr <= 255 %}
@@ -514,6 +522,14 @@ If any is not true, return False.
 Development credit to @123 on the
 [Home Assistant Community Forums](https://community.home-assistant.io/t/help-with-test-of-a-list-of-numbers/664839/5)
 for help sorting this out.
+
+  SAMPLE USAGE:
+    {% from 'color_multi_tool.jinja' import chkRGB %}
+    {{ chkXY([0.497,0.472]) | bool }}
+
+  REMEMBER:
+    This always returns text, so cast to bool on the other end to be
+    certain of the result.
 #}
 {{- _xyl is list and
    _xyl | select('number') | list | count == 2 and
@@ -533,6 +549,14 @@ If any is not true, return False.
 Development credit to @123 on the
 [Home Assistant Community Forums](https://community.home-assistant.io/t/help-with-test-of-a-list-of-numbers/664839/5)
 for help sorting this out.
+
+  SAMPLE USAGE:
+    {% from 'color_multi_tool.jinja' import chkRGB %}
+    {{ chkHS([38.824,100.0]) | bool }}
+
+  REMEMBER:
+    This always returns text, so cast to bool on the other end to be
+    certain of the result.
 #}
 {{- _hsl is list and
    _hsl | select('number') | list | count == 2 and
@@ -1181,5 +1205,12 @@ A (using #8) macro hs to xy list: {% set _hs2xyA = hs2xy(_rgb2hs8_list).split(",
 9 (using #A) macro xy to hs list: {% set _xy2hs9 = xy2hs(_hs2xyA_list).split(",") | list %}
 {%- set _xy2hs9_list = [_xy2hs9[0]|float(0)|round(3),_xy2hs9[1]|float(0)|round(3)] %}
 {{- _hs2xyA_list }} -> {{ _xy2hs9_list }}
+
+{%- set _rgbl = [255,165,0] %}
+{{ chkRGB(_rgbl) | bool }}
+{%- set _xyl = [0.497,0.472] %}
+{{ chkXY(_xyl) | bool }}
+{%- set _hsl = [38.824,100.0] %}
+{{ chkHS(_hsl) | bool }}
 
 #}
