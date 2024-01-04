@@ -31,9 +31,7 @@
     {{ [_rxy[0]|float|round(3),_rxy[1]|float|round(3)] }}
 
   REMEMBER:
-    Everything returned from a macro template is a string, so for
-    conventional usage of colors the result needs to be converted to a
-    list as shown in the example above.
+    Everything returned from a macro template is a string.
 #}
 
 {%- set X = (0.001*(range(1000)|random)) | round(3) | float(0) %}
@@ -54,9 +52,7 @@
     {{ [_rhs[0]|float|round(2),_rhs[1]|float|round(2)] }}
 
   REMEMBER:
-    Everything returned from a macro template is a string, so for
-    conventional usage of colors the result needs to be converted to a
-    list as shown in the example above.
+    Everything returned from a macro template is a string.
 #}
 {%- set H = 0.01*(range(36000)|random) | round(3) | float(0) %}
 {%- set S = 0.01*(range(10000)|random) | round(3) | float(0) %}
@@ -76,9 +72,7 @@
     {{ [_rrgb[0]|int(0),_rrgb[1]|int(0),_rrgb[2]|int(0)] }}
 
   REMEMBER:
-    Everything returned from a macro template is a string, so for
-    conventional usage of colors the result needs to be converted to a
-    list as shown in the example above.
+    Everything returned from a macro template is a string.
 #}
 {%- set R = (range(255)|random) | int(0) %}
 {%- set G = (range(255)|random) | int(0) %}
@@ -93,29 +87,24 @@
     https://github.com/home-assistant/core/blob/dev/homeassistant/util/color.py
     and the Official CSS3 colors from w3.org:
     https://www.w3.org/TR/2010/PR-css3-color-20101028/#html4
-    Names do not have spaces in them so that we can compare against
-    requests more easily (by removing spaces from the requests as well).
+    Names must not have spaces, uppercase, or punctuation in them so that we can
+    compare against requests more easily .
     This lets "dark seagreen" and "dark sea green" both match the same
     color "darkseagreen".
-  You have to type in her correct name. The text you send me will be set to no
-    spaces and lower case to match the data as described above.
-  If the name is not found, it will return "0.0.0", IE black,
-    because then name you provided is not a color.
+  If the exact name is not found, it will return "0.0.0", IE black,
+    because then name you provided is not a color on the official list.
   
   SAMPLE USAGE:
     {% from 'color_multi_tool.jinja' import name2rgb %}
     {{ name2rgb(color_name) }}
 
   REMEMBER:
-    Everything returned from a macro template is a string, so for
-    conventional usage of colors the result needs to be converted to a
-    list as shown in the example above.
+    Everything returned from a macro template is a string.
 #}
-{%- if color_name is string_like %}
-  {%- set _color = color_name | regex_replace('[^a-z]', '') %}
-  {%- set R = _nameMap['_rgb'] | selectattr('color', 'eq', _color) | map(attribute='r') | first | default([]) %}
-  {%- set G = _nameMap['_rgb'] | selectattr('color', 'eq', _color) | map(attribute='g') | first | default([]) %}
-  {%- set B = _nameMap['_rgb'] | selectattr('color', 'eq', _color) | map(attribute='b') | first | default([]) %}
+{%- if chkNAME(color_name) | bool %}
+  {%- set R = _nameMap['_rgb'] | selectattr('color', 'eq', color_name) | map(attribute='r') | first | default([]) %}
+  {%- set G = _nameMap['_rgb'] | selectattr('color', 'eq', color_name) | map(attribute='g') | first | default([]) %}
+  {%- set B = _nameMap['_rgb'] | selectattr('color', 'eq', color_name) | map(attribute='b') | first | default([]) %}
 {%- else %}
   {%- set R = 0 %}
   {%- set G = 0 %}
@@ -140,9 +129,7 @@
     {{ [_rgb2xy[0]|float|round(3),_rgb2xy[1]|float|round(3)] }}
 
   REMEMBER:
-    Everything returned from a macro template is a string, so for
-    conventional usage of colors the result needs to be converted to a
-    list as shown in the example above.
+    Everything returned from a macro template is a string.
 #}
 {%- if chkRGB(rgbl) | bool %}
   {%- set iR = rgbl[0] | int(0) %}
@@ -209,9 +196,7 @@
     {{ [_xy2rgb[0]|int(0),_xy2rgb[1]|int(0),_xy2rgb[2]|int(0)] }}
 
   REMEMBER:
-    Everything returned from a macro template is a string, so for
-    conventional usage of colors the result needs to be converted to a
-    list as shown in the example above.
+    Everything returned from a macro template is a string.
 #}
 {#- First a test to make sure this is a list #}
 {%- if chkXY(xyl) | bool %}
@@ -282,9 +267,7 @@
     {{ [_hs2rgb[0]|int(0),_hs2rgb[1]|int(0),_hs2rgb[2]|int(0)] }}
 
   REMEMBER:
-    Everything returned from a macro template is a string, so for
-    conventional usage of colors the result needs to be converted to a
-    list as shown in the example above.
+    Everything returned from a macro template is a string.
 #}
 {#- First a test to make sure this is a list #}
 {%- if chkHS(hsl) | bool %}
@@ -360,9 +343,7 @@
     {{[ _rgb2hs[0]|float(0)|round(3),_rgb2hs[1]|float(0)|round(3)] }}
 
   REMEMBER:
-    Everything returned from a macro template is a string, so for
-    conventional usage of colors the result needs to be converted to a
-    list as shown in the example above.
+    Everything returned from a macro template is a string.
 #}
 {#- First tests to make sure this is a list #}
 {%- if chkRGB(rgbl) | bool %}
@@ -427,9 +408,7 @@
     {{ [_hs2xy[0]|float|round(3),_hs2xy[1]|float|round(3)] }} 
 
   REMEMBER:
-    Everything returned from a macro template is a string, so for
-    conventional usage of colors the result needs to be converted to a
-    list as shown in the example above.
+    Everything returned from a macro template is a string.
 #}
 {#- First a test to make sure this is a list #}
 {%- if chkHS(hsl) | bool %}
@@ -463,9 +442,7 @@
     {{ [_xy2hs[0]|float|round(3),_xy2hs[1]|float|round(3)] }}
 
   REMEMBER:
-    Everything returned from a macro template is a string, so for
-    conventional usage of colors the result needs to be converted to a
-    list as shown in the example above.
+    Everything returned from a macro template is a string.
 #}
 {#- First a test to make sure this is a list #}
 {%- if chkXY(xyl) | bool %}
@@ -490,8 +467,8 @@ This will test a list to make sure it’s a valid RGB color list.
 
 First we need to make sure it’s a list, and that the list has 3 members.
 Then we need to test that each member is a number, an integer, and between 0 & 255.
-If all that is true return True.
-If any is not true, return False.
+If all that is true return true.
+If any is not true, return false.
 Development credit to @Didgeridrew and @jeffcrum on the
 [Home Assistant Community Forums](https://community.home-assistant.io/t/help-with-test-of-a-list-of-numbers/664839/3)
 for help sorting this out.
@@ -508,7 +485,7 @@ for help sorting this out.
 {%- for clr in _rgbl if is_number(clr) and int(clr,0) == clr and 0 <= clr <= 255 %}
 {% if loop.last %}
 {{ loop.index == 3 }}
-{%- endif %}{% endfor%}{% else %}False{%- endif %}
+{%- endif %}{% endfor%}{% else %}{{ false }}{%- endif %}
 {% endmacro %}
 
 {% macro chkXY(_xyl) %}
@@ -517,8 +494,8 @@ This will test a list to make sure it’s a valid XY color list.
 
 First we need to make sure it’s a list, and that the list has 2 members.
 Then we need to test that each member is a number, and between 0 & 1.
-If all that is true return True.
-If any is not true, return False.
+If all that is true return true.
+If any is not true, return false.
 Development credit to @123 on the
 [Home Assistant Community Forums](https://community.home-assistant.io/t/help-with-test-of-a-list-of-numbers/664839/5)
 for help sorting this out.
@@ -544,8 +521,8 @@ This will test a list to make sure it’s a valid HS color list.
 First we need to make sure it’s a list, and that the list has 2 members.
 Then we need to test that each member is a number.
 The first one has to be 0 to 100, the second one has to be 0 to 360.
-If all that is true return True.
-If any is not true, return False.
+If all that is true return true.
+If any is not true, return false.
 Development credit to @123 on the
 [Home Assistant Community Forums](https://community.home-assistant.io/t/help-with-test-of-a-list-of-numbers/664839/5)
 for help sorting this out.
@@ -563,6 +540,55 @@ for help sorting this out.
    _hsl | select('<', 0) | list | count == 0 and
    _hsl[0] <= 100 and
    _hsl[1] <= 360 }}
+{% endmacro %}
+
+{% macro chkNAME(color_name) %}
+{#- Is this color name on the official list?
+This will test a provided color name to see if it is on the HA color list.
+
+First we need to make sure it’s a string_like variable.
+Then we test that the string is only lowercase letters to match the HA list.
+Then we iterate thru the list to make sure it is on the list.
+If all that is true return true.
+If any is not true, return false.
+
+  SAMPLE USAGE:
+    {% from 'color_multi_tool.jinja' import chkNAME %}
+    {{ chkNAME('orange') | bool }}
+
+  REMEMBER:
+    This always returns text, so cast to bool on the other end to be
+    certain of the result.
+#}
+{%- if color_name is string_like and 
+  color_name == color_name | regex_replace('[^a-z]', '') %}
+{%- set ns = namespace(found = false) %}
+{%- for color_item in _nameMap._rgb %}
+{%- if color_item.color == color_name %}
+{%- set ns.found = true %}
+{%- break %}{% endif %}{% endfor %}{{ ns.found }}{% else %}{{ false }}{% endif %}
+{% endmacro %}
+
+{% macro color_list() %}
+{#-
+  This will return all of the official color names recognized by Home Assistant
+    lifted directly from the Home Assistant core github November, 2023 at
+    https://github.com/home-assistant/core/blob/dev/homeassistant/util/color.py
+    and the Official CSS3 colors from w3.org:
+    https://www.w3.org/TR/2010/PR-css3-color-20101028/#html4
+    Names do not have spaces in them so that we can compare against
+    requests more easily (by removing spaces from the requests as well).
+    This lets "dark seagreen" and "dark sea green" both match the same
+    color "darkseagreen". 
+    You also get the RGB color code for each of the color names.
+  
+  SAMPLE USAGE:
+    {% from 'color_multi_tool.jinja' import randomcolor_list_name %}
+    {{- color_list() -}}
+#}
+{%- for dict_item in _nameMap._rgb %}
+{{ dict_item.color -}},{{- dict_item.r -}},{{- dict_item.g -}},{{- dict_item.b -}}
+{%- endfor %}
 {% endmacro %}
 
 {#- COLOR NAME TO RGB MAP DATA. DO NOT CHANGE BELOW THIS LINE
@@ -1160,18 +1186,19 @@ for help sorting this out.
     { 'color': 'yellowgreen',
     'r': 154,
     'g': 205,
-    'g': 50, },
+    'b': 50, },
     { 'color': 'homeassistant',
     'r': 24,
-    'b': 188,
-    'g': 242, },
+    'g': 188,
+    'b': 242, },
   ],
 } %}
 
 {#-
 TESTING CODE FOR DEVELOPER TAB TO TEST THIS CUSTOM JINJA:
-{% from 'color_multi_tool.jinja' import random_name, random_xy, random_hs, random_rgb,
-  name2rgb, rgb2xy, xy2rgb, hs2rgb, rgb2hs, xy2hs, hs2xy %}
+{% from 'color_multi_tool.jinja' import random_name, random_xy, random_hs,
+random_rgb, name2rgb, rgb2xy, xy2rgb, hs2rgb, rgb2hs, xy2hs, hs2xy, chkRGB,
+chkXY, chkHS, chkNAME, color_list %}
 0 macro random name: {{ random_name() }}
 1 macro random xy list: {% set _rxy1 = random_xy().split(",") | list %}
 {%- set _rxy1_list = [_rxy1[0]|float|round(3),_rxy1[1]|float|round(3)] %}
@@ -1206,12 +1233,16 @@ A (using #8) macro hs to xy list: {% set _hs2xyA = hs2xy(_rgb2hs8_list).split(",
 {%- set _xy2hs9_list = [_xy2hs9[0]|float(0)|round(3),_xy2hs9[1]|float(0)|round(3)] %}
 {{- _hs2xyA_list }} -> {{ _xy2hs9_list }}
 
-Test the tests by changing the list values:
+Test the tests by changing the values:
 {%- set _rgbl = [255,165,0] %}
-Check RGB: {{ chkRGB(_rgbl) | bool }}
+Check RGB:   {{ chkRGB(_rgbl) | bool }}
 {%- set _xyl = [0.497,0.472] %}
-check XY : {{ chkXY(_xyl) | bool }}
+check XY :   {{ chkXY(_xyl) | bool }}
 {%- set _hsl = [38.824,100.0] %}
-Check HS : {{ chkHS(_hsl) | bool }}
+Check HS :   {{ chkHS(_hsl) | bool }}
+{%- set _name = 'orange' %}
+Check NAME : {{ chkNAME(_name) | bool }}
 
-#}
+Test color_list:
+{{- color_list() }}
+
