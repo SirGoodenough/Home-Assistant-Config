@@ -113,6 +113,53 @@
 {{- R -}},{{- G -}},{{- B -}}
 {% endmacro %}
 
+{% macro rgb2name(_range, rgbl) %}
+{#-
+  This template will accept a list representing an RGB value plus a range
+    value representing the window size of the 'close enough' color name.
+    It will return the Home Assistant Color name that matches it or is close
+    to it within a +/- range you specify.
+
+    > If you want only an exact match, then set the range to 0.
+    > If you think that +10/-10 is close enough, then set the range to 10.
+
+    For default the color is set to black [0,0,0] and the range is 0, so it will
+    by give you black for invalid input.
+
+  SAMPLE USAGE:
+    {% from 'color_multi_tool.jinja' import rgb2name %}
+    {{ name2rgb(color_name) }}
+
+  REMEMBER:
+    Everything returned from a macro template is a string.
+#}
+{%- if chkRGB(rgbl) | default(false) | bool %}
+{%- set out = ["black"] | list %}
+{%- set _rnge = _range | default(0) | round(0,0) %}
+{%- set iR = rgbl[0] | default(0) | int(0) %}
+{%- set iG = rgbl[1] | default(0) | int(0) %}
+{%- set iB = rgbl[2] | default(0) | int(0) %}
+{%- set _Rl = rgbl[0] + _rnge %}
+{%- set _Gl = rgbl[1] + _rnge %}
+{%- set _Bl = rgbl[2] + _rnge %}
+{%- set _Rg = rgbl[0] - _rnge %}
+{%- set _Gg = rgbl[1] - _rnge %}
+{%- set _Bg = rgbl[2] - _rnge %}
+{%- set out = _nameMap['_rgb'] |
+  selectattr('r', 'ge', _Rg) | 
+  selectattr('r', 'le', _Rl) | 
+  selectattr('g', 'ge', _Gg) |
+  selectattr('g', 'le', _Gl) |
+  selectattr('b', 'ge', _Bg) |
+  selectattr('b', 'le', _Bl) |
+  map(attribute='color') | list | default(['black']) %}
+{{- out -}}
+{%- else %}
+{#- Input was not valid #}
+{{-['black'] | list -}}
+{%- endif %}
+{% endmacro %}
+
 {% macro rgb2xy(rgbl) %}
 {#-
   This will return a CSV string that will convert to a list in the x,y format
@@ -173,7 +220,7 @@
     {%- set Y = 0.0 %}
   {%- endif %}
 {%- else %}
-  {#- Input was not a list #}
+  {#- Input was not valid #}
   {%- set X = 0.0 %}
   {%- set Y = 0.0 %}
 {%- endif %}
@@ -243,7 +290,7 @@
   {%- set G = (g * 255) | int(0) %}
   {%- set B = (b * 255) | int(0) %}
 {%- else %}
-  {#- Input was not a list #}
+  {#- Input was not valid #}
   {%- set R = 0 %}
   {%- set G = 0 %}
   {%- set B = 0 %}
@@ -319,7 +366,7 @@
     {%- set B = fV | int(0) %}
   {%- endif %}
 {%- else %}
-  {#- Input was not a list #}
+  {#- Input was not valid #}
   {%- set R = 0 %}
   {%- set G = 0 %}
   {%- set B = 0 %}
@@ -385,7 +432,7 @@
     {%- set V = 0.0 %}
   {%- endif %}
 {%- else %}
-  {#- Input was not a list #}
+  {#- Input was not valid #}
   {%- set H = 0.0 %}
   {%- set S = 0.0 %}
   {%- set V = 0.0 %}
@@ -420,7 +467,7 @@
   {%- set X = _rgb2xy_list[0] | float(0.0) | round(3) %}
   {%- set Y = _rgb2xy_list[1] | float(0.0) | round(3) %}
 {%- else %}
-  {#- Input was not a list #}
+  {#- Input was not valid #}
   {%- set X = 0.0 %}
   {%- set Y = 0.0 %}
 {%- endif %}
@@ -454,7 +501,7 @@
   {%- set H = _rgb2hs_list[0] | float(0.0) | round(3) %}
   {%- set S = _rgb2hs_list[1] | float(0.0) | round(3) %}
 {%- else %}
-  {#- Input was not a list #}
+  {#- Input was not valid #}
   {%- set H = 0.0 %}
   {%- set S = 0.0 %}
 {%- endif %}
@@ -581,9 +628,9 @@ If any is not true, return false.
     This lets "dark seagreen" and "dark sea green" both match the same
     color "darkseagreen". 
     You also get the RGB color code for each of the color names.
-  
+
   SAMPLE USAGE:
-    {% from 'color_multi_tool.jinja' import randomcolor_list_name %}
+    {% from 'color_multi_tool.jinja' import color_list %}
     {{- color_list() -}}
 #}
 {%- for dict_item in _nameMap._rgb %}
@@ -1197,7 +1244,7 @@ If any is not true, return false.
 {#-
 TESTING CODE FOR DEVELOPER TAB TO TEST THIS CUSTOM JINJA:
 {% from 'color_multi_tool.jinja' import random_name, random_xy, random_hs,
-random_rgb, name2rgb, rgb2xy, xy2rgb, hs2rgb, rgb2hs, xy2hs, hs2xy, chkRGB,
+random_rgb, name2rgb, rgb2name, rgb2xy, xy2rgb, hs2rgb, rgb2hs, xy2hs, hs2xy, chkRGB,
 chkXY, chkHS, chkNAME, color_list %}
 0 macro random name: {{ random_name() }}
 1 macro random xy list: {% set _rxy1 = random_xy().split(",") | list %}
@@ -1214,6 +1261,8 @@ chkXY, chkHS, chkNAME, color_list %}
 {%- set _nrgb4 = name2rgb(_nrgb4_name).split(",") | list %}
 {%- set _nrgb4_list = [_nrgb4[0]|int(0),_nrgb4[1]|int(0),_nrgb4[2]|int(0)] %}
 {{- _nrgb4_name }} -> {{ _nrgb4_list }}
+B (using #4) macro RGB to color name: {% set _rgb2name = rgb2name(20,_nrgb4_list) %}
+{{- _nrgb4_list }} -> {{ _rgb2name -}}
 5 (using #4) macro rgb to xy list: {% set _rgb2zy5 = rgb2xy(_nrgb4_list).split(",") | list %}
 {%- set _rgb2zy5_list = [_rgb2zy5[0]|float(0)|round(3),_rgb2zy5[1]|float(0)|round(3)] %}
 {{- _nrgb4_list }} -> {{_rgb2zy5_list }}
@@ -1246,3 +1295,4 @@ Check NAME : {{ chkNAME(_name) | bool }}
 Test color_list:
 {{- color_list() }}
 
+#}
