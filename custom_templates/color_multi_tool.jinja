@@ -9,7 +9,7 @@
     requests more easily (by removing spaces from the requests as well).
     This lets "dark seagreen" and "dark sea green" both match the same
     color "darkseagreen". 
-  
+
   SAMPLE USAGE:
     {% from 'color_multi_tool.jinja' import random_name %}
     {{- random_name() -}}
@@ -24,7 +24,7 @@
     random color in the x,y format.
   Be sure to convert this to a list when you use it on the other end
   because it arrives as a CSV string.
-  
+
   SAMPLE USAGE:
     {% from 'color_multi_tool.jinja' import random_xy %}
     {% set _rxy = random_xy().split(",") | list %}
@@ -34,9 +34,8 @@
     Everything returned from a macro template is a string.
 #}
 
-{%- set X = (0.001*(range(1000)|random)) | round(3) | float(0) %}
-{%- set Y = (0.001*(range(1000)|random)) | round(3) | float(0) %}
-{{- X -}},{{- Y -}}
+{%- set (X,Y) = [range(1001),range(1001)] | map('random') | list %}
+{{- X/1000 -}},{{- Y/1000 -}}
 {% endmacro %}
 
 {% macro random_hs() %}
@@ -54,9 +53,8 @@
   REMEMBER:
     Everything returned from a macro template is a string.
 #}
-{%- set H = 0.01*(range(36000)|random) | round(3) | float(0) %}
-{%- set S = 0.01*(range(10000)|random) | round(3) | float(0) %}
-{{- H -}},{{- S -}}
+{%- set (H,S) = [range(36001),range(10001)] | map('random') | list %}
+{{- H/100 -}},{{- S/100 -}}
 {% endmacro %}
 
 {% macro random_rgb() %}
@@ -65,7 +63,7 @@
     random color in the rgb format.
   Be sure to convert this to a list when you use it on the other end
   because it arrives as a CSV string.
-  
+
   SAMPLE USAGE:
     {% from 'color_multi_tool.jinja' import random_rgb %}
     {% set _rrgb = random_rgb().split(",") | list %}
@@ -74,9 +72,7 @@
   REMEMBER:
     Everything returned from a macro template is a string.
 #}
-{%- set R = (range(255)|random) | int(0) %}
-{%- set G = (range(255)|random) | int(0) %}
-{%- set B = (range(255)|random) | int(0) %}
+{% set (R,G,B) = [range(256),range(256),range(256)] | map('random') | list %}
 {{- R -}},{{- G -}},{{- B -}}
 {% endmacro %}
 
@@ -93,7 +89,7 @@
     color "darkseagreen".
   If the exact name is not found, it will return "0.0.0", IE black,
     because then name you provided is not a color on the official list.
-  
+
   SAMPLE USAGE:
     {% from 'color_multi_tool.jinja' import name2rgb %}
     {{ name2rgb(color_name) }}
@@ -169,7 +165,7 @@
   Code lifted directly from the Home Assistant core github November, 2023 at
     https://github.com/home-assistant/core/blob/dev/homeassistant/util/color.py.
   Brightness is assumed to be 100%
-  
+
   SAMPLE USAGE:
     {% from 'color_multi_tool.jinja' import rgb2xy %}
     {% set _rgb2xy = rgb2xy(_nrgb).split(",") | list %}
@@ -236,7 +232,7 @@
   Code lifted directly from the Home Assistant core github November, 2023 at
     https://github.com/home-assistant/core/blob/dev/homeassistant/util/color.py.
   Brightness is assumed to be 100%
-  
+
   SAMPLE USAGE:
     {% from 'color_multi_tool.jinja' import xy2rgb %}
     {% set _xy2rgb = xy2rgb(xyl).split(",") | list %}
