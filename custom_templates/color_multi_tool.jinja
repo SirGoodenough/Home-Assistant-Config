@@ -100,11 +100,13 @@
   REMEMBER:
     Everything returned from a macro template is a string.
 #}
+  {#- First a test to make sure input is valid #}
 {%- if chkNAME(color_name) | bool %}
   {%- set R = _nameMap['_rgb'] | selectattr('color', 'eq', color_name) | map(attribute='r') | first | default([]) %}
   {%- set G = _nameMap['_rgb'] | selectattr('color', 'eq', color_name) | map(attribute='g') | first | default([]) %}
   {%- set B = _nameMap['_rgb'] | selectattr('color', 'eq', color_name) | map(attribute='b') | first | default([]) %}
 {%- else %}
+    {#- Set defaults #}
   {%- set R = 0 %}
   {%- set G = 0 %}
   {%- set B = 0 %}
@@ -132,18 +134,23 @@
   REMEMBER:
     Everything returned from a macro template is a string.
 #}
+  {#- First a test to make sure input is valid #}
 {%- if chkRGB(rgbl) | default(false) | bool %}
+  {#- Set defaults #}
 {%- set out = ["black"] | list %}
+  {#- Pull in the data #}
 {%- set _rnge = _range | default(0) | round(0,0) %}
 {%- set iR = rgbl[0] | default(0) | int(0) %}
 {%- set iG = rgbl[1] | default(0) | int(0) %}
 {%- set iB = rgbl[2] | default(0) | int(0) %}
+  {#- Define Ranges for each color #}
 {%- set _Rl = rgbl[0] + _rnge %}
 {%- set _Gl = rgbl[1] + _rnge %}
 {%- set _Bl = rgbl[2] + _rnge %}
 {%- set _Rg = rgbl[0] - _rnge %}
 {%- set _Gg = rgbl[1] - _rnge %}
 {%- set _Bg = rgbl[2] - _rnge %}
+  {#- Grab matching colors out of the list. #}
 {%- set out = _nameMap['_rgb'] |
   selectattr('r', 'ge', _Rg) | 
   selectattr('r', 'le', _Rl) | 
@@ -154,7 +161,7 @@
   map(attribute='color') | list | default(['black']) %}
 {{- out -}}
 {%- else %}
-{#- Input was not valid #}
+  {#- Input was not valid #}
 {{-['black'] | list -}}
 {%- endif %}
 {% endmacro %}
@@ -177,7 +184,9 @@
   REMEMBER:
     Everything returned from a macro template is a string.
 #}
+  {#- First a test to make sure input is valid #}
 {%- if chkRGB(rgbl) | bool %}
+    {#- Set defaults #}
   {%- set iR = rgbl[0] | int(0) %}
   {%- set iG = rgbl[1] | int(0) %}
   {%- set iB = rgbl[2] | int(0) %}
@@ -214,12 +223,12 @@
     {%- set X = x | float(0) | round(3) %}
     {%- set Y = y | float(0) | round(3) %}
   {%- else %}
-    {#- Color started as black #}
+      {#- Color started as black #}
     {%- set X = 0.0 %}
     {%- set Y = 0.0 %}
   {%- endif %}
 {%- else %}
-  {#- Input was not valid #}
+    {#- Input was not valid #}
   {%- set X = 0.0 %}
   {%- set Y = 0.0 %}
 {%- endif %}
@@ -244,7 +253,7 @@
   REMEMBER:
     Everything returned from a macro template is a string.
 #}
-{#- First a test to make sure this is a list #}
+  {#- First a test to make sure input is valid #}
 {%- if chkXY(xyl) | bool %}
   {%- set vX = xyl[0] | float(0) %}
   {%- set vY = xyl[1] | float(0.00000000001) %}
@@ -289,7 +298,7 @@
   {%- set G = (g * 255) | int(0) %}
   {%- set B = (b * 255) | int(0) %}
 {%- else %}
-  {#- Input was not valid #}
+    {#- Input was not valid #}
   {%- set R = 0 %}
   {%- set G = 0 %}
   {%- set B = 0 %}
@@ -315,7 +324,7 @@
   REMEMBER:
     Everything returned from a macro template is a string.
 #}
-{#- First a test to make sure this is a list #}
+  {#- First a test to make sure input is valid #}
 {%- if chkHS(hsl) | bool %}
   {%- set fH = (hsl[0] | float(0)) %}
   {%- set fS = (hsl[1] | float(0)) / 100 %}
@@ -358,14 +367,14 @@
     {%- set G = g | int(0) %}
     {%- set B = b | int(0) %}
   {%- else %}
-    {#- Color started as white #}
+      {#- Color started as white #}
     {%- set fV = (fB * 255) | int(0) %}
     {%- set R = fV | int(0) %}
     {%- set G = fV | int(0) %}
     {%- set B = fV | int(0) %}
   {%- endif %}
 {%- else %}
-  {#- Input was not valid #}
+    {#- Input was not valid #}
   {%- set R = 0 %}
   {%- set G = 0 %}
   {%- set B = 0 %}
@@ -391,7 +400,7 @@
   REMEMBER:
     Everything returned from a macro template is a string.
 #}
-{#- First tests to make sure this is a list #}
+  {#- First a test to make sure input is valid #}
 {%- if chkRGB(rgbl) | bool %}
   {%- set r = rgbl[0] | int(0) %}
   {%- set g = rgbl[1] | int(0) %}
@@ -399,39 +408,39 @@
   {%- if r + g + b != 0 %}
     {%- set min = [r, g, b] | min %}
     {%- set max = [r, g, b] | max %}
-  {#- Set brightness to 100% #}
+      {#- Set brightness to 100% #}
     {#- set _V = max (alternate) #}
     {%- set _V = 255 %}
-  {#- Calculate S #}
+      {#- Calculate S #}
     {%- set delta = max-min %}
     {%- set _S = (delta / max) * 100 %}
-  {#- Calculate H #}
+      {#- Calculate H #}
     {%- if r == max %}
-      {#- between yellow & magenta #}
+        {#- between yellow & magenta #}
       {%- set _H = ( g - b ) / delta %}
     {%- elif g == max %}
-      {#- between cyan & yellow #}
+        {#- between cyan & yellow #}
       {%- set _H = 2 + ( b - r ) / delta %}
     {%- else %}
-      {#- between magenta & cyan #}
+        {#- between magenta & cyan #}
       {%- set _H = 4 + ( r - g ) / delta %}
     {%- endif %}
     {%- set _H = _H * 60 %}
     {%- if _H < 0 %}
       {%- set _H = _H + 360 %}
     {%- endif %}
-  {#- Calculated output #}
+      {#- Calculate the output #}
     {%- set H = _H | float(0) | round(3) %}
     {%- set S = _S | float(0) | round(3) %}
     {%- set V = _V | float(0) | round(3) %}
   {%- else %}
-    {#- Color started as black #}
+      {#- Color started as black #}
     {%- set H = 0.0 %}
     {%- set S = 0.0 %}
     {%- set V = 0.0 %}
   {%- endif %}
 {%- else %}
-  {#- Input was not valid #}
+    {#- Input was not valid #}
   {%- set H = 0.0 %}
   {%- set S = 0.0 %}
   {%- set V = 0.0 %}
@@ -456,17 +465,17 @@
   REMEMBER:
     Everything returned from a macro template is a string.
 #}
-{#- First a test to make sure this is a list #}
+  {#- First a test to make sure input is valid #}
 {%- if chkHS(hsl) | bool %}
   {%- set _hs2rgb = hs2rgb(hsl).split(",") | list %}
   {%- set _hs2rgb_list = [_hs2rgb[0]|int(0),_hs2rgb[1]|int(0),_hs2rgb[2]|int(0)] | list %}
   {%- set _rgb2xy = rgb2xy(_hs2rgb_list).split(",") | list %}
   {%- set _rgb2xy_list = [_rgb2xy[0]|float(0)|round(3),_rgb2xy[1]|float(0)|round(3)] | list %}
-{#- Calculated output #}
+    {#- Calculate the output #}
   {%- set X = _rgb2xy_list[0] | float(0.0) | round(3) %}
   {%- set Y = _rgb2xy_list[1] | float(0.0) | round(3) %}
 {%- else %}
-  {#- Input was not valid #}
+    {#- Input was not valid #}
   {%- set X = 0.0 %}
   {%- set Y = 0.0 %}
 {%- endif %}
@@ -490,17 +499,17 @@
   REMEMBER:
     Everything returned from a macro template is a string.
 #}
-{#- First a test to make sure this is a list #}
+  {#- First a test to make sure input is valid #}
 {%- if chkXY(xyl) | bool %}
   {%- set _xy2rgb = xy2rgb(xyl).split(",") | list %}
   {%- set _xy2rgb_list = [_xy2rgb[0]|int(0),_xy2rgb[1]|int(0),_xy2rgb[2]|int(0)] | list %}
   {%- set _rgb2hs = rgb2hs(_xy2rgb_list).split(",") | list %}
   {%- set _rgb2hs_list = [_rgb2hs[0]|float(0)|round(3),_rgb2hs[1]|float(0)|round(3)] | list %}
-{#- Calculated output #}
+    {#- Calculate the output #}
   {%- set H = _rgb2hs_list[0] | float(0.0) | round(3) %}
   {%- set S = _rgb2hs_list[1] | float(0.0) | round(3) %}
 {%- else %}
-  {#- Input was not valid #}
+    {#- Input was not valid #}
   {%- set H = 0.0 %}
   {%- set S = 0.0 %}
 {%- endif %}
@@ -610,11 +619,12 @@ If any is not true, return false.
 #}
 {%- if color_name is string_like and
   color_name == color_name | regex_replace('[^a-z]', '') %}
+  {#- Is the name provided on the list? #}
 {%- set ns = namespace(found = false) %}
 {%- for color_item in _nameMap._rgb %}
-{%- if color_item.color == color_name %}
-{%- set ns.found = true %}
-{%- break %}{%- endif %}{%- endfor %}
+  {%- if color_item.color == color_name %}
+    {%- set ns.found = true -%}
+    {%- break %}{%- endif -%}{%- endfor -%}
 {{- ns.found -}}
 {%- else %}
 {{- false -}}
@@ -639,9 +649,9 @@ If any is not true, return false.
     {{- color_list().split('\n') | list -}}
 #}
 {%- for colors in _nameMap._rgb -%}
-{%- set c_list = {colors.color:[colors.r,colors.g,colors.b]} %}
-{{ c_list }}
-{%- endfor %}
+{%- set c_list = {colors.color:[colors.r,colors.g,colors.b]} -%}
+{{- c_list ~ '\n'-}}
+{%- endfor -%}
 {%- endmacro %}
 
 {#- COLOR NAME TO RGB MAP DATA. DO NOT CHANGE BELOW THIS LINE
