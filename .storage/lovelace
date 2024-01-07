@@ -135,6 +135,48 @@
               }
             },
             {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "condition": "numeric_state",
+                  "entity": "sensor.sm_s906u_battery_level",
+                  "below": 21
+                }
+              ],
+              "card": {
+                "show_name": true,
+                "show_icon": true,
+                "type": "button",
+                "tap_action": {
+                  "action": "more-info"
+                },
+                "entity": "sensor.sm_s906u_battery_level",
+                "icon": "mdi:battery-20",
+                "show_state": true
+              }
+            },
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "condition": "numeric_state",
+                  "entity": "sensor.mom_s_phone_battery_level",
+                  "below": 21
+                }
+              ],
+              "card": {
+                "show_name": true,
+                "show_icon": true,
+                "type": "button",
+                "tap_action": {
+                  "action": "more-info"
+                },
+                "entity": "sensor.mom_s_phone_battery_level",
+                "icon": "mdi:battery-20",
+                "show_state": true
+              }
+            },
+            {
               "entities": [
                 {
                   "entity": "sensor.sonoff_rf_bridge_2_si7021_temperature",
