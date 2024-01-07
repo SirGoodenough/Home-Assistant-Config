@@ -16,7 +16,7 @@
 #}
 {%- set _color_dict = _nameMap._rgb | random %}
 {{- _color_dict.color -}}
-{% endmacro %}
+{%- endmacro %}
 
 {% macro random_xy() %}
 {#-
@@ -37,7 +37,7 @@
 
 {%- set (X,Y) = [range(1001),range(1001)] | map('random') | list %}
 {{- X/1000 -}},{{- Y/1000 -}}
-{% endmacro %}
+{%- endmacro %}
 
 {% macro random_hs() %}
 {#-
@@ -57,7 +57,7 @@
 #}
 {%- set (H,S) = [range(36001),range(10001)] | map('random') | list %}
 {{- H/100 -}},{{- S/100 -}}
-{% endmacro %}
+{%- endmacro %}
 
 {% macro random_rgb() %}
 {#-
@@ -77,7 +77,7 @@
 #}
 {% set (R,G,B) = [range(256),range(256),range(256)] | map('random') | list %}
 {{- R -}},{{- G -}},{{- B -}}
-{% endmacro %}
+{%- endmacro %}
 
 {% macro name2rgb(color_name) %}
 {#-
@@ -110,7 +110,7 @@
   {%- set B = 0 %}
 {%- endif %}
 {{- R -}},{{- G -}},{{- B -}}
-{% endmacro %}
+{%- endmacro %}
 
 {% macro rgb2name(_range, rgbl) %}
 {#-
@@ -224,7 +224,7 @@
   {%- set Y = 0.0 %}
 {%- endif %}
 {{- X -}},{{- Y -}}
-{% endmacro %}
+{%- endmacro %}
 
 {% macro xy2rgb(xyl) %}
 {#-
@@ -295,7 +295,7 @@
   {%- set B = 0 %}
 {%- endif %}
 {{- R -}},{{- G -}},{{- B -}}
-{% endmacro %}
+{%- endmacro %}
 
 {% macro hs2rgb(hsl) %}
 {#-
@@ -371,7 +371,7 @@
   {%- set B = 0 %}
 {%- endif %}
 {{- R -}},{{- G -}},{{- B -}}
-{% endmacro %}
+{%- endmacro %}
 
 {% macro rgb2hs(rgbl) %}
 {#-
@@ -437,7 +437,7 @@
   {%- set V = 0.0 %}
 {%- endif %}
 {{- H -}},{{- S -}}
-{% endmacro %}
+{%- endmacro %}
 
 {% macro hs2xy(hsl) %}
 {#-
@@ -471,7 +471,7 @@
   {%- set Y = 0.0 %}
 {%- endif %}
 {{- X -}},{{- Y -}}
-{% endmacro %}
+{%- endmacro %}
 
 {% macro xy2hs(xyl) %}
 {#-
@@ -505,7 +505,7 @@
   {%- set S = 0.0 %}
 {%- endif %}
 {{- H -}},{{- S -}}
-{% endmacro %}
+{%- endmacro %}
 
 {% macro chkRGB(_rgbl) %}
 {#- Is the RGB list Valid? 
@@ -529,10 +529,12 @@ Development credit to @Didgeridrew and @jeffcrum on the
 #}
 {%- if _rgbl is list and _rgbl | count == 3 %}
 {%- for clr in _rgbl if is_number(clr) and int(clr,0) == clr and 0 <= clr <= 255 %}
-{% if loop.last %}
-{{ loop.index == 3 }}
-{%- endif %}{% endfor%}{% else %}{{ false }}{%- endif %}
-{% endmacro %}
+{%- if loop.last %}
+{{- loop.index == 3 -}}
+{%- endif %}{%- endfor%}{%- else %}
+{{- false -}}
+{%- endif %}
+{%- endmacro %}
 
 {% macro chkXY(_xyl) %}
 {#- Is the XY list Valid? 
@@ -557,8 +559,8 @@ Development credit to @123 on the
 {{- _xyl is list and
    _xyl | select('number') | list | count == 2 and
    _xyl | select('<', 0) | list | count == 0 and
-   _xyl | select('>', 1) | list | count == 0 }}
-{% endmacro %}
+   _xyl | select('>', 1) | list | count == 0 -}}
+{%- endmacro %}
 
 {% macro chkHS(_hsl) %}
 {#- Is the XY list Valid? 
@@ -585,8 +587,8 @@ Development credit to @123 on the
    _hsl | select('number') | list | count == 2 and
    _hsl | select('<', 0) | list | count == 0 and
    _hsl[0] <= 100 and
-   _hsl[1] <= 360 }}
-{% endmacro %}
+   _hsl[1] <= 360 -}}
+{%- endmacro %}
 
 {% macro chkNAME(color_name) %}
 {#- Is this color name on the official list?
@@ -606,14 +608,18 @@ If any is not true, return false.
     This always returns text, so cast to bool on the other end to be
     certain of the result.
 #}
-{%- if color_name is string_like and 
+{%- if color_name is string_like and
   color_name == color_name | regex_replace('[^a-z]', '') %}
 {%- set ns = namespace(found = false) %}
 {%- for color_item in _nameMap._rgb %}
 {%- if color_item.color == color_name %}
 {%- set ns.found = true %}
-{%- break %}{% endif %}{% endfor %}{{ ns.found }}{% else %}{{ false }}{% endif %}
-{% endmacro %}
+{%- break %}{%- endif %}{%- endfor %}
+{{- ns.found -}}
+{%- else %}
+{{- false -}}
+{%- endif %}
+{%- endmacro %}
 
 {% macro color_list() %}
 {#-
@@ -630,12 +636,13 @@ If any is not true, return false.
 
   SAMPLE USAGE:
     {% from 'color_multi_tool.jinja' import color_list %}
-    {{- color_list() -}}
+    {{- color_list().split('\n') | list -}}
 #}
-{%- for dict_item in _nameMap._rgb %}
-{{ dict_item.color -}},{{- dict_item.r -}},{{- dict_item.g -}},{{- dict_item.b -}}
+{%- for colors in _nameMap._rgb -%}
+{%- set c_list = {colors.color:[colors.r,colors.g,colors.b]} %}
+{{ c_list }}
 {%- endfor %}
-{% endmacro %}
+{%- endmacro %}
 
 {#- COLOR NAME TO RGB MAP DATA. DO NOT CHANGE BELOW THIS LINE
     (unless you want to add your own custom color that is...): #}
