@@ -1265,7 +1265,7 @@ chkXY, chkHS, chkNAME, color_list %}
 
 4 macro name to rgb list: {% set _nrgb4_name = random_name() %}
 {%- set _nrgb4 = name2rgb(_nrgb4_name).split(",") | list %}
-{%- set _nrgb4_list = [_nrgb4[0]|int(0),_nrgb4[1]|int(0),_nrgb4[2]|int(0)] %}
+{%- set _nrgb4_list = [_nrgb4[0]|int(0),_nrgb4[1]|int(0),_nrgb4[2]|int(0)] | list %}
 {{- _nrgb4_name }} -> {{ _nrgb4_list }}
 B (using #4) macro RGB to color name: {% set _rgb2name = rgb2name(20,_nrgb4_list) %}
 {{- _nrgb4_list }} -> {{ _rgb2name -}}
@@ -1299,6 +1299,6 @@ Check HS :   {{ chkHS(_hsl) | bool }}
 Check NAME : {{ chkNAME(_name) | bool }}
 
 Test color_list:
-{{- color_list() }}
+{{ color_list().split('\n') | list }}
 
 #}
