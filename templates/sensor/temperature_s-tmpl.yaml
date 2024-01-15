@@ -1,66 +1,67 @@
 - sensor:
-    #####################################################
-    ## HVAC Template Sensors                           ##
-    #####################################################
-    - name: LRthermostat
-      unique_id: 1ca8aa2c-1fad-4c4b-99e7-4cf4dd91aa0b
-      state: "{{ state_attr('climate.living_room_2', 'current_temperature') | float}}"
-      availability: >-
-        {% from 'availability_template.jinja' import avail %}
-        {{- avail(['climate.living_room_2']) | bool -}}
-      unit_of_measurement: "°F"
-      icon: "mdi:thermostat-box"
-      attributes:
-        friendly_name: "LRthermostat"
+  #####################################################
+  ## HVAC Template Sensors                           ##
+  #####################################################
+  - name: LRthermostat
+    unique_id: 1ca8aa2c-1fad-4c4b-99e7-4cf4dd91aa0b
+    state: "{{ state_attr('climate.living_room_2', 'current_temperature') | float}}"
+    availability: >-
+      {% from 'availability_template.jinja' import avail %}
+      {{- avail(['climate.living_room_2']) | bool -}}
+    state_class: measurement
+    device_class: temperature
+    attributes:
+      friendly_name: "LRthermostat"
 
-    - name: "LRthermostat Heat State"
-      unique_id: c21b57a7-34df-483b-8521-4844a04fe49d
-      state: "{{ state_attr('climate.living_room_2', 'hvac_action') }}"
-      availability: >-
-        {% from 'availability_template.jinja' import avail %}
-        {{- avail(['climate.living_room_2']) | bool -}}
-      icon: "mdi:hvac"
-      attributes:
-        friendly_name: "LRthermostat Heat State"
+  - name: "LRthermostat Heat State"
+    unique_id: c21b57a7-34df-483b-8521-4844a04fe49d
+    state: "{{ state_attr('climate.living_room_2', 'hvac_action') }}"
+    availability: >-
+      {% from 'availability_template.jinja' import avail %}
+      {{- avail(['climate.living_room_2']) | bool -}}
+    icon: "mdi:hvac"
+    attributes:
+      friendly_name: "LRthermostat Heat State"
 
-    - name: "LRthermostat Fan Mode"
-      unique_id: b281ed7b-7a2a-427d-b699-fba4370b6bd3
-      state: "{{ state_attr('climate.living_room_2', 'fan_action') }}"
-      availability: >-
-        {% from 'availability_template.jinja' import avail %}
-        {{- avail(['climate.living_room_2']) | bool -}}
-      icon: "mdi:fan-auto"
-      attributes:
-        friendly_name: "LRthermostat Fan Mode"
+  - name: "LRthermostat Fan Mode"
+    unique_id: b281ed7b-7a2a-427d-b699-fba4370b6bd3
+    state: "{{ state_attr('climate.living_room_2', 'fan_action') }}"
+    availability: >-
+      {% from 'availability_template.jinja' import avail %}
+      {{- avail(['climate.living_room_2']) | bool -}}
+    icon: "mdi:fan-auto"
+    attributes:
+      friendly_name: "LRthermostat Fan Mode"
 
-    - name: BRthermostat
-      unique_id: 850df15c-a1fb-4832-a29e-18fcaf3d3b61
-      state: "{{ state_attr('climate.gemodule5384_window_ac', 'current_temperature') }}"
-      availability: >-
-        {% from 'availability_template.jinja' import avail %}
-        {{- avail(['climate.gemodule5384_window_ac']) | bool -}}
-      unit_of_measurement: "°F"
-      icon: "mdi:thermostat-box"
-      attributes:
-        friendly_name: "BRthermostat"
+  - name: BRthermostat
+    unique_id: 850df15c-a1fb-4832-a29e-18fcaf3d3b61
+    state: "{{ state_attr('climate.gemodule5384_window_ac', 'current_temperature') }}"
+    availability: >-
+      {% from 'availability_template.jinja' import avail %}
+      {{- avail(['climate.gemodule5384_window_ac']) | bool -}}
+    state_class: measurement
+    device_class: temperature
+    attributes:
+      friendly_name: "BRthermostat"
 
-    - name: "BRthermostat Cool Mode"
-      unique_id: 0a26fddd-d1ec-48fc-9984-61feb1d1e5c1
-      state: "{{ state_attr('climate.gemodule5384_window_ac', 'hvac_action') }}"
-      availability: >-
-        {% from 'availability_template.jinja' import avail %}
-        {{- avail(['climate.gemodule5384_window_ac']) | bool -}}
-      icon: "mdi:air-conditioner"
-      attributes:
-        friendly_name: "BRthermostat Cool Mode"
+  - name: "BRthermostat Cool Mode"
+    unique_id: 0a26fddd-d1ec-48fc-9984-61feb1d1e5c1
+    state: "{{ state_attr('climate.gemodule5384_window_ac', 'hvac_action') }}"
+    availability: >-
+      {% from 'availability_template.jinja' import avail %}
+      {{- avail(['climate.gemodule5384_window_ac']) | bool -}}
+    icon: "mdi:air-conditioner"
+    attributes:
+      friendly_name: "BRthermostat Cool Mode"
 
-    - name: "Humidity group"
-      unique_id: f1f87e72-a9db-4848-bf40-dafd63ece4b3
-      state: "{{ states('sensor.house_humidity_group') | default(41.8) | float(41.9) }}"
-      availability: >-
-        {% from 'availability_template.jinja' import avail %}
-        {{- avail(['sensor.house_humidity_group']) | bool -}}
-      unit_of_measurement: "%"
-      icon: "mdi:waves-arrow-up"
-      attributes:
-        friendly_name: "Humidity Group"
+  - name: "Humidity group"
+    unique_id: f1f87e72-a9db-4848-bf40-dafd63ece4b3
+    state: "{{ states('sensor.house_humidity_group') | default(41.8) | float(41.9) }}"
+    availability: >-
+      {% from 'availability_template.jinja' import avail %}
+      {{- avail(['sensor.house_humidity_group']) | bool -}}
+    state_class: measurement
+    device_class: humidity
+    attributes:
+      friendly_name: "Humidity Group"
+

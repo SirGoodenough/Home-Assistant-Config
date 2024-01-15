@@ -52,9 +52,6 @@
                   "entity": "script.reset_nag"
                 },
                 {
-                  "entity": "script.feeding_pump_silence"
-                },
-                {
                   "entity": "binary_sensor.kitchennabu_9907cc_kitchennabu_pir_sensor"
                 }
               ],
@@ -140,7 +137,7 @@
                 {
                   "condition": "numeric_state",
                   "entity": "sensor.sm_s906u_battery_level",
-                  "below": 21
+                  "below": 40
                 }
               ],
               "card": {
@@ -151,7 +148,7 @@
                   "action": "more-info"
                 },
                 "entity": "sensor.sm_s906u_battery_level",
-                "icon": "mdi:battery-20",
+                "icon": "",
                 "show_state": true
               }
             },
@@ -161,7 +158,7 @@
                 {
                   "condition": "numeric_state",
                   "entity": "sensor.mom_s_phone_battery_level",
-                  "below": 21
+                  "below": 40
                 }
               ],
               "card": {
@@ -172,7 +169,28 @@
                   "action": "more-info"
                 },
                 "entity": "sensor.mom_s_phone_battery_level",
-                "icon": "mdi:battery-20",
+                "icon": "",
+                "show_state": true
+              }
+            },
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "condition": "numeric_state",
+                  "entity": "sensor.jens_phone_battery",
+                  "below": 40
+                }
+              ],
+              "card": {
+                "show_name": true,
+                "show_icon": true,
+                "type": "button",
+                "tap_action": {
+                  "action": "more-info"
+                },
+                "entity": "sensor.jens_phone_battery",
+                "icon": "",
                 "show_state": true
               }
             },
@@ -367,7 +385,8 @@
                       ],
                       "type": "climate-hvac-modes"
                     }
-                  ]
+                  ],
+                  "show_current_as_primary": true
                 },
                 {
                   "type": "sensor",
@@ -392,7 +411,8 @@
                 {
                   "type": "thermostat",
                   "entity": "climate.gemodule5384_window_ac",
-                  "name": "Bedroom AC"
+                  "name": "Bedroom AC",
+                  "show_current_as_primary": true
                 },
                 {
                   "hours_to_show": 24,
@@ -466,6 +486,12 @@
               "title": "Bedroom",
               "state_color": true,
               "show_header_toggle": false
+            },
+            {
+              "graph": "line",
+              "type": "sensor",
+              "entity": "sensor.ethernettest_kitchen_co2",
+              "detail": 2
             },
             {
               "type": "conditional",
@@ -652,7 +678,8 @@
                   "action": "more-info"
                 },
                 "entity": "sensor.bot_108e_battery",
-                "icon": "mdi:battery-20-bluetooth"
+                "icon": "",
+                "show_state": true
               }
             },
             {
@@ -672,7 +699,7 @@
                   "action": "more-info"
                 },
                 "entity": "sensor.jens_kitchen_curtain_battery",
-                "icon": "mdi:battery-30",
+                "icon": "",
                 "show_state": true
               }
             },
@@ -693,7 +720,7 @@
                   "action": "more-info"
                 },
                 "entity": "sensor.jens_window_curtain_battery",
-                "icon": "mdi:battery-30",
+                "icon": "",
                 "show_state": true
               }
             },
@@ -714,7 +741,8 @@
                   "action": "more-info"
                 },
                 "entity": "sensor.silence_battery",
-                "icon": "mdi:battery-20-bluetooth"
+                "icon": "",
+                "show_state": true
               }
             },
             {
@@ -749,6 +777,8 @@
                 }
               ],
               "card": {
+                "show_name": true,
+                "show_icon": true,
                 "type": "button",
                 "tap_action": {
                   "action": "call-service",
@@ -806,7 +836,7 @@
                 },
                 "show_state": true,
                 "name": "Gertle Low Battery",
-                "icon": "mdi:battery-30"
+                "icon": ""
               }
             },
             {
@@ -827,7 +857,7 @@
                 },
                 "entity": "sensor.stairway_smoke_battery",
                 "name": "UpSmoke Low Battery",
-                "icon": "mdi:battery-20",
+                "icon": "",
                 "show_state": true,
                 "hold_action": {
                   "action": "none"
@@ -844,6 +874,31 @@
                   "entity": "sensor.water_the_plants"
                 }
               ]
+            },
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "condition": "numeric_state",
+                  "entity": "sensor.jen_temperature_battery",
+                  "below": 21
+                }
+              ],
+              "card": {
+                "show_name": true,
+                "show_icon": true,
+                "type": "button",
+                "tap_action": {
+                  "action": "more-info"
+                },
+                "entity": "sensor.jen_temperature_battery",
+                "hold_action": {
+                  "action": "none"
+                },
+                "show_state": true,
+                "name": "Jen Temp Battery",
+                "icon": ""
+              }
             },
             {
               "type": "conditional",
@@ -1292,16 +1347,7 @@
                   "entity": "sensor.jennys_new_fanspeed"
                 },
                 {
-                  "entity": "switch.jens_happy_spot"
-                },
-                {
                   "entity": "input_select.no_bedroom_help"
-                },
-                {
-                  "entity": "input_select.jens_alert_list_1"
-                },
-                {
-                  "entity": "input_select.phone_help"
                 },
                 {
                   "entity": "light.jens_light"
@@ -1321,54 +1367,8 @@
               "type": "entities"
             },
             {
-              "type": "custom:flipdown-timer-card",
-              "name": "Timer 1",
-              "entity": "timer.flushtime2",
-              "show_error": false,
-              "show_title": true,
-              "duration": "00:01:00",
-              "styles": {
-                "button": {
-                  "location": "hide"
-                },
-                "rotor": {
-                  "width": "30px",
-                  "height": "40px",
-                  "fontsize": "2rem"
-                }
-              }
-            },
-            {
-              "type": "custom:flipdown-timer-card",
-              "name": "Timer 0.5",
-              "show_error": false,
-              "show_title": true,
-              "duration": "00:00:30",
-              "styles": {
-                "button": {
-                  "location": "hide"
-                },
-                "rotor": {
-                  "width": "30px",
-                  "height": "40px",
-                  "fontsize": "2rem"
-                }
-              },
-              "entity": "timer.thirtysecond"
-            },
-            {
               "type": "horizontal-stack",
               "cards": [
-                {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "input_boolean.flush2",
-                  "icon_height": "30px"
-                },
                 {
                   "show_name": true,
                   "show_icon": true,
@@ -1440,11 +1440,6 @@
               ]
             },
             {
-              "type": "weather-forecast",
-              "entity": "weather.home",
-              "theme": "Animated Weather Card"
-            },
-            {
               "hours_to_show": 24,
               "graph": "line",
               "type": "sensor",
@@ -1462,21 +1457,6 @@
                   "show_icon": true,
                   "type": "button",
                   "tap_action": {
-                    "action": "call-service",
-                    "service": "script.feeding_pump_silence",
-                    "target": {}
-                  },
-                  "entity": "switch.bot_108e",
-                  "icon": "mdi:pump-off",
-                  "name": "Feeding Pump",
-                  "icon_height": "40px",
-                  "theme": "Dark Yellow"
-                },
-                {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
                     "action": "toggle"
                   },
                   "entity": "script.reset_nag",
@@ -1484,90 +1464,8 @@
                   "name": "Door Nag",
                   "icon_height": "40px",
                   "theme": "Dark Pink"
-                },
-                {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "input_boolean.bed_cares_up",
-                  "icon_height": "40px",
-                  "theme": "Dark Turqoise"
-                },
-                {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "input_boolean.bed_cares_down",
-                  "show_state": false,
-                  "icon_height": "40px",
-                  "theme": "Dark Turqoise"
-                },
-                {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "input_boolean.poop",
-                  "icon_height": "40px",
-                  "theme": "Dark Green"
-                },
-                {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "input_boolean.poop_done",
-                  "icon_height": "40px",
-                  "theme": "Dark Green"
                 }
               ]
-            },
-            {
-              "type": "glance",
-              "entities": [
-                {
-                  "entity": "lock.front_door_lock"
-                },
-                {
-                  "entity": "lock.side_door"
-                },
-                {
-                  "entity": "lock.smart_code_with_home_connect_technology"
-                },
-                {
-                  "entity": "cover.garage_door"
-                },
-                {
-                  "entity": "binary_sensor.front_door_pir"
-                },
-                {
-                  "entity": "binary_sensor.side_door_open_2"
-                },
-                {
-                  "entity": "binary_sensor.back_door_open_433"
-                },
-                {
-                  "entity": "binary_sensor.garage_side_door_open"
-                },
-                {
-                  "entity": "binary_sensor.front_door_open_433"
-                },
-                {
-                  "entity": "binary_sensor.side_door_open_433"
-                }
-              ],
-              "title": "Glance",
-              "columns": 4
             },
             {
               "type": "entities",
@@ -1666,46 +1564,9 @@
               "theme": "Dark Soft UI Violet"
             },
             {
-              "type": "button",
-              "tap_action": {
-                "action": "call-service",
-                "service": "input_boolean.turn_on",
-                "service_data": {},
-                "target": {
-                  "entity_id": [
-                    "input_boolean.pad_enable3"
-                  ]
-                }
-              },
-              "entity": "switch.v8",
-              "name": "All Locks - Tap Lock / Hold Unlock",
-              "icon": "mdi:lock",
-              "show_state": false,
-              "icon_height": "80px",
-              "hold_action": {
-                "action": "call-service",
-                "service": "input_boolean.turn_on",
-                "service_data": {},
-                "target": {
-                  "entity_id": "input_boolean.pad_enable2"
-                }
-              }
-            },
-            {
               "type": "media-control",
               "entity": "media_player.fire_tv_192_168_108_207",
               "theme": "Dark Pink"
-            },
-            {
-              "show_name": false,
-              "show_icon": true,
-              "type": "button",
-              "tap_action": {
-                "action": "navigate",
-                "navigation_path": "/lovelace/bed"
-              },
-              "entity": "script.smartbed_buttons_off",
-              "icon": "mdi:bed-empty"
             }
           ],
           "icon": "mdi:alpha-j-box",
@@ -2694,7 +2555,13 @@
             {
               "type": "humidifier",
               "entity": "humidifier.house_humidity",
-              "theme": "Fluent Orange"
+              "theme": "Fluent Orange",
+              "show_current_as_primary": true,
+              "features": [
+                {
+                  "type": "humidifier-toggle"
+                }
+              ]
             },
             {
               "hours_to_show": 24,

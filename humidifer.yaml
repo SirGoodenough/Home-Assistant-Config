@@ -1,5 +1,6 @@
 ---
   - name: House Humidity
+    unique_id: 46d06303-c908-4d1d-af1a-82e1dc381565
     humidifier: switch.humidifier_enable
     target_sensor: sensor.humidity_group
     min_humidity: 20

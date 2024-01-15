@@ -90,22 +90,3 @@
         entity_id: light.grp_kitch
   initial_state: 'on'
   mode: restart
-- id: '1700817665116'
-  alias: Thermostat Ramp
-  description: Creep the thermostat up to prevent use of oil furnace.
-  use_blueprint:
-    path: SirGoodenough/Stage_1_Temperature_Control.yaml
-    input:
-      climate_e: climate.living_room_2
-      maxTemp: 70.2
-      ramp_start_time: 04:52:15
-      ramp_end_time: 08:15:54
-      rampRate: 1
-      interval:
-        hours: 0
-        minutes: 2
-        seconds: 19
-      additional_conditions:
-      - condition: numeric_state
-        entity_id: sensor.furnace_pellet_firebox_temperature
-        above: 199.9

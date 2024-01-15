@@ -409,7 +409,7 @@
     {%- set min = [r, g, b] | min %}
     {%- set max = [r, g, b] | max %}
       {#- Set brightness to 100% #}
-    {#- set _V = max (alternate) #}
+      {#- set _V = max (alternate) #}
     {%- set _V = 255 %}
       {#- Calculate S #}
     {%- set delta = max-min %}
@@ -566,9 +566,9 @@ Development credit to @123 on the
     certain of the result.
 #}
 {{- _xyl is list and
-   _xyl | select('number') | list | count == 2 and
-   _xyl | select('<', 0) | list | count == 0 and
-   _xyl | select('>', 1) | list | count == 0 -}}
+  _xyl | select('number') | list | count == 2 and
+  _xyl | select('<', 0) | list | count == 0 and
+  _xyl | select('>', 1) | list | count == 0 -}}
 {%- endmacro %}
 
 {% macro chkHS(_hsl) %}
@@ -593,10 +593,10 @@ Development credit to @123 on the
     certain of the result.
 #}
 {{- _hsl is list and
-   _hsl | select('number') | list | count == 2 and
-   _hsl | select('<', 0) | list | count == 0 and
-   _hsl[0] <= 100 and
-   _hsl[1] <= 360 -}}
+  _hsl | select('number') | list | count == 2 and
+  _hsl | select('<', 0) | list | count == 0 and
+  _hsl[0] <= 100 and
+  _hsl[1] <= 360 -}}
 {%- endmacro %}
 
 {% macro chkNAME(color_name) %}
