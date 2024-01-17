@@ -112,7 +112,7 @@ blueprint:
     occ_test:
       name: Enable the Occupancy test?
       description: |
-        This BluePrind can take into consideration if a zone is occupied.
+        This BluePrint can take into consideration if a zone is occupied.
         To enable this feature, select yes.
         To ignore this feature select no.
       default: false
@@ -121,7 +121,7 @@ blueprint:
     t_zone:
       name: Zone to monitor for occupancy
       description: |
-        If you said yes above, then you enter the zome to monitoe here.
+        If you said yes above, then you enter the zome to monitor here.
         Default zone is home. Change to another zone if you want to.
         If you said no above, this section has no effect on your BluePrint.
       default: zone.home
@@ -134,7 +134,7 @@ blueprint:
       name: Additional conditions
       description: |
         Extra conditions you may want to add to this automation 
-        (Example: It is heating season, is my primary heat source ready, etc.)
+        (Example: Is it heating season, is my primary heat source ready, etc.)
       default: []
       selector:
         condition:
@@ -199,7 +199,7 @@ condition:
     condition: !input additional_conditions
 
 action:
-  - alias: "Repeat bumping until you hit the top or the time is up"
+  - alias: "Repeat bumping temp until you hit the top or the time is up"
     repeat:
       while:
         - alias: Stop when at maxTemp
@@ -223,3 +223,4 @@ action:
             - alias: One minute delay before recycle
               delay: 60
 mode: single
+max_exceeded: silent
