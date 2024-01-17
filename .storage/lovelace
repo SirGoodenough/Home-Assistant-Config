@@ -491,7 +491,9 @@
               "graph": "line",
               "type": "sensor",
               "entity": "sensor.ethernettest_kitchen_co2",
-              "detail": 2
+              "detail": 2,
+              "hours_to_show": 48,
+              "unit": "ppm"
             },
             {
               "type": "conditional",
