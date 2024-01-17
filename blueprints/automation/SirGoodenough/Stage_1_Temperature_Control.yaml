@@ -146,6 +146,7 @@ trigger:
   - platform: state
     entity_id: !input climate_e
     attribute: current_temperature
+    id: room_temp_changed
   - platform: homeassistant
     event: start
     id: ha_restart
