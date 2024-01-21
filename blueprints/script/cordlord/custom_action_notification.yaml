@@ -1,0 +1,101 @@
+blueprint:
+  name: Custom Confirmable Notification
+  description: >-
+    A reusable script that sends an actionable notification to all mobile devices and a persistent notification to the HA dashboard with a confirmation before
+    running the specified actions.
+  domain: script
+  source_url: https://github.com/cordlord/homeassistant/blob/main/blueprints/custom_action_notification.yaml
+  author: cordlord
+  input:
+    title:
+      name: "Title"
+      description: "The title of the notification."
+      default: ""
+      selector:
+        text:
+    message:
+      name: "Message"
+      description: "The message body"
+      selector:
+        text:
+    notification_id:
+      name: "Persistent Notification ID"
+      description: "ID of the persistent notification in HA. Will automatically overwrite old ones."
+      default: ""
+      selector:
+        text:
+    dismiss_text:
+      name: "Dismiss Text"
+      description: "Text to show on the dismiss button for mobile only."
+      default: "Dismiss"
+      selector:
+        text:
+    dismiss_action:
+      name: "Dismiss Action"
+      description: "Action to run when notification is dismissed from mobile or HA."
+      default: []
+      selector:
+        action:
+    timeout:
+      name: "Timeout Length (minutes)"
+      description: "How long in minutes until script will timeout and perform timeout actions."
+      default: "0"
+      selector:
+        text:
+    default_action:
+      name: "Default Action"
+      description: "Action to run when script reaches timeout limit set above."
+      default: []
+      selector:
+        action:
+
+mode: restart
+
+sequence:
+  - alias: "Set up variables"
+    variables:
+      action_dismiss: "{{ 'DISMISS_' ~ context.id }}"
+      notification_id: !input notification_id
+  - alias: "Send mobile notification"
+    service: notify.notify
+    data:
+      message: !input message
+      title: !input title
+      data:
+        actions:
+          - action: "{{ action_dismiss }}"
+            title: !input dismiss_text
+  - alias: "Send persistent notification"
+    service: persistent_notification.create
+    data:
+      notification_id: "{{ notification_id }}"
+      title: !input title
+      message: !input message
+  - alias: "Awaiting response"
+    wait_for_trigger:
+      - platform: event
+        event_type: mobile_app_notification_action
+        event_data:
+          action: "{{ action_dismiss }}"
+      - platform: persistent_notification
+        update_type:
+          - removed
+        notification_id: !input notification_id
+        id: !input notification_id
+#if you want a different length of time, you can adjust settings here by using hours, minutes, seconds, or a combination of all
+    timeout:
+      minutes: !input timeout
+    continue_on_timeout: true
+  - choose:
+      - conditions: "{{ wait.trigger.event.data.action == action_dismiss }}"
+        sequence: !input dismiss_action
+      - conditions: "{{ wait.trigger.id == notification_id }}"
+        sequence: !input dismiss_action
+    default: 
+      !input default_action
+  
+  
+  
+  
+  
+  

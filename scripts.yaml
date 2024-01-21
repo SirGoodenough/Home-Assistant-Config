@@ -16,3 +16,16 @@ media_player_gong:
       targets: timer.flushtime10
       speed: input_number.lock_state3
       switch: true
+tell_me_a_joke:
+  alias: Joke Front Door Motion
+  use_blueprint:
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
+    input:
+      TTS: Piper
+      speaker_target:
+      - media_player.jen_group
+      speaker_gender: male
+      announcement_message: '{{ states(''sensor.joke'') }}'
+      piper_voice: '{{("en_US-lessac-medium","en_US-amy-low","en_US-amy-medium","en_US-arctic-medium","en_US-danny-low","en_US-joe-medium","en_US-kathleen-low","en_US-kusal-medium","en_US-l2arctic-medium","en_US-lessac-high","en_US-lessac-low","en_US-lessac-medium","en_US-libritts-high","en_US-libritts_r-medium","en_US-ryan-high","en_US-ryan-low","en_US-ryan-medium")|random}}'
+      b4_action: []
+  icon: mdi:drama-masks

@@ -8,8 +8,8 @@
     trigger:
     - platform: state
       entity_id: binary_sensor.dryer
-      from: 'on'
-      to: 'off'
+      from: 'off'
+      to: 'on'
       for:
         seconds: 30
     action:

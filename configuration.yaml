@@ -34,6 +34,7 @@ mobile_app:
 my:
 network:
 person: !include person.yaml
+rest: !include_dir_merge_list ./rest/
 scene: !include scene.yaml
 schedule:
 script: !include_dir_merge_named ./script2/
