@@ -30,7 +30,7 @@
       from: 'off'
       to: 'on'
     action:
-    - service: script.media_player_front_doorbell_motion
+    - service: script.joke_front_door_mot
 
 
   #####################################################
