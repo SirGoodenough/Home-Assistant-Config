@@ -11,19 +11,6 @@ sg_food_say:
       speaker_target: media_player.intercom_group
       announcement_message: Dad's food day. Lets get Jimmy John's!
   icon: mdi:food-hot-dog
-jen_food_say:
-  alias: Announce Jens Food Day
-  description: Jens lets have fun with food day
-  use_blueprint:
-    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
-    input:
-      GTS_language: en
-      TTS: tts.cloud_say
-      nabu_azure_language: en-GB
-      speaker_gender: male
-      speaker_target: media_player.intercom_group
-      announcement_message: Jen's food day. Lets get extra ranch from Denny's!
-  icon: mdi:noodles
 julie_food_say:
   alias: Announce Julies Food Day
   description: Moms lets have fun with food day
@@ -50,19 +37,6 @@ sg_food_say2:
       speaker_target: media_player.intercom_group
       announcement_message: Dad's food day. It's Happy Family for a Happy Family!
   icon: mdi:peanut
-jen_food_say2:
-  alias: Announce Jens Food Day
-  description: Jens lets have fun with food day
-  use_blueprint:
-    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
-    input:
-      GTS_language: en
-      TTS: tts.cloud_say
-      nabu_azure_language: en-GB
-      speaker_gender: male
-      speaker_target: media_player.intercom_group
-      announcement_message: Jen's food day. Panera is my fave!!!
-  icon: mdi:blender
 julie_food_say2:
   alias: Announce Julies Food Day
   description: Moms lets have fun with food day
