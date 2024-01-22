@@ -30,8 +30,7 @@
       from: 'off'
       to: 'on'
     action:
-    - service: script.joke_front_door_mot
-
+    - service: script.tts_front_motion_tell_me_a_joke
 
   #####################################################
   # Back                                              #
