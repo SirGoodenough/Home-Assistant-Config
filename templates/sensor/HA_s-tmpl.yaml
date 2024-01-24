@@ -62,8 +62,8 @@
       state: "{{ states.switch | count }}"
       attributes:
         friendly_name: "Swt"
-    - name: template_count
-      unique_id: ca5cdd70-9031-4edf-856f-b7613cf0dd75
-      state: "{{ states | map(attribute='entity_id') | map('regex_search','.template') | select('true') | list | count }}"
+    - name: zones_count
+      unique_id: 890ea1a7-0210-4ab7-8291-9108a4cc66e2
+      state: '{{ states.zone | count }}'
       attributes:
-        friendly_name: "Tmpl"
+        friendly_name: "Zone"

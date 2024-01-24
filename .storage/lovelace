@@ -4606,6 +4606,7 @@
               "type": "entities"
             },
             {
+              "square": false,
               "type": "grid",
               "cards": [
                 {
@@ -4718,14 +4719,16 @@
                 },
                 {
                   "type": "entity",
-                  "entity": "sensor.template_count"
+                  "entity": "sensor.lines_of_yaml"
                 },
                 {
                   "type": "entity",
-                  "entity": "sensor.lines_of_yaml"
+                  "entity": "sensor.zones_count",
+                  "name": "Zones",
+                  "state_color": false,
+                  "icon": "mdi:check"
                 }
-              ],
-              "square": false
+              ]
             },
             {
               "entities": [

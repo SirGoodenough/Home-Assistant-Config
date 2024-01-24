@@ -128,3 +128,12 @@
       message: Take immediate action.  Open doors. CO2 level is in the unsafe range.
         Take immediate action.  Open doors. CO2 level is in the unsafe range.
   mode: single
+- id: '1705944329325'
+  alias: Goodnight Alarm
+  description: Play the QOTD at betdime
+  trigger:
+  - platform: time
+    at: 02:00:21
+  action:
+  - service: script.qotd
+  mode: single

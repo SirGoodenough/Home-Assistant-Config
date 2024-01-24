@@ -4,7 +4,7 @@ blueprint:
     A reusable script that sends an actionable notification to all mobile devices and a persistent notification to the HA dashboard with a confirmation before
     running the specified actions.
   domain: script
-  source_url: https://github.com/cordlord/homeassistant/blob/main/blueprints/custom_action_notification.yaml
+ # source_url: https://github.com/cordlord/homeassistant/blob/main/blueprints/custom_action_notification.yaml
   author: cordlord
   input:
     title:

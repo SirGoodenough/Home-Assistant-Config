@@ -102,24 +102,3 @@ media_player_front_doorbell_motion:
         {% endif %}
   icon: mdi:motion-sensor
 
-tts_front_motion_tell_me_a_joke:
-  alias: Joke Front Door Motion
-  use_blueprint:
-    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
-    input:
-      TTS: Piper
-      speaker_target: media_player.intercom_group
-      speaker_gender: male
-      announcement_message: '{{ states(''sensor.joke'') }}'
-      piper_voice: '{{("en_US-lessac-medium","en_US-amy-low","en_US-amy-medium","en_US-arctic-medium","en_US-danny-low","en_US-joe-medium","en_US-kathleen-low","en_US-kusal-medium","en_US-l2arctic-medium","en_US-lessac-high","en_US-lessac-low","en_US-lessac-medium","en_US-libritts-high","en_US-libritts_r-medium","en_US-ryan-high","en_US-ryan-low","en_US-ryan-medium")|random}}'
-      b4_action:
-      - service: script.media_player_front_doorbell_motion
-        data: {}
-      - delay:
-          seconds: 5
-      after_action:
-      - service: homeassistant.update_entity
-        target:
-          entity_id: sensor.joke
-        data: {}
-  icon: mdi:drama-masks

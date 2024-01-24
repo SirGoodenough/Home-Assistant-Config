@@ -1,13 +1,11 @@
 ---
-
         # Pulling <= Quote Of The Day => from BrainyQuotes with Feedparser
   - platform: feedparser
     name: QOTD
     feed_url: 'https://www.brainyquote.com/link/quotebr.rss'
-    date_format: '%a, %b %d %I:%M %p'
     show_topn: 1
     scan_interval:
-      hours: 12
+      hours: 24
     inclusions:
       - summary
       - title

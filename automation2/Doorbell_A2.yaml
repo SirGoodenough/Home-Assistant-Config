@@ -17,6 +17,7 @@
       from: 'off'
       to: 'on'
     action:
+    - delay: 00:00:22
     - service: script.media_player_front_doorbell_ding
     - delay: 00:00:05
     - service: script.tts_front_doorbell
@@ -30,7 +31,7 @@
       from: 'off'
       to: 'on'
     action:
-    - service: script.tts_front_motion_tell_me_a_joke
+    - service: script.front_motion_joke
 
   #####################################################
   # Back                                              #
@@ -44,6 +45,7 @@
       from: 'off'
       to: 'on'
     action:
+    - delay: 00:00:15
     - service: script.media_player_back_doorbell_ding
     - delay: 00:00:05
     - service: script.tts_back_doorbell

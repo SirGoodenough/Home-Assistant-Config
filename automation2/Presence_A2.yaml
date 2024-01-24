@@ -28,30 +28,7 @@
     input:
       people2monitor:
       - person.julie
-
-      zone2monitor:
-      - zone.home
-      - zone.katy_s_kloset
-      - zone.follicle_assembly_building
-      - zone.feed_store
-      - zone.nail_shop2
-      - zone.belva
-      - zone.clinic
-      - zone.elkhorn
-      - zone.expo
-      - zone.lakewood
-      - zone.lindas_lair
-      - zone.m_h_s_dream_society
-      - zone.moms_house
-      - zone.mountain
-      - zone.piesler_ranch
-      - zone.restoration_and_repair_facility
-      - zone.retzer_nature_center
-      - zone.rose_estate
-      - zone.shawano
-      - zone.somerhome
-      - zone.suring
-      - zone.townsend
+      zone2monitor: '{{ states.zone | map(attribute="entity_id") | list }}'
       enter_action:
       - parallel:
         - service: script.personalert_notify
@@ -174,27 +151,7 @@
     input:
       people2monitor:
       - person.jim
-      zone2monitor:
-      - zone.home
-      - zone.katy_s_kloset
-      - zone.feed_store
-      - zone.belva
-      - zone.clinic
-      - zone.elkhorn
-      - zone.expo
-      - zone.lakewood
-      - zone.lindas_lair
-      - zone.m_h_s_dream_society
-      - zone.moms_house
-      - zone.mountain
-      - zone.piesler_ranch
-      - zone.restoration_and_repair_facility
-      - zone.retzer_nature_center
-      - zone.rose_estate
-      - zone.shawano
-      - zone.suring
-      - zone.somerhome
-      - zone.townsend
+      zone2monitor: '{{ states.zone | map(attribute="entity_id") | list }}'
       enter_action:
       - alias: Delay for when traveling together.
         delay: 00:00:30
@@ -253,9 +210,7 @@
       enable_time: 05:29:13
       disable_time: '20:27:36'
       hold_period:
-        hours: 0
         minutes: 3
-        seconds: 0
   mode: queued
   max: 10
 
@@ -269,29 +224,7 @@
     input:
       people2monitor:
       - person.jen
-      zone2monitor:
-      - zone.home
-      - zone.katy_s_kloset
-      - zone.follicle_assembly_building
-      - zone.feed_store
-      - zone.nail_shop2
-      - zone.belva
-      - zone.clinic
-      - zone.elkhorn
-      - zone.expo
-      - zone.lakewood
-      - zone.lindas_lair
-      - zone.m_h_s_dream_society
-      - zone.moms_house
-      - zone.mountain
-      - zone.piesler_ranch
-      - zone.restoration_and_repair_facility
-      - zone.retzer_nature_center
-      - zone.rose_estate
-      - zone.shawano
-      - zone.somerhome
-      - zone.suring
-      - zone.townsend
+      zone2monitor: '{{ states.zone | map(attribute="entity_id") | list }}'
       enter_action:
       - alias: Delay for when traveling together.
         delay: 00:01:00
@@ -347,9 +280,7 @@
       enable_time: '13:30:18'
       disable_time: '20:27:36'
       hold_period:
-        hours: 0
         minutes: 10
-        seconds: 0
   mode: queued
   max: 10
 
