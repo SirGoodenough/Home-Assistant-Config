@@ -38,7 +38,7 @@ blueprint:
 
     [Community link for this blueprint](https://community.home-assistant.io/t/person-alert-blueprint/542209)
 
-#  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_Alert_Blueprint.yaml
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_Alert_Blueprint.yaml
   homeassistant:
     min_version: 2023.8.0
   domain: automation
@@ -59,8 +59,12 @@ blueprint:
       description: >
         Select the Zone you want this BP to trigger on when this person
         enters or leaves it.
+        If you want to select all the zones you have listed  in this HA instance
+          then use the default. If you want to pick individual zones be sure to
+          override the default because it auto-picks all.
         Multiples are allowed.
 
+      default: '{{ states.zone | map(attribute="entity_id") | list }}'
       selector:
         entity:
           multiple: true
