@@ -83,6 +83,9 @@
                 },
                 {
                   "entity": "light.grp_dad_lights"
+                },
+                {
+                  "entity": "fan.jens_mist"
                 }
               ],
               "title": "Kitchen Lights",
