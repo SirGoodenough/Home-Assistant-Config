@@ -37,14 +37,14 @@
         entity_id: sensor.furnace_pellet_firebox_temperature
         above: 199.9
 
-- id: 214d6390-25f5-45e8-aa1b-eadf07f08611
-  alias: Thermostat update to reduce rate limits
-  initial_state: on
-  trigger:
-    - platform: time_pattern
-      minutes: "/3"
-  action:
-    - service: homeassistant.update_entity
-      target:
-        - entity_id: sensor.living_room_temperature
-        # - entity_id: sensor.gemodule5384_current_temperature
+# - id: 214d6390-25f5-45e8-aa1b-eadf07f08611
+#   alias: Thermostat update to reduce rate limits
+#   initial_state: on
+#   trigger:
+#     - platform: time_pattern
+#       minutes: "/3"
+#   action:
+#     - service: homeassistant.update_entity
+#       target:
+#         - entity_id: sensor.living_room_temperature
+#         # - entity_id: sensor.gemodule5384_current_temperature

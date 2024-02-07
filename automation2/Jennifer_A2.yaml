@@ -23,3 +23,21 @@
     - service: script.tts_mister_message
     - delay: 00:00:07
     - service: script.media_player_jens_neb
+
+- id: 6d3dd9af-eeaa-4e29-8706-8beeb1c5a375
+  alias: Kitchenlight on Mist on
+  description: Turn on the Mister with the Kitchensink light.
+  trigger:
+  - platform: state
+    entity_id:
+    - light.kitchensink
+    to: 'on'
+  condition: []
+  action:
+  - service: fan.turn_on
+    metadata: {}
+    data:
+      percentage: 47
+    target:
+      entity_id: fan.jens_mist
+  mode: single
