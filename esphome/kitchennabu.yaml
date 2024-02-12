@@ -37,6 +37,8 @@ binary_sensor:
     pin: GPIO34
     name: "${friendly_name} PIR Sensor"
     device_class: motion
+    filters:
+      - delayed_off: 10min
 
 # microphone:
 #   - platform: i2s_audio
@@ -52,6 +54,7 @@ binary_sensor:
 # #     i2s_dout_pin: GPIO25
 # #     mode: mono
 
+
 # voice_assistant:
 #   microphone: mic
 #   use_wake_word: false
@@ -60,6 +63,15 @@ binary_sensor:
 #   volume_multiplier: 2.0
 # #   speaker: big_speaker
 #   id: assist
+#   on_tts_start:
+#     - homeassistant.service:
+#         service: tts.cloud_say
+#         data:
+#           entity_id: media_player.jennys_room_display
+#         data_template:
+#           message: "{{ my_stt }}"
+#         variables:
+#           my_stt: return x;
 
 # switch:
 #   - platform: template

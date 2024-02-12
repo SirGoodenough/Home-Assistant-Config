@@ -88,7 +88,7 @@
         to: "on"
         id: event_announce
       - platform: time
-        at: "6:01:11"
+        at: "6:52:11"
         id: morning_announce_julie
       - platform: time
         at: "9:27:38"
