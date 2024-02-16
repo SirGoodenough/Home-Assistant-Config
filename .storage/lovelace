@@ -177,27 +177,6 @@
               }
             },
             {
-              "type": "conditional",
-              "conditions": [
-                {
-                  "condition": "numeric_state",
-                  "entity": "sensor.jens_phone_battery",
-                  "below": 40
-                }
-              ],
-              "card": {
-                "show_name": true,
-                "show_icon": true,
-                "type": "button",
-                "tap_action": {
-                  "action": "more-info"
-                },
-                "entity": "sensor.jens_phone_battery",
-                "icon": "",
-                "show_state": true
-              }
-            },
-            {
               "entities": [
                 {
                   "entity": "sensor.sonoff_rf_bridge_2_si7021_temperature",
@@ -923,7 +902,7 @@
                 },
                 "entity": "sensor.yertle_battery",
                 "name": "Yertle Low Battery",
-                "icon": "mdi:battery-30",
+                "icon": "",
                 "show_state": true,
                 "hold_action": {
                   "action": "none"
@@ -4949,6 +4928,18 @@
                 }
               ],
               "title": "ThermoPI Furnace"
+            },
+            {
+              "graph": "line",
+              "type": "sensor",
+              "entity": "sensor.wash_machine_energy_current",
+              "detail": 2
+            },
+            {
+              "graph": "line",
+              "type": "sensor",
+              "entity": "sensor.wash_machine_ave_amps",
+              "detail": 2
             }
           ]
         },

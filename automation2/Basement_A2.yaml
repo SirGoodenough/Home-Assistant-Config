@@ -1,23 +1,4 @@
 ---
-  ####################################################
-  # Dryer Signal                                     # 
-  ####################################################
-  - id: 92312f77-02af-4a49-a728-978ff6b08229
-    alias: Dryer Alert
-    initial_state: on
-    trigger:
-    - platform: state
-      entity_id: binary_sensor.dryer
-      from: 'off'
-      to: 'on'
-      for:
-        seconds: 30
-    action:
-    - service: script.tts_dryer_done
-    - delay: 
-        seconds: 4
-    - service: script.media_player_dryer_alert
-    
   #####################################################
   # Dust Collector                                    #
   #####################################################
@@ -52,6 +33,25 @@
       entity_id: switch.dust_collector
 
   ####################################################
+  # Dryer Signal                                     # 
+  ####################################################
+  - id: 92312f77-02af-4a49-a728-978ff6b08229
+    alias: Dryer Alert
+    initial_state: on
+    trigger:
+    - platform: state
+      entity_id: binary_sensor.dryer
+      from: 'off'
+      to: 'on'
+      for:
+        seconds: 30
+    action:
+    - service: script.tts_dryer_done
+    - delay: 
+        seconds: 4
+    - service: script.media_player_dryer_alert
+
+  ####################################################
   # Wash Machine                                     #
   ####################################################
   - id: adb7ce4b-324f-4c17-a519-758e42f2166e
@@ -70,20 +70,25 @@
         topic: Dryer3/cmnd/restart
         payload: '1'
 
-  - id: 53b25612-906e-43cf-a71c-21a93b5041a1
-    alias: Washer Alert
-    initial_state: on
+  - id: 924088c3-c0e6-4d59-bebf-6442c522381b
+    alias: Washer Status
+    description: Announce when washer is done
     trigger:
-    - platform: state
-      entity_id: binary_sensor.washing_machine
-      from: 'on'
-      to: 'off'
-      for:
-        minutes: 5
+      - platform: state
+        entity_id:
+          - binary_sensor.washer_running
+        from: "on"
+        to: "off"
+        for:
+          hours: 0
+          minutes: 0
+          seconds: 20
+    condition: []
     action:
-    - service: script.media_player_washer_alert
-    - delay: 00:00:06
-    - service: script.tts_wash_machine_done
+      - service: script.tts_wash_machine_done
+        data: {}
+    mode: single
+    max_exceeded: silent
 
   - id: '1674983375635'
     alias: Humidifier Proportional Control

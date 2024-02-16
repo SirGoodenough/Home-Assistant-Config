@@ -20,28 +20,6 @@
       attributes:
         friendly_name: "Dark Outside"
 
-    - name: "Washing Machine"
-      unique_id: 0f504a93-327b-4a03-ab93-4fc6aaaecbae
-      device_class: power
-      delay_off:
-        minutes: 7
-      state: >-
-        {% if (is_number('sensor.wash_machine_energy_current')) %}
-          {% if (states('sensor.wash_machine_energy_current') | float( 0.06 ) > 0.085) %}
-            true
-          {% else %}
-            false
-          {% endif %}
-        {% else %}
-          false
-        {% endif %}
-      availability: >-
-        {% from 'availability_template.jinja' import avail %}
-        {{- avail(['sensor.wash_machine_energy_current']) | bool -}}
-      icon: mdi:power
-      attributes:
-        friendly_name: "Washing Machine"
-
     - name: "AC Enabled"
       unique_id: f885f9fd-b280-439b-81f0-3fdd713393f5
       state: >-
@@ -65,6 +43,37 @@
       icon: mdi:snowflake-alert
       attributes:
         friendly_name: "AC Enabled"
+
+    #####################################################
+    # Washer State                                      #
+    #####################################################
+    - name: "Washer Running"
+      unique_id: f890192a-271a-4c27-83ea-c25d342652b2
+      state: >-
+        {# Set the variable. #}
+        {% set wm_amps = states('sensor.wash_machine_energy_current') | float(0.07) %}
+        {# Create a dead zone to prevent oscillations. #}
+        {%- if wm_amps > 0.16 %}
+          true
+        {%- elif wm_amps < 0.077 %}
+          false
+        {% else %}
+          {{ states('binary_sensor.washer_running') }}
+        {%- endif %}
+      delay_off:
+        minutes: 5
+      auto_off:
+        hours: 1
+      availability: >-
+        {% from 'availability_template.jinja' import avail %}
+        {{- avail(['sensor.wash_machine_energy_current']) | bool -}}
+      icon: mdi:washing-machine
+      attributes:
+        friendly_name: "Washer Running"
+
+
+
+
 
   # - name: 'Dark Outside'
   #   unique_id: ce7cb6b7-c666-494b-aa3c-4ed79b2f1092

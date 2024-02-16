@@ -218,6 +218,11 @@
         "id": "bed_flat_to_enter",
         "name": "Bed Enter",
         "icon": "mdi:location-enter"
+      },
+      {
+        "id": "wash_machine_status",
+        "name": "Wash Machine Status",
+        "icon": "mdi:washing-machine"
       }
     ]
   }

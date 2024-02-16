@@ -9,7 +9,21 @@ tts_wash_machine_done:
       speaker_gender: female
       speaker_target: media_player.intercom_group
       announcement_message: Washing Cycle Has Completed
+      b4_action:
+        - alias: send the wash machine sound
+          service: script.media_player_washer_alert
+        - alias: Wait for the sounder to end
+          delay: 00:00:06
   icon: mdi:washing-machine-off
+media_player_washer_alert:
+  alias: Media Player Washer Alert
+  use_blueprint:
+    path: SirGoodenough/play_media_file_script.yaml
+    input:
+      speaker_target: media_player.intercom_group
+      file_2_play: media-source://media_source/local/mp3//washing-machine-90458.mp3 
+      media_type: audio/mp3
+  icon: mdi:washing-machine
 tts_dryer_done:
   alias: TTS Dryer Done
   use_blueprint:
@@ -31,13 +45,3 @@ media_player_dryer_alert:
       speaker_target: media_player.intercom_group
       file_2_play: media-source://media_source/local/mp3/Dryer.mp3
   icon: mdi:tumble-dryer-alert
-media_player_washer_alert:
-  alias: Media Player Washer Alert
-  use_blueprint:
-    path: SirGoodenough/play_media_file_script.yaml
-    input:
-      speaker_target: media_player.intercom_group
-      file_2_play: source://media_source/local/mp3/WashingMachine.mp3
-      media_type: audio/mp3
-  icon: mdi:washing-machine
-

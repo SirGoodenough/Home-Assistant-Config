@@ -8,23 +8,37 @@
 #####################################################
 # Basement Hall PIR                                 #
 #####################################################
-- id: d4556acf-439c-426a-98b7-b58a411c660f
-  alias: Basement Hall PIR
-  initial_state: on
-  trigger:
-    - platform: state
-      entity_id:
-        - binary_sensor.basement_way_d_pir
-      to: "on"
-    - platform: state
-      entity_id:
-        - binary_sensor.basement_way_u_pir
-      to: "on"
-  action:
-    - service: mqtt.publish
-      data:
-        topic: bhall/cmnd/POWER2
-        payload: 1
+# - id: d4556acf-439c-426a-98b7-b58a411c660f
+#   alias: Basement Hall PIR
+#   initial_state: on
+#   trigger:
+#     - platform: state
+#       entity_id:
+#         - binary_sensor.basement_way_d_pir
+#       to: "on"
+#     - platform: state
+#       entity_id:
+#         - binary_sensor.basement_way_u_pir
+#       to: "on"
+#   condition:
+#     - or:
+#       - >
+#         {% from 'availability_template.jinja' import avail %}
+#         {{- not avail( ['binary_sensor.basement_way_u_pir',
+#           'binary_sensor.basement_way_d_pir'] ) | bool -}}
+#       - alias: "Down Socket off ?"
+#         condition: state
+#         entity_id: light.bmt_hall_socketd
+#         state: "off"
+#       - alias: "Up Socket off ?"
+#         condition: state
+#         entity_id: light.bmt_hall_socketu
+#         state: "off"
+#   action:
+#     - service: mqtt.publish
+#       data:
+#         topic: bhall/cmnd/POWER2
+#         payload: 1
 
 ####################################################
 # DnRemote                                         #
