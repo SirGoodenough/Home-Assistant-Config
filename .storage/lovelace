@@ -2313,6 +2313,13 @@
               "icon": "mdi:fireplace"
             },
             {
+              "type": "sensor",
+              "entity": "sensor.lrthermostat",
+              "graph": "line",
+              "detail": 2,
+              "name": "Living Room Thermostat"
+            },
+            {
               "hours_to_show": 24,
               "graph": "line",
               "entity": "sensor.furnace_oil_firebox_temperature",
@@ -2322,21 +2329,6 @@
               "icon": "mdi:temperature-fahrenheit"
             },
             {
-              "type": "sensor",
-              "entity": "sensor.lrthermostat",
-              "graph": "line",
-              "detail": 2,
-              "name": "Living Room Thermostat"
-            },
-            {
-              "graph": "line",
-              "hours_to_show": 24,
-              "entity": "sensor.ethernettest_kitchen_temperature",
-              "type": "sensor",
-              "detail": 2,
-              "icon": "mdi:stove"
-            },
-            {
               "hours_to_show": 24,
               "graph": "line",
               "entity": "sensor.furnace_pellet_top_temperature",
@@ -2344,15 +2336,6 @@
               "type": "sensor",
               "detail": 2,
               "icon": "mdi:fire"
-            },
-            {
-              "hours_to_show": 24,
-              "graph": "line",
-              "entity": "sensor.furnace_oil_top_temperature",
-              "theme": "slate_red",
-              "type": "sensor",
-              "detail": 2,
-              "icon": "mdi:temperature-fahrenheit"
             },
             {
               "entity": "sensor.sonoff_rf_bridge_2_si7021_temperature",
@@ -2379,6 +2362,23 @@
               "name": "Bedroom AC Unit"
             },
             {
+              "graph": "line",
+              "hours_to_show": 24,
+              "entity": "sensor.ethernettest_kitchen_temperature",
+              "type": "sensor",
+              "detail": 2,
+              "icon": "mdi:stove"
+            },
+            {
+              "hours_to_show": 24,
+              "graph": "line",
+              "entity": "sensor.furnace_oil_top_temperature",
+              "theme": "slate_red",
+              "type": "sensor",
+              "detail": 2,
+              "icon": "mdi:temperature-fahrenheit"
+            },
+            {
               "entity": "sensor.bedroom_fan_si7021_temperature",
               "graph": "line",
               "type": "sensor",
@@ -2387,9 +2387,25 @@
               "name": "Bedroom"
             },
             {
-              "type": "sensor",
-              "entity": "sensor.jen_temperature_temperature",
+              "hours_to_show": 24,
               "graph": "line",
+              "type": "sensor",
+              "entity": "sensor.yertle_device_temperature",
+              "detail": 1
+            },
+            {
+              "graph": "line",
+              "entity": "sensor.bt3_bathroom2_temperature",
+              "name": "Bathroom",
+              "type": "sensor",
+              "detail": 2,
+              "icon": "mdi:paper-roll-outline"
+            },
+            {
+              "hours_to_show": 24,
+              "graph": "line",
+              "type": "sensor",
+              "entity": "sensor.lumi_lumi_sensor_cube_aqgl01_device_temperature",
               "detail": 2
             },
             {
@@ -2410,6 +2426,15 @@
               "unit": "℉"
             },
             {
+              "graph": "line",
+              "hours_to_show": 24,
+              "entity": "sensor.garage_door_si7021_temperature",
+              "theme": "sundown",
+              "type": "sensor",
+              "detail": 2,
+              "icon": "mdi:garage"
+            },
+            {
               "entity": "sensor.dust_collector_si7021_temperature",
               "graph": "line",
               "type": "sensor",
@@ -2418,21 +2443,10 @@
               "name": "Back Basement"
             },
             {
-              "graph": "line",
-              "entity": "sensor.bt3_bathroom2_temperature",
-              "name": "Bathroom",
               "type": "sensor",
-              "detail": 2,
-              "icon": "mdi:paper-roll-outline"
-            },
-            {
+              "entity": "sensor.jen_temperature_temperature",
               "graph": "line",
-              "hours_to_show": 24,
-              "entity": "sensor.garage_door_si7021_temperature",
-              "theme": "sundown",
-              "type": "sensor",
-              "detail": 2,
-              "icon": "mdi:garage"
+              "detail": 2
             },
             {
               "graph": "line",
@@ -2448,20 +2462,6 @@
               "detail": 2,
               "icon": "mdi:washing-machine",
               "name": "Dryer"
-            },
-            {
-              "hours_to_show": 24,
-              "graph": "line",
-              "type": "sensor",
-              "entity": "sensor.lumi_lumi_sensor_cube_aqgl01_device_temperature",
-              "detail": 2
-            },
-            {
-              "hours_to_show": 24,
-              "graph": "line",
-              "type": "sensor",
-              "entity": "sensor.yertle_device_temperature",
-              "detail": 1
             },
             {
               "type": "entities",
@@ -4924,6 +4924,12 @@
                 }
               ],
               "title": "ThermoPI Furnace"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                "input_datetime.testit"
+              ]
             }
           ]
         },
