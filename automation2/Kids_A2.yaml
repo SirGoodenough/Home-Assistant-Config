@@ -27,44 +27,44 @@
 # Food Center Lights to Random                     #
 ####################################################
 - id: 7ea380be-f1af-4788-81b8-457b45a41d12
-  alias: Kids flip the lights
-  initial_state: on
-  description: 'Fun with light colors for the kiddos'
+  alias: Kids flip the lights 2
+  initial_state: true
+  description: Fun with light colors for the kiddos
   trigger:
-  - platform: device
-    domain: mqtt
-    device_id: 099887f41d8948deb1147400b1555b05
-    type: action
-    subtype: single
-    discovery_id: 0x00124b002510d876 action_single
-    id: single
-  - platform: device
-    domain: mqtt
-    device_id: 099887f41d8948deb1147400b1555b05
-    type: action
-    subtype: long
-    discovery_id: 0x00124b002510d876 action_long
-    id: long
+    - platform: device
+      domain: mqtt
+      device_id: 099887f41d8948deb1147400b1555b05
+      type: action
+      subtype: single
+      id: single
+    - platform: device
+      domain: mqtt
+      device_id: 099887f41d8948deb1147400b1555b05
+      type: action
+      subtype: long
+      id: long
   condition: []
   action:
-  - choose:
-    - conditions:
-      - condition: trigger
-        id:
-        - single
-      sequence:
-      - service: script.random_color
-        data:
-          light: light.grp_kitch
-    - conditions:
-      - condition: trigger
-        id:
-        - long
-      sequence:
-      - service: light.turn_off
-        target:
-          entity_id: light.grp_kitch
-        data: {}
+    - choose:
+        - conditions:
+            - condition: trigger
+              id:
+                - single
+          sequence:
+            - service: script.random_color
+              data:
+                light: light.grp_kitch
+        - conditions:
+            - condition: trigger
+              id:
+                - long
+          sequence:
+            - service: light.turn_on
+              target:
+                entity_id: light.grp_kitch
+              data:
+                kelvin: 1700
+                brightness: 96.9
   mode: queued
 
 ###################################################

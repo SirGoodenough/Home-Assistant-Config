@@ -1,2 +1,6 @@
 ---
   default: warn
+# Errors resulting from TV being switched off  
+  filters:  
+    homeassistant.components.androidtv.media_player:
+      - "Failed to execute an ADB command*"
