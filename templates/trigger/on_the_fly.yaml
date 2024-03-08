@@ -17,29 +17,29 @@
             {{ dict(current.items() | rejectattr('0', 'eq', trigger.event.data.key)) }}
           {% endif %}
 
-# https://community.home-assistant.io/t/wth-cant-input-helpers-be-read-only-in-ui/467562/13?u=sir_goodenough
+# https://community.home-assistant.io/t/wth-cant-input-helpers-be-read-only-in-ui/467562/13
 # To set a variable (reusing the key will overwrite the previous value)
-
 # action:
-# - alias:  Set a variable
+# - alias: Set a variable
 #   event: set_variable
 #   event_data:
-#     key: test
+#     key: myKey
 #     value: 26
 
 # To remove a variable from the sensor:
-
 # action:
-# - alias:  Remove a variable
+# - alias: Remove a variable
 #   event: remove_variable
 #   event_data:
-#     key: test
+#     key: myKey
+
+# Read/use it like this:
+# "{{ (state_attr('sensor.variables', 'variables').myKey|int(0)) }}"
 
 # My sensor.variables after a few tests:
-
 # friendly_name: Variables
 # variables:
-#   test_int: 10
+#   myKey: 26
 #   test_float: 9.99
 #   test_list:
 #     - a
