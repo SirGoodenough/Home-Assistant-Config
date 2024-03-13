@@ -196,3 +196,14 @@ test_fan_speed:
       default: 60
   mode: queued
   max: 7
+mp3_take_your_meds:
+  alias: MP3 Take Your Meds
+  use_blueprint:
+    path: SirGoodenough/play_media_file_script.yaml
+    input:
+      speaker_target:
+      - media_player.basement_speaker
+      - media_player.jennys_room_display
+      - media_player.bathroom_speaker
+      file_2_play: media-source://media_source/local/mp3/medicine_time.mp3
+  icon: mdi:pill-multiple

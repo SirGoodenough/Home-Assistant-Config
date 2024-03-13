@@ -1,4 +1,4 @@
 - name: 'home'
   latitude: !secret Lat
   longitude: !secret Long
-  radius: 85
+  radius: 75
