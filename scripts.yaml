@@ -207,3 +207,13 @@ mp3_take_your_meds:
       - media_player.bathroom_speaker
       file_2_play: media-source://media_source/local/mp3/medicine_time.mp3
   icon: mdi:pill-multiple
+aaaaaaaaaaaaaaaaaaaaaaaanew_script:
+  alias: aaaaaaaaaaaaaaaaaaaaaaaaNew Script
+  sequence:
+  - service: light.toggle
+    target:
+      entity_id: '{{ (light.bulb1, light.cabinetlight) | random }}
+
+        '
+    data: {}
+  mode: single

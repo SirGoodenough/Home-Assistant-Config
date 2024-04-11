@@ -650,48 +650,6 @@
               "conditions": [
                 {
                   "condition": "numeric_state",
-                  "entity": "sensor.bot_108e_battery",
-                  "below": 21
-                }
-              ],
-              "card": {
-                "show_name": true,
-                "show_icon": true,
-                "type": "button",
-                "tap_action": {
-                  "action": "more-info"
-                },
-                "entity": "sensor.bot_108e_battery",
-                "icon": "",
-                "show_state": true
-              }
-            },
-            {
-              "type": "conditional",
-              "conditions": [
-                {
-                  "condition": "numeric_state",
-                  "entity": "sensor.jens_kitchen_curtain_battery",
-                  "below": 26
-                }
-              ],
-              "card": {
-                "show_name": true,
-                "show_icon": true,
-                "type": "button",
-                "tap_action": {
-                  "action": "more-info"
-                },
-                "entity": "sensor.jens_kitchen_curtain_battery",
-                "icon": "",
-                "show_state": true
-              }
-            },
-            {
-              "type": "conditional",
-              "conditions": [
-                {
-                  "condition": "numeric_state",
                   "entity": "sensor.jens_window_curtain_battery",
                   "below": 26
                 }
@@ -704,27 +662,6 @@
                   "action": "more-info"
                 },
                 "entity": "sensor.jens_window_curtain_battery",
-                "icon": "",
-                "show_state": true
-              }
-            },
-            {
-              "type": "conditional",
-              "conditions": [
-                {
-                  "condition": "numeric_state",
-                  "entity": "sensor.silence_battery",
-                  "below": 21
-                }
-              ],
-              "card": {
-                "show_name": true,
-                "show_icon": true,
-                "type": "button",
-                "tap_action": {
-                  "action": "more-info"
-                },
-                "entity": "sensor.silence_battery",
                 "icon": "",
                 "show_state": true
               }
@@ -1069,9 +1006,6 @@
                   "entity": "switch.sonoff_1000d4bf8f_1"
                 },
                 {
-                  "entity": "binary_sensor.dryer"
-                },
-                {
                   "entity": "light.bmt_hall_socketu"
                 },
                 {
@@ -1091,6 +1025,9 @@
                 },
                 {
                   "entity": "binary_sensor.basement_way_d_pir"
+                },
+                {
+                  "entity": "binary_sensor.dryer"
                 },
                 {
                   "entity": "binary_sensor.washer_running"
@@ -1373,19 +1310,9 @@
                   "entity": "cover.jens_window_curtain",
                   "curtainColor": "rgb(10,10,10,0.8)",
                   "direction": "left",
-                  "size": 100,
+                  "size": 150,
                   "showStatus": true,
                   "sceneImage": "https://x5skwl.duckdns.org:23218/local/images/house_plant.gif"
-                },
-                {
-                  "type": "custom:curtain-card",
-                  "title": "Kitchen",
-                  "entity": "cover.jens_kitchen_curtain",
-                  "curtainColor": "rgb(10,10,10,0.8)",
-                  "direction": "right",
-                  "size": 100,
-                  "showStatus": true,
-                  "sceneImage": "https://x5skwl.duckdns.org:23218/local/images/GoofyJim.gif"
                 }
               ],
               "title": "Jens Curtain Control Panel"
@@ -1395,9 +1322,6 @@
               "entities": [
                 {
                   "entity": "cover.jens_window_curtain"
-                },
-                {
-                  "entity": "cover.jens_kitchen_curtain"
                 },
                 {
                   "entity": "script.jen_night_curtain_position"
@@ -1413,19 +1337,8 @@
                 },
                 {
                   "entity": "sensor.jens_window_curtain_battery"
-                },
-                {
-                  "entity": "sensor.jens_kitchen_curtain_battery"
                 }
               ]
-            },
-            {
-              "hours_to_show": 24,
-              "graph": "line",
-              "type": "sensor",
-              "entity": "sensor.jen_temperature_temperature",
-              "detail": 2,
-              "name": "Jen Temperature Graph 24 hrs."
             },
             {
               "square": false,
@@ -1446,20 +1359,6 @@
                   "theme": "Dark Pink"
                 }
               ]
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "sensor.jen_temperature_temperature",
-                  "name": "Temperature"
-                },
-                {
-                  "entity": "sensor.jen_temperature_humidity",
-                  "name": "Humidity"
-                }
-              ],
-              "title": "Jen Temperature"
             },
             {
               "entities": [
@@ -1686,22 +1585,165 @@
           "path": "remotes",
           "panel": false,
           "icon": "mdi:remote",
-          "visible": [
-            {
-              "user": "fbb92492100f41b58f8745f7bea065d8"
-            },
-            {
-              "user": "19d8a845eec04e30ae7b4abe9ac68f40"
-            },
-            {
-              "user": "3c91a64ba14c4d949d57ae414c50b922"
-            },
-            {
-              "user": "b707888b479d4c3cae42e8b44d6b7259"
-            }
-          ],
           "badges": [],
           "cards": [
+            {
+              "square": false,
+              "type": "grid",
+              "cards": [
+                {
+                  "show_name": true,
+                  "show_icon": false,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.chromecast_on_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.chromecast_on_sequence",
+                  "name": "Chromecast ON"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.tv_off_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.tv_off_sequence",
+                  "show_icon": false,
+                  "name": "Chromecast OFF"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": false,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.firetv_on_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.firetv_on_sequence",
+                  "name": "FireTV ON",
+                  "theme": "Dark Turqoise"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": false,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.tv_off_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.tv_off_sequence",
+                  "name": "FireTV OFF",
+                  "theme": "Dark Turqoise"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.ota_tv_on_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.ota_tv_on_sequence",
+                  "name": "OverTheAir ON",
+                  "show_icon": false
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.tv_off_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.tv_off_sequence",
+                  "show_icon": false,
+                  "name": "OverTheAir OFF"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.blueray_on_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.blueray_on_sequence",
+                  "name": "BlueRay ON",
+                  "show_icon": false
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.blueray_off_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.tv_off_sequence",
+                  "name": "BlueRay OFF",
+                  "show_icon": false
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.mecool_on_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.mecool_on_sequence",
+                  "name": "Mecool ON",
+                  "show_icon": false
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.mecool_off_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.tv_off_sequence",
+                  "show_icon": false,
+                  "name": "Mecool OFF"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.audio_tuner_on_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.audio_tuner_on_sequence",
+                  "show_icon": false,
+                  "name": "Audio Tuner ON"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.tv_off_sequence",
+                    "service_data": {},
+                    "target": {}
+                  },
+                  "entity": "script.tv_off_sequence",
+                  "show_icon": false,
+                  "name": "Audio Tuner OFF"
+                }
+              ],
+              "columns": 2,
+              "title": "System ON OFF Multi Scripts"
+            },
             {
               "type": "custom:firemote-card",
               "entity": "media_player.fire_tv_192_168_108_207",
@@ -1709,9 +1751,16 @@
               "device_type": "fire_tv_stick_4k_max",
               "compatibility_mode": "default",
               "app_launch_1": "paramount-plus",
-              "app_launch_2": "peacock"
+              "app_launch_2": "peacock",
+              "app_launch_4": "netflix",
+              "app_launch_3": "plex",
+              "visible_name_text": "JEN'S",
+              "name_position": "top",
+              "visible_name_text_color": "#ffa348",
+              "scale": "120"
             },
             {
+              "square": false,
               "type": "grid",
               "cards": [
                 {
@@ -1736,7 +1785,7 @@
                     "action": "toggle"
                   },
                   "name": "Jens TV Panel",
-                  "theme": "Dark - Orange"
+                  "theme": "Metro Red"
                 },
                 {
                   "type": "button",
@@ -1763,6 +1812,8 @@
                   "theme": "Dark - Orange"
                 },
                 {
+                  "show_name": true,
+                  "show_icon": true,
                   "type": "button",
                   "tap_action": {
                     "action": "call-service",
@@ -1772,7 +1823,7 @@
                   },
                   "entity": "script.vizio_j_power",
                   "icon_height": "50px",
-                  "theme": "Dark - Red"
+                  "theme": "Dark Pink"
                 },
                 {
                   "type": "button",
@@ -1799,6 +1850,8 @@
                   "theme": "Dark - Orange"
                 },
                 {
+                  "show_name": true,
+                  "show_icon": true,
                   "type": "button",
                   "tap_action": {
                     "action": "call-service",
@@ -1808,7 +1861,7 @@
                   },
                   "entity": "script.vizio_j_hdmi",
                   "icon_height": "50px",
-                  "theme": "Dark - Orange"
+                  "theme": "Dark Green"
                 },
                 {
                   "type": "button",
@@ -1860,7 +1913,7 @@
                   "theme": "Dark - Orange"
                 }
               ],
-              "square": false
+              "title": "Jens TV Panel"
             },
             {
               "type": "entities",
@@ -1875,13 +1928,16 @@
                   "entity": "device_tracker.rassilon_c8_f7_42_21_a6_a8"
                 }
               ],
-              "title": "TVRemote",
+              "title": "Round Thing With The Fiashy Light",
               "state_color": true
             },
             {
+              "square": false,
               "type": "grid",
               "cards": [
                 {
+                  "show_name": true,
+                  "show_icon": true,
                   "type": "button",
                   "tap_action": {
                     "action": "call-service",
@@ -1901,16 +1957,18 @@
                     "action": "toggle"
                   },
                   "name": "Denon Reciever Panel",
-                  "theme": "Navy Blue & Yellow",
+                  "theme": "Metro Red",
                   "icon_height": "50px"
                 },
                 {
+                  "show_name": true,
+                  "show_icon": true,
                   "type": "button",
                   "tap_action": {
                     "action": "toggle"
                   },
                   "entity": "script.denon_volume_up",
-                  "theme": "Navy Blue & Yellow",
+                  "theme": "Dark Blue",
                   "icon_height": "50px"
                 },
                 {
@@ -1933,18 +1991,20 @@
                     "action": "toggle"
                   },
                   "entity": "script.denon_power",
-                  "theme": "Dark - Red",
+                  "theme": "Dark Pink",
                   "icon_height": "50px",
                   "icon": "mdi:power"
                 },
                 {
+                  "show_name": true,
+                  "show_icon": true,
                   "type": "button",
                   "tap_action": {
                     "action": "toggle"
                   },
                   "entity": "script.denon_volume_down",
                   "icon_height": "50px",
-                  "theme": "Navy Blue & Yellow"
+                  "theme": "Dark Blue"
                 },
                 {
                   "type": "button",
@@ -2117,158 +2177,7 @@
                   "theme": "Navy Blue & Yellow"
                 }
               ],
-              "square": false
-            },
-            {
-              "type": "grid",
-              "cards": [
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.chromecast_on_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.chromecast_on_sequence",
-                  "name": "Chromecast ON",
-                  "show_icon": false
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.tv_off_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.tv_off_sequence",
-                  "show_icon": false,
-                  "name": "Chromecast OFF"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.firetv_on_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.firetv_on_sequence",
-                  "name": "FireTV ON",
-                  "show_icon": false
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.tv_off_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.tv_off_sequence",
-                  "show_icon": false,
-                  "name": "FireTV OFF"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.ota_tv_on_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.ota_tv_on_sequence",
-                  "name": "OverTheAir ON",
-                  "show_icon": false
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.tv_off_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.tv_off_sequence",
-                  "show_icon": false,
-                  "name": "OverTheAir OFF"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.blueray_on_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.blueray_on_sequence",
-                  "name": "BlueRay ON",
-                  "show_icon": false
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.blueray_off_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.tv_off_sequence",
-                  "name": "BlueRay OFF",
-                  "show_icon": false
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.mecool_on_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.mecool_on_sequence",
-                  "name": "Mecool ON",
-                  "show_icon": false
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.mecool_off_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.tv_off_sequence",
-                  "show_icon": false,
-                  "name": "Mecool OFF"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.audio_tuner_on_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.audio_tuner_on_sequence",
-                  "show_icon": false,
-                  "name": "Audio Tuner ON"
-                },
-                {
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.tv_off_sequence",
-                    "service_data": {},
-                    "target": {}
-                  },
-                  "entity": "script.tv_off_sequence",
-                  "show_icon": false,
-                  "name": "Audio Tuner OFF"
-                }
-              ],
-              "square": false,
-              "columns": 2
+              "title": "Stereo Radio Panel (Set Volume HERE)"
             },
             {
               "show_name": true,
@@ -2281,7 +2190,7 @@
               "name": "Other Remotes",
               "icon": "mdi:remote-off",
               "icon_height": "80px",
-              "theme": "Dark - Light Red"
+              "theme": "Fluent Blue"
             }
           ]
         },

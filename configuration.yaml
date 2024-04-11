@@ -28,7 +28,6 @@ input_select:
 input_text:
 logbook:
 logger: !include logger.yaml
-map:
 media_source:
 mobile_app:
 my:
