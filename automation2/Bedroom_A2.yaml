@@ -49,7 +49,7 @@
   use_blueprint:
     path: SirGoodenough/AutoFanControl_MQTT.yaml
     input:
-      fan_off_time: '09:12:54'
+      fan_off_time: '08:12:42'
       fan_control: input_boolean.bedroom_auto_fan
       room_temp_now: sensor.bedroom_fan_si7021_temperature
       room_set_temp: input_number.bedroom_auto_temp

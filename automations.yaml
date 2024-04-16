@@ -150,19 +150,3 @@
   - service: script.mp3_take_your_meds
     data: {}
   mode: single
-- id: '1710352964673'
-  alias: testaaaaaaaNew automation
-  description: crap
-  trigger:
-  - platform: device
-    domain: mqtt
-    device_id: f3010f7b4775e03f67810c3e49716e7c
-    type: action
-    subtype: single
-  condition: []
-  action:
-  - type: toggle
-    device_id: f4a198b067333445d7979735241e1421
-    entity_id: c0f3e84eff5922a00e596fea6ba0b9af
-    domain: light
-  mode: single
