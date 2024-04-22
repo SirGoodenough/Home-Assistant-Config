@@ -102,8 +102,6 @@
         data:
           entity_id: "{{ entities }}"
           message: "{{ message }}"
-          options:
-            gender: female
           language: en-US
 # #---> To Use thue script from an automation:
 # - alias: say a thing

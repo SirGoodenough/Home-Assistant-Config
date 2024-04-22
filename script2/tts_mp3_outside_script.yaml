@@ -6,7 +6,6 @@ tts_its_raining:
       TTS: tts.cloud_say
       announcement_message: Rain has started
       speaker_target: media_player.home_group
-      speaker_gender: female
       nabu_azure_language: en-IE
   icon: mdi:weather-rainy
 
@@ -17,7 +16,6 @@ tts_say_lightning:
     input:
       TTS: tts.cloud_say
       cloud_language: en-IE
-      speaker_gender: female
       speaker_target: media_player.intercom_group
       announcement_message: Lightning detected within 5 miles.
       b4_action:

@@ -6,7 +6,6 @@ tts_side_doorbell:
       GTS_language: en
       TTS: tts.cloud_say
       nabu_azure_language: en-US
-      speaker_gender: male
       speaker_target: media_player.intercom_group
       announcement_message: >
         {% if states('input_boolean.rain') == 'on' %}
@@ -42,7 +41,6 @@ tts_back_doorbell:
       GTS_language: en
       TTS: tts.cloud_say
       nabu_azure_language: en-US
-      speaker_gender: male
       speaker_target: media_player.intercom_group
       announcement_message: >
         {% if states('input_boolean.rain') == 'on' %}
@@ -69,7 +67,6 @@ tts_front_doorbell:
       GTS_language: en
       TTS: tts.cloud_say
       nabu_azure_language: en-US
-      speaker_gender: male
       speaker_target: media_player.intercom_group
       announcement_message: >
         {% if states('input_boolean.rain') == 'on' %}

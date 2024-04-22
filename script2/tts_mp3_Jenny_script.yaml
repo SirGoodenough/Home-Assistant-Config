@@ -7,7 +7,6 @@ tts_mister_message:
       GTS_language: en
       TTS: tts.cloud_say
       nabu_azure_language: en-AU
-      speaker_gender: male
       speaker_target: media_player.intercom_group
       announcement_message: No juice in the Bucket, mate.  Time to add the Vegemite.
 media_player_jens_neb:

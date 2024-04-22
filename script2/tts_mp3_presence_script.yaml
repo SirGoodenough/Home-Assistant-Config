@@ -8,7 +8,6 @@ tts_say_broadlink_reset:
       announcement_message: '{{ ("Is this thing on?","I can never find that remote.",
         "Where''s that damn remote") | random }}'
       speaker_target: media_player.kitchen_speaker
-      speaker_gender: female
       nabu_azure_language: en-IN
   mode: single
   icon: mdi:restart-alert
@@ -25,7 +24,6 @@ tts_say_person_cottage:
       announcement_message: "I spy, with my little eye, someone at the cottage."
       speaker_target:
       - media_player.kitchen_speaker
-      speaker_gender: male
       # after_action:
       # - alias: "delay for sounder"
       #   delay: 00:00:06

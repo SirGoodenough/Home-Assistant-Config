@@ -133,17 +133,17 @@ personalert_audio:
         text:
           multiline: false
           type: text
-    gend:
-      name: Gender
-      description:
-        The gender, male or female, of the voice.
-      required: false
-      default: female
-      selector:
-        select:
-          options:
-            - female
-            - male
+    # gend:
+    #   name: Gender
+    #   description:
+    #     The gender, male or female, of the voice.
+    #   required: false
+    #   default: female
+    #   selector:
+    #     select:
+    #       options:
+    #         - female
+    #         - male
     voice:
       name: tts_cloud (nabu Casa) Voice
       description: >  
@@ -157,8 +157,6 @@ personalert_audio:
 
         Failure to do so will result in no voice being heard.
 
-
-        Also picking a voice here results in your pick for Gender to be ignored.
 
         If you want to know what these sound like, well, you are just going to
         have to try them and see what you like.
@@ -222,7 +220,6 @@ personalert_audio:
       message: "{{ mess | default(_mess) }}"
       language: "{{ lang | default(_lang) }}"
       options:
-        gender: "{{ gend | default(_gend) }}"
         voice: "{{ voice | default(_voice) }}"
 
   mode: single
