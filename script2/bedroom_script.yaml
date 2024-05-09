@@ -3,6 +3,7 @@
 #####################################################
 bedroom_temp_control:
   alias: Bedroom Temperature Control
+  description: ":tada: does it work?"
   sequence:
     - service: mqtt.publish
       data:

@@ -52,6 +52,8 @@
     entities:
       - light.kneelight
       - light.jims_computer_light_2
+      - light.kitchensink
+      - light.memorial
 
   - platform: group
     name: Mom Office

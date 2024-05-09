@@ -79,7 +79,7 @@
         "SteffanNeural", "TonyNeural") | random }}'
 - id: '1699644276218'
   alias: aaaaaKids flip the lights
-  description: ''
+  description: Put stuff in here to see it
   trigger:
   - platform: state
     entity_id: sensor.kids_lights_action
