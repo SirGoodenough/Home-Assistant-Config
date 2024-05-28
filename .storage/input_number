@@ -78,6 +78,15 @@
         "icon": "mdi:thermostat",
         "step": 5.0,
         "mode": "slider"
+      },
+      {
+        "id": "sprinkler_time",
+        "min": 0.0,
+        "max": 60.0,
+        "name": "sprinkler time",
+        "icon": "mdi:sprinkler",
+        "mode": "slider",
+        "step": 1.0
       }
     ]
   }

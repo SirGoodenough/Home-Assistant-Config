@@ -150,3 +150,51 @@
   - service: script.mp3_take_your_meds
     data: {}
   mode: single
+- id: '1716577118814'
+  alias: Set Sprinkler Runtime
+  description: Get the compensation value from the data to set the runtime
+  trigger:
+  - platform: time
+    at: '23:59:59'
+  condition: []
+  action:
+  - service: input_number.set_value
+    metadata: {}
+    data:
+      value: '{{ comp_sensor }}' 
+    target:
+      entity_id: input_number.sprinkler_time
+  variables:
+    comp_sensor: "{{ states.sensor.rolling_sprinkler | float(20) }}"
+  mode: single
+- id: '1716578941208'
+  alias: Water Garden Sprinkler
+  description: Turn on the sprinkler for set time
+  trigger:
+  - platform: sun
+    event: sunrise
+    offset: '-3600'
+    id: Start watering 1 hour before sunrise
+  condition:
+  - alias: Watering while raining is worthless
+    condition: state
+    entity_id: input_boolean.rain
+    state: 'off'
+  - alias: Watering less than 5 minutes is worthless
+    condition: template
+    value_template: '{{ run_mins > 5 }}'
+  action:
+  - type: turn_on
+    device_id: 620ac53c3380e0099889a87bdbce7421
+    entity_id: e713049e62ed5f30c705556bbc32ec9c
+    domain: switch
+  - alias: Hold for the calculated time
+    delay:
+      minutes: '{{ run_mins }}'
+  - type: turn_off
+    device_id: 620ac53c3380e0099889a87bdbce7421
+    entity_id: e713049e62ed5f30c705556bbc32ec9c
+    domain: switch
+  variables:
+    run_mins: '{{ states.input_number.sprinkler_time.state | float(0) }}'
+  mode: single

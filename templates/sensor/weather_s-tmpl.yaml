@@ -39,3 +39,18 @@
       icon: mdi:sun-angle
       attributes:
         friendly_name: "Sunlight Percentage"
+
+    - name: rolling_sprinkler
+      unique_id: 7e54ceecc-c9ed-4249-8d90-2a42ef8eb81c
+      unit_of_measurement: "minutes"
+      state: >-
+        {{
+          states.sensor.compensation_sensor_gw2000b_v2_2_4_daily_rain_rate_piezo.state
+          | float(60) | abs }}
+      availability: >-
+        {% from 'availability_template.jinja' import avail %}
+        {{- avail(['sensor.compensation_sensor_gw2000b_v2_2_4_daily_rain_rate_piezo']) | bool -}}
+      icon: mdi:sprinkler-variant
+      attributes:
+        friendly_name: "Rolling Sprinkler Minutes"
+        

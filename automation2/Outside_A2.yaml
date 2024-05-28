@@ -59,7 +59,8 @@
     mode: single
     trigger:
       - platform: time_pattern
-        minutes: "/20"
+        minutes: "/5"
+        id: Check every 5 minutes
     condition: []
     action: 
       - if:

@@ -1,0 +1,12 @@
+sprinkler_time:
+  unique_id: 729e7199-067b-4caf-b896-2585e7a3a6b8
+  source: sensor.gw2000b_v2_2_4_daily_rain_rate_piezo
+  # Ensure that the sensor's value will not have a state lower than -60.0
+  # when the source sensors value is less than 0.01
+  lower_limit: true
+  # Ensure that the sensor's value will not have a state greater than 0.0
+  # when the source sensors value is greater than .25
+  upper_limit: true
+  data_points:
+    - [0.01, -60.0]
+    - [0.25, 0.0]

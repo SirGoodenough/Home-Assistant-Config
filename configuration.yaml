@@ -57,6 +57,7 @@ command_line:
   #- notify: !include_dir_merge_list command_line/notify/
   - sensor: !include_dir_merge_named command_line/sensor/
   #- switch: !include_dir_merge_list command_line/switch/
+compensation: !include compensation.yaml
 device_tracker: !include device_tracker.yaml
 ffmpeg: !include ffmpeg.yaml
 generic_hygrostat: !include humidifer.yaml

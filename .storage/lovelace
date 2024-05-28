@@ -73,6 +73,9 @@
                   "entity": "light.cabinetlight"
                 },
                 {
+                  "entity": "light.memorial"
+                },
+                {
                   "entity": "light.kitchen_down_lights"
                 },
                 {
@@ -234,6 +237,9 @@
                 },
                 {
                   "entity": "switch.outside_christmas"
+                },
+                {
+                  "entity": "switch.0xa4c138f8d7d96103"
                 }
               ],
               "show_header_toggle": true,
@@ -3791,6 +3797,30 @@
               "type": "entities"
             },
             {
+              "type": "gauge",
+              "entity": "sensor.sunlight_pct_2",
+              "needle": true,
+              "severity": {
+                "green": 0,
+                "yellow": 50,
+                "red": 80
+              },
+              "name": "Chance of Sunburn"
+            },
+            {
+              "type": "gauge",
+              "entity": "sensor.rolling_sprinkler",
+              "severity": {
+                "green": 0,
+                "yellow": -1,
+                "red": -2
+              },
+              "needle": true,
+              "min": 0,
+              "max": 60,
+              "unit": "minutes"
+            },
+            {
               "entities": [
                 {
                   "entity": "binary_sensor.mailbox"
@@ -3801,11 +3831,6 @@
               "type": "entities"
             },
             {
-              "type": "iframe",
-              "url": "https://www.home-assistant.io",
-              "aspect_ratio": "50%"
-            },
-            {
               "type": "weather-forecast",
               "entity": "weather.home",
               "show_forecast": false,
@@ -3813,7 +3838,21 @@
             },
             {
               "type": "gauge",
-              "entity": "sensor.sunlight_pct_2"
+              "entity": "input_number.sprinkler_time",
+              "max": 60,
+              "needle": true,
+              "unit": "minutes",
+              "name": "Sprinkler Yesterday",
+              "severity": {
+                "green": 0,
+                "yellow": -1,
+                "red": -1
+              }
+            },
+            {
+              "type": "iframe",
+              "url": "https://www.home-assistant.io",
+              "aspect_ratio": "50%"
             }
           ],
           "icon": "mdi:weather-lightning",
@@ -4451,9 +4490,6 @@
             },
             {
               "entities": [
-                {
-                  "entity": "switch.bathoom_2"
-                },
                 {
                   "entity": "switch.smart_plug_with_two_usb_ports"
                 },
