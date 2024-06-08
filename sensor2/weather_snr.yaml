@@ -1,12 +1,12 @@
----
-  ####################################################
-  #  Weather                                         #
-  ####################################################
-  - platform: filter
-    name: "Cloud Cover Average"
-    entity_id: sensor.openweathermap_cloud_coverage
-    unique_id: 5b5d8f29-2f52-436a-b951-3f7494ed70e9
-    filters:
-      - filter: time_simple_moving_average
-        window_size: 3:00
-        precision: 1
+# ---
+#   ####################################################
+#   #  Weather                                         #
+#   ####################################################
+#   - platform: filter
+#     name: "Cloud Cover Average"
+#     entity_id: sensor.control_central_cloud_cover
+#     unique_id: 5b5d8f29-2f52-436a-b951-3f7494ed70e9
+#     filters:
+#       - filter: time_simple_moving_average
+#         window_size: 3:00
+#         precision: 1

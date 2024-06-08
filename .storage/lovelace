@@ -88,6 +88,9 @@
                   "entity": "light.grp_dad_lights"
                 },
                 {
+                  "entity": "fan.jens_new_fan"
+                },
+                {
                   "entity": "fan.jens_mist"
                 }
               ],
@@ -3818,7 +3821,44 @@
               "needle": true,
               "min": 0,
               "max": 60,
-              "unit": "minutes"
+              "unit": "minutes",
+              "name": "Rolling Sprinkler for Tomorrow"
+            },
+            {
+              "type": "entity",
+              "entity": "input_boolean.rain",
+              "name": "Is it raining?",
+              "state_color": true
+            },
+            {
+              "graph": "none",
+              "type": "sensor",
+              "entity": "sensor.gw2000b_v2_2_4_daily_rain_rate_piezo",
+              "detail": 2,
+              "name": "Daily Rain",
+              "unit": "inch"
+            },
+            {
+              "type": "gauge",
+              "entity": "input_number.sprinkler_time",
+              "max": 60,
+              "needle": true,
+              "unit": "minutes",
+              "name": "Sprinkler This Morning",
+              "severity": {
+                "green": 0,
+                "yellow": -1,
+                "red": -1
+              }
+            },
+            {
+              "graph": "none",
+              "type": "sensor",
+              "entity": "sensor.gw2000b_v2_2_4_weekly_rain_rate_piezo",
+              "detail": 2,
+              "unit": "inches",
+              "hours_to_show": 168,
+              "name": "Rain this week"
             },
             {
               "entities": [
@@ -3831,28 +3871,26 @@
               "type": "entities"
             },
             {
-              "type": "weather-forecast",
-              "entity": "weather.home",
-              "show_forecast": false,
-              "theme": "Animated Weather Card"
-            },
-            {
-              "type": "gauge",
-              "entity": "input_number.sprinkler_time",
-              "max": 60,
-              "needle": true,
-              "unit": "minutes",
-              "name": "Sprinkler Yesterday",
-              "severity": {
-                "green": 0,
-                "yellow": -1,
-                "red": -1
-              }
+              "type": "history-graph",
+              "entities": [
+                {
+                  "entity": "switch.0xa4c138f8d7d96103"
+                }
+              ],
+              "logarithmic_scale": true,
+              "hours_to_show": 96,
+              "title": "Sprinkler Time"
             },
             {
               "type": "iframe",
               "url": "https://www.home-assistant.io",
               "aspect_ratio": "50%"
+            },
+            {
+              "type": "weather-forecast",
+              "entity": "weather.home",
+              "show_forecast": false,
+              "theme": "Animated Weather Card"
             }
           ],
           "icon": "mdi:weather-lightning",

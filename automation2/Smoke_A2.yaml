@@ -75,3 +75,47 @@
     #     rgb_color: [255,20,147]
     #     brightness_pct: 88
     #     entity_id: light.grp_jens_color
+
+  ####################################################
+  # CO2 Detector                                     #
+  ####################################################
+
+  - id: 9df05f35-a3e7-4d06-b53a-89fc9bcbdc46
+    alias: CO2 Warning Level
+    description: TTS to tell CO2 is high <1000 for 10 minutes
+    trigger:
+    - platform: numeric_state
+      entity_id:
+      - sensor.ethernettest_kitchen_co2
+      above: 1000
+      for:
+        hours: 0
+        minutes: 10
+        seconds: 0
+    condition: []
+    action:
+    - service: tts.speak
+      data:
+        cache: true
+        media_player_entity_id: media_player.intercom_group
+        message: CO2 values are at an uncomfortable level. Please investigate. CO2 values
+          are at an uncomfortable level. Please investigate.
+    mode: single
+
+  - id: 86ccf18f-cbce-40e0-858f-91df79b99f62
+    alias: CO2 levels hazardous level
+    description: Level is above 2000 ppm.
+    trigger:
+    - platform: numeric_state
+      entity_id:
+      - sensor.ethernettest_kitchen_co2
+      above: 2000
+    condition: []
+    action:
+    - service: tts.speak
+      data:
+        cache: true
+        media_player_entity_id: media_player.home_group
+        message: Take immediate action.  Open doors. CO2 level is in the unsafe range.
+          Take immediate action.  Open doors. CO2 level is in the unsafe range.
+    mode: single

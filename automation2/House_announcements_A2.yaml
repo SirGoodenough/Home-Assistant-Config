@@ -1,0 +1,23 @@
+
+- id: f49b5fb5-9ec1-453d-92dc-f121b8529e9d
+  alias: Goodnight Alarm
+  description: Play the QOTD at betdime
+  trigger:
+  - platform: time
+    at: 02:00:21
+  action:
+  - service: script.qotd
+  mode: single
+
+- id: 590fd173-6e05-4457-b9b5-e24736b757a6
+  alias: Take Your Pills
+  description: Reminder to take your pills
+  trigger:
+  - platform: time
+    at: 01:11:11
+  - platform: time
+    at: '10:10:10'
+  condition: []
+  action:
+  - service: script.mp3_take_your_meds
+    data: {}
