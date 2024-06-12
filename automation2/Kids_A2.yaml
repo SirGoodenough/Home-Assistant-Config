@@ -41,6 +41,12 @@
       domain: mqtt
       device_id: 099887f41d8948deb1147400b1555b05
       type: action
+      subtype: double
+      id: double
+    - platform: device
+      domain: mqtt
+      device_id: 099887f41d8948deb1147400b1555b05
+      type: action
       subtype: long
       id: long
   condition: []
@@ -54,6 +60,14 @@
             - service: script.random_color
               data:
                 light: light.grp_kitch
+        - conditions:
+            - condition: trigger
+              id:
+                - double
+          sequence:
+            - service: light.turn_off
+              target:
+                entity_id: light.grp_kitch
         - conditions:
             - condition: trigger
               id:

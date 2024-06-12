@@ -235,7 +235,11 @@
       announcement_message: "Your {{ door }} has been left open."
       reminded: input_boolean.reminded
       tts_service: nabu
-      piper_voice: '{{ ("en_US-lessac-medium","en_US-amy-low","en_US-amy-medium","en_US-arctic-medium","en_US-danny-low","en_US-joe-medium","en_US-kathleen-low","en_US-kusal-medium","en_US-l2arctic-medium","en_US-lessac-high","en_US-lessac-low","en_US-lessac-medium","en_US-libritts-high","en_US-libritts_r-medium","en_US-ryan-high","en_US-ryan-low","en_US-ryan-medium")
+      piper_voice: '{{ ("en_US-lessac-medium","en_US-amy-low","en_US-amy-medium",
+        "en_US-arctic-medium","en_US-danny-low","en_US-joe-medium","en_US-kathleen-low",
+        "en_US-kusal-medium","en_US-l2arctic-medium","en_US-lessac-high","en_US-lessac-low",
+        "en_US-lessac-medium","en_US-libritts-high","en_US-libritts_r-medium",
+        "en_US-ryan-high","en_US-ryan-low","en_US-ryan-medium")
         | random }}'
 
 - id: d0a74092-eee1-4043-ba47-642f01084acb
@@ -257,7 +261,11 @@
       - media_player.workroom_speaker
       - media_player.office_speaker_1
       - media_player.basement_speaker
-      piper_voice: '{{("en_US-lessac-medium","en_US-amy-low","en_US-amy-medium","en_US-arctic-medium","en_US-danny-low","en_US-joe-medium","en_US-kathleen-low","en_US-kusal-medium","en_US-l2arctic-medium","en_US-lessac-high","en_US-lessac-low","en_US-lessac-medium","en_US-libritts-high","en_US-libritts_r-medium","en_US-ryan-high","en_US-ryan-low","en_US-ryan-medium")|random}}'
+      piper_voice: '{{("en_US-lessac-medium","en_US-amy-low","en_US-amy-medium",
+        "en_US-arctic-medium","en_US-danny-low","en_US-joe-medium","en_US-kathleen-low",
+        "en_US-kusal-medium","en_US-l2arctic-medium","en_US-lessac-high","en_US-lessac-low",
+        "en_US-lessac-medium","en_US-libritts-high","en_US-libritts_r-medium",
+        "en_US-ryan-high","en_US-ryan-low","en_US-ryan-medium")|random}}'
       tts_service: piper
       announcement_message: Your {{ door }} has been left open.
       cooldown: 63
