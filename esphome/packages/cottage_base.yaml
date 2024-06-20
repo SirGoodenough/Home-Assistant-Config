@@ -28,7 +28,8 @@ api:
     key: !secret cottage_encrypt
 
 ota:
-  password: !secret cottage_otapw
+  - platform: esphome
+    password: !secret cottage_otapw
 
 wifi:
   ssid: !secret chaloupkaabode_wifi_ssid

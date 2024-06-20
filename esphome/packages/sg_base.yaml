@@ -28,7 +28,8 @@ api:
     key: !secret chaloupkaabode_encrypt
 
 ota:
-  password: !secret chaloupkaabode_otapw
+  - platform: esphome
+    password: !secret chaloupkaabode_otapw
 
 wifi:
   ssid: !secret chaloupkaabode_wifi_ssid
