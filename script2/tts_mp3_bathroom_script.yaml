@@ -24,7 +24,7 @@ tts_for_bathroom_overheat:
       nabu_azure_language: en-AU
       announcement_message: The Upstairs Bathroom is over heated.  I'm turning the
         Bathroom Heater off.
-      speaker_target: media_player.bathroom_speaker, media_player.office_jamz,media_player.kitchen_speaker,media_player.living_room_speaker
+      speaker_target: media_player.bathroom_speaker, media_player.office_jamz,media_player.jennys_room_display,media_player.living_room_speaker
   icon: mdi:radiator-off
 tts_bathroom_door_is_open:
   alias: TTS Bathroom Door is open
@@ -35,7 +35,7 @@ tts_bathroom_door_is_open:
       TTS: tts.cloud_say
       nabu_azure_language: en-AU
       announcement_message: The Bathroom door is open
-      speaker_target: media_player.bathroom_speaker, media_player.office_jamz,media_player.kitchen_speaker,media_player.living_room_speaker
+      speaker_target: media_player.bathroom_speaker, media_player.office_jamz,media_player.jennys_room_display,media_player.living_room_speaker
   icon: mdi:door-open
 tts_bathroom_heat_on:
   alias: TTS Bathroom Heat on
@@ -45,7 +45,7 @@ tts_bathroom_heat_on:
       GTS_language: en
       TTS: tts.cloud_say
       nabu_azure_language: en-GB
-      speaker_target: media_player.bathroom_speaker, media_player.office_jamz,media_player.kitchen_speaker,media_player.living_room_speaker
+      speaker_target: media_player.bathroom_speaker, media_player.office_jamz,media_player.jennys_room_display,media_player.living_room_speaker
       announcement_message: Bathroom Heater on
   icon: mdi:radiator
 tts_bath_heater_on:
@@ -56,6 +56,6 @@ tts_bath_heater_on:
       GTS_language: en
       TTS: tts.cloud_say
       nabu_azure_language: en-GB
-      speaker_target: media_player.bathroom_speaker, media_player.office_jamz,media_player.kitchen_speaker,media_player.living_room_speaker
+      speaker_target: media_player.bathroom_speaker, media_player.office_jamz,media_player.jennys_room_display,media_player.living_room_speaker
       announcement_message: Bathroom Heater on
   icon: mdi:radiator

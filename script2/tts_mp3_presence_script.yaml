@@ -7,7 +7,7 @@ tts_say_broadlink_reset:
       TTS: tts.cloud_say
       announcement_message: '{{ ("Is this thing on?","I can never find that remote.",
         "Where''s that damn remote") | random }}'
-      speaker_target: media_player.kitchen_speaker
+      speaker_target: media_player.jennys_room_display
       nabu_azure_language: en-IN
   mode: single
   icon: mdi:restart-alert
@@ -23,7 +23,7 @@ tts_say_person_cottage:
         # This message should be using the one sent in as data. Edit there.
       announcement_message: "I spy, with my little eye, someone at the cottage."
       speaker_target:
-      - media_player.kitchen_speaker
+      - media_player.intercom_group
       # after_action:
       # - alias: "delay for sounder"
       #   delay: 00:00:06

@@ -218,7 +218,7 @@
       - service: script.say_a_thing
         data:
           message: Drall is DOWN. Ping the big boned guy.
-          entities: media_player.kitchen_speaker
+          entities: media_player.jennys_room_display
 
 ####################################################
 # Restart Garage if its Dead                       #
@@ -273,7 +273,7 @@
             service: script.say_a_thing
             data:
               message: Garage outage 1. First try.
-              entities: media_player.kitchen_speaker
+              entities: media_player.jennys_room_display
           - alias: Reset the moca
             service: script.reset_garage_serverroom_2
           - alias: Add a delay so notification stays up while things are rebooting
@@ -326,7 +326,7 @@
             service: script.say_a_thing
             data:
               message: Garage outage 2. Second try.
-              entities: media_player.kitchen_speaker
+              entities: media_player.jennys_room_display
           - alias: Reset the moca
             service: script.reset_garage_serverroom_2
           - alias: Add a delay so notification stays up while things are rebooting
@@ -379,7 +379,7 @@
             service: script.say_a_thing
             data:
               message: Garage outage 3. Final try.
-              entities: media_player.kitchen_speaker
+              entities: media_player.jennys_room_display
           - alias: Reset the moca
             service: script.reset_garage_serverroom_2
           - alias: Add a delay so notification stays up while things are rebooting
@@ -401,4 +401,4 @@
         service: script.say_a_thing
         data:
           message: Garage is dead!
-          entities: media_player.kitchen_speaker
+          entities: media_player.jennys_room_display

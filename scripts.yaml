@@ -6,7 +6,7 @@ media_player_gong:
     input:
       speaker_target:
       - media_player.basement_speaker
-      - media_player.kitchen_speaker
+      - media_player.jennys_room_display
       file_2_play: media-source://media_source/local/mp3/Metal_Gong-Dianakc-109711828.mp3
 qotd:
   alias: QOTD

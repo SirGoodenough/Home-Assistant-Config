@@ -6,7 +6,7 @@ tts_tarantula_off:
       GTS_language: en
       TTS: tts.cloud_say
       nabu_azure_language: en-AU
-      speaker_target: media_player.kitchen_speaker
+      speaker_target: media_player.jennys_room_display
       announcement_message: The Forge has been disabled
   icon: mdi:spider-thread
 tts_tarantula_print_complete:
@@ -17,6 +17,6 @@ tts_tarantula_print_complete:
       GTS_language: en
       TTS: tts.cloud_say
       nabu_azure_language: en-CA
-      speaker_target: media_player.kitchen_speaker
+      speaker_target: media_player.jennys_room_display
       announcement_message: The Forge is ready for more work
   icon: mdi:spider

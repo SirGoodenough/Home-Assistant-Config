@@ -8,6 +8,8 @@
     - type: homeassistant
     - type: trusted_networks
       trusted_networks:
+        - ::1
+        - 127.0.0.1
         - !secret HA_Net
         - !secret House_Net
         - !secret HA_Net_V6

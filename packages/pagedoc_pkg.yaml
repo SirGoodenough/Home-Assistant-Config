@@ -81,7 +81,7 @@ automation:
     action:
       - service: tts.cloud_say
         data:
-          entity_id: media_player.kitchen_speaker
+          entity_id: media_player.jennys_room_display
           message: '{{ trigger.json.message }}'
           language: en-CA
           options:

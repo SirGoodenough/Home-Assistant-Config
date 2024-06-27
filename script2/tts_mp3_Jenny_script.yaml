@@ -15,7 +15,7 @@ media_player_jens_neb:
   use_blueprint:
     path: SirGoodenough/play_media_file_script.yaml
     input:
-      speaker_target: media_player.kitchen_speaker
+      speaker_target: media_player.jennys_room_display
       file_2_play: media-source://media_source/local/mp3/Mister.mp3
 # media_player_gong:
 #   alias: Media Player Gong

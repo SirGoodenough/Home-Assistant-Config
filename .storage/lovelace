@@ -1126,7 +1126,7 @@
                 },
                 {
                   "type": "media-control",
-                  "entity": "media_player.kitchen_speaker"
+                  "entity": "media_player.jennys_room_display"
                 },
                 {
                   "type": "button",
@@ -1226,7 +1226,7 @@
                 },
                 {
                   "type": "media-control",
-                  "entity": "media_player.kitchen_speaker"
+                  "entity": "media_player.jennys_room_display"
                 },
                 {
                   "type": "media-control",

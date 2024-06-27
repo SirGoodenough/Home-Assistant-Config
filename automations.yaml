@@ -11,12 +11,12 @@
       - service: script.say_a_thing
         data:
           message: Scene Throw
-          entities: media_player.kitchen_speaker
+          entities: media_player.jennys_room_display
       action_throw:
       - service: script.say_a_thing
         data:
           message: Action Throw
-          entities: media_player.kitchen_speaker
+          entities: media_player.jennys_room_display
       action_rotate_ccw_face_6:
       - service: script.cube_long_short_control_bp
         data:
@@ -29,13 +29,13 @@
         data:
           angle: '{{ trigger.payload_json.action_angle | default(0.1) | float(0.2)
             }}'
-          mp: media_player.kitchen_speaker
+          mp: media_player.jennys_room_display
       scene_rotate_ccw_face_3:
       - service: script.volume4cube
         data:
           angle: '{{ trigger.payload_json.action_angle | default(0.1) | float(0.2)
             }}'
-          mp: media_player.kitchen_speaker
+          mp: media_player.jennys_room_display
       scene_rotate_cw_face_4:
       - service: input_boolean.turn_on
         data: {}

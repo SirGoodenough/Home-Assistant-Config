@@ -109,4 +109,4 @@
 #     service: script.say_a_thing
 #     data:
 #       message: "message"
-#       entities: media_player.kitchen_speaker
+#       entities: media_player.jennys_room_display
