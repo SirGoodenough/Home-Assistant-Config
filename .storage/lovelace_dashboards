@@ -20,15 +20,6 @@
         "show_in_sidebar": true,
         "require_admin": false,
         "mode": "storage"
-      },
-      {
-        "id": "smartbed",
-        "url_path": "smartbed",
-        "icon": "mdi:bed",
-        "require_admin": false,
-        "title": "SmartBed",
-        "show_in_sidebar": true,
-        "mode": "storage"
       }
     ]
   }

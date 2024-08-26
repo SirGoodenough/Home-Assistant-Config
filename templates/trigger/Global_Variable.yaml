@@ -1,0 +1,120 @@
+---
+##########################################################################################################
+## Trigger based template sensor to store global variables ###############################################
+## https://community.home-assistant.io/t/trigger-based-template-sensor-to-store-global-variables/735474 ##
+##########################################################################################################
+  - trigger:
+      - platform: event
+        event_type: set_variable
+      - platform: event
+        event_type: remove_variable
+      - platform: event
+        event_type: clear_variables
+    action:
+      - if: "{{ this.attributes.get('log_events', true) }}"
+        then:
+          - service: logbook.log
+            data:
+              name: "{{ trigger.event.event_type }}:"
+              message: >
+                {{ trigger.event.data.key | default('-') }}
+                {%- if trigger.event.event_type == 'set_variable' -%}
+                  : {{ trigger.event.data.value | default('not defined!')}}.
+                {%- endif -%}
+    sensor:
+      - unique_id: 4a4c8e53-9e68-4198-9cc5-b336e228ea4d
+        name: Variables
+        state: Variables
+        attributes:
+          default_timestamp: true
+          log_events: false
+          variables: >
+            {% set current = this.attributes.get('variables', {}) %}
+            {% if trigger.event.event_type == 'set_variable' 
+              and trigger.event.data.value is defined
+              and trigger.event.data.key is defined
+            %}
+              {% if trigger.event.data.get('set_timestamp', this.attributes.get('default_timestamp', false)) %}
+                {% set value  = trigger.event.data.value %}
+                {% set value = value.isoformat() if value is datetime else value %}
+                {% set new = {trigger.event.data.key: {'value': value, 'timestamp': now().isoformat()}} %}
+              {% else %}
+                {% set new = {trigger.event.data.key: trigger.event.data.value} %}
+              {% endif %}
+              {{ dict(current, **new) }}
+            {% elif trigger.event.event_type == 'remove_variable' 
+              and trigger.event.data.key is defined
+            %}
+              {{ dict(current.items() | rejectattr('0', 'eq', trigger.event.data.key)) }}
+            {% elif trigger.event.event_type == 'clear_variables' %}
+              {{ {} }}
+            {% else %}
+              {{ current }}
+            {% endif %}
+
+# You can set the value for the set_timestamp attribute to true if you want to add a timestamp for
+#  the event by default, this can be overridden when you actually store a variable.
+
+# If you set log_events to true the events on which the sensor was triggered will be logged in the logbook.
+
+# How to add a variable
+# The sensor uses event triggers to store the data, you can send a custom event as an automation or
+#  script action, or you can use developer tools > events to send it.
+
+# Example for an action in an automation
+# action:
+#   - event: set_variable
+#     event_data: 
+#       key: some_test
+#       value: Some Value
+#       set_timestamp: false
+
+# Event data parameters
+# parameter     	type    	required 	explanation
+# key 	          string   	yes 	    the name of the variable
+# value 	        string  	yes     	the value which you want to store this can be any kind of value. 
+#                                       datetime objects will be stored as isoformat string
+# set_timestamp 	boolean 	no 	      Use this paramter to set the default timestamp setting
+#                                       used in the sensor
+
+# Exemple of the attributes of the sensor after adding some variables
+# default_timestamp: true
+# log_events: false
+# variables:
+#   test_without_timestamp: What time is it?
+#   test_with_timestamp:
+#     value: I know the time!
+#     timestamp: '2022-10-02T20:19:41.713241+02:00'
+#   some_list:
+#     - item 1
+#     - item 2
+#   a_mapping:
+#     fruit: banana
+#     veggies: broccoli
+# friendly_name: Variables
+
+# How to retreive a variable.
+
+# To retreive a variable, you’ll need to use a template. The template differs for variables stored with or without a timestamp.
+# With timestamp
+
+# replace variable_key with the actual key used when adding the variable
+
+# {{ state_attr('sensor.variables', 'variables')['variable_key'].value }}
+
+# Without timestamp
+
+# replace variable_key with the actual key used when adding the variable
+
+# {{ state_attr('sensor.variables', 'variables')['variable_key'] }}
+
+# How to remove variables
+
+# You can send an event similar as when you added a variable.
+
+# action: # example for an action in an automation
+#   - event: remove_variable
+#     event_data: 
+#       key: some_test
+
+# You can remove all stored variables in one go by sending the clear_variables event without further event data.

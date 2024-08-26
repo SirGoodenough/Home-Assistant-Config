@@ -40,12 +40,35 @@
       attributes:
         friendly_name: "Sunlight Percentage"
 
+    - name: "sunburn_risk_uv-r"
+      unique_id: 975cd394-17f3-4b88-b311-74d5f87be892
+      unit_of_measurement: "UV-Risk"
+      state: >-
+        {{ state_attr('sensor.control_central_uv_index','level') }}
+      availability: >-
+        {% from 'availability_template.jinja' import avail %}
+        {{- avail(['sensor.control_central_uv_index']) | bool -}}
+      icon: mdi:sun-wireless
+      attributes:
+        friendly_name: "Sunburn Risk UV-R"
+
+    - name: "sunburn_risk_uv-i"
+      unique_id: 34b8225f-459a-4df9-83aa-d05b86e4cac5
+      unit_of_measurement: "UV-Index"
+      state: >-
+        {{ states('sensor.gw2000b_v2_2_4_uv_index') | int }}
+      availability: >-
+        {% from 'availability_template.jinja' import avail %}
+        {{- avail(['sensor.gw2000b_v2_2_4_uv_index']) | bool -}}
+      icon: mdi:sun-wireless
+      attributes:
+        friendly_name: "Sunburn Risk UV-I"
+
     - name: rolling_sprinkler
       unique_id: 7e54ceecc-c9ed-4249-8d90-2a42ef8eb81c
       unit_of_measurement: "minutes"
       state: >-
-        {{
-          states.sensor.compensation_sensor_gw2000b_v2_2_4_daily_rain_rate_piezo.state
+        {{ states.sensor.compensation_sensor_gw2000b_v2_2_4_daily_rain_rate_piezo.state
           | float(60) | abs }}
       availability: >-
         {% from 'availability_template.jinja' import avail %}

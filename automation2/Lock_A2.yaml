@@ -97,6 +97,8 @@
       - service: lock.lock
         target:
           entity_id: all
+        data:
+          code: 54241
       - delay: 5
       - service: input_boolean.turn_off
         target:

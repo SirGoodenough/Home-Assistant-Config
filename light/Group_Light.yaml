@@ -37,13 +37,14 @@
       - light.counter_2
       - light.kitch_fan_2
       - light.kitch_fan_3
+      - light.memorial
 
-  - platform: group
-    name: Jens Color
-    unique_id: f55a37e1-0358-4295-843c-fe31143c83cc
-    entities:
-      - light.bulb1
-      - light.jens_led_bed
+  # - platform: group
+  #   name: Jens Color
+  #   unique_id: f55a37e1-0358-4295-843c-fe31143c83cc
+  #   entities:
+  #     - light.bulb1
+  #     - light.jens_led_bed
 
   - platform: group
     name: D Lights

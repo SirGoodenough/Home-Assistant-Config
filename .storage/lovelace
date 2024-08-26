@@ -810,31 +810,6 @@
               "conditions": [
                 {
                   "condition": "numeric_state",
-                  "entity": "sensor.jen_temperature_battery",
-                  "below": 21
-                }
-              ],
-              "card": {
-                "show_name": true,
-                "show_icon": true,
-                "type": "button",
-                "tap_action": {
-                  "action": "more-info"
-                },
-                "entity": "sensor.jen_temperature_battery",
-                "hold_action": {
-                  "action": "none"
-                },
-                "show_state": true,
-                "name": "Jen Temp Battery",
-                "icon": ""
-              }
-            },
-            {
-              "type": "conditional",
-              "conditions": [
-                {
-                  "condition": "numeric_state",
                   "entity": "sensor.yertle_battery",
                   "below": 21
                 }
@@ -857,9 +832,6 @@
             },
             {
               "entities": [
-                {
-                  "entity": "switch.bathroom_speaker_do_not_disturb"
-                },
                 {
                   "entity": "switch.micro_switch_g2"
                 },
@@ -1077,18 +1049,6 @@
             {
               "type": "grid",
               "cards": [
-                {
-                  "type": "media-control",
-                  "entity": "media_player.jen_group"
-                },
-                {
-                  "type": "media-control",
-                  "entity": "media_player.office_jamz"
-                },
-                {
-                  "type": "media-control",
-                  "entity": "media_player.grandma_group"
-                },
                 {
                   "type": "media-control",
                   "entity": "media_player.intercom_group"
@@ -3733,6 +3693,14 @@
                   "name": "Relative Pressure"
                 },
                 {
+                  "entity": "sensor.chaloupkaabode_weather_soil_moisture_1",
+                  "name": "Soil Moisture 1"
+                },
+                {
+                  "entity": "sensor.chaloupkaabode_weather_soil_moisture_2",
+                  "name": "Soil Moisture 2"
+                },
+                {
                   "entity": "sensor.gw2000b_v2_2_4_solar_lux",
                   "name": "Solar Lux"
                 },
@@ -3747,18 +3715,6 @@
                 {
                   "entity": "sensor.gw2000b_v2_2_4_weekly_rain_rate_piezo",
                   "name": "Weekly Rain Rate Piezo"
-                },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_wh57_battery",
-                  "name": "WH57 Battery"
-                },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_wh90_battery",
-                  "name": "WH90 Battery"
-                },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_wh90_capacitor",
-                  "name": "WH90 Capacitor"
                 },
                 {
                   "entity": "sensor.gw2000b_v2_2_4_wind_direction",
@@ -3784,31 +3740,70 @@
               "title": "ChaloupkaAbode Weather"
             },
             {
+              "type": "entity",
+              "entity": "sensor.control_central_uv_index",
+              "attribute": "level",
+              "name": "Sunburn Risk",
+              "icon": "mdi:sun-wireless-outline",
+              "state_color": false
+            },
+            {
+              "type": "entities",
               "entities": [
                 {
-                  "entity": "binary_sensor.dark_outside"
+                  "entity": "sensor.sunburn_risk_uv_r",
+                  "name": "Sunburn Risk",
+                  "secondary_info": "last-updated"
+                },
+                {
+                  "entity": "input_boolean.rain"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_daily_rain_rate_piezo"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_weekly_rain_rate_piezo"
+                },
+                {
+                  "entity": "sensor.sunlight_pct_2"
                 },
                 {
                   "entity": "sensor.sun_state"
                 },
                 {
+                  "entity": "binary_sensor.dark_outside"
+                },
+                {
                   "entity": "sun.sun"
+                },
+                {
+                  "entity": "binary_sensor.mailbox"
                 }
               ],
-              "show_header_toggle": false,
-              "title": "Weather",
-              "type": "entities"
+              "title": "ChaloupkaAbode Weather",
+              "theme": "Fluent Green",
+              "state_color": true
             },
             {
               "type": "gauge",
-              "entity": "sensor.sunlight_pct_2",
+              "entity": "sensor.control_central_uv_index_today",
               "needle": true,
+              "name": "Chance of Sunburn",
+              "unit": "UV-Index",
+              "max": 9,
+              "min": 1,
+              "visibility": [
+                {
+                  "condition": "numeric_state",
+                  "entity": "sensor.control_central_uv_index_today",
+                  "above": 2
+                }
+              ],
               "severity": {
-                "green": 0,
-                "yellow": 50,
-                "red": 80
-              },
-              "name": "Chance of Sunburn"
+                "green": 2,
+                "yellow": 5,
+                "red": 7
+              }
             },
             {
               "type": "gauge",
@@ -3825,20 +3820,6 @@
               "name": "Rolling Sprinkler for Tomorrow"
             },
             {
-              "type": "entity",
-              "entity": "input_boolean.rain",
-              "name": "Is it raining?",
-              "state_color": true
-            },
-            {
-              "graph": "none",
-              "type": "sensor",
-              "entity": "sensor.gw2000b_v2_2_4_daily_rain_rate_piezo",
-              "detail": 2,
-              "name": "Daily Rain",
-              "unit": "inch"
-            },
-            {
               "type": "gauge",
               "entity": "input_number.sprinkler_time",
               "max": 60,
@@ -3852,23 +3833,20 @@
               }
             },
             {
-              "graph": "none",
-              "type": "sensor",
-              "entity": "sensor.gw2000b_v2_2_4_weekly_rain_rate_piezo",
-              "detail": 2,
-              "unit": "inches",
-              "hours_to_show": 168,
-              "name": "Rain this week"
-            },
-            {
+              "chart_type": "line",
+              "period": "5minute",
+              "type": "statistics-graph",
               "entities": [
-                {
-                  "entity": "binary_sensor.mailbox"
-                }
+                "sensor.chaloupkaabode_weather_soil_moisture_1",
+                "sensor.chaloupkaabode_weather_soil_moisture_2"
               ],
-              "show_header_toggle": false,
-              "title": "Mailbox",
-              "type": "entities"
+              "stat_types": [
+                "mean"
+              ],
+              "title": "Soil Moisture",
+              "days_to_show": 3,
+              "hide_legend": false,
+              "logarithmic_scale": true
             },
             {
               "type": "history-graph",
@@ -3882,15 +3860,41 @@
               "title": "Sprinkler Time"
             },
             {
-              "type": "iframe",
-              "url": "https://www.home-assistant.io",
-              "aspect_ratio": "50%"
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.chaloupkaabode_weather_soil_battery_1",
+                  "name": "Soil Battery 1"
+                },
+                {
+                  "entity": "sensor.chaloupkaabode_weather_soil_battery_2",
+                  "name": "Soil Battery 2"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_wh57_battery",
+                  "name": "WH57 Battery"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_wh90_battery",
+                  "name": "WH90 Battery"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_wh90_capacitor",
+                  "name": "WH90 Capacitor"
+                }
+              ],
+              "title": "ChaloupkaAbode Weather"
             },
             {
               "type": "weather-forecast",
               "entity": "weather.home",
               "show_forecast": false,
               "theme": "Animated Weather Card"
+            },
+            {
+              "type": "iframe",
+              "url": "https://www.home-assistant.io",
+              "aspect_ratio": "50%"
             }
           ],
           "icon": "mdi:weather-lightning",
