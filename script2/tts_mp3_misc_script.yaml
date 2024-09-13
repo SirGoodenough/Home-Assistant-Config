@@ -9,7 +9,7 @@ tts_grandma_in_need:
         }}'
       speaker_target: media_player.grandma_group
       announcement_message: Grandma in need
-  icon: mdi:lifebuoy
+  icon: mdi:lifebuoy/
 
 tts_bedroom_door:
   alias: TTS Bedroom Door
@@ -32,6 +32,18 @@ media_player_mail:
       file_2_play: media-source://media_source/local/mp3/youGotmail.mp3
   icon: mdi:email-fast
 
+mp3_take_your_meds:
+  alias: MP3 Take Your Meds
+  use_blueprint:
+    path: SirGoodenough/play_media_file_script.yaml
+    input:
+      speaker_target:
+      - media_player.basement_speaker
+      - media_player.jennys_room_display
+      - media_player.bathroom_speaker
+      file_2_play: media-source://media_source/local/mp3/medicine_time.mp3
+  icon: mdi:pill-multiple
+
 media_player_buzzer:
   alias: Media Player Buzzer
   use_blueprint:
@@ -50,3 +62,13 @@ media_player_boink:
       file_2_play: media-source://media_source/local/mp3/sfx-boing3.mp3
   icon: mdi:ear-hearing
 
+media_player_gong:
+  alias: Media Player Gong
+  icon: mdi:ear-hearing
+  use_blueprint:
+    path: SirGoodenough/play_media_file_script.yaml
+    input:
+      speaker_target:
+      - media_player.basement_speaker
+      - media_player.jennys_room_display
+      file_2_play: media-source://media_source/local/mp3/Metal_Gong-Dianakc-109711828.mp3

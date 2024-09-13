@@ -20,6 +20,15 @@
         "show_in_sidebar": true,
         "require_admin": false,
         "mode": "storage"
+      },
+      {
+        "id": "sections_crap",
+        "show_in_sidebar": true,
+        "icon": "mdi:image-broken-variant",
+        "title": "sections crap",
+        "require_admin": true,
+        "mode": "storage",
+        "url_path": "sections-crap"
       }
     ]
   }

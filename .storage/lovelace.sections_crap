@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace.sections_crap",
+  "data": {
+    "config": {
+      "views": [
+        {
+          "title": "Home",
+          "type": "sections",
+          "sections": [
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "map",
+                  "entities": [
+                    "device_tracker.sm_s906u",
+                    "device_tracker.sm_s906u_2"
+                  ],
+                  "theme_mode": "auto"
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.date_time_iso"
+                },
+                {
+                  "type": "light",
+                  "entity": "light.grp_kitch"
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "custom:firemote-card",
+                  "entity": "media_player.fire_tv_192_168_108_232",
+                  "device_family": "amazon-fire",
+                  "device_type": "fire_tv_4_series",
+                  "compatibility_mode": "default"
+                },
+                {
+                  "type": "entities",
+                  "entities": [
+                    {
+                      "entity": "script.denon_mute"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

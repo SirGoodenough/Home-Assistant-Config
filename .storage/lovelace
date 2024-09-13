@@ -194,13 +194,13 @@
                   "name": "Living Room Hunidity"
                 },
                 {
-                  "entity": "binary_sensor.front_door_open_433"
+                  "entity": "switch.downstairs_printer"
                 },
                 {
                   "entity": "climate.living_room_2"
                 },
                 {
-                  "entity": "binary_sensor.upstairs_pir"
+                  "entity": "button.moms_button2"
                 },
                 {
                   "entity": "light.mom_light"
@@ -209,16 +209,7 @@
                   "entity": "light.livingroomlight"
                 },
                 {
-                  "entity": "sensor.rm02_last_action"
-                },
-                {
-                  "entity": "light.stairway_switch"
-                },
-                {
                   "entity": "light.stairway_light"
-                },
-                {
-                  "entity": "button.moms_button2"
                 },
                 {
                   "entity": "button.moms_button3"
@@ -233,7 +224,10 @@
                   "entity": "light.mom_chair"
                 },
                 {
-                  "entity": "input_button.mady_mute_lr_speaker"
+                  "entity": "light.stairway_switch"
+                },
+                {
+                  "entity": "sensor.rm02_last_action"
                 },
                 {
                   "entity": "input_boolean.christmas"
@@ -1231,9 +1225,6 @@
                 },
                 {
                   "entity": "sensor.jennys_new_fanspeed"
-                },
-                {
-                  "entity": "input_select.no_bedroom_help"
                 },
                 {
                   "entity": "light.jens_light"
