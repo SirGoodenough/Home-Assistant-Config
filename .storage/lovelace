@@ -73,6 +73,9 @@
                   "entity": "light.cabinetlight"
                 },
                 {
+                  "entity": "light.stairway_switch"
+                },
+                {
                   "entity": "light.memorial"
                 },
                 {
@@ -80,6 +83,9 @@
                 },
                 {
                   "entity": "light.grp_kitch"
+                },
+                {
+                  "entity": "light.jens_light"
                 },
                 {
                   "entity": "light.grp_d_lights"
@@ -162,27 +168,6 @@
               }
             },
             {
-              "type": "conditional",
-              "conditions": [
-                {
-                  "condition": "numeric_state",
-                  "entity": "sensor.mom_s_phone_battery_level",
-                  "below": 40
-                }
-              ],
-              "card": {
-                "show_name": true,
-                "show_icon": true,
-                "type": "button",
-                "tap_action": {
-                  "action": "more-info"
-                },
-                "entity": "sensor.mom_s_phone_battery_level",
-                "icon": "",
-                "show_state": true
-              }
-            },
-            {
               "entities": [
                 {
                   "entity": "sensor.sonoff_rf_bridge_2_si7021_temperature",
@@ -206,6 +191,9 @@
                   "entity": "light.mom_light"
                 },
                 {
+                  "entity": "light.mary"
+                },
+                {
                   "entity": "light.livingroomlight"
                 },
                 {
@@ -224,9 +212,6 @@
                   "entity": "light.mom_chair"
                 },
                 {
-                  "entity": "light.stairway_switch"
-                },
-                {
                   "entity": "sensor.rm02_last_action"
                 },
                 {
@@ -237,6 +222,9 @@
                 },
                 {
                   "entity": "switch.0xa4c138f8d7d96103"
+                },
+                {
+                  "entity": "fan.mary"
                 }
               ],
               "show_header_toggle": true,
@@ -1002,10 +990,10 @@
                   "entity": "binary_sensor.basement_way_d_pir"
                 },
                 {
-                  "entity": "binary_sensor.dryer"
+                  "entity": "binary_sensor.washer_running"
                 },
                 {
-                  "entity": "binary_sensor.washer_running"
+                  "entity": "binary_sensor.dryer_running"
                 },
                 {
                   "entity": "sensor.wash_machine_energy_current"

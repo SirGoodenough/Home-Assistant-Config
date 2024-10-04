@@ -57,21 +57,65 @@
           true
         {%- elif wm_amps < 0.077 %}
           false
-        {% else %}
+        {%- else %}
           {{ states('binary_sensor.washer_running') }}
         {%- endif %}
       delay_off:
         minutes: 5
       auto_off:
-        hours: 1
+        hours: 1.5
       availability: >-
         {% from 'availability_template.jinja' import avail %}
         {{- avail(['sensor.wash_machine_energy_current']) | bool -}}
-      icon: mdi:washing-machine
       attributes:
         friendly_name: "Washer Running"
+      icon: |
+        {# Set the variable. #}
+        {% set wm_amps = states('sensor.wash_machine_energy_current') | float(0.07) %}
+        {# Set the icon #}
+        {%- if wm_amps > 0.16 %}
+          mdi:washing-machine
+        {%- elif wm_amps < 0.077 %}
+          mdi:washing-machine-off
+        {%- else %}
+          mdi:washing-machine-alert
+        {%- endif %}
 
-
+    #####################################################
+    # Dryer State                                       #
+    #####################################################
+    - name: "Dryer Running"
+      unique_id: 4105191d-d7b4-4e60-949c-715847353f33
+      state: >-
+        {# Flip sensor for better visual state. #}
+        {% set dr_st = is_state('binary_sensor.dryer', 'off') %}
+        {% if dr_st %}
+          true
+        {% else %}
+          false
+        {%- endif %}
+      delay_off:
+        minutes: 1
+      availability: >-
+        {% from 'availability_template.jinja' import avail %}
+        {{- avail(['binary_sensor.dryer']) | bool -}}
+      attributes:
+        friendly_name: "Dryer Running"
+      icon: >-
+        {# Flip sensor for better visual state. #}
+        {% set dr_st = is_state('binary_sensor.dryer', 'off') %}
+        {% if dr_st %}
+          mdi:tumble-dryer
+        {% elif not dr_st %}
+          mdi:tumble-dryer-off
+        {% else %}
+          mdi:tumble-dryer-alert
+        {% endif %}
+                {% set dr_st = states('binary_sensor.dryer') %}
+        {% if dr_st == 'on' %} mdi:tumble-dryer
+        {% elif dr_st  == 'off' %} mdi:tumble-dryer-off
+        {% else %} mdi:tumble-dryer-alert
+        {% endif %}
 
 
 

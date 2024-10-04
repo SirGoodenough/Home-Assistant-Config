@@ -24,3 +24,15 @@
     require_admin: true
     config:
       ingress: System
+  - name: config/integrations/integration/zha
+    sidebar_title: ZHA
+    sidebar_icon: mdi:zigbee
+    module_url: http://10.10.100.8:8123/config/integrations/integration/zha
+    embed_iframe: true
+    require_admin: true
+    config:
+      ingress: ZHA
+
+
+
+      
