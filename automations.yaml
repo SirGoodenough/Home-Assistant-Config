@@ -8,42 +8,64 @@
     input:
       topic: zigbee2mqtt/testcagl02
       scene_throw:
-      - service: script.say_a_thing
+      - action: script.say_a_thing
         data:
           message: Scene Throw
           entities: media_player.jennys_room_display
       action_throw:
-      - service: script.say_a_thing
+      - action: script.say_a_thing
         data:
           message: Action Throw
           entities: media_player.jennys_room_display
       action_rotate_ccw_face_6:
-      - service: script.cube_long_short_control_bp
+      - action: script.cube_long_short_control_bp
         data:
           angle: '{{ trigger.payload_json.action_angle | default(0.1) | float(0.2)
             }}'
           short_entity: light.kitchen_down_lights
           long_entity: light.kitchensink
       scene_rotate_cw_face_3:
-      - service: script.volume4cube
+      - action: script.volume4cube
         data:
           angle: '{{ trigger.payload_json.action_angle | default(0.1) | float(0.2)
             }}'
           mp: media_player.jennys_room_display
       scene_rotate_ccw_face_3:
-      - service: script.volume4cube
+      - action: script.volume4cube
         data:
           angle: '{{ trigger.payload_json.action_angle | default(0.1) | float(0.2)
             }}'
           mp: media_player.jennys_room_display
       scene_rotate_cw_face_4:
-      - service: input_boolean.turn_on
+      - action: input_boolean.turn_on
         data: {}
         target:
           entity_id: input_boolean.test_color
       scene_rotate_ccw_face_4:
-      - service: input_boolean.turn_off
+      - action: input_boolean.turn_off
         data: {}
         target:
           entity_id: input_boolean.test_color
       action_flip_from_any_to_face_2: []
+- id: '1728422667766'
+  alias: Downstairs Printer Watchdog
+  description: turn off the printer in an hour
+  triggers:
+  - trigger: state
+    entity_id:
+    - switch.downstairs_printer
+    from: 'off'
+    to: 'on'
+    for:
+      hours: 1
+      minutes: 0
+      seconds: 0
+  conditions: []
+  actions:
+  - action: switch.turn_off
+    target:
+      entity_id: switch.downstairs_printer
+    data: {}
+  - action: script.tts_printer_off
+    data: {}
+  mode: single

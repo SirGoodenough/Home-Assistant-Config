@@ -15,22 +15,21 @@
   # Gets info from RF-Bridges and sends them to the python script to generate
   #   individual MQTT topics for them.
   #   RECIEVE
-  trigger:
-    - platform: mqtt
+  triggers:
+    - trigger: mqtt
       topic: RFBridge/tele/RESULT
-    - platform: mqtt
+    - trigger: mqtt
       topic: RFBridge2/tele/RESULT
-  condition:
+  conditions:
     - condition: template
       value_template: >
         {{ trigger.payload_json is defined and
           trigger.payload_json.RfReceived is defined and 
           trigger.payload_json.RfReceived.Data is defined }}
-  action:
-    service: python_script.rfbridge2_demux
+  actions:
+    action: python_script.rfbridge2_demux
     data:
       payload: "{{trigger.payload_json.RfReceived.Data}}"
-
 
 - id: d6ad7aff-f806-4c75-ab1e-886cba8ef2f9
   initial_state: on
@@ -39,18 +38,18 @@
   # Gets info from RF-Bridges and sends them to the python script to generate
   #   individual MQTT topics for them.
   #   SEND
-  trigger:
-    - platform: mqtt
+  triggers:
+    - trigger: mqtt
       topic: RFBridge/tele/RESULT
-    - platform: mqtt
+    - trigger: mqtt
       topic: RFBridge2/tele/RESULT
-  condition:
+  conditions:
     - condition: template
       value_template: >
         {{ trigger.payload_json is defined and
           trigger.payload_json.RfCode is defined }}
-  action:
-    service: python_script.rfbridge2_demux
+  actions:
+    action: python_script.rfbridge2_demux
     data:
       payload: "{{trigger.payload_json.RfCode}}"
 
@@ -61,11 +60,11 @@
   initial_state: on
   alias: MQTT Dark Switch
   mode: queued
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: binary_sensor.dark_outside
-  action:
-    - service: mqtt.publish
+  actions:
+    - action: mqtt.publish
       data:
         retain: true
         topic: "Outside/cmnd/EVENT"
@@ -82,11 +81,11 @@
 - id: ea70e8a8-45bf-4adb-b1cf-85b12dd5129e
   alias: Daily Backup
   initial_state: on
-  trigger:
-    - platform: time
+  triggers:
+    - trigger: time
       at: 06:18:14
-  action:
-    - service: hassio.addon_start
+  actions:
+    - action: hassio.addon_start
       data:
         addon: 3490a758_remote_backup
 
@@ -97,23 +96,23 @@
   alias: Backend Update
   description: "Keep stuff up to date"
   initial_state: on
-  trigger:
-    - platform: time_pattern
+  triggers:
+    - trigger: time_pattern
       hours: "11"
       minutes: "59"
       seconds: "59"
-  action:
+  actions:
     - alias: Blueprints update
-      service: shell_command.blueprints_update
+      action: shell_command.blueprints_update
       enabled: true
     - parallel:
-      - alias: pull in new blueprint code if any were loaded
-        service: automation.reload
-      - alias: pull in new blueprint code if any were loaded
-        service: script.reload
+        - alias: pull in new blueprint code if any were loaded
+          action: automation.reload
+        - alias: pull in new blueprint code if any were loaded
+          action: script.reload
 
     - alias: MP3 File backup
-      service: shell_command.mp3_update
+      action: shell_command.mp3_update
       enabled: true
   mode: single
 
@@ -127,35 +126,35 @@
 - id: c9484bd1-6c87-4cfc-a018-1572be06d402
   alias: Power state on HA start-up
   initial_state: on
-  trigger:
-    - platform: homeassistant
+  triggers:
+    - trigger: homeassistant
       event: start
-  action:
-    # - service: hassio.addon_restart
+  actions:
+    # - action: hassio.addon_restart
     #   data:
     #     addon: core_openthread_border_router
     - delay: 00:00:22
     - alias: Make sure EZ Buttons are active
-      service: script.tasmota_ez_button_for_update_and_restart_all_2022_01_07a
+      action: script.tasmota_ez_button_for_update_and_restart_all_2022_01_07a
     - delay: 00:00:22
     - alias: Push the Tasmota & EspHpme Restart Buttons
-      service: button.press
+      action: button.press
       target:
-        entity_id: 
+        entity_id:
           - button.ez_restart_button_tasmota
           - group.esphome_restart
     - delay: 00:00:22
     - alias: "Assume its dark- Prevents IDK state and lights not working"
-      service: mqtt.publish
+      action: mqtt.publish
       data:
         topic: Outside/cmnd/EVENT
         payload: "DARK"
         retain: true
     - alias: Make sure Dust Collector is off
-      service: switch.turn_off
+      action: switch.turn_off
       entity_id: switch.dust_collector
     - alias: Make sure the Mayson Cool doesn't start by itself again
-      service: input_boolean.turn_off
+      action: input_boolean.turn_off
       target:
         entity_id: input_boolean.mayson_cool
 
@@ -165,240 +164,240 @@
 - id: 970763ea-a7ba-40e6-9d46-79b21e63996b
   alias: restart Broadlink
   description: Watch Broadlink and restart it if it's dead.
-  trigger:
-  - platform: state
-    entity_id: input_button.broadlink_rm3_reset
-  - platform: state
-    entity_id:
-      - device_tracker.rassilon_mountcadon_duckdns_org_c8_f7_42_21_a6_a8_2
-    to: not_home
-    for:
-      minutes: 10
-  - platform: state
-    entity_id:
-      - device_tracker.rassilon_mountcadon_duckdns_org_c8_f7_42_21_a6_a8_2
-    to: not_home
-    for:
-      minutes: 35
-  - platform: state
-    entity_id:
-      - device_tracker.rassilon_mountcadon_duckdns_org_c8_f7_42_21_a6_a8_2
-    to: not_home
-    for:
-      minutes: 60
-  action:
-  - service: switch.turn_off
-    target:
-      entity_id: switch.sonoff_1000dbf4a6_1
-  - service: script.media_player_boink
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 4
-      milliseconds: 0
-  - service: switch.turn_on
-    target:
-      entity_id: switch.sonoff_1000dbf4a6_1
-  - service: script.tts_say_broadlink_reset
+  triggers:
+    - trigger: state
+      entity_id: input_button.broadlink_rm3_reset
+    - trigger: state
+      entity_id:
+        - device_tracker.rassilon_mountcadon_duckdns_org_c8_f7_42_21_a6_a8_2
+      to: not_home
+      for:
+        minutes: 10
+    - trigger: state
+      entity_id:
+        - device_tracker.rassilon_mountcadon_duckdns_org_c8_f7_42_21_a6_a8_2
+      to: not_home
+      for:
+        minutes: 35
+    - trigger: state
+      entity_id:
+        - device_tracker.rassilon_mountcadon_duckdns_org_c8_f7_42_21_a6_a8_2
+      to: not_home
+      for:
+        minutes: 60
+  actions:
+    - action: switch.turn_off
+      target:
+        entity_id: switch.sonoff_1000dbf4a6_1
+    - action: script.media_player_boink
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: 4
+        milliseconds: 0
+    - action: switch.turn_on
+      target:
+        entity_id: switch.sonoff_1000dbf4a6_1
+    - action: script.tts_say_broadlink_reset
   mode: single
 
 ####################################################
 # Restart Drail if its Dead                        #
 ####################################################
-- id: '0bca4786-e971-442f-bf14-6ef122038dfa'
+- id: "0bca4786-e971-442f-bf14-6ef122038dfa"
   alias: Drall is Down
   description: Drall Alert
   use_blueprint:
     path: SirGoodenough/Device_tracker_Monitor_and_Notifier.yaml
     input:
       trackees:
-      - device_tracker.rassilon_mountcadon_duckdns_org_dc_a6_32_a0_43_e7_2
-      - device_tracker.rassilon_mountcadon_duckdns_org_dc_a6_32_a0_43_e6_2
+        - device_tracker.rassilon_mountcadon_duckdns_org_dc_a6_32_a0_43_e7_2
+        - device_tracker.rassilon_mountcadon_duckdns_org_dc_a6_32_a0_43_e6_2
       alt_notify:
-      - service: script.say_a_thing
-        data:
-          message: Drall is DOWN. Ping the big boned guy.
-          entities: media_player.jennys_room_display
+        - action: script.say_a_thing
+          data:
+            message: Drall is DOWN. Ping the big boned guy.
+            entities: media_player.jennys_room_display
 
 ####################################################
 # Restart Garage if its Dead                       #
 ####################################################
-- id: '1675983632024'
+- id: "1675983632024"
   alias: Garage Reset 2
   description: Reset the House MOCA to get the garage back online
   use_blueprint:
     path: SirGoodenough/Device_tracker_Monitor_and_Notifier.yaml
     input:
       trackees:
-      - device_tracker.moca_g
-      - device_tracker.moca_h
+        - device_tracker.moca_g
+        - device_tracker.moca_h
       notification_id: GarageGoneReset
       gone_for:
         hours: 0
         minutes: 13
         seconds: 33
       alt_notify:
-      - choose:
-        - conditions:
-          - alias: Check for both devices home
-            condition: and
-            conditions:
-              - condition: state
-                entity_id: device_tracker.moca_g
-                state: "home"
-              - condition: state
-                entity_id: device_tracker.moca_h
-                state: "home"
-          sequence:
-            - alias: Magically fixed itself
-              service: persistent_notification.dismiss
-              data:
-                notification_id: GarageGoneReset
-        - conditions:
-          - alias: Check for both devices home
-            condition: or
-            conditions:
-              - condition: not
-                conditions:
-                - condition: state
-                  entity_id: device_tracker.moca_g
-                  state: "home"
-              - condition: not
-                conditions:
-                - condition: state
-                  entity_id: device_tracker.moca_h
-                  state: "home"
-          sequence:
-          - alias: Voice outage 1
-            service: script.say_a_thing
-            data:
-              message: Garage outage 1. First try.
-              entities: media_player.jennys_room_display
-          - alias: Reset the moca
-            service: script.reset_garage_serverroom_2
-          - alias: Add a delay so notification stays up while things are rebooting
-            delay:
-              hours: 0
-              minutes: 4
-              seconds: 11
-              milliseconds: 4
-          - alias: Kill the notification assuming it's fixed
-            service: persistent_notification.dismiss
-            data:
-              notification_id: GarageGoneReset
+        - choose:
+            - conditions:
+                - alias: Check for both devices home
+                  condition: and
+                  conditions:
+                    - condition: state
+                      entity_id: device_tracker.moca_g
+                      state: "home"
+                    - condition: state
+                      entity_id: device_tracker.moca_h
+                      state: "home"
+              sequence:
+                - alias: Magically fixed itself
+                  action: persistent_notification.dismiss
+                  data:
+                    notification_id: GarageGoneReset
+            - conditions:
+                - alias: Check for both devices home
+                  condition: or
+                  conditions:
+                    - condition: not
+                      conditions:
+                        - condition: state
+                          entity_id: device_tracker.moca_g
+                          state: "home"
+                    - condition: not
+                      conditions:
+                        - condition: state
+                          entity_id: device_tracker.moca_h
+                          state: "home"
+              sequence:
+                - alias: Voice outage 1
+                  action: script.say_a_thing
+                  data:
+                    message: Garage outage 1. First try.
+                    entities: media_player.jennys_room_display
+                - alias: Reset the moca
+                  action: script.reset_garage_serverroom_2
+                - alias: Add a delay so notification stays up while things are rebooting
+                  delay:
+                    hours: 0
+                    minutes: 4
+                    seconds: 11
+                    milliseconds: 4
+                - alias: Kill the notification assuming it's fixed
+                  action: persistent_notification.dismiss
+                  data:
+                    notification_id: GarageGoneReset
       gone_for_longer:
         hours: 0
         minutes: 28
         seconds: 58
       alt_notify_2:
-      - choose:
-        - conditions:
-          - alias: Check for both devices home
-            condition: and
-            conditions:
-              - condition: state
-                entity_id: device_tracker.moca_g
-                state: "home"
-              - condition: state
-                entity_id: device_tracker.moca_h
-                state: "home"
-          sequence:
-            - alias: Magically fixed itself
-              service: persistent_notification.dismiss
-              data:
-                notification_id: GarageGoneReset
-        - conditions:
-          - alias: Check for both devices home
-            condition: or
-            conditions:
-              - condition: not
-                conditions:
-                - condition: state
-                  entity_id: device_tracker.moca_g
-                  state: "home"
-              - condition: not
-                conditions:
-                - condition: state
-                  entity_id: device_tracker.moca_h
-                  state: "home"
-          sequence:
-          - alias: Voice outage 2
-            service: script.say_a_thing
-            data:
-              message: Garage outage 2. Second try.
-              entities: media_player.jennys_room_display
-          - alias: Reset the moca
-            service: script.reset_garage_serverroom_2
-          - alias: Add a delay so notification stays up while things are rebooting
-            delay:
-              hours: 0
-              minutes: 4
-              seconds: 11
-              milliseconds: 4
-          - alias: Kill the notification assuming it's fixed
-            service: persistent_notification.dismiss
-            data:
-              notification_id: GarageGoneReset
+        - choose:
+            - conditions:
+                - alias: Check for both devices home
+                  condition: and
+                  conditions:
+                    - condition: state
+                      entity_id: device_tracker.moca_g
+                      state: "home"
+                    - condition: state
+                      entity_id: device_tracker.moca_h
+                      state: "home"
+              sequence:
+                - alias: Magically fixed itself
+                  action: persistent_notification.dismiss
+                  data:
+                    notification_id: GarageGoneReset
+            - conditions:
+                - alias: Check for both devices home
+                  condition: or
+                  conditions:
+                    - condition: not
+                      conditions:
+                        - condition: state
+                          entity_id: device_tracker.moca_g
+                          state: "home"
+                    - condition: not
+                      conditions:
+                        - condition: state
+                          entity_id: device_tracker.moca_h
+                          state: "home"
+              sequence:
+                - alias: Voice outage 2
+                  action: script.say_a_thing
+                  data:
+                    message: Garage outage 2. Second try.
+                    entities: media_player.jennys_room_display
+                - alias: Reset the moca
+                  action: script.reset_garage_serverroom_2
+                - alias: Add a delay so notification stays up while things are rebooting
+                  delay:
+                    hours: 0
+                    minutes: 4
+                    seconds: 11
+                    milliseconds: 4
+                - alias: Kill the notification assuming it's fixed
+                  action: persistent_notification.dismiss
+                  data:
+                    notification_id: GarageGoneReset
       gone_for_still_longer:
         hours: 0
         minutes: 43
         seconds: 27
       alt_notify_3:
-      - choose:
-        - conditions:
-          - alias: Check for both devices home
-            condition: and
-            conditions:
-              - condition: state
-                entity_id: device_tracker.moca_g
-                state: "home"
-              - condition: state
-                entity_id: device_tracker.moca_h
-                state: "home"
-          sequence:
-            - alias: Magically fixed itself
-              service: persistent_notification.dismiss
-              data:
-                notification_id: GarageGoneReset
-        - conditions:
-          - alias: Check for both devices home
-            condition: or
-            conditions:
-              - condition: not
-                conditions:
-                - condition: state
-                  entity_id: device_tracker.moca_g
-                  state: "home"
-              - condition: not
-                conditions:
-                - condition: state
-                  entity_id: device_tracker.moca_h
-                  state: "home"
-          sequence:
-          - alias: Voice outage 3
-            service: script.say_a_thing
-            data:
-              message: Garage outage 3. Final try.
-              entities: media_player.jennys_room_display
-          - alias: Reset the moca
-            service: script.reset_garage_serverroom_2
-          - alias: Add a delay so notification stays up while things are rebooting
-            delay:
-              hours: 0
-              minutes: 5
-              seconds: 11
-              milliseconds: 4
-          - alias: Kill the notification assuming it's fixed
-            service: persistent_notification.dismiss
-            data:
-              notification_id: GarageGoneReset
+        - choose:
+            - conditions:
+                - alias: Check for both devices home
+                  condition: and
+                  conditions:
+                    - condition: state
+                      entity_id: device_tracker.moca_g
+                      state: "home"
+                    - condition: state
+                      entity_id: device_tracker.moca_h
+                      state: "home"
+              sequence:
+                - alias: Magically fixed itself
+                  action: persistent_notification.dismiss
+                  data:
+                    notification_id: GarageGoneReset
+            - conditions:
+                - alias: Check for both devices home
+                  condition: or
+                  conditions:
+                    - condition: not
+                      conditions:
+                        - condition: state
+                          entity_id: device_tracker.moca_g
+                          state: "home"
+                    - condition: not
+                      conditions:
+                        - condition: state
+                          entity_id: device_tracker.moca_h
+                          state: "home"
+              sequence:
+                - alias: Voice outage 3
+                  action: script.say_a_thing
+                  data:
+                    message: Garage outage 3. Final try.
+                    entities: media_player.jennys_room_display
+                - alias: Reset the moca
+                  action: script.reset_garage_serverroom_2
+                - alias: Add a delay so notification stays up while things are rebooting
+                  delay:
+                    hours: 0
+                    minutes: 5
+                    seconds: 11
+                    milliseconds: 4
+                - alias: Kill the notification assuming it's fixed
+                  action: persistent_notification.dismiss
+                  data:
+                    notification_id: GarageGoneReset
       gone_for_still_more_longer:
         hours: 1
         minutes: 18
         seconds: 18
       alt_notify_4:
-      - alias: Voice outage 4
-        service: script.say_a_thing
-        data:
-          message: Garage is dead!
-          entities: media_player.jennys_room_display
+        - alias: Voice outage 4
+          action: script.say_a_thing
+          data:
+            message: Garage is dead!
+            entities: media_player.jennys_room_display

@@ -13,12 +13,12 @@ random_color:
   variables:
     light: light.grp_kitch
   sequence:
-  - service: light.turn_on
-    entity_id: light.grp_kitch
-    data:
-      hs_color: >-
-        {% from 'color_multi_tool.jinja' import random_hs %}
-        {% set _rhs = random_hs().split(",") | list -%}
-        [{{ _rhs[0]|float(0)|round(2) }}, {{ _rhs[1]|float(0)|round(2) }}]
+    - action: light.turn_on
+      entity_id: light.grp_kitch
+      data:
+        hs_color: >-
+          {% from 'color_multi_tool.jinja' import random_hs %}
+          {% set _rhs = random_hs().split(",") | list -%}
+          [{{ _rhs[0]|float(0)|round(2) }}, {{ _rhs[1]|float(0)|round(2) }}]
   mode: single
   icon: mdi:traffic-light-outline

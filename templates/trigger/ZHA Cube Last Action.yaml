@@ -1,5 +1,5 @@
 - trigger:
-    - platform: event
+    - trigger: event
       event_type: zha_cube_last_action
   sensor:
     - name: "ZHA Cube Last Action"

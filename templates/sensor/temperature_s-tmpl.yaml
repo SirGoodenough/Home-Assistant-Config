@@ -8,7 +8,6 @@
     availability: >-
       {% from 'availability_template.jinja' import avail %}
       {{- avail(['climate.living_room_2']) | bool -}}
-    state_class: measurement
     device_class: temperature
     attributes:
       friendly_name: "LRthermostat"
@@ -39,7 +38,6 @@
     availability: >-
       {% from 'availability_template.jinja' import avail %}
       {{- avail(['climate.gemodule5384_window_ac']) | bool -}}
-    state_class: measurement
     device_class: temperature
     attributes:
       friendly_name: "BRthermostat"
@@ -60,7 +58,6 @@
     availability: >-
       {% from 'availability_template.jinja' import avail %}
       {{- avail(['sensor.house_humidity_group']) | bool -}}
-    state_class: measurement
     device_class: humidity
     attributes:
       friendly_name: "Humidity Group"

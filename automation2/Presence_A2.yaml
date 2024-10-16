@@ -1,19 +1,19 @@
 - id: e037105b-eb19-4f36-b789-4cb18af321f7
   alias: Person @ Cottage
   description: Webhook from Cottage that it detects a person
-  trigger:
-  - platform: webhook
-    webhook_id: person-cottage-07AWg1-wLwAO0LLg8qR4Qmu_
-    allowed_methods:
-      - POST
-      - PUT
-    local_only: false
-  action:
+  triggers:
+    - trigger: webhook
+      webhook_id: person-cottage-07AWg1-wLwAO0LLg8qR4Qmu_
+      allowed_methods:
+        - POST
+        - PUT
+      local_only: false
+  actions:
     - alias: "Notify phone(s)"
-      service: notify.message_dad
+      action: notify.message_dad
       data:
         message: "{{ trigger.json.message }}"
-    - service: script.tts_say_person_cottage
+    - action: script.tts_say_person_cottage
       data:
         live_message: " {{ trigger.json.message }}, with my little eye, at the cottage"
   mode: single
@@ -27,113 +27,113 @@
     path: SirGoodenough/Person_Alert_Blueprint.yaml
     input:
       people2monitor:
-      - person.julie
+        - person.julie
       zone2monitor: '{{ states.zone | map(attribute="entity_id") | list }}'
       enter_action:
-      - parallel:
-        - service: script.personalert_notify
-          data:
-            person: '{{ trigger.to_state.attributes.friendly_name }}'
-            place_to: '{{ trigger.to_state.state }}'
-            place_from: '{{ trigger.from_state.state }}'
-            notify_id: '{{ trigger.to_state.context.id }}'
-            phase: enter
-        - service: script.personalert_audio
-          data:
-            entities: media_player.home_group
-            mess: >-
-              {{ trigger.to_state.attributes.friendly_name + ' has arrived at '
-                + trigger.to_state.state
-              }}
-            lang: en-GB
-            voice: >-
-              {{ (
-                "LibbyNeural",
-                "AbbiNeural",
-                "AlfieNeural",
-                "BellaNeural",
-                "ElliotNeural",
-                "EthanNeural",
-                "HollieNeural",
-                "MaisieNeural",
-                "NoahNeural",
-                "OliverNeural",
-                "OliviaNeural",
-                "RyanNeural",
-                "SoniaNeural",
-                "ThomasNeural"
-              ) | random }}
+        - parallel:
+            - action: script.personalert_notify
+              data:
+                person: "{{ trigger.to_state.attributes.friendly_name }}"
+                place_to: "{{ trigger.to_state.state }}"
+                place_from: "{{ trigger.from_state.state }}"
+                notify_id: "{{ trigger.to_state.context.id }}"
+                phase: enter
+            - action: script.personalert_audio
+              data:
+                entities: media_player.home_group
+                mess: >-
+                  {{ trigger.to_state.attributes.friendly_name + ' has arrived at '
+                    + trigger.to_state.state
+                  }}
+                lang: en-GB
+                voice: >-
+                  {{ (
+                    "LibbyNeural",
+                    "AbbiNeural",
+                    "AlfieNeural",
+                    "BellaNeural",
+                    "ElliotNeural",
+                    "EthanNeural",
+                    "HollieNeural",
+                    "MaisieNeural",
+                    "NoahNeural",
+                    "OliverNeural",
+                    "OliviaNeural",
+                    "RyanNeural",
+                    "SoniaNeural",
+                    "ThomasNeural"
+                  ) | random }}
       leave_action:
-      - parallel:
-        - service: script.personalert_notify
-          data:
-            person: '{{ trigger.from_state.attributes.friendly_name }}'
-            place_to: '{{ trigger.to_state.state }}'
-            place_from: '{{ trigger.from_state.state }}'
-            notify_id: '{{ trigger.from_state.context.id }}'
-            phase: leave
-        - service: script.personalert_audio
-          data:
-            entities: media_player.home_group
-            mess: >-
-              {{ trigger.from_state.attributes.friendly_name + ' has left '
-                + trigger.from_state.state
-              }}
-            lang: en-GB
-            voice: >-
-              {{ (
-                "LibbyNeural",
-                "AbbiNeural",
-                "AlfieNeural",
-                "BellaNeural",
-                "ElliotNeural",
-                "EthanNeural",
-                "HollieNeural",
-                "MaisieNeural",
-                "NoahNeural",
-                "OliverNeural",
-                "OliviaNeural",
-                "RyanNeural",
-                "SoniaNeural",
-                "ThomasNeural"
-              ) | random }}
+        - parallel:
+            - action: script.personalert_notify
+              data:
+                person: "{{ trigger.from_state.attributes.friendly_name }}"
+                place_to: "{{ trigger.to_state.state }}"
+                place_from: "{{ trigger.from_state.state }}"
+                notify_id: "{{ trigger.from_state.context.id }}"
+                phase: leave
+            - action: script.personalert_audio
+              data:
+                entities: media_player.home_group
+                mess: >-
+                  {{ trigger.from_state.attributes.friendly_name + ' has left '
+                    + trigger.from_state.state
+                  }}
+                lang: en-GB
+                voice: >-
+                  {{ (
+                    "LibbyNeural",
+                    "AbbiNeural",
+                    "AlfieNeural",
+                    "BellaNeural",
+                    "ElliotNeural",
+                    "EthanNeural",
+                    "HollieNeural",
+                    "MaisieNeural",
+                    "NoahNeural",
+                    "OliverNeural",
+                    "OliviaNeural",
+                    "RyanNeural",
+                    "SoniaNeural",
+                    "ThomasNeural"
+                  ) | random }}
       jump_action:
-      - parallel:
-        - service: script.personalert_notify
-          data:
-            person: '{{ trigger.to_state.attributes.friendly_name }}'
-            place_to: '{{ trigger.to_state.state }}'
-            place_from: '{{ trigger.from_state.state }}'
-            notify_id: '{{ trigger.to_state.context.id }}'
-            phase: jump
-        - service: script.personalert_audio
-          data:
-            entities: media_player.home_group
-            mess: >-
-              {{ trigger.to_state.attributes.friendly_name + ' has left '
-                + trigger.from_state.state + ' and is located at: '
-                + trigger.to_state.state
-              }}
-            lang: en-GB
-            voice: >-
-              {{ (
-                "LibbyNeural",
-                "AbbiNeural",
-                "AlfieNeural",
-                "BellaNeural",
-                "ElliotNeural",
-                "EthanNeural",
-                "HollieNeural",
-                "MaisieNeural",
-                "NoahNeural",
-                "OliverNeural",
-                "OliviaNeural",
-                "RyanNeural",
-                "SoniaNeural",
-                "ThomasNeural"
-              ) | random }}
+        - parallel:
+            - action: script.personalert_notify
+              data:
+                person: "{{ trigger.to_state.attributes.friendly_name }}"
+                place_to: "{{ trigger.to_state.state }}"
+                place_from: "{{ trigger.from_state.state }}"
+                notify_id: "{{ trigger.to_state.context.id }}"
+                phase: jump
+            - action: script.personalert_audio
+              data:
+                entities: media_player.home_group
+                mess: >-
+                  {{ trigger.to_state.attributes.friendly_name + ' has left '
+                    + trigger.from_state.state + ' and is located at: '
+                    + trigger.to_state.state
+                  }}
+                lang: en-GB
+                voice: >-
+                  {{ (
+                    "LibbyNeural",
+                    "AbbiNeural",
+                    "AlfieNeural",
+                    "BellaNeural",
+                    "ElliotNeural",
+                    "EthanNeural",
+                    "HollieNeural",
+                    "MaisieNeural",
+                    "NoahNeural",
+                    "OliverNeural",
+                    "OliviaNeural",
+                    "RyanNeural",
+                    "SoniaNeural",
+                    "ThomasNeural"
+                  ) | random }}
       enable_time: 05:30:18
-      disable_time: '20:27:36'
+      disable_time: "20:27:36"
       hold_period:
         hours: 0
         minutes: 2
@@ -150,82 +150,86 @@
     path: SirGoodenough/Person_Alert_Blueprint.yaml
     input:
       people2monitor:
-      - person.jim
+        - person.jim
       zone2monitor: '{{ states.zone | map(attribute="entity_id") | list }}'
       enter_action:
-      - alias: Delay for when traveling together.
-        delay: 00:00:30
-      - parallel:
-        - service: script.personalert_notify
-          data:
-            person: '{{ trigger.to_state.attributes.friendly_name }}'
-            place_to: '{{ trigger.to_state.state }}'
-            place_from: '{{ trigger.from_state.state }}'
-            notify_id: '{{ trigger.to_state.context.id }}'
-            phase: enter
-        - service: script.personalert_audio
-          data:
-            entities: media_player.home_group
-            mess: '{{ trigger.to_state.attributes.friendly_name + '' has arrived at
-              '' + trigger.to_state.state }}'
-            lang: en-CA
-            gend: male
+        - alias: Delay for when traveling together.
+          delay: 00:00:30
+        - parallel:
+            - action: script.personalert_notify
+              data:
+                person: "{{ trigger.to_state.attributes.friendly_name }}"
+                place_to: "{{ trigger.to_state.state }}"
+                place_from: "{{ trigger.from_state.state }}"
+                notify_id: "{{ trigger.to_state.context.id }}"
+                phase: enter
+            - action: script.personalert_audio
+              data:
+                entities: media_player.home_group
+                mess:
+                  "{{ trigger.to_state.attributes.friendly_name + ' has arrived at
+                  ' + trigger.to_state.state }}"
+                lang: en-CA
+                gend: male
       leave_action:
-      - alias: Delay for when traveling together.
-        delay: 00:00:30
-      - parallel:
-        - service: script.personalert_notify
-          data:
-            person: '{{ trigger.from_state.attributes.friendly_name }}'
-            place_to: '{{ trigger.to_state.state }}'
-            place_from: '{{ trigger.from_state.state }}'
-            notify_id: '{{ trigger.from_state.context.id }}'
-            phase: leave
-        - service: script.personalert_audio
-          data:
-            entities: media_player.home_group
-            mess: '{{ trigger.from_state.attributes.friendly_name + '' has left ''
-              + trigger.from_state.state }}'
-            lang: en-CA
-            gend: male
+        - alias: Delay for when traveling together.
+          delay: 00:00:30
+        - parallel:
+            - action: script.personalert_notify
+              data:
+                person: "{{ trigger.from_state.attributes.friendly_name }}"
+                place_to: "{{ trigger.to_state.state }}"
+                place_from: "{{ trigger.from_state.state }}"
+                notify_id: "{{ trigger.from_state.context.id }}"
+                phase: leave
+            - action: script.personalert_audio
+              data:
+                entities: media_player.home_group
+                mess:
+                  "{{ trigger.from_state.attributes.friendly_name + ' has left '
+                  + trigger.from_state.state }}"
+                lang: en-CA
+                gend: male
       jump_action:
-      - alias: Delay for when traveling together.
-        delay: 00:00:30
-      - parallel:
-        - service: script.personalert_notify
-          data:
-            person: '{{ trigger.to_state.attributes.friendly_name }}'
-            place_to: '{{ trigger.to_state.state }}'
-            place_from: '{{ trigger.from_state.state }}'
-            notify_id: '{{ trigger.to_state.context.id }}'
-            phase: jump
-        - service: script.personalert_audio
-          data:
-            entities: media_player.home_group
-            mess: '{{ trigger.to_state.attributes.friendly_name + '' has left '' +
-              trigger.from_state.state + '' and is located at: '' + trigger.to_state.state
-              }}'
-            lang: en-CA
-            gend: male
+        - alias: Delay for when traveling together.
+          delay: 00:00:30
+        - parallel:
+            - action: script.personalert_notify
+              data:
+                person: "{{ trigger.to_state.attributes.friendly_name }}"
+                place_to: "{{ trigger.to_state.state }}"
+                place_from: "{{ trigger.from_state.state }}"
+                notify_id: "{{ trigger.to_state.context.id }}"
+                phase: jump
+            - action: script.personalert_audio
+              data:
+                entities: media_player.home_group
+                mess:
+                  "{{ trigger.to_state.attributes.friendly_name + ' has left ' +
+                  trigger.from_state.state + ' and is located at: ' + trigger.to_state.state
+                  }}"
+                lang: en-CA
+                gend: male
       enable_time: 05:29:13
-      disable_time: '20:27:36'
+      disable_time: "20:27:36"
       hold_period:
         minutes: 3
   mode: queued
   max: 10
 
-- id: '39718152-fe48-443f-8581-26ba8cd77a94'
+- id: "39718152-fe48-443f-8581-26ba8cd77a94"
   alias: Back Door Open
-  description: 'Let us know the back door is open.'
+  description: "Let us know the back door is open."
   use_blueprint:
     path: SirGoodenough/door_open_tts_cloud_say_and_Piper_announcer_Piper_OR_nabu_casa_required.yaml
     input:
       door_entity:
-      - binary_sensor.back_door_open_433
+        - binary_sensor.back_door_open_433
       speaker_target:
-      - media_player.jennys_room_display
+        - media_player.jennys_room_display
       cooldown: 120
-      speaker_voice: '{{ ("JennyNeural", "AIGenerate1Neural", "AIGenerate2Neural",
+      speaker_voice:
+        '{{ ("JennyNeural", "AIGenerate1Neural", "AIGenerate2Neural",
         "AmberNeural", "AnaNeural", "AriaNeural", "AshleyNeural", "BrandonNeural",
         "ChristopherNeural", "CoraNeural", "DavisNeural", "ElizabethNeural", "EricNeural",
         "GuyNeural", "JacobNeural", "JaneNeural", "JasonNeural", "JennyMultilingualNeural",
@@ -234,8 +238,9 @@
       final_message: "Thank you for closing the {{ door }}."
       announcement_message: "Your {{ door }} has been left open."
       reminded: input_boolean.reminded
-      tts_service: nabu
-      piper_voice: '{{ ("en_US-lessac-medium","en_US-amy-low","en_US-amy-medium",
+      tts_action: nabu
+      piper_voice:
+        '{{ ("en_US-lessac-medium","en_US-amy-low","en_US-amy-medium",
         "en_US-arctic-medium","en_US-danny-low","en_US-joe-medium","en_US-kathleen-low",
         "en_US-kusal-medium","en_US-l2arctic-medium","en_US-lessac-high","en_US-lessac-low",
         "en_US-lessac-medium","en_US-libritts-high","en_US-libritts_r-medium",
@@ -244,23 +249,24 @@
 
 - id: d0a74092-eee1-4043-ba47-642f01084acb
   alias: Cold Storage Door Monitor
-  description: Warn if the Kitchen Fridge/Freezer or the Porch Freezer has been left
+  description:
+    Warn if the Kitchen Fridge/Freezer or the Porch Freezer has been left
     open.
   use_blueprint:
     path: SirGoodenough/door_open_tts_cloud_say_and_Piper_announcer_Piper_OR_nabu_casa_required.yaml
     input:
       door_entity:
-      - binary_sensor.kitchen_fridge_open_433
-      - binary_sensor.kitchen_freezer_open_433
-      - binary_sensor.porch_freezer_open_433
+        - binary_sensor.kitchen_fridge_open_433
+        - binary_sensor.kitchen_freezer_open_433
+        - binary_sensor.porch_freezer_open_433
       reminded: input_boolean.cold_reminded
       speaker_target:
-      - media_player.jennys_room_display
-      - media_player.garage_speaker
-      - media_player.living_room_speaker
-      - media_player.workroom_speaker
-      - media_player.office_speaker_1
-      - media_player.basement_speaker
+        - media_player.jennys_room_display
+        - media_player.garage_speaker
+        - media_player.living_room_speaker
+        - media_player.workroom_speaker
+        - media_player.office_speaker_1
+        - media_player.basement_speaker
       piper_voice: '{{("en_US-lessac-medium","en_US-amy-low","en_US-amy-medium",
         "en_US-arctic-medium","en_US-danny-low","en_US-joe-medium","en_US-kathleen-low",
         "en_US-kusal-medium","en_US-l2arctic-medium","en_US-lessac-high","en_US-lessac-low",
@@ -270,7 +276,8 @@
       announcement_message: Your {{ door }} has been left open.
       cooldown: 63
       final_message: Thank you for closing the {{ door }}.
-      speaker_voice: '{{ ("JennyNeural", "AIGenerate1Neural", "AIGenerate2Neural",
+      speaker_voice:
+        '{{ ("JennyNeural", "AIGenerate1Neural", "AIGenerate2Neural",
         "AmberNeural", "AnaNeural", "AriaNeural", "AshleyNeural", "BrandonNeural",
         "ChristopherNeural", "CoraNeural", "DavisNeural", "ElizabethNeural", "EricNeural",
         "GuyNeural", "JacobNeural", "JaneNeural", "JasonNeural", "JennyMultilingualNeural",

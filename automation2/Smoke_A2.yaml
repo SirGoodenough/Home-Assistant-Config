@@ -1,121 +1,122 @@
-
-  ####################################################
-  # Smoke Detector                                   #
-  ####################################################
-  - id: fb27c45c-c4fb-4c5e-962c-99c19c55ff26
-    alias: Smoke
-    initial_state: on
-    trigger:
-    - platform: state
+####################################################
+# Smoke Detector                                   #
+####################################################
+- id: fb27c45c-c4fb-4c5e-962c-99c19c55ff26
+  alias: Smoke
+  initial_state: on
+  triggers:
+    - trigger: state
       entity_id: binary_sensor.basement_smoke_alarm
-      to: 'on'
+      to: "on"
       id: basement
-    - platform: device
+    - trigger: device
       type: smoke
       device_id: e6cb7bd304816dc875959768023d2c1b
       entity_id: binary_sensor.stairway_smoke_smoke
       domain: binary_sensor
       id: upstairs
 
-    variables:
-      # Generate a random scene ID
-      scene_id: "color_flip_{{ this.context.id | lower }}"
+  variables:
+    # Generate a random scene ID
+    scene_id: "color_flip_{{ this.context.id | lower }}"
 
-    action:
+  actions:
     - alias: make some noise on the speakers
-      service: script.media_player_fire_alert
+      action: script.media_player_fire_alert
     - delay: 00:00:03
-    - service: scene.create
+    - action: scene.create
       data:
         scene_id: "{{ scene_id }}"
-        snapshot_entities: 
+        snapshot_entities:
           - light.grp_kitch
           - light.grp_jens_color
     - repeat:
         count: 2
         sequence:
-        - repeat:
-            count: 3
-            sequence:
-            - service: script.color_flip
-              data:
-                color: [255,255,255]
-                bright_pct: 80
-                entities: light.grp_kitch,light.grp_jens_color
-            - delay: 00:00:01
-            - service: script.color_flip
-              data:
-                color: [255,0,0]
-                bright_pct: 100
-                entities: light.grp_kitch,light.grp_jens_color
-            - delay: 00:00:03
-        - alias: Voice alert to say where the problem is
-          service: script.turn_on
-          target:
-            entity_id: >
-              {% if trigger.id == 'basement' %}
-                script.tts_smoke_detected_in_the_basement
-              {% else %}
-                script.tts_smoke_detected_upstairs
-              {% endif %}
-    - service: scene.turn_on
+          - repeat:
+              count: 3
+              sequence:
+                - action: script.color_flip
+                  data:
+                    color: [255, 255, 255]
+                    bright_pct: 80
+                    entities: light.grp_kitch,light.grp_jens_color
+                - delay: 00:00:01
+                - action: script.color_flip
+                  data:
+                    color: [255, 0, 0]
+                    bright_pct: 100
+                    entities: light.grp_kitch,light.grp_jens_color
+                - delay: 00:00:03
+          - alias: Voice alert to say where the problem is
+            action: script.turn_on
+            target:
+              entity_id: >
+                {% if trigger.id == 'basement' %}
+                  script.tts_smoke_detected_in_the_basement
+                {% else %}
+                  script.tts_smoke_detected_upstairs
+                {% endif %}
+    - action: scene.turn_on
       target:
         entity_id: "scene.{{ scene_id }}"
       data:
         transition: 2.5
 
-    # - service: light.turn_off
-    #   data:
-    #     transition: 4
-    #     entity_id: light.grp_kitch,light.grp_jens_color
-    # - delay: 00:00:01
-    # - service: light.turn_on
-    #   data:
-    #     transition: 4
-    #     rgb_color: [255,20,147]
-    #     brightness_pct: 88
-    #     entity_id: light.grp_jens_color
+  # - action: light.turn_off
+  #   data:
+  #     transition: 4
+  #     entity_id: light.grp_kitch,light.grp_jens_color
+  # - delay: 00:00:01
+  # - action: light.turn_on
+  #   data:
+  #     transition: 4
+  #     rgb_color: [255,20,147]
+  #     brightness_pct: 88
+  #     entity_id: light.grp_jens_color
 
-  ####################################################
-  # CO2 Detector                                     #
-  ####################################################
+####################################################
+# CO2 Detector                                     #
+####################################################
 
-  - id: 9df05f35-a3e7-4d06-b53a-89fc9bcbdc46
-    alias: CO2 Warning Level
-    description: TTS to tell CO2 is high <1000 for 10 minutes
-    trigger:
-    - platform: numeric_state
+- id: 9df05f35-a3e7-4d06-b53a-89fc9bcbdc46
+  alias: CO2 Warning Level
+  description: TTS to tell CO2 is high <1000 for 10 minutes
+  triggers:
+    - trigger: numeric_state
       entity_id:
-      - sensor.ethernettest_kitchen_co2
+        - sensor.ethernettest_kitchen_co2
       above: 1000
       for:
         hours: 0
         minutes: 10
         seconds: 0
-    condition: []
-    action:
-    - service: tts.speak
+  conditions:
+  actions:
+    - action: tts.speak
       data:
         cache: true
         media_player_entity_id: media_player.intercom_group
-        message: CO2 values are at an uncomfortable level. Please investigate. CO2 values
+        message:
+          CO2 values are at an uncomfortable level. Please investigate. CO2 values
           are at an uncomfortable level. Please investigate.
-    mode: single
+  mode: single
 
-  - id: 86ccf18f-cbce-40e0-858f-91df79b99f62
-    alias: CO2 levels hazardous level
-    description: Level is above 2000 ppm.
-    trigger:
-    - platform: numeric_state
+- id: 86ccf18f-cbce-40e0-858f-91df79b99f62
+  alias: CO2 levels hazardous level
+  description: Level is above 2000 ppm.
+  triggers:
+    - trigger: numeric_state
       entity_id:
-      - sensor.ethernettest_kitchen_co2
+        - sensor.ethernettest_kitchen_co2
       above: 2000
-    condition: []
-    action:
-    - service: tts.speak
+  conditions:
+  actions:
+    - action: tts.speak
       data:
         cache: true
         media_player_entity_id: media_player.home_group
-        message: Take immediate action.  Open doors. CO2 level is in the unsafe range.
+        message:
           Take immediate action.  Open doors. CO2 level is in the unsafe range.
-    mode: single
+          Take immediate action.  Open doors. CO2 level is in the unsafe range.
+  mode: single

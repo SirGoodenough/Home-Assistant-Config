@@ -7,37 +7,37 @@
     # Let everyone know a refill is required.
   alias: Jens Neb Announcement
   initial_state: on
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: binary_sensor.aromatherapy_water
       from: "off"
       to: "on"
-    - platform: state
+    - trigger: state
       entity_id: input_boolean.mist_button
       from: "off"
       to: "on"
-  action:
+  actions:
     - alias: Out of water in Mister
-      service: input_boolean.turn_off
+      action: input_boolean.turn_off
       entity_id: input_boolean.mist_button
-    - service: script.tts_mister_message
+    - action: script.tts_mister_message
     - delay: 00:00:07
-    - service: script.media_player_jens_neb
+    - action: script.media_player_jens_neb
 
 - id: 6d3dd9af-eeaa-4e29-8706-8beeb1c5a375
   alias: Kitchenlight on Mist on
   description: Turn on the Mister with the Kitchensink light.
-  trigger:
-  - platform: state
-    entity_id:
-    - light.kitchensink
-    to: 'on'
-  condition: []
-  action:
-  - service: fan.turn_on
-    metadata: {}
-    data:
-      percentage: 47
-    target:
-      entity_id: fan.jens_mist
+  triggers:
+    - trigger: state
+      entity_id:
+        - light.kitchensink
+      to: "on"
+  conditions:
+  actions:
+    - action: fan.turn_on
+      metadata: {}
+      data:
+        percentage: 47
+      target:
+        entity_id: fan.jens_mist
   mode: single

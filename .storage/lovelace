@@ -151,7 +151,7 @@
               "conditions": [
                 {
                   "condition": "numeric_state",
-                  "entity": "sensor.sm_s906u_battery_level",
+                  "entity": "device_tracker.sm_s906u",
                   "below": 40
                 }
               ],
@@ -233,19 +233,21 @@
               "state_color": true
             },
             {
-              "show_state": true,
-              "show_name": true,
-              "camera_view": "auto",
-              "type": "picture-entity",
-              "entity": "lock.front_door_lock",
-              "camera_image": "camera.front_door"
-            },
-            {
               "type": "conditional",
               "conditions": [
                 {
                   "entity": "sensor.water_the_plants",
                   "state": "today"
+                },
+                {
+                  "condition": "or",
+                  "conditions": [
+                    {
+                      "condition": "numeric_state",
+                      "entity": "sensor.chaloupkaabode_weather_soil_moisture_2",
+                      "below": 11
+                    }
+                  ]
                 }
               ],
               "card": {
@@ -825,6 +827,9 @@
                 },
                 {
                   "entity": "button.stairs_up"
+                },
+                {
+                  "entity": "light.mini_smartplug_dimmer"
                 }
               ],
               "show_header_toggle": false,
@@ -3874,6 +3879,12 @@
               "type": "iframe",
               "url": "https://www.home-assistant.io",
               "aspect_ratio": "50%"
+            },
+            {
+              "graph": "line",
+              "type": "sensor",
+              "entity": "sensor.aurora_visibility_visibility",
+              "detail": 1
             }
           ],
           "icon": "mdi:weather-lightning",

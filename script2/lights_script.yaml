@@ -1,64 +1,64 @@
 ---
-  color_flip:
-    alias: Flip a light to a color
-    fields:
-      entities:
-        name: Light to flip
-        description: make a light flip color
-        required: true
-        selector:
-          entity:
-            multiple: true
-            filter:
-              domain: light
-      color:
-        name: RGB color
-        description: Set the light color to flip to
-        example: "[255,0,0]"
-        default: [255,0,0]
-        selector:
-          color_rgb:
-      bright_pct:
-        name: Brightness Percentage
-        description: Set 0 to 100 brightness percentage
-        example: "100"
-        default: 100
-        selector:
-          number:
-            min: 0
-            max: 100
-            unit_of_measurement: "%"
-            mode: slider
-            step: 1
-    sequence:
-    - service: light.turn_on
+color_flip:
+  alias: Flip a light to a color
+  fields:
+    entities:
+      name: Light to flip
+      description: make a light flip color
+      required: true
+      selector:
+        entity:
+          multiple: true
+          filter:
+            domain: light
+    color:
+      name: RGB color
+      description: Set the light color to flip to
+      example: "[255, 0, 0]"
+      default: [255, 0, 0]
+      selector:
+        color_rgb:
+    bright_pct:
+      name: Brightness Percentage
+      description: Set 0 to 100 brightness percentage
+      example: "100"
+      default: 100
+      selector:
+        number:
+          min: 0
+          max: 100
+          unit_of_measurement: "%"
+          mode: slider
+          step: 1
+  sequence:
+    - action: light.turn_on
       data:
         transition: 0
         entity_id: "{{ entities }}"
         rgb_color: "{{ color }}"
         brightness_pct: "{{ bright_pct }}"
 
-  flash_a_light:
-    alias: make a light flash as an indicator of something
-    fields:
-      entities:
-        name: Light to flash
-        description: make a light flash
-        required: true
-        selector:
-          entity:
-            multiple: true
-            filter:
-              domain: light
-    sequence:
-    - service: light.turn_on
+flash_a_light:
+  alias: make a light flash as an indicator of something
+  fields:
+    entities:
+      name: Light to flash
+      description: make a light flash
+      required: true
+      selector:
+        entity:
+          multiple: true
+          filter:
+            domain: light
+  sequence:
+    - action: light.turn_on
       data: {}
       target:
         entity_id: "{{ entities }}"
     - delay:
         seconds: 1
         milliseconds: 500
-    - service: light.turn_off
+    - action: light.turn_off
       data: {}
       target:
         entity_id: "{{ entities }}"

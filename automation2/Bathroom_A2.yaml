@@ -5,58 +5,58 @@
 - id: d0cbe0e5-10cb-407f-a535-6aaa3146f91a
   alias: Bathroom Heat Failsafe
   initial_state: on
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: switch.micro_switch_g2
       to: "on"
-  action:
-    - service: script.upstairs_bath_heater_watchdog
-    - service: script.tts_bathroom_heat_on
+  actions:
+    - action: script.upstairs_bath_heater_watchdog
+    - action: script.tts_bathroom_heat_on
 
 - id: 2d1ec212-0443-44c6-883b-85757c900e92
   alias: Bathroom is Overheated
   initial_state: on
-  trigger:
-    platform: numeric_state
+  triggers:
+    trigger: numeric_state
     entity_id: sensor.bt3_bathroom2_temperature
     above: 85
-  condition:
+  conditions:
     - >
       {% from 'logic_chekr.jinja' import true_all %}
       {{- true_all( ['switch.micro_switch_g2'] ) | bool -}}
-  action:
-    - service: script.upstairs_bath_heater_off
-    - service: script.media_player_bathroom
+  actions:
+    - action: script.upstairs_bath_heater_off
+    - action: script.media_player_bathroom
     - delay: 00:00:06
-    - service: script.tts_for_bathroom_overheat
+    - action: script.tts_for_bathroom_overheat
 
 - id: bd61ef61-ae56-47ae-9902-6166657aceac
   alias: Bathroom Door is Open
   initial_state: on
-  trigger:
-    platform: state
+  triggers:
+    trigger: state
     entity_id: switch.micro_switch_g2
     to: "on"
     for:
       minutes: 2
-  condition:
+  conditions:
     - >
       {% from 'logic_chekr.jinja' import true_all %}
       {{- true_all( ['binary_sensor.bathroom'] ) | bool -}}
-  action:
-    - service: script.upstairs_bath_heater_off
-    - service: script.media_player_bathroom
+  actions:
+    - action: script.upstairs_bath_heater_off
+    - action: script.media_player_bathroom
     - delay: 00:00:06
-    - service: script.tts_bathroom_door_is_open
+    - action: script.tts_bathroom_door_is_open
 
 - id: 4d6bdbcb-b71d-4d3a-b52e-19ab077b9585
   alias: Bathroom Heater Auto Mode
   initial_state: on
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: input_boolean.bathroom_heater_auto_on
       to: "on"
-  condition:
+  conditions:
     and:
       - condition: state
         entity_id: person.julie
@@ -64,19 +64,18 @@
       - condition: numeric_state
         entity_id: sensor.gw2000b_v2_2_4_feels_like_temperature
         below: 40
-  action:
-    - service: script.upstairs_bath_heater_on
-    - service: script.tts_bathroom_heat_on
-    - service: input_boolean.turn_off
+  actions:
+    - action: script.upstairs_bath_heater_on
+    - action: script.tts_bathroom_heat_on
+    - action: input_boolean.turn_off
       entity_id: input_boolean.bathroom_heater_auto_on
 
 - id: a152e88d-6c9c-42bd-9a62-15ecb7745e29
   alias: Bathroom Heater Julie Bedtime
   initial_state: on
-  trigger:
-    - platform: time
+  triggers:
+    - trigger: time
       at: "21:22:37"
-  action:
-    - service: input_boolean.turn_on
+  actions:
+    - action: input_boolean.turn_on
       entity_id: input_boolean.bathroom_heater_auto_on
-

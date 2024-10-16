@@ -1,180 +1,180 @@
 ---
-  #####################################################
-  # Outside Lights                                    #
-  #####################################################
-  - id: 87aed16a-da9b-420e-83af-369c40a06bda
-    alias: 3-Way and Yard Light PIR ON
-    initial_state: on
-    trigger:
+#####################################################
+# Outside Lights                                    #
+#####################################################
+- id: 87aed16a-da9b-420e-83af-369c40a06bda
+  alias: 3-Way and Yard Light PIR ON
+  initial_state: on
+  triggers:
     - entity_id: binary_sensor.yard_light_pir
-      platform: state
-      from: 'off'
-      to: 'on'
+      trigger: state
+      from: "off"
+      to: "on"
     - entity_id: binary_sensor.back_door_motion
-      platform: state
-      from: 'off'
-      to: 'on'
+      trigger: state
+      from: "off"
+      to: "on"
     - entity_id: binary_sensor.garage_side_door_open
-      platform: state
-      from: 'off'
-      to: 'on'
-    condition:
-      - >
-        {% from 'logic_chekr.jinja' import true_all %}
-        {{- true_all( ['binary_sensor.dark_outside'] ) | bool -}}
-    action:
-    - service: script.turn_on
+      trigger: state
+      from: "off"
+      to: "on"
+  conditions:
+    - >
+      {% from 'logic_chekr.jinja' import true_all %}
+      {{- true_all( ['binary_sensor.dark_outside'] ) | bool -}}
+  actions:
+    - action: script.turn_on
       entity_id: script.garage_outside_lights_on
-    mode: single
-    max_exceeded: silent
-  #####################################################
-  # Mailbox                                           #
-  #####################################################
-  - id: 9ba99be0-57e0-4232-b746-936bc339e64f
-    alias: You've Got Mail
-    initial_state: on
-    trigger:
-    - platform: state
+  mode: single
+  max_exceeded: silent
+#####################################################
+# Mailbox                                           #
+#####################################################
+- id: 9ba99be0-57e0-4232-b746-936bc339e64f
+  alias: You've Got Mail
+  initial_state: on
+  triggers:
+    - trigger: state
       entity_id: binary_sensor.mailbox
-      from: 'off'
-      to: 'on'
+      from: "off"
+      to: "on"
       for:
         seconds: 15
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.mailbox
-      from: 'on'
-      to: 'off'
+      from: "on"
+      to: "off"
       for:
         seconds: 15
-    action:
-    - service: script.media_player_mail
+  actions:
+    - action: script.media_player_mail
 
-  #####################################################
-  # Weather Rain                                      #
-  #####################################################
-  - id: 7cd36a72-c114-4141-b167-0641cdb1a43f
-    alias: Is it raining?
-    initial_state: true
-    description: "check the rain sensor to see if it's raining"
-    mode: single
-    trigger:
-      - platform: time_pattern
-        minutes: "/5"
-        id: Check every 5 minutes
-    condition: []
-    action: 
-      - if:
-          - alias: Rain detected
-            condition: numeric_state
-            entity_id: sensor.gw2000b_v2_2_4_hourly_rain_rate_piezo
-            above: 0
-        then:
-          - alias: Toggle to on
-            service: input_boolean.turn_on
-            data:
-              entity_id: input_boolean.rain
-        else:
-          - alias: Toggle to off
-            service: input_boolean.turn_off
-            data:
-              entity_id: input_boolean.rain
+#####################################################
+# Weather Rain                                      #
+#####################################################
+- id: 7cd36a72-c114-4141-b167-0641cdb1a43f
+  alias: Is it raining?
+  initial_state: true
+  description: "check the rain sensor to see if it's raining"
+  mode: single
+  triggers:
+    - trigger: time_pattern
+      minutes: "/5"
+      id: Check every 5 minutes
+  conditions:
+  actions:
+    - if:
+        - alias: Rain detected
+          condition: numeric_state
+          entity_id: sensor.gw2000b_v2_2_4_hourly_rain_rate_piezo
+          above: 0
+      then:
+        - alias: Toggle to on
+          action: input_boolean.turn_on
+          data:
+            entity_id: input_boolean.rain
+      else:
+        - alias: Toggle to off
+          action: input_boolean.turn_off
+          data:
+            entity_id: input_boolean.rain
 
-  - id: 01cf2959-f88c-4d21-bd7c-ad0b7a364482
-    alias: Announce when rain starts and if raining in the morning
-    initial_state: on
-    trigger:
-      - platform: state
+- id: 01cf2959-f88c-4d21-bd7c-ad0b7a364482
+  alias: Announce when rain starts and if raining in the morning
+  initial_state: on
+  triggers:
+    - trigger: state
+      entity_id: input_boolean.rain
+      from: "off"
+      to: "on"
+      id: event_announce
+    - trigger: time
+      at: "6:52:11"
+      id: morning_announce_julie
+    - trigger: time
+      at: "9:27:38"
+      id: morning_announce_sg
+  conditions:
+    and:
+      - alias: "Send the message if the Boss is not sleeping"
+        condition: time
+        after: "6:51:42"
+        before: "22:08:17"
+      - alias: "Cancel the morning announce if not raining"
+        condition: state
         entity_id: input_boolean.rain
-        from: "off"
-        to: "on"
-        id: event_announce
-      - platform: time
-        at: "6:52:11"
-        id: morning_announce_julie
-      - platform: time
-        at: "9:27:38"
-        id: morning_announce_sg
-    condition:
-      and:
-        - alias: "Send the message if the Boss is not sleeping"
-          condition: time
-          after: "6:51:42"
-          before: "22:08:17"
-        - alias: "Cancel the morning announce if not raining"
-          condition: state
-          entity_id: input_boolean.rain
-          state: "on"
-    action:
-      service: script.tts_its_raining
+        state: "on"
+  actions:
+    action: script.tts_its_raining
 
-  #####################################################
-  # Weather Lightning                                 #
-  #####################################################
-  - id: '931215c8-a0ad-44ae-8c14-e6a7eb457e50'
-    alias: Lightning Detected
-    description: Lightning Detector shows lightning closeby
-    mode: single
-    max_exceeded: silent
-    trigger:
-    - platform: numeric_state
+#####################################################
+# Weather Lightning                                 #
+#####################################################
+- id: "931215c8-a0ad-44ae-8c14-e6a7eb457e50"
+  alias: Lightning Detected
+  description: Lightning Detector shows lightning closeby
+  mode: single
+  max_exceeded: silent
+  triggers:
+    - trigger: numeric_state
       entity_id: sensor.gw2000b_v2_2_4_lightning_strike_distance
       below: 9
       above: 0
-    action:
+  actions:
     - alias: "Announce the alert"
-      service: script.tts_say_lightning
+      action: script.tts_say_lightning
     - alias: "Hold so that we don't have repeated notifications"
       delay: 00:27:49
 
-  - id: '1716577118814'
-    alias: Set Sprinkler Runtime
-    description: Get the compensation value from the data to set the runtime
-    trigger:
-    - platform: time
-      at: '23:59:59'
-    condition: []
-    action:
-    - service: input_number.set_value
+- id: "1716577118814"
+  alias: Set Sprinkler Runtime
+  description: Get the compensation value from the data to set the runtime
+  triggers:
+    - trigger: time
+      at: "23:59:59"
+  conditions:
+  actions:
+    - action: input_number.set_value
       metadata: {}
       data:
-        value: '{{ comp_sensor }}' 
+        value: "{{ comp_sensor }}"
       target:
         entity_id: input_number.sprinkler_time
-    variables:
-      comp_sensor: "{{ states.sensor.rolling_sprinkler.state | float(5.105) }}"
-    mode: single
-  - id: '1716578941208'
-    alias: Water Garden Sprinkler
-    description: Turn on the sprinkler for set time
-    trigger:
-    - platform: sun
+  variables:
+    comp_sensor: "{{ states.sensor.rolling_sprinkler.state | float(5.105) }}"
+  mode: single
+- id: "1716578941208"
+  alias: Water Garden Sprinkler
+  description: Turn on the sprinkler for set time
+  triggers:
+    - trigger: sun
       event: sunrise
-      offset: '-3600'
+      offset: "-3600"
       id: Start watering 1 hour before sunrise
-    condition:
+  conditions:
     - alias: Watering while raining is worthless
       condition: state
       entity_id: input_boolean.rain
-      state: 'off'
+      state: "off"
     - alias: Watering less than 5 minutes is worthless
       condition: template
-      value_template: '{{ run_mins > 5 }}'
+      value_template: "{{ run_mins > 5 }}"
     - alias: Watering when it rained this week too much already is worthless
       condition: template
-      value_template: '{{ weekly_rain <= 1.50 }}'
-    action:
+      value_template: "{{ weekly_rain <= 1.50 }}"
+  actions:
     - type: turn_on
       device_id: 620ac53c3380e0099889a87bdbce7421
       entity_id: e713049e62ed5f30c705556bbc32ec9c
       domain: switch
     - alias: Hold for the calculated time
       delay:
-        minutes: '{{ run_mins }}'
+        minutes: "{{ run_mins }}"
     - type: turn_off
       device_id: 620ac53c3380e0099889a87bdbce7421
       entity_id: e713049e62ed5f30c705556bbc32ec9c
       domain: switch
-    variables:
-      run_mins: '{{ states.input_number.sprinkler_time.state | float(0) }}'
-      weekly_rain: '{{ states.sensor.gw2000b_v2_2_4_weekly_rain_rate_piezo.state | float(2.222) }}'
-    mode: single
+  variables:
+    run_mins: "{{ states.input_number.sprinkler_time.state | float(0) }}"
+    weekly_rain: "{{ states.sensor.gw2000b_v2_2_4_weekly_rain_rate_piezo.state | float(2.222) }}"
+  mode: single

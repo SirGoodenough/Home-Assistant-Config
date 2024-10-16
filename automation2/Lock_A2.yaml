@@ -1,123 +1,123 @@
 ---
-  - id: d358ec17-07bb-403a-a9fa-79e228dc1777
-    alias: Front Door Keypad Unlock
-    description: Front Door Unlock Keypad from Blueprint
-    use_blueprint:
-      path: SirGoodenough/keypad_5_button_cipher_to_turn_on_something.yaml
-      input:
-        button_one: binary_sensor.pad_1
-        button_two: binary_sensor.pad_2
-        button_three: binary_sensor.pad_3
-        button_four: binary_sensor.pad_4
-        button_five: binary_sensor.pad_5
-        lock_control: input_boolean.pad_enable
-        seq_status: input_number.lock_state
-        on_timer: 5
+- id: d358ec17-07bb-403a-a9fa-79e228dc1777
+  alias: Front Door Keypad Unlock
+  description: Front Door Unlock Keypad from Blueprint
+  use_blueprint:
+    path: SirGoodenough/keypad_5_button_cipher_to_turn_on_something.yaml
+    input:
+      button_one: binary_sensor.pad_1
+      button_two: binary_sensor.pad_2
+      button_three: binary_sensor.pad_3
+      button_four: binary_sensor.pad_4
+      button_five: binary_sensor.pad_5
+      lock_control: input_boolean.pad_enable
+      seq_status: input_number.lock_state
+      on_timer: 5
 
-      # Front Door Lock Open from keypad
-  - id: 003bbdba-55c4-495f-aee7-98202a0cbd88
-    alias: Front Door Keypad UnLock Activation
-    initial_state: on
-    trigger:
-      - platform: state
+    # Front Door Lock Open from keypad
+- id: 003bbdba-55c4-495f-aee7-98202a0cbd88
+  alias: Front Door Keypad UnLock Activation
+  initial_state: on
+  triggers:
+    - trigger: state
+      entity_id: input_boolean.pad_enable
+      from: "off"
+      to: "on"
+  actions:
+    - action: lock.unlock
+      target:
+        entity_id: lock.front_door_lock
+    - delay: 5
+    - action: input_boolean.turn_off
+      target:
         entity_id: input_boolean.pad_enable
-        from: "off"
-        to: "on"
-    action:
-      - service: lock.unlock
-        target:
-          entity_id: lock.front_door_lock
-      - delay: 5
-      - service: input_boolean.turn_off
-        target:
-          entity_id: input_boolean.pad_enable
 
-  - id: b193fbf4-4b43-4fa1-942e-9d31a2b47fc1
-    alias: All Door Keypad Unlock
-    description: All Door Unlock Keypad from Blueprint
-    use_blueprint:
-      path: SirGoodenough/keypad_5_button_cipher_to_turn_on_something.yaml
-      input:
-        button_one: binary_sensor.pad_2
-        button_two: binary_sensor.pad_1
-        button_three: binary_sensor.pad_3
-        button_four: binary_sensor.pad_4
-        button_five: binary_sensor.pad_5
-        lock_control: input_boolean.pad_enable2
-        seq_status: input_number.lock_state2
-        on_timer: 5
+- id: b193fbf4-4b43-4fa1-942e-9d31a2b47fc1
+  alias: All Door Keypad Unlock
+  description: All Door Unlock Keypad from Blueprint
+  use_blueprint:
+    path: SirGoodenough/keypad_5_button_cipher_to_turn_on_something.yaml
+    input:
+      button_one: binary_sensor.pad_2
+      button_two: binary_sensor.pad_1
+      button_three: binary_sensor.pad_3
+      button_four: binary_sensor.pad_4
+      button_five: binary_sensor.pad_5
+      lock_control: input_boolean.pad_enable2
+      seq_status: input_number.lock_state2
+      on_timer: 5
 
 # All Doors Lock Open from keypad &
-  - id: 89a976e9-4efe-471d-bb95-4ebfc4cf4bd6
-    alias: All Door Keypad Lock Unlock Activation
-    initial_state: on
-    trigger:
-      - platform: state
+- id: 89a976e9-4efe-471d-bb95-4ebfc4cf4bd6
+  alias: All Door Keypad Lock Unlock Activation
+  initial_state: on
+  triggers:
+    - trigger: state
+      entity_id: input_boolean.pad_enable2
+      from: "off"
+      to: "on"
+    - trigger: state
+      entity_id: !secret Lad134620-837c-4f51-9c29-07325432d63f
+  actions:
+    - action: lock.unlock
+      target:
+        entity_id: all
+    - delay: 5
+    - action: input_boolean.turn_off
+      target:
         entity_id: input_boolean.pad_enable2
-        from: "off"
-        to: "on"
-      - platform: state
-        entity_id: !secret Lad134620-837c-4f51-9c29-07325432d63f
-    action:
-      - service: lock.unlock
-        target:
-          entity_id: all
-      - delay: 5
-      - service: input_boolean.turn_off
-        target:
-          entity_id: input_boolean.pad_enable2
 
-  - id: 63dcb68f-1a77-42ff-ada2-b934b0f2ae71
-    alias: All Door Keypad Lock
-    description: All Door Lock Down Keypad from Blueprint
-    use_blueprint:
-      path: SirGoodenough/keypad_5_button_cipher_to_turn_on_something.yaml
-      input:
-        button_one: binary_sensor.pad_8
-        button_two: binary_sensor.pad_4
-        button_three: binary_sensor.pad_2
-        button_four: binary_sensor.pad_1
-        button_five: binary_sensor.pad_3
-        lock_control: input_boolean.pad_enable3
-        seq_status: input_number.lock_state3
-        on_timer: 5
+- id: 63dcb68f-1a77-42ff-ada2-b934b0f2ae71
+  alias: All Door Keypad Lock
+  description: All Door Lock Down Keypad from Blueprint
+  use_blueprint:
+    path: SirGoodenough/keypad_5_button_cipher_to_turn_on_something.yaml
+    input:
+      button_one: binary_sensor.pad_8
+      button_two: binary_sensor.pad_4
+      button_three: binary_sensor.pad_2
+      button_four: binary_sensor.pad_1
+      button_five: binary_sensor.pad_3
+      lock_control: input_boolean.pad_enable3
+      seq_status: input_number.lock_state3
+      on_timer: 5
 
 # All Doors Lock Down from keypad & Manual
-  - id: c8685271-9e83-4a56-80ae-38d3fc45dd12
-    alias: All Door Keypad Lock Down Activation
-    initial_state: on
-    trigger:
-      - platform: state
+- id: c8685271-9e83-4a56-80ae-38d3fc45dd12
+  alias: All Door Keypad Lock Down Activation
+  initial_state: on
+  triggers:
+    - trigger: state
+      entity_id: input_boolean.pad_enable3
+      from: "off"
+      to: "on"
+    - trigger: state
+      entity_id: !secret L35993d38-2f27-410d-bfd3-97c533d0a0e3
+  actions:
+    - action: lock.lock
+      target:
+        entity_id: all
+      data:
+        code: 54241
+    - delay: 5
+    - action: input_boolean.turn_off
+      target:
         entity_id: input_boolean.pad_enable3
-        from: "off"
-        to: "on"
-      - platform: state
-        entity_id: !secret L35993d38-2f27-410d-bfd3-97c533d0a0e3
-    action:
-      - service: lock.lock
-        target:
-          entity_id: all
-        data:
-          code: 54241
-      - delay: 5
-      - service: input_boolean.turn_off
-        target:
-          entity_id: input_boolean.pad_enable3
 
-  - id: d35ac2ae-4028-4a9a-98d6-3d430c7d98c0
-    alias: Front Door Button Press Lock
-    description: Toggle the Front Door Lock
-    trigger:
-    - platform: device
+- id: d35ac2ae-4028-4a9a-98d6-3d430c7d98c0
+  alias: Front Door Button Press Lock
+  description: Toggle the Front Door Lock
+  triggers:
+    - trigger: device
       domain: mqtt
       device_id: f3010f7b4775e03f67810c3e49716e7c
       type: action
       subtype: single
       discovery_id: 0x00124b0025164810 action_single
-    condition: []
-    action:
+  conditions:
+  actions:
     - type: toggle
       device_id: cf7c09c94df6660c92db0d8c6514ae61
       entity_id: switch.front_door_lock
       domain: switch
-    mode: single
+  mode: single

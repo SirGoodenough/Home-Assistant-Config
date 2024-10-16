@@ -23,11 +23,10 @@ tts_say_person_cottage:
         # This message should be using the one sent in as data. Edit there.
       announcement_message: "I spy, with my little eye, someone at the cottage."
       speaker_target:
-      - media_player.intercom_group
+        - media_player.intercom_group
       # after_action:
       # - alias: "delay for sounder"
       #   delay: 00:00:06
-      # - service: script.media_player_back_doorbell_motion
+      # - action: script.media_player_back_doorbell_motion
   mode: single
   icon: mdi:motion-sensor
-

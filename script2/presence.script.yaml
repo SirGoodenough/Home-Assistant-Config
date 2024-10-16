@@ -5,8 +5,7 @@ personalert_notify:
   fields:
     person:
       name: People to watch
-      description:
-        People Entity names to watch,
+      description: People Entity names to watch,
         Usually picked by the calling entity.
       required: false
       selector:
@@ -16,8 +15,7 @@ personalert_notify:
             domain: person
     place_to:
       name: Where you just arrived
-      description:
-        Place you are arriving at. Is generally one of your zones.
+      description: Place you are arriving at. Is generally one of your zones.
         Usually picked by the calling entity.
       required: false
       example: home
@@ -27,8 +25,7 @@ personalert_notify:
           type: text
     place_from:
       name: Where you are last from
-      description:
-        Place you left from. Is generally one of your zones.
+      description: Place you left from. Is generally one of your zones.
         Usually picked by the calling entity.
       required: false
       example: school
@@ -49,8 +46,7 @@ personalert_notify:
           type: text
     phase:
       name: Phase Action
-      description:
-        Type of action this resolves to.
+      description: Type of action this resolves to.
         Usually picked by the calling entity.
       required: false
       selector:
@@ -61,7 +57,7 @@ personalert_notify:
             - jump
 
   variables:
-      # Define variable data and provide defaults
+    # Define variable data and provide defaults
     _person: placeholder1
     _place_to: placeholder2
     _place_from: placeholder3
@@ -77,22 +73,23 @@ personalert_notify:
       {% endif %}
 
   sequence:
-  - alias: Notify interested parties with notification_id
-    service: persistent_notification.create
-    data:
-      title: '{{ person | default(_person) + '' Status'' }}'
-      message: >
-        {{ 'Regarding: ' + person | default(_person) + '\n' + flip +
-        '\n\nNotification_id: ' + notify_id | default(_notify_id) }}
-      notification_id: '{{ notify_id | default(_notify_id) }}'
-  - alias: Add a delay so notification stays up a while
-      # Pick your display time. If you set 0 this notification doesn't show.
-    delay:
-      minutes: 2
-  - alias: Kill the notification
-    service: persistent_notification.dismiss
-    data:
-      notification_id: '{{ notify_id | default(_notify_id) }}'
+    - alias: Notify interested parties with notification_id
+      action: persistent_notification.create
+      data:
+        title: "{{ person | default(_person) + ' Status' }}"
+        message: >
+          {{ 'Regarding: ' + person | default(_person) + '\n' + flip +
+          '\n\nNotification_id: ' + notify_id | default(_notify_id) }}
+        notification_id: "{{ notify_id | default(_notify_id) }}"
+    - alias:
+        Add a delay so notification stays up a while
+        # Pick your display time. If you set 0 this notification doesn't show.
+      delay:
+        minutes: 2
+    - alias: Kill the notification
+      action: persistent_notification.dismiss
+      data:
+        notification_id: "{{ notify_id | default(_notify_id) }}"
 
   mode: single
   max_exceeded: silent
@@ -146,7 +143,7 @@ personalert_audio:
     #         - male
     voice:
       name: tts_cloud (nabu Casa) Voice
-      description: >  
+      description: >
         ***Here you need to be careful.***
 
         If you are OK with the default voice then just leave this field empty.
@@ -196,7 +193,7 @@ personalert_audio:
           multiline: true
 
   variables:
-      # Define variable data and provide default (change 'entities' 4 your system)
+    # Define variable data and provide default (change 'entities' 4 your system)
     _entities: media_player.intercom_group
     _mess: "I'm lost"
     _lang: en-US
@@ -204,23 +201,22 @@ personalert_audio:
     _voice: []
 
   sequence:
-  - alias: Send sound file to Media Player
-    service: media_player.play_media
-    data:
-      entity_id: "{{ entities | default(_entities)}}"
-      media_content_id:
-        "media-source://media_source/local/mp3/OK_tone.wav"
-      media_content_type: audio/mp3
-  - alias: Delay to let sounder to complete. Adjust as needed.
-    delay: 00:00:03
-  - alias: TTS action call
-    service: tts.cloud_say
-    data:
-      entity_id: "{{ entities | default(_entities) }}"
-      message: "{{ mess | default(_mess) }}"
-      language: "{{ lang | default(_lang) }}"
-      options:
-        voice: "{{ voice | default(_voice) }}"
+    - alias: Send sound file to Media Player
+      action: media_player.play_media
+      data:
+        entity_id: "{{ entities | default(_entities)}}"
+        media_content_id: "media-source://media_source/local/mp3/OK_tone.wav"
+        media_content_type: audio/mp3
+    - alias: Delay to let sounder to complete. Adjust as needed.
+      delay: 00:00:03
+    - alias: TTS action call
+      action: tts.cloud_say
+      data:
+        entity_id: "{{ entities | default(_entities) }}"
+        message: "{{ mess | default(_mess) }}"
+        language: "{{ lang | default(_lang) }}"
+        options:
+          voice: "{{ voice | default(_voice) }}"
 
   mode: single
   max_exceeded: silent

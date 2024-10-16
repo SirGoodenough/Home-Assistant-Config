@@ -5,8 +5,8 @@
 #     stored_traces: 14
 #   mode: single
 #   max_exceeded: silent
-#   trigger: 
-#     - platform: webhook
+#   triggers:
+#     - trigger: webhook
 #       id: poop
 # #      id: test1thru4
 #       webhook_id: !secret "PoopUP"
@@ -14,7 +14,7 @@
 #         - POST
 #         - PUT
 #       local_only: true
-#     - platform: webhook
+#     - trigger: webhook
 #       id: poop_done
 # #      id: test1thru4
 #       webhook_id: !secret "PoopDOWN"
@@ -22,7 +22,7 @@
 #         - POST
 #         - PUT
 #       local_only: true
-#     - platform: webhook
+#     - trigger: webhook
 #       id: cares_up
 # #      id: test1thru4
 #       webhook_id: !secret "CaresUP"
@@ -30,7 +30,7 @@
 #         - POST
 #         - PUT
 #       local_only: true
-#     - platform: webhook
+#     - trigger: webhook
 #       id: cares_down
 # #      id: test1thru4
 #       webhook_id: !secret "CaresDOWN"
@@ -38,139 +38,139 @@
 #         - POST
 #         - PUT
 #       local_only: true
-#     - platform: state
+#     - trigger: state
 #       id: poop
 #       entity_id: input_boolean.poop
 #       from: "off"
 #       to: "on"
-#     - platform: state
+#     - trigger: state
 #       id: poop_done
 #       entity_id: input_boolean.poop_done
 #       from: "off"
 #       to: "on"
-#     - platform: state
+#     - trigger: state
 #       id: poop_done
 #       entity_id: input_boolean.poop_down
 #       from: "off"
 #       to: "on"
-#     - platform: state
+#     - trigger: state
 #       id: cares_up
 #       entity_id: input_boolean.bed_cares_up
 #       from: "off"
 #       to: "on"
-#     - platform: state
+#     - trigger: state
 #       id: cares_down
 #       entity_id: input_boolean.bed_cares_done
 #       from: "off"
 #       to: "on"
-#     - platform: state
+#     - trigger: state
 #       id: cares_down
 #       entity_id: input_boolean.bed_cares_down
 #       from: "off"
 #       to: "on"
-#     - platform: state
+#     - trigger: state
 #       id: bed_down_6
 #       entity_id: input_boolean.bed_down_six
 #       from: "off"
 #       to: "on"
-#     - platform: state
+#     - trigger: state
 #       id: bed_up_6
 #       entity_id: input_boolean.bed_up_six
 #       from: "off"
 #       to: "on"
-#     - platform: state
+#     - trigger: state
 #       id: bed_flat
 #       entity_id: input_boolean.bed_flat
 #       from: "off"
 #       to: "on"
-#     - platform: state
+#     - trigger: state
 #       id: bed_restart
 #       entity_id: input_boolean.bed_restart
 #       from: "off"
 #       to: "on"
-#     - platform: state
+#     - trigger: state
 #       id: bed_sit
 #       entity_id: input_boolean.bed_sit
 #       from: "off"
 #       to: "on"
-#     - platform: state
+#     - trigger: state
 #       id: bed_knees_down_1
 #       entity_id: input_boolean.bed_knees_down_one
 #       from: "off"
 #       to: "on"
-#     - platform: state
+#     - trigger: state
 #       id: bed_knees_down_5
 #       entity_id: input_boolean.bed_knees_down_five
 #       from: "off"
 #       to: "on"
-#     - platform: state
+#     - trigger: state
 #       id: bed_knees_down_10
 #       entity_id: input_boolean.bed_knees_down_ten
 #       from: "off"
 #       to: "on"
-#     - platform: state
+#     - trigger: state
 #       id: bed_knees_up_1
 #       entity_id: input_boolean.bed_knees_up_one
 #       from: "off"
 #       to: "on"
-#     - platform: state
+#     - trigger: state
 #       id: bed_knees_up_5
 #       entity_id: input_boolean.bed_knees_up_five
 #       from: "off"
 #       to: "on"
-#     - platform: state
+#     - trigger: state
 #       id: bed_knees_up_10
 #       entity_id: input_boolean.bed_knees_up_ten
 #       from: "off"
 #       to: "on"
-#     - platform: state
+#     - trigger: state
 #       id: bed_head_down_1
 #       entity_id: input_boolean.bed_head_down_one
 #       from: "off"
 #       to: "on"
-#     - platform: state
+#     - trigger: state
 #       id: bed_head_down_5
 #       entity_id: input_boolean.bed_head_down_five
 #       from: "off"
 #       to: "on"
-#     - platform: state
+#     - trigger: state
 #       id: bed_head_down_10
 #       entity_id: input_boolean.bed_head_down_ten
 #       from: "off"
 #       to: "on"
-#     - platform: state
+#     - trigger: state
 #       id: bed_head_up_1
 #       entity_id: input_boolean.bed_head_up_one
 #       from: "off"
 #       to: "on"
-#     - platform: state
+#     - trigger: state
 #       id: bed_head_up_5
 #       entity_id: input_boolean.bed_head_up_five
 #       from: "off"
 #       to: "on"
-#     - platform: state
+#     - trigger: state
 #       id: bed_head_up_10
 #       entity_id: input_boolean.bed_head_up_ten
 #       from: "off"
 #       to: "on"
-#     - platform: state
+#     - trigger: state
 #       id: bed_down_reset
 #       entity_id: input_boolean.bed_restart
 #       from: "off"
 #       to: "on"
-#     - platform: state
+#     - trigger: state
 #       id: bed_enter
 #       entity_id: input_boolean.bed_flat_to_enter
 #       from: "off"
 #       to: "on"
-#     - platform: state
+#     - trigger: state
 #       id: bed_stop
 #       entity_id: input_boolean.bed_stop
 #       from: "off"
 #       to: "on"
-#   action:
+#   actions:
 #     - alias: Turn off all the smartbed buttons
-#       service: script.smartbed_buttons_off
+#       action: script.smartbed_buttons_off
 #     - choose:
 #       - alias: Up for Poop Duty
 #         conditions:
@@ -178,7 +178,7 @@
 #           id: poop
 #         sequence:
 #         - alias: Open the window curtain
-#           service: cover.set_cover_position
+#           action: cover.set_cover_position
 #           target:
 #             entity_id:
 #               - cover.jens_window_curtain
@@ -186,24 +186,24 @@
 #           data:
 #             position: 100
 #         - alias: Light on
-#           service: light.turn_on
+#           action: light.turn_on
 #           target:
 #             entity_id:
 #               - light.jens_light
 #         - alias: Send the bed UP warning
-#           service: script.tts_bed_cares_warning
+#           action: script.tts_bed_cares_warning
 #         - alias: Send the bed UP command
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/4?timeout=8'
 #         - delay: 00:00:09
 #         - alias: Send blank to make sure bed is stopped
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #         - alias: Send the bed head Down & knees UP command
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/9?timeout=10'
@@ -213,27 +213,27 @@
 #           id: poop_done
 #         sequence:
 #         - alias: Head UP - 0 Command
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/0?timeout=7'
 #         - delay: 00:00:08
 #         - alias: Send blank to make sure bed is stopped
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #         - alias: Head UP-Knees Down - 7 Command
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/7?timeout=4'
 #         - delay: 00:00:04
 #         - alias: Send blank to make sure bed is stopped
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #         - alias: Bed Down - 5 Command
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/5?timeout=8'
@@ -243,7 +243,7 @@
 #           id: cares_up
 #         sequence:
 #         - alias: Open the window curtain
-#           service: cover.set_cover_position
+#           action: cover.set_cover_position
 #           target:
 #             entity_id:
 #               - cover.jens_window_curtain
@@ -251,24 +251,24 @@
 #           data:
 #             position: 100
 #         - alias: Light on
-#           service: light.turn_on
+#           action: light.turn_on
 #           target:
 #             entity_id:
 #               - light.jens_light
 #         - alias: Send the bed UP warning
-#           service: script.tts_bed_cares_warning
+#           action: script.tts_bed_cares_warning
 #         - alias: Send the bed UP command
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/4?timeout=8'
 #         - delay: 00:00:09
 #         - alias: Send blank to make sure bed is stopped
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #         - alias: Send the bed head Down & knees up command
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/9?timeout=17'
@@ -278,27 +278,27 @@
 #           id: cares_down
 #         sequence:
 #         - alias: Send the bed head UP - 0 command
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/0?timeout=13'
 #         - delay: 00:00:13
 #         - alias: Send blank to make sure bed is stopped
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #         - alias: Head UP-Knees Down - 7 Command
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/7?timeout=4'
 #         - delay: 00:00:04
 #         - alias: Send blank to make sure bed is stopped
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #         - alias: Bed Down Command
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/5?timeout=8'
@@ -308,7 +308,7 @@
 #           id: bed_down_6
 #         sequence:
 #         - alias: Send the bed_Down_6 command
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/5?timeout=6'
@@ -318,7 +318,7 @@
 #           id: bed_up_6
 #         sequence:
 #         - alias: Send the bed_UP_6 command
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/4?timeout=6'
@@ -328,7 +328,7 @@
 #           id: bed_flat
 #         sequence:
 #         - alias: Send the bed_flat command
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/8?timeout=20'
@@ -338,7 +338,7 @@
 #           id: bed_restart
 #         sequence:
 #         - alias: Send the bed_restart command
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'reboot'
@@ -348,14 +348,14 @@
 #           id: bed_sit
 #         sequence:
 #         - alias: Send the bed_sit command
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/6?timeout=15'
 #         - alias: delay to send the head UP more
 #           delay: 00:00:16
 #         - alias: Send the head UP more
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/0?timeout=6'
@@ -365,7 +365,7 @@
 #           id: bed_knees_down_1
 #         sequence:
 #         - alias: Send the bed_knees_Down_1 command
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/3?timeout=1'
@@ -375,7 +375,7 @@
 #           id: bed_knees_down_5
 #         sequence:
 #         - alias: Send the bed_knees_Down_5 command
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/3?timeout=5'
@@ -385,7 +385,7 @@
 #           id: bed_knees_down_10
 #         sequence:
 #         - alias: Send the bed_knees_Down_10 command
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/3?timeout=10'
@@ -395,7 +395,7 @@
 #           id: bed_knees_up_1
 #         sequence:
 #         - alias: Send the bed_knees_UP_1 command
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/1?timeout=1'
@@ -405,7 +405,7 @@
 #           id: bed_knees_up_5
 #         sequence:
 #         - alias: Send the bed_knees_UP_5 command
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/1?timeout=5'
@@ -415,7 +415,7 @@
 #           id: bed_knees_up_10
 #         sequence:
 #         - alias: Send the bed_knees_UP_10 command
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/1?timeout=10'
@@ -425,7 +425,7 @@
 #           id: bed_head_down_1
 #         sequence:
 #         - alias: Send the bed_head_Down_1 command
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/2?timeout=1'
@@ -435,7 +435,7 @@
 #           id: bed_head_down_5
 #         sequence:
 #         - alias: Send the bed_head_Down_5 command
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/2?timeout=5'
@@ -445,7 +445,7 @@
 #           id: bed_head_down_10
 #         sequence:
 #         - alias: Send the bed_head_Down_10 command
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/2?timeout=10'
@@ -455,7 +455,7 @@
 #           id: bed_head_up_1
 #         sequence:
 #         - alias: Send the bed_head_UP_1 command
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/0?timeout=1'
@@ -465,7 +465,7 @@
 #           id: bed_head_up_5
 #         sequence:
 #         - alias: Send the bed_head_UP_5 command
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/0?timeout=5'
@@ -475,7 +475,7 @@
 #           id: bed_head_up_10
 #         sequence:
 #         - alias: Send the bed_head_UP_10 command
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/0?timeout=10'
@@ -485,12 +485,12 @@
 #           id: bed_down_reset
 #         sequence:
 #         - alias: Send the bed_down 17
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/5?timeout=17'
 #         - alias: Send the bed_up 0.7
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/4?timeout=0.7'
@@ -500,12 +500,12 @@
 #           id: bed_enter
 #         sequence:
 #         - alias: Send the head_down-knees_down 20
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/8?timeout=20'
 #         - alias: Send the bed_head_up 17
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #             cmnd: 'button/0?timeout=17'
@@ -515,7 +515,7 @@
 #           id: bed_stop
 #         sequence:
 #         - alias: Send the stop command (no payload)
-#           service: shell_command.bed
+#           action: shell_command.bed
 #           data:
 #             url: !secret SmartBed_URL
 #       - alias: Webhook Test
@@ -523,11 +523,10 @@
 #         - condition: trigger
 #           id: test1thru4
 #         sequence:
-#         - service: script.media_player_boink
+#         - action: script.media_player_boink
 
 #     - alias: Turn off all the smartbed buttons
-#       service: script.smartbed_buttons_off
-
+#       action: script.smartbed_buttons_off
 
 # # ## Relay Number List:
 # # > 0 - Head Up

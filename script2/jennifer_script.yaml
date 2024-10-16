@@ -1,118 +1,116 @@
 ---
-
 #####################################################
 # Jen Curtain Positions                             #
 #####################################################
 jen_night_curtain_position:
   alias: Curtains Night
   sequence:
-    - service: cover.set_cover_position
+    - action: cover.set_cover_position
       target:
         entity_id:
           - cover.jens_kitchen_curtain
       data:
-        position: '{{ range(68, 72) | random }}'
-    - service: cover.set_cover_position
+        position: "{{ range(68, 72) | random }}"
+    - action: cover.set_cover_position
       target:
         entity_id:
           - cover.jens_window_curtain
       data:
-        position: '{{ range(28, 32) | random }}'
+        position: "{{ range(28, 32) | random }}"
 
 jen_day_curtain_position:
   alias: Curtains Day
   sequence:
-    - service: cover.set_cover_position
+    - action: cover.set_cover_position
       target:
         entity_id:
           - cover.jens_kitchen_curtain
       data:
-        position: '{{ range(98, 100) | random }}'
-    - service: cover.set_cover_position
+        position: "{{ range(98, 100) | random }}"
+    - action: cover.set_cover_position
       target:
         entity_id:
           - cover.jens_window_curtain
       data:
-        position: '{{ range(55, 59) | random }}'
+        position: "{{ range(55, 59) | random }}"
 
 jen_open_curtain_position:
   alias: Curtains Open
   sequence:
-    - service: cover.set_cover_position
+    - action: cover.set_cover_position
       target:
         entity_id:
           - cover.jens_kitchen_curtain
           - cover.jens_window_curtain
       data:
-        position: '{{ range(98, 100) | random }}'
+        position: "{{ range(98, 100) | random }}"
 
 jen_closed_curtain_position:
   alias: Curtains Close
   sequence:
-    - service: cover.set_cover_position
+    - action: cover.set_cover_position
       target:
         entity_id:
           - cover.jens_kitchen_curtain
           - cover.jens_window_curtain
       data:
-        position: '{{ range(0, 2) | random }}'
+        position: "{{ range(0, 2) | random }}"
 
 reset_nag:
   alias: Jens button to stop door nags.
   sequence:
     - parallel:
-      - service: mqtt.publish
-        data:
-          topic: rf433/KFridge
-          payload: 'OFF'
-      - service: mqtt.publish
-        data:
-          topic: rf433/PFreezer
-          payload: 'OFF'
-      - service: mqtt.publish
-        data:
-          topic: rf433/KFreezer
-          payload: 'OFF'
-      - service: mqtt.publish
-        data:
-          topic: rf433/BackDoorI
-          payload: 'OFF'
-    - service: script.media_player_boink
-
+        - action: mqtt.publish
+          data:
+            topic: rf433/KFridge
+            payload: "OFF"
+        - action: mqtt.publish
+          data:
+            topic: rf433/PFreezer
+            payload: "OFF"
+        - action: mqtt.publish
+          data:
+            topic: rf433/KFreezer
+            payload: "OFF"
+        - action: mqtt.publish
+          data:
+            topic: rf433/BackDoorI
+            payload: "OFF"
+    - action: script.media_player_boink
 
 #####################################################
 # TV Control                                        #
 #####################################################
 tv_off_sequence:
   sequence:
-    - service: script.turn_on
+    - action: script.turn_on
       target:
         entity_id: script.denon_power
-    - service: script.turn_on
+    - action: script.turn_on
       target:
         entity_id: script.vizio_j_power
 
 blueray_off_sequence:
   sequence:
-    - service: script.turn_on
+    - action: script.turn_on
       target:
         entity_id: script.denon_power
-    - service: script.turn_on
+    - action: script.turn_on
       target:
         entity_id: script.vizio_j_power
-    - service: script.turn_on
+    - action: script.turn_on
       target:
         entity_id: script.br_power
 
 mecool_off_sequence:
   sequence:
-    - service: script.turn_on
+    - action: script.turn_on
       target:
         entity_id: script.mc_power
-    - service: script.turn_on
+    - action: script.turn_on
       target:
         entity_id: script.vizio_j_power
-    - service: script.turn_on
+    - action: script.turn_on
       target:
         entity_id: script.denon_power
 

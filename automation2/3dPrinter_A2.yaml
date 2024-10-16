@@ -5,28 +5,28 @@
 - id: 4ad7d04b-6ec5-4a9a-9457-16a70223a81a
   alias: Tarantula Announcement
   initial_state: on
-  trigger:
-    platform: state
-    entity_id: 
+  triggers:
+    trigger: state
+    entity_id:
       - binary_sensor.tarantulapro_printing
       - binary_sensor.shark_printing
     from: "on"
     to: "off"
-  action:
-    - service: script.tts_tarantula_print_complete
+  actions:
+    - action: script.tts_tarantula_print_complete
 
 - id: 3d719dec-78b6-407c-9a65-953ba05a41d3
   alias: Tarantula Off Announcement
   initial_state: on
-  trigger:
-    platform: state
-    entity_id: 
+  triggers:
+    trigger: state
+    entity_id:
       - switch.plug2
       - switch.sonoff_s40lite_switch_2
     from: "on"
     to: "off"
-  action:
-    - service: script.tts_tarantula_off
+  actions:
+    - action: script.tts_tarantula_off
 
 - id: 29f9fb7d-5421-4746-a66c-961e02f36ee7
   alias: Tarantula Button Blueprint
@@ -42,10 +42,10 @@
       printhead_temp: sensor.tarantulapro_tool_0_temperature
       octoprint_shutdown: button.tarantulapro_shutdown_system
       printer_power_switch:
-      - switch.plug2
+        - switch.plug2
       fil_feed: 368
       max_y: 240
-      
+
 - id: 42cd7771-5b42-46f3-9bce-46e8a9bb5ba1
   alias: Shark Button Blueprint
   description: Additional Buttons for Octoprint
@@ -60,6 +60,6 @@
       printhead_temp: sensor.shark_tool_0_temperature
       octoprint_shutdown: button.shark_shutdown_system
       printer_power_switch:
-      - switch.sonoff_s40lite_switch_2
+        - switch.sonoff_s40lite_switch_2
       max_y: 235
       fil_feed: 371

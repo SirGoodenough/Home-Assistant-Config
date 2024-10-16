@@ -3,54 +3,54 @@
 ## Trigger based template sensor to store global variables ###############################################
 ## https://community.home-assistant.io/t/trigger-based-template-sensor-to-store-global-variables/735474 ##
 ##########################################################################################################
-  - trigger:
-      - platform: event
-        event_type: set_variable
-      - platform: event
-        event_type: remove_variable
-      - platform: event
-        event_type: clear_variables
-    action:
-      - if: "{{ this.attributes.get('log_events', true) }}"
-        then:
-          - service: logbook.log
-            data:
-              name: "{{ trigger.event.event_type }}:"
-              message: >
-                {{ trigger.event.data.key | default('-') }}
-                {%- if trigger.event.event_type == 'set_variable' -%}
-                  : {{ trigger.event.data.value | default('not defined!')}}.
-                {%- endif -%}
-    sensor:
-      - unique_id: 4a4c8e53-9e68-4198-9cc5-b336e228ea4d
-        name: Variables
-        state: Variables
-        attributes:
-          default_timestamp: true
-          log_events: false
-          variables: >
-            {% set current = this.attributes.get('variables', {}) %}
-            {% if trigger.event.event_type == 'set_variable' 
-              and trigger.event.data.value is defined
-              and trigger.event.data.key is defined
-            %}
-              {% if trigger.event.data.get('set_timestamp', this.attributes.get('default_timestamp', false)) %}
-                {% set value  = trigger.event.data.value %}
-                {% set value = value.isoformat() if value is datetime else value %}
-                {% set new = {trigger.event.data.key: {'value': value, 'timestamp': now().isoformat()}} %}
-              {% else %}
-                {% set new = {trigger.event.data.key: trigger.event.data.value} %}
-              {% endif %}
-              {{ dict(current, **new) }}
-            {% elif trigger.event.event_type == 'remove_variable' 
-              and trigger.event.data.key is defined
-            %}
-              {{ dict(current.items() | rejectattr('0', 'eq', trigger.event.data.key)) }}
-            {% elif trigger.event.event_type == 'clear_variables' %}
-              {{ {} }}
+- trigger:
+    - trigger: event
+      event_type: set_variable
+    - trigger: event
+      event_type: remove_variable
+    - trigger: event
+      event_type: clear_variables
+  action:
+    - if: "{{ this.attributes.get('log_events', true) }}"
+      then:
+        - action: logbook.log
+          data:
+            name: "{{ trigger.event.event_type }}:"
+            message: >
+              {{ trigger.event.data.key | default('-') }}
+              {%- if trigger.event.event_type == 'set_variable' -%}
+                : {{ trigger.event.data.value | default('not defined!')}}.
+              {%- endif -%}
+  sensor:
+    - unique_id: 4a4c8e53-9e68-4198-9cc5-b336e228ea4d
+      name: Variables
+      state: Variables
+      attributes:
+        default_timestamp: true
+        log_events: false
+        variables: >
+          {% set current = this.attributes.get('variables', {}) %}
+          {% if trigger.event.event_type == 'set_variable' 
+            and trigger.event.data.value is defined
+            and trigger.event.data.key is defined
+          %}
+            {% if trigger.event.data.get('set_timestamp', this.attributes.get('default_timestamp', false)) %}
+              {% set value  = trigger.event.data.value %}
+              {% set value = value.isoformat() if value is datetime else value %}
+              {% set new = {trigger.event.data.key: {'value': value, 'timestamp': now().isoformat()}} %}
             {% else %}
-              {{ current }}
+              {% set new = {trigger.event.data.key: trigger.event.data.value} %}
             {% endif %}
+            {{ dict(current, **new) }}
+          {% elif trigger.event.event_type == 'remove_variable' 
+            and trigger.event.data.key is defined
+          %}
+            {{ dict(current.items() | rejectattr('0', 'eq', trigger.event.data.key)) }}
+          {% elif trigger.event.event_type == 'clear_variables' %}
+            {{ {} }}
+          {% else %}
+            {{ current }}
+          {% endif %}
 
 # You can set the value for the set_timestamp attribute to true if you want to add a timestamp for
 #  the event by default, this can be overridden when you actually store a variable.
@@ -62,9 +62,9 @@
 #  script action, or you can use developer tools > events to send it.
 
 # Example for an action in an automation
-# action:
+# actions:
 #   - event: set_variable
-#     event_data: 
+#     event_data:
 #       key: some_test
 #       value: Some Value
 #       set_timestamp: false
@@ -72,7 +72,7 @@
 # Event data parameters
 # parameter     	type    	required 	explanation
 # key 	          string   	yes 	    the name of the variable
-# value 	        string  	yes     	the value which you want to store this can be any kind of value. 
+# value 	        string  	yes     	the value which you want to store this can be any kind of value.
 #                                       datetime objects will be stored as isoformat string
 # set_timestamp 	boolean 	no 	      Use this paramter to set the default timestamp setting
 #                                       used in the sensor
@@ -112,9 +112,9 @@
 
 # You can send an event similar as when you added a variable.
 
-# action: # example for an action in an automation
+# actions: # example for an action in an automation
 #   - event: remove_variable
-#     event_data: 
+#     event_data:
 #       key: some_test
 
 # You can remove all stored variables in one go by sending the clear_variables event without further event data.

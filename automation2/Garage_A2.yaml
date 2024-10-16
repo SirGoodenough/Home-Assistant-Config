@@ -1,23 +1,22 @@
 ---
-  #####################################################
-  #                                                   #
-  # Garage                                            #
-  #                                                   #
-  #####################################################
+#####################################################
+#                                                   #
+# Garage                                            #
+#                                                   #
+#####################################################
 
-
-  - id: c0193815-32b4-4f26-b2a0-a6cafa05de2f
-    alias: Garage Inside Auto Light
-    initial_state: on
-    trigger:
+- id: c0193815-32b4-4f26-b2a0-a6cafa05de2f
+  alias: Garage Inside Auto Light
+  initial_state: on
+  triggers:
     - entity_id: binary_sensor.garage_side_door_open
-      platform: state
+      trigger: state
     - entity_id: binary_sensor.garage_door_open
-      platform: state
-      from: 'off'
-      to: 'on'
-    action:
-    - service: script.turn_on
+      trigger: state
+      from: "off"
+      to: "on"
+  actions:
+    - action: script.turn_on
       entity_id: script.garage_inside_lights_on
-    mode: single
-    max_exceeded: silent
+  mode: single
+  max_exceeded: silent

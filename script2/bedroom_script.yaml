@@ -5,7 +5,7 @@ bedroom_temp_control:
   alias: Bedroom Temperature Control
   description: ":tada: does it work?"
   sequence:
-    - service: mqtt.publish
+    - action: mqtt.publish
       data:
         topic: "Bedroom_Fan/cmnd/FanSpeed"
         payload: >
@@ -21,42 +21,43 @@ bedroom_temp_control:
             3
           {% endif %}
     - alias: "call bedroom ac set temperature & limit to prevent rate limit outages"
-      if: "{{ is_number(state_attr('climate.gemodule5384_window_ac', 'temperature')) and
+      if:
+        "{{ is_number(state_attr('climate.gemodule5384_window_ac', 'temperature')) and
         state_attr('climate.gemodule5384_window_ac', 'temperature') | float(73.1) !=
         states('input_number.input_number.bedroom_auto_temp') | float(73.1) }}"
       then:
-        service: script.bedroom_ac_set_temp
+        action: script.bedroom_ac_set_temp
         data:
           Temp: "{{ states('input_number.bedroom_auto_temp') | float(73.1) }}"
 
 #####################################################
-# Bedroom AC Start                                  # 
+# Bedroom AC Start                                  #
 #####################################################
 bedroom_ac_start:
   alias: Bedroom AC Start
   sequence:
-    - service: climate.turn_on
+    - action: climate.turn_on
       target:
         entity_id: climate.gemodule5384_window_ac
 
 #####################################################
-# Bedroom Cooling Off                               # 
+# Bedroom Cooling Off                               #
 #####################################################
 bedroom_cooling_off:
   alias: Bedroom Cooling OFF
   sequence:
     - alias: Make sure fan is off
-      service: mqtt.publish
+      action: mqtt.publish
       data:
         topic: "Bedroom_Fan/cmnd/FanSpeed"
         payload: 0
     - alias: Stop the AirCon
-      service: climate.turn_off
+      action: climate.turn_off
       target:
         entity_id: climate.gemodule5384_window_ac
 
 #####################################################
-# Bedroom AC Set Temperature                        # 
+# Bedroom AC Set Temperature                        #
 #  Looks for the variable 'Temp' to be passed in    #
 #   'Temp' is a float between 45 and 95 °F          #
 #####################################################
@@ -65,7 +66,7 @@ bedroom_ac_set_temp:
     Temp:
   alias: Bedroom AC Set Temperature
   sequence:
-    - service: climate.set_temperature
+    - action: climate.set_temperature
       data:
         entity_id: climate.gemodule5384_window_ac
         temperature: "{{ Temp }}"

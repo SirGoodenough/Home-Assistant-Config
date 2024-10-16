@@ -10,7 +10,7 @@ tts_wash_machine_done:
       announcement_message: Washing Cycle Has Completed
       b4_action:
         - alias: send the wash machine sound
-          service: script.media_player_washer_alert
+          action: script.media_player_washer_alert
         - alias: Wait for the sounder to end
           delay: 00:00:06
   icon: mdi:washing-machine-off
@@ -20,7 +20,7 @@ media_player_washer_alert:
     path: SirGoodenough/play_media_file_script.yaml
     input:
       speaker_target: media_player.intercom_group
-      file_2_play: media-source://media_source/local/mp3//washing-machine-90458.mp3 
+      file_2_play: media-source://media_source/local/mp3//washing-machine-90458.mp3
       media_type: audio/mp3
   icon: mdi:washing-machine
 tts_dryer_done:

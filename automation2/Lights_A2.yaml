@@ -3,13 +3,13 @@
   initial_state: on
   mode: parallel
   max: 100
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: light.grp_kitch
       from: "off"
       to: "on"
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       data:
         kelvin: 1700
         brightness: 96.9
@@ -18,65 +18,65 @@
 - id: 0ea5ee7e-402f-4410-86d6-6952bae151c4
   alias: Food Center Lights Button
   description: SP3T Switch Kitchen with all 3 actions populated
-  trigger:
-  - platform: device
-    domain: mqtt
-    device_id: 59fcce12b8d523e26152c406c5b13ae4
-    type: action
-    subtype: single
-    discovery_id: 0x00124b00251d6068 action_single
-    id: single
-  - platform: device
-    domain: mqtt
-    device_id: 59fcce12b8d523e26152c406c5b13ae4
-    type: action
-    subtype: double
-    discovery_id: 0x00124b00251d6068 action_double
-    id: double
-  - platform: device
-    domain: mqtt
-    device_id: 59fcce12b8d523e26152c406c5b13ae4
-    type: action
-    subtype: long
-    discovery_id: 0x00124b00251d6068 action_long
-    id: long
-  condition: []
-  action:
-  - choose:
-    - conditions:
-      - condition: trigger
-        id: single
-      sequence:
-      - service: light.toggle
-        target:
-          entity_id: light.grp_kitch
-        data: {}
-    - conditions:
-      - condition: trigger
-        id: double
-      sequence:
-      - service: light.toggle
-        target:
-          entity_id: light.grp_dad_lights
-        data: {}
-    - conditions:
-      - condition: trigger
-        id: long
-      sequence:
-      - service: light.turn_on
-        target:
-          entity_id: light.grp_kitch
-        data:
-          color_temp: 153
-          brightness: 255
-    default:
-    - service: light.turn_off
-      target:
-        entity_id:
-        - light.grp_kitch
-        - light.grp_dad_lights
-      data:
-        transition: 4
+  triggers:
+    - trigger: device
+      domain: mqtt
+      device_id: 59fcce12b8d523e26152c406c5b13ae4
+      type: action
+      subtype: single
+      discovery_id: 0x00124b00251d6068 action_single
+      id: single
+    - trigger: device
+      domain: mqtt
+      device_id: 59fcce12b8d523e26152c406c5b13ae4
+      type: action
+      subtype: double
+      discovery_id: 0x00124b00251d6068 action_double
+      id: double
+    - trigger: device
+      domain: mqtt
+      device_id: 59fcce12b8d523e26152c406c5b13ae4
+      type: action
+      subtype: long
+      discovery_id: 0x00124b00251d6068 action_long
+      id: long
+  conditions:
+  actions:
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: single
+          sequence:
+            - action: light.toggle
+              target:
+                entity_id: light.grp_kitch
+              data: {}
+        - conditions:
+            - condition: trigger
+              id: double
+          sequence:
+            - action: light.toggle
+              target:
+                entity_id: light.grp_dad_lights
+              data: {}
+        - conditions:
+            - condition: trigger
+              id: long
+          sequence:
+            - action: light.turn_on
+              target:
+                entity_id: light.grp_kitch
+              data:
+                color_temp: 153
+                brightness: 255
+      default:
+        - action: light.turn_off
+          target:
+            entity_id:
+              - light.grp_kitch
+              - light.grp_dad_lights
+          data:
+            transition: 4
   mode: queued
 
 - id: 124d0949-2fcf-4fa4-8d70-836dcc9c37e3
@@ -84,16 +84,16 @@
   initial_state: on
   mode: parallel
   max: 100
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: light.office_5, light.office_6
       from: "off"
       to: "on"
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       data:
         transition: 4
-        rgb_color: [150,147,90]
+        rgb_color: [150, 147, 90]
         brightness_pct: 55
         entity_id: "{{ trigger.entity_id }}"
 
@@ -103,10 +103,10 @@
 - id: f1afcd0d-fd1e-4fc0-a1ec-e0a659061b00
   alias: Toggle Stair UP Light
   initial_state: on
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: binary_sensor.stairs_down
       to: "on"
-  action:
-    - service: light.toggle
+  actions:
+    - action: light.toggle
       entity_id: light.stairway_light

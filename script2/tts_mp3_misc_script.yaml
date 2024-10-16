@@ -72,3 +72,20 @@ media_player_gong:
       - media_player.basement_speaker
       - media_player.jennys_room_display
       file_2_play: media-source://media_source/local/mp3/Metal_Gong-Dianakc-109711828.mp3
+
+tts_printer_off:
+  alias: TTS Printer off
+  use_blueprint:
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
+    input:
+      GTS_language: en
+      TTS: tts.cloud_say
+      nabu_azure_language: '{{ ("en-US","en-GB","en-AU","en-IN","en-IE","en-CA") |random
+        }}'
+      announcement_message: Hey, dude. You left the printer on again. I'm turning
+        it off.
+      speaker_target:
+      - media_player.living_room_speaker
+      - media_player.jennys_room_display
+  description: announce printer off
+  icon: mdi:printer-off

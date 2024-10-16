@@ -19,13 +19,13 @@ tts_say_lightning:
       speaker_target: media_player.intercom_group
       announcement_message: Lightning detected within 5 miles.
       b4_action:
-      - service: script.media_mp3_thunder
-        data: {}
-      - delay:
-          hours: 0
-          minutes: 0
-          seconds: 10
-          milliseconds: 0
+        - action: script.media_mp3_thunder
+          data: {}
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 10
+            milliseconds: 0
   icon: mdi:home-lightning-bolt
 
 media_mp3_thunder:
@@ -34,7 +34,6 @@ media_mp3_thunder:
     path: SirGoodenough/play_media_file_script.yaml
     input:
       speaker_target:
-      - media_player.intercom_group
+        - media_player.intercom_group
       file_2_play: media-source://media_source/local/mp3/thunder-and-beginning-of-rainfall-6249.mp3
   icon: mdi:lightning-bolt-circle
-

@@ -1,560 +1,560 @@
 ---
-  #####################################
-  ## Jens TV                         ##
-  #####################################
-  vizio_j_av:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: vizio
-          command: av
-  vizio_j_ch_down:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: vizio
-          command: ch_down
-  vizio_j_ch_up:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: vizio
-          command: ch_up
-  vizio_j_hdmi:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: vizio
-          command: hdmi
-  vizio_j_input:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: vizio
-          command: input
-  vizio_j_mute:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: vizio
-          command: mute
-  vizio_j_power:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: vizio
-          command: power
-          num_repeats: 2
-  vizio_j_tv:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: vizio
-          command: tv
-  vizio_j_vol_down:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: vizio
-          command: vol_down
-  vizio_j_vol_up:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: vizio
-          command: vol_up
+#####################################
+## Jens TV                         ##
+#####################################
+vizio_j_av:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: vizio
+        command: av
+vizio_j_ch_down:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: vizio
+        command: ch_down
+vizio_j_ch_up:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: vizio
+        command: ch_up
+vizio_j_hdmi:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: vizio
+        command: hdmi
+vizio_j_input:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: vizio
+        command: input
+vizio_j_mute:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: vizio
+        command: mute
+vizio_j_power:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: vizio
+        command: power
+        num_repeats: 2
+vizio_j_tv:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: vizio
+        command: tv
+vizio_j_vol_down:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: vizio
+        command: vol_down
+vizio_j_vol_up:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: vizio
+        command: vol_up
 
-  #####################################
-  ## Upstairs TV                     ##
-  #####################################
-  vizio_u_av:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.bedroom_mini_remote
-          device: vizio
-          command: av
-  vizio_u_ch_down:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.bedroom_mini_remote
-          device: vizio
-          command: ch_down
-  vizio_u_ch_up:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.bedroom_mini_remote
-          device: vizio
-          command: ch_up
-  vizio_u_hdmi:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.bedroom_mini_remote
-          device: vizio
-          command: hdmi
-  vizio_u_input:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.bedroom_mini_remote
-          device: vizio
-          command: input
-  vizio_u_mute:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.bedroom_mini_remote
-          device: vizio
-          command: mute
-  vizio_u_power:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.bedroom_mini_remote
-          device: vizio
-          command: power
-          num_repeats: 2
-  vizio_u_tv:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.bedroom_mini_remote
-          device: vizio
-          command: tv
-  vizio_u_vol_down:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.bedroom_mini_remote
-          device: vizio
-          command: vol_down
-  vizio_u_vol_up:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.bedroom_mini_remote
-          device: vizio
-          command: vol_up
+#####################################
+## Upstairs TV                     ##
+#####################################
+vizio_u_av:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.bedroom_mini_remote
+        device: vizio
+        command: av
+vizio_u_ch_down:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.bedroom_mini_remote
+        device: vizio
+        command: ch_down
+vizio_u_ch_up:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.bedroom_mini_remote
+        device: vizio
+        command: ch_up
+vizio_u_hdmi:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.bedroom_mini_remote
+        device: vizio
+        command: hdmi
+vizio_u_input:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.bedroom_mini_remote
+        device: vizio
+        command: input
+vizio_u_mute:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.bedroom_mini_remote
+        device: vizio
+        command: mute
+vizio_u_power:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.bedroom_mini_remote
+        device: vizio
+        command: power
+        num_repeats: 2
+vizio_u_tv:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.bedroom_mini_remote
+        device: vizio
+        command: tv
+vizio_u_vol_down:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.bedroom_mini_remote
+        device: vizio
+        command: vol_down
+vizio_u_vol_up:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.bedroom_mini_remote
+        device: vizio
+        command: vol_up
 
-  #####################################
-  ## Jens Reciever                   ##
-  #####################################
-  denon_blue_ray:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: Reciever
-          command: blue_ray
-  denon_chromecast:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: Reciever
-          command: chromecast
-  denon_firetv:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: Reciever
-          command: firetv
-  denon_mecool:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: Reciever
-          command: mecool
-  denon_mute:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: Reciever
-          command: mute
-  denon_power:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: Reciever
-          command: power
-  denon_tune:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: Reciever
-          command: tune
-  denon_tune_search:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: Reciever
-          command: tune_search
-  denon_tuner: 
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: Reciever
-          command: tuner
-  denon_reciever_band:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: Reciever
-          command: reciever_band
-  denon_tv_audio:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: Reciever
-          command: tv_audio
-  denon_volume_down:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: Reciever
-          command: volume_down
-  denon_volume_up:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: Reciever
-          command: volume_up
-  denon_multeq_out:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: Reciever
-          command: multeq
-  denon_dvneq_out:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: Reciever
-          command: dvneq
-  denon_a_dsx_out:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: Reciever
-          command: a-dsx
-  denon_standard_out:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: Reciever
-          command: standard
-  denon_d_st_out:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: Reciever
-          command: d-st
-  denon_simulation_out:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: Reciever
-          command: simulation
-  denon_pure_out:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: Reciever
-          command: pure
+#####################################
+## Jens Reciever                   ##
+#####################################
+denon_blue_ray:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: Reciever
+        command: blue_ray
+denon_chromecast:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: Reciever
+        command: chromecast
+denon_firetv:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: Reciever
+        command: firetv
+denon_mecool:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: Reciever
+        command: mecool
+denon_mute:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: Reciever
+        command: mute
+denon_power:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: Reciever
+        command: power
+denon_tune:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: Reciever
+        command: tune
+denon_tune_search:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: Reciever
+        command: tune_search
+denon_tuner:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: Reciever
+        command: tuner
+denon_reciever_band:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: Reciever
+        command: reciever_band
+denon_tv_audio:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: Reciever
+        command: tv_audio
+denon_volume_down:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: Reciever
+        command: volume_down
+denon_volume_up:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: Reciever
+        command: volume_up
+denon_multeq_out:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: Reciever
+        command: multeq
+denon_dvneq_out:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: Reciever
+        command: dvneq
+denon_a_dsx_out:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: Reciever
+        command: a-dsx
+denon_standard_out:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: Reciever
+        command: standard
+denon_d_st_out:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: Reciever
+        command: d-st
+denon_simulation_out:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: Reciever
+        command: simulation
+denon_pure_out:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: Reciever
+        command: pure
 
-  #####################################
-  ## Jens BD                         ##
-  #####################################
-  br_eject:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: blueray
-          command: eject
+#####################################
+## Jens BD                         ##
+#####################################
+br_eject:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: blueray
+        command: eject
 
-  br_enter:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: blueray
-          command: enter
+br_enter:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: blueray
+        command: enter
 
-  br_home:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: blueray
-          command: home
+br_home:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: blueray
+        command: home
 
-  br_pause:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: blueray
-          command: pause
+br_pause:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: blueray
+        command: pause
 
-  br_play:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: blueray
-          command: play
+br_play:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: blueray
+        command: play
 
-  br_power:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: blueray
-          command: power
+br_power:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: blueray
+        command: power
 
-  br_scan_down:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          command: b64:JgBWAJKWETgSExI3EjgSExI3ERUQFBE5ERMSOBI4ExESOBITEhMRExE5ERQQFRE4EjgQFRETETkSExE4EjgRFBETEjgSOBAABb2SlRITEgAMfZKVEhMSAA0FAAA=
+br_scan_down:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        command: b64:JgBWAJKWETgSExI3EjgSExI3ERUQFBE5ERMSOBI4ExESOBITEhMRExE5ERQQFRE4EjgQFRETETkSExE4EjgRFBETEjgSOBAABb2SlRITEgAMfZKVEhMSAA0FAAA=
 
-  br_scan_up:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          command: b64:JgBWAJKWETgSExE5EDkSExI3EhMSExE5ERMSOBI4ERMSOBITERQROBI4EBUQFBI4EjcRFBIUERMSExE4EjgSExETETkSOBEABbySlRITEgAMfZKVEhMSAA0FAAA=
+br_scan_up:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        command: b64:JgBWAJKWETgSExE5EDkSExI3EhMSExE5ERMSOBI4ERMSOBITERQROBI4EBUQFBI4EjcRFBIUERMSExE4EjgSExETETkSOBEABbySlRITEgAMfZKVEhMSAA0FAAA=
 
-  br_skip_down:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          command: b64:JgBeAJGWEjcSFBE4ETgSExI4ERMRFBI4ERQQORE5ERQROBEUDxYROBITEjgQFBE5ETkQFBIUERMSOBAVETgRFBEUETgRORAABbqVlRITEgAMfZKVEhMSAAx9kZYSExAADQUAAAAAAAAAAAAA
+br_skip_down:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        command: b64:JgBeAJGWEjcSFBE4ETgSExI4ERMRFBI4ERQQORE5ERQROBEUDxYROBITEjgQFBE5ETkQFBIUERMSOBAVETgRFBEUETgRORAABbqVlRITEgAMfZKVEhMSAAx9kZYSExAADQUAAAAAAAAAAAAA
 
-  br_skip_up:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          command: b64:JgBWAJGWEjgRExI4ETkRExE5EhMSExE4ERQROBE5EhMSOBETERQTEhAVEDkRFBI4EDkSExIUEDgRORITEDkSExITEjcRORIABbyRlhITEQAMfZKWERMRAA0FAAA=
+br_skip_up:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        command: b64:JgBWAJGWEjgRExI4ETkRExE5EhMSExE4ERQROBE5EhMSOBETERQTEhAVEDkRFBI4EDkSExIUEDgRORITEDkSExITEjcRORIABbyRlhITEQAMfZKWERMRAA0FAAA=
 
-  br_stop:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: blueray
-          command: stop
+br_stop:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: blueray
+        command: stop
 
-  br_left:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: blueray
-          command: left
+br_left:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: blueray
+        command: left
 
-  br_repeat:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: blueray
-          command: repeat
+br_repeat:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: blueray
+        command: repeat
 
-  br_right:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: blueray
-          command: right
+br_right:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: blueray
+        command: right
 
-  br_up:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: blueray
-          command: up
+br_up:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: blueray
+        command: up
 
-  br_down:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: blueray
-          command: down
+br_down:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: blueray
+        command: down
 
-  br_menu:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: blueray
-          command: menu
+br_menu:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: blueray
+        command: menu
 
-  br_back:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: blueray
-          command: back
+br_back:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: blueray
+        command: back
 
-  #####################################
-  ## MeCool                          ##
-  #####################################
-  mc_power:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: mecool
-          command: power
+#####################################
+## MeCool                          ##
+#####################################
+mc_power:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: mecool
+        command: power
 
-  mc_back:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: mecool
-          command: back
+mc_back:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: mecool
+        command: back
 
-  mc_home:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: mecool
-          command: home
+mc_home:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: mecool
+        command: home
 
-  mc_hamburger:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: mecool
-          command: hamburger
+mc_hamburger:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: mecool
+        command: hamburger
 
-  mc_mouse:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: mecool
-          command: mouse
+mc_mouse:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: mecool
+        command: mouse
 
-  mc_vert_up:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          command: b64:JgBYAAABJ5USFBITEhQSExIUEhQRFBIUEjgSOBI4EjgTNxI4EjgTOBEUEjgSOBIUEhQRFBIUERQSOREUEhQRORE5EjgSOBM2EgAFHAABJ0wRAAxaAAEoSxEADQU=
+mc_vert_up:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        command: b64:JgBYAAABJ5USFBITEhQSExIUEhQRFBIUEjgSOBI4EjgTNxI4EjgTOBEUEjgSOBIUEhQRFBIUERQSOREUEhQRORE5EjgSOBM2EgAFHAABJ0wRAAxaAAEoSxEADQU=
 
-  mc_vert_down:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          command: b64:JgBQAAABJ5QTExIUERQSFBEUEhQSFBEUEjgSOBI5ETkRORE5ETkSOBMTETkROREUEjgSFBIUERQSOBIUEhQROREUEjgSORE4EgAFHAABJkwSAA0FAAAAAAAAAAA=
+mc_vert_down:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        command: b64:JgBQAAABJ5QTExIUERQSFBEUEhQSFBEUEjgSOBI5ETkRORE5ETkSOBMTETkROREUEjgSFBIUERQSOBIUEhQROREUEjgSORE4EgAFHAABJkwSAA0FAAAAAAAAAAA=
 
-  mc_horz_right:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          command: JgBYAAABJpUTExIUERQSFBEUEhQSFBEUEjgSOBI5EjgRORE5ETkSOBIUETkRFBI4EjgSFBI4EhQROREUEzgRFBIUETkRFBM3EQAFIwABJ0sSAAxhAAEnSxIADQU=
+mc_horz_right:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        command: JgBYAAABJpUTExIUERQSFBEUEhQSFBEUEjgSOBI5EjgRORE5ETkSOBIUETkRFBI4EjgSFBI4EhQROREUEzgRFBIUETkRFBM3EQAFIwABJ0sSAAxhAAEnSxIADQU=
 
-  mc_horz_left:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          command: JgBYAAABJ5USFBEUEhQRFBIUEhQSExIUETkSOBI4EjgTNxI4EjgSORE5ETkRFBI4EjkSExIUERQSFBIUETkRFBIUEjgSOBI3EgAFIgABJkwSAAxfAAEnTBEADQU=
+mc_horz_left:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        command: JgBYAAABJ5USFBEUEhQRFBIUEhQSExIUETkSOBI4EjgTNxI4EjgSORE5ETkRFBI4EjkSExIUERQSFBIUETkRFBIUEjgSOBI3EgAFIgABJkwSAAxfAAEnTBEADQU=
 
-  mc_volume_up:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          command: JgBQAAABJ5URFBIUEhQRFBIUERQSFBIUETkSOBE5ETkSOBI4EjgSOBI4EzcSFBIUETkRFBIUEhQRFBIUETkSOBIUETkRORE4EwAFGwABJ0sSAA0FAAAAAAAAAAA=
+mc_volume_up:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        command: JgBQAAABJ5URFBIUEhQRFBIUERQSFBIUETkSOBE5ETkSOBI4EjgSOBI4EzcSFBIUETkRFBIUEhQRFBIUETkSOBIUETkRORE4EwAFGwABJ0sSAA0FAAAAAAAAAAA=
 
-  mc_volume_down:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          command: JgBYAAABKJQSFBEUEhQRFBIUEhQRFBIUETkSOBI4EjgSOBI4EjgSORE5ETkROREUEjkRFBIUERQSFBIUERQSOBIUEjgSOBI3EwAFGwABJ0wSAAxZAAEnTBIADQU=
+mc_volume_down:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        command: JgBYAAABKJQSFBEUEhQRFBIUEhQRFBIUETkSOBI4EjgSOBI4EjgSORE5ETkROREUEjkRFBIUERQSFBIUERQSOBIUEjgSOBI3EwAFGwABJ0wSAAxZAAEnTBIADQU=
 
-  mc_skip_forward:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          command: JgBYAAABJ5UTExEVERQSFBEUEhQSFBEUEjgSOBI4EjgSORI4EjgSOBI4EjgSFBE5ERQSFBMTERQSFBEUEjkRFBI4EjgSOBI4EgAFGwABJ0wSAAxZAAEnTBEADQU=
+mc_skip_forward:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        command: JgBYAAABJ5UTExEVERQSFBEUEhQSFBEUEjgSOBI4EjgSORI4EjgSOBI4EjgSFBE5ERQSFBMTERQSFBEUEjkRFBI4EjgSOBI4EgAFGwABJ0wSAAxZAAEnTBEADQU=
 
-  mc_skip_back:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          command: JgBYAAABKJEVExIUERQSFBIUERQSFBEUEjgSORE5ETkRORE5EjgSOBIUERQSFBI4EhQRFBIUEhMSORI4EjgRFBI4EjkRORE4EgAFHAABJkwSAAxZAAEoSxEADQU=
+mc_skip_back:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        command: JgBYAAABKJEVExIUERQSFBIUERQSFBEUEjgSORE5ETkRORE5EjgSOBIUERQSFBI4EhQRFBIUEhMSORI4EjgRFBI4EjkRORE4EgAFHAABJkwSAAxZAAEoSxEADQU=
 
-  mc_mute:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: mecool
-          command: mute
+mc_mute:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: mecool
+        command: mute
 
-  mc_ok:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: mecool
-          command: ok
+mc_ok:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: mecool
+        command: ok
 
-  mc_e:
-    sequence:
-      - service: remote.send_command
-        data:
-          entity_id: remote.downstairs_mini_remote
-          device: mecool
-          command: e
+mc_e:
+  sequence:
+    - action: remote.send_command
+      data:
+        entity_id: remote.downstairs_mini_remote
+        device: mecool
+        command: e

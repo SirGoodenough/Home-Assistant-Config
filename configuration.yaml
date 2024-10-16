@@ -68,15 +68,6 @@ http: !include http.yaml
 # introduction:
 light: !include_dir_merge_list ./light/
 notify: !include notify.yaml
-mqtt:
-  - binary_sensor: !include_dir_merge_list mqtt/binary_sensor/
-  - button: !include_dir_merge_list mqtt/button/
-  - cover: !include_dir_merge_list mqtt/cover/
-  - fan: !include_dir_merge_list mqtt/fan/
-  - light: !include_dir_merge_list mqtt/light/
-  - lock: !include_dir_merge_list mqtt/lock/
-  - sensor: !include_dir_merge_list mqtt/sensor/
-  - switch: !include_dir_merge_list mqtt/switch/
 panel_custom: !include panel_custom.yaml
 python_script:
 recorder: !include recorder.yaml
@@ -91,3 +82,12 @@ switch two: !include_dir_merge_list ./switch2/
 template: !include_dir_merge_list ./templates/
 tts: !include tts.yaml
 webhook_service:
+mqtt:
+  - binary_sensor: !include_dir_merge_list mqtt/binary_sensor/
+  - button: !include_dir_merge_list mqtt/button/
+  - cover: !include_dir_merge_list mqtt/cover/
+  - fan: !include_dir_merge_list mqtt/fan/
+  - light: !include_dir_merge_list mqtt/light/
+  - lock: !include_dir_merge_list mqtt/lock/
+  - sensor: !include_dir_merge_list mqtt/sensor/
+  - switch: !include_dir_merge_list mqtt/switch/

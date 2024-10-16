@@ -1,48 +1,48 @@
 ---
-  #####################################################
-  #                                                   #
-  #            Binary Sensors Script                  #
-  #                                                   #
-  #####################################################
+#####################################################
+#                                                   #
+#            Binary Sensors Script                  #
+#                                                   #
+#####################################################
 
-  ######################
-  # Close all the doors#
-  ######################
-  doors_close_all:
-    alias: Doors Close Brute Force
-    sequence:
-  # Bathroom
-      - service: mqtt.publish
-        data:
-          "topic": "rf433/Bathroom"
-          "payload": "OFF"
-  # Bedroom
-      - service: mqtt.publish
-        data:
-          "topic": "rf433/Bedroom"
-          "payload": "OFF"
-  # Back Door
-      - service: mqtt.publish
-        data:
-          "topic": "rf433/BackDoorI"
-          "payload": "OFF"
-  # Front Door
-      - service: mqtt.publish
-        data:
-          "topic": "rf433/FrontDoorI"
-          "payload": "OFF"
-  # Garage Side Door
-      - service: mqtt.publish
-        data:
-          "topic": "rf433/GarageSide"
-          "payload": "OFF"
-  # Side Door
-      - service: mqtt.publish
-        data:
-          "topic": "rf433/SideDoorI"
-          "payload": "OFF"
-  # Mailbox
-      - service: mqtt.publish
-        data:
-          "topic": "rf433/Mailbox"
-          "payload": "OFF" 
+######################
+# Close all the doors#
+######################
+doors_close_all:
+  alias: Doors Close Brute Force
+  sequence:
+    # Bathroom
+    - action: mqtt.publish
+      data:
+        "topic": "rf433/Bathroom"
+        "payload": "OFF"
+    # Bedroom
+    - action: mqtt.publish
+      data:
+        "topic": "rf433/Bedroom"
+        "payload": "OFF"
+    # Back Door
+    - action: mqtt.publish
+      data:
+        "topic": "rf433/BackDoorI"
+        "payload": "OFF"
+    # Front Door
+    - action: mqtt.publish
+      data:
+        "topic": "rf433/FrontDoorI"
+        "payload": "OFF"
+    # Garage Side Door
+    - action: mqtt.publish
+      data:
+        "topic": "rf433/GarageSide"
+        "payload": "OFF"
+    # Side Door
+    - action: mqtt.publish
+      data:
+        "topic": "rf433/SideDoorI"
+        "payload": "OFF"
+    # Mailbox
+    - action: mqtt.publish
+      data:
+        "topic": "rf433/Mailbox"
+        "payload": "OFF"

@@ -45,9 +45,9 @@
       unit_of_measurement: "UV-Risk"
       state: >-
         {{ state_attr('sensor.control_central_uv_index','level') }}
-      availability: >-
-        {% from 'availability_template.jinja' import avail %}
-        {{- avail(['sensor.control_central_uv_index']) | bool -}}
+      # availability: >-
+      #   {% from 'availability_template.jinja' import avail %}
+      #   {{- avail(['sensor.control_central_uv_index']) | bool -}}
       icon: mdi:sun-wireless
       attributes:
         friendly_name: "Sunburn Risk UV-R"

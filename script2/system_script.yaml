@@ -2,111 +2,110 @@
 ####################################################
 # Make EZButtons:                                  #
 ####################################################
-  tasmota_ez_button_for_update_and_restart_all_2022_01_07a:
-    alias: Tasmota EZ-Button for Update and Restart All 2022-01-07a
-    use_blueprint:
-      path: SirGoodenough/Tasmota_EZ-Buttons.yaml
-      input:
-        ez_canary: Tasmota Firsts
-        topic_format: '%topic%/%prefix%/'
-    icon: mdi:truck-delivery
+tasmota_ez_button_for_update_and_restart_all_2022_01_07a:
+  alias: Tasmota EZ-Button for Update and Restart All 2022-01-07a
+  use_blueprint:
+    path: SirGoodenough/Tasmota_EZ-Buttons.yaml
+    input:
+      ez_canary: Tasmota Firsts
+      topic_format: "%topic%/%prefix%/"
+  icon: mdi:truck-delivery
 
 ####################################################
 # Mute or Unmute a Google Speaker:                 #
 ####################################################
-  google_mute:
-    alias: Select a media device to mute or unmute the audio
-    description: "Set status to boolean true to Mute or false to Unmute"
-    icon: mdi:volume-source
-    fields:
-      entities:
-        name: Media Player 2 mute - unmute
-        description: Set the Google media player you want to mute
-        required: true
-        selector:
-          entity:
-            multiple: false
-            filter:
-              domain: media_player
-              # supported_features: 8
-      status:
-        name: Turn the Mute on/off
-        description:
-          Set status to boolean true to Mute or false to Unmute
-        required: true
-        selector:
-          boolean:
-    sequence:
-      - service: media_player.play_media
-        data:
-          entity_id: "{{ entities }}"
-          media_content_id: >
-            {% if status  == true %}
-              {# Tell speaker it's about to go silent #}
-              media-source://media_source/local/mp3/shhh.mp3
-            {% else %} 
-              {# When turning speaker back on #}
-              media-source://media_source/local/mp3/MicrowaveBeep.mp3
-            {% endif %}
-          media_content_type: audio/mp3
-      - delay: 00:00:02
-      - alias: Set status to boolean true to mute me, false to unmute me 
-        service: media_player.volume_mute
-        target:
-          entity_id: "{{ entities }}"
-        data:
-          is_volume_muted: "{{ status }}"
+google_mute:
+  alias: Select a media device to mute or unmute the audio
+  description: "Set status to boolean true to Mute or false to Unmute"
+  icon: mdi:volume-source
+  fields:
+    entities:
+      name: Media Player 2 mute - unmute
+      description: Set the Google media player you want to mute
+      required: true
+      selector:
+        entity:
+          multiple: false
+          filter:
+            domain: media_player
+            # supported_features: 8
+    status:
+      name: Turn the Mute on/off
+      description: Set status to boolean true to Mute or false to Unmute
+      required: true
+      selector:
+        boolean:
+  sequence:
+    - action: media_player.play_media
+      data:
+        entity_id: "{{ entities }}"
+        media_content_id: >
+          {% if status  == true %}
+            {# Tell speaker it's about to go silent #}
+            media-source://media_source/local/mp3/shhh.mp3
+          {% else %} 
+            {# When turning speaker back on #}
+            media-source://media_source/local/mp3/MicrowaveBeep.mp3
+          {% endif %}
+        media_content_type: audio/mp3
+    - delay: 00:00:02
+    - alias: Set status to boolean true to mute me, false to unmute me
+      action: media_player.volume_mute
+      target:
+        entity_id: "{{ entities }}"
+      data:
+        is_volume_muted: "{{ status }}"
 
 ####################################################
 # Page DrZzs                                       #
 ####################################################
-  page_drzzs:
-    alias: Page DrZzs
-    sequence:
-    # - service: webhook_service.basic_webhook
+page_drzzs:
+  alias: Page DrZzs
+  sequence:
+    # - action: webhook_service.basic_webhook
     #   data:
     #     webhook: !secret DrZzsPage
     #     data: {"message":"Hello Doc"}
-    - service: shell_command.drzzs_page
-      data: {"message":"Hello Doc"}
+    - action: shell_command.drzzs_page
+      data: { "message": "Hello Doc" }
 
-  message_test:
-    alias: Page DrZzs
-    sequence:
-    - service: shell_command.test_message
-      data: {"message":"Check Chat"}
+message_test:
+  alias: Page DrZzs
+  sequence:
+    - action: shell_command.test_message
+      data: { "message": "Check Chat" }
 
-  say_a_thing:
-    alias: Get some words from automation and say them
-    fields:
-      message:
-        name: Live Message
-        description: This will send the message on-the-fly
-        required: false
-        example: This is where to put your message to be spoken
-        selector:
-          text:
-            multiline: true
-            type: text
-      entities:
-        name: Live Media Player
-        description: Change the media player on the fly
-        required: false
-        selector:
-          entity:
-            multiple: true
-            filter:
-              domain: media_player
-    sequence:
-      - service: tts.cloud_say
-        data:
-          entity_id: "{{ entities }}"
-          message: "{{ message }}"
-          language: en-US
+say_a_thing:
+  alias: Get some words from automation and say them
+  fields:
+    message:
+      name: Live Message
+      description: This will send the message on-the-fly
+      required: false
+      example: This is where to put your message to be spoken
+      selector:
+        text:
+          multiline: true
+          type: text
+    entities:
+      name: Live Media Player
+      description: Change the media player on the fly
+      required: false
+      selector:
+        entity:
+          multiple: true
+          filter:
+            domain: media_player
+  sequence:
+    - action: tts.cloud_say
+      data:
+        entity_id: "{{ entities }}"
+        message: "{{ message }}"
+        language: en-US
 # #---> To Use thue script from an automation:
 # - alias: say a thing
 #   sequence:
-#     service: script.say_a_thing
+#     action: script.say_a_thing
 #     data:
 #       message: "message"
 #       entities: media_player.jennys_room_display

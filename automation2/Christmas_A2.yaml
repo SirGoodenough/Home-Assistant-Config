@@ -5,11 +5,11 @@
 - id: bb9d85a8-8e6c-4a16-99b4-ce543cfd72fe
   alias: Pretty Lights
   initial_state: on
-  trigger:
-    platform: state
+  triggers:
+    trigger: state
     entity_id: input_boolean.christmas
-  action:
-    service: script.turn_on
+  actions:
+    action: script.turn_on
     data:
       entity_id: >
         {% from 'logic_chekr.jinja' import true_all %}
@@ -23,33 +23,33 @@
 - id: 7c9e8953-c34a-43d8-a7e9-f33fb0cb75e3
   alias: Turn on Inside Christmas
   initial_state: on
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: binary_sensor.blue_remote_c
       from: "off"
       to: "on"
-  condition:
+  conditions:
     - >
       {% from 'logic_chekr.jinja' import true_all %}
       {{- true_all( ['sensor.xmas_season_enable'] ) | bool -}}
-  action:
-    - service: script.turn_on
+  actions:
+    - action: script.turn_on
       entity_id: script.inside_christmas
 
 - id: 20d2c819-3b00-4a02-be91-6aa69bb4524a
   alias: Turn off Inside Christmas
   initial_state: on
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: binary_sensor.blue_remote_d
       from: "off"
       to: "on"
-  condition:
+  conditions:
     - >
       {% from 'logic_chekr.jinja' import true_all %}
       {{- true_all( ['sensor.xmas_season_enable'] ) | bool -}}
-  action:
-    - service: script.turn_on
+  actions:
+    - action: script.turn_on
       entity_id: script.heavenly_peace
 
 #####################################################
@@ -58,114 +58,114 @@
 - id: 94098658-ce1b-41a4-8ef4-263e7f2cc1d0
   alias: Turn on Christmas lights at dark
   initial_state: on
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: binary_sensor.dark_outside
       from: "off"
       to: "on"
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.blue_remote_a
       from: "off"
       to: "on"
-  condition:
+  conditions:
     - >
       {% from 'logic_chekr.jinja' import true_all %}
       {{- true_all( ['sensor.xmas_season_enable'] ) | bool -}}
-  action:
-    - service: switch.turn_on
+  actions:
+    - action: switch.turn_on
       entity_id: switch.outside_christmas
     - delay: "00:00:30"
-    - service: switch.turn_on
+    - action: switch.turn_on
       entity_id: switch.outside_christmas
     - delay: "00:00:30"
-    - service: switch.turn_on
+    - action: switch.turn_on
       entity_id: switch.outside_christmas
     - delay: "00:00:30"
-    - service: switch.turn_on
+    - action: switch.turn_on
       entity_id: switch.outside_christmas
     - delay: "00:00:30"
-    - service: switch.turn_on
+    - action: switch.turn_on
       entity_id: switch.outside_christmas
 
 - id: e457e864-1b80-42e1-991b-902f62109afe
   alias: Turn off Christmas lights at dawn
   initial_state: on
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: binary_sensor.dark_outside
       from: "on"
       to: "off"
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.blue_remote_b
       from: "off"
       to: "on"
-  action:
-    - service: switch.turn_off
+  actions:
+    - action: switch.turn_off
       entity_id: switch.outside_christmas
     - delay: "00:00:30"
-    - service: switch.turn_off
+    - action: switch.turn_off
       entity_id: switch.outside_christmas
     - delay: "00:00:30"
-    - service: switch.turn_off
+    - action: switch.turn_off
       entity_id: switch.outside_christmas
     - delay: "00:00:30"
-    - service: switch.turn_off
+    - action: switch.turn_off
       entity_id: switch.outside_christmas
     - delay: "00:00:30"
-    - service: switch.turn_off
+    - action: switch.turn_off
       entity_id: switch.outside_christmas
 
 - id: 6fb0180a-e42e-45fc-a550-fa95a2726148
   alias: Power state on HA start-up outside christmas dark
   initial_state: on
-  trigger:
-    platform: homeassistant
+  triggers:
+    trigger: homeassistant
     event: start
-  condition:
+  conditions:
     - >
       {% from 'logic_chekr.jinja' import true_all %}
       {{- true_all( ['sensor.xmas_season_enable',
         'binary_sensor.dark_outside'] ) | bool -}}
-  action:
-    - service: switch.turn_on
+  actions:
+    - action: switch.turn_on
       entity_id: switch.outside_christmas
     - delay: "00:00:30"
-    - service: switch.turn_on
+    - action: switch.turn_on
       entity_id: switch.outside_christmas
     - delay: "00:00:30"
-    - service: switch.turn_on
+    - action: switch.turn_on
       entity_id: switch.outside_christmas
     - delay: "00:00:30"
-    - service: switch.turn_on
+    - action: switch.turn_on
       entity_id: switch.outside_christmas
     - delay: "00:00:30"
-    - service: switch.turn_on
+    - action: switch.turn_on
       entity_id: switch.outside_christmas
 
 - id: 221db31c-ea90-4db1-9dd4-4ad3f3cd3452
   alias: Power state on HA start-up outside christmas day
   initial_state: on
-  trigger:
-    platform: homeassistant
+  triggers:
+    trigger: homeassistant
     event: start
-  condition:
+  conditions:
     - >
       {% from 'logic_chekr.jinja' import false_all %}
       {{- false_all( ['binary_sensor.dark_outside'] ) | bool -}}
-  action:
-    - service: switch.turn_off
+  actions:
+    - action: switch.turn_off
       entity_id: switch.outside_christmas
     - delay: "00:00:30"
-    - service: switch.turn_off
+    - action: switch.turn_off
       entity_id: switch.outside_christmas
     - delay: "00:00:30"
-    - service: switch.turn_off
+    - action: switch.turn_off
       entity_id: switch.outside_christmas
     - delay: "00:00:30"
-    - service: switch.turn_off
+    - action: switch.turn_off
       entity_id: switch.outside_christmas
     - delay: "00:00:30"
-    - service: switch.turn_off
+    - action: switch.turn_off
       entity_id: switch.outside_christmas
 
 ####################################################
@@ -174,13 +174,13 @@
 - id: fd8a0028-7b23-47dd-a0fd-be1d5acf69a1
   alias: Christmas Enable
   initial_state: on
-  trigger:
-    - platform: homeassistant
+  triggers:
+    - trigger: homeassistant
       event: start
-    - platform: state
+    - trigger: state
       entity_id: sensor.xmas_season_enable
-  action:
-    - service: >
+  actions:
+    - action: >
         {% from 'logic_chekr.jinja' import true_all %}
         {%- if true_all( ['sensor.xmas_season_enable'] ) | bool -%}
         {# if is_state('sensor.xmas_season_enable', 'True') %} #}

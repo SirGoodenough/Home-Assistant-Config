@@ -1,5 +1,5 @@
 - trigger:
-    - platform: event
+    - trigger: event
       event_type: rm02_last_action
   sensor:
     - name: "RM02 Last Action"

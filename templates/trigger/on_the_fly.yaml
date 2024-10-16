@@ -1,7 +1,7 @@
 - trigger:
-    - platform: event
+    - trigger: event
       event_type: set_variable
-    - platform: event
+    - trigger: event
       event_type: remove_variable
   sensor:
     - unique_id: 0b49cfff-7f57-47cc-935a-e208ece50de7
@@ -19,7 +19,7 @@
 
 # https://community.home-assistant.io/t/wth-cant-input-helpers-be-read-only-in-ui/467562/13
 # To set a variable (reusing the key will overwrite the previous value)
-# action:
+# actions:
 # - alias: Set a variable
 #   event: set_variable
 #   event_data:
@@ -27,7 +27,7 @@
 #     value: 26
 
 # To remove a variable from the sensor:
-# action:
+# actions:
 # - alias: Remove a variable
 #   event: remove_variable
 #   event_data:

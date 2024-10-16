@@ -172,7 +172,7 @@ qotd:
           seconds: 3
           milliseconds: 500
       after_action:
-      - service: homeassistant.update_entity
+      - action: homeassistant.update_entity
         target:
           entity_id: sensor.qotd
         data: {}
@@ -185,7 +185,7 @@ front_motion_joke:
     input:
       TTS: tts.cloud_say
       b4_action:
-      - service: script.media_player_front_doorbell_motion
+      - action: script.media_player_front_doorbell_motion
         data: {}
       - delay:
           hours: 0
@@ -193,7 +193,7 @@ front_motion_joke:
           seconds: 4
           milliseconds: 0
       after_action:
-      - service: homeassistant.update_entity
+      - action: homeassistant.update_entity
         target:
           entity_id: sensor.joke
         data: {}
