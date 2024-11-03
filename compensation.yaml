@@ -10,3 +10,23 @@ sprinkler_time:
   data_points:
     - [0.01, -60.0]
     - [0.25, 0.0]
+hoya_battery:
+  unique_id: 9ed0bb27-e067-444b-8f91-567fab163cf4
+  source: sensor.chaloupkaabode_weather_soil_battery_2
+  lower_limit: true
+  upper_limit: true
+  data_points:
+    - [0.3, 0.0]
+    - [3.2, 100.0]
+  precision: 1
+  unit_of_measurement: "%"
+cemetery_battery:
+  unique_id: 9c1416042-da15-402b-a284-7935a881632b
+  source: sensor.chaloupkaabode_weather_soil_battery_1
+  lower_limit: true
+  upper_limit: true
+  data_points:
+    - [0.3, 0.0]
+    - [3.2, 100.0]
+  precision: 1
+  unit_of_measurement: "%"

@@ -33,6 +33,7 @@ mobile_app:
 my:
 network:
 person: !include person.yaml
+plant: !include plant_status.yaml
 rest: !include_dir_merge_list ./rest/
 scene: !include scene.yaml
 schedule:

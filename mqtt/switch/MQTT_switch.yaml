@@ -1,18 +1,17 @@
----
-  - name: "Jens Mist Speed Control"
-    unique_id: 14880efb-658a-4f89-8d3f-a2e37e36e514
-    state_topic: "JensNeb/stat/POWER3"
-    command_topic: "JensNeb/cmnd/POWER3"
-    availability_topic: "JensNeb/tele/LWT"
-    state_on: "ON"
-    state_off: "OFF"
-    payload_on: "ON"
-    payload_off: "OFF"
-    payload_available: "Online"
-    payload_not_available: "Offline"
+- name: "Jens Mist Speed Control"
+  unique_id: 14880efb-658a-4f89-8d3f-a2e37e36e514
+  state_topic: "JensNeb/stat/POWER3"
+  command_topic: "JensNeb/cmnd/POWER3"
+  availability_topic: "JensNeb/tele/LWT"
+  state_on: "ON"
+  state_off: "OFF"
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
 
-  - name: "V8"
-    unique_id: 7a60a92e-bb31-40ce-97ce-32f9645cdae7
-    command_topic: "garage_door/cmnd/EVENT"
-    payload_on: "0a904dd0-eda7-4b57-90b3-bafd6b32def3"
-    payload_off: "0a904dd0-eda7-4b57-90b3-bafd6b32def3"    
+- name: "V8"
+  unique_id: 7a60a92e-bb31-40ce-97ce-32f9645cdae7
+  command_topic: "garage_door/cmnd/EVENT"
+  payload_on: "0a904dd0-eda7-4b57-90b3-bafd6b32def3"
+  payload_off: "0a904dd0-eda7-4b57-90b3-bafd6b32def3"

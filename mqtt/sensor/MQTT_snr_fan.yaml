@@ -2,7 +2,7 @@
   ####################################################
   #  Fans                                            #
   ####################################################
-  - unique_id: 47058f65-ca94-4c2c-aaf4-4589ec759eab
+  - unique_id: 47058f65-ca94-4c2c-aaf4-4589ec759eab 
     name: "Office FanSpeed"
     state_topic: "Office_Fan/stat/RESULT"
     unit_of_measurement: "%"

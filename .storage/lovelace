@@ -168,6 +168,28 @@
               }
             },
             {
+              "type": "plant-status",
+              "entity": "plant.my_hoya",
+              "visibility": [
+                {
+                  "condition": "numeric_state",
+                  "entity": "plant.my_hoya",
+                  "below": 13
+                }
+              ]
+            },
+            {
+              "type": "plant-status",
+              "entity": "plant.my_cemetery_plant",
+              "visibility": [
+                {
+                  "condition": "numeric_state",
+                  "entity": "plant.my_cemetery_plant",
+                  "below": 45
+                }
+              ]
+            },
+            {
               "entities": [
                 {
                   "entity": "sensor.sonoff_rf_bridge_2_si7021_temperature",
@@ -245,7 +267,7 @@
                     {
                       "condition": "numeric_state",
                       "entity": "sensor.chaloupkaabode_weather_soil_moisture_2",
-                      "below": 11
+                      "below": 13
                     }
                   ]
                 }
@@ -3735,11 +3757,6 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "sensor.sunburn_risk_uv_r",
-                  "name": "Sunburn Risk",
-                  "secondary_info": "last-updated"
-                },
-                {
                   "entity": "input_boolean.rain"
                 },
                 {
@@ -3818,7 +3835,7 @@
             },
             {
               "chart_type": "line",
-              "period": "5minute",
+              "period": "hour",
               "type": "statistics-graph",
               "entities": [
                 "sensor.chaloupkaabode_weather_soil_moisture_1",
@@ -3828,8 +3845,8 @@
                 "mean"
               ],
               "title": "Soil Moisture",
-              "days_to_show": 3,
-              "hide_legend": false,
+              "days_to_show": 21,
+              "hide_legend": true,
               "logarithmic_scale": true
             },
             {
