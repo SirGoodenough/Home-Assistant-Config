@@ -9,9 +9,13 @@
     - trigger: state
       entity_id: switch.micro_switch_g2
       to: "on"
+    - trigger: state
+      entity_id: input_boolean.bathroom_heater_auto_on
+      to: "on"
   actions:
     - action: script.upstairs_bath_heater_watchdog
     - action: script.tts_bathroom_heat_on
+  mode: single
 
 - id: 2d1ec212-0443-44c6-883b-85757c900e92
   alias: Bathroom is Overheated
@@ -42,7 +46,7 @@
   conditions:
     - >
       {% from 'logic_chekr.jinja' import true_all %}
-      {{- true_all( ['binary_sensor.bathroom'] ) | bool -}}
+      {{- true_all( ['binary_sensor.bathroom','switch.micro_switch_g2'] ) | bool -}}
   actions:
     - action: script.upstairs_bath_heater_off
     - action: script.media_player_bathroom
@@ -60,22 +64,36 @@
     and:
       - condition: state
         entity_id: person.julie
-        state: "Home"
+        state: "home"
       - condition: numeric_state
         entity_id: sensor.gw2000b_v2_2_4_feels_like_temperature
-        below: 40
+        below: 50
   actions:
     - action: script.upstairs_bath_heater_on
     - action: script.tts_bathroom_heat_on
-    - action: input_boolean.turn_off
-      entity_id: input_boolean.bathroom_heater_auto_on
 
 - id: a152e88d-6c9c-42bd-9a62-15ecb7745e29
   alias: Bathroom Heater Julie Bedtime
   initial_state: on
   triggers:
     - trigger: time
-      at: "21:22:37"
+      at: "21:55:37"
+    - trigger: state
+      entity_id: button.moms_button1
+  conditions:
+    and:
+      - alias: "Only at bedtime"
+        condition: time
+        after: "21:30:00"
+        before: "23:30:00"
+      - alias: "Only if Julie is home"
+        condition: state
+        entity_id: person.julie
+        state: "home"
+      - alias: "Only if it's cold out"
+        condition: numeric_state
+        entity_id: sensor.gw2000b_v2_2_4_feels_like_temperature
+        below: 50
   actions:
     - action: input_boolean.turn_on
       entity_id: input_boolean.bathroom_heater_auto_on

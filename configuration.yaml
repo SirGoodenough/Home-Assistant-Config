@@ -1,56 +1,11 @@
 # Configure a default setup of Home Assistant (frontend, api, etc)
-#default_config:
-
-# Individual options represented by default_config
-automation: !include automations.yaml
-automation manual: !include_dir_merge_list ./automation2/
-automation dev: !include_dir_merge_list ./automationDev/
-assist_pipeline:
-# backup:
-bluetooth:
-config:
-conversation:
-counter: !include counter.yaml
-dhcp:
-# energy
-frontend: !include frontend.yaml
-hardware:
-history:
-# history: !include history.yaml
-homeassistant_alerts:
-cloud:
-image_upload:
-input_boolean:
-input_button:
-input_datetime:
-input_number:
-input_select:
-input_text:
-logbook:
-logger: !include logger.yaml
-media_source:
-mobile_app:
-my:
-network:
-person: !include person.yaml
-plant: !include plant_status.yaml
-rest: !include_dir_merge_list ./rest/
-scene: !include scene.yaml
-schedule:
-script: !include_dir_merge_named ./script2/
-ssdp:
-stream:
-sun:
-system_health:
-# tag:
-timer: !include timer.yaml
-usb:
-webhook:
-zeroconf:
-zone: !include zones.yaml
+default_config:
 
 # All the other stuff not covered in the default_config:
 
+automation: !include automations.yaml
+automation manual: !include_dir_merge_list ./automation2/
+automation dev: !include_dir_merge_list ./automationDev/
 camera: !include camera.yaml
 command_line:
   #- binary_sensor: !include_dir_merge_list command_line/binary_sensor/
@@ -59,30 +14,24 @@ command_line:
   - sensor: !include_dir_merge_named command_line/sensor/
   #- switch: !include_dir_merge_list command_line/switch/
 compensation: !include compensation.yaml
+counter: !include counter.yaml
 device_tracker: !include device_tracker.yaml
 ffmpeg: !include ffmpeg.yaml
+frontend: !include frontend.yaml
+hardware:
 generic_hygrostat: !include humidifer.yaml
 group: !include groups.yaml
-# hacs: !include hacs.yaml
 homeassistant: !include homeassistant.yaml
+input_boolean:
+input_button:
+input_datetime:
+input_number:
+input_select:
+input_text:
 http: !include http.yaml
 # introduction:
 light: !include_dir_merge_list ./light/
-notify: !include notify.yaml
-panel_custom: !include panel_custom.yaml
-python_script:
-recorder: !include recorder.yaml
-# remote_command_line: !include remote_cmd.yaml
-rest_command: !include rest_command.yaml
-# ring: !include ring.yaml
-sensor: !include_dir_merge_list ./sensor2/
-shell_command: !include shell_command.yaml
-sonoff: !include sonoff.yaml
-switch: !include switch.yaml
-switch two: !include_dir_merge_list ./switch2/
-template: !include_dir_merge_list ./templates/
-tts: !include tts.yaml
-webhook_service:
+logger: !include logger.yaml
 mqtt:
   - binary_sensor: !include_dir_merge_list mqtt/binary_sensor/
   - button: !include_dir_merge_list mqtt/button/
@@ -92,3 +41,28 @@ mqtt:
   - lock: !include_dir_merge_list mqtt/lock/
   - sensor: !include_dir_merge_list mqtt/sensor/
   - switch: !include_dir_merge_list mqtt/switch/
+network:
+notify: !include notify.yaml
+panel_custom: !include panel_custom.yaml
+person: !include person.yaml
+plant: !include plant_status.yaml
+python_script:
+recorder: !include recorder.yaml
+# remote_command_line: !include remote_cmd.yaml
+rest: !include_dir_merge_list ./rest/
+rest_command: !include rest_command.yaml
+# ring: !include ring.yaml
+scene: !include scene.yaml
+schedule:
+script: !include_dir_merge_named ./script2/
+sensor: !include_dir_merge_list ./sensor2/
+shell_command: !include shell_command.yaml
+sonoff: !include sonoff.yaml
+switch: !include switch.yaml
+switch two: !include_dir_merge_list ./switch2/
+system_health:
+template: !include_dir_merge_list ./templates/
+timer: !include timer.yaml
+tts: !include tts.yaml
+webhook_service:
+zone: !include zones.yaml

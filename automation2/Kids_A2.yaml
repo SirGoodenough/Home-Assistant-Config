@@ -25,60 +25,64 @@
 ####################################################
 # Food Center Lights to Random                     #
 ####################################################
-- id: 7ea380be-f1af-4788-81b8-457b45a41d12
-  alias: Kids flip the lights 2
-  initial_state: true
+- id: ea532a3c-1174-4a85-8722-a7865db8d77a
+  alias: Kids flip the lights 3
   description: Fun with light colors for the kiddos
   triggers:
-    - trigger: device
-      domain: mqtt
-      device_id: 099887f41d8948deb1147400b1555b05
-      type: action
-      subtype: single
-      id: single
-    - trigger: device
-      domain: mqtt
-      device_id: 099887f41d8948deb1147400b1555b05
-      type: action
-      subtype: double
-      id: double
-    - trigger: device
-      domain: mqtt
-      device_id: 099887f41d8948deb1147400b1555b05
-      type: action
-      subtype: long
-      id: long
+  - alias: single button push
+    domain: mqtt
+    device_id: 958de5a2c34439317065b05c3ac8421e
+    type: action
+    subtype: single
+    trigger: device
+    id: single
+  - alias: double button push
+    domain: mqtt
+    device_id: 958de5a2c34439317065b05c3ac8421e
+    type: action
+    subtype: double
+    trigger: device
+    id: double
+  - alias: hold button push
+    domain: mqtt
+    device_id: 958de5a2c34439317065b05c3ac8421e
+    type: action
+    subtype: hold
+    trigger: device
+    id: hold
   conditions:
   actions:
-    - choose:
-        - conditions:
-            - condition: trigger
-              id:
-                - single
-          sequence:
-            - action: script.random_color
-              data:
-                light: light.grp_kitch
-        - conditions:
-            - condition: trigger
-              id:
-                - double
-          sequence:
-            - action: light.turn_off
-              target:
-                entity_id: light.grp_kitch
-        - conditions:
-            - condition: trigger
-              id:
-                - long
-          sequence:
-            - action: light.turn_on
-              target:
-                entity_id: light.grp_kitch
-              data:
-                kelvin: 1700
-                brightness: 96.9
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - single
+      sequence:
+      - action: script.random_color
+        data:
+          light: light.grp_kitch
+    - conditions:
+      - condition: trigger
+        id:
+        - double
+      sequence:
+      - action: light.turn_off
+        target:
+          entity_id: light.grp_kitch
+        data: {}
+    - conditions:
+      - condition: trigger
+        id:
+        - hold
+      sequence:
+      - action: light.turn_on
+        target:
+          entity_id: light.grp_kitch
+        data:
+          kelvin: 1700
+          brightness: 96.9
   mode: queued
+  initial_state: true
 
 ###################################################
 # Blueprint  Bedroom Fan Mayson                   #

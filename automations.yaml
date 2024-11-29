@@ -47,25 +47,3 @@
         target:
           entity_id: input_boolean.test_color
       action_flip_from_any_to_face_2: []
-- id: '1728422667766'
-  alias: Downstairs Printer Watchdog
-  description: turn off the printer in an hour
-  triggers:
-  - trigger: state
-    entity_id:
-    - switch.downstairs_printer
-    from: 'off'
-    to: 'on'
-    for:
-      hours: 1
-      minutes: 0
-      seconds: 0
-  conditions: []
-  actions:
-  - action: switch.turn_off
-    target:
-      entity_id: switch.downstairs_printer
-    data: {}
-  - action: script.tts_printer_off
-    data: {}
-  mode: single

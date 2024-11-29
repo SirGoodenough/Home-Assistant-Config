@@ -1,0 +1,50 @@
+---
+- id: '1731375142487'
+  alias: Window Grow Lights
+  description: Sync the window lights with the tasmota scheduled light
+  triggers:
+  - trigger: state
+    entity_id:
+    - light.growlight2
+    to: 'on'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+    id: Grow Time
+  - trigger: state
+    entity_id:
+    - light.growlight2
+    to: 'off'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+    id: Sleep Time
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - Grow Time
+      sequence:
+      - action: light.turn_on
+        target:
+          entity_id: light.grow_window_light
+        data: {}
+    - conditions:
+      - condition: trigger
+        id:
+        - Sleep Time
+      sequence:
+      - action: light.turn_off
+        target:
+          entity_id: light.grow_window_light
+        data: {}
+    default:
+    - action: light.turn_off
+      target:
+        entity_id: light.grow_window_light
+      data: {}
+  mode: restart

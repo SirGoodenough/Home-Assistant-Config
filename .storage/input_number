@@ -87,6 +87,15 @@
         "icon": "mdi:sprinkler",
         "mode": "slider",
         "step": 1.0
+      },
+      {
+        "id": "cottage_light_test",
+        "min": 0.0,
+        "max": 7.0,
+        "name": "Cottage light test",
+        "icon": "mdi:ab-testing",
+        "step": 1.0,
+        "mode": "slider"
       }
     ]
   }

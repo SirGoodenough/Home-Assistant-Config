@@ -401,3 +401,29 @@
           data:
             message: Garage is dead!
             entities: media_player.jennys_room_display
+
+#################################################################
+## Printer Watchdog                                            ##
+#################################################################
+- id: 72014f6e-0478-4661-a9c6-4e3ce91d3950
+  alias: Downstairs Printer Watchdog
+  description: turn off the printer in an hour
+  triggers:
+  - trigger: state
+    entity_id:
+    - switch.downstairs_printer
+    from: 'off'
+    to: 'on'
+    for:
+      hours: 1
+      minutes: 0
+      seconds: 0
+  conditions: []
+  actions:
+  - action: switch.turn_off
+    target:
+      entity_id: switch.downstairs_printer
+    data: {}
+  - action: script.tts_printer_off
+    data: {}
+  mode: single

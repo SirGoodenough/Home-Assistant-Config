@@ -168,28 +168,6 @@
               }
             },
             {
-              "type": "plant-status",
-              "entity": "plant.my_hoya",
-              "visibility": [
-                {
-                  "condition": "numeric_state",
-                  "entity": "plant.my_hoya",
-                  "below": 13
-                }
-              ]
-            },
-            {
-              "type": "plant-status",
-              "entity": "plant.my_cemetery_plant",
-              "visibility": [
-                {
-                  "condition": "numeric_state",
-                  "entity": "plant.my_cemetery_plant",
-                  "below": 45
-                }
-              ]
-            },
-            {
               "entities": [
                 {
                   "entity": "sensor.sonoff_rf_bridge_2_si7021_temperature",
@@ -258,16 +236,24 @@
               "type": "conditional",
               "conditions": [
                 {
-                  "entity": "sensor.water_the_plants",
-                  "state": "today"
-                },
-                {
                   "condition": "or",
                   "conditions": [
                     {
                       "condition": "numeric_state",
                       "entity": "sensor.chaloupkaabode_weather_soil_moisture_2",
-                      "below": 13
+                      "below": 13,
+                      "above": 0
+                    },
+                    {
+                      "condition": "state",
+                      "entity": "sensor.water_the_plants",
+                      "state": "today"
+                    },
+                    {
+                      "condition": "numeric_state",
+                      "entity": "sensor.chaloupkaabode_weather_soil_moisture_1",
+                      "above": 0,
+                      "below": 45
                     }
                   ]
                 }
@@ -311,6 +297,18 @@
                   "entity_id": "input_boolean.pad_enable2"
                 }
               }
+            },
+            {
+              "type": "plant-status",
+              "entity": "plant.my_cemetery_plant",
+              "visibility": [
+                {
+                  "condition": "numeric_state",
+                  "entity": "sensor.chaloupkaabode_weather_soil_moisture_1",
+                  "below": 45,
+                  "above": 0
+                }
+              ]
             },
             {
               "type": "glance",
@@ -362,10 +360,31 @@
                 },
                 {
                   "entity": "switch.yard_light_pir"
+                },
+                {
+                  "entity": "switch.air_compressor_house_switch"
+                },
+                {
+                  "entity": "light.mini_smartplug_dimmer"
+                },
+                {
+                  "entity": "switch.bidet_downstairs_switch"
                 }
               ],
               "title": "Glance",
               "columns": 4
+            },
+            {
+              "type": "plant-status",
+              "entity": "plant.my_hoya",
+              "visibility": [
+                {
+                  "condition": "numeric_state",
+                  "entity": "sensor.chaloupkaabode_weather_soil_moisture_2",
+                  "below": 13,
+                  "above": 0
+                }
+              ]
             },
             {
               "type": "vertical-stack",
@@ -839,6 +858,9 @@
             {
               "entities": [
                 {
+                  "entity": "sensor.bt3_bathroom2_temperature"
+                },
+                {
                   "entity": "switch.micro_switch_g2"
                 },
                 {
@@ -852,6 +874,9 @@
                 },
                 {
                   "entity": "light.mini_smartplug_dimmer"
+                },
+                {
+                  "entity": "switch.bidet_downstairs_switch"
                 }
               ],
               "show_header_toggle": false,
@@ -2459,13 +2484,6 @@
               "detail": 1
             },
             {
-              "type": "sensor",
-              "entity": "sensor.jen_temperature_humidity",
-              "graph": "line",
-              "unit": "%",
-              "name": "Jen's Humidity"
-            },
-            {
               "graph": "line",
               "hours_to_show": 24,
               "entity": "sensor.sonoff_rf_bridge_2_si7021_humidity",
@@ -2688,13 +2706,10 @@
                   "entity": "light.jens_light"
                 },
                 {
-                  "entity": "light.grp_jens_color"
-                },
-                {
-                  "entity": "light.jens_led_bed"
-                },
-                {
                   "entity": "light.bulb1"
+                },
+                {
+                  "entity": "light.memorial"
                 }
               ],
               "theme": "darkish",
@@ -2868,21 +2883,6 @@
                 }
               ],
               "title": "Bedroom"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "light.wled"
-                },
-                {
-                  "entity": "select.wled_playlist"
-                },
-                {
-                  "entity": "select.wled_preset"
-                }
-              ],
-              "title": "In_Tree"
             }
           ],
           "icon": "mdi:lightbulb-outline",
