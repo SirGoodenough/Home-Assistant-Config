@@ -16,7 +16,7 @@ upstairs_bath_heater_watchdog:
         {% from 'logic_chekr.jinja' import false_all %}
         {{- false_all( ['switch.micro_switch_g2'] ) | bool -}}
         {# is_state('switch.micro_switch_g2', 'off') }} #}
-      timeout: "01:00:00"
+      timeout: "00:20:00"
     - action: script.upstairs_bath_heater_off
 
 #####################################################

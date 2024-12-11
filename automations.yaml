@@ -47,3 +47,19 @@
         target:
           entity_id: input_boolean.test_color
       action_flip_from_any_to_face_2: []
+- id: '1733339152395'
+  alias: test of dryer current sense
+  description: ''
+  triggers:
+  - trigger: numeric_state
+    entity_id:
+    - sensor.dryer_power_produced_energy
+    attribute: current
+    below: 0.05
+  conditions: []
+  actions:
+  - action: script.tts_dryer_done
+    data:
+      live_speaker:
+      - media_player.kitchen_speaker
+  mode: single

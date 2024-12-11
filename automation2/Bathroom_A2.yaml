@@ -76,15 +76,15 @@
   alias: Bathroom Heater Julie Bedtime
   initial_state: on
   triggers:
-    - trigger: time
-      at: "21:55:37"
+    # - trigger: time
+    #   at: "21:55:37"
     - trigger: state
       entity_id: button.moms_button1
   conditions:
     and:
       - alias: "Only at bedtime"
         condition: time
-        after: "21:30:00"
+        after: "21:00:00"
         before: "23:30:00"
       - alias: "Only if Julie is home"
         condition: state

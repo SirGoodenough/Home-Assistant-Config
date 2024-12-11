@@ -40,6 +40,9 @@
                   "entity": "switch.humidifier"
                 },
                 {
+                  "entity": "switch.humidifier_humidifier_enable"
+                },
+                {
                   "entity": "switch.kitchenfan"
                 },
                 {
@@ -405,19 +408,21 @@
                   "show_current_as_primary": true
                 },
                 {
+                  "graph": "line",
                   "type": "sensor",
                   "entity": "sensor.lrthermostat",
-                  "graph": "line",
                   "unit": "°F",
                   "name": "Living Room Temperature",
-                  "detail": 2
+                  "detail": 2,
+                  "hours_to_show": 48
                 },
                 {
+                  "graph": "line",
                   "type": "sensor",
                   "entity": "sensor.sonoff_rf_bridge_2_si7021_temperature",
-                  "graph": "line",
                   "name": "Living Room Temperature 2",
-                  "detail": 2
+                  "detail": 2,
+                  "hours_to_show": 48
                 }
               ]
             },
@@ -2435,7 +2440,7 @@
               "tap_action": {
                 "action": "toggle"
               },
-              "entity": "switch.humidifier_enable",
+              "entity": "switch.humidifier_humidifier_enable",
               "name": "Humidifer Power (sw2)",
               "icon": "mdi:air-humidifier",
               "icon_height": "50px",
@@ -2474,7 +2479,7 @@
               "hours_to_show": 24,
               "entity": "sensor.ethernettest_kitchen_humidity",
               "type": "sensor",
-              "detail": 1
+              "detail": 2
             },
             {
               "graph": "line",
