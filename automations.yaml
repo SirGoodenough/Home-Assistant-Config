@@ -63,3 +63,43 @@
       live_speaker:
       - media_player.kitchen_speaker
   mode: single
+- id: '1733964041898'
+  alias: Party is over rodent
+  description: Turns on the sonic screwdriver when Mom's light is off
+  triggers:
+  - trigger: state
+    entity_id:
+    - light.mom_light
+    to: 'off'
+    for:
+      hours: 0
+      minutes: 2
+      seconds: 0
+    id: Wax on
+  - trigger: state
+    entity_id:
+    - light.mom_light
+    to: 'on'
+    for:
+      hours: 0
+      minutes: 2
+      seconds: 0
+    id: wax off
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - Wax on
+      sequence:
+      - action: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.sonic_screwdriver
+    default:
+    - action: switch.turn_off
+      data: {}
+      target:
+        entity_id: switch.sonic_screwdriver
+  mode: single

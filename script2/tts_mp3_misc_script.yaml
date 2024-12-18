@@ -89,3 +89,15 @@ tts_printer_off:
       - media_player.jennys_room_display
   description: announce printer off
   icon: mdi:printer-off
+
+media_player_ships_bell_4:
+  alias: Media Player Mail
+  use_blueprint:
+    path: SirGoodenough/play_media_file_script.yaml
+    input:
+      speaker_target: 
+      - media_player.basement_speaker
+      - media_player.jennys_room_display
+      - media_player.garage_speaker
+      file_2_play: media-source://media_source/local/mp3/Ships_Bell_4.mp3
+  icon: mdi:ferry

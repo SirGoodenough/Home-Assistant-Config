@@ -25,7 +25,7 @@
                   "entity": "sensor.ethernettest_kitchen_co2"
                 },
                 {
-                  "entity": "sensor.ethernettest_kitchen_dust_sensor"
+                  "entity": "sensor.ethernettest_kitchen_indoor_pm2_5"
                 },
                 {
                   "entity": "sensor.yertle_last_action_a"
@@ -335,7 +335,7 @@
                   "entity": "lock.side_door"
                 },
                 {
-                  "entity": "lock.smart_code_with_home_connect_technology"
+                  "entity": "lock.backdoor"
                 },
                 {
                   "entity": "cover.garage_door"
@@ -368,10 +368,10 @@
                   "entity": "switch.air_compressor_house_switch"
                 },
                 {
-                  "entity": "light.mini_smartplug_dimmer"
+                  "entity": "switch.bidet_downstairs_switch"
                 },
                 {
-                  "entity": "switch.bidet_downstairs_switch"
+                  "entity": "switch.outdoor_double_plug_1"
                 }
               ],
               "title": "Glance",
@@ -515,6 +515,13 @@
               "detail": 2,
               "hours_to_show": 48,
               "unit": "ppm"
+            },
+            {
+              "graph": "line",
+              "type": "sensor",
+              "entity": "sensor.ethernettest_kitchen_indoor_pm2_5",
+              "detail": 1,
+              "hours_to_show": 48
             },
             {
               "type": "conditional",
@@ -866,7 +873,7 @@
                   "entity": "sensor.bt3_bathroom2_temperature"
                 },
                 {
-                  "entity": "switch.micro_switch_g2"
+                  "entity": "switch.bathroom_heater"
                 },
                 {
                   "entity": "input_boolean.bathroom_heater_auto_on"
@@ -878,7 +885,7 @@
                   "entity": "button.stairs_up"
                 },
                 {
-                  "entity": "light.mini_smartplug_dimmer"
+                  "entity": "switch.outdoor_double_plug_1"
                 },
                 {
                   "entity": "switch.bidet_downstairs_switch"
@@ -1457,133 +1464,6 @@
           "id": "jennys_room",
           "path": "jennys_room",
           "title": "Jens Room"
-        },
-        {
-          "theme": "Backend-selected",
-          "title": "bed",
-          "path": "bed",
-          "subview": true,
-          "badges": [],
-          "cards": [
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "input_boolean.bed_head_up_one"
-                },
-                {
-                  "entity": "input_boolean.bed_head_up_five"
-                },
-                {
-                  "entity": "input_boolean.bed_head_up_ten"
-                },
-                {
-                  "entity": "input_boolean.bed_stop"
-                },
-                {
-                  "entity": "input_boolean.bed_head_down_one"
-                },
-                {
-                  "entity": "input_boolean.bed_head_down_five"
-                },
-                {
-                  "entity": "input_boolean.bed_head_down_ten"
-                }
-              ],
-              "show_header_toggle": false
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "input_boolean.bed_knees_up_one"
-                },
-                {
-                  "entity": "input_boolean.bed_knees_up_five"
-                },
-                {
-                  "entity": "input_boolean.bed_knees_up_ten"
-                },
-                {
-                  "entity": "input_boolean.bed_stop"
-                },
-                {
-                  "entity": "input_boolean.bed_knees_down_one"
-                },
-                {
-                  "entity": "input_boolean.bed_knees_down_five"
-                },
-                {
-                  "entity": "input_boolean.bed_knees_down_ten"
-                }
-              ]
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "input_boolean.bed_up_six"
-                },
-                {
-                  "entity": "input_boolean.bed_stop"
-                },
-                {
-                  "entity": "input_boolean.bed_down_six"
-                },
-                {
-                  "entity": "input_boolean.bed_down_reset"
-                }
-              ]
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "input_boolean.bed_cares_up"
-                },
-                {
-                  "entity": "input_boolean.bed_cares_down"
-                },
-                {
-                  "entity": "input_boolean.bed_stop"
-                },
-                {
-                  "entity": "input_boolean.poop"
-                },
-                {
-                  "entity": "input_boolean.poop_down"
-                }
-              ],
-              "show_header_toggle": false
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "input_boolean.bed_flat"
-                },
-                {
-                  "entity": "input_boolean.bed_sit"
-                },
-                {
-                  "entity": "input_boolean.bed_stop"
-                },
-                {
-                  "entity": "input_boolean.bed_flat_to_enter"
-                }
-              ]
-            },
-            {
-              "show_name": true,
-              "show_icon": true,
-              "type": "button",
-              "tap_action": {
-                "action": "toggle"
-              },
-              "entity": "input_boolean.bed_stop",
-              "icon_height": "80px"
-            }
-          ]
         },
         {
           "title": "remotes",
@@ -2448,9 +2328,7 @@
             },
             {
               "type": "humidifier",
-              "entity": "humidifier.house_humidity",
-              "theme": "Fluent Orange",
-              "show_current_as_primary": true,
+              "entity": "humidifier.chaloupkaabode_humidifier",
               "features": [
                 {
                   "type": "humidifier-toggle"
@@ -3823,7 +3701,14 @@
               "min": 0,
               "max": 60,
               "unit": "minutes",
-              "name": "Rolling Sprinkler for Tomorrow"
+              "name": "Rolling Sprinkler for Tomorrow",
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "binary_sensor.garden_water",
+                  "state": "on"
+                }
+              ]
             },
             {
               "type": "gauge",
@@ -3836,7 +3721,14 @@
                 "green": 0,
                 "yellow": -1,
                 "red": -1
-              }
+              },
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "binary_sensor.garden_water",
+                  "state": "on"
+                }
+              ]
             },
             {
               "chart_type": "line",
@@ -3863,7 +3755,14 @@
               ],
               "logarithmic_scale": true,
               "hours_to_show": 96,
-              "title": "Sprinkler Time"
+              "title": "Sprinkler Time",
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "binary_sensor.garden_water",
+                  "state": "on"
+                }
+              ]
             },
             {
               "type": "entities",

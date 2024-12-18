@@ -41,52 +41,25 @@ sensor:
     address: 0x61
     update_interval: 68s
 
-  # GP2Y1010AU0F sensor in the Keyestudio KS0196 PM2.5 Dust Sensor Module.
-  - platform: adc
-    name: "${friendly_name} VCC"
-    update_interval: never
-    accuracy_decimals: 5
-    device_class: voltage
-    unit_of_measurement: "V"
-    icon: mdi:car-battery
-    pin: 35
-    filters:
-      - multiply: 7.031746
-      # Ratio from the voltage divider made to get VCC below 1.0 V
-    id: vcc
+    # GP2Y1010AU0F sensor in the Keyestudio KS0196 PM2.5 Dust Sensor Module.
+  - platform: gp2y1010au0f
+    name: '${friendly_name} Indoor PM2.5'
+    sensor: aq
+    output: led
+    update_interval: 58s
 
   - platform: adc
-    name: "${friendly_name} Dust Sensor"
-    accuracy_decimals: 2
-    device_class: pm25
-    unit_of_measurement: "µg/m³"
-    icon: "mdi:weather-dust"
+    internal: true
+    name: "${friendly_name} Raw Dust"
+    accuracy_decimals: 6
+    unit_of_measurement: "volts"
     pin: 36
-    filters:
-      - median: # send the median of the past 5 measurements
-          window_size: 5
-          send_every: 5
-      - lambda: return (17000.0 * (x * (id(vcc).state / 1024.0))) - 0.1;
     id: aq
 
-switch:
-  # GP2Y1010AU0F sensor in the Keyestudio KS0196 PM2.5 Dust Sensor Module.
+output:
+    # GP2Y1010AU0F Sample LED in the Keyestudio KS0196 PM2.5 Dust Sensor Module.
   - platform: gpio
-    internal: true
-    name: "${friendly_name} Dust Sensor Sample"
     pin:
       number: 16
       inverted: true
-    restore_mode: ALWAYS_OFF
     id: led
-
-interval:
-  # GP2Y1010AU0F sensor in the Keyestudio KS0196 PM2.5 Dust Sensor Module.
-  - interval: 12s
-    then:
-      - component.update: vcc
-      - switch.turn_on: led
-      - delay: 280ms
-      - component.update: aq
-      - delay: 40ms
-      - switch.turn_off: led

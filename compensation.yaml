@@ -30,3 +30,11 @@ cemetery_battery:
     - [3.2, 100.0]
   precision: 1
   unit_of_measurement: "%"
+fire_up:
+  unique_id: d1b5dac7-5ef7-4c9d-b8e5-9a88985aae0b
+  source: sensor.gw2000b_v2_2_4_outdoor_temperature
+  lower_limit: true
+  upper_limit: false
+  data_points:
+    - [60, -15.0]
+    - [240, 32]

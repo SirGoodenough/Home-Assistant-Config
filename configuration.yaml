@@ -19,7 +19,6 @@ device_tracker: !include device_tracker.yaml
 ffmpeg: !include ffmpeg.yaml
 frontend: !include frontend.yaml
 hardware:
-generic_hygrostat: !include humidifer.yaml
 group: !include groups.yaml
 homeassistant: !include homeassistant.yaml
 input_boolean:

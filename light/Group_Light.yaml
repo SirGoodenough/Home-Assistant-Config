@@ -6,7 +6,7 @@
     entities:
       - light.kneelight
       - light.jens_light
-      - light.jims_computer_light_2
+      - light.jims_computer_light
       - light.mom_light
       - light.livingroomlight
       - light.kitchensink
@@ -24,7 +24,7 @@
     unique_id: d6e23f4b-a9cf-4b11-bac4-77bfc9a5d82a
     all: true
     entities:
-      - light.jims_computer_light_2
+      - light.jims_computer_light
       - light.kneelight
       - light.kitchen_down_lights
       - light.kitchensink
@@ -52,7 +52,7 @@
     all: true
     entities:
       - light.kneelight
-      - light.jims_computer_light_2
+      - light.jims_computer_light
       - light.kitchensink
       - light.memorial
 
