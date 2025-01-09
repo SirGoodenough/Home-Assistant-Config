@@ -14,8 +14,8 @@ upstairs_bath_heater_watchdog:
     - alias: "Wait until switch is off or the timeout"
       wait_template: >
         {% from 'logic_chekr.jinja' import false_all %}
-        {{- false_all( ['switch.micro_switch_g2'] ) | bool -}}
-        {# is_state('switch.micro_switch_g2', 'off') }} #}
+        {{- false_all( ['switch.bathroom_heater'] ) | bool -}}
+        {# is_state('switch.bathroom_heater', 'off') }} #}
       timeout: "00:20:00"
     - action: script.upstairs_bath_heater_off
 
@@ -26,7 +26,7 @@ upstairs_bath_heater_on:
   alias: Turn on Upstairs Bathroom Heater
   sequence:
     - action: switch.turn_on
-      entity_id: switch.micro_switch_g2
+      entity_id: switch.bathroom_heater
     - alias: "Start Watchdog"
       action: script.upstairs_bath_heater_watchdog
 
@@ -39,4 +39,4 @@ upstairs_bath_heater_off:
     - action: input_boolean.turn_off
       entity_id: input_boolean.bathroom_heater_auto_on
     - action: switch.turn_off
-      entity_id: switch.micro_switch_g2
+      entity_id: switch.bathroom_heater

@@ -22,6 +22,11 @@
       state: "{{ states.button | count }}"
       attributes:
         friendly_name: "But"
+    - name: devices_count
+      unique_id: 1194e103-5f2d-4c8f-9279-0a95f2349375
+      state: "{{ states | map(attribute='device_id') | unique | list | count}}"
+      attributes:
+        friendly_name: "Dev"
     - name: entities_count
       unique_id: 7292b69f-9fe1-4286-b0fd-0d8ec891d74c
       state: "{{ states | map(attribute='entity_id') | list | count}}"

@@ -83,7 +83,7 @@
   initial_state: on
   triggers:
     - trigger: time
-      at: 06:18:14
+      at: 04:50:14
   actions:
     - action: hassio.addon_start
       data:

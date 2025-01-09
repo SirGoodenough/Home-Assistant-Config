@@ -7,7 +7,7 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: switch.micro_switch_g2
+      entity_id: switch.bathroom_heater
       to: "on"
     - trigger: state
       entity_id: input_boolean.bathroom_heater_auto_on
@@ -27,7 +27,7 @@
   conditions:
     - >
       {% from 'logic_chekr.jinja' import true_all %}
-      {{- true_all( ['switch.micro_switch_g2'] ) | bool -}}
+      {{- true_all( ['switch.bathroom_heater'] ) | bool -}}
   actions:
     - action: script.upstairs_bath_heater_off
     - action: script.media_player_bathroom
@@ -39,14 +39,14 @@
   initial_state: on
   triggers:
     trigger: state
-    entity_id: switch.micro_switch_g2
+    entity_id: switch.bathroom_heater
     to: "on"
     for:
       minutes: 2
   conditions:
     - >
       {% from 'logic_chekr.jinja' import true_all %}
-      {{- true_all( ['binary_sensor.bathroom','switch.micro_switch_g2'] ) | bool -}}
+      {{- true_all( ['binary_sensor.bathroom','switch.bathroom_heater'] ) | bool -}}
   actions:
     - action: script.upstairs_bath_heater_off
     - action: script.media_player_bathroom

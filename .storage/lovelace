@@ -212,7 +212,10 @@
                   "entity": "light.fp_socket"
                 },
                 {
-                  "entity": "light.mom_chair"
+                  "entity": "switch.mom_light_mom_light"
+                },
+                {
+                  "entity": "switch.sonic_screwdriver"
                 },
                 {
                   "entity": "sensor.rm02_last_action"
@@ -242,21 +245,19 @@
                   "condition": "or",
                   "conditions": [
                     {
-                      "condition": "numeric_state",
-                      "entity": "sensor.chaloupkaabode_weather_soil_moisture_2",
-                      "below": 13,
-                      "above": 0
+                      "condition": "state",
+                      "entity": "plant.my_cemetery_plant",
+                      "state": "problem"
                     },
                     {
                       "condition": "state",
-                      "entity": "sensor.water_the_plants",
-                      "state": "today"
+                      "entity": "plant.my_hoya",
+                      "state": "problem"
                     },
                     {
-                      "condition": "numeric_state",
-                      "entity": "sensor.chaloupkaabode_weather_soil_moisture_1",
-                      "above": 0,
-                      "below": 45
+                      "condition": "state",
+                      "entity": "plant.my_pothos",
+                      "state": "problem"
                     }
                   ]
                 }
@@ -306,10 +307,9 @@
               "entity": "plant.my_cemetery_plant",
               "visibility": [
                 {
-                  "condition": "numeric_state",
-                  "entity": "sensor.chaloupkaabode_weather_soil_moisture_1",
-                  "below": 45,
-                  "above": 0
+                  "condition": "state",
+                  "entity": "plant.my_cemetery_plant",
+                  "state": "problem"
                 }
               ]
             },
@@ -382,10 +382,21 @@
               "entity": "plant.my_hoya",
               "visibility": [
                 {
-                  "condition": "numeric_state",
-                  "entity": "sensor.chaloupkaabode_weather_soil_moisture_2",
-                  "below": 13,
-                  "above": 0
+                  "condition": "state",
+                  "entity": "plant.my_hoya",
+                  "state": "problem"
+                }
+              ]
+            },
+            {
+              "type": "plant-status",
+              "entity": "plant.my_pothos",
+              "name": "Bathroom Pothos",
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "plant.my_pothos",
+                  "state": "problem"
                 }
               ]
             },
@@ -410,17 +421,9 @@
                 {
                   "graph": "line",
                   "type": "sensor",
-                  "entity": "sensor.lrthermostat",
+                  "entity": "sensor.living_floor_temperature",
                   "unit": "°F",
-                  "name": "Living Room Temperature",
-                  "detail": 2,
-                  "hours_to_show": 48
-                },
-                {
-                  "graph": "line",
-                  "type": "sensor",
-                  "entity": "sensor.sonoff_rf_bridge_2_si7021_temperature",
-                  "name": "Living Room Temperature 2",
+                  "name": "Living Floor Temperature Avg",
                   "detail": 2,
                   "hours_to_show": 48
                 }
@@ -695,27 +698,6 @@
               "type": "conditional",
               "conditions": [
                 {
-                  "condition": "numeric_state",
-                  "entity": "sensor.jens_window_curtain_battery",
-                  "below": 26
-                }
-              ],
-              "card": {
-                "show_name": true,
-                "show_icon": true,
-                "type": "button",
-                "tap_action": {
-                  "action": "more-info"
-                },
-                "entity": "sensor.jens_window_curtain_battery",
-                "icon": "",
-                "show_state": true
-              }
-            },
-            {
-              "type": "conditional",
-              "conditions": [
-                {
                   "entity": "binary_sensor.battery_low_garage_door_open",
                   "state": "on"
                 }
@@ -786,7 +768,7 @@
               "conditions": [
                 {
                   "condition": "numeric_state",
-                  "entity": "sensor.lumi_lumi_sensor_cube_battery",
+                  "entity": "sensor.gertle_battery",
                   "below": 21
                 }
               ],
@@ -797,7 +779,7 @@
                 "tap_action": {
                   "action": "more-info"
                 },
-                "entity": "sensor.lumi_lumi_sensor_cube_battery",
+                "entity": "sensor.gertle_battery",
                 "hold_action": {
                   "action": "none"
                 },
@@ -1008,9 +990,6 @@
                 },
                 {
                   "entity": "light.grp_studio"
-                },
-                {
-                  "entity": "sensor.lumi_lumi_sensor_cube_aqgl01_device_temperature"
                 }
               ],
               "show_header_toggle": false,
@@ -3513,10 +3492,7 @@
                   "entity": "sensor.gw2000b_v2_2_4_absolute_pressure",
                   "name": "Absolute Pressure"
                 },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_daily_rain_rate_piezo",
-                  "name": "Daily Rain Rate Piezo"
-                },
+                "sensor.gw2000b_v2_2_4_daily_rain_rate_piezo",
                 {
                   "entity": "sensor.gw2000b_v2_2_4_dewpoint",
                   "name": "Dewpoint"
@@ -3590,6 +3566,10 @@
                   "name": "Soil Moisture 2"
                 },
                 {
+                  "entity": "sensor.chaloupkaabode_weather_soil_moisture_3",
+                  "name": "Soil Moisture 3"
+                },
+                {
                   "entity": "sensor.gw2000b_v2_2_4_solar_lux",
                   "name": "Solar Lux"
                 },
@@ -3598,13 +3578,18 @@
                   "name": "Solar Radiation"
                 },
                 {
+                  "entity": "sensor.chaloupkaabode_weather_temperature_7",
+                  "name": "Temperature 7"
+                },
+                {
+                  "entity": "sensor.chaloupkaabode_weather_temperature_8",
+                  "name": "Temperature 8"
+                },
+                {
                   "entity": "sensor.gw2000b_v2_2_4_uv_index",
                   "name": "UV Index"
                 },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_weekly_rain_rate_piezo",
-                  "name": "Weekly Rain Rate Piezo"
-                },
+                "sensor.gw2000b_v2_2_4_weekly_rain_rate_piezo",
                 {
                   "entity": "sensor.gw2000b_v2_2_4_wind_direction",
                   "name": "Wind Direction"
@@ -3629,6 +3614,12 @@
               "title": "ChaloupkaAbode Weather"
             },
             {
+              "type": "weather-forecast",
+              "entity": "weather.home",
+              "show_forecast": false,
+              "theme": "Animated Weather Card"
+            },
+            {
               "type": "entity",
               "entity": "sensor.control_central_uv_index",
               "attribute": "level",
@@ -3637,36 +3628,21 @@
               "state_color": false
             },
             {
-              "type": "entities",
+              "chart_type": "line",
+              "period": "hour",
+              "type": "statistics-graph",
               "entities": [
-                {
-                  "entity": "input_boolean.rain"
-                },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_daily_rain_rate_piezo"
-                },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_weekly_rain_rate_piezo"
-                },
-                {
-                  "entity": "sensor.sunlight_pct_2"
-                },
-                {
-                  "entity": "sensor.sun_state"
-                },
-                {
-                  "entity": "binary_sensor.dark_outside"
-                },
-                {
-                  "entity": "sun.sun"
-                },
-                {
-                  "entity": "binary_sensor.mailbox"
-                }
+                "sensor.chaloupkaabode_weather_soil_moisture_1",
+                "sensor.chaloupkaabode_weather_soil_moisture_2",
+                "sensor.chaloupkaabode_weather_soil_moisture_3"
               ],
-              "title": "ChaloupkaAbode Weather",
-              "theme": "Fluent Green",
-              "state_color": true
+              "stat_types": [
+                "mean"
+              ],
+              "title": "Soil Moisture",
+              "days_to_show": 21,
+              "hide_legend": true,
+              "logarithmic_scale": true
             },
             {
               "type": "gauge",
@@ -3731,20 +3707,36 @@
               ]
             },
             {
-              "chart_type": "line",
-              "period": "hour",
-              "type": "statistics-graph",
+              "type": "entities",
               "entities": [
-                "sensor.chaloupkaabode_weather_soil_moisture_1",
-                "sensor.chaloupkaabode_weather_soil_moisture_2"
+                {
+                  "entity": "input_boolean.rain"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_daily_rain_rate_piezo"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_weekly_rain_rate_piezo"
+                },
+                {
+                  "entity": "sensor.sunlight_pct_2"
+                },
+                {
+                  "entity": "sensor.sun_state"
+                },
+                {
+                  "entity": "binary_sensor.dark_outside"
+                },
+                {
+                  "entity": "sun.sun"
+                },
+                {
+                  "entity": "binary_sensor.mailbox"
+                }
               ],
-              "stat_types": [
-                "mean"
-              ],
-              "title": "Soil Moisture",
-              "days_to_show": 21,
-              "hide_legend": true,
-              "logarithmic_scale": true
+              "title": "ChaloupkaAbode Weather",
+              "theme": "Fluent Green",
+              "state_color": true
             },
             {
               "type": "history-graph",
@@ -3765,47 +3757,15 @@
               ]
             },
             {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "sensor.chaloupkaabode_weather_soil_battery_1",
-                  "name": "Soil Battery 1"
-                },
-                {
-                  "entity": "sensor.chaloupkaabode_weather_soil_battery_2",
-                  "name": "Soil Battery 2"
-                },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_wh57_battery",
-                  "name": "WH57 Battery"
-                },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_wh90_battery",
-                  "name": "WH90 Battery"
-                },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_wh90_capacitor",
-                  "name": "WH90 Capacitor"
-                }
-              ],
-              "title": "ChaloupkaAbode Weather"
-            },
-            {
-              "type": "weather-forecast",
-              "entity": "weather.home",
-              "show_forecast": false,
-              "theme": "Animated Weather Card"
+              "graph": "line",
+              "type": "sensor",
+              "entity": "sensor.aurora_visibility_visibility",
+              "detail": 1
             },
             {
               "type": "iframe",
               "url": "https://www.home-assistant.io",
               "aspect_ratio": "50%"
-            },
-            {
-              "graph": "line",
-              "type": "sensor",
-              "entity": "sensor.aurora_visibility_visibility",
-              "detail": 1
             }
           ],
           "icon": "mdi:weather-lightning",
@@ -3819,7 +3779,7 @@
             {
               "entities": [
                 {
-                  "entity": "binary_sensor.battery_low_backdoor"
+                  "entity": "binary_sensor.backdoor_low_battery_level"
                 },
                 {
                   "entity": "binary_sensor.battery_low_front_door_inside"
@@ -3866,16 +3826,10 @@
                   "entity": "sensor.front_door_battery"
                 },
                 {
-                  "entity": "sensor.smart_code_with_home_connect_technology_battery_level"
-                },
-                {
-                  "entity": "sensor.lumi_lumi_sensor_cube_battery"
+                  "entity": "sensor.gertle_battery"
                 },
                 {
                   "entity": "sensor.yertle_battery"
-                },
-                {
-                  "entity": "sensor.jen_temperature_battery"
                 },
                 {
                   "entity": "sensor.mom_button_battery"
@@ -3890,19 +3844,13 @@
                   "entity": "sensor.food_center_button_battery"
                 },
                 {
-                  "entity": "sensor.bot_108e_battery"
-                },
-                {
                   "entity": "sensor.sm_s906u_battery_level"
                 },
                 {
                   "entity": "sensor.jens_window_curtain_battery"
                 },
                 {
-                  "entity": "sensor.jens_kitchen_curtain_battery"
-                },
-                {
-                  "entity": "sensor.mom_s_phone_battery_level"
+                  "entity": "sensor.twentyrwomom_battery_state"
                 }
               ],
               "title": "Battery State"
@@ -3917,6 +3865,48 @@
               },
               "name": "Clear Battery Low",
               "icon": "mdi:home-battery-outline"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "binary_sensor.chaloupkaabode_weather_battery_7",
+                  "name": "Battery 7"
+                },
+                {
+                  "entity": "binary_sensor.chaloupkaabode_weather_battery_8",
+                  "name": "Battery 8"
+                },
+                {
+                  "entity": "sensor.chaloupkaabode_weather_soil_battery_1",
+                  "name": "Soil Battery 1"
+                },
+                {
+                  "entity": "sensor.chaloupkaabode_weather_soil_battery_2",
+                  "name": "Soil Battery 2"
+                },
+                {
+                  "entity": "sensor.chaloupkaabode_weather_soil_battery_3",
+                  "name": "Soil Battery 3"
+                },
+                {
+                  "entity": "binary_sensor.chaloupkaabode_weather_wh25_battery",
+                  "name": "WH25 Battery"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_wh57_battery",
+                  "name": "WH57 Battery"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_wh90_battery",
+                  "name": "WH90 Battery"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_wh90_capacitor",
+                  "name": "WH90 Capacitor"
+                }
+              ],
+              "title": "ChaloupkaAbode Weather"
             }
           ],
           "icon": "mdi:battery-alert",

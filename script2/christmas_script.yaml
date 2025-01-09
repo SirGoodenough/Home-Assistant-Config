@@ -15,7 +15,7 @@ inside_christmas:
           - action: light.turn_off
             entity_id:
               - light.wled
-              - light.mom_chair
+              - light.mom_light
           - action: switch.turn_on
             entity_id: switch.b2
           - delay:
@@ -67,7 +67,7 @@ inside_christmas:
           - action: light.turn_on
             entity_id:
               - light.wled
-              - light.mom_chair
+              - light.mom_light
           - action: input_boolean.turn_on
             entity_id: input_boolean.christmas
 
@@ -80,7 +80,7 @@ heavenly_peace:
     - action: light.turn_off
       entity_id:
         - light.wled
-        - light.mom_chair
+        - light.mom_light
     - delay:
         seconds: 2
     - action: switch.turn_off
