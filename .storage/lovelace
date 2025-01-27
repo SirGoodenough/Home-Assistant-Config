@@ -215,9 +215,6 @@
                   "entity": "switch.mom_light_mom_light"
                 },
                 {
-                  "entity": "switch.sonic_screwdriver"
-                },
-                {
                   "entity": "sensor.rm02_last_action"
                 },
                 {
@@ -363,15 +360,6 @@
                 },
                 {
                   "entity": "switch.yard_light_pir"
-                },
-                {
-                  "entity": "switch.air_compressor_house_switch"
-                },
-                {
-                  "entity": "switch.bidet_downstairs_switch"
-                },
-                {
-                  "entity": "switch.outdoor_double_plug_1"
                 }
               ],
               "title": "Glance",
@@ -555,6 +543,38 @@
               "theme": "Animated Weather Card",
               "secondary_info_attribute": "wind_speed",
               "forecast_type": "legacy"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "switch.sonic_screwdrive_kitchen"
+                },
+                {
+                  "entity": "switch.sonic_screwdriver"
+                },
+                {
+                  "entity": "switch.sonic_screwdriver_down"
+                },
+                {
+                  "entity": "sensor.bidet_downstairs_power"
+                },
+                {
+                  "entity": "switch.bidet_downstairs_switch"
+                },
+                {
+                  "entity": "switch.outdoor_double_plug_1"
+                },
+                {
+                  "entity": "sensor.air_compressor_house_power"
+                },
+                {
+                  "entity": "switch.air_compressor_house_switch"
+                }
+              ],
+              "state_color": true,
+              "title": "House",
+              "theme": "Fluent Slate"
             },
             {
               "type": "conditional",
@@ -865,12 +885,6 @@
                 },
                 {
                   "entity": "button.stairs_up"
-                },
-                {
-                  "entity": "switch.outdoor_double_plug_1"
-                },
-                {
-                  "entity": "switch.bidet_downstairs_switch"
                 }
               ],
               "show_header_toggle": false,
@@ -3614,10 +3628,12 @@
               "title": "ChaloupkaAbode Weather"
             },
             {
+              "show_current": true,
+              "show_forecast": true,
               "type": "weather-forecast",
               "entity": "weather.home",
-              "show_forecast": false,
-              "theme": "Animated Weather Card"
+              "theme": "Animated Weather Card",
+              "forecast_type": "daily"
             },
             {
               "type": "entity",
@@ -3707,6 +3723,25 @@
               ]
             },
             {
+              "chart_type": "line",
+              "period": "hour",
+              "type": "statistics-graph",
+              "entities": [
+                "sensor.cemetary_lux_illuminance",
+                "sensor.pothos_lux_illuminance",
+                "sensor.hoya_lux_illuminance",
+                "sensor.gw2000b_v2_2_4_solar_lux"
+              ],
+              "stat_types": [
+                "mean"
+              ],
+              "title": "light",
+              "days_to_show": 3,
+              "hide_legend": true,
+              "logarithmic_scale": true,
+              "max_y_axis": 10000
+            },
+            {
               "type": "entities",
               "entities": [
                 {
@@ -3755,6 +3790,24 @@
                   "state": "on"
                 }
               ]
+            },
+            {
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "type": "plant-status",
+                  "entity": "plant.my_hoya"
+                },
+                {
+                  "type": "plant-status",
+                  "entity": "plant.my_pothos"
+                },
+                {
+                  "type": "plant-status",
+                  "entity": "plant.my_cemetery_plant"
+                }
+              ],
+              "title": "Forrest Gump"
             },
             {
               "graph": "line",

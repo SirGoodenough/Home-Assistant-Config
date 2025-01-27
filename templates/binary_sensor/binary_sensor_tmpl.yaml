@@ -84,26 +84,31 @@
     #####################################################
     # Dryer State                                       #
     #####################################################
-    - name: "Dryer Running"
-      unique_id: 4105191d-d7b4-4e60-949c-715847353f33
+    - name: "Dryer"
+      unique_id: c764264c-815d-44f5-93f7-3afe89900af2
       state: >-
-        {# Flip sensor for better visual state. #}
-        {% set dr_st = is_state('binary_sensor.dryer', 'off') %}
-        {% if dr_st %}
+        {# Set the variable. #}
+        {% set dy_watts = states('sensor.dryer_power_power') | float(50) %}
+        {# Create a dead zone to prevent oscillations. #}
+        {%- if dy_watts > 100 %}
           true
-        {% else %}
+        {%- elif dy_watts < 77 %}
           false
+        {%- else %}
+          {{ states('binary_sensor.dryer') }}
         {%- endif %}
       delay_off:
-        minutes: 1
+        minutes: 5
+      auto_off:
+        hours: 1.5
       availability: >-
         {% from 'availability_template.jinja' import avail %}
-        {{- avail(['binary_sensor.dryer']) | bool -}}
+        {{- avail(['sensor.dryer_power_power']) | bool -}}
       attributes:
         friendly_name: "Dryer Running"
       icon: >-
         {# Flip sensor for better visual state. #}
-        {% set dr_st = is_state('binary_sensor.dryer', 'off') %}
+        {% set dr_st = is_state('.binary_sensor.dryer', 'on') %}
         {% if dr_st %}
           mdi:tumble-dryer
         {% elif not dr_st %}
@@ -111,11 +116,39 @@
         {% else %}
           mdi:tumble-dryer-alert
         {% endif %}
-                {% set dr_st = states('binary_sensor.dryer') %}
-        {% if dr_st == 'on' %} mdi:tumble-dryer
-        {% elif dr_st  == 'off' %} mdi:tumble-dryer-off
-        {% else %} mdi:tumble-dryer-alert
-        {% endif %}
+
+    # - name: "Dryer Running"
+    #   unique_id: 4105191d-d7b4-4e60-949c-715847353f33
+    #   state: >-
+    #     {# Flip sensor for better visual state. #}
+    #     {% set dr_st = is_state('binary_sensor.dryer', 'off') %}
+    #     {% if dr_st %}
+    #       true
+    #     {% else %}
+    #       false
+    #     {%- endif %}
+    #   delay_off:
+    #     minutes: 1
+    #   availability: >-
+    #     {% from 'availability_template.jinja' import avail %}
+    #     {{- avail(['binary_sensor.dryer']) | bool -}}
+    #   attributes:
+    #     friendly_name: "Dryer Running"
+    #   icon: >-
+    #     {# Flip sensor for better visual state. #}
+    #     {% set dr_st = is_state('.binary_sensordryer', 'off') %}
+    #     {% if dr_st %}
+    #       mdi:tumble-dryer
+    #     {% elif not dr_st %}
+    #       mdi:tumble-dryer-off
+    #     {% else %}
+    #       mdi:tumble-dryer-alert
+    #     {% endif %}
+    #             {% set dr_st = states('binary_sensor.dryer') %}
+    #     {% if dr_st == 'on' %} mdi:tumble-dryer
+    #     {% elif dr_st  == 'off' %} mdi:tumble-dryer-off
+    #     {% else %} mdi:tumble-dryer-alert
+    #     {% endif %}
 
 
 

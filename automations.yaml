@@ -96,10 +96,10 @@
       - action: switch.turn_on
         data: {}
         target:
-          entity_id: switch.sonic_screwdriver
+          label_id: sonic_screwdriver
     default:
     - action: switch.turn_off
       data: {}
       target:
-        entity_id: switch.sonic_screwdriver
+        label_id: sonic_screwdriver
   mode: single
