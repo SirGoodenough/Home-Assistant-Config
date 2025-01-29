@@ -1,0 +1,34 @@
+# Example configuration.yaml entry
+---
+  my_cemetery_plant:
+    sensors:
+      moisture: sensor.chaloupkaabode_weather_soil_moisture_1
+      battery: sensor.compensation_sensor_chaloupkaabode_weather_soil_battery_1
+      temperature: sensor.cemetary_temp_temperature
+      brightness: sensor.cemetary_lux_illuminance
+    min_moisture: 40
+    max_moisture: 90
+    min_temperature: 50
+    max_temperature: 90
+    min_brightness: 1000
+  my_hoya:
+    sensors:
+      moisture: sensor.chaloupkaabode_weather_soil_moisture_2
+      battery: sensor.compensation_sensor_chaloupkaabode_weather_soil_battery_2
+      temperature: sensor.hoya_temp_temperature
+      brightness: sensor.hoya_lux_illuminance
+    min_moisture: 12
+    max_moisture: 50
+    min_temperature: 50
+    max_temperature: 90
+    min_brightness: 1000
+  my_pothos:
+    sensors:
+      moisture: sensor.chaloupkaabode_weather_soil_moisture_3
+      battery: sensor.compensation_sensor_chaloupkaabode_weather_soil_battery_3
+      temperature: sensor.pothos_temp_temperature
+      brightness: sensor.pothos_lux_illuminance
+    max_moisture: 90
+    min_temperature: 50
+    max_temperature: 90
+    min_brightness: 1000

@@ -52,6 +52,9 @@
                   "entity": "light.growlight2"
                 },
                 {
+                  "entity": "light.grow_window_light"
+                },
+                {
                   "entity": "script.reset_nag"
                 },
                 {
@@ -194,19 +197,16 @@
                   "entity": "light.mom_light"
                 },
                 {
-                  "entity": "light.mary"
-                },
-                {
                   "entity": "light.livingroomlight"
-                },
-                {
-                  "entity": "light.stairway_light"
                 },
                 {
                   "entity": "button.moms_button3"
                 },
                 {
-                  "entity": "button.moms_button1"
+                  "entity": "light.mary"
+                },
+                {
+                  "entity": "light.stairway_light"
                 },
                 {
                   "entity": "light.fp_socket"
@@ -215,16 +215,10 @@
                   "entity": "switch.mom_light_mom_light"
                 },
                 {
+                  "entity": "button.moms_button1"
+                },
+                {
                   "entity": "sensor.rm02_last_action"
-                },
-                {
-                  "entity": "input_boolean.christmas"
-                },
-                {
-                  "entity": "switch.outside_christmas"
-                },
-                {
-                  "entity": "switch.0xa4c138f8d7d96103"
                 },
                 {
                   "entity": "fan.mary"
