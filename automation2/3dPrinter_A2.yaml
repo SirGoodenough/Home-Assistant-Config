@@ -10,6 +10,7 @@
     entity_id:
       - binary_sensor.tarantulapro_printing
       - binary_sensor.shark_printing
+      - binary_sensor.bambu_running
     from: "on"
     to: "off"
   actions:
@@ -23,6 +24,7 @@
     entity_id:
       - switch.plug2
       - switch.sonoff_s40lite_switch_2
+      - switch.bambino_switch
     from: "on"
     to: "off"
   actions:
@@ -63,3 +65,57 @@
         - switch.sonoff_s40lite_switch_2
       max_y: 235
       fil_feed: 371
+      
+- id: 65396760-bcd7-4e5c-a16e-7441635a2784
+  alias: Bambino Turn Off
+  initial_state: on
+  triggers:
+    trigger: state
+    entity_id:
+      - input_button.bambino
+  variables:
+    printer_running: '{{ states( "binary_sensor.bambu_running") | default("off") }}'
+    printer_temperature: '{{ states("sensor.p1s_01p00c4c2100641_nozzle_temperature") | float(0) }}'
+  actions:
+  - choose:
+    - conditions:
+        - alias: Printer NOT running
+          condition: template
+          value_template: '{{ printer_running != "on" }}'
+        - alias: Temp is in the zone
+          condition: template
+          value_template: '{{ printer_temperature < 40 }}'
+      sequence:
+        - alias: Hold a bit longer to make sure the all has stopped
+          delay: 00:00:59
+        - alias: Kill the wall plug
+          action: homeassistant.turn_off
+          entity_id: switch.bambino_switch
+#   select printer status list:  failed, finish, idle, init, offline, pause, prepare, running, slicing, unknown, offline
+
+- id: 41241eba-30e7-41fc-83d9-6914b264a7bc
+  alias: Bambino Auto Turn Off
+  initial_state: on
+  triggers:
+    - trigger: numeric_state
+      entity_id: sensor.p1s_01p00c4c2100641_nozzle_temperature
+      value_template: "{{ state.state | float(0.1) }}"
+      above: 0
+      below: 36
+      for: "00:05:00"
+  variables:
+    printer_temperature: '{{ states("sensor.p1s_01p00c4c2100641_nozzle_temperature") | float(0) }}'
+    printer_running: '{{ states( "binary_sensor.bambu_running") | default("off") }}'
+    shutdown_enable: '{{ states( "input_select.bambino_safe_shutoff_enable") }}'
+  conditions:
+    - alias: Printer NOT running
+      condition: template
+      value_template: '{{ printer_running != "on" }}'
+    - alias: Make sure safe shutdown is enabled
+      condition: template
+      value_template: '{{ shutdown_enable == "enable" }}'
+  actions:
+    - alias: Kill the wall plug
+      action: homeassistant.turn_off
+      entity_id: switch.bambino_switch
+

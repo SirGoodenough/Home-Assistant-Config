@@ -23,6 +23,16 @@
         "id": "master_unlock",
         "name": "16ef2409ed7a49d7be0cd89ec6a4d2db",
         "icon": "mdi:home-lock-open"
+      },
+      {
+        "id": "bambino",
+        "name": "Bambino",
+        "icon": "mdi:printer-3d"
+      },
+      {
+        "id": "bambino_safe",
+        "name": "Bambino Safe",
+        "icon": "mdi:printer-3d-off"
       }
     ]
   }

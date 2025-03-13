@@ -34,6 +34,11 @@ tts_dryer_done:
       speaker_target: media_player.intercom_group
       announcement_message: The clothes are dry
       nabu_azure_voice: SaraNeural
+      b4_action:
+        - alias: send the Dry machine sound
+          action: script.media_player_dryer_alert
+        - alias: Wait for the sounder to end
+          delay: 00:00:06
   icon: mdi:tumble-dryer-off
 media_player_dryer_alert:
   alias: Media Player Dryer Alert

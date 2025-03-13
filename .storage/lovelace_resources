@@ -28,6 +28,11 @@
         "url": "/hacsfiles/toggle-control-button-row/toggle-control-button-row.js?hacstag=32603392131",
         "type": "module",
         "id": "ab4e1b28490c4c1884224d6584c37819"
+      },
+      {
+        "id": "95a73709be764c5fb2a7001de1a269b8",
+        "url": "/bambu_lab/ha-bambulab-cards.js?v=0.3.28",
+        "type": "module"
       }
     ]
   }

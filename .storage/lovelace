@@ -1044,10 +1044,13 @@
                   "entity": "binary_sensor.washer_running"
                 },
                 {
-                  "entity": "binary_sensor.dryer_running"
+                  "entity": "binary_sensor.dryer_2"
                 },
                 {
                   "entity": "sensor.wash_machine_energy_current"
+                },
+                {
+                  "entity": "sensor.dryer_power_current"
                 }
               ],
               "show_header_toggle": false,
@@ -2792,31 +2795,6 @@
               "type": "conditional",
               "conditions": [
                 {
-                  "entity": "sensor.jen_food_2",
-                  "state": "0"
-                }
-              ],
-              "card": {
-                "type": "picture",
-                "image": "https://x5skwl.duckdns.org:23218/local/images/UnicomJennifer.gif",
-                "tap_action": {
-                  "action": "call-service",
-                  "service": "script.jen_food_say",
-                  "service_data": {},
-                  "target": {}
-                },
-                "hold_action": {
-                  "action": "call-service",
-                  "service": "script.jen_food_say2",
-                  "service_data": {},
-                  "target": {}
-                }
-              }
-            },
-            {
-              "type": "conditional",
-              "conditions": [
-                {
                   "entity": "sensor.julie_food",
                   "state": "0"
                 }
@@ -2858,31 +2836,6 @@
                 "hold_action": {
                   "action": "call-service",
                   "service": "script.sg_food_say2",
-                  "service_data": {},
-                  "target": {}
-                }
-              }
-            },
-            {
-              "type": "conditional",
-              "conditions": [
-                {
-                  "entity": "sensor.jen_food",
-                  "state": "0"
-                }
-              ],
-              "card": {
-                "type": "picture",
-                "image": "https://x5skwl.duckdns.org:23218/local/images/UnicomJennifer.gif",
-                "tap_action": {
-                  "action": "call-service",
-                  "service": "script.jen_food_say",
-                  "service_data": {},
-                  "target": {}
-                },
-                "hold_action": {
-                  "action": "call-service",
-                  "service": "script.jen_food_say2",
                   "service_data": {},
                   "target": {}
                 }
@@ -2954,10 +2907,7 @@
                   "entity": "person.julie"
                 },
                 {
-                  "entity": "device_tracker.jen_chaloupka"
-                },
-                {
-                  "entity": "device_tracker.sirius_goodenough"
+                  "entity": "person.jim"
                 }
               ],
               "show_header_toggle": false,
@@ -2972,291 +2922,6 @@
           "id": "whos_home",
           "path": "whos_home",
           "title": "Whos Home"
-        },
-        {
-          "badges": [],
-          "cards": [
-            {
-              "entities": [
-                {
-                  "entity": "sensor.tarantulapro_bed_temperature"
-                },
-                {
-                  "entity": "sensor.tarantulapro_tool_0_temperature"
-                },
-                {
-                  "entity": "sensor.tarantulapro_bed_target"
-                },
-                {
-                  "entity": "sensor.tarantulapro_tool_0_target"
-                },
-                {
-                  "entity": "sensor.tarantulapro_soc_temperature"
-                }
-              ],
-              "refresh_interval": 1,
-              "title": "Tarantula Temps",
-              "type": "history-graph",
-              "hours_to_show": 8
-            },
-            {
-              "hours_to_show": 24,
-              "graph": "none",
-              "entity": "sensor.tarantulapro_bed_temperature",
-              "theme": "Dark - Green",
-              "type": "sensor",
-              "unit": "°C",
-              "detail": 1
-            },
-            {
-              "hours_to_show": 24,
-              "graph": "none",
-              "entity": "sensor.tarantulapro_tool_0_temperature",
-              "theme": "Dark - Green",
-              "type": "sensor",
-              "unit": "°C",
-              "detail": 1,
-              "name": "TarantulaPro Extruder Temperature"
-            },
-            {
-              "type": "entity",
-              "entity": "sensor.tarantula_print_file_short",
-              "icon": "mdi:file-check"
-            },
-            {
-              "type": "entity",
-              "entity": "sensor.shark_print_file_short",
-              "icon": "mdi:file-check"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "button.tarantulapro_cancel_print",
-                  "name": "Cancel Print"
-                },
-                {
-                  "entity": "switch.tarantulapro_connect_to_printer",
-                  "name": "Connect to printer"
-                },
-                {
-                  "entity": "button.tarantulapro_emergency_stop",
-                  "name": "Emergency Stop"
-                },
-                {
-                  "entity": "switch.tarantulapro_pause_print",
-                  "name": "Pause Print"
-                },
-                {
-                  "entity": "button.tarantulapro_reboot_system",
-                  "name": "Reboot System"
-                },
-                {
-                  "entity": "button.tarantulapro_restart_server",
-                  "name": "Restart Server"
-                },
-                {
-                  "entity": "button.tarantulapro_shutdown_system",
-                  "name": "Shutdown System"
-                },
-                {
-                  "entity": "button.tarantulapro_safe_shutdown"
-                },
-                {
-                  "entity": "select.tarantulapro_auto_shutdown_ctrl"
-                },
-                {
-                  "entity": "button.tarantulapro_aux_1"
-                },
-                {
-                  "entity": "button.tarantulapro_aux_2"
-                },
-                {
-                  "entity": "button.tarantulapro_bed_level"
-                },
-                {
-                  "entity": "button.tarantulapro_home"
-                },
-                {
-                  "entity": "button.tarantulapro_presentation"
-                },
-                {
-                  "entity": "button.tarantulapro_change_filament"
-                },
-                {
-                  "entity": "button.tarantulapro_load_filament"
-                }
-              ],
-              "title": "TarantulaPro Buttons",
-              "show_header_toggle": false
-            },
-            {
-              "entities": [
-                {
-                  "entity": "sensor.shark_bed_temperature"
-                },
-                {
-                  "entity": "sensor.shark_tool_0_temperature"
-                },
-                {
-                  "entity": "sensor.shark_bed_target"
-                },
-                {
-                  "entity": "sensor.shark_tool_0_target"
-                },
-                {
-                  "entity": "sensor.shark_soc_temperature"
-                }
-              ],
-              "refresh_interval": 1,
-              "type": "history-graph",
-              "hours_to_show": 8,
-              "title": "Shark Temps"
-            },
-            {
-              "hours_to_show": 24,
-              "graph": "none",
-              "entity": "sensor.shark_bed_temperature",
-              "theme": "Dark - Green",
-              "type": "sensor",
-              "unit": "°C",
-              "detail": 1
-            },
-            {
-              "hours_to_show": 24,
-              "graph": "none",
-              "entity": "sensor.shark_tool_1_temperature",
-              "theme": "Dark - Green",
-              "type": "sensor",
-              "unit": "°C",
-              "detail": 1,
-              "name": "Shark Extruder Temperature"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "button.shark_cancel_print",
-                  "name": "Cancel Print"
-                },
-                {
-                  "entity": "switch.shark_connect_to_printer",
-                  "name": "Connect to printer"
-                },
-                {
-                  "entity": "button.shark_emergency_stop",
-                  "name": "Emergency Stop"
-                },
-                {
-                  "entity": "switch.shark_pause_print",
-                  "name": "Pause Print"
-                },
-                {
-                  "entity": "button.shark_reboot_system",
-                  "name": "Reboot System"
-                },
-                {
-                  "entity": "button.shark_restart_server",
-                  "name": "Restart Server"
-                },
-                {
-                  "entity": "button.shark_shutdown_system",
-                  "name": "Shutdown System"
-                },
-                {
-                  "entity": "button.shark_safe_shutdown"
-                },
-                {
-                  "entity": "select.shark_auto_shutdown_ctrl"
-                },
-                {
-                  "entity": "button.shark_aux_1"
-                },
-                {
-                  "entity": "button.shark_aux_2"
-                },
-                {
-                  "entity": "button.shark_bed_level"
-                },
-                {
-                  "entity": "button.shark_home"
-                },
-                {
-                  "entity": "button.shark_presentation"
-                },
-                {
-                  "entity": "button.shark_change_filament"
-                },
-                {
-                  "entity": "button.shark_load_filament"
-                }
-              ],
-              "title": "Shark Buttons",
-              "show_header_toggle": false
-            },
-            {
-              "type": "horizontal-stack",
-              "cards": [
-                {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "navigate",
-                    "navigation_path": "/lovelace/3d"
-                  },
-                  "theme": "Dark Orange",
-                  "icon": "mdi:backburger",
-                  "name": "Back"
-                },
-                {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "navigate",
-                    "navigation_path": "/lovelace/tarantula"
-                  },
-                  "name": "Tarantula Tank",
-                  "icon": "mdi:spider",
-                  "theme": "Dark Green"
-                },
-                {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "navigate",
-                    "navigation_path": "/lovelace/shark"
-                  },
-                  "icon": "mdi:shark",
-                  "name": "Shark",
-                  "theme": "Dark Turqoise"
-                }
-              ]
-            },
-            {
-              "show_name": true,
-              "show_icon": true,
-              "type": "button",
-              "tap_action": {
-                "action": "toggle"
-              },
-              "entity": "switch.vacuum_sealer_switch",
-              "icon_height": "50px",
-              "icon": "mdi:vacuum",
-              "hold_action": {
-                "action": "call-service",
-                "service": "switch.turn_off",
-                "data": {},
-                "target": {
-                  "entity_id": "switch.vacuum_sealer_switch"
-                }
-              }
-            }
-          ],
-          "path": "3d",
-          "title": "3D"
         },
         {
           "badges": [],
@@ -3489,6 +3154,403 @@
           "id": "locks",
           "path": "locks",
           "title": "Locks"
+        },
+        {
+          "badges": [],
+          "cards": [
+            {
+              "entities": [
+                {
+                  "entity": "sensor.tarantulapro_bed_temperature"
+                },
+                {
+                  "entity": "sensor.tarantulapro_tool_0_temperature"
+                },
+                {
+                  "entity": "sensor.tarantulapro_bed_target"
+                },
+                {
+                  "entity": "sensor.tarantulapro_tool_0_target"
+                },
+                {
+                  "entity": "sensor.tarantulapro_soc_temperature"
+                }
+              ],
+              "refresh_interval": 1,
+              "title": "Tarantula Temps",
+              "type": "history-graph",
+              "hours_to_show": 8
+            },
+            {
+              "entities": [
+                {
+                  "entity": "sensor.p1s_01p00c4c2100641_bed_temperature"
+                },
+                {
+                  "entity": "sensor.p1s_01p00c4c2100641_nozzle_temperature"
+                },
+                {
+                  "entity": "number.p1s_01p00c4c2100641_bed_target_temperature"
+                },
+                {
+                  "entity": "number.p1s_01p00c4c2100641_nozzle_target_temperature"
+                }
+              ],
+              "refresh_interval": 1,
+              "title": "Bat Temps",
+              "type": "history-graph",
+              "hours_to_show": 8,
+              "logarithmic_scale": false
+            },
+            {
+              "type": "entity",
+              "entity": "sensor.tarantula_print_file_short",
+              "icon": "mdi:file-check"
+            },
+            {
+              "show_name": true,
+              "show_icon": true,
+              "type": "button",
+              "tap_action": {
+                "action": "toggle"
+              },
+              "entity": "switch.vacuum_sealer_switch",
+              "icon_height": "50px",
+              "icon": "mdi:vacuum",
+              "hold_action": {
+                "action": "call-service",
+                "service": "switch.turn_off",
+                "data": {},
+                "target": {
+                  "entity_id": "switch.vacuum_sealer_switch"
+                }
+              }
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "button.tarantulapro_cancel_print",
+                  "name": "Cancel Print"
+                },
+                {
+                  "entity": "switch.tarantulapro_connect_to_printer",
+                  "name": "Connect to printer"
+                },
+                {
+                  "entity": "button.tarantulapro_emergency_stop",
+                  "name": "Emergency Stop"
+                },
+                {
+                  "entity": "switch.tarantulapro_pause_print",
+                  "name": "Pause Print"
+                },
+                {
+                  "entity": "button.tarantulapro_reboot_system",
+                  "name": "Reboot System"
+                },
+                {
+                  "entity": "button.tarantulapro_restart_server",
+                  "name": "Restart Server"
+                },
+                {
+                  "entity": "button.tarantulapro_shutdown_system",
+                  "name": "Shutdown System"
+                },
+                {
+                  "entity": "button.tarantulapro_safe_shutdown"
+                },
+                {
+                  "entity": "select.tarantulapro_auto_shutdown_ctrl"
+                },
+                {
+                  "entity": "button.tarantulapro_aux_1"
+                },
+                {
+                  "entity": "button.tarantulapro_aux_2"
+                },
+                {
+                  "entity": "button.tarantulapro_bed_level"
+                },
+                {
+                  "entity": "button.tarantulapro_home"
+                },
+                {
+                  "entity": "button.tarantulapro_presentation"
+                },
+                {
+                  "entity": "button.tarantulapro_change_filament"
+                },
+                {
+                  "entity": "button.tarantulapro_load_filament"
+                }
+              ],
+              "title": "TarantulaPro Buttons",
+              "show_header_toggle": false
+            },
+            {
+              "type": "horizontal-stack",
+              "cards": [
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "navigate",
+                    "navigation_path": "/lovelace"
+                  },
+                  "theme": "Dark Turqoise",
+                  "icon": "mdi:backburger",
+                  "name": "Back"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "navigate",
+                    "navigation_path": "/lovelace/tarantula"
+                  },
+                  "name": "Tarantula Tank",
+                  "icon": "mdi:spider",
+                  "theme": "Dark Green"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "navigate",
+                    "navigation_path": "/lovelace/bat"
+                  },
+                  "name": "Bat Cloud",
+                  "icon": "mdi:bat",
+                  "theme": "Dark Orange"
+                }
+              ]
+            },
+            {
+              "hours_to_show": 24,
+              "graph": "none",
+              "entity": "sensor.tarantulapro_bed_temperature",
+              "theme": "Dark - Green",
+              "type": "sensor",
+              "unit": "°C",
+              "detail": 1
+            },
+            {
+              "hours_to_show": 24,
+              "graph": "none",
+              "entity": "sensor.tarantulapro_tool_0_temperature",
+              "theme": "Dark - Green",
+              "type": "sensor",
+              "unit": "°C",
+              "detail": 1,
+              "name": "TarantulaPro Extruder Temperature"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "input_select.bambino_safe_shutoff_enable"
+                },
+                {
+                  "entity": "fan.p1s_01p00c4c2100641_aux_fan",
+                  "name": "Aux fan"
+                },
+                {
+                  "entity": "number.p1s_01p00c4c2100641_bed_target_temperature",
+                  "name": "Bed target temperature"
+                },
+                {
+                  "entity": "fan.p1s_01p00c4c2100641_chamber_fan",
+                  "name": "Chamber fan"
+                },
+                {
+                  "entity": "light.p1s_01p00c4c2100641_chamber_light",
+                  "name": "Chamber light"
+                },
+                {
+                  "entity": "fan.p1s_01p00c4c2100641_cooling_fan",
+                  "name": "Cooling fan"
+                },
+                {
+                  "entity": "number.p1s_01p00c4c2100641_nozzle_target_temperature",
+                  "name": "Nozzle target temperature"
+                },
+                {
+                  "entity": "select.p1s_01p00c4c2100641_printing_speed",
+                  "name": "Printing speed"
+                },
+                {
+                  "entity": "switch.p1s_01p00c4c2100641_enable_camera",
+                  "name": "Enable camera"
+                },
+                {
+                  "entity": "switch.p1s_01p00c4c2100641_load_model_data_from_printer",
+                  "name": "Load model data from printer"
+                },
+                {
+                  "entity": "button.p1s_01p00c4c2100641_pause_printing",
+                  "name": "Pause printing"
+                },
+                {
+                  "entity": "button.p1s_01p00c4c2100641_resume_printing",
+                  "name": "Resume printing"
+                },
+                {
+                  "entity": "button.p1s_01p00c4c2100641_stop_printing",
+                  "name": "Stop printing"
+                },
+                {
+                  "entity": "switch.p1s_01p00c4c2100641_use_image_sensor_camera",
+                  "name": "Use image sensor camera"
+                }
+              ],
+              "title": "Bat Control Panel",
+              "theme": "Fluent Orange"
+            },
+            {
+              "type": "grid",
+              "square": false,
+              "columns": 1,
+              "cards": [
+                {
+                  "type": "entities",
+                  "entities": [
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_active_tray",
+                      "name": "Active tray"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_active_tray_index",
+                      "name": "Active tray index"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_aux_fan_speed",
+                      "name": "Aux fan speed"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_bed_target_temperature",
+                      "name": "Bed target temperature"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_bed_temperature",
+                      "name": "Bed temperature"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_chamber_fan_speed",
+                      "name": "Chamber fan speed"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_cooling_fan_speed",
+                      "name": "Cooling fan speed"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_current_layer",
+                      "name": "Current layer"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_current_stage",
+                      "name": "Current stage"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_end_time",
+                      "name": "End time"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_gcode_filename",
+                      "name": "Gcode filename"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_heatbreak_fan_speed",
+                      "name": "Heatbreak fan speed"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_nozzle_size",
+                      "name": "Nozzle size"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_nozzle_target_temperature",
+                      "name": "Nozzle target temperature"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_nozzle_temperature",
+                      "name": "Nozzle temperature"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_nozzle_type",
+                      "name": "Nozzle type"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_print_bed_type",
+                      "name": "Print bed type"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_print_length",
+                      "name": "Print length"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_print_progress",
+                      "name": "Print progress"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_print_status",
+                      "name": "Print status"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_print_type",
+                      "name": "Print type"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_print_weight",
+                      "name": "Print weight"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_printable_objects",
+                      "name": "Printable objects"
+                    },
+                    {
+                      "entity": "binary_sensor.p1s_01p00c4c2100641_recording_timelapse",
+                      "name": "Recording timelapse"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_remaining_time",
+                      "name": "Remaining time"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_skipped_objects",
+                      "name": "Skipped objects"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_speed_profile",
+                      "name": "Speed profile"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_start_time",
+                      "name": "Start time"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_task_name",
+                      "name": "Task name"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_total_layer_count",
+                      "name": "Total layer count"
+                    }
+                  ],
+                  "title": "Bat Status",
+                  "theme": "Fluent Orange"
+                },
+                {
+                  "type": "picture",
+                  "image_entity": "image.p1s_01p00c4c2100641_cover_image"
+                }
+              ]
+            }
+          ],
+          "path": "3d",
+          "title": "3D"
         },
         {
           "badges": [],
@@ -4869,174 +4931,6 @@
           ]
         },
         {
-          "theme": "Dark - Orange",
-          "subview": true,
-          "title": "Shark",
-          "path": "shark",
-          "icon": "mdi:shark",
-          "badges": [],
-          "cards": [
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "sensor.shark_approximate_completion_time",
-                  "name": "Approximate Completion Time"
-                },
-                {
-                  "entity": "sensor.shark_approximate_total_print_time",
-                  "name": "Approximate Total Print Time"
-                },
-                {
-                  "entity": "sensor.shark_bed_target",
-                  "name": "Bed Target"
-                },
-                {
-                  "entity": "sensor.shark_bed_temperature",
-                  "name": "Bed Temperature"
-                },
-                {
-                  "entity": "binary_sensor.shark_connected",
-                  "name": "Connected"
-                },
-                {
-                  "entity": "sensor.shark_current_z",
-                  "name": "Current Z"
-                },
-                {
-                  "entity": "sensor.shark_last_event",
-                  "name": "Last Event"
-                },
-                {
-                  "entity": "sensor.shark_print_file",
-                  "name": "Print File"
-                },
-                {
-                  "entity": "sensor.shark_print_progress",
-                  "name": "Print Progress"
-                },
-                {
-                  "entity": "sensor.shark_print_status",
-                  "name": "Print Status"
-                },
-                {
-                  "entity": "sensor.shark_print_time",
-                  "name": "Print Time"
-                },
-                {
-                  "entity": "sensor.shark_print_time_left",
-                  "name": "Print Time Left"
-                },
-                {
-                  "entity": "binary_sensor.shark_printing",
-                  "name": "Printing"
-                },
-                {
-                  "entity": "sensor.shark_soc_temperature",
-                  "name": "SoC Temperature"
-                },
-                {
-                  "entity": "sensor.shark_tool_0_target",
-                  "name": "Tool 0 Target"
-                },
-                {
-                  "entity": "sensor.shark_tool_0_temperature",
-                  "name": "Tool 0 Temperature"
-                }
-              ],
-              "title": "Shark"
-            },
-            {
-              "show_name": true,
-              "show_icon": true,
-              "entity": "switch.sonoff_s40lite_switch_2",
-              "hold_action": {
-                "action": "call-service",
-                "service": "button.press",
-                "target": {
-                  "entity_id": "button.shark_safe_shutdown"
-                },
-                "data": {}
-              },
-              "icon": "mdi:printer-3d",
-              "name": "Turn Shark ON",
-              "tap_action": {
-                "action": "call-service",
-                "service": "switch.turn_on",
-                "data": {},
-                "target": {
-                  "entity_id": "switch.sonoff_s40lite_switch_2"
-                }
-              },
-              "type": "button",
-              "theme": "dark_orange",
-              "icon_height": "90px",
-              "show_state": false
-            },
-            {
-              "camera_view": "live",
-              "aspect_ratio": "0%",
-              "camera_image": "camera.shark",
-              "entities": [
-                {
-                  "entity": "sensor.shark_print_time_left"
-                },
-                {
-                  "entity": "sensor.shark_print_file_short"
-                }
-              ],
-              "entity": "script.show_tarantula_home_hub_video",
-              "tap_action": {
-                "action": "toggle"
-              },
-              "title": "Shark",
-              "type": "picture-glance",
-              "image": "!secret Shark_Snapshot"
-            },
-            {
-              "type": "horizontal-stack",
-              "cards": [
-                {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "navigate",
-                    "navigation_path": "/lovelace/3d"
-                  },
-                  "theme": "Dark Orange",
-                  "icon": "mdi:backburger",
-                  "name": "Back"
-                },
-                {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "navigate",
-                    "navigation_path": "/lovelace/tarantula"
-                  },
-                  "name": "Tarantula Tank",
-                  "icon": "mdi:spider",
-                  "theme": "Dark Green"
-                },
-                {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "navigate",
-                    "navigation_path": "/lovelace/shark"
-                  },
-                  "icon": "mdi:shark",
-                  "name": "Shark",
-                  "theme": "Dark Turqoise"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "theme": "Backend-selected",
           "subview": true,
           "title": "Tarantula",
@@ -5172,7 +5066,7 @@
                     "action": "navigate",
                     "navigation_path": "/lovelace/3d"
                   },
-                  "theme": "Dark Orange",
+                  "theme": "Dark Turqoise",
                   "icon": "mdi:backburger",
                   "name": "Back"
                 },
@@ -5194,11 +5088,11 @@
                   "type": "button",
                   "tap_action": {
                     "action": "navigate",
-                    "navigation_path": "/lovelace/shark"
+                    "navigation_path": "/lovelace/bat"
                   },
-                  "icon": "mdi:shark",
-                  "name": "Shark",
-                  "theme": "Dark Turqoise"
+                  "name": "Bat Cloud",
+                  "icon": "mdi:bat",
+                  "theme": "Dark Orange"
                 }
               ]
             }
@@ -5651,6 +5545,300 @@
               "name_position": "top"
             }
           ]
+        },
+        {
+          "type": "masonry",
+          "path": "bat",
+          "icon": "mdi:bat",
+          "subview": true,
+          "cards": [
+            {
+              "type": "grid",
+              "square": false,
+              "columns": 1,
+              "cards": [
+                {
+                  "type": "entities",
+                  "entities": [
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_active_tray",
+                      "name": "Active tray"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_active_tray_index",
+                      "name": "Active tray index"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_aux_fan_speed",
+                      "name": "Aux fan speed"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_bed_target_temperature",
+                      "name": "Bed target temperature"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_bed_temperature",
+                      "name": "Bed temperature"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_chamber_fan_speed",
+                      "name": "Chamber fan speed"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_cooling_fan_speed",
+                      "name": "Cooling fan speed"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_current_layer",
+                      "name": "Current layer"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_current_stage",
+                      "name": "Current stage"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_end_time",
+                      "name": "End time"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_gcode_filename",
+                      "name": "Gcode filename"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_heatbreak_fan_speed",
+                      "name": "Heatbreak fan speed"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_nozzle_size",
+                      "name": "Nozzle size"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_nozzle_target_temperature",
+                      "name": "Nozzle target temperature"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_nozzle_temperature",
+                      "name": "Nozzle temperature"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_nozzle_type",
+                      "name": "Nozzle type"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_print_bed_type",
+                      "name": "Print bed type"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_print_length",
+                      "name": "Print length"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_print_progress",
+                      "name": "Print progress"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_print_status",
+                      "name": "Print status"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_print_type",
+                      "name": "Print type"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_print_weight",
+                      "name": "Print weight"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_printable_objects",
+                      "name": "Printable objects"
+                    },
+                    {
+                      "entity": "binary_sensor.p1s_01p00c4c2100641_recording_timelapse",
+                      "name": "Recording timelapse"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_remaining_time",
+                      "name": "Remaining time"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_skipped_objects",
+                      "name": "Skipped objects"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_speed_profile",
+                      "name": "Speed profile"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_start_time",
+                      "name": "Start time"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_task_name",
+                      "name": "Task name"
+                    },
+                    {
+                      "entity": "sensor.p1s_01p00c4c2100641_total_layer_count",
+                      "name": "Total layer count"
+                    }
+                  ],
+                  "title": "P1S_01P00C4C2100641"
+                },
+                {
+                  "type": "picture",
+                  "image_entity": "image.p1s_01p00c4c2100641_pick_image"
+                }
+              ]
+            },
+            {
+              "show_name": true,
+              "show_icon": true,
+              "type": "button",
+              "tap_action": {
+                "action": "perform-action",
+                "perform_action": "switch.turn_on",
+                "target": {
+                  "entity_id": "switch.bambino_switch"
+                }
+              },
+              "entity": "switch.bambino_switch",
+              "icon": "mdi:bat",
+              "name": "Bambino Cloud Release",
+              "show_state": false,
+              "icon_height": "60px",
+              "hold_action": {
+                "action": "perform-action",
+                "perform_action": "switch.turn_off",
+                "target": {
+                  "entity_id": "switch.bambino_switch"
+                }
+              },
+              "theme": "Dark Green"
+            },
+            {
+              "show_name": true,
+              "show_icon": true,
+              "type": "button",
+              "tap_action": {
+                "action": "toggle"
+              },
+              "entity": "input_button.bambino",
+              "icon_height": "60px",
+              "name": "Bambino Cloud Caged",
+              "icon": "mdi:bat",
+              "theme": "Dark Orange"
+            },
+            {
+              "type": "horizontal-stack",
+              "cards": [
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "navigate",
+                    "navigation_path": "/lovelace/3d"
+                  },
+                  "theme": "Dark Turqoise",
+                  "icon": "mdi:backburger",
+                  "name": "Back"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "navigate",
+                    "navigation_path": "/lovelace/tarantula"
+                  },
+                  "name": "Tarantula Tank",
+                  "icon": "mdi:spider",
+                  "theme": "Dark Green"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "navigate",
+                    "navigation_path": "/lovelace/bat"
+                  },
+                  "name": "Bat Cloud",
+                  "icon": "mdi:bat",
+                  "theme": "Dark Orange"
+                }
+              ]
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "update.p1s_01p00c4c2100641_firmware_update",
+                  "name": "Firmware update"
+                },
+                {
+                  "entity": "button.p1s_01p00c4c2100641_force_refresh_data",
+                  "name": "Force refresh data"
+                },
+                {
+                  "entity": "binary_sensor.p1s_01p00c4c2100641_hms_errors",
+                  "name": "HMS errors"
+                },
+                {
+                  "entity": "sensor.p1s_01p00c4c2100641_ip_address",
+                  "name": "IP address"
+                },
+                {
+                  "entity": "sensor.p1s_01p00c4c2100641_mqtt_connection_mode",
+                  "name": "MQTT connection mode"
+                },
+                {
+                  "entity": "binary_sensor.p1s_01p00c4c2100641_online",
+                  "name": "Online"
+                },
+                {
+                  "entity": "binary_sensor.p1s_01p00c4c2100641_print_error",
+                  "name": "Print error"
+                },
+                {
+                  "entity": "sensor.p1s_01p00c4c2100641_total_usage",
+                  "name": "Total usage"
+                },
+                {
+                  "entity": "sensor.p1s_01p00c4c2100641_wi_fi_signal",
+                  "name": "Wi-Fi signal"
+                }
+              ],
+              "title": "P1S_01P00C4C2100641"
+            },
+            {
+              "type": "grid",
+              "square": false,
+              "columns": 1,
+              "cards": [
+                {
+                  "show_state": true,
+                  "show_name": true,
+                  "camera_view": "auto",
+                  "type": "picture-entity",
+                  "entity": "camera.p1s_01p00c4c2100641_camera"
+                },
+                {
+                  "type": "picture",
+                  "image_entity": "image.p1s_01p00c4c2100641_cover_image"
+                }
+              ]
+            }
+          ],
+          "background": {
+            "opacity": 100,
+            "alignment": "center",
+            "size": "cover",
+            "repeat": "repeat",
+            "attachment": "fixed",
+            "image": "/api/image/serve/2f2d4a56e8c7ade95ee79f3dc35ec7b8/original"
+          },
+          "title": "bat",
+          "theme": "Fluent Orange"
         }
       ]
     }

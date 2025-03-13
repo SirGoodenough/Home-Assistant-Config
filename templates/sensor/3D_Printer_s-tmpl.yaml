@@ -12,14 +12,3 @@
         {{- avail(['sensor.tarantulapro_print_file']) | bool -}}
       attributes:
         friendly_name: "Tarantula Print File"
-
-    - name: "shark_print_file_short"
-      unique_id: 8e9c70ec-a1c6-4025-966a-7f55a5e30067
-      state: >
-        {{ states('sensor.shark_print_file') | regex_replace("^[^_]*_","")
-          | replace('.gcode','') }}
-      availability: >-
-        {% from 'availability_template.jinja' import avail %}
-        {{- avail(['sensor.shark_print_file']) | bool -}}
-      attributes:
-        friendly_name: "Shark Print File"

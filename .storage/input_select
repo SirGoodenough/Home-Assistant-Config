@@ -80,6 +80,15 @@
           "off"
         ],
         "id": "doc_messages"
+      },
+      {
+        "id": "bambino_save_shutoff_enable",
+        "name": "Bambino Safe Shutoff Enable",
+        "icon": "mdi:printer-3d-off",
+        "options": [
+          "enable",
+          "disable"
+        ]
       }
     ]
   }

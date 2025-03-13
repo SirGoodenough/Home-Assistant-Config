@@ -33,27 +33,40 @@
       entity_id: switch.dust_collector
 
 ####################################################
-# Dryer Signal                                     #
+# Laundry                                          #
 ####################################################
 - id: 92312f77-02af-4a49-a728-978ff6b08229
-  alias: Dryer Alert
+  alias: Dryer Status
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: binary_sensor.dryer_running
+      entity_id: binary_sensor.dryer_2
       from: "on"
       to: "off"
       for:
         seconds: 30
   actions:
     - action: script.tts_dryer_done
-    - delay:
-        seconds: 4
-    - action: script.media_player_dryer_alert
+  mode: single
+  max_exceeded: silent
 
-####################################################
-# Wash Machine                                     #
-####################################################
+- id: 924088c3-c0e6-4d59-bebf-6442c522381b
+  alias: Washer Status
+  description: Announce when washer is done
+  triggers:
+    - trigger: state
+      entity_id:
+        - binary_sensor.washer_running
+      from: "on"
+      to: "off"
+      for:
+        seconds: 20
+  conditions:
+  actions:
+    - action: script.tts_wash_machine_done
+  mode: single
+  max_exceeded: silent
+
 - id: adb7ce4b-324f-4c17-a519-758e42f2166e
   alias: Wash Machine Dryer Daily Reboot
   initial_state: on
@@ -69,27 +82,12 @@
       data:
         topic: Dryer3/cmnd/restart
         payload: "1"
-
-- id: 924088c3-c0e6-4d59-bebf-6442c522381b
-  alias: Washer Status
-  description: Announce when washer is done
-  triggers:
-    - trigger: state
-      entity_id:
-        - binary_sensor.washer_running
-      from: "on"
-      to: "off"
-      for:
-        hours: 0
-        minutes: 0
-        seconds: 20
-  conditions:
-  actions:
-    - action: script.tts_wash_machine_done
-      data: {}
   mode: single
   max_exceeded: silent
 
+####################################################
+# Humidifer                                        #
+####################################################
 - id: "1674983375635"
   alias: Humidifier Proportional Control
   description: Modulate the water flow to the Furnace Humidifer.
