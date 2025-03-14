@@ -13,6 +13,14 @@
   SAMPLE USAGE:
     {% from 'color_multi_tool.jinja' import random_name %}
     {{- random_name() -}}
+
+  #### 🗿License Notice:
+    * I & my license require attribution as a link back to the original should
+      you use this code in your own creation.
+    * Here is a link to my license & the original github post
+      https://github.com/SirGoodenough/Color-Multi-Tool?tab=License-1-ov-file
+      expected to be followed & referenced
+      as attribution should you use this code elsewhere.
 #}
 {%- set _color_dict = _nameMap._rgb | random %}
 {{- _color_dict.color -}}
@@ -33,6 +41,14 @@
 
   REMEMBER:
     Everything returned from a macro template is a string.
+
+  #### 🗿License Notice:
+    * I & my license require attribution as a link back to the original should
+      you use this code in your own creation.
+    * Here is a link to my license & the original github post
+      https://github.com/SirGoodenough/Color-Multi-Tool?tab=License-1-ov-file
+      expected to be followed & referenced
+      as attribution should you use this code elsewhere.
 #}
 
 {%- set (X,Y) = [range(1001),range(1001)] | map('random') | list %}
@@ -54,6 +70,14 @@
 
   REMEMBER:
     Everything returned from a macro template is a string.
+
+  #### 🗿License Notice:
+    * I & my license require attribution as a link back to the original should
+      you use this code in your own creation.
+    * Here is a link to my license & the original github post
+      https://github.com/SirGoodenough/Color-Multi-Tool?tab=License-1-ov-file
+      expected to be followed & referenced
+      as attribution should you use this code elsewhere.
 #}
 {%- set (H,S) = [range(36001),range(10001)] | map('random') | list %}
 {{- H/100 -}},{{- S/100 -}}
@@ -74,6 +98,14 @@
 
   REMEMBER:
     Everything returned from a macro template is a string.
+
+  #### 🗿License Notice:
+    * I & my license require attribution as a link back to the original should
+      you use this code in your own creation.
+    * Here is a link to my license & the original github post
+      https://github.com/SirGoodenough/Color-Multi-Tool?tab=License-1-ov-file
+      expected to be followed & referenced
+      as attribution should you use this code elsewhere.
 #}
 {% set (R,G,B) = [range(256),range(256),range(256)] | map('random') | list %}
 {{- R -}},{{- G -}},{{- B -}}
@@ -99,6 +131,14 @@
 
   REMEMBER:
     Everything returned from a macro template is a string.
+
+  #### 🗿License Notice:
+    * I & my license require attribution as a link back to the original should
+      you use this code in your own creation.
+    * Here is a link to my license & the original github post
+      https://github.com/SirGoodenough/Color-Multi-Tool?tab=License-1-ov-file
+      expected to be followed & referenced
+      as attribution should you use this code elsewhere.
 #}
   {#- First a test to make sure input is valid #}
 {%- if chkNAME(color_name) | bool %}
@@ -129,10 +169,18 @@
 
   SAMPLE USAGE:
     {% from 'color_multi_tool.jinja' import rgb2name %}
-    {{ name2rgb(color_name) }}
+    {{ rgb2name(10,rgbl) }}
 
   REMEMBER:
     Everything returned from a macro template is a string.
+
+  #### 🗿License Notice:
+    * I & my license require attribution as a link back to the original should
+      you use this code in your own creation.
+    * Here is a link to my license & the original github post
+      https://github.com/SirGoodenough/Color-Multi-Tool?tab=License-1-ov-file
+      expected to be followed & referenced
+      as attribution should you use this code elsewhere.
 #}
   {#- First a test to make sure input is valid #}
 {%- if chkRGB(rgbl) | default(false) | bool %}
@@ -183,6 +231,14 @@
 
   REMEMBER:
     Everything returned from a macro template is a string.
+
+  #### 🗿License Notice:
+    * I & my license require attribution as a link back to the original should
+      you use this code in your own creation.
+    * Here is a link to my license & the original github post
+      https://github.com/SirGoodenough/Color-Multi-Tool?tab=License-1-ov-file
+      expected to be followed & referenced
+      as attribution should you use this code elsewhere.
 #}
   {#- First a test to make sure input is valid #}
 {%- if chkRGB(rgbl) | bool %}
@@ -252,6 +308,14 @@
 
   REMEMBER:
     Everything returned from a macro template is a string.
+
+  #### 🗿License Notice:
+    * I & my license require attribution as a link back to the original should
+      you use this code in your own creation.
+    * Here is a link to my license & the original github post
+      https://github.com/SirGoodenough/Color-Multi-Tool?tab=License-1-ov-file
+      expected to be followed & referenced
+      as attribution should you use this code elsewhere.
 #}
   {#- First a test to make sure input is valid #}
 {%- if chkXY(xyl) | bool %}
@@ -323,6 +387,14 @@
 
   REMEMBER:
     Everything returned from a macro template is a string.
+
+  #### 🗿License Notice:
+    * I & my license require attribution as a link back to the original should
+      you use this code in your own creation.
+    * Here is a link to my license & the original github post
+      https://github.com/SirGoodenough/Color-Multi-Tool?tab=License-1-ov-file
+      expected to be followed & referenced
+      as attribution should you use this code elsewhere.
 #}
   {#- First a test to make sure input is valid #}
 {%- if chkHS(hsl) | bool %}
@@ -391,7 +463,7 @@
   Code lifted directly from the here November, 2023 at
     https://www.cs.rit.edu/~ncs/color/t_convert.html#RGB%20to%20HSV%20&%20HSV%20to%20RGB.
   Brightness is assumed to be 100%
-  
+
   SAMPLE USAGE:
     {% from 'color_multi_tool.jinja' import rgb2hs %}
     {% set _rgb2hs = rgb2hs(rgbl).split(",") | list %}
@@ -399,6 +471,14 @@
 
   REMEMBER:
     Everything returned from a macro template is a string.
+
+  #### 🗿License Notice:
+    * I & my license require attribution as a link back to the original should
+      you use this code in your own creation.
+    * Here is a link to my license & the original github post
+      https://github.com/SirGoodenough/Color-Multi-Tool?tab=License-1-ov-file
+      expected to be followed & referenced
+      as attribution should you use this code elsewhere.
 #}
   {#- First a test to make sure input is valid #}
 {%- if chkRGB(rgbl) | bool %}
@@ -464,6 +544,14 @@
 
   REMEMBER:
     Everything returned from a macro template is a string.
+
+  #### 🗿License Notice:
+    * I & my license require attribution as a link back to the original should
+      you use this code in your own creation.
+    * Here is a link to my license & the original github post
+      https://github.com/SirGoodenough/Color-Multi-Tool?tab=License-1-ov-file
+      expected to be followed & referenced
+      as attribution should you use this code elsewhere.
 #}
   {#- First a test to make sure input is valid #}
 {%- if chkHS(hsl) | bool %}
@@ -498,6 +586,14 @@
 
   REMEMBER:
     Everything returned from a macro template is a string.
+
+  #### 🗿License Notice:
+    * I & my license require attribution as a link back to the original should
+      you use this code in your own creation.
+    * Here is a link to my license & the original github post
+      https://github.com/SirGoodenough/Color-Multi-Tool?tab=License-1-ov-file
+      expected to be followed & referenced
+      as attribution should you use this code elsewhere.
 #}
   {#- First a test to make sure input is valid #}
 {%- if chkXY(xyl) | bool %}
@@ -535,6 +631,14 @@ Development credit to @Didgeridrew and @jeffcrum on the
   REMEMBER:
     This always returns text, so cast to bool on the other end to be
     certain of the result.
+
+  #### 🗿License Notice:
+    * I & my license require attribution as a link back to the original should
+      you use this code in your own creation.
+    * Here is a link to my license & the original github post
+      https://github.com/SirGoodenough/Color-Multi-Tool?tab=License-1-ov-file
+      expected to be followed & referenced
+      as attribution should you use this code elsewhere.
 #}
 {%- if _rgbl is list and _rgbl | count == 3 %}
 {%- for clr in _rgbl if is_number(clr) and int(clr,0) == clr and 0 <= clr <= 255 %}
@@ -564,6 +668,14 @@ Development credit to @123 on the
   REMEMBER:
     This always returns text, so cast to bool on the other end to be
     certain of the result.
+
+  #### 🗿License Notice:
+    * I & my license require attribution as a link back to the original should
+      you use this code in your own creation.
+    * Here is a link to my license & the original github post
+      https://github.com/SirGoodenough/Color-Multi-Tool?tab=License-1-ov-file
+      expected to be followed & referenced
+      as attribution should you use this code elsewhere.
 #}
 {{- _xyl is list and
   _xyl | select('number') | list | count == 2 and
@@ -591,6 +703,14 @@ Development credit to @123 on the
   REMEMBER:
     This always returns text, so cast to bool on the other end to be
     certain of the result.
+
+  #### 🗿License Notice:
+    * I & my license require attribution as a link back to the original should
+      you use this code in your own creation.
+    * Here is a link to my license & the original github post
+      https://github.com/SirGoodenough/Color-Multi-Tool?tab=License-1-ov-file
+      expected to be followed & referenced
+      as attribution should you use this code elsewhere.
 #}
 {{- _hsl is list and
   _hsl | select('number') | list | count == 2 and
@@ -616,6 +736,14 @@ If any is not true, return false.
   REMEMBER:
     This always returns text, so cast to bool on the other end to be
     certain of the result.
+
+  #### 🗿License Notice:
+    * I & my license require attribution as a link back to the original should
+      you use this code in your own creation.
+    * Here is a link to my license & the original github post
+      https://github.com/SirGoodenough/Color-Multi-Tool?tab=License-1-ov-file
+      expected to be followed & referenced
+      as attribution should you use this code elsewhere.
 #}
 {%- if color_name is string_like and
   color_name == color_name | regex_replace('[^a-z]', '') %}
@@ -647,6 +775,14 @@ If any is not true, return false.
   SAMPLE USAGE:
     {% from 'color_multi_tool.jinja' import color_list %}
     {{- color_list().split('\n') | list -}}
+
+  #### 🗿License Notice:
+    * I & my license require attribution as a link back to the original should
+      you use this code in your own creation.
+    * Here is a link to my license & the original github post
+      https://github.com/SirGoodenough/Color-Multi-Tool?tab=License-1-ov-file
+      expected to be followed & referenced
+      as attribution should you use this code elsewhere.
 #}
 {%- for colors in _nameMap._rgb -%}
 {%- set c_list = {colors.color:[colors.r,colors.g,colors.b]} -%}

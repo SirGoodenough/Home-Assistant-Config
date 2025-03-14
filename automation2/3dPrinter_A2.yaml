@@ -118,4 +118,3 @@
     - alias: Kill the wall plug
       action: homeassistant.turn_off
       entity_id: switch.bambino_switch
-
