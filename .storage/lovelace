@@ -157,7 +157,7 @@
               "conditions": [
                 {
                   "condition": "numeric_state",
-                  "entity": "device_tracker.sm_s906u",
+                  "entity": "sensor.sm_s906u_battery_level_2",
                   "below": 40
                 }
               ],
@@ -168,9 +168,10 @@
                 "tap_action": {
                   "action": "more-info"
                 },
-                "entity": "sensor.sm_s906u_battery_level",
+                "entity": "sensor.sm_s906u_battery_level_2",
                 "icon": "",
-                "show_state": true
+                "show_state": true,
+                "name": "Dads Phone"
               }
             },
             {
@@ -228,6 +229,28 @@
               "title": "Living Room",
               "type": "entities",
               "state_color": true
+            },
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "condition": "numeric_state",
+                  "entity": "sensor.twentyrwomom_battery_level",
+                  "below": 40
+                }
+              ],
+              "card": {
+                "show_name": true,
+                "show_icon": true,
+                "type": "button",
+                "tap_action": {
+                  "action": "more-info"
+                },
+                "entity": "sensor.twentyrwomom_battery_level",
+                "icon": "",
+                "show_state": true,
+                "name": "Moms Phone"
+              }
             },
             {
               "type": "conditional",
@@ -504,8 +527,8 @@
             {
               "graph": "line",
               "type": "sensor",
-              "entity": "sensor.ethernettest_kitchen_indoor_pm2_5",
-              "detail": 1,
+              "entity": "sensor.pm2_5_filtereed",
+              "detail": 2,
               "hours_to_show": 48
             },
             {
@@ -549,6 +572,9 @@
                 },
                 {
                   "entity": "switch.sonic_screwdriver_down"
+                },
+                {
+                  "entity": "switch.sonic_screwdriver_porch"
                 },
                 {
                   "entity": "sensor.bidet_downstairs_power"

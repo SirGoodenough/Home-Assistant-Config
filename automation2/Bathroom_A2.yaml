@@ -53,47 +53,46 @@
     - delay: 00:00:06
     - action: script.tts_bathroom_door_is_open
 
-- id: 4d6bdbcb-b71d-4d3a-b52e-19ab077b9585
-  alias: Bathroom Heater Auto Mode
-  initial_state: on
-  triggers:
-    - trigger: state
-      entity_id: input_boolean.bathroom_heater_auto_on
-      to: "on"
-  conditions:
-    and:
-      - condition: state
-        entity_id: person.julie
-        state: "home"
-      - condition: numeric_state
-        entity_id: sensor.gw2000b_v2_2_4_feels_like_temperature
-        below: 50
-  actions:
-    - action: script.upstairs_bath_heater_on
-    - action: script.tts_bathroom_heat_on
-
-- id: a152e88d-6c9c-42bd-9a62-15ecb7745e29
-  alias: Bathroom Heater Julie Bedtime
-  initial_state: on
-  triggers:
-    # - trigger: time
-    #   at: "21:55:37"
-    - trigger: state
-      entity_id: button.moms_button1
-  conditions:
-    and:
-      - alias: "Only at bedtime"
-        condition: time
-        after: "21:00:00"
-        before: "23:30:00"
-      - alias: "Only if Julie is home"
-        condition: state
-        entity_id: person.julie
-        state: "home"
-      - alias: "Only if it's cold out"
-        condition: numeric_state
-        entity_id: sensor.gw2000b_v2_2_4_feels_like_temperature
-        below: 50
-  actions:
-    - action: input_boolean.turn_on
-      entity_id: input_boolean.bathroom_heater_auto_on
+# - id: 4d6bdbcb-b71d-4d3a-b52e-19ab077b9585
+#   alias: Bathroom Heater Auto Mode    BROKEN
+#   triggers:
+#     - trigger: state
+#       entity_id: input_boolean.bathroom_heater_auto_on
+#       to: "on"
+#   conditions:
+#     and:
+#       - condition: state
+#         entity_id: person.julie
+#         state: "home"
+#       - condition: numeric_state
+#         entity_id: sensor.gw2000b_v2_2_4_feels_like_temperature
+#         below: 50
+#   actions:
+#     - action: script.upstairs_bath_heater_on
+#     - action: script.tts_bathroom_heat_on
+#
+# - id: a152e88d-6c9c-42bd-9a62-15ecb7745e29
+#   alias: Bathroom Heater Julie Bedtime      BROKEN
+#   initial_state: on
+#   triggers:
+#     # - trigger: time
+#     #   at: "21:55:37"
+#     - trigger: state
+#       entity_id: button.moms_button1
+#   conditions:
+#     and:
+#       - alias: "Only at bedtime"
+#         condition: time
+#         after: "21:00:00"
+#         before: "23:30:00"
+#       - alias: "Only if Julie is home"
+#         condition: state
+#         entity_id: person.julie
+#         state: "home"
+#       - alias: "Only if it's cold out"
+#         condition: numeric_state
+#         entity_id: sensor.gw2000b_v2_2_4_feels_like_temperature
+#         below: 50
+#   actions:
+#     - action: input_boolean.turn_on
+#       entity_id: input_boolean.bathroom_heater_auto_on

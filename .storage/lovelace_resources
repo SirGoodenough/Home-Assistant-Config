@@ -31,7 +31,7 @@
       },
       {
         "id": "95a73709be764c5fb2a7001de1a269b8",
-        "url": "/bambu_lab/ha-bambulab-cards.js?v=0.3.28",
+        "url": "/bambu_lab/ha-bambulab-cards.js?v=0.3.40",
         "type": "module"
       }
     ]

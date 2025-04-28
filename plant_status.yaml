@@ -10,7 +10,7 @@
     max_moisture: 90
     min_temperature: 50
     max_temperature: 90
-    min_brightness: 1000
+    min_brightness: 800
   my_hoya:
     sensors:
       moisture: sensor.chaloupkaabode_weather_soil_moisture_2
@@ -21,7 +21,7 @@
     max_moisture: 50
     min_temperature: 50
     max_temperature: 90
-    min_brightness: 1000
+    min_brightness: 800
   my_pothos:
     sensors:
       moisture: sensor.chaloupkaabode_weather_soil_moisture_3
@@ -31,4 +31,4 @@
     max_moisture: 90
     min_temperature: 50
     max_temperature: 90
-    min_brightness: 1000
+    min_brightness: 800
