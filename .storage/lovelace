@@ -502,13 +502,6 @@
                   "entity": "sensor.bedroom_fan_si7021_humidity"
                 },
                 {
-                  "entity": "input_number.mayson_nap_temperature"
-                },
-                {
-                  "entity": "input_boolean.mayson_cool",
-                  "secondary_info": "last-changed"
-                },
-                {
                   "entity": "input_boolean.ac_enabled"
                 }
               ],
