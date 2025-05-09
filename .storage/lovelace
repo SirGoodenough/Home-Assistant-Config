@@ -157,7 +157,7 @@
               "conditions": [
                 {
                   "condition": "numeric_state",
-                  "entity": "sensor.sm_s906u_battery_level_2",
+                  "entity": "sensor.sm_s906u_battery_level_3",
                   "below": 40
                 }
               ],
@@ -168,7 +168,7 @@
                 "tap_action": {
                   "action": "more-info"
                 },
-                "entity": "sensor.sm_s906u_battery_level_2",
+                "entity": "sensor.sm_s906u_battery_level_3",
                 "icon": "",
                 "show_state": true,
                 "name": "Dads Phone"

@@ -55,6 +55,7 @@
       room_temp_now: sensor.bedroom_fan_si7021_temperature
       room_set_temp: input_number.bedroom_auto_temp
       fan_on_time: "20:37:00"
+      temp_gap_2_to_3: 6.7
       mqtt_fan_topic: Bedroom_Fan/cmnd/FanSpeed
       loop_actions:
         - alias: "Start AirCon only if off to prevent rate limit outages"
