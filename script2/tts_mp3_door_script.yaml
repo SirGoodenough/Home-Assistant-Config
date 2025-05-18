@@ -30,7 +30,9 @@ media_player_back_doorbell_motion:
     input:
       file_2_play: '{{ ("media-source://media_source/local/mp3/jaws_x.mp3",
       "media-source://media_source/local/mp3/steps.mp3")|random }}'
-      speaker_target: media_player.intercom_group
+      speaker_target: 
+        - media_player.intercom_group
+        - media_player.bedroom_speaker
   icon: mdi:motion-sensor
 
 tts_back_doorbell:

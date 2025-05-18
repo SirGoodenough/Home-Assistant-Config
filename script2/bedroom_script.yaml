@@ -24,7 +24,7 @@ bedroom_temp_control:
       if:
         "{{ is_number(state_attr('climate.gemodule5384_window_ac', 'temperature')) and
         state_attr('climate.gemodule5384_window_ac', 'temperature') | float(73.1) !=
-        states('input_number.input_number.bedroom_auto_temp') | float(73.1) }}"
+        states('input_number.bedroom_auto_temp') | float(73.1) }}"
       then:
         action: script.bedroom_ac_set_temp
         data:
