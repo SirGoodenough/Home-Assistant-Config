@@ -1225,7 +1225,12 @@
               "cards": [
                 {
                   "type": "media-control",
-                  "entity": "media_player.farg"
+                  "entity": "media_player.ecotv_a"
+                },
+                {
+                  "type": "media-control",
+                  "entity": "media_player.fire_tv_192_168_108_232",
+                  "theme": "AMOLED Blue"
                 },
                 {
                   "type": "media-control",
@@ -1251,11 +1256,6 @@
                   "type": "media-control",
                   "entity": "media_player.fire_tv_192_168_108_207",
                   "theme": "Dark Pink"
-                },
-                {
-                  "type": "media-control",
-                  "entity": "media_player.fire_tv_192_168_108_232",
-                  "theme": "AMOLED Blue"
                 }
               ],
               "columns": 2,
@@ -1303,63 +1303,6 @@
               "show_header_toggle": false,
               "title": "Jens Room",
               "type": "entities"
-            },
-            {
-              "type": "horizontal-stack",
-              "cards": [
-                {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "script.tts_stop",
-                    "target": {},
-                    "data": {}
-                  },
-                  "entity": "script.tts_stop",
-                  "icon_height": "30px"
-                }
-              ]
-            },
-            {
-              "type": "horizontal-stack",
-              "cards": [
-                {
-                  "type": "custom:curtain-card",
-                  "title": "Window",
-                  "entity": "cover.jens_window_curtain",
-                  "curtainColor": "rgb(10,10,10,0.8)",
-                  "direction": "left",
-                  "size": 150,
-                  "showStatus": true,
-                  "sceneImage": "https://x5skwl.duckdns.org:23218/local/images/house_plant.gif"
-                }
-              ],
-              "title": "Jens Curtain Control Panel"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "cover.jens_window_curtain"
-                },
-                {
-                  "entity": "script.jen_night_curtain_position"
-                },
-                {
-                  "entity": "script.jen_day_curtain_position"
-                },
-                {
-                  "entity": "script.jen_open_curtain_position"
-                },
-                {
-                  "entity": "script.jen_closed_curtain_position"
-                },
-                {
-                  "entity": "sensor.jens_window_curtain_battery"
-                }
-              ]
             },
             {
               "square": false,
@@ -1429,19 +1372,8 @@
               "type": "entities"
             },
             {
-              "type": "media-control",
-              "entity": "media_player.jenny_s_tv"
-            },
-            {
-              "type": "media-control",
-              "entity": "media_player.jennys_room_display",
-              "theme": "Dark Pink"
-            },
-            {
-              "type": "media-control",
-              "entity": "media_player.farg"
-            },
-            {
+              "show_name": true,
+              "show_icon": true,
               "type": "button",
               "tap_action": {
                 "action": "call-service",
@@ -1461,12 +1393,26 @@
                   "entity_id": "input_boolean.mist_button"
                 }
               },
-              "theme": "Dark Soft UI Violet"
+              "theme": "Dark Soft UI Violet",
+              "icon_height": "50px"
             },
             {
-              "type": "media-control",
-              "entity": "media_player.fire_tv_192_168_108_207",
-              "theme": "Dark Pink"
+              "type": "horizontal-stack",
+              "cards": [
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.tts_stop",
+                    "target": {},
+                    "data": {}
+                  },
+                  "entity": "script.tts_stop",
+                  "icon_height": "30px"
+                }
+              ]
             }
           ],
           "icon": "mdi:alpha-j-box",

@@ -6,7 +6,7 @@
       battery: sensor.compensation_sensor_chaloupkaabode_weather_soil_battery_1
       temperature: sensor.cemetary_temp_temperature
       brightness: sensor.cemetary_lux_illuminance
-    min_moisture: 40
+    min_moisture: 18
     max_moisture: 90
     min_temperature: 50
     max_temperature: 90

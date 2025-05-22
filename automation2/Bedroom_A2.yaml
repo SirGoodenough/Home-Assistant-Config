@@ -1,12 +1,11 @@
 #####################################################
 # Bedroom Warn Open Door                            #
 #####################################################
-- id:
-    1a863145-656e-4dd6-8cbf-1de4bc3665f3
+- id: 1a863145-656e-4dd6-8cbf-1de4bc3665f3
+  alias: Bedroom Door is Open
     # Complain if the bedroom door is still open shortly
     #   before the Bedroom AC is scheduled to turn on
   mode: queued
-  alias: Bedroom Door is Open
   initial_state: on
   triggers:
     - id: check_time
@@ -57,35 +56,36 @@
       fan_on_time: "20:37:00"
       temp_gap_2_to_3: 6.7
       mqtt_fan_topic: Bedroom_Fan/cmnd/FanSpeed
-      loop_actions:
-        - alias: "Start AirCon only if off to prevent rate limit outages"
-          if: "{{ states('climate.gemodule5384_window_ac') != 'cool'
-            and states('input_boolean.ac_enabled') == 'on' }}"
+      loop_action:
+        - variables:
+            _ac_enable: "{{ states('input_boolean.ac_enabled') }}"
+            _ac_set_temp: "{{ state_attr('climate.gemodule5384_window_ac', 'temperature') | float(73.1) }}"
+            _mode: "{{ states('climate.gemodule5384_window_ac') }}"
+            _room_temp: "{{ state_attr('climate.gemodule5384_window_ac', 'current_temperature') | float(55.5) }}"
+            _target_temp: "{{ states('input_number.bedroom_auto_temp') | float(73.2) }}"
+        - alias: "If AC enabled & not too cold then set temp."
+          if: "{{ _ac_enable == 'on' and _room_temp > ( _target_temp - 2.1 ) }}"
           then:
-            action: script.bedroom_ac_start
-        - alias: Make sure the device is on before the temperature is set
-          delay: 00:00:05
-        - alias: "call bedroom ac set temperature & limit to prevent rate limit outages"
-          if:
-            "{{ is_number(state_attr('climate.gemodule5384_window_ac', 'temperature'))
-            and state_attr('climate.gemodule5384_window_ac', 'temperature') | float(73.1)
-            != states('input_number.bedroom_auto_temp') | float(73.2)
-            }}"
-          then:
-            action: script.bedroom_ac_set_temp
-            data:
-              Temp: "{{ states('input_number.bedroom_auto_temp') | float(73.3) }}"
-      off_actions:
+            - alias: Set the AC Temp
+              action: script.bedroom_ac_set_temp
+              data:
+                Mode: 'cool'
+                Temp: "{{ _target_temp }}"
+          else:
+            - alias: If cool mode and too cold shutdown the AC
+              if: "{{ _mode == 'cool' and _room_temp <= ( _target_temp - 2.1 ) }}"
+              then:
+                - alias: Shutdown the AC
+                  action: script.bedroom_ac_mode
+      off_action:
         - alias: call shut the AirCon down script
           action: script.bedroom_cooling_off
 
-- id:
-    33679c7e-d77a-4aa4-9bdc-f9e2c46d9153
-    # Bedroom Cool Daytime Control
+- id: 33679c7e-d77a-4aa4-9bdc-f9e2c46d9153
+  alias: Bedroom As Needed Auto Mode
   mode: restart
   trace:
     stored_traces: 10
-  alias: Bedroom As Needed Auto Mode
   initial_state: on
   triggers:
     - id: temperature change trigger
@@ -103,28 +103,29 @@
       {% from 'logic_chekr.jinja' import true_all %}
       {{- true_all( ['input_boolean.bedroom_cool'] ) | bool -}}
   actions:
+    - variables:
+        _ac_enable: "{{ states('input_boolean.ac_enabled') }}"
+        _room_temp: "{{ state_attr('climate.gemodule5384_window_ac', 'temperature') | float(73.1) }}"
+        _target_temp: "{{ states('input_number.bedroom_auto_temp') | float(73.2) }}"
+        _mode: "{{ states('climate.gemodule5384_window_ac') }}"
     - alias: "Start AirCon only if off to prevent rate limit outages"
-      if: "{{ states('climate.gemodule5384_window_ac') != 'cool'
-        and states('input_boolean.ac_enabled') == 'on' }}"
-      then:
-        action: script.bedroom_ac_start
-    - alias: call bedroom control script
-      action: script.bedroom_temp_control
-    - alias: "call bedroom ac set temperature & limit to prevent rate limit outages"
-      if:
-        "{{ is_number(state_attr('climate.gemodule5384_window_ac', 'temperature'))
-        and state_attr('climate.gemodule5384_window_ac', 'temperature') | float(73.1)
-        != states('input_number.bedroom_auto_temp') | float(73.2) }}"
+      if: "{{ _mode != 'cool' and _ac_enable == 'on' }}"
       then:
         action: script.bedroom_ac_set_temp
         data:
-          Temp: "{{ states('input_number.bedroom_auto_temp') | float(73.3) }}"
+          Mode: 'cool'
+          Temp: "{{ _target_temp }}"
+    - action: script.bedroom_temp_control
+    - if: "{{ _room_temp != _target_temp }}"
+      then:
+        action: script.bedroom_ac_set_temp
+        data:
+          Temp: "{{ _target_temp }}"
+          Mode: 'cool'
 
-- id:
-    bc3cbabb-f2e5-4959-816a-26942b894dd6
-    # Bedroom Cool Daytime Control Reset
-  mode: queued
+- id: bc3cbabb-f2e5-4959-816a-26942b894dd6
   alias: Bedroom As Needed Auto Mode OFF
+  mode: queued
   initial_state: on
   triggers:
     - id: off_time

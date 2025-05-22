@@ -4,13 +4,17 @@
 bedroom_temp_control:
   alias: Bedroom Temperature Control
   description: ":tada: does it work?"
+  variables:
+    target_temp: "{{ states('input_number.bedroom_auto_temp') | float(73.2) }}"
+    bat: "{{ target_temp -1.3 }}"
+    bte: "{{ states('sensor.bedroom_fan_si7021_temperature') | float(bat) }}"
+    ac_enable: "{{ states('input_boolean.ac_enabled') }}"
+    set_temp: "{{ state_attr('climate.gemodule5384_window_ac', 'temperature') | float(73.1) }}"
   sequence:
     - action: mqtt.publish
       data:
         topic: "Bedroom_Fan/cmnd/FanSpeed"
         payload: >
-          {% set bat = (states('input_number.bedroom_auto_temp') | float(73.1)) -1.3 %}
-          {% set bte = states('sensor.bedroom_fan_si7021_temperature') | float(bat) %}
           {% if bte < bat %}
             0
           {% elif bte < (bat + 5.8) %}
@@ -22,25 +26,12 @@ bedroom_temp_control:
           {% endif %}
     - alias: "call bedroom ac set temperature & limit to prevent rate limit outages"
       if:
-        "{{ is_number(state_attr('climate.gemodule5384_window_ac', 'temperature')) and
-        state_attr('climate.gemodule5384_window_ac', 'temperature') | float(73.1) !=
-        states('input_number.bedroom_auto_temp') | float(73.1) }}"
+        "{{ ac_enable == 'on' and set_temp != target_temp }}"
       then:
         action: script.bedroom_ac_set_temp
         data:
-          Temp: "{{ states('input_number.bedroom_auto_temp') | float(73.1) }}"
-
-#####################################################
-# Bedroom AC Start                                  #
-#####################################################
-bedroom_ac_start:
-  alias: Bedroom AC Start
-  sequence:
-    - action: climate.set_hvac_mode
-      target:
-        entity_id: climate.gemodule5384_window_ac
-      data:
-        hvac_mode: cool
+          Temp: "{{ target_temp }}"
+          Mode: 'cool'
 
 #####################################################
 # Bedroom Cooling Off                               #
@@ -54,25 +45,57 @@ bedroom_cooling_off:
         topic: "Bedroom_Fan/cmnd/FanSpeed"
         payload: 0
     - alias: Stop the AirCon
-      action: climate.set_hvac_mode
+      action: script.bedroom_ac_mode
+
+#############################################################
+# Bedroom AC Set Temperature                                #
+#  Looks for the variables 'Temp' & 'Mode' to be passed in  #
+#   'Temp' is a float between 55 and 85 °F (85° Default)    #
+#   'Mode' is either cool or off  (cool Default)            #
+#############################################################
+bedroom_ac_set_temp:
+  alias: Bedroom AC Set Temperature
+  fields:
+    Temp:
+      name: Temperature to set
+      description: What to set the AC to
+      required: false
+      example: "72.8"
+      default: 85
+      selector:
+        number:
+          min: 55
+          max: 90
+          step: 0.1
+    Mode:
+      name: Mode Field
+      description: "Select cool or off only for this unit"
+      required: false
+      example: 'cool'
+      default: 'cool'
+      selector:
+        select:
+          multiple: false
+          custom_value: false
+          options:
+            - 'cool'
+            - 'off'
+  sequence:
+    - action: climate.set_temperature
+      data:
+        hvac_mode: '{{ Mode }}'
+        temperature: '{{ Temp }}'
+      target:
+        entity_id: climate.gemodule5384_window_ac
+
+#####################################################
+# Bedroom AC Mode                                   #
+#####################################################
+bedroom_ac_mode:
+  alias: Bedroom AC Mode
+  sequence:
+    - action: climate.set_hvac_mode
       target:
         entity_id: climate.gemodule5384_window_ac
       data:
         hvac_mode: 'off'
-
-#####################################################
-# Bedroom AC Set Temperature                        #
-#  Looks for the variable 'Temp' to be passed in    #
-#   'Temp' is a float between 45 and 95 °F          #
-#####################################################
-bedroom_ac_set_temp:
-  variables:
-    Temp:
-  alias: Bedroom AC Set Temperature
-  sequence:
-    - action: climate.set_temperature
-      data:
-        temperature: '{{ Temp }}'
-        hvac_mode: cool
-      target:
-        entity_id: climate.gemodule5384_window_ac
