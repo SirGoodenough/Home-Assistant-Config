@@ -231,6 +231,57 @@
               "state_color": true
             },
             {
+              "square": false,
+              "columns": 2,
+              "type": "grid",
+              "cards": [
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.reset_nag",
+                  "icon": "mdi:volume-off",
+                  "name": "Door Nag",
+                  "icon_height": "40px",
+                  "theme": "Dark Pink"
+                }
+              ]
+            },
+            {
+              "entities": [
+                {
+                  "entity": "fan.jens_new_fan",
+                  "IsOffColor": "#2E253F",
+                  "IsOnHiColor": "#D3C5EC",
+                  "IsOnLowColor": "#6A2FD3",
+                  "IsOnMedColor": "#9F7BDF",
+                  "customTheme": true,
+                  "customSetpoints": true,
+                  "hiPercentage": 100,
+                  "name": "George",
+                  "type": "custom:fan-percent-button-row"
+                },
+                {
+                  "entity": "sensor.jennys_new_fanspeed"
+                },
+                {
+                  "entity": "light.jens_light"
+                },
+                {
+                  "entity": "light.grp_jens_color"
+                },
+                {
+                  "entity": "light.growlight2"
+                }
+              ],
+              "show_header_toggle": false,
+              "title": "Jens Room",
+              "type": "entities"
+            },
+            {
               "type": "conditional",
               "conditions": [
                 {
@@ -525,6 +576,41 @@
               "hours_to_show": 48
             },
             {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_outdoor_temperature",
+                  "name": "Outdoor Temperature"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_humidity",
+                  "name": "Humidity"
+                },
+                {
+                  "entity": "input_boolean.rain"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_max_daily_wind_gust",
+                  "name": "Max Daily Wind Gust"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_indoor_temperature",
+                  "name": "Indoor Temperature"
+                },
+                {
+                  "entity": "sensor.chaloupkaabode_weather_temperature_7"
+                },
+                {
+                  "entity": "sensor.chaloupkaabode_weather_temperature_8"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_last_lightning_strike",
+                  "name": "Last Lightning strike"
+                }
+              ],
+              "title": "ChaloupkaAbode Weather"
+            },
+            {
               "type": "conditional",
               "conditions": [
                 {
@@ -550,9 +636,9 @@
               "type": "weather-forecast",
               "entity": "weather.home",
               "name": "Chaloupka Abode",
-              "theme": "Animated Weather Card",
               "secondary_info_attribute": "wind_speed",
-              "forecast_type": "legacy"
+              "forecast_type": "daily",
+              "forecast_slots": 7
             },
             {
               "type": "entities",
@@ -1270,60 +1356,6 @@
         {
           "badges": [],
           "cards": [
-            {
-              "entities": [
-                {
-                  "entity": "fan.jens_new_fan",
-                  "IsOffColor": "#2E253F",
-                  "IsOnHiColor": "#D3C5EC",
-                  "IsOnLowColor": "#6A2FD3",
-                  "IsOnMedColor": "#9F7BDF",
-                  "customTheme": true,
-                  "customSetpoints": true,
-                  "hiPercentage": 100,
-                  "name": "George",
-                  "type": "custom:fan-percent-button-row"
-                },
-                {
-                  "entity": "sensor.jennys_new_fanspeed"
-                },
-                {
-                  "entity": "light.jens_light"
-                },
-                {
-                  "entity": "light.grp_jens_color"
-                },
-                {
-                  "entity": "light.grp_kitch"
-                },
-                {
-                  "entity": "light.kitchensink"
-                }
-              ],
-              "show_header_toggle": false,
-              "title": "Jens Room",
-              "type": "entities"
-            },
-            {
-              "square": false,
-              "columns": 2,
-              "type": "grid",
-              "cards": [
-                {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "script.reset_nag",
-                  "icon": "mdi:volume-off",
-                  "name": "Door Nag",
-                  "icon_height": "40px",
-                  "theme": "Dark Pink"
-                }
-              ]
-            },
             {
               "entities": [
                 {
@@ -3524,29 +3556,66 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "sensor.gw2000b_v2_2_4_absolute_pressure",
-                  "name": "Absolute Pressure"
-                },
-                "sensor.gw2000b_v2_2_4_daily_rain_rate_piezo",
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_dewpoint",
-                  "name": "Dewpoint"
+                  "entity": "sensor.gw2000b_v2_2_4_indoor_temperature",
+                  "name": "Indoor Temperature"
                 },
                 {
-                  "entity": "sensor.gw2000b_v2_2_4_event_rain_rate_piezo",
-                  "name": "Event Rain Rate Piezo"
+                  "entity": "sensor.gw2000b_v2_2_4_outdoor_temperature",
+                  "name": "Outdoor Temperature"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_humidity",
+                  "name": "Humidity"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_wind_gust",
+                  "name": "Wind Gust"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_rain_rate_piezo",
+                  "name": "Rain Rate Piezo"
+                },
+                {
+                  "entity": "sensor.chaloupkaabode_weather_temperature_7"
+                },
+                {
+                  "entity": "sensor.chaloupkaabode_weather_temperature_8"
                 },
                 {
                   "entity": "sensor.gw2000b_v2_2_4_feels_like_temperature",
                   "name": "Feels like Temperature"
                 },
                 {
-                  "entity": "sensor.gw2000b_v2_2_4_hourly_rain_rate_piezo",
-                  "name": "Hourly Rain Rate Piezo"
+                  "entity": "sensor.gw2000b_v2_2_4_uv_index",
+                  "name": "UV Index"
                 },
                 {
-                  "entity": "sensor.gw2000b_v2_2_4_humidity",
-                  "name": "Humidity"
+                  "entity": "sensor.gw2000b_v2_2_4_windchill",
+                  "name": "Windchill"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_wind_speed",
+                  "name": "Wind Speed"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_wind_direction",
+                  "name": "Wind Direction"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_dewpoint",
+                  "name": "Dewpoint"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_absolute_pressure",
+                  "name": "Absolute Pressure"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_last_lightning_strike",
+                  "name": "Last Lightning strike"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_event_rain_rate_piezo",
+                  "name": "Event Rain Rate Piezo"
                 },
                 {
                   "entity": "sensor.gw2000b_v2_2_4_indoor_dewpoint",
@@ -3555,14 +3624,6 @@
                 {
                   "entity": "sensor.gw2000b_v2_2_4_indoor_humidity",
                   "name": "Indoor Humidity"
-                },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_indoor_temperature",
-                  "name": "Indoor Temperature"
-                },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_last_lightning_strike",
-                  "name": "Last Lightning strike"
                 },
                 {
                   "entity": "sensor.gw2000b_v2_2_4_lightning_strike_distance",
@@ -3577,20 +3638,26 @@
                   "name": "Max Daily Wind Gust"
                 },
                 {
+                  "entity": "sensor.gw2000b_v2_2_4_relative_pressure",
+                  "name": "Relative Pressure"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_hourly_rain_rate_piezo",
+                  "name": "Hourly Rain Rate Piezo"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_daily_rain_rate_piezo"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_weekly_rain_rate_piezo"
+                },
+                {
                   "entity": "sensor.gw2000b_v2_2_4_monthly_rain_rate_piezo",
                   "name": "Monthly Rain Rate Piezo"
                 },
                 {
-                  "entity": "sensor.gw2000b_v2_2_4_outdoor_temperature",
-                  "name": "Outdoor Temperature"
-                },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_rain_rate_piezo",
-                  "name": "Rain Rate Piezo"
-                },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_relative_pressure",
-                  "name": "Relative Pressure"
+                  "entity": "sensor.gw2000b_v2_2_4_yearly_rain_rate_piezo",
+                  "name": "Yearly Rain Rate Piezo"
                 },
                 {
                   "entity": "sensor.chaloupkaabode_weather_soil_moisture_1",
@@ -3611,39 +3678,6 @@
                 {
                   "entity": "sensor.gw2000b_v2_2_4_solar_radiation",
                   "name": "Solar Radiation"
-                },
-                {
-                  "entity": "sensor.chaloupkaabode_weather_temperature_7",
-                  "name": "Temperature 7"
-                },
-                {
-                  "entity": "sensor.chaloupkaabode_weather_temperature_8",
-                  "name": "Temperature 8"
-                },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_uv_index",
-                  "name": "UV Index"
-                },
-                "sensor.gw2000b_v2_2_4_weekly_rain_rate_piezo",
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_wind_direction",
-                  "name": "Wind Direction"
-                },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_wind_gust",
-                  "name": "Wind Gust"
-                },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_wind_speed",
-                  "name": "Wind Speed"
-                },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_windchill",
-                  "name": "Windchill"
-                },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_yearly_rain_rate_piezo",
-                  "name": "Yearly Rain Rate Piezo"
                 }
               ],
               "title": "ChaloupkaAbode Weather"

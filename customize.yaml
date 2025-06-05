@@ -431,3 +431,5 @@
   script.br_scan_down:
     friendly_name: "BlueRay Scan"
     icon: mdi:rewind
+
+    
