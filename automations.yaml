@@ -103,3 +103,75 @@
       target:
         label_id: sonic_screwdriver
   mode: single
+- id: '1749576797273'
+  alias: Suspend_Morning_AC
+  description: Pause the AC in the morning if getting up early
+  triggers:
+  - trigger: state
+    entity_id:
+    - input_boolean.suspend
+    to: 'on'
+    not_from:
+    - unknown
+    - unavailable
+    id: Suspend
+  - trigger: time
+    at: 09:00:00
+    id: Release
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - alias: If the button was pushed and cooling is enabled & before alarm time
+        condition: and
+        conditions:
+        - condition: trigger
+          id:
+          - Suspend
+        - condition: state
+          entity_id: input_boolean.bedroom_auto_fan
+          state: 'on'
+        - condition: time
+          before: 08:58:18
+      sequence:
+      - action: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.bedroom_auto_fan
+        data: {}
+    - conditions:
+      - alias: If it's cooling season & after alarm time & suspend is on
+        condition: and
+        conditions:
+        - condition: numeric_state
+          entity_id: sensor.gw2000b_v2_2_4_feels_like_temperature
+          above: 42
+        - condition: trigger
+          id:
+          - Release
+        - condition: state
+          entity_id: input_boolean.suspend
+          state: 'on'
+      sequence:
+      - action: input_boolean.turn_on
+        target:
+          entity_id:
+          - input_boolean.bedroom_auto_fan
+        data: {}
+      - action: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.suspend
+        data: {}
+    - conditions:
+      - condition: time
+        after: 08:58:21
+      sequence:
+      - action: input_boolean.turn_on
+        target:
+          entity_id:
+          - input_boolean.bedroom_auto_fan
+        data: {}
+      - action: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.suspend
+        data: {}
+  mode: single

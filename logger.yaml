@@ -4,3 +4,5 @@
   filters:  
     homeassistant.components.androidtv.media_player:
       - "Failed to execute an ADB command*"
+    homeassistant.components.androidtv.entity:
+      - "Failed to execute an ADB command*"

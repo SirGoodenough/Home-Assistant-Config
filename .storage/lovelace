@@ -223,6 +223,9 @@
                 },
                 {
                   "entity": "fan.mary"
+                },
+                {
+                  "entity": "switch.bot_108e"
                 }
               ],
               "show_header_toggle": true,
@@ -272,9 +275,6 @@
                 },
                 {
                   "entity": "light.grp_jens_color"
-                },
-                {
-                  "entity": "light.growlight2"
                 }
               ],
               "show_header_toggle": false,
@@ -286,7 +286,7 @@
               "conditions": [
                 {
                   "condition": "numeric_state",
-                  "entity": "sensor.twentyrwomom_battery_level",
+                  "entity": "sensor.mom_s_ultra_battery_level",
                   "below": 40
                 }
               ],
@@ -483,6 +483,13 @@
                   "detail": 2,
                   "hours_to_show": 48
                 }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "climate.living_room_2",
+                  "state_not": "off"
+                }
               ]
             },
             {
@@ -544,6 +551,9 @@
                   "entity": "input_boolean.bedroom_auto_fan"
                 },
                 {
+                  "entity": "input_boolean.suspend"
+                },
+                {
                   "entity": "input_number.bedroom_auto_temp"
                 },
                 {
@@ -571,7 +581,7 @@
             {
               "graph": "line",
               "type": "sensor",
-              "entity": "sensor.pm2_5_filtereed",
+              "entity": "sensor.chaloupkaabode_weather_pm2_5_1",
               "detail": 2,
               "hours_to_show": 48
             },
@@ -606,6 +616,9 @@
                 {
                   "entity": "sensor.gw2000b_v2_2_4_last_lightning_strike",
                   "name": "Last Lightning strike"
+                },
+                {
+                  "entity": "sensor.aurora_visibility_visibility"
                 }
               ],
               "title": "ChaloupkaAbode Weather"
@@ -669,6 +682,9 @@
                 },
                 {
                   "entity": "switch.air_compressor_house_switch"
+                },
+                {
+                  "entity": "switch.bot_108e"
                 }
               ],
               "state_color": true,
@@ -3190,11 +3206,11 @@
                   "entity": "number.p1s_01p00c4c2100641_bed_target_temperature"
                 },
                 {
-                  "entity": "number.p1s_01p00c4c2100641_nozzle_target_temperature"
+                  "entity": "sensor.p1s_01p00c4c2100641_nozzle_target_temperature"
                 }
               ],
               "refresh_interval": 1,
-              "title": "Bat Temps",
+              "title": "Bambu Bat Temps",
               "type": "history-graph",
               "hours_to_show": 8,
               "logarithmic_scale": false
@@ -3556,67 +3572,31 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "sensor.gw2000b_v2_2_4_indoor_temperature",
-                  "name": "Indoor Temperature"
+                  "entity": "sensor.gw2000b_v2_2_4_absolute_pressure",
+                  "name": "Absolute Pressure"
+                },
+                "sensor.gw2000b_v2_2_4_daily_rain_rate_piezo",
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_dewpoint",
+                  "name": "Dewpoint"
                 },
                 {
-                  "entity": "sensor.gw2000b_v2_2_4_outdoor_temperature",
-                  "name": "Outdoor Temperature"
-                },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_humidity",
-                  "name": "Humidity"
-                },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_wind_gust",
-                  "name": "Wind Gust"
-                },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_rain_rate_piezo",
-                  "name": "Rain Rate Piezo"
-                },
-                {
-                  "entity": "sensor.chaloupkaabode_weather_temperature_7"
-                },
-                {
-                  "entity": "sensor.chaloupkaabode_weather_temperature_8"
+                  "entity": "sensor.gw2000b_v2_2_4_event_rain_rate_piezo",
+                  "name": "Event Rain Piezo"
                 },
                 {
                   "entity": "sensor.gw2000b_v2_2_4_feels_like_temperature",
                   "name": "Feels like Temperature"
                 },
                 {
-                  "entity": "sensor.gw2000b_v2_2_4_uv_index",
-                  "name": "UV Index"
+                  "entity": "sensor.gw2000b_v2_2_4_hourly_rain_rate_piezo",
+                  "name": "Hourly Rain Piezo"
                 },
                 {
-                  "entity": "sensor.gw2000b_v2_2_4_windchill",
-                  "name": "Windchill"
+                  "entity": "sensor.gw2000b_v2_2_4_humidity",
+                  "name": "Humidity"
                 },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_wind_speed",
-                  "name": "Wind Speed"
-                },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_wind_direction",
-                  "name": "Wind Direction"
-                },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_dewpoint",
-                  "name": "Dewpoint"
-                },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_absolute_pressure",
-                  "name": "Absolute Pressure"
-                },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_last_lightning_strike",
-                  "name": "Last Lightning strike"
-                },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_event_rain_rate_piezo",
-                  "name": "Event Rain Rate Piezo"
-                },
+                "sensor.chaloupkaabode_weather_temperature_7",
                 {
                   "entity": "sensor.gw2000b_v2_2_4_indoor_dewpoint",
                   "name": "Indoor Dewpoint"
@@ -3624,6 +3604,14 @@
                 {
                   "entity": "sensor.gw2000b_v2_2_4_indoor_humidity",
                   "name": "Indoor Humidity"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_indoor_temperature",
+                  "name": "Indoor Temperature"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_last_lightning_strike",
+                  "name": "Last Lightning strike"
                 },
                 {
                   "entity": "sensor.gw2000b_v2_2_4_lightning_strike_distance",
@@ -3638,31 +3626,34 @@
                   "name": "Max Daily Wind Gust"
                 },
                 {
+                  "entity": "sensor.gw2000b_v2_2_4_monthly_rain_rate_piezo",
+                  "name": "Monthly Rain Piezo"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_outdoor_temperature",
+                  "name": "Outdoor Temperature"
+                },
+                {
+                  "entity": "sensor.chaloupkaabode_weather_pm2_5_1",
+                  "name": "PM2.5 1"
+                },
+                {
+                  "entity": "sensor.chaloupkaabode_weather_pm2_5_24h_average_1",
+                  "name": "PM2.5 24h Average 1"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_rain_rate_piezo",
+                  "name": "Rain Rate Piezo"
+                },
+                {
+                  "entity": "binary_sensor.chaloupkaabode_weather_rain_state_piezo",
+                  "name": "Rain State Piezo"
+                },
+                {
                   "entity": "sensor.gw2000b_v2_2_4_relative_pressure",
                   "name": "Relative Pressure"
                 },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_hourly_rain_rate_piezo",
-                  "name": "Hourly Rain Rate Piezo"
-                },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_daily_rain_rate_piezo"
-                },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_weekly_rain_rate_piezo"
-                },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_monthly_rain_rate_piezo",
-                  "name": "Monthly Rain Rate Piezo"
-                },
-                {
-                  "entity": "sensor.gw2000b_v2_2_4_yearly_rain_rate_piezo",
-                  "name": "Yearly Rain Rate Piezo"
-                },
-                {
-                  "entity": "sensor.chaloupkaabode_weather_soil_moisture_1",
-                  "name": "Soil Moisture 1"
-                },
+                "sensor.chaloupkaabode_weather_soil_moisture_1",
                 {
                   "entity": "sensor.chaloupkaabode_weather_soil_moisture_2",
                   "name": "Soil Moisture 2"
@@ -3678,6 +3669,36 @@
                 {
                   "entity": "sensor.gw2000b_v2_2_4_solar_radiation",
                   "name": "Solar Radiation"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_uv_index",
+                  "name": "UV Index"
+                },
+                "sensor.gw2000b_v2_2_4_weekly_rain_rate_piezo",
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_wind_direction",
+                  "name": "Wind Direction"
+                },
+                {
+                  "entity": "sensor.chaloupkaabode_weather_wind_direction_10m_avg",
+                  "name": "Wind Direction 10m Avg"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_wind_gust",
+                  "name": "Wind Gust"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_wind_speed",
+                  "name": "Wind Speed"
+                },
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_windchill",
+                  "name": "Windchill"
+                },
+                "sensor.chaloupkaabode_weather_temperature_8",
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_yearly_rain_rate_piezo",
+                  "name": "Yearly Rain Piezo"
                 }
               ],
               "title": "ChaloupkaAbode Weather"
@@ -4799,14 +4820,6 @@
                 }
               ],
               "title": "Gertle"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                "select.fan_auto_enable_officefancmndfanspeed",
-                "number.fan_auto_target_officefancmndfanspeed"
-              ],
-              "title": "Fan Auto Enable Blueprint Helper OfficeFancmndFanSpeed"
             },
             {
               "entities": [

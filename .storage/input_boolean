@@ -55,11 +55,6 @@
         "id": "fan_test"
       },
       {
-        "name": "Bed Knees Up Ten",
-        "icon": "mdi:foot-print",
-        "id": "bed_foot_up_10"
-      },
-      {
         "name": "mom_bedtime",
         "icon": "mdi:bed-queen",
         "id": "mom_bedtime"
@@ -103,6 +98,11 @@
         "id": "house_humidity_enable",
         "name": "House Humidity Enable",
         "icon": "mdi:air-humidifier-off"
+      },
+      {
+        "id": "suspend",
+        "name": "Suspend",
+        "icon": "mdi:stop-circle-outline"
       }
     ]
   }

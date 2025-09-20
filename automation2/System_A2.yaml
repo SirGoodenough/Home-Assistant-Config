@@ -95,7 +95,7 @@
 - id: 28062904-bd08-44fc-9021-13d8ad4aa054
   alias: Backend Update
   description: "Keep stuff up to date"
-  initial_state: on
+  initial_state: off
   triggers:
     - trigger: time_pattern
       hours: "11"
