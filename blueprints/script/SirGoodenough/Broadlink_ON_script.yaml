@@ -1,31 +1,17 @@
 blueprint:
   name: Broadlink_ON_script_2023-08-07
   author: SirGoodenough
-  description: >
-    A script that gets my TV on and Reciever set-up to correct mode.
-
-
-    [Community link for this blueprint](https://community.home-assistant.io/t/script-blueprint-to-turn-my-tv-on-and-put-it-into-the-correct-mode-for-the-input-device-i-want/338755)
-
-
-    ## 🗿Notice👮🏿‍♂️:
-
-    * Copies of the original Blueprint that were converted via the 'Take Control'
-    feature or other means are officially not supported by me.
-
-
-    * I may or may not be able to support you when you have a problem after you make changes
-    to my code, as some of the code is no longer mine.
-
-
-    * I & my license also require attribution as a link back to the original
-    should you use this code in your own creation.
-
-
-    * [Here is a link to my license & the original github post](https://github.com/SirGoodenough/HA_Blueprints?tab=License-1-ov-file)
-    expected to be followed & referenced as attribution should you use this code elsewhere.
-
-  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Broadlink_ON_script.yaml
+  description: "A script that gets my TV on and Reciever set-up to correct mode.\n\n[Community
+    link for this blueprint](https://community.home-assistant.io/t/script-blueprint-to-turn-my-tv-on-and-put-it-into-the-correct-mode-for-the-input-device-i-want/338755)\n\n##
+    \U0001F5FFNotice\U0001F46E\U0001F3FF‍♂️:\n* Copies of the original Blueprint that
+    were converted via the 'Take Control' feature or other means are officially not
+    supported by me.\n\n* I may or may not be able to support you when you have a
+    problem after you make changes to my code, as some of the code is no longer mine.\n\n*
+    I & my license also require attribution as a link back to the original should
+    you use this code in your own creation.\n\n* [Here is a link to my license & the
+    original github post](https://github.com/SirGoodenough/HA_Blueprints?tab=License-1-ov-file)
+    expected to be followed & referenced as attribution should you use this code elsewhere.\n"
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/Update-for-legacy-changes/Scripts/Broadlink_ON_script.yaml
   domain: script
   homeassistant:
     min_version: 2023.8.0
@@ -38,7 +24,9 @@ blueprint:
         entity:
           multiple: true
           filter:
-            - domain: switch
+          - domain:
+            - switch
+          reorder: false
     reciever_power:
       name: Reciever Power
       description: Turn the Reciever Device ON
@@ -47,7 +35,9 @@ blueprint:
         entity:
           multiple: true
           filter:
-            - domain: script
+          - domain:
+            - script
+          reorder: false
     tv_power:
       name: TV Power
       description: Turn the TV Device ON
@@ -56,7 +46,9 @@ blueprint:
         entity:
           multiple: true
           filter:
-            - domain: script
+          - domain:
+            - script
+          reorder: false
     tv_mode:
       name: TV Input Mode
       description: Select the feed into the TV. Clicked after the OTA mode below.
@@ -64,19 +56,24 @@ blueprint:
         entity:
           multiple: true
           filter:
-            - domain: script
+          - domain:
+            - script
+          reorder: false
     tv_ota_mode:
       name: OTA Input Mode
-      description: >
-        Select the Over The Air TV mode to put the TV Mode into a known state. 
-        Note- My TV uses multiple presses to select some inputs, so this is needed in my case.
-        You may not need this. Adjust sequence accordingly...
+      description: 'Select the Over The Air TV mode to put the TV Mode into a known
+        state.  Note- My TV uses multiple presses to select some inputs, so this is
+        needed in my case. You may not need this. Adjust sequence accordingly...
+
+        '
       default: script.vizio_j_tv
       selector:
         entity:
           multiple: true
           filter:
-            - domain: script
+          - domain:
+            - script
+          reorder: false
     reciever_input:
       name: Reciever Input
       description: Turn the Reciever Input to the correct adapter line
@@ -84,7 +81,9 @@ blueprint:
         entity:
           multiple: true
           filter:
-            - domain: script
+          - domain:
+            - script
+          reorder: false
     reciever_out_mode:
       name: Reciever Speaker Out Mode
       description: Turn the Reciever Speakers into the desired output mode
@@ -93,7 +92,9 @@ blueprint:
         entity:
           multiple: true
           filter:
-            - domain: script
+          - domain:
+            - script
+          reorder: false
     cooldown:
       name: Cooldown
       description: The between IR Blasts...
@@ -105,35 +106,33 @@ blueprint:
           unit_of_measurement: seconds
           step: 0.5
           mode: slider
-
 sequence:
-  - service: switch.turn_on
-    target:
-      entity_id: !input 'adapter_power'
-  - service: script.turn_on
-    target:
-      entity_id: !input 'reciever_power'
-  - delay: !input 'cooldown'
-  - service: script.turn_on
-    target:
-      entity_id: !input 'tv_power'
-  - delay: !input 'cooldown'
-  - service: script.turn_on
-    target:
-      entity_id: !input 'reciever_input'
-  - delay: !input 'cooldown'
-  - service: script.turn_on
-    target:
-      entity_id: !input 'tv_ota_mode'
-  - delay: !input 'cooldown'
-  - service: script.turn_on
-    target:
-      entity_id: !input 'reciever_out_mode'
-  - delay: !input 'cooldown'
-  - service: script.turn_on
-    target:
-      entity_id: !input 'tv_mode'
-
+- action: switch.turn_on
+  target:
+    entity_id: !input adapter_power
+- action: script.turn_on
+  target:
+    entity_id: !input reciever_power
+- delay: !input cooldown
+- action: script.turn_on
+  target:
+    entity_id: !input tv_power
+- delay: !input cooldown
+- action: script.turn_on
+  target:
+    entity_id: !input reciever_input
+- delay: !input cooldown
+- action: script.turn_on
+  target:
+    entity_id: !input tv_ota_mode
+- delay: !input cooldown
+- action: script.turn_on
+  target:
+    entity_id: !input reciever_out_mode
+- delay: !input cooldown
+- action: script.turn_on
+  target:
+    entity_id: !input tv_mode
 mode: queued
 icon: mdi:remote-tv
 max: 5

@@ -4,57 +4,39 @@ blueprint:
   domain: script
   homeassistant:
     min_version: 2023.8.0
-  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/device_reset.yaml
-  description: >
-    This script was invented to be used with my Device Tracker-Monitor-Notifier
-    Blueprint. I released it as a standalone Script Blueprint because I saw
-    an opportunity to add another tool to my toolbox, and possibly to others
-    toolboxes
-
-    There are other places in my HA config where I need to reset something 
-    and now I can use this thing.
-
-    It asks for the entity or list of entities that you want to reset and how
-    long you want them to be off for the reset.
-
-    When a Script using this Blueprint is called, it will use Homeassistant
-    turn off to shut them off, wait the delay, then turn them back on.
-    Simple Simple, but if you are doing it over and over in an automation,
-    this cleans up the code quite a bit.
-
-
-    ## 🗿Notice👮🏿‍♂️:
-
-    * Copies of the original Blueprint that were converted via the 'Take Control'
-    feature or other means are officially not supported by me.
-
-
-    * I may or may not be able to support you when you have a problem after you make changes
-    to my code, as some of the code is no longer mine.
-
-
-    * I & my license also require attribution as a link back to the original
-    should you use this code in your own creation.
-
-
-    * [Here is a link to my license & the original github post](https://github.com/SirGoodenough/HA_Blueprints?tab=License-1-ov-file)
-    expected to be followed & referenced as attribution should you use this code elsewhere.
-
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/Update-for-legacy-changes/Scripts/device_reset.yaml
+  description: "This script was invented to be used with my Device Tracker-Monitor-Notifier
+    Blueprint. I released it as a standalone Script Blueprint because I saw an opportunity
+    to add another tool to my toolbox, and possibly to others toolboxes\nThere are
+    other places in my HA config where I need to reset something  and now I can use
+    this thing.\nIt asks for the entity or list of entities that you want to reset
+    and how long you want them to be off for the reset.\nWhen a Script using this
+    Blueprint is called, it will use Homeassistant turn off to shut them off, wait
+    the delay, then turn them back on. Simple Simple, but if you are doing it over
+    and over in an automation, this cleans up the code quite a bit.\n\n## \U0001F5FFNotice\U0001F46E\U0001F3FF‍♂️:\n*
+    Copies of the original Blueprint that were converted via the 'Take Control' feature
+    or other means are officially not supported by me.\n\n* I may or may not be able
+    to support you when you have a problem after you make changes to my code, as some
+    of the code is no longer mine.\n\n* I & my license also require attribution as
+    a link back to the original should you use this code in your own creation.\n\n*
+    [Here is a link to my license & the original github post](https://github.com/SirGoodenough/HA_Blueprints?tab=License-1-ov-file)
+    expected to be followed & referenced as attribution should you use this code elsewhere.\n"
   input:
     target_entity:
       name: The thing to toggle
-      description: The Switch or Boolean or whatever that you want to toggle
-        with a delay.
+      description: The Switch or Boolean or whatever that you want to toggle with
+        a delay.
       selector:
         entity:
           multiple: true
+          reorder: false
     time_off:
-      name: How long the thing should be off 
-      description: >
-        How long the thing should be off to make certain it gets a
-        proper reset. I'm defaulting at 59 seconds,
-        but anything is reasonable depending on the device.
-        After the delay the thing will be turned back on.
+      name: How long the thing should be off
+      description: 'How long the thing should be off to make certain it gets a proper
+        reset. I''m defaulting at 59 seconds, but anything is reasonable depending
+        on the device. After the delay the thing will be turned back on.
+
+        '
       default:
         days: 0
         hours: 0
@@ -63,18 +45,17 @@ blueprint:
       selector:
         duration:
           enable_day: true
-
 sequence:
-  - alias: Turn off the device
-    service: homeassistant.turn_off
-    data: {}
-    target:
-      entity_id: !input target_entity
-  - delay: !input time_off
-  - alias: Turn on the device
-    service: homeassistant.turn_on
-    data: {}
-    target:
-      entity_id: !input target_entity
+- alias: Turn off the device
+  action: homeassistant.turn_off
+  data: {}
+  target:
+    entity_id: !input target_entity
+- delay: !input time_off
+- alias: Turn on the device
+  action: homeassistant.turn_on
+  data: {}
+  target:
+    entity_id: !input target_entity
 icon: mdi:restart-alert
 mode: parallel

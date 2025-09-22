@@ -4,92 +4,56 @@ blueprint:
   domain: script
   homeassistant:
     min_version: 2023.8.0
-  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/color_control_4_magic_cube.yaml
-  description: >
-    This script was invented to be used with my Magic Cube Blueprints. I released
-    it as a standalone Script Blueprint because I saw others struggling with how
-    so convert cube rotation to light dimming in other places.
-
-
-    To use this blueprint, install it from the source in the normal way.
-    After that add your unique name for the Script, and add an icon and change
-    the entity_id if desired.
-    You should only need to run the blueprint once, as you will be calling the
-    unique name/entity you added above to use the code.
-    This script has 1 input to select the relationship between the rotation
-    amount and the speed of the color change.
-
-
-    This requires you call this script wth 3 data values. One is a positive or
-    negative number between 360 and -360 that in the original, represents the
-    input angle from the cube movement. The second data point is the entity of
-    the light or light group that you are trying to control.
-    The third is to tell the BP id you are controlling the red, the blue,
-    or the green part of the color.
-
-    ***NOTE:*** the trigger variable below will be different for Z2M and ZHA
-    and others. Look at my documentation for that cube integration help if
-    you need it.
-
-      Sample call / use of this script with ZHA:
-        ```yaml
-        - service: script.cube_color_control
-          data:
-            angle: '{{ trigger.event.data.args.relative_degrees | default(0.1) | float(0.2) }}'
-            light: light.grp_studio
-            t_color: red
-        ```
-
-      Sample call / use of this script with Z2M:
-        ```yaml
-        - service: script.cube_color_control
-          data:
-            '{{ trigger.payload_json.action_angle | default(0.1) | float(0.2) }}'
-            light: light.kitchensink
-            t_color: red
-        ```
-
-
-    ## 🗿Notice👮🏿‍♂️:
-
-    * Copies of the original Blueprint that were converted via the 'Take Control'
-    feature or other means are officially not supported by me.
-
-
-    * I may or may not be able to support you when you have a problem after you make changes
-    to my code, as some of the code is no longer mine.
-
-
-    * I & my license also require attribution as a link back to the original
-    should you use this code in your own creation.
-
-
-    * [Here is a link to my license & the original github post](https://github.com/SirGoodenough/HA_Blueprints?tab=License-1-ov-file)
-    expected to be followed & referenced as attribution should you use this code elsewhere.
-
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/Update-for-legacy-changes/Scripts/color_control_4_magic_cube.yaml
+  description: "This script was invented to be used with my Magic Cube Blueprints.
+    I released it as a standalone Script Blueprint because I saw others struggling
+    with how so convert cube rotation to light dimming in other places.\n\nTo use
+    this blueprint, install it from the source in the normal way. After that add your
+    unique name for the Script, and add an icon and change the entity_id if desired.
+    You should only need to run the blueprint once, as you will be calling the unique
+    name/entity you added above to use the code. This script has 1 input to select
+    the relationship between the rotation amount and the speed of the color change.\n\nThis
+    requires you call this script wth 3 data values. One is a positive or negative
+    number between 360 and -360 that in the original, represents the input angle from
+    the cube movement. The second data point is the entity of the light or light group
+    that you are trying to control. The third is to tell the BP id you are controlling
+    the red, the blue, or the green part of the color.\n***NOTE:*** the trigger variable
+    below will be different for Z2M and ZHA and others. Look at my documentation for
+    that cube integration help if you need it.\n\n  Sample call / use of this script
+    with ZHA:\n    ```yaml\n    - action: script.cube_color_control\n      data:\n
+    \       angle: '{{ trigger.event.data.args.relative_degrees | default(0.1) | float(0.2)
+    }}'\n        light: light.grp_studio\n        t_color: red\n    ```\n\n  Sample
+    call / use of this script with Z2M:\n    ```yaml\n    - action: script.cube_color_control\n
+    \     data:\n        '{{ trigger.payload_json.action_angle | default(0.1) | float(0.2)
+    }}'\n        light: light.kitchensink\n        t_color: red\n    ```\n\n\n## \U0001F5FFNotice\U0001F46E\U0001F3FF‍♂️:\n*
+    Copies of the original Blueprint that were converted via the 'Take Control' feature
+    or other means are officially not supported by me.\n\n* I may or may not be able
+    to support you when you have a problem after you make changes to my code, as some
+    of the code is no longer mine.\n\n* I & my license also require attribution as
+    a link back to the original should you use this code in your own creation.\n\n*
+    [Here is a link to my license & the original github post](https://github.com/SirGoodenough/HA_Blueprints?tab=License-1-ov-file)
+    expected to be followed & referenced as attribution should you use this code elsewhere.\n"
   input:
     sensi:
       name: Sensitivity of the cube rotational motion.
-      description: >
-        This sets how 'fast' the changes happen compared to how far you move
-        the cube.
-        Higher percentage is faster, lower is slower.
-        I have found that 60% is a good number, but you can adjust as desired.
+      description: 'This sets how ''fast'' the changes happen compared to how far
+        you move the cube. Higher percentage is faster, lower is slower. I have found
+        that 60% is a good number, but you can adjust as desired.
 
+        '
       default: 60
       selector:
         number:
-          min: 1
-          max: 200
-          step: 1
+          min: 1.0
+          max: 200.0
+          step: 1.0
           mode: box
-
 fields:
   angle:
     name: Angle to represent new brightness
     description: This is the new angle to be used in the calculation for blue color
     required: true
-    example: "120.7"
+    example: '120.7'
     default: 120.7
     selector:
       number:
@@ -117,91 +81,61 @@ fields:
     selector:
       select:
         options:
-          - red
-          - green
-          - blue
-
+        - red
+        - green
+        - blue
 variables:
   sensi_var: !input sensi
-# Convert raw percentage to decimal for calculations. Default to 0.6.
-  sens_d: "{{ sensi_var / 100 | default( 0.6 ) }}"
-# Set step size based on sensitivity input
-  step_size: "{{ angle * sens_d }}"
-# Create color variable from our light info
-  color:
-    "{{ state_attr(light, 'rgb_color') }}"
-# Create color variable s
-  R: "{{ color[0] }}"
-  G: "{{ color[1] }}"
-  B: "{{ color[2] }}"
-# Set new step sizes
-  new_red: "{{ R + step_size | int(0) }}"
-  new_green: "{{ G + step_size | int(0) }}"
-  new_blue: "{{ B + step_size | int(0) }}"
-
+  sens_d: '{{ sensi_var / 100 | default( 0.6 ) }}'
+  step_size: '{{ angle * sens_d }}'
+  color: '{{ state_attr(light, ''rgb_color'') }}'
+  R: '{{ color[0] }}'
+  G: '{{ color[1] }}'
+  B: '{{ color[2] }}'
+  new_red: '{{ R + step_size | int(0) }}'
+  new_green: '{{ G + step_size | int(0) }}'
+  new_blue: '{{ B + step_size | int(0) }}'
 sequence:
-  - choose:
-      - conditions:
-          - alias: Red Light processing
-            condition: template
-            value_template: "{{ t_color == 'red' }}"
-        sequence:
-          - service: light.turn_on
-            data:
-              rgb_color: >-
-                {% if new_red < 0 %}
-                  {# Make sure it doesn't go negative #}
-                  {{ 0, G, B }}
-                {% elif new_red > 255 %}
-                  {# Make sure it doesn't go over 255 #}
-                  {{ 255, G, B }}
-                {% else %}
-                  {# Send the value calculated #}
-                  {{ new_red, G, B }}
-                {% endif %}
-            target:
-              entity_id: "{{ light }}"
-      - conditions:
-          - alias: Green Light processing
-            condition: template
-            value_template: "{{ t_color == 'green' }}"
-        sequence:
-          - service: light.turn_on
-            data:
-              rgb_color: >-
-                {% if new_green < 0 %}
-                  {# Make sure it doesn't go negative #}
-                  {{ R, 0, B }}
-                {% elif new_green > 255 %}
-                  {# Make sure it doesn't go over 255 #}
-                  {{ R, 255, B }}
-                {% else %}
-                  {# Send the value calculated #}
-                  {{ R, new_green, B }}
-                {% endif %}
-            target:
-              entity_id: "{{ light }}"
-      - conditions:
-          - alias: Blue Light processing
-            condition: template
-            value_template: "{{ t_color == 'blue' }}"
-        sequence:
-          - service: light.turn_on
-            data:
-              rgb_color: >-
-                {% if new_blue < 0 %}
-                  {# Make sure it doesn't go negative #}
-                  {{ R, G, 0 }}
-                {% elif new_blue > 255 %}
-                  {# Make sure it doesn't go over 255 #}
-                  {{ R, G, 255 }}
-                {% else %}
-                  {# Send the value calculated #}
-                  {{ R, G, new_blue }}
-                {% endif %}
-            target:
-              entity_id: "{{ light }}"
-
+- choose:
+  - conditions:
+    - alias: Red Light processing
+      condition: template
+      value_template: '{{ t_color == ''red'' }}'
+    sequence:
+    - action: light.turn_on
+      data:
+        rgb_color: "{% if new_red < 0 %}\n  {# Make sure it doesn't go negative #}\n
+          \ {{ 0, G, B }}\n{% elif new_red > 255 %}\n  {# Make sure it doesn't go
+          over 255 #}\n  {{ 255, G, B }}\n{% else %}\n  {# Send the value calculated
+          #}\n  {{ new_red, G, B }}\n{% endif %}"
+      target:
+        entity_id: '{{ light }}'
+  - conditions:
+    - alias: Green Light processing
+      condition: template
+      value_template: '{{ t_color == ''green'' }}'
+    sequence:
+    - action: light.turn_on
+      data:
+        rgb_color: "{% if new_green < 0 %}\n  {# Make sure it doesn't go negative
+          #}\n  {{ R, 0, B }}\n{% elif new_green > 255 %}\n  {# Make sure it doesn't
+          go over 255 #}\n  {{ R, 255, B }}\n{% else %}\n  {# Send the value calculated
+          #}\n  {{ R, new_green, B }}\n{% endif %}"
+      target:
+        entity_id: '{{ light }}'
+  - conditions:
+    - alias: Blue Light processing
+      condition: template
+      value_template: '{{ t_color == ''blue'' }}'
+    sequence:
+    - action: light.turn_on
+      data:
+        rgb_color: "{% if new_blue < 0 %}\n  {# Make sure it doesn't go negative #}\n
+          \ {{ R, G, 0 }}\n{% elif new_blue > 255 %}\n  {# Make sure it doesn't go
+          over 255 #}\n  {{ R, G, 255 }}\n{% else %}\n  {# Send the value calculated
+          #}\n  {{ R, G, new_blue }}\n{% endif %}"
+      target:
+        entity_id: '{{ light }}'
 icon: mdi:eyedropper-variant
 mode: queued
 max: 10

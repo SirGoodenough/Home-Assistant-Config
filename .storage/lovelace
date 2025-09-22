@@ -28,6 +28,9 @@
                   "entity": "sensor.ethernettest_kitchen_indoor_pm2_5"
                 },
                 {
+                  "entity": "fan.winix_dining_room"
+                },
+                {
                   "entity": "sensor.yertle_last_action_a"
                 },
                 {

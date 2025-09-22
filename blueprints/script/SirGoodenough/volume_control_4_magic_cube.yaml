@@ -74,26 +74,26 @@ blueprint:
   input:
     scalar:
       name: Sensitivity of the cube rotational motion.
-      description: >
-        This sets how 'fast' the changes happen compared to how far you move
-        the cube.
-        Higher number is faster, lower is slower.
-        I have found that 30 is a good number, but you can adjust as desired.
+      description: 'This sets how ''fast'' the changes happen compared to how far
+        you move the cube. Higher number is faster, lower is slower. I have found
+        that 30 is a good number, but you can adjust as desired.
+
+        '
       default: 30
       selector:
         number:
-          min: 1
-          max: 200
-          step: 1
+          min: 1.0
+          max: 200.0
+          step: 1.0
           mode: box
-
 fields:
   angle:
     name: Angle to represent new volume
-    description: >
-      This is the new angle to be used in the calculation for Volume
+    description: 'This is the new angle to be used in the calculation for Volume
+
+      '
     required: true
-    example: "-120.7"
+    example: '-120.7'
     default: 0.3
     selector:
       number:
@@ -103,8 +103,9 @@ fields:
         mode: box
   mp:
     name: Media Player entity to control
-    description: >
-      Add the media_player entity you want to control here
+    description: 'Add the media_player entity you want to control here
+
+      '
     required: true
     example: media_player.kitchen_speaker
     selector:
@@ -112,22 +113,16 @@ fields:
         multiple: false
         filter:
           domain: media_player
-
 variables:
-# Get the sensitivity input
   scalar_var: !input scalar
-# Apply scaler to the actual angle
-  delta: "{{ scalar_var * angle | default(0.2) | float(0.3) }}"
-
+  delta: '{{ scalar_var * angle | default(0.2) | float(0.3) }}'
 sequence:
-  - service: media_player.volume_set
-    data_template:
-      volume_level: >-
-        {% set v = state_attr(mp, 'volume_level') | float(0.4) %}
-        {{ min(max(0, v + 0.0000625 * delta), 1) }}
-    target:
-        entity_id: "{{ mp }}"
-
+- action: media_player.volume_set
+  data_template:
+    volume_level: '{% set v = state_attr(mp, ''volume_level'') | float(0.4) %} {{
+      min(max(0, v + 0.0000625 * delta), 1) }}'
+  target:
+    entity_id: '{{ mp }}'
 icon: mdi:knob
 mode: queued
 max: 10

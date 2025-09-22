@@ -4,76 +4,43 @@ blueprint:
   domain: script
   homeassistant:
     min_version: 2023.8.0
-  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/long_short_toggle_4_magic_cube.yaml
-  description: >
-    This script was invented to be used with my Magic Cube Blueprints. I released
-    it as a standalone Script Blueprint because I saw others struggling with how
-    so convert cube rotation to actions in other places.
-
-
-    To use this blueprint, install it from the source in the normal way.
-    After that add your unique name for the Script, and add an icon and change
-    the entity_id if desired.
-    You should only need to run the blueprint once, as you will be calling the
-    unique name/entity you added above to use the code.
-    This script has no inputs in the Blueprint screen because all the data is
-    added to control the action live at each use.
-
-
-    This requires you call this script with a couple of data values. One is a 
-    positive or negative number between 360 and -360 that in the original,
-    represents the input angle from the cube movement.
-    The other data point is the entity of the device(s) that you are trying 
-    o control. Only 1 of the short_entity or long_entity is required 4 this
-    Blueprint to work.
-    
-    ***NOTE:*** the trigger variable below will be different for Z2M and ZHA
-    and others. Look at my documentation for that cube integration help if
-    you need it.
-
-      Sample call / use of this script with ZHA:
-        ```yaml
-        - service: script.cube_long_short_toggle
-          data:
-            angle: '{{ trigger.event.data.args.relative_degrees | default(0.1) | float(0.2) }}'
-            short_entity: light.kitchen_down_lights
-            long_entity: light.kitchensink
-        ```
-
-      Sample call / use of this script with Z2M:
-        ```yaml
-        - service: script.cube_long_short_toggle
-          data:
-            angle: '{{ trigger.payload_json.action_angle | default(0.1) | float(0.2) }}'
-            short_entity: light.kitchen_down_lights
-            long_entity: light.kitchensink
-        ```
-
-
-    ## 🗿Notice👮🏿‍♂️:
-
-    * Copies of the original Blueprint that were converted via the 'Take Control'
-    feature or other means are officially not supported by me.
-
-
-    * I may or may not be able to support you when you have a problem after you make changes
-    to my code, as some of the code is no longer mine.
-
-
-    * I & my license also require attribution as a link back to the original
-    should you use this code in your own creation.
-
-
-    * [Here is a link to my license & the original github post](https://github.com/SirGoodenough/HA_Blueprints?tab=License-1-ov-file)
-    expected to be followed & referenced as attribution should you use this code elsewhere.
-
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/Update-for-legacy-changes/Scripts/long_short_toggle_4_magic_cube.yaml
+  description: "This script was invented to be used with my Magic Cube Blueprints.
+    I released it as a standalone Script Blueprint because I saw others struggling
+    with how so convert cube rotation to actions in other places.\n\nTo use this blueprint,
+    install it from the source in the normal way. After that add your unique name
+    for the Script, and add an icon and change the entity_id if desired. You should
+    only need to run the blueprint once, as you will be calling the unique name/entity
+    you added above to use the code. This script has no inputs in the Blueprint screen
+    because all the data is added to control the action live at each use.\n\nThis
+    requires you call this script with a couple of data values. One is a  positive
+    or negative number between 360 and -360 that in the original, represents the input
+    angle from the cube movement. The other data point is the entity of the device(s)
+    that you are trying  o control. Only 1 of the short_entity or long_entity is required
+    4 this Blueprint to work.\n***NOTE:*** the trigger variable below will be different
+    for Z2M and ZHA and others. Look at my documentation for that cube integration
+    help if you need it.\n\n  Sample call / use of this script with ZHA:\n    ```yaml\n
+    \   - action: script.cube_long_short_toggle\n      data:\n        angle: '{{ trigger.event.data.args.relative_degrees
+    | default(0.1) | float(0.2) }}'\n        short_entity: light.kitchen_down_lights\n
+    \       long_entity: light.kitchensink\n    ```\n\n  Sample call / use of this
+    script with Z2M:\n    ```yaml\n    - action: script.cube_long_short_toggle\n      data:\n
+    \       angle: '{{ trigger.payload_json.action_angle | default(0.1) | float(0.2)
+    }}'\n        short_entity: light.kitchen_down_lights\n        long_entity: light.kitchensink\n
+    \   ```\n\n\n## \U0001F5FFNotice\U0001F46E\U0001F3FF‍♂️:\n* Copies of the original
+    Blueprint that were converted via the 'Take Control' feature or other means are
+    officially not supported by me.\n\n* I may or may not be able to support you when
+    you have a problem after you make changes to my code, as some of the code is no
+    longer mine.\n\n* I & my license also require attribution as a link back to the
+    original should you use this code in your own creation.\n\n* [Here is a link to
+    my license & the original github post](https://github.com/SirGoodenough/HA_Blueprints?tab=License-1-ov-file)
+    expected to be followed & referenced as attribution should you use this code elsewhere.\n"
+  input: {}
 fields:
   angle:
     name: Angle to represent switch function
-    description: >-
-      This is the angle to be used in the calculation for switch function
+    description: This is the angle to be used in the calculation for switch function
     required: true
-    example: "20.7"
+    example: '20.7'
     default: 20.7
     selector:
       number:
@@ -83,9 +50,8 @@ fields:
         mode: box
   short_entity:
     name: Entity to control with short rotation
-    description: >-
-      Add the entity you want to control here with a short rotation of cube.
-      One of the long or the short entities are required but not both.
+    description: Add the entity you want to control here with a short rotation of
+      cube. One of the long or the short entities are required but not both.
     required: false
     example: light.kitchen_down_lights
     default: light.kitchen_down_lights
@@ -94,9 +60,8 @@ fields:
         multiple: true
   long_entity:
     name: Entity to control with long rotation
-    description: >-
-      Add the entity you want to control here with a long rotation of the cube.
-      One of the long or the short entities are required but not both.
+    description: Add the entity you want to control here with a long rotation of the
+      cube. One of the long or the short entities are required but not both.
     required: false
     example: switch.dust_collector
     default: switch.dust_collector
@@ -104,28 +69,27 @@ fields:
       entity:
         multiple: true
 sequence:
-  - choose:
-    - conditions:
-      - alias: "Pseudo short press with (angle | abs) <= 100"
-        condition: template
-        value_template: "{{ angle | abs <= 100 }}"
-      sequence:
-        - alias: Check if a short entity was provided
-          if: '{{ not short_entity in (''none'', ''null'', ''unavailable'', '''') }}'
-          then: 
-            - alias: "Send short_press"
-              service: homeassistant.toggle
-              target:
-                entity_id: '{{ short_entity }}'
-    default:
-      - alias: Check if a long entity was provided
-        if: '{{ not long_entity in (''none'', ''null'', ''unavailable'', '''') }}'
-        then: 
-          - alias: "Send long_press"
-            service: homeassistant.toggle
-            target:
-              entity_id: '{{ long_entity }}'
-
+- choose:
+  - conditions:
+    - alias: Pseudo short press with (angle | abs) <= 100
+      condition: template
+      value_template: '{{ angle | abs <= 100 }}'
+    sequence:
+    - alias: Check if a short entity was provided
+      if: '{{ not short_entity in (''none'', ''null'', ''unavailable'', '''') }}'
+      then:
+      - alias: Send short_press
+        action: homeassistant.toggle
+        target:
+          entity_id: '{{ short_entity }}'
+  default:
+  - alias: Check if a long entity was provided
+    if: '{{ not long_entity in (''none'', ''null'', ''unavailable'', '''') }}'
+    then:
+    - alias: Send long_press
+      action: homeassistant.toggle
+      target:
+        entity_id: '{{ long_entity }}'
 icon: mdi-toggle-switch-outline
 mode: queued
 max: 10
