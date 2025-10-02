@@ -25,7 +25,7 @@
                   "entity": "sensor.ethernettest_kitchen_co2"
                 },
                 {
-                  "entity": "sensor.ethernettest_kitchen_indoor_pm2_5"
+                  "entity": "sensor.chaloupkaabode_weather_pm2_5_1"
                 },
                 {
                   "entity": "fan.winix_dining_room"
@@ -160,7 +160,7 @@
               "conditions": [
                 {
                   "condition": "numeric_state",
-                  "entity": "sensor.sm_s906u_battery_level_3",
+                  "entity": "sensor.ood_orb_ultra_battery_level_2",
                   "below": 40
                 }
               ],
@@ -171,7 +171,7 @@
                 "tap_action": {
                   "action": "more-info"
                 },
-                "entity": "sensor.sm_s906u_battery_level_3",
+                "entity": "sensor.ood_orb_ultra_battery_level",
                 "icon": "",
                 "show_state": true,
                 "name": "Dads Phone"
@@ -300,7 +300,7 @@
                 "tap_action": {
                   "action": "more-info"
                 },
-                "entity": "sensor.twentyrwomom_battery_level",
+                "entity": "sensor.mom_s_ultra_battery_level",
                 "icon": "",
                 "show_state": true,
                 "name": "Moms Phone"

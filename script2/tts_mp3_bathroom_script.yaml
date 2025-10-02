@@ -35,7 +35,7 @@ tts_bathroom_door_is_open:
       TTS: tts.cloud_say
       nabu_azure_language: en-AU
       announcement_message: The Bathroom door is open
-      speaker_target: media_player.jennys_room_display
+      speaker_target: media_player.bathroom_speaker
   icon: mdi:door-open
 tts_bathroom_heat_on:
   alias: TTS Bathroom Heat on
@@ -45,7 +45,10 @@ tts_bathroom_heat_on:
       GTS_language: en
       TTS: tts.cloud_say
       nabu_azure_language: en-GB
-      speaker_target: media_player.jennys_room_display
+      speaker_target: 
+        - media_player.jennys_room_display
+        - media_player.bedroom_speaker
+        - media_player.bathroom_speaker
       announcement_message: Bathroom Heater on
   icon: mdi:radiator
 tts_bath_heater_on:
@@ -56,6 +59,9 @@ tts_bath_heater_on:
       GTS_language: en
       TTS: tts.cloud_say
       nabu_azure_language: en-GB
-      speaker_target: media_player.jennys_room_display
+      speaker_target: 
+        - media_player.jennys_room_display
+        - media_player.bedroom_speaker
+        - media_player.bathroom_speaker
       announcement_message: Bathroom Heater on
   icon: mdi:radiator

@@ -1,0 +1,485 @@
+blueprint:
+  name: Bambu Lab 3D Printer Cost Notification
+  description: 'Calculate filament, electricity, and depreciation costs for each Bambu
+    Lab 3D print, and send a Telegram notification (official Telegram Bot integration)
+    with the details and print image when the job completes. Filament length is optional.
+
+    '
+  domain: automation
+  input:
+    ha_url:
+      name: Home Assistant URL
+      description: Base URL of your Home Assistant instance (without trailing slash)
+      selector:
+        text: {}
+      default: http://homeassistant.local:8123
+    printer_status_sensor:
+      name: Printer Status Sensor
+      description: sensor.<printer>_print_status (HACS Bambu Lab integration)
+      selector:
+        entity:
+          integration: bambu_lab
+          domain:
+          - sensor
+          reorder: false
+          multiple: false
+    printer_cover_image:
+      name: Print Cover Image
+      description: Image entity from Bambu integration (optional). Leave blank to
+        send only text.
+      default:
+      selector:
+        entity:
+          integration: bambu_lab
+          domain:
+          - image
+          reorder: false
+          multiple: false
+    printer_start_time_sensor:
+      name: Printer Start Time Sensor
+      description: sensor.<printer>_start_time (HACS Bambu Lab integration)
+      selector:
+        entity:
+          integration: bambu_lab
+          domain:
+          - sensor
+          reorder: false
+          multiple: false
+    printer_end_time_sensor:
+      name: Printer End Time Sensor
+      description: sensor.<printer>_end_time (HACS Bambu Lab integration)
+      selector:
+        entity:
+          integration: bambu_lab
+          domain:
+          - sensor
+          reorder: false
+          multiple: false
+    print_weight_sensor:
+      name: Print Weight Sensor/Helper
+      description: Weight in grams (integration sensor or input_number).
+      selector:
+        entity:
+          filter:
+          - domain:
+            - sensor
+          - domain:
+            - input_number
+          reorder: false
+          multiple: false
+    print_length_sensor:
+      name: Print Length Sensor/Helper (optional)
+      description: Length in mm or m (integration sensor or input_number). Leave empty
+        if not available.
+      default:
+      selector:
+        entity:
+          multiple: false
+          filter:
+          - domain:
+            - sensor
+          - domain:
+            - input_number
+          reorder: false
+    total_usage_sensor:
+      name: Total Usage Hours Sensor
+      description: Sensor for the printer's total usage hours (from Bambu integration,
+        e.g. sensor.<printer>_total_usage_hours). Used for all-time stats.
+      selector:
+        entity:
+          integration: bambu_lab
+          domain:
+          - sensor
+          reorder: false
+          multiple: false
+    energy_usage_sensor:
+      name: Energy Consumption Sensor
+      description: Sensor that tracks cumulative energy (kWh) used by the printer
+        (from a smart plug).
+      selector:
+        entity:
+          domain:
+          - sensor
+          device_class:
+          - energy
+          reorder: false
+          multiple: false
+    start_energy_helper:
+      name: Helper – Start kWh
+      description: Input Number helper to store the printer's energy meter reading
+        at the start of each print.
+      selector:
+        entity:
+          domain:
+          - input_number
+          reorder: false
+          multiple: false
+    filament_price_per_kg:
+      name: Filament Price per KG
+      description: Cost of filament per kilogram (in your currency). This will be
+        used to calculate filament cost from the print's weight.
+      selector:
+        number:
+          min: 0.0
+          max: 1000.0
+          unit_of_measurement: /kg
+          step: 0.01
+          mode: slider
+      default: 25.99
+    energy_cost_per_kwh:
+      name: Electricity Cost per kWh
+      description: Your electricity cost per kilowatt-hour.
+      selector:
+        number:
+          min: 0.0
+          max: 10.0
+          unit_of_measurement: /kWh
+          step: 0.001
+          mode: slider
+      default: 0.4
+    printer_purchase_cost:
+      name: Printer Purchase Cost
+      description: What you paid for the 3D printer (for depreciation calculation).
+      selector:
+        number:
+          min: 0.0
+          max: 10000.0
+          step: 0.01
+          mode: slider
+      default: 1000.0
+    printer_lifetime_hours:
+      name: Estimated Printer Lifetime (hours)
+      description: Estimated total usage hours for the printer's life (for depreciation).
+        e.g. 2000 hours.
+      selector:
+        number:
+          min: 1.0
+          max: 100000.0
+          step: 1.0
+          mode: slider
+      default: 6000
+    telegram_chat_ids:
+      name: Telegram Chat ID(s)
+      description: The notify service name for Telegram (e.g., notify.my_telegram_bot).
+      selector:
+        text: {}
+      default:
+    sleep_mode_boolean:
+      name: Sleeping Mode Toggle (optional)
+      description: An input_boolean that indicates 'do not disturb' mode (to suppress
+        pause notifications at night). Leave blank if not used.
+      selector:
+        entity:
+          domain:
+          - input_boolean
+          reorder: false
+          multiple: false
+      default:
+    cumulative_filament_weight:
+      name: Cumulative Filament Weight (optional)
+      description: 'Input Number helper tracking total filament used (grams). (Optional:
+        updated after each print.)'
+      selector:
+        entity:
+          domain:
+          - input_number
+          reorder: false
+          multiple: false
+      default:
+    cumulative_filament_cost:
+      name: Cumulative Filament Cost (optional)
+      description: 'Input Number helper tracking total filament cost. (Optional: updated
+        after each print.)'
+      selector:
+        entity:
+          domain:
+          - input_number
+          reorder: false
+          multiple: false
+      default:
+    cumulative_electrical_cost:
+      name: Cumulative Electrical Cost (optional)
+      description: 'Input Number helper tracking total electrical cost. (Optional:
+        updated after each print.)'
+      selector:
+        entity:
+          domain:
+          - input_number
+          reorder: false
+          multiple: false
+      default:
+    cumulative_total_cost:
+      name: Cumulative Total Cost (optional)
+      description: 'Input Number helper tracking total cost (filament+electric) of
+        all prints. (Optional: updated after each print.)'
+      selector:
+        entity:
+          domain:
+          - input_number
+          reorder: false
+          multiple: false
+      default:
+    last_print_kwh_used:
+      name: Last Print kWh Used (optional)
+      description: 'Input Number helper to record energy (kWh) used by the last print.
+        (Optional: updated after each print.)'
+      selector:
+        entity:
+          domain:
+          - input_number
+          reorder: false
+          multiple: false
+      default:
+    disable_image_boolean:
+      name: Disable Image Sending
+      description: If ON, only a text message is sent (no image).
+      selector:
+        boolean: {}
+      default: false
+    currency_symbol:
+      name: Currency Symbol
+      description: Symbol used for cost lines (e.g. $, €, £).
+      selector:
+        text: {}
+      default: $
+  source_url: https://raw.githubusercontent.com/soflane/Home-assistant-config/refs/heads/main/Blueprints/Bambu-Lab-3D-Printer-Cost-Notification/BBL-Printer-Cost-notification-blueprint.yaml
+variables:
+  _ha_url: !input ha_url
+  _printer_status_sensor: !input printer_status_sensor
+  _printer_cover_image: !input printer_cover_image
+  _printer_start_time_sensor: !input printer_start_time_sensor
+  _printer_end_time_sensor: !input printer_end_time_sensor
+  _print_weight_sensor: !input print_weight_sensor
+  _print_length_sensor: !input print_length_sensor
+  _total_usage_sensor: !input total_usage_sensor
+  _energy_usage_sensor: !input energy_usage_sensor
+  _start_energy_helper: !input start_energy_helper
+  _filament_price_per_kg: !input filament_price_per_kg
+  _energy_cost_per_kwh: !input energy_cost_per_kwh
+  _printer_purchase_cost: !input printer_purchase_cost
+  _printer_lifetime_hours: !input printer_lifetime_hours
+  _telegram_chat_ids: !input telegram_chat_ids
+  _sleep_mode_boolean: !input sleep_mode_boolean
+  _cumulative_filament_weight: !input cumulative_filament_weight
+  _cumulative_filament_cost: !input cumulative_filament_cost
+  _cumulative_electrical_cost: !input cumulative_electrical_cost
+  _cumulative_total_cost: !input cumulative_total_cost
+  _last_print_kwh_used: !input last_print_kwh_used
+  _disable_image_boolean: !input disable_image_boolean
+  _currency_symbol: !input currency_symbol
+trigger:
+- platform: state
+  entity_id: !input printer_status_sensor
+  to: prepare
+  id: prepare
+- platform: state
+  entity_id: !input printer_status_sensor
+  to: finish
+  id: finish
+- platform: state
+  entity_id: !input printer_status_sensor
+  to: pause
+  id: paused
+condition: []
+action:
+- alias: Record energy reading at print start
+  if:
+  - condition: trigger
+    id: prepare
+  then:
+  - service: input_number.set_value
+    data:
+      entity_id: '{{ _start_energy_helper }}'
+      value: '{{ states(_energy_usage_sensor) | float(0) }}'
+- alias: Handle print completed - calculate costs and send Telegram message
+  if:
+  - condition: trigger
+    id: finish
+  then:
+  - delay: 00:00:02
+  - variables:
+      end_power: '{{ (states(_energy_usage_sensor) if _energy_usage_sensor is not
+        none else 0) | float(0) }}'
+      start_power: '{{ (states(_start_energy_helper) if _start_energy_helper is not
+        none else 0) | float(0) }}'
+      weight_g: '{{ (states(_print_weight_sensor) if _print_weight_sensor is not none
+        else 0) | float(0) }}'
+      length_raw: "{% if _print_length_sensor is not none %}\n  {{ states(_print_length_sensor)
+        | float(0) }}\n{% else %}\n  {{ None }}\n{% endif %}"
+      total_usage_hrs: '{{ (states(_total_usage_sensor) if _total_usage_sensor is
+        not none else 0) | float(0) }}'
+      total_kwh: '{{ ((end_power | float(0)) - (start_power | float(0))) | float(0)
+        }}'
+      filament_cost: '{{ ((weight_g | float(0)) * (_filament_price_per_kg | float(0))
+        / 1000) | round(2) }}'
+      electrical_cost: '{{ ((total_kwh | float(0)) * (_energy_cost_per_kwh | float(0)))
+        | round(2) }}'
+      start_ts: '{{ (as_timestamp(states(_printer_start_time_sensor)) | float(0))
+        if _printer_start_time_sensor is not none else 0 }}'
+      end_ts: '{{ (as_timestamp(states(_printer_end_time_sensor)) | float(0)) if _printer_end_time_sensor
+        is not none else 0 }}'
+      duration_seconds: "{% if (start_ts | float(0)) > 0 and (end_ts | float(0)) >
+        0 %}\n  {{ ((end_ts | float(0)) - (start_ts | float(0))) | float(0) }}\n{%
+        else %} 0 {% endif %}\n"
+      duration_str: '{% set secs = duration_seconds | float(0) %} {% set days = (secs
+        // 86400) | int %} {% set hrs  = ((secs % 86400) // 3600) | int %} {% set
+        mins = ((secs % 3600) // 60) | int %} {% set parts = [] %} {% if days > 0
+        %}{% set parts = parts + [days ~ '' day'' ~ (days>1 and ''s'' or '''')] %}{%
+        endif %} {% if hrs  > 0 %}{% set parts = parts + [hrs  ~ '' hour'' ~ (hrs
+        >1 and ''s'' or '''')] %}{% endif %} {% set parts = parts + [mins ~ '' minute''
+        ~ (mins>1 and ''s'' or '''')] %} {{ parts | join('', '') }}
+
+        '
+      depreciation_cost: "{% set hours = duration_seconds / 3600 %} {% if ( _printer_lifetime_hours
+        | float(0) ) > 0 %}\n  {{ ( _printer_purchase_cost | float(0) * (hours / (
+        _printer_lifetime_hours | float(1) )) ) | round(2) }}\n{% else %} 0 {% endif
+        %}\n"
+  - alias: Update statistics helpers
+    sequence:
+    - choose:
+      - conditions:
+        - condition: template
+          value_template: '{{ _last_print_kwh_used is defined and _last_print_kwh_used
+            is not none }}'
+        sequence:
+        - service: input_number.set_value
+          data:
+            entity_id: '{{ _last_print_kwh_used }}'
+            value: '{{ total_kwh | float(0) }}'
+    - choose:
+      - conditions:
+        - condition: template
+          value_template: '{{ _cumulative_filament_weight is not none }}'
+        sequence:
+        - service: input_number.set_value
+          data:
+            entity_id: '{{ _cumulative_filament_weight }}'
+            value: '{{ (states(_cumulative_filament_weight) | float(0)) + (weight_g
+              | float(0)) }}'
+    - choose:
+      - conditions:
+        - condition: template
+          value_template: '{{ _cumulative_filament_cost is not none }}'
+        sequence:
+        - service: input_number.set_value
+          data:
+            entity_id: '{{ _cumulative_filament_cost }}'
+            value: '{{ (states(_cumulative_filament_cost) | float(0)) + (filament_cost
+              | float(0)) }}'
+    - choose:
+      - conditions:
+        - condition: template
+          value_template: '{{ _cumulative_electrical_cost is not none }}'
+        sequence:
+        - service: input_number.set_value
+          data:
+            entity_id: '{{ _cumulative_electrical_cost }}'
+            value: '{{ (states(_cumulative_electrical_cost) | float(0)) + (electrical_cost
+              | float(0)) }}'
+    - choose:
+      - conditions:
+        - condition: template
+          value_template: '{{ _cumulative_total_cost is not none }}'
+        sequence:
+        - service: input_number.set_value
+          data:
+            entity_id: '{{ _cumulative_total_cost }}'
+            value: '{{ (states(_cumulative_total_cost) | float(0)) + ((filament_cost
+              | float(0)) + (electrical_cost | float(0)) + (depreciation_cost | float(0)))
+              }}'
+  - variables:
+      length_m: "{% if length_raw is not none %}\n  {% set val = length_raw | float(0)
+        %}\n  {{ ( val / (val > 50 and 1000 or 1) ) | round(2) }}\n{% else %} {{ None
+        }} {% endif %}\n"
+      length_ft: "{% if length_raw is not none %}\n  {{ (( length_m | float(0) ) *
+        3.28084 ) | round(2) }}\n{% else %} {{ None }} {% endif %}\n"
+      total_cost: '{{ ( filament_cost | float(0) + electrical_cost | float(0) + depreciation_cost
+        | float(0) ) | round(2) }}'
+      cumulative_cost: '{{ (states(_cumulative_total_cost) | float(0)) if _cumulative_total_cost
+        is not none else 0 }}'
+      total_filament_g: '{{ (states(_cumulative_filament_weight) | float(0)) if _cumulative_filament_weight
+        is not none else 0 }}'
+      total_filament_lbs: '{{ (total_filament_g / 453.5924) | round(2) }}'
+      msg_body: "{% macro md(v) -%}\n{{ (v|string)\n  .replace('\\\\','\\\\\\\\')\n
+        \ .replace('_','\\\\_')\n  .replace('*','\\\\*')\n  .replace('[','\\\\[')\n
+        \ .replace(']','\\\\]')\n  .replace('(','\\\\(')\n  .replace(')','\\\\)')\n
+        \ .replace('~','\\\\~')\n  .replace('`','\\\\`')\n  .replace('>','\\\\>')\n
+        \ .replace('#','\\\\#')\n  .replace('+','\\\\+')\n  .replace('-','\\\\-')\n
+        \ .replace('=','\\\\=')\n  .replace('|','\\\\|')\n  .replace('{','\\\\{')\n
+        \ .replace('}','\\\\}')\n  .replace('.','\\\\.')\n  .replace('!','\\\\!')\n}}\n{%-
+        endmacro %}\n{% set cs = md(_currency_symbol) %}\n\U0001F389 **3D PRINT COMPLETED**\n⏱️
+        *Duration:* {{ md(duration_str) }}\n⚖️ *Weight:* {{ md(weight_g | round(1))
+        }} g \\- Cost: __{{ cs }}{{ md(filament_cost) }}__\n{% if length_m is not
+        none %}\U0001F9F5 *Filament Length:* {{ md(length_m) }} m / {{ md(length_ft)
+        }} ft\n{% endif %}\U0001F50C *Power:* {{ md(total_kwh | round(3)) }} kWh \\-
+        Cost: __{{ cs }}{{ md(electrical_cost) }}__\n\U0001F6E0️ *Depreciation:* __{{
+        cs }}{{ md(depreciation_cost) }}__\n\U0001F4B0 *Total Cost:* *__{{ cs }}{{
+        md(total_cost) }}__*\n{% if _cumulative_total_cost is not none %}\U0001F552
+        *All Time Usage:* {{ md(total_usage_hrs | round(1)) }} h\n\U0001F4CA *All
+        Time Cost:* __{{ cs }}{{ md('%0.2f'|format(cumulative_cost)) }}__\n\U0001F9F5
+        *All Time Filament:* {{ md(total_filament_g | round(0)) }} g / {{ md(total_filament_lbs)
+        }} lbs\n{% endif %}"
+      cover_image_url: "{% if _printer_cover_image is not none %}\n  {{ state_attr(_printer_cover_image,
+        'cover_image')\n     or state_attr(_printer_cover_image, 'entity_picture')
+        }}\n{% else %}\n  {{ None }}\n{% endif %}"
+      chat_ids: "{% if _telegram_chat_ids is not none %}\n  {{ _telegram_chat_ids.split(',')
+        | map('trim') | list }}\n{% else %}\n  []\n{% endif %}"
+  - repeat:
+      for_each: '{{ chat_ids | select(''string'') | map(''trim'') | reject(''equalto'','''')
+        | list }}
+
+        '
+      sequence:
+      - variables:
+          _chat_id: '{{ repeat.item }}'
+          _image_disabled: '{{ _disable_image_boolean | default(false) }}'
+          _has_image: '{{ (cover_image_url is defined and cover_image_url is not none
+            and (cover_image_url|string)|length > 10 and not (cover_image_url|string)|lower
+            in [''none'',''null'',''unavailable'',''unknown'']) and (not _image_disabled)
+            }}'
+      - choose:
+        - conditions: '{{ _has_image }}'
+          sequence:
+          - service: telegram_bot.send_photo
+            data:
+              target: '{{ _chat_id }}'
+              url: '{{ _ha_url }}/{{ cover_image_url }}'
+              caption: '{{ msg_body }}'
+              parse_mode: markdownv2
+        default:
+        - service: telegram_bot.send_message
+          data:
+            target: '{{ _chat_id }}'
+            message: '{{ msg_body }}'
+            parse_mode: markdownv2
+      - service: system_log.write
+        data:
+          level: info
+          message: '[Bambu Print Notify] Sent to chat {{ _chat_id }} has_image={{
+            _has_image }} image_disabled={{ _image_disabled }} cover_image_url="{{
+            cover_image_url }}"
+
+            '
+- alias: Notify on print paused
+  if:
+  - condition: trigger
+    id: paused
+  - condition: or
+    conditions:
+    - condition: template
+      value_template: '{{ _sleep_mode_boolean == None or _sleep_mode_boolean == ''''
+        }}'
+    - condition: template
+      value_template: '{{ _sleep_mode_boolean is not none and (states(_sleep_mode_boolean)
+        == ''off'') }}'
+  then:
+  - variables:
+      chat_ids: '{{ ( _telegram_chat_ids ).split('','') | map(''trim'') | list }}'
+  - repeat:
+      for_each: '{{ chat_ids }}'
+      sequence:
+      - service: telegram_bot.send_message
+        data:
+          target: '{{ repeat.item }}'
+          message: ⏸️ 3D Printer has paused the print job.
+          parse_mode: markdownv2
