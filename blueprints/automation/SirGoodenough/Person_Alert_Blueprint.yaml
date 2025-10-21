@@ -60,7 +60,7 @@ blueprint:
             in this HA instance\n  then use the default. If you want to pick individual
             zones be sure to\n  override the default because it auto-picks all.\nMultiples
             are allowed.\n"
-          default: '{{ states.zone | map(attribute="entity_id") | list }}'
+          default: zone.clinic
           selector:
             entity:
               multiple: true

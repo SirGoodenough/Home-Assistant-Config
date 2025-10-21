@@ -20,9 +20,9 @@
         "name": "Bedroom Auto Fan"
       },
       {
+        "id": "flush",
         "name": "Hummingbird",
-        "icon": "mdi:bird",
-        "id": "flush"
+        "icon": "mdi:bird"
       },
       {
         "name": "Mist Button",

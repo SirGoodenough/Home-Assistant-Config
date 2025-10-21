@@ -175,3 +175,64 @@
           entity_id: input_boolean.suspend
         data: {}
   mode: single
+- id: '1759764035800'
+  alias: aaaaaaatest Person Alert Monitor - 2024-06-08
+  description: ''
+  use_blueprint:
+    path: SirGoodenough/Person_Alert_Blueprint.yaml
+    input:
+      zone2monitor:
+      - zone.belva
+      - zone.clinic
+      - zone.nail_shop2
+      - zone.elkhorn
+      - zone.expo
+      - zone.feed_store
+      - zone.follicle_assembly_building
+      - zone.home
+      - zone.katy_s_kloset
+      - zone.lakewood
+      - zone.lindas_lair
+      - zone.m_h_s_dream_society
+      - zone.milstone
+      - zone.moms_house
+      - zone.suring
+      - zone.townsend
+      - zone.wisconsin_illinois_border
+      - zone.somerhome
+      - zone.shawano
+      - zone.mountain
+      - zone.piesler_ranch
+      - zone.restoration_and_repair_facility
+      - zone.retzer_nature_center
+      - zone.rose_estate
+      enter_action:
+      - action: button.press
+        metadata: {}
+        data: {}
+        target:
+          entity_id: button.3a_smart_home_de_lxt56_ls27lx1_7_identify
+      leave_action:
+      - action: button.press
+        metadata: {}
+        data: {}
+        target:
+          entity_id: button.3a_smart_home_de_lxt56_ls27lx1_7_identify
+      people2monitor:
+      - person.julie
+- id: '1759767251746'
+  alias: aaaaaaaaaaaaaaaaaaaaaaaaaatest Person Alert Monitor - 2024-06-08
+  description: ''
+  use_blueprint:
+    path: SirGoodenough/Person_Alert_Blueprint.yaml
+    input:
+      people2monitor:
+      - person.jim
+      enter_action:
+      - action: button.press
+        metadata: {}
+        data: {}
+        target:
+          entity_id: button.3a_smart_home_de_lxt56_ls27lx1_7_identify
+      zone2monitor: '{{ states.zone | map(attribute="entity_id") | list }}'
+      leave_action: []

@@ -1,0 +1,138 @@
+blueprint:
+  name: Water Leak Alarm – mobile + HA UI notifications
+  description: 'Sends mobile push and/or HA UI persistent notifications with minimal
+    controls. No siren/switch options.
+
+    '
+  domain: automation
+  input:
+    leak_sensor:
+      name: Leak sensor entity
+      description: Select your BADRING entity (binary_sensor or sensor).
+      selector:
+        entity:
+          multiple: false
+          reorder: false
+    notify_service:
+      name: Notify service
+      description: e.g., notify.notify or notify.mobile_app_<your_phone>
+      default: notify.notify
+      selector:
+        text:
+          multiple: false
+          multiline: false
+    enable_mobile:
+      name: Enable mobile push notifications
+      description: Send push notifications via the selected notify service.
+      default: true
+      selector:
+        boolean: {}
+    enable_persistent:
+      name: Enable HA UI notifications
+      description: Create persistent notifications (bell icon in Home Assistant).
+      default: true
+      selector:
+        boolean: {}
+    wet_title:
+      name: Leak detected – title
+      default: "\U0001F6A8 Water leak detected"
+      selector:
+        text:
+          multiple: false
+          multiline: false
+    wet_message:
+      name: Leak detected – message
+      default: 'Leak detected by {{ state_attr(leak_entity, ''friendly_name'') or
+        leak_entity }} at {{ now().strftime(''%Y-%m-%d %H:%M:%S'') }}.
+
+        '
+      selector:
+        text:
+          multiline: true
+          multiple: false
+    clear_title:
+      name: Leak cleared – title
+      default: ✅ Water leak cleared
+      selector:
+        text:
+          multiple: false
+          multiline: false
+    clear_message:
+      name: Leak cleared – message
+      default: 'Leak cleared for {{ state_attr(leak_entity, ''friendly_name'') or
+        leak_entity }} at {{ now().strftime(''%Y-%m-%d %H:%M:%S'') }}.
+
+        '
+      selector:
+        text:
+          multiline: true
+          multiple: false
+  source_url: https://gist.githubusercontent.com/schiberis/022c6ca8308580e9577e50670dc08d6b/raw/87f5fcd4c3e79bc52cf956494fd16acab5c34ad7/ha_water_leak_alarm.yaml
+mode: restart
+max_exceeded: silent
+trigger:
+- platform: state
+  entity_id: !input leak_sensor
+variables:
+  leak_entity: !input leak_sensor
+  ns: !input notify_service
+  v_state: "{% if trigger and trigger.to_state %}\n  {{ trigger.to_state.state | lower
+    }}\n{% else %}\n  {{ states(leak_entity) | lower }}\n{% endif %}"
+  v_is_wet: '{% set wet_values = [''on'',''wet'',''leak'',''leaking'',''detected'',''alarm'',''true'',''1'']
+    %} {{ v_state in wet_values }}'
+  v_is_clear: '{% set clear_values = [''off'',''dry'',''clear'',''ok'',''idle'',''false'',''0'']
+    %} {{ v_state in clear_values }}'
+  v_enable_mobile: !input enable_mobile
+  v_enable_persistent: !input enable_persistent
+  v_wet_title: !input wet_title
+  v_wet_message: !input wet_message
+  v_clear_title: !input clear_title
+  v_clear_message: !input clear_message
+  v_pn_id_wet: '{{ (''leak_ui_'' ~ leak_entity ~ ''_wet'') | replace(''.'', ''_'')
+    | replace('' '', ''_'') }}'
+  v_pn_id_clear: '{{ (''leak_ui_'' ~ leak_entity ~ ''_clear'') | replace(''.'', ''_'')
+    | replace('' '', ''_'') }}'
+action:
+- choose:
+  - conditions:
+    - condition: template
+      value_template: '{{ v_is_wet }}'
+    sequence:
+    - if:
+      - condition: template
+        value_template: '{{ v_enable_mobile | bool }}'
+      then:
+      - service: '{{ ns }}'
+        data:
+          title: '{{ v_wet_title }}'
+          message: '{{ v_wet_message }}'
+    - if:
+      - condition: template
+        value_template: '{{ v_enable_persistent | bool }}'
+      then:
+      - service: persistent_notification.create
+        data:
+          title: '{{ v_wet_title }}'
+          message: '{{ v_wet_message }}'
+          notification_id: '{{ v_pn_id_wet }}'
+  - conditions:
+    - condition: template
+      value_template: '{{ v_is_clear }}'
+    sequence:
+    - if:
+      - condition: template
+        value_template: '{{ v_enable_mobile | bool }}'
+      then:
+      - service: '{{ ns }}'
+        data:
+          title: '{{ v_clear_title }}'
+          message: '{{ v_clear_message }}'
+    - if:
+      - condition: template
+        value_template: '{{ v_enable_persistent | bool }}'
+      then:
+      - service: persistent_notification.create
+        data:
+          title: '{{ v_clear_title }}'
+          message: '{{ v_clear_message }}'
+          notification_id: '{{ v_pn_id_clear }}'

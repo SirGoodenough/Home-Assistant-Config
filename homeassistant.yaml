@@ -22,6 +22,7 @@
     music: /media/int-sdb1/Music
     movies: /media/int-sdb2/Movies
     tv: /media/int-sdb2/TV
+    www: /config/www                    # exposes ALL of /config/www
 
 #  external_url: !secret HA_Base_External
 #  internal_url: !secret HA_Base
