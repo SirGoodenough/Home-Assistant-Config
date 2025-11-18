@@ -1,0 +1,67 @@
+tts_aurora:
+  alias: TTS Aurora
+  use_blueprint:
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
+    input:
+      TTS: tts.cloud_say
+      announcement_message: Aurora chance over 8%
+      speaker_target:
+      - media_player.basement_speaker
+      - media_player.jennys_room_display
+      - media_player.garage_speaker
+      b4_action:
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 2
+          milliseconds: 0
+      nabu_azure_voice: '{{ ("JennyNeural",
+
+        "AIGenerate1Neural",
+
+        "AIGenerate2Neural",
+
+        "AmberNeural",
+
+        "AnaNeural",
+
+        "AriaNeural",
+
+        "AshleyNeural",
+
+        "BrandonNeural",
+
+        "ChristopherNeural",
+
+        "CoraNeural",
+
+        "DavisNeural",
+
+        "ElizabethNeural",
+
+        "EricNeural",
+
+        "GuyNeural",
+
+        "JacobNeural",
+
+        "JaneNeural",
+
+        "JasonNeural",
+
+        "JennyMultilingualNeural",
+
+        "MichelleNeural",
+
+        "MonicaNeural",
+
+        "NancyNeural",
+
+        "RogerNeural",
+
+        "SaraNeural",
+
+        "SteffanNeural",
+
+        "TonyNeural") | random }}'
+  description: ''

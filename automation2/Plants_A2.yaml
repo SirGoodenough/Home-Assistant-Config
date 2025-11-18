@@ -12,6 +12,9 @@
       minutes: 0
       seconds: 30
     id: Grow Time
+  - trigger: time
+    at: "8:34:56"
+    id: Grow Time
   - trigger: state
     entity_id:
     - light.growlight2
@@ -20,6 +23,9 @@
       hours: 0
       minutes: 0
       seconds: 30
+    id: Sleep Time
+  - trigger: time
+    at: "21:34:56"
     id: Sleep Time
   conditions: []
   actions:

@@ -1,0 +1,181 @@
+blueprint:
+  name: Filament Tracker
+  description: 'Version: 0.2
+
+    Keeps track of the remaining filament on the spool. Sends notification with the
+    remaining filament after unloading. Sends notification with action to update remaining
+    filament after loading. Sends notification when starting a print with insufficieint
+    remaining filament.
+
+    Currently only supports bambu lab integration.
+
+    '
+  domain: automation
+  input:
+    printer:
+      name: The printer
+      selector:
+        device:
+          filter:
+          - integration: bambu_lab
+          multiple: false
+    filament_sensor:
+      name: Filament sensor
+      selector:
+        entity:
+          filter:
+          - domain:
+            - binary_sensor
+            integration: bambu_lab
+          multiple: false
+          reorder: false
+    print_weight:
+      name: Print weight
+      selector:
+        entity:
+          filter:
+          - domain:
+            - sensor
+            integration: bambu_lab
+          multiple: false
+          reorder: false
+    filament_remaining:
+      name: Input number for saving remaining filament
+      selector:
+        entity:
+          filter:
+          - domain:
+            - input_number
+          multiple: false
+          reorder: false
+    notify_devices:
+      name: Devices for notifications
+      selector:
+        device:
+          multiple: true
+          filter:
+          - integration: mobile_app
+  source_url: https://gist.github.com/Finnhax/4eb390034d88b74e1ed5f2d11e9cbfac
+variables:
+  filament_remaining: !input filament_remaining
+  print_weight: !input print_weight
+triggers:
+- device_id: !input printer
+  domain: bambu_lab
+  type: event_print_started
+  trigger: device
+  id: print_started
+- device_id: !input printer
+  domain: bambu_lab
+  type: event_print_finished
+  trigger: device
+  id: print_finished
+- trigger: state
+  entity_id: !input filament_sensor
+  from: 'off'
+  to: 'on'
+  id: filament_loaded
+  alias: Filament loaded
+- trigger: state
+  entity_id: !input filament_sensor
+  from: 'on'
+  to: 'off'
+  id: filament_unloaded
+  alias: Filament unloaded
+- trigger: event
+  event_type: mobile_app_notification_action
+  event_data:
+    action: REPLY
+    tag: filament_tracker_update
+  id: filament_update
+  alias: Filament update from notification
+conditions: []
+actions:
+- choose:
+  - conditions:
+    - condition: trigger
+      id:
+      - print_started
+    sequence:
+    - if:
+      - condition: numeric_state
+        entity_id: !input filament_remaining
+        below: !input print_weight
+      then:
+      - alias: Send notification
+        repeat:
+          for_each: !input notify_devices
+          sequence:
+          - action: notify.mobile_app_{{ device_attr(repeat.item, 'name') | slugify
+              }}
+            data:
+              message: Filament might not be enough to finish print
+              title: Remaining filament low
+  - conditions:
+    - condition: trigger
+      id:
+      - print_finished
+    sequence:
+    - action: input_number.set_value
+      metadata: {}
+      target:
+        entity_id: !input filament_remaining
+      data:
+        value: '{{ (states(filament_remaining) | float(0)) - (states(print_weight)
+          | float(0)) }}
+
+          '
+      alias: Update remaining filament
+  - conditions:
+    - condition: trigger
+      id:
+      - filament_unloaded
+    sequence:
+    - alias: Send notification
+      repeat:
+        for_each: !input notify_devices
+        sequence:
+        - action: notify.mobile_app_{{ device_attr(repeat.item, 'name') | slugify
+            }}
+          data:
+            message: Remaining Filament {{ states(filament_remaining) }} g
+            title: Filament unloaded
+    - alias: Update remaining filament
+      action: input_number.set_value
+      metadata: {}
+      target:
+        entity_id: !input filament_remaining
+      data:
+        value: 0
+  - conditions:
+    - condition: trigger
+      id:
+      - filament_loaded
+    sequence:
+    - alias: Send notification
+      repeat:
+        for_each: !input notify_devices
+        sequence:
+        - action: notify.mobile_app_{{ device_attr(repeat.item, 'name') | slugify
+            }}
+          data:
+            title: Filament loaded
+            message: Please update remaining filament
+            data:
+              tag: filament_tracker_update
+              actions:
+              - action: REPLY
+                title: Enter
+  - conditions:
+    - condition: trigger
+      id:
+      - filament_update
+    sequence:
+    - action: input_number.set_value
+      metadata: {}
+      data:
+        value: '{{ trigger.event.data.reply_text | float }}
+
+          '
+      target:
+        entity_id: !input filament_remaining

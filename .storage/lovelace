@@ -576,6 +576,14 @@
             {
               "graph": "line",
               "type": "sensor",
+              "entity": "sensor.aurora_visibility_visibility",
+              "detail": 2,
+              "theme": "Fluent Blue",
+              "hours_to_show": 72
+            },
+            {
+              "graph": "line",
+              "type": "sensor",
               "entity": "sensor.ethernettest_kitchen_co2",
               "detail": 2,
               "hours_to_show": 48,
