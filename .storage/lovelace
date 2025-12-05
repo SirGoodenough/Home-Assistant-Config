@@ -579,7 +579,7 @@
               "entity": "sensor.aurora_visibility_visibility",
               "detail": 2,
               "theme": "Fluent Blue",
-              "hours_to_show": 72
+              "hours_to_show": 24
             },
             {
               "graph": "line",
@@ -1027,7 +1027,10 @@
                   "entity": "light.garageback_light"
                 },
                 {
-                  "entity": "script.work_time"
+                  "entity": "light.b_porch_socket"
+                },
+                {
+                  "entity": "light.fp_socket"
                 },
                 {
                   "entity": "script.chill_time"
@@ -1061,6 +1064,9 @@
                 },
                 {
                   "entity": "binary_sensor.garage_door_closed"
+                },
+                {
+                  "entity": "light.office_track_jim"
                 }
               ],
               "show_header_toggle": false,
@@ -3586,7 +3592,9 @@
                   "entity": "sensor.gw2000b_v2_2_4_absolute_pressure",
                   "name": "Absolute Pressure"
                 },
-                "sensor.gw2000b_v2_2_4_daily_rain_rate_piezo",
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_daily_rain_rate_piezo"
+                },
                 {
                   "entity": "sensor.gw2000b_v2_2_4_dewpoint",
                   "name": "Dewpoint"
@@ -3607,7 +3615,9 @@
                   "entity": "sensor.gw2000b_v2_2_4_humidity",
                   "name": "Humidity"
                 },
-                "sensor.chaloupkaabode_weather_temperature_7",
+                {
+                  "entity": "sensor.chaloupkaabode_weather_temperature_7"
+                },
                 {
                   "entity": "sensor.gw2000b_v2_2_4_indoor_dewpoint",
                   "name": "Indoor Dewpoint"
@@ -3664,7 +3674,6 @@
                   "entity": "sensor.gw2000b_v2_2_4_relative_pressure",
                   "name": "Relative Pressure"
                 },
-                "sensor.chaloupkaabode_weather_soil_moisture_1",
                 {
                   "entity": "sensor.chaloupkaabode_weather_soil_moisture_2",
                   "name": "Soil Moisture 2"
@@ -3685,7 +3694,9 @@
                   "entity": "sensor.gw2000b_v2_2_4_uv_index",
                   "name": "UV Index"
                 },
-                "sensor.gw2000b_v2_2_4_weekly_rain_rate_piezo",
+                {
+                  "entity": "sensor.gw2000b_v2_2_4_weekly_rain_rate_piezo"
+                },
                 {
                   "entity": "sensor.gw2000b_v2_2_4_wind_direction",
                   "name": "Wind Direction"
@@ -3706,7 +3717,9 @@
                   "entity": "sensor.gw2000b_v2_2_4_windchill",
                   "name": "Windchill"
                 },
-                "sensor.chaloupkaabode_weather_temperature_8",
+                {
+                  "entity": "sensor.chaloupkaabode_weather_temperature_8"
+                },
                 {
                   "entity": "sensor.gw2000b_v2_2_4_yearly_rain_rate_piezo",
                   "name": "Yearly Rain Piezo"
@@ -3900,7 +3913,8 @@
               "graph": "line",
               "type": "sensor",
               "entity": "sensor.aurora_visibility_visibility",
-              "detail": 1
+              "detail": 1,
+              "hours_to_show": 96
             },
             {
               "type": "iframe",

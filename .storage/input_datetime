@@ -10,12 +10,6 @@
         "has_date": false,
         "icon": "mdi:home-clock-outline",
         "has_time": true
-      },
-      {
-        "id": "testit",
-        "name": "testIt",
-        "has_date": true,
-        "has_time": true
       }
     ]
   }
