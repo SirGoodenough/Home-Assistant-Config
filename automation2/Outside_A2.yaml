@@ -10,10 +10,11 @@
       trigger: state
       from: "off"
       to: "on"
-    - entity_id: binary_sensor.back_door_motion
+    - entity_id: event.back_door_motion
       trigger: state
-      from: "off"
-      to: "on"
+      not_from:
+        - unknown
+        - unavailable
     - entity_id: binary_sensor.garage_side_door_open
       trigger: state
       from: "off"
@@ -35,9 +36,6 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: binary_sensor.mailbox
-      from: "off"
-      to: "on"
       for:
         seconds: 15
     - trigger: state
