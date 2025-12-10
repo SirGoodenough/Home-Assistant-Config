@@ -57,7 +57,7 @@
       from: "off"
       to: "on"
     - trigger: state
-      entity_id: !secret Lad134620-837c-4f51-9c29-07325432d63f
+      entity_id: !secret "Lad134620-837c-4f51-9c29-07325432d63f"
   actions:
     - action: lock.unlock
       target:
@@ -92,7 +92,7 @@
       from: "off"
       to: "on"
     - trigger: state
-      entity_id: !secret L35993d38-2f27-410d-bfd3-97c533d0a0e3
+      entity_id: !secret "L35993d38-2f27-410d-bfd3-97c533d0a0e3"
   actions:
     - action: lock.lock
       target:
