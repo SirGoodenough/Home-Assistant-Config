@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace.other_sections_crap",
+  "data": {
+    "config": {
+      "views": [
+        {
+          "title": "Home",
+          "sections": [
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "New section"
+                },
+                {
+                  "type": "alarm-panel",
+                  "states": [],
+                  "entity": ""
+                },
+                {
+                  "type": "logbook",
+                  "target": {
+                    "entity_id": [
+                      "light.grp_kitch",
+                      "light.grp_mom_office",
+                      "light.grp_studio"
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -20,6 +20,7 @@
     - trigger: state
       entity_id: binary_sensor.moms_button1
       to: "on"
+      from: off
   actions:
     - action: script.bedtime_button_mom
 

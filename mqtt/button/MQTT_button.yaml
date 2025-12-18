@@ -153,6 +153,13 @@
     qos: 0
     retain: false
 
+  - name: "Moms Bed Button Fan Rmt"
+    unique_id: faab5302-f4dc-4dad-b4b9-08c3aa6417b0
+    command_topic: "rf433/PadLfan3"
+    payload_press: "ON"
+    qos: 0
+    retain: false
+
   - name: "Moms Call Button"
     unique_id: 4c09ceea-f9aa-418d-913a-2105d0a1d240
     command_topic: "rf433/Mom-C"

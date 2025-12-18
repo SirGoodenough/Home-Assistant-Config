@@ -36,14 +36,11 @@
   initial_state: on
   triggers:
     - trigger: state
-      for:
-        seconds: 15
-    - trigger: state
       entity_id: binary_sensor.mailbox
       from: "on"
       to: "off"
       for:
-        seconds: 15
+        seconds: 10
   actions:
     - action: script.media_player_mail
 

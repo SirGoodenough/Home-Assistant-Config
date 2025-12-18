@@ -13,7 +13,7 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: event.front_door_motion
+      entity_id: event.front_door_ding
       not_from:
         - unknown
         - unavailable

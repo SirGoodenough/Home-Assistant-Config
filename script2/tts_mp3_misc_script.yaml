@@ -23,14 +23,6 @@ tts_bedroom_door:
       announcement_message: The Bedroom door is open
   icon: mdi:bunk-bed-outline
 
-media_player_mail:
-  alias: Media Player Mail
-  use_blueprint:
-    path: SirGoodenough/play_media_file_script.yaml
-    input:
-      speaker_target: media_player.intercom_group
-      file_2_play: media-source://media_source/local/mp3/youGotmail.mp3
-  icon: mdi:email-fast
 
 mp3_take_your_meds:
   alias: MP3 Take Your Meds

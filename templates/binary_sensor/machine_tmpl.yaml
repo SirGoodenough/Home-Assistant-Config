@@ -1,0 +1,61 @@
+
+- binary_sensor:
+#####################################################
+# Washer State                                      #
+##################################################### 
+  - name: "Washer Running"
+    unique_id: 019b2047-f3d1-7258-b54d-0e865b3f676d
+    state: |
+      {% if states('sensor.wash_machine_energy_current')|float(0)> 0.15 %}
+        on
+      {% elif states('sensor.wash_machine_energy_current')|float(0)< 0.077 %}
+        off
+      {% else %}
+        {{ states('binary_sensor.washer_running.state') }}
+      {% endif %}
+    delay_off:
+      minutes: 5
+    availability: >-
+      {% from 'availability_template.jinja' import avail %}
+      {{- avail(['sensor.wash_machine_energy_current']) | bool -}}
+    attributes:
+      friendly_name: "Washer Running"
+    # icon: >-
+    #   {% set _st8 = is_state('this.state', 'on') %}
+    #   {% if _st8 %}
+    #     mdi:washing-machine
+    #   {% elif not _st8 %}
+    #     mdi:washing-machine-off
+    #   {% else %}
+    #     mdi:washing-machine-alert
+    #   {% endif %}
+
+#####################################################
+# Dryer State                                       #
+#####################################################
+  - name: "Dryer Running"
+    unique_id: 019b2048-6bc5-769c-bb52-24b804cfbf20
+    state: |
+      {% if states('sensor.dryer_power_current')|float(0)> 0.15 %}
+        'on'
+      {% elif states('sensor.dryer_power_current')|float(0)< 0.077 %}
+        'off'  
+      {% else %}
+        {{ states('binary_sensor.dryer_2') }}
+      {% endif %}
+    delay_off:
+      minutes: 8
+    availability: >-
+      {% from 'availability_template.jinja' import avail %}
+      {{- avail(['sensor.dryer_power_current']) | bool -}}
+    attributes:
+      friendly_name: "Dryer Running"
+    # icon: >-
+    #   {% set _st8 = is_state( 'this.state', 'on') %}
+    #   {% if _st8 %}
+    #     mdi:tumble-dryer
+    #   {% elif not _st8 %}
+    #     mdi:tumble-dryer-off
+    #   {% else %}
+    #     mdi:tumble-dryer-alert
+    #   {% endif %}

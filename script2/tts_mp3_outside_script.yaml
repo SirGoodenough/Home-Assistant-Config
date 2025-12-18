@@ -37,3 +37,12 @@ media_mp3_thunder:
         - media_player.intercom_group
       file_2_play: media-source://media_source/local/mp3/thunder-and-beginning-of-rainfall-6249.mp3
   icon: mdi:lightning-bolt-circle
+
+media_player_mail:
+  alias: Media Player Mail
+  use_blueprint:
+    path: SirGoodenough/play_media_file_script.yaml
+    input:
+      speaker_target: media_player.intercom_group
+      file_2_play: media-source://media_source/local/mp3/youGotmail.mp3
+  icon: mdi:email-fast

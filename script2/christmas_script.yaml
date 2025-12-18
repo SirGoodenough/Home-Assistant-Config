@@ -12,10 +12,6 @@ inside_christmas:
             {% from 'logic_chekr.jinja' import true_all %}
             {{- true_all( ['sensor.xmas_season_enable'] ) | bool -}}
         sequence:
-          - action: light.turn_off
-            entity_id:
-              - light.wled
-              - light.mom_light
           - action: switch.turn_on
             entity_id: switch.b2
           - delay:
@@ -62,12 +58,6 @@ inside_christmas:
               seconds: 1
           - action: switch.turn_on
             entity_id: switch.f3
-          - delay:
-              seconds: 3
-          - action: light.turn_on
-            entity_id:
-              - light.wled
-              - light.mom_light
           - action: input_boolean.turn_on
             entity_id: input_boolean.christmas
 
@@ -77,12 +67,6 @@ inside_christmas:
 heavenly_peace:
   alias: "Heavenly Peace"
   sequence:
-    - action: light.turn_off
-      entity_id:
-        - light.wled
-        - light.mom_light
-    - delay:
-        seconds: 2
     - action: switch.turn_off
       entity_id: switch.b2
     - delay:
@@ -129,7 +113,5 @@ heavenly_peace:
         seconds: 1
     - action: switch.turn_off
       entity_id: switch.f3
-    - delay:
-        seconds: 1
     - action: input_boolean.turn_off
       entity_id: input_boolean.christmas

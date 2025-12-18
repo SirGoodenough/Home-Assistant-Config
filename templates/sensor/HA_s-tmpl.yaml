@@ -67,8 +67,18 @@
       state: "{{ states.switch | count }}"
       attributes:
         friendly_name: "Swt"
+    - name: template_count
+      unique_id: 019b2cf3-4ceb-7586-8aa0-6acfeab0a274
+      state: "{{ integration_entities('template') | count }}"
+      attributes:
+        friendly_name: "Tmp"
     - name: zones_count
       unique_id: 890ea1a7-0210-4ab7-8291-9108a4cc66e2
       state: '{{ states.zone | count }}'
       attributes:
         friendly_name: "Zone"
+    - name: label_count
+      unique_id: 019b2d06-ff27-7735-934f-235735e3a636
+      state: '{{ states.label | count }}'
+      attributes:
+        friendly_name: "Labl"

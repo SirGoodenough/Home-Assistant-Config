@@ -29,6 +29,14 @@
         "require_admin": true,
         "mode": "storage",
         "url_path": "sections-crap"
+      },
+      {
+        "id": "other_sections_crap",
+        "show_in_sidebar": false,
+        "title": "other sections crap",
+        "require_admin": false,
+        "mode": "storage",
+        "url_path": "other-sections-crap"
       }
     ]
   }
