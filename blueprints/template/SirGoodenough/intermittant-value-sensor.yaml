@@ -1,11 +1,16 @@
 blueprint:
-  name: Show an intermittant Sensor
+  name: Show an Intermittant Sensor
+  author: SirGoodenough
+  homeassistant:
+    min_version: 2025.1.0
+  domain: template
+  # source_url: https://
   description: |
    Creates a numeric sensor that displays another numeric sensor
-    that intermittantly goes offline.
+    that might intermittantly go offline.
    An example is the numbers out of an esp battery sensor that
     pops in every few hours to report a value and then goes
-    back to sleep (unavailable).
+    back to sleep (and becomes unavailable).
 
     INPUTS:
       **reference_entity:** is the entity_id containing the number
@@ -39,11 +44,17 @@ blueprint:
       **icon:** Pulled from the reference entity
 
     SAMPLE BLUEPRINT CALL:
-
+      template:
+        - name: Hoya Plant Light Level
+          unique_id: 34423786-8a35-4a83-8282-fdbaf04860fa
+          use_blueprint:
+            path: /config/blueprints/template/SirGoodenough/intermittant-value-sensor.yaml
+            input:
+              reference_entity: "sensor.your_sensor_here"
+              # Not required... default: 1
+              # Not required... avail_use_re: true
     SAMPLE SCRIPT TO SET THE ON-THE-FLY VALUE:
 
-  domain: template
-  # source_url: https://
   required_input:
     name: "Required input \U0001F440"
     icon: mdi:alert-box
@@ -126,7 +137,7 @@ variables:
   _friendly_name: |
     {{ state_attr(_reference_entity, 'friendly_name' ~ '_template') }}
   _icon: |
-    {{ state_attr(_reference_entity, 'icon') | default('mdi:'pencil', 1) }}
+    {{ state_attr(_reference_entity, 'icon') | default('mdi:pencil', 1) }}
   _attribution: |
     "Data provided by 'Show an Intermittant Sensor' Blueprint by SirGoodenough"
   _otf_avail: |
