@@ -1,0 +1,117 @@
+blueprint:
+  name: Anniversary
+  description: 'Keep track of important dates.
+
+    '
+  domain: template
+  input:
+    sensor_name:
+      name: Name
+      description: Name of the special date to remember.
+      selector:
+        text:
+          multiple: false
+          multiline: false
+    special_date:
+      name: Special date
+      description: The date to remember (e.g. wedding anniversary).
+      selector:
+        text:
+          multiple: false
+          multiline: false
+    year_unknown:
+      name: Year unknown
+      description: "If the year of the special date is unknown then the year will
+        be ignored \nand the number of years will not be calculated.\n"
+      default: false
+      selector:
+        boolean: {}
+    calendar_entity:
+      name: Calendar entity
+      description: "Calendar to put an appointment in if the calendar exists. \nEach
+        anniversary is created only once and never deleted unless you do so yourself.\nIf
+        the information that is used for the calendar item changes, a new item is
+        created.\n"
+      default: calendar.anniversaries
+      selector:
+        entity:
+          domain:
+          - binary_sensor
+          multiple: false
+          reorder: false
+  source_url: https://gist.github.com/SirGoodenough/e010c8a29db8ba5bf9aa2e57068a9fc7
+variables:
+  i_sensor_name: !input sensor_name
+  i_special_date: !input special_date
+  i_year_unknown: !input year_unknown
+  i_calendar: !input calendar_entity
+trigger:
+- trigger: time
+  at: 00:00:00
+- trigger: homeassistant
+  event: start
+- trigger: event
+  event_type: event_template_reloaded
+actions:
+- variables:
+    today: '{{- today_at() -}}'
+    spec: '{{- strptime(i_special_date, ''%Y-%m-%d'') | as_local -}}'
+    nextd: "{%- set today_date = today | as_datetime | as_local -%}\n{%- set spec_date
+      = spec | as_datetime | as_local -%}\n{%- if spec_date.month == 2 and spec_date.day
+      == 29 -%} \n  {%- set next = spec_date.replace(year=today_date.year, day=28)
+      + timedelta(days=1) -%}\n  {%- if next < today_date -%}\n    {%- set next =
+      spec_date.replace(year=today_date.year+1, day=28) + timedelta(days=1) -%}\n
+      \ {%- endif -%}\n{%- else -%} \n  {%- set next = spec_date.replace(year=today_date.year)
+      -%}\n  {%- if next < today_date -%}\n    {%- set next = spec_date.replace(year=today_date.year+1)
+      -%}\n  {%- endif -%}\n{%- endif -%} \n{{- next -}}\n"
+    anniv: '{{ nextd if i_year_unknown else spec }}'
+    days_until: '{{ (nextd | as_datetime | as_local - today | as_datetime | as_local).days
+      }}'
+    total_days: '{{ (today | as_datetime | as_local - spec | as_datetime | as_local).days
+      }}'
+    weeks_until: '{{ days_until // 7 }}'
+    yr: "{%- set today_date = today | as_datetime | as_local -%}\n{%- set spec_date
+      = spec | as_datetime | as_local -%}\n{%- if spec_date.month == 2 and spec_date.day
+      == 29 -%} \n  {%- set curr_date = spec_date.replace(year=today_date.year, day=28)
+      + timedelta(days=1) -%}\n{%- else -%} \n  {%- set curr_date = spec_date.replace(year=today_date.year)
+      -%}\n{%- endif -%} \n{{ curr_date.year - spec_date.year - (1 if curr_date >
+      today_date else 0) }}\n"
+    yr_at_anniv: '{{ yr + (1 if days_until else 0) }}'
+    cal: '{{ i_calendar if i_calendar else ''calendar.anniversaries'' }}'
+    ent_id: "{%- set id = 'sensor.template_' ~ i_sensor_name | slugify -%}\n{{- this.entity_id
+      if this is defined and this.entity_id is defined else \n    id if states(id)
+      != 'unknown' else \n    'sensor.' ~ i_sensor_name | slugify -}}\n"
+    calitem: "{%- set calitem = none -%}\n{%- if states(cal) != 'unknown' -%}\n  {%-
+      set calitem = [ cal, nextd[0:10], i_sensor_name, yr_at_anniv ]|join(',') -%}\n{%-
+      endif -%}\n{{- calitem -}}\n"
+- if:
+  - condition: template
+    value_template: "{{  has_value(cal) and \n    calitem != state_attr(ent_id, 'last_created_event')
+      }}\n"
+  then:
+  - action: calendar.create_event
+    metadata: {}
+    target:
+      entity_id: '{{ cal }}'
+    data:
+      summary: "{{ i_sensor_name ~ \n    ('' if i_year_unknown else\n    ' (' ~ yr_at_anniv
+        ~')') }}\n"
+      start_date: '{{ nextd[0:10] }}'
+      end_date: '{{ (((nextd | as_datetime | as_local) + timedelta(days=1)) | string)[0:10]
+        }}'
+sensor:
+  name: '{{ i_sensor_name }}'
+  icon: "{{  'mdi:calendar' if weeks_until else \n    'mdi:calendar-alert' if days_until
+    else \n    'mdi:cake-variant' }}\n"
+  unit_of_measurement: d
+  device_class: duration
+  state: '{{ days_until }}'
+  attributes:
+    years_at_anniversary: '{{ none if i_year_unknown else yr_at_anniv }}'
+    current_years: '{{ none if i_year_unknown else yr }}'
+    days_since_date: '{{ none if i_year_unknown else total_days }}'
+    date: '{{ anniv | as_datetime | as_local }}'
+    next_date: '{{ nextd | as_datetime | as_local }}'
+    weeks_remaining: '{{ weeks_until }}'
+    last_created_event: "{{ calitem if has_value(cal) else\n    state_attr(ent_id,
+      'last_created_event') }}"

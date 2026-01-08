@@ -6,12 +6,14 @@
   - name: "Washer Running"
     unique_id: 019b2047-f3d1-7258-b54d-0e865b3f676d
     state: |
-      {% if states('sensor.wash_machine_energy_current')|float(0)> 0.15 %}
+      {% set _st8 = states('binary_sensor.washer_running_2') %}
+      {% set _wpc = states('sensor.wash_machine_energy_current') %}
+      {% if _wpc|float(0)> 0.15 %}
         on
-      {% elif states('sensor.wash_machine_energy_current')|float(0)< 0.077 %}
+      {% elif _wpc|float(0)< 0.077 %}
         off
       {% else %}
-        {{ states('binary_sensor.washer_running.state') }}
+        {{ _st8 }}
       {% endif %}
     delay_off:
       minutes: 5
@@ -20,15 +22,16 @@
       {{- avail(['sensor.wash_machine_energy_current']) | bool -}}
     attributes:
       friendly_name: "Washer Running"
-    # icon: >-
-    #   {% set _st8 = is_state('this.state', 'on') %}
-    #   {% if _st8 %}
-    #     mdi:washing-machine
-    #   {% elif not _st8 %}
-    #     mdi:washing-machine-off
-    #   {% else %}
-    #     mdi:washing-machine-alert
-    #   {% endif %}
+    icon: >-
+      {% from 'logic_chekr.jinja' import true_any %}
+      {% set _st8 = true_any(['binary_sensor.washer_running_2']) | bool %}
+      {% if _st8 %}
+        mdi:washing-machine
+      {% elif not _st8 %}
+        mdi:washing-machine-off
+      {% else %}
+        mdi:washing-machine-alert
+      {% endif %}
 
 #####################################################
 # Dryer State                                       #
@@ -36,12 +39,14 @@
   - name: "Dryer Running"
     unique_id: 019b2048-6bc5-769c-bb52-24b804cfbf20
     state: |
-      {% if states('sensor.dryer_power_current')|float(0)> 0.15 %}
-        'on'
-      {% elif states('sensor.dryer_power_current')|float(0)< 0.077 %}
-        'off'  
+      {% set _st8 = states('binary_sensor.dryer_running') %}
+      {% set _dpc = states('sensor.dryer_power_current') %}
+      {% if _dpc|float(0)> 4.5 %}
+        on
+      {% elif _dpc|float(0)< 0.077 %}
+        off
       {% else %}
-        {{ states('binary_sensor.dryer_2') }}
+        {{ _st8 }}
       {% endif %}
     delay_off:
       minutes: 8
@@ -50,12 +55,13 @@
       {{- avail(['sensor.dryer_power_current']) | bool -}}
     attributes:
       friendly_name: "Dryer Running"
-    # icon: >-
-    #   {% set _st8 = is_state( 'this.state', 'on') %}
-    #   {% if _st8 %}
-    #     mdi:tumble-dryer
-    #   {% elif not _st8 %}
-    #     mdi:tumble-dryer-off
-    #   {% else %}
-    #     mdi:tumble-dryer-alert
-    #   {% endif %}
+    icon: >-
+      {% from 'logic_chekr.jinja' import true_any %}
+      {% set _st8 = true_any(['binary_sensor.dryer_running']) | bool %}
+      {% if _st8 %}
+        mdi:tumble-dryer
+      {% elif not _st8 %}
+        mdi:tumble-dryer-off
+      {% else %}
+        mdi:tumble-dryer-alert
+      {% endif %}

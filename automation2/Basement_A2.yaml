@@ -40,7 +40,7 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: binary_sensor.dryer_running 
+      entity_id: binary_sensor.dryer_running
       from: "on"
       to: "off"
       for:
@@ -77,10 +77,6 @@
     - action: mqtt.publish
       data:
         topic: wash_machine/cmnd/restart
-        payload: "1"
-    - action: mqtt.publish
-      data:
-        topic: Dryer3/cmnd/restart
         payload: "1"
   mode: single
   max_exceeded: silent

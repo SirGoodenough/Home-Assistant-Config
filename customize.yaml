@@ -18,6 +18,18 @@
   input_number.target_humidity:
     unit_of_measurement: percent
     icon: mdi:water-percent
+    
+  ####################################################
+  #                                                  #
+  #            Light                                 #
+  #                                                  #
+  ####################################################
+
+  sensor.moms_hoya_1_ltr390_light:
+    state_class: measurement
+
+  sensor.apollo_plt_1b_89a12c_ltr390_light:
+    state_class: measurement
 
   ####################################################
   #                                                  #

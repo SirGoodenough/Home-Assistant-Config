@@ -1,0 +1,148 @@
+blueprint:
+  name: Show an intermittant Sensor
+  description: |
+   Creates a numeric sensor that displays another numeric sensor
+    that intermittantly goes offline.
+   An example is the numbers out of an esp battery sensor that
+    pops in every few hours to report a value and then goes
+    back to sleep (unavailable).
+
+    INPUTS:
+      **reference_entity:** is the entity_id containing the number
+        that you want to mimic.
+      **default:** is the value you want to set if there is an error.
+        The default is set to 0 and can be ignored, but if you
+        need a different default value you can set it here.
+      **avail_use_re:** is a Boolean value that lets you select to
+        !include_dir_named follow thhe availability sensor of
+        the reference entity or to ignore it and make this
+        value always available. It defaults to false so that the
+        availability function is bypassed.
+        This is the setting at startup, and can be modified
+        on-the-fly by changing an attribute named **otf_avail**
+        allowing the availability to be enabled by changing
+        this attribute.
+
+    ATTRIBUTES:
+      **otf_avail**: stands for on-the-fly-availability is used to
+        enable or disable tying the reference entity availability
+        sensor to this template sensor one.
+        Setting **otf_avail** to 'Go' will enable availability
+          to match the reference entity.
+        Setting it to anything else will disable it causing the
+          template sensor to always be available.
+      **attribution:** Source info
+      **state_class:** Pulled from the reference entity
+      **device_class:** Pulled from the reference entity
+      **unit_of_measurement:** Pulled from the reference entity
+      **friendly_name:** Pulled from the reference entity + added info
+      **icon:** Pulled from the reference entity
+
+    SAMPLE BLUEPRINT CALL:
+
+    SAMPLE SCRIPT TO SET THE ON-THE-FLY VALUE:
+
+  domain: template
+  # source_url: https://
+  required_input:
+    name: "Required input \U0001F440"
+    icon: mdi:alert-box
+    collapsed: false
+    description: |
+        This blueprint has 1 required input.
+    input:
+      reference_entity:
+        name: Numeric sensor to be mimic-ed
+        description: |
+          This entry is required.
+          Sensor must be numeric.
+          Add the entity_id here:
+        selector:
+          entity:
+            multiple: false
+            filter:
+              - domain:
+                - sensor
+                - number
+  optional_parameters:
+    name: "Optional parameters\U0001F913"
+    icon: mdi:alert-octagon-outline
+    collapsed: true
+    description: |
+      These inputs set optional parameters that allow you to customize
+      the intended actions.
+      Read the individual descriptions for more details.
+
+      The Blueprint will work if no changes are made to this section.
+
+    input:
+      default:
+        name: RE Default
+        description: |
+          Default value for your sensor.
+          It's OK to leave this at 0 if you do not have special needs.
+        default: 0
+        selector:
+          number:
+      avail_use_re:
+        name: Use Availability
+        description: |
+          Mimic the Reference Entity Availability or not?
+          It's OK to leave this at 'false' if you do not have special needs.
+        default: false
+        selector:
+          boolean:
+variables:
+  _reference_entity: !input reference_entity
+  _default: !input default
+  _avail_use_re: !input avail_use_re
+  im_here: "{{ states(_reference_entity) not in ('unknown', 'unavailable') }}"
+  otf_avail_start: "{{ states_attr(_reference_entity, 'otf_avail' }}"
+  re_state: |
+    {% if im_here %}
+      {% states(_reference_entity) | float(_default) %}
+    {% elseif is_number this.state %}
+      {{ this.state }}
+    {% else %}
+      {{ _default }}
+    {% endif %}
+  avail: |
+    {# If enabled OTF mimic reference entity status #}
+    {% if otf_avail_start == "Go" %}
+      {{ im_here }}
+    {# If not enabled OTF check the input to decide #}
+    {% elseif _avail_use_re %}
+      {{ im_here }}
+    {# Disable availability #}
+    {% else %}
+      true
+    {% endif %}
+  _state_class: |
+    {{ state_attr(_reference_entity, 'state_class') }}
+  _device_class: |
+    {{ state_attr(_reference_entity, 'device_class') }}
+  _unit_of_measurement: |
+    {{ state_attr(_reference_entity, 'unit_of_measurement') }}
+  _friendly_name: |
+    {{ state_attr(_reference_entity, 'friendly_name' ~ '_template') }}
+  _icon: |
+    {{ state_attr(_reference_entity, 'icon') | default('mdi:'pencil', 1) }}
+  _attribution: |
+    "Data provided by 'Show an Intermittant Sensor' Blueprint by SirGoodenough"
+  _otf_avail: |
+    {% if otf_avail_start not in (none, 'None', 'unknown', 'unavailable') %}
+      {{ otf_avail_start }}
+    {% else %}
+      "On-The-Fly Not Enabled"
+    {% endif %}
+sensor:
+  state: "{{ re_state }}"
+  state_class: "{{ _state_class }}"
+  device_class: "{{ _device_class }}"
+  unit_of_measurement: "{{ _unit_of_measurement }}"
+  friendly_name: "{{ _friendly_name }}"
+  icon: "{{ _icon }}"
+  availability: "{{ avail }}"
+  attributes:
+    attribution: "{{ _attribution }}"
+    otf_avail: "{{ _otf_avail }}"

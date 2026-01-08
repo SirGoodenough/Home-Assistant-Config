@@ -1,13 +1,9 @@
 # Example configuration.yaml entry
 ---
-  my_cemetery_plant:
+  my_window:
     sensors:
-      moisture: sensor.chaloupkaabode_weather_soil_moisture_1
-      battery: sensor.compensation_sensor_chaloupkaabode_weather_soil_battery_1
       temperature: sensor.cemetary_temp_temperature
       brightness: sensor.cemetary_lux_illuminance
-    min_moisture: 18
-    max_moisture: 90
     min_temperature: 50
     max_temperature: 90
     min_brightness: 800
@@ -28,6 +24,29 @@
       battery: sensor.compensation_sensor_chaloupkaabode_weather_soil_battery_3
       temperature: sensor.pothos_temp_temperature
       brightness: sensor.pothos_lux_illuminance
+    min_moisture: 10
+    max_moisture: 90
+    min_temperature: 50
+    max_temperature: 90
+    min_brightness: 800
+  my_moms_hoya:
+    sensors:
+      moisture: sensor.moms_hoya_1_soil_moisture
+      battery: sensor.moms_hoya_1_battery_level
+      temperature: sensor.moms_hoya_1_air_temperature
+      brightness: sensor.moms_hoya_1_ltr390_light
+    min_moisture: 12
+    max_moisture: 90
+    min_temperature: 50
+    max_temperature: 90
+    min_brightness: 800
+  my_peace_lily:
+    sensors:
+      moisture: sensor.apollo_plt_1b_89a12c_soil_moisture
+      battery: sensor.apollo_plt_1b_89a12c_battery_level
+      temperature: sensor.apollo_plt_1b_89a12c_air_temperature
+      brightness: sensor.apollo_plt_1b_89a12c_ltr390_light
+    min_moisture: 18
     max_moisture: 90
     min_temperature: 50
     max_temperature: 90

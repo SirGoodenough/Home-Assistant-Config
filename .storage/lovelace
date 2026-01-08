@@ -1490,26 +1490,11 @@
             {
               "hours_to_show": 24,
               "graph": "line",
-              "type": "sensor",
-              "entity": "sensor.lumi_lumi_sensor_cube_aqgl01_device_temperature",
-              "detail": 2
-            },
-            {
-              "hours_to_show": 24,
-              "graph": "line",
               "entity": "sensor.furnace_return_temperature",
               "theme": "Dark - Green",
               "type": "sensor",
               "detail": 2,
               "icon": "mdi:temperature-fahrenheit"
-            },
-            {
-              "hours_to_show": 24,
-              "graph": "line",
-              "type": "sensor",
-              "entity": "sensor.openweathermap_temperature",
-              "detail": 2,
-              "unit": "℉"
             },
             {
               "graph": "line",
@@ -1529,25 +1514,10 @@
               "name": "Back Basement"
             },
             {
-              "type": "sensor",
-              "entity": "sensor.jen_temperature_temperature",
-              "graph": "line",
-              "detail": 2
-            },
-            {
               "graph": "line",
               "type": "sensor",
               "entity": "sensor.garage_temperature",
               "detail": 2
-            },
-            {
-              "hours_to_show": 24,
-              "graph": "line",
-              "entity": "sensor.dryer3_si7021_temperature",
-              "type": "sensor",
-              "detail": 2,
-              "icon": "mdi:washing-machine",
-              "name": "Dryer"
             },
             {
               "type": "entities",
@@ -1730,14 +1700,6 @@
               "type": "sensor",
               "entity": "sensor.gw2000b_v2_2_4_dewpoint",
               "detail": 1
-            },
-            {
-              "graph": "line",
-              "hours_to_show": 24,
-              "entity": "sensor.dryer3_si7021_humidity",
-              "type": "sensor",
-              "detail": 1,
-              "name": "Dryer Humidity"
             }
           ],
           "icon": "mdi:water-percent",
@@ -2999,7 +2961,9 @@
               "entities": [
                 "sensor.chaloupkaabode_weather_soil_moisture_1",
                 "sensor.chaloupkaabode_weather_soil_moisture_2",
-                "sensor.chaloupkaabode_weather_soil_moisture_3"
+                "sensor.chaloupkaabode_weather_soil_moisture_3",
+                "sensor.moms_hoya_1_soil_moisture",
+                "sensor.apollo_plt_1b_89a12c_soil_moisture"
               ],
               "stat_types": [
                 "mean"
@@ -3079,7 +3043,9 @@
                 "sensor.cemetary_lux_illuminance",
                 "sensor.pothos_lux_illuminance",
                 "sensor.hoya_lux_illuminance",
-                "sensor.gw2000b_v2_2_4_solar_lux"
+                "sensor.gw2000b_v2_2_4_solar_lux",
+                "sensor.apollo_plt_1b_89a12c_ltr390_light",
+                "sensor.moms_hoya_1_ltr390_light"
               ],
               "stat_types": [
                 "mean"
@@ -3087,7 +3053,7 @@
               "title": "light",
               "days_to_show": 3,
               "hide_legend": true,
-              "logarithmic_scale": true,
+              "logarithmic_scale": false,
               "max_y_axis": 10000
             },
             {
@@ -3153,7 +3119,15 @@
                 },
                 {
                   "type": "plant-status",
-                  "entity": "plant.my_cemetery_plant"
+                  "entity": "plant.my_window"
+                },
+                {
+                  "type": "plant-status",
+                  "entity": "plant.my_moms_hoya"
+                },
+                {
+                  "type": "plant-status",
+                  "entity": "plant.my_peace_lily"
                 }
               ],
               "title": "Forrest Gump"
@@ -3385,30 +3359,6 @@
               "needle": true
             },
             {
-              "type": "gauge",
-              "entity": "sensor.wled_wi_fi_signal",
-              "min": 0,
-              "max": 100,
-              "needle": true,
-              "severity": {
-                "green": 70,
-                "yellow": 50,
-                "red": 30
-              }
-            },
-            {
-              "type": "gauge",
-              "entity": "sensor.christmas_tree_wi_fi_signal",
-              "severity": {
-                "green": 70,
-                "yellow": 50,
-                "red": 30
-              },
-              "min": 1,
-              "max": 100,
-              "needle": true
-            },
-            {
               "entity": "sensor.fp_rf_relay_rssi",
               "max": 100,
               "min": 0,
@@ -3604,19 +3554,6 @@
               "needle": true
             },
             {
-              "entity": "sensor.sonoff_rf_bridge_1_rssi_2",
-              "max": 100,
-              "min": 0,
-              "severity": {
-                "green": 70,
-                "yellow": 50,
-                "red": 30
-              },
-              "theme": "default",
-              "type": "gauge",
-              "needle": true
-            },
-            {
               "entity": "sensor.serverstrip_rssi",
               "max": 100,
               "min": 0,
@@ -3630,47 +3567,7 @@
               "needle": true
             },
             {
-              "entity": "sensor.bulb1_rssi",
-              "max": 100,
-              "min": 0,
-              "severity": {
-                "green": 70,
-                "red": 30,
-                "yellow": 50
-              },
-              "theme": "default",
-              "type": "gauge",
-              "name": "Jens TV Light RSSI",
-              "needle": true
-            },
-            {
-              "entity": "sensor.dryer3_rssi",
-              "max": 100,
-              "min": 0,
-              "severity": {
-                "green": 70,
-                "red": 30,
-                "yellow": 50
-              },
-              "theme": "default",
-              "type": "gauge",
-              "needle": true
-            },
-            {
               "entity": "sensor.livingroomlight_rssi",
-              "max": 100,
-              "min": 0,
-              "severity": {
-                "green": 70,
-                "red": 30,
-                "yellow": 50
-              },
-              "theme": "default",
-              "type": "gauge",
-              "needle": true
-            },
-            {
-              "entity": "sensor.mom_light_rssi",
               "max": 100,
               "min": 0,
               "severity": {
@@ -3741,13 +3638,7 @@
                   "entity": "sensor.jensneb_signal"
                 },
                 {
-                  "entity": "sensor.mom_light_signal"
-                },
-                {
                   "entity": "sensor.benchstrip_signal"
-                },
-                {
-                  "entity": "sensor.sonoff_rf_bridge_1_signal_2"
                 },
                 {
                   "entity": "sensor.growlight2_signal"
@@ -4055,16 +3946,6 @@
               "show_header_toggle": false,
               "title": "Doc Alert",
               "type": "entities"
-            },
-            {
-              "type": "entities",
-              "title": "Switch",
-              "state_color": true,
-              "show_header_toggle": false,
-              "entities": [
-                "switch.1000d4bf8f_1",
-                "switch.1000dbf4a6_1"
-              ]
             }
           ],
           "icon": "mdi:brain",

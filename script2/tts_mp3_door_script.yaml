@@ -28,8 +28,7 @@ media_player_back_doorbell_motion:
   use_blueprint:
     path: SirGoodenough/play_media_file_script.yaml
     input:
-      file_2_play: '{{ ("media-source://media_source/local/mp3/jaws_x.mp3",
-      "media-source://media_source/local/mp3/steps.mp3")|random }}'
+      file_2_play: '{{ ("media-source://media_source/local/mp3/jaws_x.mp3","media-source://media_source/local/mp3/steps.mp3")|random }}'
       speaker_target: 
         - media_player.intercom_group
         - media_player.bedroom_speaker
