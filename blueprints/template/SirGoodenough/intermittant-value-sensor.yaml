@@ -117,15 +117,16 @@ variables:
   _reference_entity: !input reference_entity
   _default: !input default
   _avail_use_re: !input avail_use_re
-  im_here: "{{ states(_reference_entity) not in ('unknown', 'unavailable') }}"
-  otf_avail_start: "{{ states_attr(_reference_entity, 'otf_avail') }}"
+  _re_state: "{{ states(_reference_entity) }}"
+  im_here: "{{ is_number(_re_state) }}"
+  otf_avail_start: "{{ state_attr(_reference_entity, 'otf_avail') }}"
+  _last: "{{ state_attr(_reference_entity, 'last') | _default }}"
   re_state: |
     {% if im_here %}
-      {% states(_reference_entity) | float(_default) %}
-    {# {% elif is_number(states(this.state)) %} #}
-      {# {{ this.state }} #}
+      {% _last == _re_state %}
+      {{ _re_state }}
     {% else %}
-      {{ _default }}
+      {{ _last }}
     {% endif %}
   avail: |
     {# If enabled OTF mimic reference entity status #}
@@ -158,3 +159,4 @@ sensor:
     friendly_name: "{{ _friendly_name }}"
     attribution: "{{ _attribution }}"
     otf_avail: "{{ _otf_avail }}"
+    last: "{{ _}}"

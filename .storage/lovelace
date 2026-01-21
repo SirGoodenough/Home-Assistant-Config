@@ -1912,29 +1912,6 @@
               "type": "entities"
             },
             {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "light.christmas_tree"
-                },
-                {
-                  "entity": "sensor.christmas_tree_wi_fi_signal"
-                },
-                {
-                  "entity": "select.christmas_tree_preset",
-                  "name": "Preset"
-                },
-                {
-                  "entity": "select.christmas_tree_color_palette"
-                },
-                {
-                  "entity": "number.christmas_tree_intensity"
-                }
-              ],
-              "title": "Christmas_Tree",
-              "theme": "uglychristmas"
-            },
-            {
               "entities": [
                 {
                   "entity": "light.plug3"
