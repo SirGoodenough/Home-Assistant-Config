@@ -4383,10 +4383,6 @@
                       "name": "Active tray"
                     },
                     {
-                      "entity": "sensor.p1s_01p00c4c2100641_active_tray_index",
-                      "name": "Active tray index"
-                    },
-                    {
                       "entity": "sensor.p1s_01p00c4c2100641_aux_fan_speed",
                       "name": "Aux fan speed"
                     },

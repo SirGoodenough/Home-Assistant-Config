@@ -1,12 +1,12 @@
-- name: Peace Lily Plant Moisture
-  unique_id: 019b9ca6-2d55-7218-8394-e436f679a605
-  use_blueprint:
-    path: SirGoodenough/intermittant-value-sensor.yaml
-    input:
-      reference_entity: sensor.apollo_plt_1b_89a12c_soil_moisture
-- name: Moms Hoya 1 Soil Moisture 
-  unique_id: 019b9ca6-2d55-7218-8394-e436f679a605
-  use_blueprint:
-    path: SirGoodenough/intermittant-value-sensor.yaml
-    input:
-      reference_entity: sensor.moms_hoya_1_soil_moisture
+# - name: Peace Lily Plant Moisture
+#   unique_id: 019b9ca6-2d55-7218-8394-e436f679a605
+#   use_blueprint:
+#     path: SirGoodenough/intermittant-value-sensor.yaml
+#     input:
+#       reference_entity: sensor.apollo_plt_1b_89a12c_soil_moisture
+# - name: Moms Hoya 1 Soil Moisture 
+#   unique_id: 019b9ca6-2d55-7218-8394-e436f679a605
+#   use_blueprint:
+#     path: SirGoodenough/intermittant-value-sensor.yaml
+#     input:
+#       reference_entity: sensor.moms_hoya_1_soil_moisture
