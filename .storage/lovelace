@@ -1465,6 +1465,15 @@
               "icon": "mdi:temperature-fahrenheit"
             },
             {
+              "hours_to_show": 24,
+              "graph": "line",
+              "entity": "sensor.furnace_return_temperature",
+              "theme": "Dark - Green",
+              "type": "sensor",
+              "detail": 2,
+              "icon": "mdi:temperature-fahrenheit"
+            },
+            {
               "entity": "sensor.bedroom_fan_si7021_temperature",
               "graph": "line",
               "type": "sensor",
@@ -1473,28 +1482,12 @@
               "name": "Bedroom"
             },
             {
-              "hours_to_show": 24,
-              "graph": "line",
-              "type": "sensor",
-              "entity": "sensor.yertle_device_temperature",
-              "detail": 1
-            },
-            {
               "graph": "line",
               "entity": "sensor.bt3_bathroom2_temperature",
               "name": "Bathroom",
               "type": "sensor",
               "detail": 2,
               "icon": "mdi:paper-roll-outline"
-            },
-            {
-              "hours_to_show": 24,
-              "graph": "line",
-              "entity": "sensor.furnace_return_temperature",
-              "theme": "Dark - Green",
-              "type": "sensor",
-              "detail": 2,
-              "icon": "mdi:temperature-fahrenheit"
             },
             {
               "graph": "line",
@@ -1512,6 +1505,13 @@
               "detail": 2,
               "icon": "mdi:stairs-down",
               "name": "Back Basement"
+            },
+            {
+              "hours_to_show": 24,
+              "graph": "line",
+              "type": "sensor",
+              "entity": "sensor.yertle_device_temperature",
+              "detail": 1
             },
             {
               "graph": "line",

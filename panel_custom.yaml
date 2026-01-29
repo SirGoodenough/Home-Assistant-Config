@@ -33,3 +33,11 @@
     config:
       ingress: ZHA
 
+  - name: config/developer-tools
+    sidebar_title: Tools
+    sidebar_icon: mdi:hammer-wrench
+    module_url: 'https://10.10.100.8:8123/developer-tools'
+    embed_iframe: true
+    require_admin: true
+    config:
+      ingress: Tools

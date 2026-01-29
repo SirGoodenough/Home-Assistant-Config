@@ -18,20 +18,20 @@
   # Pellet Stove Disable                              #
   #####################################################
   - name: "Pellet Stove Disable"
-    uniq_id: 019bf188-3083-739a-a3d6-762c44e8b7be
-    stat_t: homeassistant/binary_sensor/disable_pellet_stove
-    pl_on: '1'
-    pl_off: '0'
-    frc_upd: false
-    dev: {
-        ids: [
-        '107935_ThermoPI',
-        '107935'
-        ],
-        name: "ThermoPI Furnace",
-        sa: "Basement",
-        mf: "SirGoodenough",
-        mdl: "HomeAssistant Discovery for ThermoPI Furnace",
-        sw: "https://github.com/SirGoodenough/ThermoPI-Furnace",
-        cu: "https://github.com/SirGoodenough/ThermoPI-Furnace/blob/main/README.md"
+    unique_id: 019bf188-3083-739a-a3d6-762c44e8b7be
+    state_topic: homeassistant/binary_sensor/disable_pellet_stove/state
+    payload_on: '1'
+    payload_off: '0'
+    force_update: false
+    device: {
+      identifiers: [
+      '107935_ThermoPI',
+      '107935'
+      ],
+      name: "ThermoPI Furnace",
+      suggested_area: "Basement",
+      manufacturer: "SirGoodenough",
+      model: "HomeAssistant Discovery for ThermoPI Furnace",
+      sw_version: "https://github.com/SirGoodenough/ThermoPI-Furnace",
+      configuration_url: "https://github.com/SirGoodenough/ThermoPI-Furnace/blob/main/README.md"
     }
