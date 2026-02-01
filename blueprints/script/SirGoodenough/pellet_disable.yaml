@@ -15,7 +15,7 @@ blueprint:
 
     NOTE: Mine ie controlling a normally closed relay, so when I state below
      (shut off the pellets), it is in fact turning the relay on.
-    
+
     This is so that if the external device is powered down, the stove works as normal.
 
     You will need to know the MQTT topic that the python program generated
@@ -50,7 +50,7 @@ blueprint:
       description: >-
        These inputs set optional parameters that allow you to customize
         the intended actions.\n  Read the individual descriptions for more details
-        
+
         The Blueprint will work if no changes are made to this section.
       input:
         state_default:
