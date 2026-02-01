@@ -47,22 +47,6 @@
         target:
           entity_id: input_boolean.test_color
       action_flip_from_any_to_face_2: []
-# - id: '1733339152395'
-#   alias: test of dryer current sense
-#   description: ''
-#   triggers:
-#   - trigger: numeric_state
-#     entity_id:
-#     - sensor.dryer_power_produced_energy
-#     attribute: current
-#     below: 0.05
-#   conditions: []
-#   actions:
-#   - action: script.tts_dryer_done
-#     data:
-#       live_speaker:
-#       - media_player.kitchen_speaker
-#   mode: single
 - id: '1733964041898'
   alias: Party is over rodent
   description: Turns on the sonic screwdriver when Mom's light is off
@@ -249,4 +233,61 @@
   - action: script.tts_aurora
     metadata: {}
     data: {}
+  mode: single
+- id: '1769984565687'
+  alias: Pellet Stove Limiter
+  description: Stop feeding pellets when the stove is above 500 F
+  triggers:
+  - trigger: numeric_state
+    entity_id:
+    - sensor.furnace_pellet_firebox_temperature
+    for:
+      minutes: 5
+    above: 500
+    id: Hot
+  - trigger: numeric_state
+    entity_id:
+    - sensor.furnace_pellet_firebox_temperature
+    for:
+      minutes: 5
+    below: 490
+    id: Cold
+  - trigger: homeassistant
+    event: start
+    id: HA Start
+  - trigger: homeassistant
+    event: shutdown
+    id: HA Stop
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - Hot
+      sequence:
+      - alias: It is Hot so stop feeding fuel
+        action: script.turn_on
+        metadata: {}
+        target:
+          entity_id: script.pellet_feed_enable
+        data: true
+    - conditions:
+      - condition: trigger
+        id:
+        - Cold
+      sequence:
+      - alias: It is cold so back to normal
+        action: script.turn_on
+        metadata: {}
+        target:
+          entity_id: script.pellet_feed_enable
+        data: false
+    default:
+    - alias: Stop interfering if you do not know the state
+      action: script.turn_on
+      metadata: {}
+      target:
+        entity_id: script.pellet_feed_enable
+      data: false
   mode: single

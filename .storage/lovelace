@@ -62,6 +62,9 @@
                 },
                 {
                   "entity": "binary_sensor.kitchennabu_9907cc_kitchennabu_pir_sensor"
+                },
+                {
+                  "entity": "binary_sensor.thermopi_furnace_pellet_stove_disable_2"
                 }
               ],
               "show_header_toggle": false,

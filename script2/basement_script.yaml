@@ -1,0 +1,52 @@
+
+#####################################################
+# Pellet Feed Control                               #
+#####################################################
+
+pellet_feed_enable:
+  use_blueprint:
+    path: SirGoodenough/pellet_disable.yaml
+    input:
+      mqtt_toggle_topic: homeassistant/binary_sensor/107935_pel_stove_disable/state
+  alias: Pellet Feed Enable
+  description: 'data: true to stop pellet feed and data: false to allow normal operation'
+  icon: mdi:toggle-switch-off-outline
+
+pellet_feed_off:
+  alias: disable Pellet Feed
+  sequence:
+    - alias: Make sure fan is off
+      action: mqtt.publish
+      data:
+        topic: 'homeassistant/binary_sensor/107935_pel_stove_disable/state'
+        payload: 0
+
+pellet_feed_on:
+  alias: enable Pellet Feed
+  sequence:
+    - alias: Make sure fan is on
+      action: mqtt.publish
+      data:
+        topic: 'homeassistant/binary_sensor/107935_pel_stove_disable/state'
+        payload: 1
+
+pellet_disable_script:
+  alias: Enable or Disable the Pellet Stove pellet feed
+  trace:
+    stored_traces: 10
+  fields:
+    control:
+      name: Control State
+      description: Set to true to shut off pellets, false to restore normal operation.
+      required: false
+      example: "false"
+      default: false
+      selector:
+        boolean:
+  sequence:
+    - alias: et the state
+      action: mqtt.publish
+      data:
+        topic: 'homeassistant/binary_sensor/107935_pel_stove_disable/state'
+        payload: >
+          {{ iif(control, 1, 0, 0)}}
