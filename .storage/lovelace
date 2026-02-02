@@ -1393,6 +1393,21 @@
           "badges": [],
           "cards": [
             {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.furnace_pellet_firebox_temperature"
+                },
+                {
+                  "entity": "binary_sensor.thermopi_furnace_pellet_stove_disable_2"
+                },
+                {
+                  "entity": "script.pellet_feed_enable"
+                }
+              ],
+              "state_color": true
+            },
+            {
               "hours_to_show": 24,
               "graph": "line",
               "entity": "sensor.furnace_pellet_firebox_temperature",
@@ -1402,16 +1417,18 @@
               "icon": "mdi:fireplace"
             },
             {
-              "type": "sensor",
-              "entity": "sensor.lrthermostat",
+              "hours_to_show": 24,
               "graph": "line",
+              "entity": "sensor.furnace_oil_firebox_temperature",
+              "theme": "slate_red",
+              "type": "sensor",
               "detail": 2,
-              "name": "Living Room Thermostat"
+              "icon": "mdi:temperature-fahrenheit"
             },
             {
               "hours_to_show": 24,
               "graph": "line",
-              "entity": "sensor.furnace_oil_firebox_temperature",
+              "entity": "sensor.furnace_oil_top_temperature",
               "theme": "slate_red",
               "type": "sensor",
               "detail": 2,
@@ -1433,6 +1450,13 @@
               "detail": 2,
               "icon": "mdi:seat",
               "name": "Living Room"
+            },
+            {
+              "type": "sensor",
+              "entity": "sensor.lrthermostat",
+              "graph": "line",
+              "detail": 2,
+              "name": "Living Room Thermostat"
             },
             {
               "hours_to_show": 24,
@@ -1457,15 +1481,6 @@
               "type": "sensor",
               "detail": 2,
               "icon": "mdi:stove"
-            },
-            {
-              "hours_to_show": 24,
-              "graph": "line",
-              "entity": "sensor.furnace_oil_top_temperature",
-              "theme": "slate_red",
-              "type": "sensor",
-              "detail": 2,
-              "icon": "mdi:temperature-fahrenheit"
             },
             {
               "hours_to_show": 24,

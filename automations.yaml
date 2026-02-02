@@ -267,27 +267,21 @@
         - Hot
       sequence:
       - alias: It is Hot so stop feeding fuel
-        action: script.turn_on
-        metadata: {}
-        target:
-          entity_id: script.pellet_feed_enable
-        data: true
+        action: script.pellet_feed_enable
+        data:
+          control: true
     - conditions:
       - condition: trigger
         id:
         - Cold
       sequence:
       - alias: It is cold so back to normal
-        action: script.turn_on
-        metadata: {}
-        target:
-          entity_id: script.pellet_feed_enable
-        data: false
+        action: script.pellet_feed_enable
+        data:
+          control: false
     default:
     - alias: Stop interfering if you do not know the state
-      action: script.turn_on
-      metadata: {}
-      target:
-        entity_id: script.pellet_feed_enable
-      data: false
+      action: script.pellet_feed_enable
+      data:
+        control: false
   mode: single
