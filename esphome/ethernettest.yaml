@@ -2,6 +2,7 @@ substitutions:
   name: "ethernettest"
   friendly_name: Kitchen
   frame_type: esp-idf
+  board: esp32dev
 
 packages:
   device_base: !include /config/esphome/packages/sg_base.yaml

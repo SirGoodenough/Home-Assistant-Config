@@ -87,7 +87,7 @@
       at: "6:52:11"
       id: morning_announce_julie
     - trigger: time
-      at: "9:27:38"
+      at: "8:27:38"
       id: morning_announce_sg
   conditions:
     and:

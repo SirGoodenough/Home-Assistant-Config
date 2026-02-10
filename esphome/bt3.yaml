@@ -2,6 +2,7 @@ substitutions:
   name: "bt3"
   friendly_name: Bathroom2
   frame_type: esp-idf
+  board: esp32dev
 
 packages:
   device_base: !include /config/esphome/packages/sg_base.yaml

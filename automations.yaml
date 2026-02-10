@@ -241,8 +241,6 @@
   - trigger: numeric_state
     entity_id:
     - sensor.furnace_pellet_firebox_temperature
-    for:
-      minutes: 5
     above: 500
     id: Hot
   - trigger: numeric_state
@@ -250,7 +248,7 @@
     - sensor.furnace_pellet_firebox_temperature
     for:
       minutes: 5
-    below: 490
+    below: 480
     id: Cold
   - trigger: homeassistant
     event: start
@@ -284,4 +282,140 @@
       action: script.pellet_feed_enable
       data:
         control: false
+  mode: single
+- id: '1770050314109'
+  alias: Fire Break
+  description: Shut off the pellets if the timer is going.
+  triggers:
+  - trigger: state
+    entity_id:
+    - timer.fire05
+    from:
+    - idle
+    to:
+    - active
+    id: Stall
+  - trigger: state
+    entity_id:
+    - timer.fire15
+    from:
+    - idle
+    to:
+    - active
+    id: Stall
+  - trigger: state
+    entity_id:
+    - timer.fire30
+    from:
+    - idle
+    to:
+    - active
+    id: Stall
+  - trigger: state
+    entity_id:
+    - timer.fire45
+    from:
+    - idle
+    to:
+    - active
+    id: Stall
+  - trigger: state
+    entity_id:
+    - timer.fire60
+    from:
+    - idle
+    to:
+    - active
+    id: Stall
+  - trigger: state
+    entity_id:
+    - timer.fire05
+    from:
+    - active
+    to:
+    - idle
+    id: Run
+  - trigger: state
+    entity_id:
+    - timer.fire15
+    from:
+    - active
+    to:
+    - idle
+    id: Run
+  - trigger: state
+    entity_id:
+    - timer.fire30
+    from:
+    - active
+    to:
+    - idle
+    id: Run
+  - trigger: state
+    entity_id:
+    - timer.fire45
+    from:
+    - active
+    to:
+    - idle
+    id: Run
+  - trigger: state
+    entity_id:
+    - timer.fire60
+    from:
+    - active
+    to:
+    - idle
+    id: Run
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - Stall
+      sequence:
+      - action: script.pellet_feed_enable
+        metadata: {}
+        data:
+          control: true
+    - conditions:
+      - condition: trigger
+        id:
+        - Run
+      sequence:
+      - action: script.pellet_feed_enable
+        metadata: {}
+        data:
+          control: false
+    default:
+    - action: script.pellet_feed_enable
+      metadata: {}
+      data:
+        control: false
+  mode: single
+- id: '1770662161954'
+  alias: New automationFire Hourly Throttle
+  description: Cuts the pellet feed on a schedule to prevent pellet build-up
+  triggers:
+  - trigger: time_pattern
+    minutes: /12
+    seconds: /12
+  - trigger: time_pattern
+    minutes: '32'
+    seconds: '32'
+  conditions:
+  - condition: numeric_state
+    entity_id: sensor.furnace_pellet_firebox_temperature
+    below: 480
+    above: 255
+  - condition: time
+    after: 07:00:00
+    before: '22:00:00'
+  actions:
+  - action: timer.start
+    metadata: {}
+    target:
+      entity_id: timer.fire05
+    data: {}
   mode: single

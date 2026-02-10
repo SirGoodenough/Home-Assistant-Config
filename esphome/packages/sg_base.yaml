@@ -6,7 +6,6 @@ substitutions:
   name: chaloupkaabode-esphome
   friendly_name: Another Brick in the Wall
   frame_type: esp-idf
-  board: esp32dev
 
 esphome:
   name: ${name}
@@ -37,6 +36,9 @@ wifi:
   ap:
     ssid: "${name} Fallback Hotspot"
     password: !secret ap_password
+
+web_server:
+  port: 80
 
 time:
   # Sync time with HA

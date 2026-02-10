@@ -2,6 +2,7 @@ substitutions:
   name: "kitchennabu"
   friendly_name: KitchenNabu
   frame_type: esp-idf
+  board: esp32dev
 
 packages:
   device_base: !include /config/esphome/packages/sg_base.yaml

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "minor_version": 1,
-  "key": "lovelace",
+  "key": "lovelace.lovelace",
   "data": {
     "config": {
       "title": "Control-Central",
@@ -1396,16 +1396,32 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "sensor.furnace_pellet_firebox_temperature"
+                  "entity": "sensor.lrthermostat_heat_state"
                 },
                 {
                   "entity": "binary_sensor.thermopi_furnace_pellet_stove_disable_2"
                 },
                 {
+                  "entity": "timer.fire05"
+                },
+                {
+                  "entity": "timer.fire15"
+                },
+                {
+                  "entity": "timer.fire30"
+                },
+                {
+                  "entity": "timer.fire45"
+                },
+                {
+                  "entity": "timer.fire60"
+                },
+                {
                   "entity": "script.pellet_feed_enable"
                 }
               ],
-              "state_color": true
+              "state_color": true,
+              "title": "Pellet Fire Control"
             },
             {
               "hours_to_show": 24,
@@ -1415,6 +1431,15 @@
               "type": "sensor",
               "detail": 2,
               "icon": "mdi:fireplace"
+            },
+            {
+              "hours_to_show": 24,
+              "graph": "line",
+              "entity": "sensor.furnace_pellet_top_temperature",
+              "theme": "Dark - Red",
+              "type": "sensor",
+              "detail": 2,
+              "icon": "mdi:fire"
             },
             {
               "hours_to_show": 24,
@@ -1435,15 +1460,6 @@
               "icon": "mdi:temperature-fahrenheit"
             },
             {
-              "hours_to_show": 24,
-              "graph": "line",
-              "entity": "sensor.furnace_pellet_top_temperature",
-              "theme": "Dark - Red",
-              "type": "sensor",
-              "detail": 2,
-              "icon": "mdi:fire"
-            },
-            {
               "entity": "sensor.sonoff_rf_bridge_2_si7021_temperature",
               "graph": "line",
               "type": "sensor",
@@ -1452,19 +1468,19 @@
               "name": "Living Room"
             },
             {
+              "graph": "line",
               "type": "sensor",
               "entity": "sensor.lrthermostat",
-              "graph": "line",
-              "detail": 2,
+              "detail": 1,
               "name": "Living Room Thermostat"
             },
             {
-              "hours_to_show": 24,
               "graph": "line",
+              "hours_to_show": 24,
               "entity": "sensor.furnace_register_temperature",
               "theme": "Dark - Green",
               "type": "sensor",
-              "detail": 2,
+              "detail": 1,
               "icon": "mdi:temperature-fahrenheit"
             },
             {
