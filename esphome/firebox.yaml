@@ -14,7 +14,7 @@ wifi:
   manual_ip:
     gateway: !secret chaloupkaabode_gateway
     subnet: !secret chaloupkaabode_subnet
-    static_ip: 192.168.111.29
+    static_ip: !secret firebox
 
 esphome:
   name_add_mac_suffix: false
