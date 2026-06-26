@@ -256,7 +256,8 @@
                   "entity_id": "button.moms_button1"
                 },
                 "data": {}
-              }
+              },
+              "icon_height": "80px"
             },
             {
               "square": false,
