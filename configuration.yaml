@@ -27,7 +27,7 @@ input_datetime:
 input_number:
 input_select:
 input_text:
-http: !include http.yaml
+# http: !include http.yaml
 # introduction:
 light: !include_dir_merge_list ./light/
 logger: !include logger.yaml

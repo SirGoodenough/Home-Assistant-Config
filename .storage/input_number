@@ -5,11 +5,11 @@
   "data": {
     "items": [
       {
-        "icon": "mdi:fan",
         "id": "bedroom_auto_temp",
-        "max": 80.0,
+        "icon": "mdi:fan",
+        "max": 121.0,
         "min": 70.0,
-        "mode": "slider",
+        "mode": "box",
         "name": "Bedroom Auto Temp",
         "step": 1.0,
         "unit_of_measurement": "F"
