@@ -27,8 +27,8 @@ blueprint:
           - domain:
             - binary_sensor
             integration: bambu_lab
-          multiple: false
           reorder: false
+          multiple: false
     print_weight:
       name: Print weight
       selector:
@@ -37,8 +37,8 @@ blueprint:
           - domain:
             - sensor
             integration: bambu_lab
-          multiple: false
           reorder: false
+          multiple: false
     filament_remaining:
       name: Input number for saving remaining filament
       selector:
@@ -46,8 +46,8 @@ blueprint:
           filter:
           - domain:
             - input_number
-          multiple: false
           reorder: false
+          multiple: false
     notify_devices:
       name: Devices for notifications
       selector:

@@ -11,7 +11,9 @@ blueprint:
       name: Home Assistant URL
       description: Base URL of your Home Assistant instance (without trailing slash)
       selector:
-        text: {}
+        text:
+          multiline: false
+          multiple: false
       default: http://homeassistant.local:8123
     printer_status_sensor:
       name: Printer Status Sensor
@@ -159,11 +161,15 @@ blueprint:
           mode: slider
       default: 6000
     telegram_chat_ids:
-      name: Telegram Chat ID(s)
-      description: The notify service name for Telegram (e.g., notify.my_telegram_bot).
+      name: Telegram Notify Target(s)
+      description: The notify service name for Telegram (e.g., notify.telegram_bot_botid_yourid).
       selector:
-        text: {}
-      default:
+        entity:
+          multiple: true
+          filter:
+          - domain:
+            - notify
+          reorder: false
     sleep_mode_boolean:
       name: Sleeping Mode Toggle (optional)
       description: An input_boolean that indicates 'do not disturb' mode (to suppress
@@ -240,7 +246,9 @@ blueprint:
       name: Currency Symbol
       description: Symbol used for cost lines (e.g. $, €, £).
       selector:
-        text: {}
+        text:
+          multiline: false
+          multiple: false
       default: $
   source_url: https://raw.githubusercontent.com/soflane/Home-assistant-config/refs/heads/main/Blueprints/Bambu-Lab-3D-Printer-Cost-Notification/BBL-Printer-Cost-notification-blueprint.yaml
 variables:
@@ -422,16 +430,13 @@ action:
       cover_image_url: "{% if _printer_cover_image is not none %}\n  {{ state_attr(_printer_cover_image,
         'cover_image')\n     or state_attr(_printer_cover_image, 'entity_picture')
         }}\n{% else %}\n  {{ None }}\n{% endif %}"
-      chat_ids: "{% if _telegram_chat_ids is not none %}\n  {{ _telegram_chat_ids.split(',')
-        | map('trim') | list }}\n{% else %}\n  []\n{% endif %}"
   - repeat:
-      for_each: '{{ chat_ids | select(''string'') | map(''trim'') | reject(''equalto'','''')
+      for_each: '{{ _telegram_chat_ids | select(''string'') | map(''trim'') | reject(''equalto'','''')
         | list }}
 
         '
       sequence:
       - variables:
-          _chat_id: '{{ repeat.item }}'
           _image_disabled: '{{ _disable_image_boolean | default(false) }}'
           _has_image: '{{ (cover_image_url is defined and cover_image_url is not none
             and (cover_image_url|string)|length > 10 and not (cover_image_url|string)|lower
@@ -442,20 +447,20 @@ action:
           sequence:
           - service: telegram_bot.send_photo
             data:
-              target: '{{ _chat_id }}'
-              url: '{{ _ha_url }}/{{ cover_image_url }}'
+              entity_id: '{{ repeat.item | string }}'
+              url: '{{ _ha_url }}{{ cover_image_url }}'
               caption: '{{ msg_body }}'
               parse_mode: markdownv2
         default:
         - service: telegram_bot.send_message
           data:
-            target: '{{ _chat_id }}'
+            entity_id: '{{ repeat.item | string }}'
             message: '{{ msg_body }}'
             parse_mode: markdownv2
       - service: system_log.write
         data:
           level: info
-          message: '[Bambu Print Notify] Sent to chat {{ _chat_id }} has_image={{
+          message: '[Bambu Print Notify] Sent to chat {{ repeat.item }} has_image={{
             _has_image }} image_disabled={{ _image_disabled }} cover_image_url="{{
             cover_image_url }}"
 
@@ -473,13 +478,11 @@ action:
       value_template: '{{ _sleep_mode_boolean is not none and (states(_sleep_mode_boolean)
         == ''off'') }}'
   then:
-  - variables:
-      chat_ids: '{{ ( _telegram_chat_ids ).split('','') | map(''trim'') | list }}'
   - repeat:
-      for_each: '{{ chat_ids }}'
+      for_each: '{{ _telegram_chat_ids }}'
       sequence:
       - service: telegram_bot.send_message
         data:
-          target: '{{ repeat.item }}'
-          message: ⏸️ 3D Printer has paused the print job.
+          entity_id: '{{ repeat.item | string }}'
+          message: ⏸ 3D Printer has paused the print job.
           parse_mode: markdownv2

@@ -79,7 +79,8 @@ blueprint:
             minutes: 0
             seconds: 0
           selector:
-            duration: {}
+            duration:
+              enable_second: true
         alt_notify:
           name: Manual Notifications Level 1
           description: "Enter the action yaml for any specific notification or action
@@ -92,7 +93,6 @@ blueprint:
           default: []
           selector:
             action: {}
-
     level_2:
       name: Second action to take
       icon: mdi:clock-time-two
@@ -116,7 +116,8 @@ blueprint:
             minutes: 0
             seconds: 0
           selector:
-            duration: {}
+            duration:
+              enable_second: true
         alt_notify_2:
           name: Manual Notifications Level 2
           description: 'Enter the action yaml for any specific notification or action  you
@@ -129,7 +130,6 @@ blueprint:
           default: []
           selector:
             action: {}
-
     level_3:
       name: Third action to take
       icon: mdi:clock-time-three
@@ -153,7 +153,8 @@ blueprint:
             minutes: 0
             seconds: 0
           selector:
-            duration: {}
+            duration:
+              enable_second: true
         alt_notify_3:
           name: Manual Notifications Level 3
           description: 'Enter the action yaml for any specific notification or action  you
@@ -189,7 +190,8 @@ blueprint:
             minutes: 0
             seconds: 0
           selector:
-            duration: {}
+            duration:
+              enable_second: true
         alt_notify_4:
           name: Manual Notifications Level 4
           description: 'Enter the action yaml for any specific notification or action  you
@@ -235,8 +237,8 @@ blueprint:
           default: []
           selector:
             text:
-              multiple: false
               multiline: false
+              multiple: false
         notify_enable_time:
           name: Time of day to begin notifications
           description: 'Set this for the time of day you want to allow notifications
@@ -327,13 +329,13 @@ variables:
   attr_raw: '{{ states[trigger.to_state.entity_id] }}'
   attr: '{{ attr_raw.split(''; '')[1].split(''>'')[0] }}'
 conditions:
-  - alias: Only allow execution within selected Hours / Weekdays
-    condition: time
-    after: !input notify_enable_time
-    before: !input notify_disable_time
-    weekday: !input weekday
-  - alias: User pick
-    condition: !input additional_conditions
+- alias: Only allow execution within selected Hours / Weekdays
+  condition: time
+  after: !input notify_enable_time
+  before: !input notify_disable_time
+  weekday: !input weekday
+- alias: User pick
+  condition: !input additional_conditions
 actions:
 - alias: Persistent Notifications. Options are skip it, use a notification_id, or
     default to no id

@@ -19,8 +19,8 @@ blueprint:
       default: notify.notify
       selector:
         text:
-          multiple: false
           multiline: false
+          multiple: false
     enable_mobile:
       name: Enable mobile push notifications
       description: Send push notifications via the selected notify service.
@@ -38,8 +38,8 @@ blueprint:
       default: "\U0001F6A8 Water leak detected"
       selector:
         text:
-          multiple: false
           multiline: false
+          multiple: false
     wet_message:
       name: Leak detected – message
       default: 'Leak detected by {{ state_attr(leak_entity, ''friendly_name'') or
@@ -55,8 +55,8 @@ blueprint:
       default: ✅ Water leak cleared
       selector:
         text:
-          multiple: false
           multiline: false
+          multiple: false
     clear_message:
       name: Leak cleared – message
       default: 'Leak cleared for {{ state_attr(leak_entity, ''friendly_name'') or

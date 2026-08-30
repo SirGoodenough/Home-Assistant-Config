@@ -5,72 +5,37 @@ blueprint:
   homeassistant:
     min_version: 2023.8.0
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/volume_control_4_magic_cube.yaml
-  description: >
-    This script was invented to be used with my Magic Cube Blueprints. I released
-    it as a standalone Script Blueprint because because of requests to extend the
-    function of my BP's with how to convert cube rotation to volume in other places.
-    Research found me this [Post from Petro](https://community.home-assistant.io/t/cant-seem-to-set-volume-level-based-on-itself-from-data-template/237089/11?u=sir_goodenough)
-    which had a very elegant solution to the problem, It was very easy decision
-    to adopt it here.
-
-
-    To use this blueprint, install it from the source in the normal way.
-    After that add your unique name for the Script, and add an icon and change
-    the entity_id if desired.
-    You should only need to run the blueprint once, as you will be calling the
-    unique name/entity you added above to use the code and provide action data.
-    This script has one !input in the Blueprint screen to set the sensitivity
-    of the rotation to volume changes. 30 seemed about right, but adjust as
-    needed.
-
-
-    Because all the data is added to control the action live at each use this
-    is the only !input.
-    This requires you call this generated script wth 2 data values when you want
-    it to run. One is a positive or negative number between 360 and -360 that in
-    the original, represents the input angle from the cube movement.
-    The other data point is the entity of the media_player that you are
-    trying to control.
-
-
-    ***NOTE:*** the trigger variable below will be different for Z2M and ZHA
-    and others. Look at my documentation for that cube integration help if
-    you need it.
-
-      Sample call / use of this script for ZHA:
-        ```yaml
-        - service: script.cube_dimmer_control_bp
-          data:
-            angle: '{{ trigger.event.data.args.relative_degrees | default(0.1) | float(0.2) }}'
-            mp: media_player.farg
-        ```
-
-      Sample call / use of this script for Z2M:
-        ```yaml
-        - service: script.cube_dimmer_control_bp
-          data:
-            angle: '{{ trigger.payload_json.action_angle | default(0.1) | float(0.2) }}'
-            mp: media_player.farg
-        ```
-
-
-    ## 🗿Notice👮🏿‍♂️:
-
-    * Copies of the original Blueprint that were converted via the 'Take Control'
-    feature or other means are officially not supported by me.
-
-
-    * I may or may not be able to support you when you have a problem after you make changes
-    to my code, as some of the code is no longer mine.
-
-
-    * I & my license also require attribution as a link back to the original
-    should you use this code in your own creation.
-
-
-    * [Here is a link to my license & the original github post](https://github.com/SirGoodenough/HA_Blueprints?tab=License-1-ov-file)
-    expected to be followed & referenced as attribution should you use this code elsewhere.
-
+  description: "This script was invented to be used with my Magic Cube Blueprints.
+    I released it as a standalone Script Blueprint because because of requests to
+    extend the function of my BP's with how to convert cube rotation to volume in
+    other places. Research found me this [Post from Petro](https://community.home-assistant.io/t/cant-seem-to-set-volume-level-based-on-itself-from-data-template/237089/11?u=sir_goodenough)
+    which had a very elegant solution to the problem, It was very easy decision to
+    adopt it here.\n\nTo use this blueprint, install it from the source in the normal
+    way. After that add your unique name for the Script, and add an icon and change
+    the entity_id if desired. You should only need to run the blueprint once, as you
+    will be calling the unique name/entity you added above to use the code and provide
+    action data. This script has one !input in the Blueprint screen to set the sensitivity
+    of the rotation to volume changes. 30 seemed about right, but adjust as needed.\n\nBecause
+    all the data is added to control the action live at each use this is the only
+    !input. This requires you call this generated script wth 2 data values when you
+    want it to run. One is a positive or negative number between 360 and -360 that
+    in the original, represents the input angle from the cube movement. The other
+    data point is the entity of the media_player that you are trying to control.\n\n***NOTE:***
+    the trigger variable below will be different for Z2M and ZHA and others. Look
+    at my documentation for that cube integration help if you need it.\n\n  Sample
+    call / use of this script for ZHA:\n    ```yaml\n    - action: script.cube_dimmer_control_bp\n
+    \     data:\n        angle: '{{ trigger.event.data.args.relative_degrees | default(0.1)
+    | float(0.2) }}'\n        mp: media_player.farg\n    ```\n\n  Sample call / use
+    of this script for Z2M:\n    ```yaml\n    - action: script.cube_dimmer_control_bp\n
+    \     data:\n        angle: '{{ trigger.payload_json.action_angle | default(0.1)
+    | float(0.2) }}'\n        mp: media_player.farg\n    ```\n\n\n## \U0001F5FFNotice\U0001F46E\U0001F3FF‍♂️:\n*
+    Copies of the original Blueprint that were converted via the 'Take Control' feature
+    or other means are officially not supported by me.\n\n* I may or may not be able
+    to support you when you have a problem after you make changes to my code, as some
+    of the code is no longer mine.\n\n* I & my license also require attribution as
+    a link back to the original should you use this code in your own creation.\n\n*
+    [Here is a link to my license & the original github post](https://github.com/SirGoodenough/HA_Blueprints?tab=License-1-ov-file)
+    expected to be followed & referenced as attribution should you use this code elsewhere.\n"
   input:
     scalar:
       name: Sensitivity of the cube rotational motion.

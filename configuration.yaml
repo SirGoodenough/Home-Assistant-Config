@@ -27,7 +27,6 @@ input_datetime:
 input_number:
 input_select:
 input_text:
-# http: !include http.yaml
 # introduction:
 light: !include_dir_merge_list ./light/
 logger: !include logger.yaml
@@ -47,10 +46,8 @@ person: !include person.yaml
 plant: !include plant_status.yaml
 python_script:
 recorder: !include recorder.yaml
-# remote_command_line: !include remote_cmd.yaml
 rest: !include_dir_merge_list ./rest/
 rest_command: !include rest_command.yaml
-# ring: !include ring.yaml
 scene: !include scene.yaml
 schedule:
 script: !include_dir_merge_named ./script2/
