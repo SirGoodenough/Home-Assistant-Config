@@ -5,7 +5,7 @@ tts_mister_message:
     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
       GTS_language: en
-      TTS: tts.cloud_say
+      TTS: tts.piper
       nabu_azure_language: en-AU
       speaker_target: media_player.intercom_group
       announcement_message: No juice in the Bucket, mate.  Time to add the Vegemite.

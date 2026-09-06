@@ -9,10 +9,10 @@
         - PUT
       local_only: false
   actions:
-    - alias: "Notify phone(s)"
-      action: notify.message_dad
-      data:
-        message: "{{ trigger.json.message }}"
+    # - alias: "Notify phone(s)"
+    #   action: notify.message_dad
+    #   data:
+    #     message: "{{ trigger.json.message }}"
     - action: script.tts_say_person_cottage
       data:
         live_message: " {{ trigger.json.message }}, with my little eye, at the cottage"

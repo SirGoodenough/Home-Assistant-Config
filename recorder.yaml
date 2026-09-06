@@ -47,7 +47,6 @@
       - weather
     entities:
       - automation.rfbridge_1_demultiplexer # Very noisy if automations are on
-      - group.weather # Don't save weather
       - sensor.date # Don't record date and time
       - sensor.time # Don't care time
       - sensor.date_time_iso # Noisy

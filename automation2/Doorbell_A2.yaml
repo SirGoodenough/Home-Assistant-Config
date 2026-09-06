@@ -13,12 +13,13 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: event.front_door_ding
+      entity_id: binary_sensor.front_door_visitor
+      to: 'on'
       not_from:
         - unknown
         - unavailable
   actions:
-    - delay: 00:00:22
+    # - delay: 00:00:22
     - action: script.media_player_front_doorbell_ding
     - delay: 00:00:05
     - action: script.tts_front_doorbell
@@ -28,7 +29,8 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: event.front_door_motion
+      entity_id: binary_sensor.front_door_person
+      to: 'on'
       not_from:
         - unknown
         - unavailable
@@ -42,12 +44,13 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: event.back_door_ding
+      entity_id: binary_sensor.back_door_visitor
+      to: 'on'
       not_from:
         - unknown
         - unavailable
   actions:
-    - delay: 00:00:15
+    # - delay: 00:00:15
     - action: script.media_player_back_doorbell_ding
     - delay: 00:00:05
     - action: script.tts_back_doorbell
@@ -57,7 +60,8 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: event.back_door_motion
+      entity_id: binary_sensor.back_door_person
+      to: 'on'
       not_from:
         - unknown
         - unavailable

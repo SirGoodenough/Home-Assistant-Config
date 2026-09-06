@@ -3,9 +3,9 @@ tts_its_raining:
   use_blueprint:
     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
-      TTS: tts.cloud_say
+      TTS: tts.piper
       announcement_message: Rain has started
-      speaker_target: media_player.home_group
+      speaker_target: media_player.intercom_group
       nabu_azure_language: en-IE
   icon: mdi:weather-rainy
 
@@ -14,7 +14,7 @@ tts_say_lightning:
   use_blueprint:
     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
-      TTS: tts.cloud_say
+      TTS: tts.piper
       cloud_language: en-IE
       speaker_target: media_player.intercom_group
       announcement_message: Lightning detected within 5 miles.

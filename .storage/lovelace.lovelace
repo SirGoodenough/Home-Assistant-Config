@@ -1129,6 +1129,158 @@
         },
         {
           "type": "sections",
+          "theme": "Fluent Purple",
+          "max_columns": 2,
+          "title": "Camera",
+          "path": "camera",
+          "icon": "mdi:cctv",
+          "sections": [
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "Front Door",
+                  "heading_style": "title"
+                },
+                {
+                  "type": "picture-entity",
+                  "entity": "camera.front_door_fluent",
+                  "camera_image": "camera.front_door_fluent"
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "Back Door",
+                  "heading_style": "title"
+                },
+                {
+                  "type": "picture-entity",
+                  "entity": "camera.back_door_fluent",
+                  "camera_image": "camera.back_door_fluent"
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading_style": "title"
+                },
+                {
+                  "type": "tile",
+                  "entity": "camera.front_door_fluent",
+                  "show_entity_picture": true
+                },
+                {
+                  "type": "tile",
+                  "entity": "binary_sensor.front_door_motion_2"
+                },
+                {
+                  "type": "tile",
+                  "entity": "binary_sensor.front_door_person"
+                },
+                {
+                  "type": "tile",
+                  "entity": "binary_sensor.outside_front_door_pet"
+                },
+                {
+                  "type": "tile",
+                  "entity": "binary_sensor.outside_front_door_vehicle"
+                },
+                {
+                  "type": "tile",
+                  "entity": "binary_sensor.front_door_visitor"
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading_style": "title"
+                },
+                {
+                  "type": "tile",
+                  "entity": "camera.back_door_fluent",
+                  "show_entity_picture": true
+                },
+                {
+                  "type": "tile",
+                  "entity": "binary_sensor.back_door_motion_2"
+                },
+                {
+                  "type": "tile",
+                  "entity": "binary_sensor.back_door_person"
+                },
+                {
+                  "type": "tile",
+                  "entity": "binary_sensor.back_door_pet"
+                },
+                {
+                  "type": "tile",
+                  "entity": "binary_sensor.back_door_vehicle"
+                },
+                {
+                  "type": "tile",
+                  "entity": "binary_sensor.back_door_visitor"
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "response",
+                  "heading_style": "subtitle"
+                },
+                {
+                  "type": "tile",
+                  "entity": "select.front_door_play_quick_reply_message"
+                },
+                {
+                  "type": "tile",
+                  "entity": "siren.front_door_siren"
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "response",
+                  "heading_style": "subtitle"
+                },
+                {
+                  "type": "tile",
+                  "entity": "select.back_door_play_quick_reply_message"
+                },
+                {
+                  "type": "tile",
+                  "entity": "siren.back_door_siren"
+                }
+              ]
+            }
+          ],
+          "cards": [],
+          "header": {
+            "card": {
+              "type": "markdown",
+              "text_only": true,
+              "content": "Camera Panel"
+            }
+          }
+        },
+        {
+          "type": "sections",
           "max_columns": 4,
           "title": "HVAC",
           "path": "hvac",

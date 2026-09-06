@@ -4,7 +4,7 @@ tts_wash_machine_done:
     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
       GTS_language: en
-      TTS: tts.cloud_say
+      TTS: tts.piper
       nabu_azure_language: en-US
       speaker_target: media_player.intercom_group
       announcement_message: Washing Cycle Has Completed
@@ -29,7 +29,7 @@ tts_dryer_done:
     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
       GTS_language: en
-      TTS: tts.cloud_say
+      TTS: tts.piper
       nabu_azure_language: en-US
       speaker_target: media_player.intercom_group
       announcement_message: The clothes are dry

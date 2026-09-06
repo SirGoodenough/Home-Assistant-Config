@@ -5,5 +5,4 @@
       - weblink
       - updater
     entities:
-      - sensor.last_boot
       - sensor.date

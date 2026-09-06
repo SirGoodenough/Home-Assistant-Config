@@ -1,43 +1,44 @@
 ---
-  # - platform: google_translate
-  #   service_name: google_translate_say
-  #   language: 'en'
-  #   cache_dir: /tmp/tts
-  #   time_memory: 300
+  - platform: google_translate
+    service_name: google_translate_say
+    language: 'en'
+    cache_dir: /tmp/tts
+    time_memory: 300
 
-#   - platform: microsoft
-#     api_key: !secret Azure
-#     region: centralus
-#     # language: en-us
-#     # gender: Male
-#     # type: RyanNeural
+  - platform: microsoft
+    api_key: !secret Azure
+    region: centralus
+    # language: en-us
+    # gender: Male
+    # type: RyanNeural
 
-#   - platform: voicerss
-#     api_key: !secret Voice_RSS_key
-# # language string (Optional, default: en-us)
-# #   The language to use.
-# # codec string (Optional, default: mp3)
-# #   The audio codec.
-# # format string (Optional, default: 8khz_8bit_mono)
-# #   The audio sample format.
+  - platform: voicerss
+    api_key: !secret Voice_RSS_key
+# language string (Optional, default: en-us)
+#   The language to use.
+# codec string (Optional, default: mp3)
+#   The audio codec.
+# format string (Optional, default: 8khz_8bit_mono)
+#   The audio sample format.
 
-#   - platform: picotts
-# # language string (Optional, default: en-US)
-# #   The language to use. Supported languages are en-US, en-GB, de-DE, es-ES, fr-FR and it-IT.
+#  - platform: picotts
+# language string (Optional, default: en-US)
+#   The language to use. Supported languages are en-US, en-GB, de-DE, es-ES, fr-FR and it-IT.
 
-#   - platform: marytts
-# # codec string (Optional, default: WAVE_FILE)
-# #   The audio codec. Supported codecs are AIFF_FILE, AU_FILE and WAVE_FILE.
-# # voice string (Optional)
-# #   The speaker voice. Default: cmu-slt-hsmm
-# # language string (Optional, default: en_US)
-# #   The language to use. Supported languages are de, en_GB, en_US, fr, it, lb, ru, sv, te and tr.
-# # effect map (Optional)
-# #   A dictionary of effects which should be applied to the speech output.
+  - platform: marytts
+# codec string (Optional, default: WAVE_FILE)
+#   The audio codec. Supported codecs are AIFF_FILE, AU_FILE and WAVE_FILE.
+# voice string (Optional)
+#   The speaker voice. Default: cmu-slt-hsmm
+# language string (Optional, default: en_US)
+#   The language to use. Supported languages are de, en_GB, en_US, fr, it, lb, ru, sv, te and tr.
+# effect map (Optional)
+#   A dictionary of effects which should be applied to the speech output.
 
-  # - platform: amazon_polly
-  #   aws_access_key_id: AWS_ACCESS_KEY_ID
-  #   aws_secret_access_key: AWS_SECRET_ACCESS_KEY
+  - platform: amazon_polly
+    service_name: amazon_polly_say
+    aws_access_key_id: AWS_ACCESS_KEY_ID
+    aws_secret_access_key: AWS_SECRET_ACCESS_KEY
 # - service: tts.amazon_polly_say
 #   target:
 #     entity_id: media_player.living_room
@@ -56,8 +57,9 @@
 # engine string (Optional, default: standard)
 #   Override the default engine. Can be either of standard or neural. See Amazon documentation for compatible regions and voices.
 
-  # - platform: watson_tts
-  #   watson_apikey: YOUR_GENERATED_APIKEY
+  - platform: watson_tts
+    service_name: watson_tts_say
+    watson_apikey: YOUR_GENERATED_APIKEY
 # - service: tts.watson_tts_say
 #   target:
 #     entity_id: media_player.living_room
@@ -73,8 +75,8 @@
 # output_format string (Optional, default: audio/mp3)
 # Override the default output format. Supported formats: audio/flac, audio/mp3, audio/mpeg, audio/ogg, audio/ogg;codecs=opus, audio/ogg;codecs=vorbis, audio/wav
 
-  # - platform: yandextts
-  #   api_key: THE_API_KEY
+  - platform: yandextts
+    api_key: THE_API_KEY
 # language string (Optional, default: en-US)
 #   The language to use. Supported languages are en-US, ru-RU, uk-UK and tr-TR.
 # codec string (Optional, default: mp3)
@@ -86,10 +88,10 @@
 # speed float (Optional, default: 1)
 #   The speech speed. Highest speed is 3 and lowest 0,1
 
-  # - platform: baidu
-  #   app_id: YOUR_APPID
-  #   api_key: YOUR_APIKEY
-  #   secret_key: YOUR_SECRETKEY
+  - platform: baidu
+    app_id: YOUR_APPID
+    api_key: YOUR_APIKEY
+    secret_key: YOUR_SECRETKEY
 # pitch integer (Optional, default: 5)
 #   Audio pitch from 0 to 9.
 # volume integer (Optional, default: 5)
@@ -97,8 +99,9 @@
 # person integer (Optional, default: 0)
 #   The voice type. You choose one from 0, 1, 3, 4, 5, 103, 106, 110 or 111.
 
-  # - platform: google_cloud
-  #   key_file: googlecloud.json
+  - platform: google_cloud
+    service_name: google_cloud_say
+    key_file: googlecloud.json
 # language string (Optional, default: en-US)
 #   Default language of the voice, e.g., en-US. Supported languages, genders and voices listed here. Also there are extra not documented but supported languages (see dropdown here).
 # gender string (Optional, default: neutral)

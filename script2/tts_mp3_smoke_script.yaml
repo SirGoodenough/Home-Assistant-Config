@@ -4,7 +4,7 @@ tts_smoke_detected_in_the_basement:
     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
       GTS_language: en
-      TTS: tts.cloud_say
+      TTS: tts.piper
       nabu_azure_language: en-US
       speaker_target: media_player.intercom_group, media_player.bedroom_speaker
       announcement_message: 'Smoke Detected in the Basement! Smoke Detected in the
@@ -16,7 +16,7 @@ tts_smoke_detected_upstairs:
     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
       GTS_language: en
-      TTS: tts.cloud_say
+      TTS: tts.piper
       nabu_azure_language: en-US
       speaker_target: media_player.intercom_group, media_player.bedroom_speaker
       announcement_message: 'Smoke Detected upstairs! Smoke Detected upstairs! 

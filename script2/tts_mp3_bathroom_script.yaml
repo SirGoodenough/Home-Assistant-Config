@@ -20,7 +20,7 @@ tts_for_bathroom_overheat:
     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
       GTS_language: en
-      TTS: tts.cloud_say
+      TTS: tts.piper
       nabu_azure_language: en-AU
       announcement_message: The Upstairs Bathroom is over heated.  I'm turning the
         Bathroom Heater off.
@@ -32,7 +32,7 @@ tts_bathroom_door_is_open:
     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
       GTS_language: en
-      TTS: tts.cloud_say
+      TTS: tts.piper
       nabu_azure_language: en-AU
       announcement_message: The Bathroom door is open
       speaker_target: media_player.bathroom_speaker
@@ -43,7 +43,7 @@ tts_bathroom_heat_on:
     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
       GTS_language: en
-      TTS: tts.cloud_say
+      TTS: tts.piper
       nabu_azure_language: en-GB
       speaker_target: 
         - media_player.jennys_room_display
@@ -57,7 +57,7 @@ tts_bath_heater_on:
     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
       GTS_language: en
-      TTS: tts.cloud_say
+      TTS: tts.piper
       nabu_azure_language: en-GB
       speaker_target: 
         - media_player.jennys_room_display

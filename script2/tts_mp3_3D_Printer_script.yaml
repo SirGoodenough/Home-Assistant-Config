@@ -4,7 +4,7 @@ tts_tarantula_off:
     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
       GTS_language: en
-      TTS: tts.cloud_say
+      TTS: tts.piper
       nabu_azure_language: en-AU
       speaker_target: media_player.jennys_room_display
       announcement_message: The Forge has been disabled
@@ -15,7 +15,7 @@ tts_tarantula_print_complete:
     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
       GTS_language: en
-      TTS: tts.cloud_say
+      TTS: tts.piper
       nabu_azure_language: en-CA
       speaker_target: media_player.jennys_room_display
       announcement_message: The Forge is ready for more work

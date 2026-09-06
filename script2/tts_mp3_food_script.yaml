@@ -5,7 +5,7 @@ sg_food_say:
     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
       GTS_language: en
-      TTS: tts.cloud_say
+      TTS: tts.piper
       nabu_azure_language: en-AU
       speaker_target: media_player.intercom_group
       announcement_message: Dad's food day. Lets get Jimmy John's!
@@ -17,7 +17,7 @@ julie_food_say:
     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
       GTS_language: en
-      TTS: tts.cloud_say
+      TTS: tts.piper
       nabu_azure_language: en-US
       speaker_target: media_player.intercom_group
       announcement_message: Julie's food day. Cheese Curds over easy, please.
@@ -29,7 +29,7 @@ sg_food_say2:
     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
       GTS_language: en
-      TTS: tts.cloud_say
+      TTS: tts.piper
       nabu_azure_language: en-AU
       speaker_target: media_player.intercom_group
       announcement_message: Dad's food day. It's Happy Family for a Happy Family!
@@ -41,7 +41,7 @@ julie_food_say2:
     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
       GTS_language: en
-      TTS: tts.cloud_say
+      TTS: tts.piper
       nabu_azure_language: en-US
       speaker_target: media_player.intercom_group
       announcement_message: Julie's food day. If it ain't Wendy's, I ain't eatin'

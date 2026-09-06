@@ -1,10 +1,10 @@
 ---
-  people_stack:
-    name: People
-    entities:
-      - device_tracker.life360_sirius_goodenough
-      - device_tracker.life360_supreme_leader_chaloupka
-      - device_tracker.life360_jen_chaloupka
+  # people_stack:
+  #   name: People
+  #   entities:
+  #     - device_tracker.life360_sirius_goodenough
+  #     - device_tracker.life360_supreme_leader_chaloupka
+  #     - device_tracker.life360_jen_chaloupka
 
   Christmas Enable:
     name: Xmas
