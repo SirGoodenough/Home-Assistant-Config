@@ -12,6 +12,7 @@ wifi:
     gateway: !secret chaloupkaabode_gateway
     subnet: !secret chaloupkaabode_subnet
     static_ip: !secret bt2_IP
+    dns1: !secret chaloupkaabode_gateway
 
 esphome:
   name_add_mac_suffix: false
