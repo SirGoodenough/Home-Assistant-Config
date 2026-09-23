@@ -48,7 +48,7 @@ output:
 
 light:
   - platform: binary
-    name: "My Light"
+    name: Socket K
     id: light_1
     output: relay_1
 
