@@ -73,6 +73,7 @@
               "state_color": true
             },
             {
+              "color": "state",
               "type": "entities",
               "entities": [
                 {
@@ -82,7 +83,7 @@
                   "entity": "light.jims_computer_light"
                 },
                 {
-                  "entity": "light.cabinetlight"
+                  "entity": "light.kitchen_cabnetio_counter_light"
                 },
                 {
                   "entity": "light.kitchen_down_lights"
@@ -115,8 +116,7 @@
                   "entity": "fan.jens_mist"
                 }
               ],
-              "title": "Kitchen Lights",
-              "state_color": true
+              "title": "Kitchen Lights"
             },
             {
               "type": "conditional",
@@ -1130,7 +1130,7 @@
         {
           "type": "sections",
           "theme": "Fluent Purple",
-          "max_columns": 2,
+          "max_columns": 3,
           "title": "Camera",
           "path": "camera",
           "icon": "mdi:cctv",
@@ -1140,46 +1140,13 @@
               "cards": [
                 {
                   "type": "heading",
-                  "heading": "Front Door",
-                  "heading_style": "title"
+                  "heading_style": "title",
+                  "heading": "FRONT DOOR"
                 },
                 {
                   "type": "picture-entity",
                   "entity": "camera.front_door_fluent",
                   "camera_image": "camera.front_door_fluent"
-                }
-              ]
-            },
-            {
-              "type": "grid",
-              "cards": [
-                {
-                  "type": "heading",
-                  "heading": "Back Door",
-                  "heading_style": "title"
-                },
-                {
-                  "type": "picture-entity",
-                  "entity": "camera.back_door_fluent",
-                  "camera_image": "camera.back_door_fluent"
-                }
-              ]
-            },
-            {
-              "type": "grid",
-              "cards": [
-                {
-                  "type": "heading",
-                  "heading_style": "title"
-                },
-                {
-                  "type": "tile",
-                  "entity": "camera.front_door_fluent",
-                  "show_entity_picture": true
-                },
-                {
-                  "type": "tile",
-                  "entity": "binary_sensor.front_door_motion_2"
                 },
                 {
                   "type": "tile",
@@ -1187,63 +1154,11 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "binary_sensor.outside_front_door_pet"
-                },
-                {
-                  "type": "tile",
-                  "entity": "binary_sensor.outside_front_door_vehicle"
+                  "entity": "binary_sensor.front_door_vehicle"
                 },
                 {
                   "type": "tile",
                   "entity": "binary_sensor.front_door_visitor"
-                }
-              ]
-            },
-            {
-              "type": "grid",
-              "cards": [
-                {
-                  "type": "heading",
-                  "heading_style": "title"
-                },
-                {
-                  "type": "tile",
-                  "entity": "camera.back_door_fluent",
-                  "show_entity_picture": true
-                },
-                {
-                  "type": "tile",
-                  "entity": "binary_sensor.back_door_motion_2"
-                },
-                {
-                  "type": "tile",
-                  "entity": "binary_sensor.back_door_person"
-                },
-                {
-                  "type": "tile",
-                  "entity": "binary_sensor.back_door_pet"
-                },
-                {
-                  "type": "tile",
-                  "entity": "binary_sensor.back_door_vehicle"
-                },
-                {
-                  "type": "tile",
-                  "entity": "binary_sensor.back_door_visitor"
-                }
-              ]
-            },
-            {
-              "type": "grid",
-              "cards": [
-                {
-                  "type": "heading",
-                  "heading": "response",
-                  "heading_style": "subtitle"
-                },
-                {
-                  "type": "tile",
-                  "entity": "select.front_door_play_quick_reply_message"
                 },
                 {
                   "type": "tile",
@@ -1256,16 +1171,129 @@
               "cards": [
                 {
                   "type": "heading",
-                  "heading": "response",
-                  "heading_style": "subtitle"
+                  "heading_style": "title",
+                  "heading": "BACK DOOR"
+                },
+                {
+                  "type": "picture-entity",
+                  "entity": "camera.back_door_fluent",
+                  "camera_image": "camera.back_door_fluent"
                 },
                 {
                   "type": "tile",
-                  "entity": "select.back_door_play_quick_reply_message"
+                  "entity": "binary_sensor.back_door_person"
+                },
+                {
+                  "type": "tile",
+                  "entity": "binary_sensor.back_door_vehicle"
+                },
+                {
+                  "type": "tile",
+                  "entity": "binary_sensor.back_door_visitor"
                 },
                 {
                   "type": "tile",
                   "entity": "siren.back_door_siren"
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading_style": "title",
+                  "heading": "SIDE DOOR"
+                },
+                {
+                  "type": "picture-entity",
+                  "entity": "camera.side_door_fluent",
+                  "camera_image": "camera.side_door_fluent"
+                },
+                {
+                  "type": "tile",
+                  "entity": "binary_sensor.side_door_person"
+                },
+                {
+                  "type": "tile",
+                  "entity": "binary_sensor.side_door_vehicle"
+                },
+                {
+                  "type": "tile",
+                  "entity": "binary_sensor.side_door_visitor"
+                },
+                {
+                  "type": "tile",
+                  "entity": "siren.side_door_siren"
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "BACKYARD",
+                  "heading_style": "title"
+                },
+                {
+                  "type": "picture-entity",
+                  "entity": "camera.backyard_lens_0_fluent_lens_0",
+                  "camera_image": "camera.backyard_lens_0_fluent_lens_0"
+                },
+                {
+                  "type": "tile",
+                  "entity": "binary_sensor.backyard_lens_0_person",
+                  "vertical": false,
+                  "features_position": "bottom"
+                },
+                {
+                  "type": "tile",
+                  "entity": "binary_sensor.backyard_lens_0_vehicle",
+                  "vertical": false,
+                  "features_position": "bottom"
+                },
+                {
+                  "type": "tile",
+                  "entity": "light.backyard_floodlight"
+                },
+                {
+                  "type": "tile",
+                  "entity": "siren.backyard_siren"
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.backyard_wi_fi_signal"
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "New section"
+                },
+                {
+                  "type": "picture-entity",
+                  "entity": "camera.backyard_lens_1_fluent_lens_1",
+                  "camera_image": "camera.backyard_lens_1_fluent_lens_1"
+                },
+                {
+                  "type": "tile",
+                  "entity": "binary_sensor.backyard_lens_1_person"
+                },
+                {
+                  "type": "tile",
+                  "entity": "binary_sensor.backyard_lens_1_vehicle"
+                },
+                {
+                  "type": "tile",
+                  "entity": "light.backyard_floodlight"
+                },
+                {
+                  "type": "tile",
+                  "entity": "siren.backyard_siren"
                 }
               ]
             }

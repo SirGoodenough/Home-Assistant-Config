@@ -1,0 +1,58 @@
+esphome:
+  name: kitchen
+  friendly_name: kitchen
+  area: kitchen
+  name_add_mac_suffix: false
+
+substitutions:
+  board: esp01_1m
+  name: cabnetio
+  friendly_name: Cabnetio
+
+packages:
+  device_base: !include /config/esphome/packages/sg_8266_base.yaml
+
+wifi:
+  manual_ip:
+    gateway: !secret chaloupkaabode_gateway
+    subnet: !secret chaloupkaabode_subnet
+    static_ip: !secret cabnetio_IP
+    dns1: !secret chaloupkaabode_gateway
+
+  use_address: 192.168.110.25
+  
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO4
+      mode:
+        input: true
+        pullup: true
+      inverted: true
+    id: button_1
+    on_press:
+      then:
+        - light.toggle: light_1
+
+  - platform: status
+    name: "My LS Status"
+
+output:
+  - platform: gpio
+    pin: GPIO14
+    id: relay_1
+
+  - platform: gpio
+    pin: GPIO13
+    id: status_2
+
+light:
+  - platform: binary
+    name: "My Light"
+    id: light_1
+    output: relay_1
+
+status_led:
+  pin:
+    number: GPIO12
+    inverted: yes

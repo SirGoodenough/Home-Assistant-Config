@@ -12,11 +12,10 @@ esphome:
   friendly_name: ${friendly_name}
   name_add_mac_suffix: true
 
-esp32:
-  board: ${board}
+esp8266:
   framework:
-    type: ${frame_type}
     version: recommended
+  board:  ${board}
 
   # Enable logging
 logger:
@@ -39,7 +38,7 @@ wifi:
       ssid: !secret chaloupkaabode_wifi2_ssid
       password: !secret chaloupkaabode_wifi_password
   ap:
-    ssid: "${name} Fallback Hotspot"
+    ssid: "${name} Fallback"
     password: !secret ap_password
 
 web_server:

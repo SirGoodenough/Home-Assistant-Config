@@ -10,14 +10,6 @@
     icon: mdi:water-percent
     device_class: humidity
     unit_of_measurement: '%'
-
-  switch.humidifier_2:
-    friendly_name: "Main Level Humidifier"
-    icon: mdi:air-humidifier
-
-  input_number.target_humidity:
-    unit_of_measurement: percent
-    icon: mdi:water-percent
     
   ####################################################
   #                                                  #
@@ -46,92 +38,20 @@
   script.upstairs_bath_heater_watchdog:
     icon: mdi:radiator-off
 
-  script.bathroom_heater_auto_on:
-    icon: mdi:radiator
-
-  script.christmas:
+  script.inside_christmas:
     icon: mdi:toggle-switch
 
   script.heavenly_peace:
     icon: mdi:toggle-switch-off
 
-  script.outside_christmas_on:
-    icon: mdi:toggle-switch-outline
-
-  script.outside_christmas_off:
-    icon: mdi:toggle-switch-off-outline
-
-  script.dishwasher_on:
-    icon: mdi:dishwasher
-
-  script.dishwasher_off:
-    icon: mdi:dishwasher
-
   script.doors_close_all:
     icon: mdi:door-closed
 
-  script.dust_collector_on:
-    icon: mdi:silo
-
-  script.dust_collector_off:
-    icon: mdi:silo
-
-  script.dust_collector_watchdog:
-    icon: mdi:silo
-
-  script.garage_lights_on:
+  script.garage_inside_lights_on:
     icon: mdi:garage
 
-  script.garage_lights_off:
+  script.garage_inside_lights_off:
     icon: mdi:garage
-
-  script.garage_lights_on_lock:
-    icon: mdi:garage
-
-  script.garage_lights_on_lock_timeout:
-    icon: mdi:garage
-
-  script.garage_lights_start_timeout:
-    icon: mdi:garage
-
-  script.garage_lights_run_timeout:
-    icon: mdi:garage
-
-  script.switcha1_on:
-    icon: mdi:flash
-
-  script.switcha1_off:
-    icon: mdi:flash-off
-
-  script.switcha2_on:
-    icon: mdi:flash
-
-  script.switcha2_off:
-    icon: mdi:flash-off
-
-  script.switcha3_on:
-    icon: mdi:flash
-
-  script.switcha3_off:
-    icon: mdi:flash-off
-
-  script.switchb1_on:
-    icon: mdi:flash
-
-  script.switchb1_off:
-    icon: mdi:flash-off
-
-  script.switchb2_on:
-    icon: mdi:flash
-
-  script.switchb2_off:
-    icon: mdi:flash-off
-
-  script.switchb3_on:
-    icon: mdi:flash
-
-  script.switchb3_off:
-    icon: mdi:flash-off
 
   script.chill_time:
     icon: mdi:home-lightbulb
@@ -141,6 +61,3 @@
 
   script.party_time:
     icon: mdi:home-lightbulb
-
-  switch.moms_chair:
-    icon: mdi:vibrate   

@@ -107,7 +107,7 @@
       to: "on"
   actions:
     - action: light.toggle
-      entity_id: light.cabinetlight
+      entity_id: light.kitchen_cabnetio_my_light
 
 - id: a45bfcbc-2afc-403b-b359-0b9ea4a2908c
   alias: jims_computer_light_dnremoteC

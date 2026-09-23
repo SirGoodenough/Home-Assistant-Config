@@ -1,0 +1,110 @@
+blueprint:
+  name: Person Enter/Leave Zone with Time Filter
+  description: 'Trigger actions when selected people enter or leave a selected zone,
+    with support for time filters (anytime, daytime, nighttime, specific).
+
+    '
+  domain: automation
+  input:
+    persons:
+      name: Select Person(s)
+      selector:
+        entity:
+          domain:
+          - person
+          multiple: true
+          reorder: false
+    zone:
+      name: Zone
+      selector:
+        entity:
+          domain:
+          - zone
+          multiple: false
+          reorder: false
+    event_type:
+      name: Event Type
+      description: Trigger when the person enters or leaves the zone
+      selector:
+        select:
+          options:
+          - Enter
+          - Leave
+          multiple: false
+          custom_value: false
+          sort: false
+    time_filter:
+      name: Time Filter
+      description: When should the automation be active?
+      selector:
+        select:
+          options:
+          - Anytime
+          - Daytime (06:00-18:00)
+          - Nighttime (18:00-06:00)
+          - Specific Time
+          multiple: false
+          custom_value: false
+          sort: false
+    specific_time_start:
+      name: Specific Time Start
+      default: 00:00:00
+      selector:
+        time: {}
+    specific_time_end:
+      name: Specific Time End
+      default: '23:59:59'
+      selector:
+        time: {}
+    actions:
+      name: Actions
+      description: What to do when the trigger happens
+      selector:
+        action: {}
+  source_url: https://community.home-assistant.io/t/blueprint-people-arrive-or-leave/894892
+mode: single
+variables:
+  zone_entity: !input zone
+  trigger_event: !input event_type
+  selected_time_filter: !input time_filter
+  specific_start: !input specific_time_start
+  specific_end: !input specific_time_end
+trigger:
+- platform: state
+  entity_id: !input persons
+condition:
+- condition: template
+  value_template: "{% set to_state = trigger.to_state.state %} {% set from_state =
+    trigger.from_state.state %} {% set zone_name = state_attr(zone_entity, 'friendly_name')
+    %} {% if trigger_event == 'Enter' %}\n  {{ from_state != zone_name and to_state
+    == zone_name }}\n{% else %}\n  {{ from_state == zone_name and to_state != zone_name
+    }}\n{% endif %}\n"
+- condition: or
+  conditions:
+  - condition: template
+    value_template: '{{ selected_time_filter == ''Anytime'' }}'
+  - condition: and
+    conditions:
+    - condition: template
+      value_template: '{{ selected_time_filter == ''Daytime (06:00-18:00)'' }}'
+    - condition: time
+      after: 06:00:00
+      before: '18:00:00'
+  - condition: or
+    conditions:
+    - condition: template
+      value_template: '{{ selected_time_filter == ''Nighttime (18:00-06:00)'' }}'
+    - condition: time
+      after: '18:00:00'
+    - condition: time
+      before: 06:00:00
+  - condition: and
+    conditions:
+    - condition: template
+      value_template: '{{ selected_time_filter == ''Specific Time'' }}'
+    - condition: template
+      value_template: '{% set now_time = now().strftime(''%H:%M:%S'') %} {{ specific_start
+        <= now_time <= specific_end }}
+
+        '
+action: !input actions

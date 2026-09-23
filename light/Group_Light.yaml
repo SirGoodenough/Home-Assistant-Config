@@ -4,7 +4,7 @@
     unique_id: 3503acba-9956-4951-b651-6385024ba170
     all: true
     entities:
-      - light.kneelight
+      - light.kitchen_cabnetio_counter_light
       - light.jens_light
       - light.jims_computer_light
       - light.mom_light
@@ -26,7 +26,7 @@
     all: true
     entities:
       - light.jims_computer_light
-      - light.kneelight
+      - light.kitchen_cabnetio_counter_light
       - light.kitchen_down_lights
       - light.kitchensink
       - light.kitchen_window
@@ -53,7 +53,7 @@
     unique_id: 9fa921ea-7795-46ba-a850-bf85113e5f4d
     all: true
     entities:
-      - light.kneelight
+      - light.kitchen_cabnetio_counter_light
       - light.jims_computer_light
       - light.kitchensink
       - light.kitchen_window

@@ -80,6 +80,12 @@
       to: "on"
       for:
         seconds: 1
+    - trigger: state
+      entity_id: binary_sensor.side_door_visitor
+      to: 'on'
+      not_from:
+        - unknown
+        - unavailable
   actions:
     - action: script.media_player_side_doorbell
     - delay: 00:00:06

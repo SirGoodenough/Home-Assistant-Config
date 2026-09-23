@@ -80,9 +80,18 @@
   triggers:
     - trigger: state
       entity_id: input_boolean.rain
-      from: "off"
       to: "on"
-      id: event_announce
+      not_from:
+        - unknown
+        - unavailable
+      id: rain-started
+    - trigger: state
+      entity_id: input_boolean.rain
+      to: "off"
+      not_from:
+        - unknown
+        - unavailable
+      id: rain_over
     - trigger: time
       at: "6:52:11"
       id: morning_announce_julie
@@ -90,17 +99,35 @@
       at: "8:27:38"
       id: morning_announce_sg
   conditions:
-    and:
       - alias: "Send the message if the Boss is not sleeping"
         condition: time
         after: "6:51:42"
         before: "22:08:17"
-      - alias: "Cancel the morning announce if not raining"
-        condition: state
-        entity_id: input_boolean.rain
-        state: "on"
   actions:
-    action: script.tts_its_raining
+    - alias: "Do the announce"
+      choose:
+      - conditions:
+        - condition: trigger
+          id:
+          - rain-started
+        sequence:
+        - action: script.tts_its_raining
+      - conditions:
+        - condition: trigger
+          id:
+          - rain_over
+        sequence:
+        - action: script.tts_its_not_raining
+      default:
+      - if:
+        - alias: Triggered by time of day
+          condition: state
+          entity_id: input_boolean.rain
+          state: "on"
+        then:
+          - action: script.tts_its_raining
+        else:
+          - action: script.tts_its_not_raining
 
 #####################################################
 # Weather Lightning                                 #

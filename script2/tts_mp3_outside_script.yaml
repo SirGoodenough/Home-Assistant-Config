@@ -5,9 +5,24 @@ tts_its_raining:
     input:
       TTS: tts.piper
       announcement_message: Rain has started
-      speaker_target: media_player.intercom_group
+      speaker_target: 
+        - media_player.intercom_group
+        - media_player.bedroom_speaker
       nabu_azure_language: en-IE
   icon: mdi:weather-rainy
+
+tts_its_not_raining:
+  alias: TTS It's Not Raining
+  use_blueprint:
+    path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
+    input:
+      TTS: tts.piper
+      announcement_message: Rain is over
+      speaker_target: 
+        - media_player.intercom_group
+        - media_player.bedroom_speaker
+      nabu_azure_language: en-IE
+  icon: mdi:weather-cloudy
 
 tts_say_lightning:
   alias: TTS Lightning
