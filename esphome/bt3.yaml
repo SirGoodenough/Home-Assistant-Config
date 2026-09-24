@@ -15,6 +15,7 @@ wifi:
     dns1: !secret chaloupkaabode_gateway
 
 esphome:
+  area: kitchen
   name_add_mac_suffix: false
     
 bluetooth_proxy:
