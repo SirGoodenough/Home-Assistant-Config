@@ -7,7 +7,7 @@ esphome:
 substitutions:
   board: esp01_1m
   name: cabnetio
-  friendly_name: Cabnetio
+  friendly_name: CabnetioKiotchenT
 
 packages:
   device_base: !include /config/esphome/packages/sg_8266_base.yaml
