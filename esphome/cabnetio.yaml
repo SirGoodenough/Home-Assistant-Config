@@ -12,7 +12,7 @@ esphome:
   area: kitchen
   name_add_mac_suffix: false
 
-swifi:
+wifi:
   manual_ip:
     gateway: !secret chaloupkaabode_gateway
     subnet: !secret chaloupkaabode_subnet
