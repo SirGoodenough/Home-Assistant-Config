@@ -1,10 +1,4 @@
-esphome:
-  name: cabnetio
-  friendly_name: Cabnetio
-  area: kitchen
-  name_add_mac_suffix: false
-
-substitutions:
+ubstitutions:
   board: esp01_1m
   name: cabnetio
   friendly_name: Cabnetio
