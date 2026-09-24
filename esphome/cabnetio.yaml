@@ -19,7 +19,6 @@ wifi:
     static_ip: !secret cabnetio_IP
     dns1: !secret chaloupkaabode_gateway
 
-  use_address: 192.168.110.39
 binary_sensor:
   - platform: gpio
     pin:
