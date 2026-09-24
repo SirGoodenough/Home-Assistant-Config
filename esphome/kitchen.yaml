@@ -6,7 +6,7 @@ esphome:
 
 substitutions:
   board: esp01_1m
-  name: cabnetio
+  name: cabnetiokitchen
   friendly_name: KichenT
 
 packages:
