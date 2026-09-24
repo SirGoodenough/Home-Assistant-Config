@@ -28,12 +28,13 @@ binary_sensor:
         pullup: true
       inverted: true
     id: button_1
+    name: "${friendly_name} Button"
     on_press:
       then:
         - light.toggle: light_1
 
   - platform: status
-    name: "My LS Status"
+    name: "${friendly_name} Status"
 
 output:
   - platform: gpio
@@ -42,7 +43,7 @@ output:
 
 light:
   - platform: binary
-    name: Counter Light
+    name: "${friendly_name} Light"
     id: light_1
     output: relay_1
 
