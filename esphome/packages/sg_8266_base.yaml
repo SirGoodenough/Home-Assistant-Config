@@ -30,6 +30,7 @@ ota:
     password: !secret chaloupkaabode_otapw
 
 wifi:
+  phy_mode: 11G
   networks:
     - id: main_house_ap
       ssid: !secret chaloupkaabode_wifi_ssid
