@@ -16,7 +16,7 @@ wifi:
   manual_ip:
     gateway: !secret chaloupkaabode_gateway
     subnet: !secret chaloupkaabode_subnet
-    static_ip: !secret cabnetio_IP
+    static_ip: !secret kitchen_IP
     dns1: !secret chaloupkaabode_gateway
 
   use_address: 192.168.110.25
