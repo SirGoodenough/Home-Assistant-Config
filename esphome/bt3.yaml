@@ -15,7 +15,7 @@ wifi:
     dns1: !secret chaloupkaabode_gateway
 
 esphome:
-  area: bathroom
+  area: 
   name_add_mac_suffix: false
     
 bluetooth_proxy:
