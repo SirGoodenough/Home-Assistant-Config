@@ -1,6 +1,4 @@
 esphome:
-  name: kitchen
-  friendly_name: kitchen
   area: kitchen
   name_add_mac_suffix: false
 
