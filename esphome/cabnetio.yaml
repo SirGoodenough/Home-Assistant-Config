@@ -6,7 +6,13 @@ ubstitutions:
 packages:
   device_base: !include /config/esphome/packages/sg_8266_base.yaml
 
-wifi:
+esphome:
+  name: cabnetio
+  friendly_name: Cabnetio
+  area: kitchen
+  name_add_mac_suffix: false
+
+swifi:
   manual_ip:
     gateway: !secret chaloupkaabode_gateway
     subnet: !secret chaloupkaabode_subnet
