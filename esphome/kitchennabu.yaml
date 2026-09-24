@@ -19,7 +19,7 @@ wifi:
 
 esphome:
   area: kitchen
-  ame_add_mac_suffix: false
+  #ame_add_mac_suffix: false
   # on_boot:
   #   - priority: -100
   #     then:
