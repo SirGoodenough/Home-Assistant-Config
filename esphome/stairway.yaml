@@ -97,6 +97,9 @@ binary_sensor:
       - lambda: |-
             id(button1_enabled) = false;
 
+  - platform: status
+    name: "${friendly_name} Status"
+
 text_sensor:
   - platform: homeassistant
     id: dark_outside_state
