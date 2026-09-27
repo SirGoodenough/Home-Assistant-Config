@@ -27,7 +27,7 @@ api:
 
 ota:
   - platform: esphome
-    password: !secret chaloupkaabode_otapw
+    encryption:
 
 wifi:
   phy_mode: 11G

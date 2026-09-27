@@ -96,6 +96,16 @@
         "icon": "mdi:ab-testing",
         "step": 1.0,
         "mode": "slider"
+      },
+      {
+        "id": "stair_delay_minutes",
+        "min": 1.0,
+        "max": 6000.0,
+        "step": 0.1,
+        "name": "stair_delay_minutes",
+        "icon": "mdi:numeric",
+        "mode": "box",
+        "unit_of_measurement": "min"
       }
     ]
   }

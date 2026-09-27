@@ -1,0 +1,71 @@
+substitutions:
+  name: testkitchen
+  friendly_name: Gosund for testing
+  board: esp01_1m
+
+packages:
+  device_base: !include /config/esphome/packages/sg_8266_base.yaml
+
+esphome:
+  area: kitchen
+  name_add_mac_suffix: false
+
+wifi:
+  manual_ip:
+    gateway: !secret chaloupkaabode_gateway
+    subnet: !secret chaloupkaabode_subnet
+    static_ip: !secret kitchen_IP
+    dns1: !secret chaloupkaabode_gateway
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO4
+      mode:
+        input: true
+        pullup: true
+      inverted: true
+    name: "${friendly_name} Button"
+    on_click:
+      - min_length: 50ms
+        max_length: 350ms
+        then:
+          - homeassistant.action:
+              action: light.turn_on
+              data:
+                entity_id: light.grp_kitch
+      - min_length: 500ms
+        max_length: 10s
+        then:
+          - homeassistant.action:
+              action: light.turn_off
+              data:
+                entity_id: light.grp_kitch
+
+  - platform: status
+    name: "${friendly_name} Status"
+
+switch:
+  - platform: gpio
+    pin: GPIO14
+    id: relay
+    name: "${friendly_name} Relay"
+    icon: mdi:power-socket-us
+    restore_mode: RESTORE_DEFAULT_OFF
+
+output:
+  - platform: gpio
+    pin:
+      number: GPIO12
+      inverted: true
+    id: led_1
+
+light:
+  - platform: binary
+    name: "${friendly_name} LED 1"
+    output: led_1
+
+status_led:
+  pin:
+    number: GPIO13
+    inverted: true

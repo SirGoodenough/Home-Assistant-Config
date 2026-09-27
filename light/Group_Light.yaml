@@ -4,17 +4,16 @@
     unique_id: 3503acba-9956-4951-b651-6385024ba170
     all: true
     entities:
-      - light.kitchen_cabnetio_counter_light
+      - light.kitchen_cabnetio_cabnetio_light
       - light.jens_light
       - light.jims_computer_light
       - light.mom_light
       - light.livingroomlight
-      - light.kitchensink
       - light.kitchen_window
       - light.kitchen_down_lights
       - light.b_porch_socket
       - light.fp_socket
-      - light.stairway_light
+      - light.upstairs_stair_light_light
       - light.counter_1
       - light.counter_2
       - light.kitch_fan_2
@@ -26,9 +25,8 @@
     all: true
     entities:
       - light.jims_computer_light
-      - light.kitchen_cabnetio_counter_light
+      - light.kitchen_cabnetio_cabnetio_light
       - light.kitchen_down_lights
-      - light.kitchensink
       - light.kitchen_window
 
   - platform: group
@@ -41,21 +39,13 @@
       - light.kitch_fan_3
       - light.memorial
 
-  # - platform: group
-  #   name: Jens Color
-  #   unique_id: f55a37e1-0358-4295-843c-fe31143c83cc
-  #   entities:
-  #     - light.bulb1
-  #     - light.jens_led_bed
-
   - platform: group
     name: D Lights
     unique_id: 9fa921ea-7795-46ba-a850-bf85113e5f4d
     all: true
     entities:
-      - light.kitchen_cabnetio_counter_light
+      - light.kitchen_cabnetio_cabnetio_light
       - light.jims_computer_light
-      - light.kitchensink
       - light.kitchen_window
       - light.memorial
 

@@ -23,7 +23,7 @@
           angle: '{{ trigger.payload_json.action_angle | default(0.1) | float(0.2)
             }}'
           short_entity: light.kitchen_down_lights
-          long_entity: light.kitchensink
+          long_entity: light.kitchen_window
       scene_rotate_cw_face_3:
       - action: script.volume4cube
         data:

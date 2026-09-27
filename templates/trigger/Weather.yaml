@@ -1,0 +1,24 @@
+- triggers:
+  - trigger: state
+    entity_id: sensor.gw2000b_v2_2_4_solar_lux
+  - trigger: homeassistant
+    id: This will update it at HA start
+    event: start
+  binary_sensor:
+    - name: "Dark Outside"
+      unique_id: ce7cb6b7-c666-494b-aa3c-4ed79b2f1092
+      state: >
+        {# Create a dead zone to prevent oscillations. #}
+        {%- if states('sensor.gw2000b_v2_2_4_solar_lux') | float(0) > 9004 %}
+            false
+        {%- elif states('sensor.gw2000b_v2_2_4_solar_lux') | float(0) < 6507 %}
+            true
+        {% else %}
+            {{ states('binary_sensor.dark_outside') }}
+        {%- endif %}
+      availability: >-
+        {% from 'availability_template.jinja' import avail %}
+        {{- avail(['sensor.gw2000b_v2_2_4_solar_lux']) | bool -}}
+      icon: mdi:sun-clock
+      attributes:
+        friendly_name: "Dark Outside"

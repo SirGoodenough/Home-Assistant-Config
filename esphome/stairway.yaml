@@ -1,0 +1,108 @@
+substitutions:
+  name: stairway
+  friendly_name: Stair Light
+  board: esp01_1m
+
+packages:
+  device_base: !include /config/esphome/packages/sg_8266_base.yaml
+
+esphome:
+  area: Upstairs
+  name_add_mac_suffix: false
+  on_boot:
+    priority: 600
+    then:
+      - lambda: |-
+          id(button1_enabled) = true;
+
+wifi:
+  manual_ip:
+    gateway: !secret chaloupkaabode_gateway
+    subnet: !secret chaloupkaabode_subnet
+    static_ip: !secret stairway_IP
+    dns1: !secret chaloupkaabode_gateway
+
+status_led:
+  pin:
+    number: GPIO13
+    inverted: true
+
+globals:
+  - id: button1_enabled
+    type: bool
+    restore_value: no
+    initial_value: 'false'
+
+switch:
+  - platform: gpio
+    id: relay1
+    name: "Light"
+    icon: "mdi:lightbulb-night-outline"
+    pin: GPIO12
+    restore_mode: ALWAYS_OFF
+    on_turn_on:
+      - lambda: |-
+          id(button1_enabled) = false;
+      - script.execute: relay1_auto_off
+    on_turn_off:
+      - lambda: |-
+          id(button1_enabled) = id(dark_outside).state;
+
+script:
+  - id: relay1_auto_off
+    mode: restart
+    then:
+      - delay: !lambda |-
+          const float minutes = id(stair_delay_minutes).state;
+          if (isnan(minutes) || minutes <= 0.0f) {
+            return 8UL * 60UL * 1000UL;
+          }
+          return static_cast<uint32_t>(minutes * 60.0f * 1000.0f);
+      - switch.turn_off: relay1
+  - id: press_button1
+    then:
+      - if:
+          condition:
+            lambda: return id(button1_enabled);
+          then:
+            - switch.toggle: relay1
+
+sensor:
+  - platform: homeassistant
+    id: stair_delay_minutes
+    entity_id: input_number.stair_delay_minutes
+    internal: true
+
+binary_sensor:
+  - platform: gpio
+    id: button1
+    name: "Switch"
+    icon: "mdi:light-switch"
+    pin:
+      number: GPIO0
+      mode:
+        input: true
+        pullup: true
+      inverted: true
+    on_press:
+      - script.execute: press_button1
+
+  - platform: template
+    id: dark_outside
+    on_press:
+      - lambda: |-
+            id(button1_enabled) = true;
+      - script.execute: press_button1
+    on_release:
+      - lambda: |-
+            id(button1_enabled) = false;
+
+text_sensor:
+  - platform: homeassistant
+    id: dark_outside_state
+    entity_id: binary_sensor.dark_outside
+    internal: true
+    on_value:
+      - binary_sensor.template.publish:
+          id: dark_outside
+          state: !lambda 'return x != "off";'

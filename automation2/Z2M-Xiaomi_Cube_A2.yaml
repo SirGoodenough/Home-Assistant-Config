@@ -44,14 +44,14 @@
         - service: script.cube_long_short_control_bp
           data:
             angle: '{{ trigger.payload_json.action_angle | float(0.0) }}'
-            long_entity: light.kitchensink
+            long_entity: light.kitchen_window
 ## Side d_light 4
       doubletap_face_4:
         - service: light.toggle
           entity_id: light.grp_d_lights
       slide_face_4:
         - service: light.turn_on
-          entity_id: light.stairway_switch
+          entity_id: light.upstairs_stair_light_light
 ## Testing side 5
       slide_face_5:
         - condition: template
@@ -66,7 +66,7 @@
         - service: light.toggle
           data: {}
           target:
-            entity_id: light.kitchensink
+            entity_id: light.kitchen_window
 
 #####
 ####### Deprecated - Old format using Z2M Legacy Triggers
@@ -144,4 +144,4 @@
 #         - service: light.toggle
 #           data: {}
 #           target:
-#             entity_id: light.kitchensink
+#             entity_id: light.kitchen_window

@@ -2,23 +2,7 @@
     #####################################################
     # Weather                                           #
     #####################################################
-    - name: "Dark Outside"
-      unique_id: ce7cb6b7-c666-494b-aa3c-4ed79b2f1092
-      state: >
-        {# Create a dead zone to prevent oscillations. #}
-        {%- if states('sensor.gw2000b_v2_2_4_solar_lux') | float(0) > 7004 %}
-          false
-        {%- elif states('sensor.gw2000b_v2_2_4_solar_lux') | float(0) < 6507 %}
-          true
-        {% else %}
-          {{ states('binary_sensor.dark_outside') }}
-        {%- endif %}
-      availability: >-
-        {% from 'availability_template.jinja' import avail %}
-        {{- avail(['sensor.gw2000b_v2_2_4_solar_lux']) | bool -}}
-      icon: mdi:sun-clock
-      attributes:
-        friendly_name: "Dark Outside"
+
 
     - name: "AC Enabled"
       unique_id: f885f9fd-b280-439b-81f0-3fdd713393f5

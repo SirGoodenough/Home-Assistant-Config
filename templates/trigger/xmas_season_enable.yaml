@@ -1,4 +1,4 @@
-- trigger:
+- triggers:
     - trigger: time_pattern
       id: This will it update every night
       hours: "0"

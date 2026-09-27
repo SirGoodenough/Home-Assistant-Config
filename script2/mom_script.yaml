@@ -13,7 +13,7 @@ bedtime_button_mom:
       data:
         code: 54241
     - action: light.turn_on
-      entity_id: light.stairway_light
+      entity_id: light.upstairs_stair_light_light
 
     - delay: 00:02:00
 

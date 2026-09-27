@@ -109,4 +109,4 @@
       to: "on"
   actions:
     - action: light.toggle
-      entity_id: light.stairway_light
+      entity_id: light.upstairs_stair_light_light

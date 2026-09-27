@@ -52,7 +52,7 @@
       to: "on"
   actions:
     - action: light.toggle
-      entity_id: light.stairway_light
+      entity_id: light.upstairs_stair_light_light
 
 - id: d82bf999-0a81-4761-8192-c1d4fe6a7b1c
   alias: KitchenDown Toggle button_dnremote2
@@ -74,7 +74,7 @@
       to: "on"
   actions:
     - action: light.toggle
-      entity_id: light.kitchensink
+      entity_id: light.kitchen_window
 
 - id: 11941451-10b7-4021-846a-613b8f920238
   alias: Outside button_dnremote4
@@ -107,7 +107,7 @@
       to: "on"
   actions:
     - action: light.toggle
-      entity_id: light.kitchen_cabnetio_counter_light
+      entity_id: light.kitchen_cabnetio_cabnetio_light
 
 - id: a45bfcbc-2afc-403b-b359-0b9ea4a2908c
   alias: jims_computer_light_dnremoteC

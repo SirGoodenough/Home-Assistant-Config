@@ -3,7 +3,7 @@
 ## Trigger based template sensor to store global variables ###############################################
 ## https://community.home-assistant.io/t/trigger-based-template-sensor-to-store-global-variables/735474 ##
 ##########################################################################################################
-- trigger:
+- triggers:
     - trigger: event
       event_type: set_variable
     - trigger: event

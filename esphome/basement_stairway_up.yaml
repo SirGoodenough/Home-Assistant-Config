@@ -1,0 +1,95 @@
+substitutions:
+  name: bmtupstairway
+  friendly_name: Basement Stair up Light
+  board: esp01_1m
+  remote_IP: !secret bmt_stair_down_IP
+
+packages:
+  device_base: !include /config/esphome/packages/sg_8266_base.yaml
+
+esphome:
+  area: Basement
+  name_add_mac_suffix: false
+
+wifi:
+  manual_ip:
+    gateway: !secret chaloupkaabode_gateway
+    subnet: !secret chaloupkaabode_subnet
+    static_ip: !secret bmt_stair_up_IP
+    dns1: !secret chaloupkaabode_gateway
+
+status_led:
+  pin:
+    number: GPIO13
+    inverted: true
+
+switch:
+  - platform: gpio
+    id: relay1
+    name: "Light"
+    icon: "mdi:lightbulb-night-outline"
+    pin: GPIO12
+    restore_mode: ALWAYS_OFF
+    on_turn_on:
+      - script.execute: relay1_auto_off
+
+script:
+  - id: relay1_auto_off
+    mode: restart
+    then:
+      - delay: !lambda |-
+          const float minutes = id(stair_delay_minutes).state;
+          if (isnan(minutes) || minutes <= 0.0f) {
+            return 8UL * 60UL * 1000UL;
+          }
+          return static_cast<uint32_t>(minutes * 60.0f * 1000.0f);
+      - switch.turn_off: relay1
+  - id: press_button1
+    then:
+      - if:
+          condition:
+            switch.is_off: relay1
+          then:
+            - switch.toggle: relay1
+          else:
+            - script.execute: relay1_auto_off
+
+sensor:
+  - platform: homeassistant
+    id: stair_delay_minutes
+    entity_id: input_number.stair_delay_minutes
+    internal: true
+
+binary_sensor:
+  - platform: gpio
+    id: button1
+    name: "Switch"
+    icon: "mdi:light-switch"
+    pin:
+      number: GPIO0
+      mode:
+        input: true
+        pullup: true
+      inverted: true
+    on_press:
+      - script.execute: press_button1
+
+text_sensor:
+  - platform: homeassistant
+    id: stair_up_light_state
+    entity_id: light.basement_basement_stair_down_light_light
+    internal: true
+    on_value:
+      - if:
+          condition:
+            lambda: return x == "on";
+          then:
+            - switch.turn_on: relay1
+          else:
+            - if:
+                condition:
+                  lambda: return x == "off";
+                then:
+                  - switch.turn_off: relay1
+
+

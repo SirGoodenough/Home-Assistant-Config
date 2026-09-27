@@ -30,7 +30,7 @@
   triggers:
     - trigger: state
       entity_id:
-        - light.kitchensink
+        - light.kitchen_window
       to: "on"
   conditions:
   actions:

@@ -83,22 +83,22 @@
                   "entity": "light.jims_computer_light"
                 },
                 {
-                  "entity": "light.kitchen_cabnetio_counter_light"
+                  "entity": "light.kitchen_cabnetio_cabnetio_light"
                 },
                 {
                   "entity": "light.kitchen_down_lights"
                 },
                 {
-                  "entity": "light.stairway_switch"
+                  "entity": "light.upstairs_stair_light_light"
                 },
                 {
                   "entity": "light.memorial"
                 },
                 {
-                  "entity": "light.kitchen_down_lights"
+                  "entity": "light.grp_kitch"
                 },
                 {
-                  "entity": "light.grp_kitch"
+                  "entity": "switch.kitchen_gosund_for_testing_gosund_for_testing_relay"
                 },
                 {
                   "entity": "light.jens_light"
@@ -184,11 +184,12 @@
               }
             },
             {
+              "color": "state",
               "entities": [
                 {
                   "entity": "sensor.sonoff_rf_bridge_2_si7021_temperature",
                   "name": "LivingRoom Temp",
-                  "secondary_info": "last-updated"
+                  "secondary_info": "last_updated"
                 },
                 {
                   "entity": "sensor.sonoff_rf_bridge_2_si7021_humidity",
@@ -216,9 +217,6 @@
                   "entity": "light.mary"
                 },
                 {
-                  "entity": "light.stairway_light"
-                },
-                {
                   "entity": "light.fp_socket"
                 },
                 {
@@ -239,8 +237,7 @@
               ],
               "show_header_toggle": true,
               "title": "Living Room",
-              "type": "entities",
-              "state_color": true
+              "type": "entities"
             },
             {
               "show_name": true,
@@ -1045,6 +1042,7 @@
               "type": "entities"
             },
             {
+              "color": "state",
               "entities": [
                 {
                   "entity": "lock.side_door"
@@ -1059,10 +1057,10 @@
                   "entity": "switch.sonoff_1000d4bf8f_1"
                 },
                 {
-                  "entity": "light.bmt_hall_socketu"
+                  "entity": "light.basement_basement_stair_up_light_light"
                 },
                 {
-                  "entity": "light.bmt_hall_socketd"
+                  "entity": "light.basement_basement_stair_down_light_light"
                 },
                 {
                   "entity": "binary_sensor.side_door_open_2"
@@ -1094,8 +1092,7 @@
               ],
               "show_header_toggle": false,
               "title": "Basement",
-              "type": "entities",
-              "state_color": true
+              "type": "entities"
             },
             {
               "type": "entities",
@@ -1756,6 +1753,7 @@
           "badges": [],
           "cards": [
             {
+              "color": "state",
               "entities": [
                 {
                   "entity": "light.grp_dad_lights"
@@ -1764,7 +1762,7 @@
                   "entity": "light.jims_computer_light"
                 },
                 {
-                  "entity": "light.cabinetlight"
+                  "entity": "light.kitchen_cabnetio_cabnetio_light"
                 },
                 {
                   "entity": "light.grp_d_lights"
@@ -1773,7 +1771,7 @@
                   "entity": "light.kitchen_down_lights"
                 },
                 {
-                  "entity": "light.kitchensink"
+                  "entity": "light.kitchen_window"
                 },
                 {
                   "entity": "light.grp_kitch"
@@ -1794,8 +1792,7 @@
               "show_header_toggle": true,
               "theme": "darkish",
               "title": "Kitchen",
-              "type": "entities",
-              "state_color": true
+              "type": "entities"
             },
             {
               "entities": [
@@ -1875,10 +1872,10 @@
             {
               "entities": [
                 {
-                  "entity": "light.bmt_hall_socketu"
+                  "entity": "switch.upstairs_basement_stair_up_light_light"
                 },
                 {
-                  "entity": "light.bmt_hall_socketd"
+                  "entity": "switch.basement_basement_stair_down_light_light"
                 }
               ],
               "show_header_toggle": true,
