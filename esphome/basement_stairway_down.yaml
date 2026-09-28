@@ -2,7 +2,6 @@ substitutions:
   name: bmtdownstairway
   friendly_name: Basement Stair down Light
   board: esp8285
-  remote_IP: !secret bmt_stair_up_IP
 
 packages:
   device_base: !include /config/esphome/packages/sg_8266_base.yaml
