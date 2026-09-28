@@ -1,7 +1,7 @@
 substitutions:
   name: bmtdownstairway
   friendly_name: Basement Stair down Light
-  board: esp01_1m
+  board: esp8285
   remote_IP: !secret bmt_stair_up_IP
 
 packages:
