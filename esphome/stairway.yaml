@@ -1,7 +1,7 @@
 substitutions:
   name: stairway
   friendly_name: Stair Light
-  board: 8285
+  board: esp8285
 
 packages:
   device_base: !include /config/esphome/packages/sg_8266_base.yaml
