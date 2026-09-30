@@ -12,17 +12,6 @@ wifi:
     subnet: !secret chaloupkaabode_subnet
     static_ip: !secret bmt_stair_down_IP
     dns1: !secret chaloupkaabode_gateway
-esphome:
-  area: Outside
-  name_add_mac_suffix: false
-  on_boot:
-    priority: 600
-    then:
-      - logger.log:
-          level: INFO
-          format: "Boot values: dark_outside=%s"
-          args:
-            - 'id(dark_outside).state.c_str()'
 
 wifi:
   manual_ip:
