@@ -23,12 +23,6 @@ switch:
     on_turn_on:
       - script.execute: relay1_auto_off
 
-sensor:
-  - platform: homeassistant
-    id: stair_delay_minutes
-    entity_id: input_number.stair_delay_minutes
-    internal: true
-
 binary_sensor:
   - platform: gpio
     id: button1
