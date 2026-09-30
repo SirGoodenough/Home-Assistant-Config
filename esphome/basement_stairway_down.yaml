@@ -73,8 +73,6 @@ binary_sensor:
     on_press:
       - script.execute: press_button1
 
-  - platform: status
-    name: "${friendly_name} Status"
 
 text_sensor:
   - platform: homeassistant
