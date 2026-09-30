@@ -39,7 +39,7 @@ switch:
     name: "Light"
     icon: "mdi:lightbulb-night-outline"
     pin: GPIO12
-    restore_mode: ALWAYS_OFF
+    restore_mode: RESTORE_DEFAULT_ON
     on_turn_on:
       - lambda: |-
           id(button1_enabled) = false;
