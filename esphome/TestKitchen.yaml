@@ -42,9 +42,6 @@ binary_sensor:
               data:
                 entity_id: light.grp_kitch
 
-  - platform: status
-    name: "${friendly_name} Status"
-
 switch:
   - platform: gpio
     pin: GPIO14
