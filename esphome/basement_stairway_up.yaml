@@ -139,7 +139,7 @@ binary_sensor:
     name: "${friendly_name} Switch"
     icon: "mdi:light-switch"
     pin:
-      number: GPIO3
+      number: GPIO0
       mode:
         input: true
         pullup: true
