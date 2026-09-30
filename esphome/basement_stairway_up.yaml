@@ -13,11 +13,6 @@ wifi:
     static_ip: !secret bmt_stair_up_IP
     dns1: !secret chaloupkaabode_gateway
 
-status_led:
-  pin:
-    number: GPIO13
-    inverted: true
-
 switch:
   - platform: gpio
     id: relay1
