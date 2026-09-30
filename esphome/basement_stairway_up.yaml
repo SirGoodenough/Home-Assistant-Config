@@ -68,7 +68,7 @@ script:
     mode: restart
     then:
       - delay: !lambda |-
-          const float minutes = id(outside_delay_minutes).state;
+          const float minutes = id(stair_delay_minutes).state;
           if (isnan(minutes) || minutes <= 0.0f) {
             return 8UL * 60UL * 1000UL;
           }
