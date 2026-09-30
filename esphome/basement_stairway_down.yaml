@@ -25,13 +25,6 @@ wifi:
     static_ip: !secret bmt_stair_down_IP
     dns1: !secret chaloupkaabode_gateway
 
-wifi:
-  manual_ip:
-    gateway: !secret chaloupkaabode_gateway
-    subnet: !secret chaloupkaabode_subnet
-    static_ip: !secret bmt_stair_up_IP
-    dns1: !secret chaloupkaabode_gateway
-
 status_led:
   pin:
     number: GPIO13
