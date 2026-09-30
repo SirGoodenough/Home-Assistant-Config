@@ -23,23 +23,6 @@ switch:
     on_turn_on:
       - script.execute: relay1_auto_off
 
-text_sensor:
-  - platform: homeassistant
-    id: stair_up_light_state
-    entity_id: light.basement_basement_stair_down_light_light
-    internal: true
-    on_value:
-      - if:
-          condition:
-            lambda: return x == "on";
-          then:
-            - switch.turn_on: relay1
-          else:
-            - if:
-                condition:
-                  lambda: return x == "off";
-                then:
-                  - switch.turn_off: relay1
 
 
 
