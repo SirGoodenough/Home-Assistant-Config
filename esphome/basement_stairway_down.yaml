@@ -62,6 +62,7 @@ light:
             - script.execute: light_1_auto_off
           else:
             - light.turn_off: light_1
+            - light.turn_off: light_1
 
 script:
   - id: light_1_auto_off
