@@ -30,10 +30,7 @@ binary_sensor:
     on_press:
       then:
         - light.toggle: light_1
-
-  - platform: status
-    name: "${friendly_name} Status"
-
+        
 output:
   - platform: gpio
     pin: GPIO12
