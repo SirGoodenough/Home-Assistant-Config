@@ -41,6 +41,7 @@ light:
     name: "${friendly_name} Light"
     id: light_1
     output: relay_1
+    restore_mode: RESTORE_DEFAULT_OFF
 
 status_led:
   pin:
