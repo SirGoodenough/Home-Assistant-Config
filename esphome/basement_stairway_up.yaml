@@ -83,7 +83,7 @@ sensor:
     on_value:
       - logger.log:
           level: INFO
-          format: "Outside delay minutes: %.1f"
+          format: "Stair delay minutes: %.1f"
           args: ["x"]
 
 binary_sensor:
