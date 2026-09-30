@@ -73,7 +73,6 @@ binary_sensor:
     on_press:
       - script.execute: press_button1
 
-
 text_sensor:
   - platform: homeassistant
     id: stair_up_light_state
