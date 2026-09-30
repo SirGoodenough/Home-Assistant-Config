@@ -30,7 +30,7 @@ binary_sensor:
     on_press:
       then:
         - light.toggle: light_1
-        
+
 output:
   - platform: gpio
     pin: GPIO12
