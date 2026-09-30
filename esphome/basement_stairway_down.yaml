@@ -17,6 +17,7 @@ esphome:
           format: "Boot values: dark_outside=%s"
           args:
             - 'id(dark_outside).state.c_str()'
+            
 wifi:
   manual_ip:
     gateway: !secret chaloupkaabode_gateway
