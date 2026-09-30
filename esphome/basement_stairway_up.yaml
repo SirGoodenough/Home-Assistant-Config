@@ -23,20 +23,6 @@ switch:
     on_turn_on:
       - script.execute: relay1_auto_off
 
-binary_sensor:
-  - platform: gpio
-    id: button1
-    name: "Switch"
-    icon: "mdi:light-switch"
-    pin:
-      number: GPIO0
-      mode:
-        input: true
-        pullup: true
-      inverted: true
-    on_press:
-      - script.execute: press_button1
-
 text_sensor:
   - platform: homeassistant
     id: stair_up_light_state
