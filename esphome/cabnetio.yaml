@@ -27,6 +27,7 @@ binary_sensor:
       inverted: true
     id: button_1
     name: "${friendly_name} Button"
+    RESTORE_DEFAULT_OFF
     on_press:
       then:
         - light.toggle: light_1
