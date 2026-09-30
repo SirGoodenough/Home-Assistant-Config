@@ -13,22 +13,6 @@ wifi:
     static_ip: !secret bmt_stair_up_IP
     dns1: !secret chaloupkaabode_gateway
 
-switch:
-  - platform: gpio
-    id: relay1
-    name: "Light"
-    icon: "mdi:lightbulb-night-outline"
-    pin: GPIO12
-    restore_mode: ALWAYS_OFF
-    on_turn_on:
-      - script.execute: relay1_auto_off
-
-
-
-
-
-
-
 esphome:
   area: Outside
   name_add_mac_suffix: false
