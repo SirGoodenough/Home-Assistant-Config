@@ -6,6 +6,17 @@ substitutions:
 packages:
   device_base: !include /config/esphome/packages/sg_8266_base.yaml
 
+esphome:
+  area: Outside
+  name_add_mac_suffix: false
+  on_boot:
+    priority: 600
+    then:
+      - logger.log:
+          level: INFO
+          format: "Boot values: dark_outside=%s"
+          args:
+            - 'id(dark_outside).state.c_str()'
 wifi:
   manual_ip:
     gateway: !secret chaloupkaabode_gateway
