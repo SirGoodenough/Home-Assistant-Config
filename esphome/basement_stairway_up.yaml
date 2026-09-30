@@ -23,27 +23,6 @@ switch:
     on_turn_on:
       - script.execute: relay1_auto_off
 
-script:
-  - id: relay1_auto_off
-    mode: restart
-    then:
-      - delay: !lambda |-
-          const float minutes = id(stair_delay_minutes).state;
-          if (isnan(minutes) || minutes <= 0.0f) {
-            return 8UL * 60UL * 1000UL;
-          }
-          return static_cast<uint32_t>(minutes * 60.0f * 1000.0f);
-      - switch.turn_off: relay1
-  - id: press_button1
-    then:
-      - if:
-          condition:
-            switch.is_off: relay1
-          then:
-            - switch.toggle: relay1
-          else:
-            - script.execute: relay1_auto_off
-
 sensor:
   - platform: homeassistant
     id: stair_delay_minutes
