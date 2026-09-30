@@ -104,13 +104,6 @@ esphome:
           args:
             - 'id(dark_outside).state.c_str()'
 
-wifi:
-  manual_ip:
-    gateway: !secret chaloupkaabode_gateway
-    subnet: !secret chaloupkaabode_subnet
-    static_ip: !secret garage_side_IP
-    dns1: !secret chaloupkaabode_gateway
-
 status_led:
   pin:
     number: GPIO13
