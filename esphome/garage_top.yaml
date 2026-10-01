@@ -116,19 +116,19 @@ text_sensor:
     entity_id: binary_sensor.dark_outside
     internal: true
 
-  - platform: homeassistant
-    id: light_state
-    entity_id: light.outside_garage_side_garage_side_light
-    internal: true
-    on_value:
-      - if:
-          condition:
-            lambda: return x == "on";
-          then:
-            - light.turn_on: light_1
-          else:
-            - if:
-                condition:
-                  lambda: return x == "off";
-                then:
-                  - light.turn_off: light_1
+  # - platform: homeassistant
+  #   id: light_state
+  #   entity_id: light.outside_garage_side_garage_side_light
+  #   internal: true
+  #   on_value:
+  #     - if:
+  #         condition:
+  #           lambda: return x == "on";
+  #         then:
+  #           - light.turn_on: light_1
+  #         else:
+  #           - if:
+  #               condition:
+  #                 lambda: return x == "off";
+  #               then:
+  #                 - light.turn_off: light_1
