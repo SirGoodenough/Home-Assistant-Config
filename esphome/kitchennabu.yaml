@@ -13,6 +13,7 @@ packages:
   follow_state: !include /config/esphome/packages/follow_state.yaml
   light_auto_off: !include /config/esphome/packages/timed_auto_off.yaml
   check_dark_out: !include /config/esphome/packages/check_dark_out.yaml
+
 # source: https://gist.github.com/EverythingSmartHome/055fbdde31a607ef9d695d5cac780e94
 #         https://www.youtube.com/watch?v=zhlIaBG3Ldo
 
