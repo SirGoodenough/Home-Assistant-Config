@@ -3,7 +3,7 @@ substitutions:
   name: garagefront
   friendly_name: Garage Front
   follow_this: light.garage_garage_back_garage_back_light
-  follow_light: light_1
+  sub_light: light_1
 
 packages:
   device_base: !include /config/esphome/packages/sg_8266_base.yaml
