@@ -5,7 +5,7 @@ substitutions:
   follow_this: light.outside_garage_side_garage_side_light
   this_light: light_1
   num_hlpr_minutes: input_number.outside_delay_minutes
-  
+  dar
 
 packages:
   device_base: !include /config/esphome/packages/sg_8266_base.yaml
