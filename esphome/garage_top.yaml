@@ -101,7 +101,7 @@ binary_sensor:
         pullup: true
       inverted: true
     on_press:
-#       - light.turn_on: light_1
+      - light.turn_on: light_1
 
 # text_sensor:
 #   - platform: homeassistant
