@@ -27,10 +27,6 @@ output:
     pin: GPIO12
     id: relay_1_gpio
 
-  - platform: template
-    type: binary
-    id: relay_1
-
 light:
   - platform: binary
     name: "${friendly_name} Light"
