@@ -39,7 +39,7 @@ light:
           action: script.turn_on
           data:
             entity_id: script.garage_chill
-      - light.turn_of: light_1
+      - light.turn_off: light_1
     restore_mode: RESTORE_DEFAULT_ON
 
 script:
