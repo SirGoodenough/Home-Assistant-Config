@@ -7,6 +7,7 @@ substitutions:
 
 packages:
   device_base: !include /config/esphome/packages/sg_8266_base.yaml
+  
 
 esphome:
   area: Garage
