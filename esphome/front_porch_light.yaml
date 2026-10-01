@@ -60,4 +60,3 @@ binary_sensor:
       inverted: true
     on_press:
       - light.turn_on: light_1
-
