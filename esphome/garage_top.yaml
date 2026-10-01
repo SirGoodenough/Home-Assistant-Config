@@ -29,10 +29,10 @@ status_led:
 
 output:
   - platform: gpio
-    pin: GPIO12
-    id: relay_1_gpio
-  - platform: template
-    type: binary
+  #   pin: GPIO12
+  #   id: relay_1_gpio
+  # - platform: template
+  #   type: binary
     id: relay_1
     write_action:
       - if:
