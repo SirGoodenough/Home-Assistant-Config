@@ -9,14 +9,6 @@ packages:
 esphome:
   area: Garage
   name_add_mac_suffix: false
-  on_boot:
-    priority: 600
-    then:
-      - logger.log:
-          level: INFO
-          format: "Boot values: dark_outside=%s"
-          args:
-            - 'id(dark_outside).state.c_str()'
 
 wifi:
   manual_ip:
