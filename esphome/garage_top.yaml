@@ -96,19 +96,19 @@ light:
 #           format: "Outside delay minutes: %.1f"
 #           args: ["x"]
 
-# binary_sensor:
-#   - platform: gpio
-#     id: button_1
-#     name: "${friendly_name} Switch"
-#     icon: "mdi:light-switch"
-#     pin:
-#       number: GPIO0
-#       mode:
-#         input: true
-#         pullup: true
-#       inverted: true
-#     on_press:
-#       - light.turn_on: light_1
+binary_sensor:
+  - platform: gpio
+    id: button_1
+    name: "${friendly_name} Switch"
+    icon: "mdi:light-switch"
+    pin:
+      number: GPIO0
+      mode:
+        input: true
+        pullup: true
+      inverted: true
+    on_press:
+      - light.turn_on: light_1
 
 text_sensor:
   - platform: homeassistant
