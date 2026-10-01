@@ -42,7 +42,7 @@ light:
           condition:
             lambda: return id(dark_outside).state != "off";
           then:
-            - script.execute: light_1_auto_off
+            - script.execute: light_auto_off
           else:
             - light.turn_off: light_1
     restore_mode: RESTORE_DEFAULT_ON
