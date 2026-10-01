@@ -43,6 +43,7 @@ light:
       - homeassistant.action:
           action: script.turn_on
           data:
+            # Reset the delay to default value when the light is turned off.
             entity_id: script.garage_chill
     restore_mode: RESTORE_DEFAULT_ON
 
