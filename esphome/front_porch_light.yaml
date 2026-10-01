@@ -31,19 +31,6 @@ output:
   - platform: gpio
     pin: GPIO12
     id: relay_1_gpio
-  - platform: template
-    type: binary
-    id: relay_1
-    write_action:
-      - if:
-          condition:
-            and:
-              - lambda: return id(dark_outside).state != "off";
-              - lambda: return state;
-          then:
-            - output.turn_on: relay_1_gpio
-          else:
-            - output.turn_off: relay_1_gpio
 
 light:
   - platform: binary
