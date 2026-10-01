@@ -30,7 +30,6 @@ output:
   - platform: template
     type: binary
     id: relay_1
-    write_action:
 
 light:
   - platform: binary
