@@ -2,7 +2,7 @@ substitutions:
   board: esp8285
   name: garageside
   friendly_name: Garage Side
-  follow_this: light.outside_garage_side_garage_side_light
+  follow_this: light.garage_garage_top_garage_top_light
   this_light: light_1
   num_hlpr_minutes: input_number.outside_delay_minutes
   bool_dark_sensor: binary_sensor.dark_outside
