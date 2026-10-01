@@ -90,4 +90,4 @@ text_sensor:
           then:
             - light.turn_on: light_1
           else:
-                  - light.turn_off: light_1
+            - light.turn_off: light_1
