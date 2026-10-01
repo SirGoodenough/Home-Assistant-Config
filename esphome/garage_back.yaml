@@ -92,4 +92,8 @@ text_sensor:
                 condition:
                   lambda: return x == "off";
                 then:
-                  - light.turn_off: light_1
+                  - if:
+                      condition:
+                        light.is_on: light_1
+                      then:
+                        - light.turn_off: light_1
