@@ -28,6 +28,7 @@ output:
     id: relay_1
 
 light:
+light:
   - platform: binary
     name: "${friendly_name} Light"
     id: light_1
