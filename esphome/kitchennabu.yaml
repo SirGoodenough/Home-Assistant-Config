@@ -4,7 +4,6 @@ substitutions:
   frame_type: esp-idf
   board: esp32dev
   this_light: light_1
-  num_hlpr_minutes: input_number.outside_delay_minutes
   bool_dark_sensor: binary_sensor.dark_outside
 
 packages:
