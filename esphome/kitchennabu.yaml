@@ -19,7 +19,22 @@ wifi:
 
 esphome:
   area: kitchen
-  name_add_mac_suffix: False
+  name_add_mac_suffix: false
+  # on_boot:
+  #   - priority: -100
+  #     then:
+  #       - wait_until: api.connected
+  #       - delay: 1s
+  #       - if:
+  #           condition:
+  #             switch.is_on: use_wake_word
+  #           then:
+  #             - voice_assistant.start_continuous:
+
+# i2s_audio:
+#   i2s_lrclk_pin: GPIO27
+#   i2s_bclk_pin: GPIO26
+
 binary_sensor:
   - platform: gpio
     pin: GPIO34
