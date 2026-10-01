@@ -55,7 +55,6 @@ light:
             entity_id: script.outside_chill
     restore_mode: RESTORE_DEFAULT_ON
 
-
 binary_sensor:
   - platform: gpio
     id: button_1
