@@ -2,9 +2,14 @@ substitutions:
   name: frontporchlight
   friendly_name: Front Porch Light
   board: esp8285
+  this_light: light_1
+  num_hlpr_minutes: input_number.outside_delay_minutes
+  bool_dark_sensor: binary_sensor.dark_outside
 
 packages:
   device_base: !include /config/esphome/packages/sg_8266_base.yaml
+  light_auto_off: !include /config/esphome/packages/timed_auto_off.yaml
+  check_dark_out: !include /config/esphome/packages/check_dark_out.yaml
 
 esphome:
   area: Outside
