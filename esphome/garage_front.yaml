@@ -78,11 +78,10 @@ binary_sensor:
     on_press:
       - light.turn_on: light_1
 
- 
 text_sensor:
   - platform: homeassistant
     id: light_state
-    entity_id: light.garage_garage_front_garage_front_light
+    entity_id: light.garage_garage_back_garage_front_light
     internal: true
     on_value:
       - if:
