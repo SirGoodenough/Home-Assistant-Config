@@ -11,9 +11,6 @@ packages:
   follow_state: !include /config/esphome/packages/follow_state.yaml
   light_auto_off: !include /config/esphome/packages/timed_auto_off.yaml
 
-packages:
-  device_base: !include /config/esphome/packages/sg_8266_base.yaml
-
 esphome:
   area: Outside
   name_add_mac_suffix: false
