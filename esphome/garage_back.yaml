@@ -2,9 +2,13 @@ substitutions:
   board: esp01_1m
   name: garageback
   friendly_name: Garage Back
+  follow_this: light.garage_garage_back_garage_back_light
+  follow_light: light_1
 
 packages:
   device_base: !include /config/esphome/packages/sg_8266_base.yaml
+  follow_state: !include /config/esphome/packages/follow_state.yaml
+
 
 esphome:
   area: Garage
