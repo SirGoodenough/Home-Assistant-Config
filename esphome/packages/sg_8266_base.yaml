@@ -66,9 +66,11 @@ sensor:
   # Uptime sensor (internal only).
   - platform: uptime
     id: sensor_uptime
+    entity_category: diagnostic
     
   # Uptime timestamp
   - platform: template
+    id: sensor_uptime_timestamp
     name: "Uptime"
     device_class: "timestamp"
     accuracy_decimals: 0
@@ -79,18 +81,24 @@ sensor:
       );
       return timestamp;
     entity_category: diagnostic
-    id: sensor_uptime_timestamp
 
   # WiFi Signal sensor.
   - platform: wifi_signal
     name: WiFi Signal
     icon: mdi:wifi-strength-2
-    update_interval: 60s
+    update_interval: 228s
+    entity_category: diagnostic
+
+binary_sensor:
+  - platform: status
+    name: "${friendly_name} Status"
+    entity_category: diagnostic
 
 button:
   - platform: safe_mode
     name: "Safe Mode Boot ${name} ${friendly_name}"
     entity_category: diagnostic
+
   - platform: restart
     name: "Restart ${name} ${friendly_name}"
     entity_category: diagnostic

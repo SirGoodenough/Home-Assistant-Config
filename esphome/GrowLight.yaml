@@ -1,0 +1,124 @@
+substitutions:
+  board: esp01_1m
+  name: growlight
+  friendly_name: GrowLight
+
+packages:
+  device_base: !include /config/esphome/packages/sg_8266_base.yaml
+
+esphome:
+  area: kitchen
+  name_add_mac_suffix: false
+
+wifi:
+  manual_ip:
+    gateway: !secret chaloupkaabode_gateway
+    subnet: !secret chaloupkaabode_subnet
+    static_ip: !secret growlight_IP
+    dns1: !secret chaloupkaabode_gateway
+
+sun:
+  id: waukesha_sun
+  time_id: time_homeassistant
+  latitude: 43.0117
+  longitude: -88.2315
+
+globals:
+  - id: growlight_schedule_on
+    type: bool
+    initial_value: "false"
+  - id: growlight_schedule_initialized
+    type: bool
+    initial_value: "false"
+
+interval:
+  - interval: 60s
+    then:
+      - if:
+          condition:
+            lambda: |-
+              const auto now = id(time_homeassistant).utcnow();
+              if (!now.is_valid()) {
+                return false;
+              }
+
+              bool should_be_on = false;
+              auto day_start = now;
+              day_start.hour = 0;
+              day_start.minute = 0;
+              day_start.second = 0;
+              day_start.recalc_timestamp_utc();
+
+              for (int day_offset = -1; day_offset <= 1; day_offset++) {
+                const auto event_day = esphome::ESPTime::from_epoch_utc(
+                    day_start.timestamp + day_offset * 86400);
+                const auto sunrise = id(waukesha_sun).sunrise(event_day, -0.833);
+                const auto sunset = id(waukesha_sun).sunset(event_day, -0.833);
+                if (!sunrise.has_value() || !sunset.has_value()) {
+                  continue;
+                }
+
+                if (now.timestamp >= sunrise->timestamp - 3600 &&
+                    now.timestamp < sunset->timestamp + 600) {
+                  should_be_on = true;
+                  break;
+                }
+              }
+
+              if (!id(growlight_schedule_initialized) ||
+                  should_be_on != id(growlight_schedule_on)) {
+                id(growlight_schedule_on) = should_be_on;
+                id(growlight_schedule_initialized) = true;
+                return true;
+              }
+
+              return false;
+          then:
+            - if:
+                condition:
+                  lambda: return id(growlight_schedule_on);
+                then:
+                  - light.turn_on: light_1
+                else:
+                  - light.turn_off: light_1
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO0
+      mode:
+        input: true
+        pullup: true
+      inverted: true
+    id: button_1
+    name: "${friendly_name} Button"
+    on_press:
+      then:
+        - light.toggle: light_1
+
+output:
+  - platform: gpio
+    pin: GPIO12
+    id: relay_1
+
+light:
+  - platform: binary
+    name: "${friendly_name} Light"
+    id: light_1
+    output: relay_1
+    on_turn_on:
+      - homeassistant.action:
+          action: light.turn_on
+          data:
+            entity_id: light.jennys_room_grow_window_light
+    on_turn_off:
+      - homeassistant.action:
+          action: light.turn_off
+          data:
+            entity_id: light.jennys_room_grow_window_light
+    restore_mode: RESTORE_DEFAULT_OFF
+
+status_led:
+  pin:
+    number: GPIO13
+    inverted: yes

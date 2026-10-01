@@ -142,7 +142,7 @@
       target:
         entity_id:
           - button.ez_restart_button_tasmota
-          - group.esphome_restart
+          - button.esphome_group_reset
     - delay: 00:00:22
     - alias: "Assume its dark- Prevents IDK state and lights not working"
       action: mqtt.publish
@@ -152,7 +152,7 @@
         retain: true
     - alias: Make sure Dust Collector is off
       action: switch.turn_off
-      entity_id: switch.dust_collector
+      entity_id: switch.basement_dust_collector_dust_collector_relay
     - alias: Make sure the Mayson Cool doesn't start by itself again
       action: input_boolean.turn_off
       target:

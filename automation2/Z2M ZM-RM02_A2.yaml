@@ -51,7 +51,7 @@
         - service: light.toggle
           data: {}
           target:
-            entity_id: light.fp_socket
+            entity_id: light.outside_front_porch_light_front_porch_light_light
       tap_6:
         - service: button.press
           data: {}

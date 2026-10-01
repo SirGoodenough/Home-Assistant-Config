@@ -85,7 +85,7 @@
       to: "on"
   actions:
     - action: light.toggle
-      entity_id: light.garagetop_light_switch
+      entity_id: light.garage_garage_top_garage_top_light
 
 - id: 58e44e55-e295-46e7-95bb-7e37208fa5ec
   alias: Garage button_dnremote9
@@ -96,7 +96,7 @@
       to: "on"
   actions:
     - action: light.toggle
-      entity_id: light.garagefront_light
+      entity_id: light.garage_garage_front_garage_front_light
 
 - id: b013a8fc-eacf-4249-96cf-bf0cfb8b8e87
   alias: Cabinet_light
@@ -171,7 +171,7 @@
       to: "on"
   actions:
     - action: light.turn_on
-      entity_id: light.fp_socket
+      entity_id: light.outside_front_porch_light_front_porch_light_light
 
 - id: 2635151e-3fbb-4fe5-b00c-55b9a0393753
   alias: Trigger Back Porch Light
@@ -182,7 +182,7 @@
       to: "on"
   actions:
     - action: light.turn_on
-      entity_id: light.b_porch_socket
+      entity_id: light.outside_back_porch_light_back_porch_light_light
 
 - id: 341558ae-4f1f-4796-8a89-1667571593d9
   alias: Trigger Basement Hall Light
@@ -194,8 +194,8 @@
   actions:
     - action: light.turn_on
       entity_id:
-        - light.bmt_hall_socketu
-        - light.bmt_hall_socketd
+        - light.basement_basement_stair_up_light_basement_stair_up_light_light
+        - light.basement_basement_stair_down_light_basement_stair_down_light_light
 
 - id: edaafacf-6c34-47d2-9dda-bcea8d4232a4
   alias: Broadcom Brick Reset

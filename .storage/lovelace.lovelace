@@ -10,10 +10,11 @@
           "badges": [],
           "cards": [
             {
+              "color": "state",
               "entities": [
                 {
                   "entity": "sensor.ethernettest_kitchen_temperature",
-                  "secondary_info": "last-updated"
+                  "secondary_info": "last_updated"
                 },
                 {
                   "entity": "sensor.yertle_device_temperature"
@@ -52,10 +53,10 @@
                   "entity": "switch.dishwasher"
                 },
                 {
-                  "entity": "light.growlight2"
+                  "entity": "light.kitchen_growlight_growlight_light"
                 },
                 {
-                  "entity": "light.grow_window_light"
+                  "entity": "light.jennys_room_grow_window_light"
                 },
                 {
                   "entity": "script.reset_nag"
@@ -69,8 +70,7 @@
               ],
               "show_header_toggle": false,
               "title": "Kitchen",
-              "type": "entities",
-              "state_color": true
+              "type": "entities"
             },
             {
               "color": "state",
@@ -217,7 +217,10 @@
                   "entity": "light.mary"
                 },
                 {
-                  "entity": "light.fp_socket"
+                  "entity": "light.outside_front_porch_light_front_porch_light_light"
+                },
+                {
+                  "entity": "light.outside_back_porch_light_back_porch_light_light"
                 },
                 {
                   "entity": "switch.mom_light_mom_light"
@@ -230,9 +233,6 @@
                 },
                 {
                   "entity": "fan.mary"
-                },
-                {
-                  "entity": "switch.bot_108e"
                 }
               ],
               "show_header_toggle": true,
@@ -405,10 +405,10 @@
                   "entity": "binary_sensor.side_door_open_433"
                 },
                 {
-                  "entity": "light.garagesidelight3"
+                  "entity": "light.outside_garage_side_light"
                 },
                 {
-                  "entity": "switch.yard_light_pir"
+                  "entity": "switch.garage_garage_door_garage_door_outside_pir"
                 }
               ],
               "title": "Glance",
@@ -574,6 +574,7 @@
               "forecast_slots": 7
             },
             {
+              "color": "state",
               "type": "entities",
               "entities": [
                 {
@@ -602,12 +603,8 @@
                 },
                 {
                   "entity": "switch.air_compressor_house_switch"
-                },
-                {
-                  "entity": "switch.bot_108e"
                 }
               ],
-              "state_color": true,
               "title": "House",
               "theme": "Fluent Slate"
             },
@@ -917,18 +914,19 @@
               "state_color": true
             },
             {
+              "color": "state",
               "entities": [
                 {
-                  "entity": "light.garagefront_light"
+                  "entity": "light.garage_garage_front_light"
                 },
                 {
-                  "entity": "light.garageback_light"
+                  "entity": "light.garage_garage_back_light"
                 },
                 {
-                  "entity": "light.b_porch_socket"
+                  "entity": "light.outside_back_porch_light_back_porch_light_light"
                 },
                 {
-                  "entity": "light.fp_socket"
+                  "entity": "light.outside_front_porch_light_front_porch_light_light"
                 },
                 {
                   "entity": "script.chill_time"
@@ -937,16 +935,16 @@
                   "entity": "sensor.garage_temperature"
                 },
                 {
-                  "entity": "sensor.garage_door_si7021_temperature"
+                  "entity": "sensor.garage_garage_door_garage_door_temperature"
                 },
                 {
                   "entity": "sensor.garage_humidity"
                 },
                 {
-                  "entity": "sensor.garage_door_si7021_humidity"
+                  "entity": "sensor.garage_garage_door_garage_door_humidity"
                 },
                 {
-                  "entity": "sensor.garage_door_si7021_dewpoint"
+                  "entity": "sensor.garage_garage_door_garage_door_dew_point"
                 },
                 {
                   "entity": "binary_sensor.yard_light_pir"
@@ -969,8 +967,7 @@
               ],
               "show_header_toggle": false,
               "title": "Garage",
-              "type": "entities",
-              "state_color": true
+              "type": "entities"
             },
             {
               "entities": [
@@ -1051,7 +1048,7 @@
                   "entity": "binary_sensor.dust_collector_button1"
                 },
                 {
-                  "entity": "switch.dust_collector"
+                  "entity": "switch.basement_dust_collector_dust_collector_relay"
                 },
                 {
                   "entity": "switch.sonoff_1000d4bf8f_1"
@@ -1536,7 +1533,7 @@
               "graph": "line",
               "hours_to_show": 24,
               "entity": "sensor.garage_door_si7021_temperature",
-              "theme": "sundown",
+              "theme": "Dark Yellow",
               "type": "sensor",
               "detail": 2,
               "icon": "mdi:garage"
@@ -1560,7 +1557,8 @@
               "graph": "line",
               "type": "sensor",
               "entity": "sensor.garage_temperature",
-              "detail": 2
+              "detail": 2,
+              "theme": "Dark Yellow"
             },
             {
               "type": "entities",
@@ -1598,7 +1596,8 @@
               "entity": "sensor.gw2000b_v2_2_4_outdoor_temperature",
               "detail": 2,
               "icon": "mdi:home-thermometer-outline",
-              "name": "Outside pole"
+              "name": "Outside pole",
+              "theme": "Dark Yellow"
             },
             {
               "graph": "line",
@@ -1607,7 +1606,8 @@
               "detail": 2,
               "name": "outside Feels Like",
               "icon": "mdi:home-thermometer",
-              "hours_to_show": 1
+              "hours_to_show": 1,
+              "theme": "Dark Yellow"
             }
           ],
           "icon": "mdi:thermometer-lines",
@@ -1699,7 +1699,8 @@
               "hours_to_show": 24,
               "type": "sensor",
               "entity": "sensor.gw2000b_v2_2_4_humidity",
-              "detail": 1
+              "detail": 1,
+              "theme": "Dark Yellow"
             },
             {
               "graph": "line",
@@ -1722,27 +1723,31 @@
               "entity": "sensor.garage_door_si7021_dewpoint",
               "type": "sensor",
               "detail": 1,
-              "name": "Garage Dewpoint"
+              "name": "Garage Dewpoint",
+              "theme": "Dark Yellow"
             },
             {
               "graph": "line",
               "hours_to_show": 24,
               "type": "sensor",
               "entity": "sensor.garage_door_si7021_humidity",
-              "detail": 1
+              "detail": 1,
+              "theme": "Dark Yellow"
             },
             {
               "graph": "line",
               "type": "sensor",
               "entity": "sensor.garage_humidity",
-              "detail": 1
+              "detail": 1,
+              "theme": "Dark Yellow"
             },
             {
               "graph": "line",
               "hours_to_show": 24,
               "type": "sensor",
               "entity": "sensor.gw2000b_v2_2_4_dewpoint",
-              "detail": 1
+              "detail": 1,
+              "theme": "Dark Yellow"
             }
           ],
           "icon": "mdi:water-percent",
@@ -1797,10 +1802,10 @@
             {
               "entities": [
                 {
-                  "entity": "light.garageback_light"
+                  "entity": "light.garage_garage_front_garage_front_light"
                 },
                 {
-                  "entity": "light.garagefront_light"
+                  "entity": "light.garage_garage_back_garage_back_light"
                 },
                 {
                   "entity": "script.chill_time"
@@ -1831,16 +1836,16 @@
             {
               "entities": [
                 {
-                  "entity": "light.b_porch_socket"
+                  "entity": "light.outside_front_porch_light_front_porch_light_light"
                 },
                 {
-                  "entity": "light.fp_socket"
+                  "entity": "light.outside_back_porch_light_back_porch_light_light"
                 },
                 {
-                  "entity": "light.garagetop_light"
+                  "entity": "light.garage_garage_top_garage_top_light"
                 },
                 {
-                  "entity": "light.garagesidelight3"
+                  "entity": "light.outside_garage_side_garage_side_light"
                 },
                 {
                   "entity": "script.party_time"
@@ -1903,7 +1908,7 @@
                   "entity": "light.bedroom_light"
                 },
                 {
-                  "entity": "light.stairway_light"
+                  "entity": "light.upstairs_stair_light_light"
                 },
                 {
                   "entity": "binary_sensor.upstairs_pir"
@@ -2028,140 +2033,6 @@
           "badges": [],
           "cards": [
             {
-              "type": "conditional",
-              "conditions": [
-                {
-                  "entity": "sensor.jim_sun",
-                  "state": "0"
-                }
-              ],
-              "card": {
-                "type": "picture",
-                "image": "https://x5skwl.duckdns.org:23218/local/images/GoofyJim.gif",
-                "tap_action": {
-                  "action": "call-service",
-                  "service": "script.sg_food_say",
-                  "service_data": {},
-                  "target": {}
-                },
-                "hold_action": {
-                  "action": "call-service",
-                  "service": "script.sg_food_say2",
-                  "service_data": {},
-                  "target": {}
-                }
-              }
-            },
-            {
-              "type": "conditional",
-              "conditions": [
-                {
-                  "entity": "sensor.julie_food",
-                  "state": "0"
-                }
-              ],
-              "card": {
-                "type": "picture",
-                "image": "https://x5skwl.duckdns.org:23218/local/images/QueenJulie.gif",
-                "tap_action": {
-                  "action": "call-service",
-                  "service": "script.julie_food_say",
-                  "service_data": {},
-                  "target": {}
-                },
-                "hold_action": {
-                  "action": "call-service",
-                  "service": "script.julie_food_say2",
-                  "service_data": {},
-                  "target": {}
-                }
-              }
-            },
-            {
-              "type": "conditional",
-              "conditions": [
-                {
-                  "entity": "sensor.jim_sat",
-                  "state": "0"
-                }
-              ],
-              "card": {
-                "type": "picture",
-                "image": "https://x5skwl.duckdns.org:23218/local/images/GoofyJim.gif",
-                "tap_action": {
-                  "action": "call-service",
-                  "service": "script.sg_food_say",
-                  "service_data": {},
-                  "target": {}
-                },
-                "hold_action": {
-                  "action": "call-service",
-                  "service": "script.sg_food_say2",
-                  "service_data": {},
-                  "target": {}
-                }
-              }
-            },
-            {
-              "type": "conditional",
-              "conditions": [
-                {
-                  "entity": "sensor.julie_food_2",
-                  "state": "0"
-                }
-              ],
-              "card": {
-                "type": "picture",
-                "image": "https://x5skwl.duckdns.org:23218/local/images/QueenJulie.gif",
-                "tap_action": {
-                  "action": "call-service",
-                  "service": "script.julie_food_say",
-                  "service_data": {},
-                  "target": {}
-                },
-                "hold_action": {
-                  "action": "call-service",
-                  "service": "script.julie_food_say2",
-                  "service_data": {},
-                  "target": {}
-                }
-              }
-            },
-            {
-              "type": "glance",
-              "entities": [
-                {
-                  "entity": "sensor.jen_food"
-                },
-                {
-                  "entity": "sensor.jen_food_2"
-                },
-                {
-                  "entity": "sensor.jim_sat"
-                },
-                {
-                  "entity": "sensor.jim_sun"
-                },
-                {
-                  "entity": "sensor.julie_food"
-                },
-                {
-                  "entity": "sensor.julie_food_2"
-                }
-              ],
-              "state_color": true,
-              "columns": 6,
-              "theme": "Dark - Red",
-              "title": "Take-Out Schedule"
-            },
-            {
-              "type": "calendar",
-              "entities": [
-                "calendar.garbage_collection"
-              ],
-              "initial_view": "dayGridMonth"
-            },
-            {
               "type": "entities",
               "entities": [
                 {
@@ -2190,19 +2061,10 @@
             {
               "entities": [
                 {
-                  "entity": "lock.smart_code_with_home_connect_technology"
-                },
-                {
                   "entity": "light.b_porch_socket"
                 },
                 {
                   "entity": "sensor.template_lock_back_door_mode"
-                },
-                {
-                  "entity": "sensor.smart_code_with_home_connect_technology_alarmtype"
-                },
-                {
-                  "entity": "sensor.smart_code_with_home_connect_technology_alarmlevel"
                 },
                 {
                   "entity": "binary_sensor.back_door_pir"
@@ -2246,10 +2108,10 @@
                   "entity": "lock.side_door"
                 },
                 {
-                  "entity": "light.bmt_hall_rf_socket_u"
+                  "entity": "light.basement_basement_stair_up_light_light"
                 },
                 {
-                  "entity": "light.bmt_hall_rf_socket_d"
+                  "entity": "light.basement_basement_stair_down_light_light"
                 },
                 {
                   "entity": "binary_sensor.basement_way_u_pir"
@@ -2281,9 +2143,6 @@
                 },
                 {
                   "entity": "binary_sensor.garage_side_door_open"
-                },
-                {
-                  "entity": "binary_sensor.side_door_open"
                 },
                 {
                   "entity": "binary_sensor.side_door_open_433"
@@ -2331,9 +2190,6 @@
                   "entity": "lock.side_door"
                 },
                 {
-                  "entity": "lock.smart_code_with_home_connect_technology"
-                },
-                {
                   "entity": "input_boolean.pad_enable"
                 },
                 {
@@ -2353,36 +2209,6 @@
                 }
               ],
               "columns": 3
-            },
-            {
-              "type": "glance",
-              "entities": [
-                {
-                  "entity": "binary_sensor.pad_8"
-                },
-                {
-                  "entity": "binary_sensor.pad_c"
-                },
-                {
-                  "entity": "binary_sensor.pad_4"
-                },
-                {
-                  "entity": "binary_sensor.pad_9"
-                },
-                {
-                  "entity": "binary_sensor.pad_2"
-                },
-                {
-                  "entity": "binary_sensor.pad_5"
-                },
-                {
-                  "entity": "binary_sensor.pad_1"
-                },
-                {
-                  "entity": "binary_sensor.pad_3"
-                }
-              ],
-              "columns": 2
             },
             {
               "type": "button",
@@ -2648,10 +2474,6 @@
                   "name": "Enable camera"
                 },
                 {
-                  "entity": "switch.p1s_01p00c4c2100641_load_model_data_from_printer",
-                  "name": "Load model data from printer"
-                },
-                {
                   "entity": "button.p1s_01p00c4c2100641_pause_printing",
                   "name": "Pause printing"
                 },
@@ -2682,10 +2504,6 @@
                     {
                       "entity": "sensor.p1s_01p00c4c2100641_active_tray",
                       "name": "Active tray"
-                    },
-                    {
-                      "entity": "sensor.p1s_01p00c4c2100641_active_tray_index",
-                      "name": "Active tray index"
                     },
                     {
                       "entity": "sensor.p1s_01p00c4c2100641_aux_fan_speed",
@@ -3409,12 +3227,6 @@
                   "entity": "sensor.food_center_button_battery"
                 },
                 {
-                  "entity": "sensor.sm_s906u_battery_level"
-                },
-                {
-                  "entity": "sensor.jens_window_curtain_battery"
-                },
-                {
                   "entity": "sensor.twentyrwomom_battery_state"
                 }
               ],
@@ -3441,10 +3253,6 @@
                 {
                   "entity": "binary_sensor.chaloupkaabode_weather_battery_8",
                   "name": "Battery 8"
-                },
-                {
-                  "entity": "sensor.chaloupkaabode_weather_soil_battery_1",
-                  "name": "Soil Battery 1"
                 },
                 {
                   "entity": "sensor.chaloupkaabode_weather_soil_battery_2",
@@ -3483,441 +3291,12 @@
           "badges": [],
           "cards": [
             {
-              "entity": "sensor.b_porch_socket_rssi",
-              "max": 100,
-              "min": 0,
-              "severity": {
-                "green": 70,
-                "red": 30,
-                "yellow": 50
-              },
-              "theme": "default",
-              "type": "gauge",
-              "needle": true
-            },
-            {
-              "type": "gauge",
-              "entity": "sensor.garagesidelight3_rssi",
-              "min": 0,
-              "max": 100,
-              "severity": {
-                "green": 70,
-                "yellow": 50,
-                "red": 30
-              },
-              "needle": true
-            },
-            {
-              "entity": "sensor.bmt_hall_rf_socket_d_rssi",
-              "max": 100,
-              "min": 0,
-              "severity": {
-                "green": 70,
-                "red": 30,
-                "yellow": 50
-              },
-              "theme": "default",
-              "type": "gauge",
-              "needle": true
-            },
-            {
-              "entity": "sensor.bedroom_fan_rssi",
-              "max": 100,
-              "min": 0,
-              "severity": {
-                "green": 70,
-                "red": 30,
-                "yellow": 50
-              },
-              "theme": "default",
-              "type": "gauge",
-              "needle": true
-            },
-            {
-              "entity": "sensor.garagefront_light_rssi",
-              "max": 100,
-              "min": 0,
-              "severity": {
-                "green": 70,
-                "red": 30,
-                "yellow": 50
-              },
-              "theme": "default",
-              "type": "gauge",
-              "needle": true
-            },
-            {
-              "entity": "sensor.fp_rf_relay_rssi",
-              "max": 100,
-              "min": 0,
-              "severity": {
-                "green": 70,
-                "red": 30,
-                "yellow": 50
-              },
-              "theme": "default",
-              "type": "gauge",
-              "needle": true
-            },
-            {
-              "entity": "sensor.bmt_hall_rf_socket_u_rssi",
-              "max": 100,
-              "min": 0,
-              "severity": {
-                "green": 70,
-                "red": 30,
-                "yellow": 50
-              },
-              "theme": "default",
-              "type": "gauge",
-              "needle": true
-            },
-            {
-              "entity": "sensor.sidelock_rssi",
-              "max": 100,
-              "min": 0,
-              "severity": {
-                "green": 70,
-                "red": 30,
-                "yellow": 50
-              },
-              "theme": "default",
-              "type": "gauge",
-              "needle": true
-            },
-            {
-              "entity": "sensor.garageback_light_rssi",
-              "max": 100,
-              "min": 0,
-              "severity": {
-                "green": 70,
-                "red": 30,
-                "yellow": 50
-              },
-              "theme": "default",
-              "type": "gauge",
-              "needle": true
-            },
-            {
-              "entity": "sensor.wash_machine_rssi",
-              "max": 100,
-              "min": 0,
-              "severity": {
-                "green": 70,
-                "red": 30,
-                "yellow": 50
-              },
-              "theme": "default",
-              "type": "gauge",
-              "needle": true
-            },
-            {
-              "entity": "sensor.garagetop_light_rssi",
-              "max": 100,
-              "min": 0,
-              "severity": {
-                "green": 70,
-                "red": 30,
-                "yellow": 50
-              },
-              "theme": "default",
-              "type": "gauge",
-              "needle": true
-            },
-            {
-              "type": "gauge",
-              "entity": "sensor.plug3_rssi",
-              "min": 0,
-              "max": 100,
-              "severity": {
-                "green": 70,
-                "yellow": 50,
-                "red": 30
-              },
-              "name": "Office Light Mom RSSI",
-              "needle": true
-            },
-            {
-              "entity": "sensor.dust_collector_rssi",
-              "max": 100,
-              "min": 0,
-              "severity": {
-                "green": 70,
-                "red": 30,
-                "yellow": 50
-              },
-              "theme": "default",
-              "type": "gauge",
-              "needle": true
-            },
-            {
-              "entity": "sensor.sonoff_rf_bridge_1_rssi",
-              "max": 100,
-              "min": 0,
-              "severity": {
-                "green": 70,
-                "red": 30,
-                "yellow": 50
-              },
-              "theme": "default",
-              "type": "gauge",
-              "needle": true
-            },
-            {
-              "entity": "sensor.kitchenfan_rssi",
-              "max": 100,
-              "min": 0,
-              "severity": {
-                "green": 70,
-                "red": 30,
-                "yellow": 50
-              },
-              "theme": "default",
-              "type": "gauge",
-              "needle": true
-            },
-            {
-              "entity": "sensor.jens_new_fan_rssi",
-              "max": 100,
-              "min": 0,
-              "severity": {
-                "green": 70,
-                "red": 30,
-                "yellow": 50
-              },
-              "theme": "default",
-              "type": "gauge",
-              "needle": true
-            },
-            {
-              "entity": "sensor.kitchensink_rssi",
-              "max": 100,
-              "min": 0,
-              "severity": {
-                "green": 70,
-                "red": 30,
-                "yellow": 50
-              },
-              "theme": "default",
-              "type": "gauge",
-              "needle": true
-            },
-            {
-              "type": "gauge",
-              "entity": "sensor.sonoff_rf_bridge_1_rssi",
-              "min": 0,
-              "max": 100,
-              "name": "Garage Bridge RSSI",
-              "severity": {
-                "green": 70,
-                "yellow": 50,
-                "red": 30
-              },
-              "needle": true
-            },
-            {
-              "entity": "sensor.sonoff_rf_bridge_2_rssi",
-              "max": 100,
-              "min": 0,
-              "severity": {
-                "green": 70,
-                "red": 30,
-                "yellow": 50
-              },
-              "theme": "default",
-              "type": "gauge",
-              "needle": true
-            },
-            {
-              "entity": "sensor.jensneb_rssi",
-              "max": 100,
-              "min": 0,
-              "severity": {
-                "green": 70,
-                "red": 30,
-                "yellow": 50
-              },
-              "theme": "default",
-              "type": "gauge",
-              "needle": true
-            },
-            {
-              "entity": "sensor.serverstrip_rssi",
-              "max": 100,
-              "min": 0,
-              "severity": {
-                "green": 70,
-                "red": 30,
-                "yellow": 50
-              },
-              "theme": "default",
-              "type": "gauge",
-              "needle": true
-            },
-            {
-              "entity": "sensor.livingroomlight_rssi",
-              "max": 100,
-              "min": 0,
-              "severity": {
-                "green": 70,
-                "red": 30,
-                "yellow": 50
-              },
-              "theme": "default",
-              "type": "gauge",
-              "needle": true
-            },
-            {
-              "entity": "sensor.garage_door_rssi",
-              "max": 100,
-              "min": 0,
-              "severity": {
-                "green": 70,
-                "red": 30,
-                "yellow": 50
-              },
-              "theme": "default",
-              "type": "gauge",
-              "needle": true
-            },
-            {
-              "type": "gauge",
-              "entity": "sensor.benchstrip_rssi",
-              "min": 0,
-              "max": 100,
-              "severity": {
-                "green": 70,
-                "yellow": 50,
-                "red": 30
-              },
-              "needle": true
-            },
-            {
-              "type": "gauge",
-              "entity": "sensor.cabinetlight_rssi",
-              "min": 0,
-              "max": 100,
-              "needle": true,
-              "severity": {
-                "green": 70,
-                "yellow": 50,
-                "red": 30
-              }
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "sensor.bulb1_signal"
-                },
-                {
-                  "entity": "sensor.jens_new_fan_signal"
-                },
-                {
-                  "entity": "sensor.plug2_signal"
-                },
-                {
-                  "entity": "sensor.plug3_signal"
-                },
-                {
-                  "entity": "sensor.sidelock_signal"
-                },
-                {
-                  "entity": "sensor.jensneb_signal"
-                },
-                {
-                  "entity": "sensor.benchstrip_signal"
-                },
-                {
-                  "entity": "sensor.growlight2_signal"
-                },
-                {
-                  "entity": "sensor.kitchenfan_signal"
-                },
-                {
-                  "entity": "sensor.office_fan_signal"
-                },
-                {
-                  "entity": "sensor.bedroom_fan_signal"
-                },
-                {
-                  "entity": "sensor.fp_rf_relay_signal"
-                },
-                {
-                  "entity": "sensor.garage_door_signal"
-                },
-                {
-                  "entity": "sensor.kitchensink_signal"
-                },
-                {
-                  "entity": "sensor.serverstrip_signal"
-                },
-                {
-                  "entity": "sensor.cabinetlight_signal"
-                },
-                {
-                  "entity": "sensor.wash_machine_signal"
-                },
-                {
-                  "entity": "sensor.stairtoplight_signal"
-                },
-                {
-                  "entity": "sensor.b_porch_socket_signal"
-                },
-                {
-                  "entity": "sensor.back_door_wifi_signal_strength"
-                },
-                {
-                  "entity": "sensor.garagetop_light_signal"
-                },
-                {
-                  "entity": "sensor.livingroomlight_signal"
-                },
-                {
-                  "entity": "sensor.front_door_wifi_signal_strength"
-                },
-                {
-                  "entity": "sensor.garageback_light_signal"
-                },
-                {
-                  "entity": "sensor.garagesidelight3_signal"
-                },
-                {
-                  "entity": "sensor.garagefront_light_signal"
-                },
-                {
-                  "entity": "sensor.sonoff_rf_bridge_1_signal"
-                },
-                {
-                  "entity": "sensor.sonoff_rf_bridge_2_signal"
-                },
-                {
-                  "entity": "sensor.bmt_hall_rf_socket_d_signal"
-                },
-                {
-                  "entity": "sensor.bmt_hall_rf_socket_u_signal"
-                }
-              ]
-            }
-          ],
-          "icon": "mdi:signal-variant",
-          "panel": false,
-          "path": "signals",
-          "title": "Signals"
-        },
-        {
-          "badges": [],
-          "cards": [
-            {
               "entity": "sensor.sun_state",
               "hours_to_show": 36,
               "type": "sensor"
             },
             {
               "entities": [
-                {
-                  "entity": "switch.smart_plug_with_two_usb_ports"
-                },
                 {
                   "entity": "switch.sonoff_1000d4bf8f_1"
                 },
@@ -4179,11 +3558,11 @@
                   "entity": "light.fp_socket"
                 },
                 {
-                  "entity": "light.garagetop_light"
+                  "entity": "light.garage_garage_top_light"
                 },
                 {
-                  "entity": "light.garagesidelight3",
-                  "secondary_info": "last-changed"
+                  "entity": "light.outside_garage_side_light",
+                  "secondary_info": "last_changed"
                 },
                 {
                   "entity": "script.garage_outside_lights_on"
@@ -4196,7 +3575,7 @@
                 },
                 {
                   "entity": "binary_sensor.yard_light_pir",
-                  "secondary_info": "last-changed"
+                  "secondary_info": "last_changed"
                 },
                 {
                   "entity": "binary_sensor.back_door_motion"
@@ -4282,12 +3661,6 @@
                 }
               ],
               "title": "ThermoPI Furnace"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                "input_datetime.testit"
-              ]
             }
           ]
         },

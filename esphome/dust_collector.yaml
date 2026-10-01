@@ -1,0 +1,89 @@
+# These substitutions allow for easy renaming
+substitutions:
+  name: dustcollector
+  friendly_name: Dust Collector
+  board: esp01_1m
+  update_interval: 207s
+
+packages:
+  device_base: !include /config/esphome/packages/sg_8266_base.yaml
+
+esphome:
+  area: Basement
+  name_add_mac_suffix: False
+
+wifi:
+  manual_ip:
+    gateway: !secret chaloupkaabode_gateway
+    subnet: !secret chaloupkaabode_subnet
+    static_ip: !secret dust_collector_IP
+    dns1: !secret chaloupkaabode_gateway
+
+sensor:
+  - platform: dht
+    model: Si7021
+    pin: GPIO14
+
+    humidity:
+      name: "${friendly_name} Humidity"
+      id: humidity
+      state_class: measurement
+
+    temperature:
+      name: "${friendly_name} Temperature"
+      id: temperature
+      state_class: measurement
+    update_interval: ${update_interval}
+
+  - platform: dew_point
+    name: "${friendly_name} Dew Point"
+    temperature: temperature
+    humidity: humidity
+    state_class: measurement
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO0
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "${friendly_name} Button_1"
+    on_press:
+      - switch.toggle: th1x_relay
+
+output:
+  - platform: esp8266_pwm
+    id: blue_led
+    pin:
+      number: GPIO13
+      inverted: True
+
+  - platform: gpio
+    id: relay
+    pin: GPIO12
+
+light:
+  - platform: monochromatic
+    name: "${friendly_name} Blue LED"
+    id: bblue_led
+    restore_mode: RESTORE_DEFAULT_OFF
+    output: blue_led
+
+script:
+  - id: relay_max_runtime
+    mode: restart
+    then:
+      - delay: 37min
+      - switch.turn_off: th1x_relay
+
+switch:
+  - platform: output
+    name: "${friendly_name} Relay"
+    id: th1x_relay
+    output: relay
+    restore_mode: ALWAYS_OFF
+    on_turn_on:
+      - script.execute: relay_max_runtime
+    on_turn_off:
+      - script.stop: relay_max_runtime
+      - switch.turn_off: th1x_relay

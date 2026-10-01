@@ -1,0 +1,129 @@
+substitutions:
+  board: esp01_1m
+  name: garagetop
+  friendly_name: Garage Top
+
+packages:
+  device_base: !include /config/esphome/packages/sg_8266_base.yaml
+
+esphome:
+  area: Outside
+  name_add_mac_suffix: false
+  on_boot:
+    priority: 600
+    then:
+      - logger.log:
+          level: INFO
+          format: "Boot values: dark_outside=%s"
+          args:
+            - 'id(dark_outside).state.c_str()'
+
+wifi:
+  manual_ip:
+    gateway: !secret chaloupkaabode_gateway
+    subnet: !secret chaloupkaabode_subnet
+    static_ip: !secret garage_top_IP
+    dns1: !secret chaloupkaabode_gateway
+
+status_led:
+  pin:
+    number: GPIO13
+    inverted: true
+
+output:
+  - platform: gpio
+    pin: GPIO12
+    id: relay_1_gpio
+  - platform: template
+    type: binary
+    id: relay_1
+    write_action:
+      - if:
+          condition:
+            and:
+              - lambda: return id(dark_outside).state != "off";
+              - lambda: return state;
+          then:
+            - output.turn_on: relay_1_gpio
+          else:
+            - output.turn_off: relay_1_gpio
+
+light:
+  - platform: binary
+    name: "${friendly_name} Light"
+    id: light_1
+    output: relay_1
+    on_turn_on:
+      - if:
+          condition:
+            lambda: return id(dark_outside).state != "off";
+          then:
+            - script.execute: light_1_auto_off
+          else:
+            - light.turn_off: light_1
+    on_turn_off:
+      - homeassistant.action:
+          action: script.turn_on
+          data:
+            entity_id: script.outside_chill
+    restore_mode: RESTORE_DEFAULT_ON
+
+script:
+  - id: light_1_auto_off
+    mode: restart
+    then:
+      - delay: !lambda |-
+          const float minutes = id(outside_delay_minutes).state;
+          if (isnan(minutes) || minutes <= 0.0f) {
+            return 8UL * 60UL * 1000UL;
+          }
+          return static_cast<uint32_t>(minutes * 60.0f * 1000.0f);
+      - light.turn_off: light_1
+
+sensor:
+  - platform: homeassistant
+    id: outside_delay_minutes
+    entity_id: input_number.outside_delay_minutes
+    internal: true
+    on_value:
+      - logger.log:
+          level: INFO
+          format: "Outside delay minutes: %.1f"
+          args: ["x"]
+
+binary_sensor:
+  - platform: gpio
+    id: button_1
+    name: "${friendly_name} Switch"
+    icon: "mdi:light-switch"
+    pin:
+      number: GPIO0
+      mode:
+        input: true
+        pullup: true
+      inverted: true
+    on_press:
+      - light.turn_on: light_1
+
+text_sensor:
+  - platform: homeassistant
+    id: dark_outside
+    entity_id: binary_sensor.dark_outside
+    internal: true
+
+  - platform: homeassistant
+    id: light_state
+    entity_id: light.outside_garage_side_garage_side_light
+    internal: true
+    on_value:
+      - if:
+          condition:
+            lambda: return x == "on";
+          then:
+            - light.turn_on: light_1
+          else:
+            - if:
+                condition:
+                  lambda: return x == "off";
+                then:
+                  - light.turn_off: light_1

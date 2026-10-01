@@ -1,0 +1,91 @@
+substitutions:
+  name: washer
+  friendly_name: Washer
+  board: esp01_1m
+  update_interval: 90s
+
+packages:
+  device_base: !include /config/esphome/packages/sg_8266_base.yaml
+
+esphome:
+  area: Basement
+  name_add_mac_suffix: False
+
+wifi:
+  manual_ip:
+    gateway: !secret chaloupkaabode_gateway
+    subnet: !secret chaloupkaabode_subnet
+    static_ip: !secret washer_IP
+    dns1: !secret chaloupkaabode_gateway
+
+binary_sensor:
+  - platform: gpio
+    id: button_1
+    pin:
+      number: GPIO0
+      mode: INPUT_PULLUP
+      inverted: True
+    name: ${friendly_name} Button_!
+    on_press:
+      - switch.toggle: relay
+
+switch:
+  - platform: gpio
+    id: relay
+    name: ${friendly_name} Relay_1
+    pin: GPIO12
+    restore_mode: ALWAYS_ON
+
+# the device has two LEDs: a red LED wired to the relay state and a blue 'wifi status' LED
+# status LED is active-low so will be lit when status is a-ok; invert to darken
+status_led:
+  pin:
+    number: GPIO13
+    #inverted: true
+
+# the CSE7766 voltage/current and power sensor is connected to the ESP via the ESP's UART (the
+# ESP8266 has only one)
+#  - this precludes logging via serial, so disable that
+#  - the CSE7766 emits data more frequently than desired (which in turn would be passed on by
+#    esphome); use a filter to slow down updates
+
+logger:
+  baud_rate: 0
+
+uart:
+  rx_pin: RX
+  baud_rate: 4800
+  parity: EVEN
+
+sensor:
+  - platform: cse7766
+    current:
+      name: "${friendly_name} Current"
+      accuracy_decimals: 3
+      filters:
+        - throttle_average: ${update_interval}
+    # voltage:
+    #   name: "${friendly_name} Voltage"
+    #   filters:
+    #     - throttle_average: ${update_interval}
+    #   internal: true
+    # power:
+    #   name: "${friendly_name} Power"
+    #   filters:
+    #     - throttle_average: ${update_interval}
+    #   internal: true
+    # energy:
+    #   name: "${friendly_name} Energy"
+    #   filters:
+    #     - throttle: ${update_interval}
+    #   internal: true
+    # apparent_power:
+    #   name: "${friendly_name} Apparent Power"
+    #   filters:
+    #     - throttle_average: ${update_interval}
+    #   internal: true
+    # power_factor:
+    #   name: "${friendly_name} Power Factor"
+    #   filters:
+    #     - throttle_average: ${update_interval}
+    #   internal: true

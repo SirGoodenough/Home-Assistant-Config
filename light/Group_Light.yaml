@@ -11,13 +11,15 @@
       - light.livingroomlight
       - light.kitchen_window
       - light.kitchen_down_lights
-      - light.b_porch_socket
-      - light.fp_socket
+      - light.outside_front_porch_light_front_porch_light_light
+      - light.outside_back_porch_light_back_porch_light_light
       - light.upstairs_stair_light_light
       - light.counter_1
       - light.counter_2
       - light.kitch_fan_2
       - light.kitch_fan_3
+      - light.basement_basement_stair_up_light_basement_stair_up_light_light
+      - light.basement_basement_stair_down_light_basement_stair_down_light_light
 
   - platform: group
     name: Dad Lights

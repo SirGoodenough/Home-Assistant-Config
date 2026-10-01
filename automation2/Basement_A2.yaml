@@ -14,7 +14,7 @@
       to: "on"
   actions:
     - action: switch.toggle
-      entity_id: switch.dust_collector
+      entity_id: switch.basement_dust_collector_dust_collector_relay
     - delay: 00:00:03
 
 - id: ead11d4f-da6c-4bc2-93a3-6500be201114
@@ -23,14 +23,14 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: switch.dust_collector
+      entity_id: switch.basement_dust_collector_dust_collector_relay
       to: "on"
   actions:
     - alias: Dust Collector Watchdog
       delay:
         minutes: 45
     - action: switch.turn_off
-      entity_id: switch.dust_collector
+      entity_id: switch.basement_dust_collector_dust_collector_relay
 
 ####################################################
 # Laundry                                          #

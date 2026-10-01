@@ -1,0 +1,91 @@
+substitutions:
+  board: esp01_1m
+  name: garagedoor
+  friendly_name: Garage Door
+  update_interval: 207s
+
+packages:
+  device_base: !include /config/esphome/packages/sg_8266_base.yaml
+
+esphome:
+  area: Garage
+  name_add_mac_suffix: false
+
+wifi:
+  manual_ip:
+    gateway: !secret chaloupkaabode_gateway
+    subnet: !secret chaloupkaabode_subnet
+    static_ip: !secret garage_door_IP
+    dns1: !secret chaloupkaabode_gateway
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO0
+      mode: INPUT_PULLUP
+      inverted: true
+    name: "${friendly_name} Button1"
+    on_press:
+      - switch.turn_on: relay1
+
+  - platform: gpio
+    pin:
+      number: GPIO5
+      mode: INPUT
+      inverted: true
+    name: "${friendly_name} PIR_Button"
+    filters:
+      - delayed_on: 10ms
+    on_press:
+      - switch.turn_on: pir
+    device_class: motion
+    icon: "mdi:motion-sensor"
+
+switch:
+  - platform: gpio
+    name: "${friendly_name} Overhead"
+    icon: "mdi:garage"
+    pin: GPIO12
+    id: relay1
+    on_turn_on:
+      - delay: 500ms
+      - switch.turn_off: relay1
+    restore_mode: ALWAYS_OFF
+
+  - platform: gpio
+    name: "${friendly_name} Outside PIR"
+    icon: "mdi:motion-sensor"
+    pin: GPIO4
+    id: pir
+    on_turn_on:
+      - homeassistant.action:
+          action: script.turn_on
+          data:
+            entity_id: script.garage_outside_lights_on
+      - delay: 500ms
+      - switch.turn_off: pir
+    restore_mode: ALWAYS_OFF
+
+status_led:
+  pin:
+    number: GPIO13
+
+sensor:
+  - platform: dht
+    model: Si7021
+    pin: GPIO14
+    humidity:
+      name: "${friendly_name} Humidity"
+      id: humidity
+      state_class: measurement
+    temperature:
+      name: "${friendly_name} Temperature"
+      id: temperature
+      state_class: measurement
+    update_interval: ${update_interval}
+
+  - platform: dew_point
+    name: "${friendly_name} Dew Point"
+    temperature: temperature
+    humidity: humidity
+    state_class: measurement

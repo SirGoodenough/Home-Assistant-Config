@@ -42,16 +42,6 @@
         "icon": "mdi:lock"
       },
       {
-        "min": 1.0,
-        "max": 100.0,
-        "name": "test target temp",
-        "icon": "mdi:thermometer",
-        "unit_of_measurement": " Degrees",
-        "step": 1.0,
-        "mode": "slider",
-        "id": "test_target_temp"
-      },
-      {
         "min": 65.0,
         "max": 90.0,
         "name": "Mayson Nap Temperature",
@@ -71,15 +61,6 @@
         "id": "gertle_last"
       },
       {
-        "id": "aaaaaatest_wh_control",
-        "min": 60.0,
-        "max": 145.0,
-        "name": "Water Heater Temp Control",
-        "icon": "mdi:thermostat",
-        "step": 5.0,
-        "mode": "slider"
-      },
-      {
         "id": "sprinkler_time",
         "min": 0.0,
         "max": 120.0,
@@ -89,23 +70,34 @@
         "step": 1.0
       },
       {
-        "id": "cottage_light_test",
-        "min": 0.0,
-        "max": 7.0,
-        "name": "Cottage light test",
-        "icon": "mdi:ab-testing",
-        "step": 1.0,
-        "mode": "slider"
-      },
-      {
         "id": "stair_delay_minutes",
         "min": 1.0,
         "max": 6000.0,
         "step": 0.1,
         "name": "stair_delay_minutes",
-        "icon": "mdi:numeric",
+        "icon": "mdi:timer",
         "mode": "box",
         "unit_of_measurement": "min"
+      },
+      {
+        "id": "outside_delay_minutes",
+        "min": 0.1,
+        "max": 6000.0,
+        "name": "outside_delay_minutes",
+        "icon": "mdi:timer",
+        "step": 0.1,
+        "unit_of_measurement": "min",
+        "mode": "slider"
+      },
+      {
+        "id": "garage_delay_minutes",
+        "min": 0.1,
+        "max": 6000.0,
+        "name": "garage_delay_minutes",
+        "icon": "mdi:timer",
+        "step": 0.1,
+        "unit_of_measurement": "min",
+        "mode": "slider"
       }
     ]
   }
