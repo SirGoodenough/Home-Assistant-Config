@@ -70,6 +70,7 @@ light:
       - homeassistant.action:
           action: script.turn_on
           data:
+            
             entity_id: script.outside_chill
     restore_mode: RESTORE_DEFAULT_ON
 
