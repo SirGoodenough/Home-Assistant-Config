@@ -61,8 +61,3 @@ binary_sensor:
     on_press:
       - light.turn_on: light_1
 
-text_sensor:
-  - platform: homeassistant
-    id: dark_outside
-    entity_id: binary_sensor.dark_outside
-    internal: true
