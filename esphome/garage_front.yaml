@@ -8,7 +8,7 @@ substitutions:
 packages:
   device_base: !include /config/esphome/packages/sg_8266_base.yaml
   follow_state: !include /config/esphome/packages/follow_state.yaml
-  
+  light
 
 esphome:
   area: Garage
