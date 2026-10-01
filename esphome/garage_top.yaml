@@ -2,7 +2,7 @@ substitutions:
   board: esp01_1m
   name: garagetop
   friendly_name: Garage Top
-  follow_this: light.garage_garage_back_garage_back_light
+  follow_this: 
   this_light: light_1
   num_hlpr_minutes: input_number.garage_delay_minutes
 
