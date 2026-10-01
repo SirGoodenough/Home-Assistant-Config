@@ -84,11 +84,6 @@ binary_sensor:
 
 text_sensor:
   - platform: homeassistant
-    id: dark_outside
-    entity_id: binary_sensor.dark_outside
-    internal: true
-
-  - platform: homeassistant
     id: light_state
     entity_id: light.garage_garage_front_garage_front_light
     internal: true
