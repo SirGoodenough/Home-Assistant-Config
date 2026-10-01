@@ -33,7 +33,7 @@ output:
   - platform: gpio
     pin: GPIO12
     id: relay_1
-    
+
 light:
   - platform: binary
     name: "${friendly_name} Light"
@@ -55,28 +55,6 @@ light:
             entity_id: script.outside_chill
     restore_mode: RESTORE_DEFAULT_ON
 
-# script:
-#   - id: light_1_auto_off
-#     mode: restart
-#     then:
-#       - delay: !lambda |-
-#           const float minutes = id(outside_delay_minutes).state;
-#           if (isnan(minutes) || minutes <= 0.0f) {
-#             return 8UL * 60UL * 1000UL;
-#           }
-#           return static_cast<uint32_t>(minutes * 60.0f * 1000.0f);
-#       - light.turn_off: light_1
-
-# sensor:
-#   - platform: homeassistant
-#     id: outside_delay_minutes
-#     entity_id: input_number.outside_delay_minutes
-#     internal: true
-#     on_value:
-#       - logger.log:
-#           level: INFO
-#           format: "Outside delay minutes: %.1f"
-#           args: ["x"]
 
 binary_sensor:
   - platform: gpio
@@ -91,26 +69,3 @@ binary_sensor:
       inverted: true
     on_press:
       - light.turn_on: light_1
-
-# text_sensor:
-#   - platform: homeassistant
-#     id: dark_outside
-#     entity_id: binary_sensor.dark_outside
-#     internal: true
-
-  # - platform: homeassistant
-  #   id: light_state
-  #   entity_id: light.garage_garage_top_garage_top_light
-  #   internal: true
-  #   on_value:
-  #     - if:
-  #         condition:
-  #           lambda: return x == "on";
-  #         then:
-  #           - light.turn_on: light_1
-  #         else:
-  #           - if:
-  #               condition:
-  #                 lambda: return x == "off";
-  #               then:
-  #                 - light.turn_off: light_1
