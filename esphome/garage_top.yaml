@@ -101,13 +101,13 @@ binary_sensor:
         pullup: true
       inverted: true
     on_press:
-      - light.turn_on: light_1
+#       - light.turn_on: light_1
 
-text_sensor:
-  - platform: homeassistant
-    id: dark_outside
-    entity_id: binary_sensor.dark_outside
-    internal: true
+# text_sensor:
+#   - platform: homeassistant
+#     id: dark_outside
+#     entity_id: binary_sensor.dark_outside
+#     internal: true
 
   # - platform: homeassistant
   #   id: light_state
