@@ -83,3 +83,4 @@ binary_sensor:
 #                         light.is_on: light_1
 #                       then:
 #                         - light.turn_off: light_1
+
