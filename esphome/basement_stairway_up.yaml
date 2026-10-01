@@ -109,7 +109,7 @@ text_sensor:
 
   - platform: homeassistant
     id: light_state
-    entity_id: light.garage_garage_top_garage_top_light
+    entity_id: light.basement_basement_stair_down_light_basement_stair_down_light_light
     internal: true
     on_value:
       - if:
