@@ -11,6 +11,7 @@ packages:
   device_base: !include /config/esphome/packages/sg_8266_base.yaml
   follow_state: !include /config/esphome/packages/follow_state.yaml
   light_auto_off: !include /config/esphome/packages/timed_auto_off.yaml
+  
 
 esphome:
   area: Outside
