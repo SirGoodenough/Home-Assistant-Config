@@ -2,6 +2,14 @@ substitutions:
   board: esp01_1m
   name: garagetop
   friendly_name: Garage Top
+  follow_this: light.garage_garage_back_garage_back_light
+  this_light: light_1
+  num_hlpr_minutes: input_number.garage_delay_minutes
+
+packages:
+  device_base: !include /config/esphome/packages/sg_8266_base.yaml
+  follow_state: !include /config/esphome/packages/follow_state.yaml
+  light_auto_off: !include /config/esphome/packages/timed_auto_off.yaml
 
 packages:
   device_base: !include /config/esphome/packages/sg_8266_base.yaml
