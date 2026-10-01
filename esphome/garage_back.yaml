@@ -88,7 +88,7 @@ text_sensor:
           then:
             - if:
                 condition:
-                  light.is_on: light_1
+                  light.is_off: light_1
                 then:
                   - light.turn_on: light_1
           else:
