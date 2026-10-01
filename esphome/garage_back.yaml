@@ -67,7 +67,7 @@ script:
 
 sensor:
   - platform: homeassistant
-    id: stair_delay_minutes
+    id: garage_delay_minutes
     entity_id: input_number.garage_delay_minutes
     internal: true
     on_value:
