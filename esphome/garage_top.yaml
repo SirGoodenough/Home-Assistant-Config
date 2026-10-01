@@ -70,7 +70,7 @@ light:
       - homeassistant.action:
           action: script.turn_on
           data:
-            # Reset
+            # Reset the delay to default
             entity_id: script.outside_chill
     restore_mode: RESTORE_DEFAULT_ON
 
