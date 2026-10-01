@@ -35,7 +35,6 @@ light:
     name: "${friendly_name} Light"
     id: light_1
     output: relay_1
-    
     on_turn_off:
       - homeassistant.action:
           action: script.turn_on
