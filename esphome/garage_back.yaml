@@ -2,7 +2,7 @@ substitutions:
   board: esp01_1m
   name: garageback
   friendly_name: Garage Back
-  follow_this: light.garage_garage_back_garage_back_light
+  follow_this: light.garage_garage_front_garage_front_light
   follow_light: light_1
 
 packages:
