@@ -26,7 +26,7 @@ binary_sensor:
       inverted: true
     name: "${friendly_name} Button1"
     on_press:
-      - switch.turn_on: relay1
+      - script.execute: pulse_garage_door
 
   - platform: gpio
     pin:
@@ -41,22 +41,33 @@ binary_sensor:
     device_class: motion
     icon: "mdi:motion-sensor"
 
-switch:
+output:
   - platform: gpio
-    name: "${friendly_name} Overhead"
-    icon: "mdi:garage"
     pin: GPIO12
-    id: relay1
-    on_turn_on:
-      - delay: 500ms
-      - switch.turn_off: relay1
-    restore_mode: ALWAYS_OFF
+    id: relay1_output
 
   - platform: gpio
+    pin: GPIO4
+    id: pir_output
+
+cover:
+  - platform: template
+    name: "${friendly_name} Overhead"
+    id: garage_cover
+    icon: "mdi:garage"
+    optimistic: true
+    assumed_state: true
+    open_action:
+      - script.execute: pulse_garage_door
+    close_action:
+      - script.execute: pulse_garage_door
+
+switch:
+  - platform: output
     name: "${friendly_name} Outside PIR"
     icon: "mdi:motion-sensor"
-    pin: GPIO4
     id: pir
+    output: pir_output
     on_turn_on:
       - homeassistant.action:
           action: script.turn_on
@@ -65,6 +76,13 @@ switch:
       - delay: 500ms
       - switch.turn_off: pir
     restore_mode: ALWAYS_OFF
+
+script:
+  - id: pulse_garage_door
+    then:
+      - output.turn_on: relay1_output
+      - delay: 500ms
+      - output.turn_off: relay1_output
 
 status_led:
   pin:
