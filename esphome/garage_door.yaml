@@ -26,7 +26,7 @@ binary_sensor:
       inverted: true
     name: "${friendly_name} Button1"
     on_press:
-      - script.execute: pulse_garage_door
+      - cover.toggle: garage_cover
 
   - platform: gpio
     pin:
