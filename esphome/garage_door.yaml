@@ -72,7 +72,7 @@ switch:
       - homeassistant.action:
           action: script.turn_on
           data:
-            entity_id: script.script.outside_lights_on
+            entity_id: script.outside_lights_on
       - delay: 500ms
       - switch.turn_off: pir
     restore_mode: ALWAYS_OFF
