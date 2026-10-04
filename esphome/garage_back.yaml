@@ -7,9 +7,9 @@ substitutions:
   num_hlpr_minutes: input_number.garage_delay_minutes
 
 packages:
-  device_base: !include /config/esphome/packages/sg_8266_base.yaml
-  follow_state: !include /config/esphome/packages/follow_state.yaml
-  light_auto_off: !include /config/esphome/packages/timed_auto_off.yaml
+  device_base: !include packages/sg_8266_base.yaml
+  follow_state: !include packages/follow_state.yaml
+  light_auto_off: !include packages/timed_auto_off.yaml
 
 esphome:
   area: Garage
