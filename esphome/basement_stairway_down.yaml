@@ -7,7 +7,7 @@ packages:
   device_base: !include /config/esphome/packages/sg_8266_base.yaml
 
 esphome:
-  area: Outside
+  area: OutsideBasement
   name_add_mac_suffix: false
   on_boot:
     priority: 600
