@@ -2,7 +2,7 @@ substitutions:
   name: testkitchen
   friendly_name: Gosund for testing
   board: esp01_1m
-  model: gosund
+  model: gosund outlet
 
 packages:
   device_base: !include /config/esphome/packages/sg_8266_base.yaml
