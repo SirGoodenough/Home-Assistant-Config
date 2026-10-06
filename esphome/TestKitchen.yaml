@@ -36,7 +36,7 @@ binary_sensor:
         then:
           on_press:
             then:
-              - light.toggle:
+              - switch.toggle:
                   id: relay
       - min_length: 500ms
         max_length: 10s
