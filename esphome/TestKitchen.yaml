@@ -23,7 +23,7 @@ wifi:
   manual_ip:
     gateway: !secret chaloupkaabode_gateway
     subnet: !secret chaloupkaabode_subnet
-    static_ip: !secret kitchen_IP
+    static_ip: ${IP}
     dns1: !secret chaloupkaabode_gateway
 
 binary_sensor:
