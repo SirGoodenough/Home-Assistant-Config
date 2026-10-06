@@ -35,7 +35,7 @@ binary_sensor:
         max_length: 350ms
         then:
           on_press:
-            - switch.toggle: th1x_relayet
+            - switch.toggle: th1x_relaye
       - min_length: 500ms
         max_length: 10s
         then:
