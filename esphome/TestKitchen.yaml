@@ -34,10 +34,8 @@ binary_sensor:
       - min_length: 50ms
         max_length: 350ms
         then:
-          - homeassistant.action:
-              action: switch.toggle
-              data: 
-                entity_id: switch.kitchen_outlet
+    on_press:
+      - switch.toggle: th1x_relayet
       - min_length: 500ms
         max_length: 10s
         then:
