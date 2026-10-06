@@ -10,6 +10,11 @@ packages:
 esphome:
   area: kitchen
   name_add_mac_suffix: false
+  devices:
+    - id: light_device
+      name: Light
+    - id: fan_device
+      name: Fan
 
 wifi:
   manual_ip:
