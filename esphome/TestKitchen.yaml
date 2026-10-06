@@ -11,7 +11,7 @@ esphome:
   area: kitchen
   name_add_mac_suffix: false
   devices:
-    - id: _device
+    - id: switch_device
       name: Light
     - id: fan_device
       name: Fan
