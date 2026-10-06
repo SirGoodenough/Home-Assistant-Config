@@ -36,7 +36,7 @@ binary_sensor:
         then:
           - homeassistant.action:
               action: switch.toggle
-              data:
+              data: 
       - min_length: 500ms
         max_length: 10s
         then:
@@ -48,7 +48,7 @@ binary_sensor:
 switch:
   - platform: gpio
     pin: GPIO14
-    id: relay
+    id: relay 
     name: "${friendly_name} Relay"
     icon: mdi:power-socket-us
     restore_mode: RESTORE_DEFAULT_OFF
