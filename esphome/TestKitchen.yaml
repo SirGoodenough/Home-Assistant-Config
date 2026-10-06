@@ -9,7 +9,7 @@ packages:
   device_base: !include packages/sg_8266_base.yaml
 
 esphome:
-  area: kitchen
+  area: ${area}
   name_add_mac_suffix: false
   devices:
     - id: switch_device
