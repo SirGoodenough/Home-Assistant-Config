@@ -14,7 +14,6 @@ esphome:
   devices:
     - id: switch_device
       name: "${friendly_name} GoSund Outlet"
-      area_id: ${area}
 
 wifi:
   manual_ip:
