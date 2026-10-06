@@ -42,7 +42,7 @@ binary_sensor:
         max_length: 10s
         then:
           - homeassistant.action:
-              action: light.turn_off
+              action: light.toggle
               data:
                 entity_id: light.grp_kitch
 
