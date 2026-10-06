@@ -53,6 +53,7 @@ switch:
     name: "${friendly_name} Relay"
     icon: mdi:power-socket-us
     restore_mode: RESTORE_DEFAULT_OFF
+    dev
 
 output:
   - platform: gpio
