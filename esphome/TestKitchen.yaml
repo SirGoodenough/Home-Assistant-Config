@@ -46,17 +46,10 @@ binary_sensor:
               data:
                 entity_id: light.grp_kitch
 
-switch:
+output:
   - platform: gpio
     pin: GPIO14
-    id: relay 
-    name: "${friendly_name} Relay"
-    icon: mdi:power-socket-us
-    restore_mode: RESTORE_DEFAULT_OFF
-    device_class: outlet
-    device_id: switch_device
-
-output:
+    id: relay_output
   - platform: gpio
     pin:
       number: GPIO12
@@ -67,6 +60,16 @@ light:
   - platform: binary
     name: "${friendly_name} LED 1"
     output: led_1
+
+switch:
+  - platform: output
+    output: relay_output
+    id: relay
+    name: "${friendly_name} Relay"
+    icon: mdi:power-socket-us
+    restore_mode: RESTORE_DEFAULT_OFF
+    device_class: outlet
+    device_id: switch_device
 
 status_led:
   pin:
