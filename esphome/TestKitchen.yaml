@@ -36,7 +36,7 @@ binary_sensor:
         then:
             action switch.toggle
             data:
-            relay
+              entity_id: switch.kitchen_outletid: 
       - min_length: 500ms
         max_length: 10s
         then:
