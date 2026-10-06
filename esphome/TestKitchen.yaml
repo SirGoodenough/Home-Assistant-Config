@@ -12,7 +12,7 @@ esphome:
   name_add_mac_suffix: false
   devices:
     - id: switch_device
-      name: ${friendly_name} 
+      name: ${friendly_name}  
 
 wifi:
   manual_ip:
