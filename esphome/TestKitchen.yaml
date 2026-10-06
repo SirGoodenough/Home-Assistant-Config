@@ -47,7 +47,7 @@ binary_sensor:
           - homeassistant.action:
               action: light.toggle
               data:
-                entity_id: light.grp_kitch
+                entity_id: light.kitch
 
 output:
   - platform: gpio
