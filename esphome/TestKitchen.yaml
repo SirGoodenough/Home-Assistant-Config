@@ -13,8 +13,6 @@ esphome:
   devices:
     - id: switch_device
       name: Switch
-    - id: fan_device
-      name: Fan
 
 wifi:
   manual_ip:
