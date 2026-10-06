@@ -34,9 +34,10 @@ binary_sensor:
       - min_length: 50ms
         max_length: 350ms
         then:
-            action switch.toggle
-            data:
-              entity_id: switch.kitchen_outletid: 
+    on_press:
+      then:
+        - light.toggle:
+            id: light_idoutletid: 
       - min_length: 500ms
         max_length: 10s
         then:
