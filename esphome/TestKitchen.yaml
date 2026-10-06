@@ -1,7 +1,7 @@
 substitutions:
   name: testkitchen
   friendly_name: Gosund for testing
-  area: 
+  area: Kitchen
   board: esp01_1m
   model: Gosund WP3 outlet
 
