@@ -35,9 +35,7 @@ binary_sensor:
         max_length: 350ms
         then:
           - homeassistant.action:
-              action: light.turn_on
-              data:
-                entity_id: light.grp_kitch
+              action: switch
       - min_length: 500ms
         max_length: 10s
         then:
