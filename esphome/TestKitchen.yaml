@@ -12,7 +12,7 @@ esphome:
   name_add_mac_suffix: false
   devices:
     - id: relay
-    name: "${friendly_name} Relay"
+      name: "${friendly_name} Relay"
 
 wifi:
   manual_ip:
