@@ -11,7 +11,7 @@ esphome:
   area: kitchen
   name_add_mac_suffix: false
   devices:
-    - id: switch_device
+    - id: switch_devicerelay
       name: UBA
 
 wifi:
