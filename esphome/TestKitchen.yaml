@@ -36,6 +36,7 @@ binary_sensor:
         then:
           - homeassistant.action:
               action: switch.toggle
+              data:
       - min_length: 500ms
         max_length: 10s
         then:
