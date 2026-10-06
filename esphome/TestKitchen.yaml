@@ -37,6 +37,7 @@ binary_sensor:
           - homeassistant.action:
               action: switch.toggle
               data: 
+                entity_id: switch.kitchen_outlet
       - min_length: 500ms
         max_length: 10s
         then:
