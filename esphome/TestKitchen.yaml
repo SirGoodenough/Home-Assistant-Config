@@ -11,8 +11,8 @@ esphome:
   area: kitchen
   name_add_mac_suffix: false
   devices:
-    - id: relay
-      name: "${friendly_name} Relay"
+    - id: switch_device
+      name: SwitUBAch
 
 wifi:
   manual_ip:
