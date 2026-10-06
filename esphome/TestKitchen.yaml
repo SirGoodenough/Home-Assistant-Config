@@ -34,7 +34,7 @@ binary_sensor:
       - min_length: 50ms
         max_length: 350ms
         then:
-          on_press:
+    
             - switch.toggle: relay
       - min_length: 500ms
         max_length: 10s
