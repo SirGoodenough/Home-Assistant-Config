@@ -89,7 +89,7 @@ lock:
     icon: "mdi:door-lock"
     id: side_lock
     device_class: outlet
-    device_id: switch_device
+    device_id: lock_device
     on_lock:
       then:
         - lambda: id(last_side_lock_locked) = true;
