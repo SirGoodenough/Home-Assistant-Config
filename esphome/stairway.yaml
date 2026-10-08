@@ -44,14 +44,14 @@ light:
     name: "${friendly_name} Light"
     id: light_1
     output: relay_1
-#     on_turn_on:
-#       - if:
-#           condition:
-#             lambda: return id(dark_outside).state != "off";
-#           then:
-#             - <turn on your light the way that is needed>
-#           else:
-#             - light.turn_off: light_1
+    on_turn_on:
+      - if:
+          condition:
+            lambda: return id(dark_outside).state != "off";
+          then:
+            - <turn on your light the way that is needed>
+          else:
+            - light.turn_off: light_1
     restore_mode: RESTORE_DEFAULT_ON
 
 binary_sensor:
