@@ -97,6 +97,10 @@ text_sensor:
           state: !lambda 'return x != "off";'
 
 
+
+
+
+
 output:
   - platform: gpio
     pin: GPIO12
