@@ -51,6 +51,7 @@ light:
     on_turn_off:
       - light.turn_off: light_1
     restore_mode: RESTORE_DEFAULT_ON
+    device_id: light_device
 
 binary_sensor:
   - platform: gpio
@@ -65,28 +66,3 @@ binary_sensor:
       inverted: true
     on_press:
       - light.turn_on: light_1
-
-
-
-text_sensor:
-  - platform: homeassistant
-    id: dark_outside
-    entity_id: binary_sensor.dark_outside
-    internal: true
-
-  - platform: homeassistant
-    id: light_state
-    entity_id: light.basement_basement_stair_up_light_basement_stair_up_light_light
-    internal: true
-    on_value:
-      - if:
-          condition:
-            lambda: return x == "on";
-          then:
-            - light.turn_on: light_1
-          else:
-            - if:
-                condition:
-                  lambda: return x == "off";
-                then:
-                  - light.turn_off: light_1
