@@ -36,7 +36,7 @@
       sequence:
       - action: script.random_color
         data:
-          light: light.grp_kitch
+          light: light.kitch
     - conditions:
       - condition: trigger
         id:
@@ -44,7 +44,7 @@
       sequence:
       - action: light.turn_off
         target:
-          entity_id: light.grp_kitch
+          entity_id: light.kitch
         data: {}
     - conditions:
       - condition: trigger
@@ -53,7 +53,7 @@
       sequence:
       - action: light.turn_on
         target:
-          entity_id: light.grp_kitch
+          entity_id: light.kitch
         data:
           kelvin: 1700
           brightness: 96.9

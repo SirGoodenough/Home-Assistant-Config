@@ -24,9 +24,9 @@
                   "type": "logbook",
                   "target": {
                     "entity_id": [
-                      "light.grp_kitch",
-                      "light.grp_mom_office",
-                      "light.grp_studio"
+                      "light.kitch",
+                      "light.mom_office",
+                      "light.studio"
                     ]
                   }
                 }

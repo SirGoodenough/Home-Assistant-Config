@@ -1,0 +1,22 @@
+
+# To include this you need your light to run this:
+
+#     on_turn_on:
+#       - if:
+#           condition:
+#             lambda: return id(dark_outside).state != "off";
+#           then:
+#             - <turn on your light the way that is needed>
+#           else:
+#             - light.turn_off: light_1
+
+# ${bool_dark_sensor} Is the Home Assistant sensor entity
+#             that holds the state of whether it is dark outside.
+
+
+text_sensor:
+  - platform: homeassistant
+    id: dark_outside
+    entity_id: ${bool_dark_sensor} 
+    internal: true
+    

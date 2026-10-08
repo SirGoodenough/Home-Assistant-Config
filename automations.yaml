@@ -53,7 +53,7 @@
   triggers:
   - trigger: state
     entity_id:
-    - light.mom_light
+    - light.moms_chair_moms_chair_light
     to: 'off'
     for:
       hours: 0
@@ -62,7 +62,7 @@
     id: Wax on
   - trigger: state
     entity_id:
-    - light.mom_light
+    - light.moms_chair_moms_chair_light
     to: 'on'
     for:
       hours: 0

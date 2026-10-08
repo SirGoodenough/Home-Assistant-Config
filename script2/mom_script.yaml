@@ -19,8 +19,8 @@ bedtime_button_mom:
 
     - action: light.turn_off
       entity_id:
-        - light.livingroomlight
-        - light.mom_light
+        - light.lr_light_lr_light_light
+        - light.moms_chair_moms_chair_light
     - action: input_boolean.turn_off
       entity_id:
         input_boolean.christmas
@@ -28,3 +28,23 @@ bedtime_button_mom:
         # - lock.front_door
         # - lock.side_door
         # - lock.smart_code_with_home_connect_technology
+
+
+#####################################################
+# General Light Control                             #
+#####################################################
+mom_office_lights:
+  alias: Mom Office Lights 
+  sequence:
+    - action: light.toggle
+      metadata: {}
+      target:
+        label_id: mom_office
+
+office_lights:
+  alias: Office Lights
+  sequence:
+    - action: light.toggle
+      metadata: {}
+      target:
+        label_id: office

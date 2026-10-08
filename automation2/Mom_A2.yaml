@@ -33,9 +33,9 @@
       to: "on"
   actions:
     - action: >-
-        {% if is_state('light.livingroomlight', 'on') %}
+        {% if is_state('light.lr_light_lr_light_light', 'on') %}
           homeassistant.turn_off
-        {% elif is_state('light.mom_light', 'on') %}
+        {% elif is_state('light.moms_chair_moms_chair_light', 'on') %}
           homeassistant.turn_off
         {% elif is_state('input_boolean.christmas', 'on') %}
           homeassistant.turn_off
@@ -43,8 +43,8 @@
           homeassistant.turn_on
         {% endif %}
       entity_id:
-        - light.livingroomlight
-        - light.mom_light
+        - light.lr_light_lr_light_light
+        - light.moms_chair_moms_chair_light
         - input_boolean.christmas
 
 - id: caa154ed-f3e4-4c88-9ddb-6fb1d9448623
@@ -56,4 +56,4 @@
       to: "on"
   actions:
     - action: light.toggle
-      entity_id: light.mom_light
+      entity_id: light.moms_chair_moms_chair_light

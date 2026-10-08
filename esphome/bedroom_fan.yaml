@@ -1,0 +1,131 @@
+substitutions:
+  board: esp01_1m
+  name: bedroomfan
+  friendly_name: Bedroom
+  area: Bedroom
+  IP: !secret bedroom_fan_IP
+  update_interval: 32s
+  model: Sonoff Ifan02
+
+packages:
+  device_base: !include packages/sg_8266_base.yaml
+
+esphome:
+  area:
+    id: ${area}
+    name: ${area}
+  name_add_mac_suffix: false
+  devices:
+    - id: fan_device
+      name: "${friendly_name} Fan"
+      area_id: ${area}
+    - id: light_device
+      name: "${friendly_name} light"
+      area_id: ${area}
+  on_boot: #This toggle thing makes sure the states get restored on reboot
+    priority: -100
+    then:
+      - delay: 200ms
+      - fan.toggle: ifan02_fan
+      - fan.toggle: ifan02_fan
+      - delay: 200ms
+      - light.toggle: ifan02_light
+      - delay: 1ms
+      - light.toggle: ifan02_light
+
+wifi:
+  manual_ip:
+    gateway: !secret chaloupkaabode_gateway
+    subnet: !secret chaloupkaabode_subnet
+    static_ip: ${IP}
+    dns1: !secret chaloupkaabode_gateway
+
+switch:
+  - platform: gpio
+    name: "${friendly_name} Fan 3 Relay"
+    pin: GPIO4
+    id: fan3sw
+    restore_mode: RESTORE_DEFAULT_OFF
+    internal: true
+  - platform: gpio
+    name: "${friendly_name} Fan 2 Relay"
+    pin: GPIO5
+    id: fan2sw
+    restore_mode: RESTORE_DEFAULT_OFF
+    internal: true
+  - platform: gpio
+    name: "${friendly_name} Fan 4 Relay"
+    pin: GPIO15
+    id: fan4sw
+    restore_mode: RESTORE_DEFAULT_OFF
+    internal: true
+
+output:
+  - platform: gpio
+    pin: GPIO12
+    id: lightrelay
+  - platform: template
+    type: float
+    id: fan_decode
+    write_action:
+      - lambda: |-
+          if (state < 0.25) {
+            id(fan2sw).turn_off();
+            id(fan3sw).turn_off();
+            id(fan4sw).turn_off();
+          }
+          else if (state < 0.5) {
+            id(fan2sw).turn_on();
+            id(fan3sw).turn_off();
+            id(fan4sw).turn_off();
+          }
+          else if (state < 0.75) {
+            id(fan2sw).turn_on();
+            id(fan3sw).turn_on();
+            id(fan4sw).turn_off();
+          }
+          else {
+            id(fan2sw).turn_on();
+            id(fan3sw).turn_off();
+            id(fan4sw).turn_on();
+          }
+
+light:
+  - platform: binary
+    name: "${friendly_name} Light"
+    output: lightrelay
+    restore_mode: RESTORE_DEFAULT_OFF
+    id: ifan02_light
+    device_id: light_device
+
+sensor:
+  - platform: dht
+    model: Si7021
+    pin: GPIO3
+
+    humidity:
+      name: "${friendly_name} Humidity"
+      id: humidity
+      state_class: measurement
+
+    temperature:
+      name: "${friendly_name} Temperature"
+      id: temperature
+      state_class: measurement
+    update_interval: ${update_interval}
+
+  - platform: dew_point
+    name: "${friendly_name} Dew Point"
+    temperature: temperature
+    humidity: humidity
+    state_class: measurement
+
+fan:
+  - platform: speed
+    output: fan_decode
+    name: "${friendly_name} Fan"
+    icon: mdi:fan
+    restore_mode: RESTORE_DEFAULT_OFF
+    speed_count: 3
+    id: ifan02_fan
+    device_id: fan_device

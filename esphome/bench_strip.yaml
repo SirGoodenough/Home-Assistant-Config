@@ -1,0 +1,137 @@
+substitutions:
+  name: benchstrip
+  friendly_name: Bench Strip
+  board: esp8285
+  model: ZLD-44USA-W
+
+packages:
+  device_base: !include packages/sg_8266_base.yaml
+
+esphome:
+  area: Office
+  name_add_mac_suffix: false
+
+wifi:
+  manual_ip:
+    gateway: !secret chaloupkaabode_gateway
+    subnet: !secret chaloupkaabode_subnet
+    static_ip: !secret bench_strip_IP
+    dns1: !secret chaloupkaabode_gateway
+
+status_led:
+  pin:
+    number: GPIO1
+    inverted: true
+
+binary_sensor:
+  - platform: gpio
+    pin: 3
+    name: "${friendly_name} Button"
+    id: button_1
+    internal: true
+    on_press:
+      lambda: |-
+        static uint32_t press_count = 0;
+        static uint32_t last_press_ms = 0;
+        uint32_t now = millis();
+
+        if (now - last_press_ms > 500) {
+          press_count = 0;
+        }
+        last_press_ms = now;
+        press_count++;
+
+        switch (press_count) {
+          case 1:
+            id(relay1).toggle();
+            break;
+          case 2:
+            id(relay2).toggle();
+            break;
+          case 3:
+            id(relay3).toggle();
+            break;
+          case 4:
+            id(relay4).toggle();
+            break;
+          case 5:
+            id(relay_usb).toggle();
+            press_count = 0;
+            break;
+          default:
+            press_count = 0;
+            break;
+        }
+
+sensor:
+  - platform: adc
+    pin: GPIO17
+    name: "${friendly_name} ADC Input"
+    update_interval: 147s
+    raw: true
+    unit_of_measurement: V
+    accuracy_decimals: 3
+    filters:
+      - calibrate_linear:
+          - 0.0 -> 0.0
+          - 1023.0 -> 1.0
+
+output:
+  - platform: gpio
+    pin: 5
+    id: relay1_output
+
+  - platform: gpio
+    pin: 4
+    id: relay2_output
+
+  - platform: gpio
+    pin: 12
+    id: relay3_output
+
+  - platform: gpio
+    pin: 13
+    id: relay4_output
+
+  - platform: gpio
+    pin: 14
+    inverted: true
+    id: relay_usb_output
+
+light:
+  - platform: binary
+    name: "${friendly_name} O-Track Jim"
+    icon: mdi:track-light
+    id: relay2
+    output: relay2_output
+    restore_mode: RESTORE_DEFAULT_ON
+
+switch:
+  - platform: output
+    output: relay1_output
+    name: "${friendly_name} Bench Test"
+    icon: mdi:power-socket-eu
+    id: relay1
+    restore_mode: ALWAYS_OFF
+
+  - platform: output
+    output: relay3_output
+    name: "${friendly_name} Solder Iron"
+    icon: mdi:power-socket-eu
+    id: relay3
+    restore_mode: ALWAYS_OFF
+
+  - platform: output
+    output: relay4_output
+    name: "${friendly_name} Power Supply"
+    icon: mdi:power-socket-eu
+    id: relay4
+    restore_mode: ALWAYS_OFF
+
+  - platform: output
+    output: relay_usb_output
+    name: "${friendly_name} USB Relay"
+    icon: mdi:usb
+    id: relay_usb
+    restore_mode: ALWAYS_OFF
+

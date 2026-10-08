@@ -28,8 +28,7 @@
       data:
         scene_id: "{{ scene_id }}"
         snapshot_entities:
-          - light.grp_kitch
-          - light.grp_jens_color
+          - light.kitch
     - repeat:
         count: 2
         sequence:
@@ -40,13 +39,13 @@
                   data:
                     color: [255, 255, 255]
                     bright_pct: 80
-                    entities: light.grp_kitch,light.grp_jens_color
+                    entities: light.kitch,light.kitch
                 - delay: 00:00:01
                 - action: script.color_flip
                   data:
                     color: [255, 0, 0]
                     bright_pct: 100
-                    entities: light.grp_kitch,light.grp_jens_color
+                    entities: light.kitch,light.kitch
                 - delay: 00:00:03
           - alias: Voice alert to say where the problem is
             action: script.turn_on
@@ -63,17 +62,6 @@
       data:
         transition: 2.5
 
-  # - action: light.turn_off
-  #   data:
-  #     transition: 4
-  #     entity_id: light.grp_kitch,light.grp_jens_color
-  # - delay: 00:00:01
-  # - action: light.turn_on
-  #   data:
-  #     transition: 4
-  #     rgb_color: [255,20,147]
-  #     brightness_pct: 88
-  #     entity_id: light.grp_jens_color
 
 ####################################################
 # CO2 Detector                                     #

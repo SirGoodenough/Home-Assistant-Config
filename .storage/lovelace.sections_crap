@@ -26,7 +26,7 @@
                 },
                 {
                   "type": "light",
-                  "entity": "light.grp_kitch"
+                  "entity": "light.kitch"
                 }
               ]
             },

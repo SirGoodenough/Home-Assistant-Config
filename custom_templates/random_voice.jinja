@@ -2,7 +2,7 @@
     {# This will accept your language code and TTS flavor
       and return one of the voices available.
 
-            - tts.google_cloud_say
+            -tts.cloud_say
             - tts.google_translate_say
             - Piper
     #}
@@ -230,7 +230,7 @@
     cloud_language:
       name: TTS Cloud Language
       description: >
-        This is for tts.google_cloud_say. Select
+        This is fortts.cloud_say. Select
         Language code. [See this.](https://cloud.google.com/text-to-speech/docs/voices) This defaults
         to en-US as english/US. All the languages available on 2023-8-23
         were put into the pick list. 
@@ -302,7 +302,7 @@
     Google_Cloud_Voice:
       name: Google Cloud Voice Code
       description: >
-        Used only with tts.google_cloud_say platform. [Pick from here](https://cloud.google.com/text-to-speech/docs/voices)
+        Used only withtts.cloud_say platform. [Pick from here](https://cloud.google.com/text-to-speech/docs/voices)
         This is the voice code of the speaker. The default is: "en-US-Wavenet-F". 
         [Refer here](https://www.home-assistant.io/integrations/google_cloud) for more information.
       default: []
@@ -312,7 +312,7 @@
     Google_Cloud_Profile:
       name: Google Cloud Profile
       description: >
-        Used only on tts.google_cloud_say platform. [Pick from here](https://cloud.google.com/text-to-speech/docs/audio-profiles)
+        Used only ontts.cloud_say platform. [Pick from here](https://cloud.google.com/text-to-speech/docs/audio-profiles)
         This is a parameter to match the output to the sound of the speaker. [Refer here](https://www.home-assistant.io/integrations/google_cloud)
         for more information.
       default: []

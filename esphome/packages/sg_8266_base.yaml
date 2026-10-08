@@ -11,11 +11,16 @@ esphome:
   name: ${name}
   friendly_name: ${friendly_name}
   name_add_mac_suffix: true
+  project:
+    name: "chaloupkaabode.${name}"
+    version: "1.0.0"
 
 esp8266:
+  board: ${board}
   framework:
-    version: recommended
-  board:  ${board}
+    version: latest
+  early_pin_init: false
+  restore_from_flash: true
 
   # Enable logging
 logger:
@@ -54,12 +59,17 @@ time:
       - component.update: sensor_uptime_timestamp
 
 text_sensor:
-  # IP Address & SSID
+  # IP Address 
   - platform: wifi_info
     ip_address:
       name: "IP Address"
       icon: mdi:wifi
       entity_category: diagnostic
+
+  # version info
+  - platform: version
+    name: "${friendly_name}_version"
+    entity_category: diagnostic
 
 # Sensors with general information.
 sensor:

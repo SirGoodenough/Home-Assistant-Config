@@ -1,0 +1,124 @@
+substitutions:
+  board: esp01_1m
+  name: sidelock
+  friendly_name: SideLock Door
+  update_interval: 207s
+
+packages:
+  device_base: !include packages/sg_8266_base.yaml
+
+esphome:
+  area: Basement
+  name_add_mac_suffix: false
+  on_boot:
+    priority: -100
+    then:
+      - if:
+          condition:
+            lambda: return id(last_side_lock_locked);
+          then:
+            - lock.lock: side_lock
+          else:
+            - lock.unlock: side_lock
+
+wifi:
+  manual_ip:
+    gateway: !secret chaloupkaabode_gateway
+    subnet: !secret chaloupkaabode_subnet
+    static_ip: !secret sidelock_IP
+    dns1: !secret chaloupkaabode_gateway
+
+mqtt:
+  broker: !secret MQTT_IP
+  username: !secret MQTT_Login
+  password: !secret MQTT_Password
+  port: !secret MQTT_Port
+
+globals:
+  - id: last_side_lock_locked
+    type: bool
+    restore_value: yes
+    initial_value: "true"
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO14
+      mode: INPUT
+      inverted: true
+    name: "${friendly_name} Lock Button"
+    icon: "mdi:door-lock"
+    filters:
+      - delayed_on: 0.5s
+    on_press:
+      - lock.lock: side_lock
+
+  - platform: gpio
+    pin:
+      number: GPIO5
+      mode: INPUT_PULLUP
+      inverted: true
+    name: "${friendly_name} Door Sensor"
+    icon: "mdi:door"
+    filters:
+      - delayed_on: 100ms
+    on_press:
+      - switch.turn_on: side_door
+
+output:
+  - platform: gpio
+    pin: GPIO12
+    id: lock_output
+
+  - platform: gpio
+    pin: GPIO4
+    id: door_output
+
+lock:
+  - platform: output
+    output: lock_output
+    name: "${friendly_name} Lock"
+    icon: "mdi:door-lock"
+    id: side_lock
+    on_lock:
+      then:
+        - lambda: id(last_side_lock_locked) = true;
+        - mqtt.publish:
+            topic: SideLock/stat/lock
+            payload: LOCKED
+            retain: true
+            qos: 2
+    on_unlock:
+      then:
+        - lambda: id(last_side_lock_locked) = false;
+        - mqtt.publish:
+            topic: SideLock/stat/lock
+            payload: UNLOCKED
+            retain: true
+            qos: 2
+
+switch:
+  - platform: output
+    output: door_output
+    name: "${friendly_name} Door"
+    icon: "mdi:door"
+    id: side_door
+    on_turn_on:
+      then:
+        - mqtt.publish:
+            topic: SideLock/stat/door
+            payload: OPEN
+            retain: true
+            qos: 2
+    on_turn_off:
+      then:
+        - mqtt.publish:
+            topic: SideLock/stat/door
+            payload: CLOSED
+            retain: true
+            qos: 2
+
+status_led:
+  pin:
+    number: GPIO13
+    inverted: true

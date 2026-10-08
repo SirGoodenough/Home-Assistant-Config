@@ -19,12 +19,12 @@
       minutes: 5
     availability: >-
       {% from 'availability_template.jinja' import avail %}
-      {{- avail(['sensor.wash_machine_energy_current']) | bool -}}
+      {{- avail(['sensor.basement_washer_washer_current']) | bool -}}
     attributes:
       friendly_name: "Washer Running"
     icon: >-
       {% from 'logic_chekr.jinja' import true_any %}
-      {% set _st8 = true_any(['binary_sensor.washer_running_2']) | bool %}
+      {% set _st8 = true_any(['binary_sensor.washer_running']) | bool %}
       {% if _st8 %}
         mdi:washing-machine
       {% elif not _st8 %}

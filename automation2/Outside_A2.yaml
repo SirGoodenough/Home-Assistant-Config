@@ -6,28 +6,42 @@
   alias: 3-Way and Yard Light PIR ON
   initial_state: on
   triggers:
-    - entity_id: binary_sensor.yard_light_pir
+    - entity_id: switch.garage_garage_door_garage_door_outside_pir
       trigger: state
-      from: "off"
       to: "on"
-    - entity_id: event.back_door_motion
+      not_from:
+        - unknown
+        - unavailable
+    - entity_id: binary_sensor.basement_back_porch_light_back_porch_light_switch
+      
       trigger: state
+      to: "on"
+      not_from:
+        - unknown
+        - unavailable
+    - entity_id: event.back_door_motion
+      
+      trigger: state
+      to: "on"
       not_from:
         - unknown
         - unavailable
     - entity_id: binary_sensor.garage_side_door_open
       trigger: state
-      from: "off"
       to: "on"
+      not_from:
+        - unknown
+        - unavailable
+
   conditions:
     - >
       {% from 'logic_chekr.jinja' import true_all %}
       {{- true_all( ['binary_sensor.dark_outside'] ) | bool -}}
   actions:
-    - action: script.turn_on
-      entity_id: script.garage_outside_lights_on
+    - action: script.outside_lights_on
   mode: single
   max_exceeded: silent
+
 #####################################################
 # Mailbox                                           #
 #####################################################
@@ -108,14 +122,12 @@
       choose:
         - conditions:
             - condition: trigger
-              id:
-                - rain-started
+              id: rain-started
           sequence:
             - action: script.tts_its_raining
         - conditions:
             - condition: trigger
-              id:
-                - rain_over
+              id: rain_over
           sequence: &sayOnlyIfWasRaining
             - if:
                 - condition: template

@@ -13,10 +13,8 @@
       trigger: state
     - entity_id: binary_sensor.garage_door_open
       trigger: state
-      from: "off"
-      to: "on"
   actions:
     - action: script.turn_on
-      entity_id: script.garage_inside_lights_on
+      entity_id: script.garage_lights_on
   mode: single
   max_exceeded: silent

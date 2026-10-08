@@ -28,8 +28,23 @@ work_time:
       data:
         entity_id: input_number.garage_delay_minutes
         value: 182.7
+    - action: script.garage_lights_on
+
+#####################################################
+# General Light Control                             #
+#####################################################
+garage_lights_on:
+  alias: Garage Lights On
+  sequence:
     - action: light.turn_on
       metadata: {}
       target:
         label_id: garage_lights
-      data: {}
+
+garage_lights_off:
+  alias: Garage Lights Off
+  sequence:
+    - action: light.turn_off
+      metadata: {}
+      target:
+        label_id: garage_lights

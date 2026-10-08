@@ -1,0 +1,103 @@
+substitutions:
+  board: esp01_1m
+  name: househumidifer
+  friendly_name: House Humidifier
+  update_interval: 30s
+  model: Sonoff SV
+
+packages:
+  device_base: !include packages/sg_8266_base.yaml
+
+esphome:
+  area: Basement
+  name_add_mac_suffix: false
+  on_boot:
+    priority: -100
+    then:
+      - switch.turn_off: h_enable
+      - switch.turn_off: h_flow
+      - delay: 500ms
+      - if:
+          condition:
+            binary_sensor.is_on: enable_switch
+          then:
+            - switch.turn_on: h_enable
+
+wifi:
+  manual_ip:
+    gateway: !secret chaloupkaabode_gateway
+    subnet: !secret chaloupkaabode_subnet
+    static_ip: !secret house_humid_IP
+    dns1: !secret chaloupkaabode_gateway
+
+binary_sensor:
+  - platform: gpio
+    id: enable_switch
+    internal: true
+    pin:
+      number: GPIO5
+      mode: INPUT_PULLUP
+      inverted: true
+    name: "${friendly_name} Enable"
+    icon: "mdi:door"
+    on_press:
+      - switch.turn_on: h_enable
+    on_release:
+      - switch.turn_off: h_enable
+
+switch:
+  - platform: gpio
+    pin: GPIO12
+    id: h_flow
+    name: "${friendly_name} Water Flow"
+    on_turn_on:
+      - if:
+          condition:
+            switch.is_off: h_enable
+          then:
+            - switch.turn_off: h_flow
+
+  - platform: gpio
+    pin: GPIO4
+    id: h_enable
+    name: "${friendly_name} Water Enable"
+    on_turn_on:
+      - script.execute: run_flow_cycle
+    on_turn_off:
+      - script.stop: run_flow_cycle
+      - switch.turn_off: h_flow
+
+sensor:
+  - platform: homeassistant
+    id: duty_cycle_seconds
+    entity_id: input_number.humidifer_duty_cycle_seconds
+    name: "${friendly_name} Duty Cycle Seconds"
+
+globals:
+  - id: flow_on_seconds
+    type: float
+    initial_value: "0.0"
+
+script:
+  - id: run_flow_cycle
+    mode: restart
+    then:
+      - while:
+          condition:
+            switch.is_on: h_enable
+          then:
+            - lambda: |-
+                const float requested = id(duty_cycle_seconds).state;
+                id(flow_on_seconds) =
+                    isnan(requested) || requested < 0.0f || requested > 120.0f
+                    ? 0.0f
+                    : requested;
+            - switch.turn_on: h_flow
+            - delay: !lambda "return static_cast<uint32_t>(id(flow_on_seconds) * 1000.0f);"
+            - switch.turn_off: h_flow
+            - delay: !lambda "return static_cast<uint32_t>((120.0f - id(flow_on_seconds)) * 1000.0f);"
+
+status_led:
+  pin:
+    number: GPIO13
+    inverted: true

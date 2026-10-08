@@ -85,6 +85,7 @@
 # Humidifer                                        #
 ####################################################
 - id: "1674983375635"
+        # input_number.humidifer_duty_cycle_seconds
   alias: Humidifier Proportional Control
   description: Modulate the water flow to the Furnace Humidifer.
   trace:

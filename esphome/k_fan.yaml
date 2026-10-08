@@ -1,0 +1,75 @@
+substitutions:
+  name: kfan
+  friendly_name: K Fan
+  board: esp01_1m
+  model: Sonoff Mini
+
+packages:
+  device_base: !include packages/sg_8266_base.yaml
+
+esphome:
+  area: Kitchen
+  name_add_mac_suffix: false
+
+wifi:
+  manual_ip:
+    gateway: !secret chaloupkaabode_gateway
+    subnet: !secret chaloupkaabode_subnet
+    static_ip: !secret k_fan_IP
+    dns1: !secret chaloupkaabode_gateway
+
+binary_sensor:
+  - platform: gpio
+    pin: GPIO00
+    id: reset
+    internal: true
+    filters:
+      - invert:
+      - delayed_off: 100ms
+      - delayed_on: 100ms
+    on_press:
+      - fan.toggle:
+          id: main_fan_relay
+
+  - platform: gpio
+    name: "${friendly_name} Fan Relay Toggle"
+    pin: GPIO04
+    id: gpio_fan_relay
+    filters:
+      - delayed_on_off: 300ms
+    on_press:
+      then:
+        - fan.toggle:
+            id: main_fan_relay
+
+output:
+  - platform: gpio
+    pin: GPIO12
+    id: main_fan_relay_output
+
+  - platform: esp8266_pwm
+    id: blue_led
+    pin:
+      number: GPIO13
+      allow_other_uses: true
+    inverted: True
+
+status_led:
+  pin:
+    number: GPIO13
+    allow_other_uses: true
+    inverted: true
+
+fan:
+  - platform: binary
+    name: "${friendly_name} Fan"
+    icon: "mdi:ceiling_fan"
+    output: main_fan_relay_output
+    id: main_fan_relay
+    restore_mode: RESTORE_DEFAULT_OFF
+
+light:
+  - platform: monochromatic
+    name: ${friendly_name} Blue LED
+    output: blue_led
+    entity_category: diagnostic

@@ -1,0 +1,57 @@
+substitutions:
+  name: 3dtarantula
+  friendly_name: 3D Tarantula
+  area: Office
+  IP: !secret tarantula_IP
+  board: esp01_1m
+  model: Sonoff S2X outlet
+
+packages:
+  device_base: !include packages/sg_8266_base.yaml
+
+esphome:
+  area:
+    id: ${area}
+    name: ${area}
+  name_add_mac_suffix: false
+  devices:
+    - id: switch_device
+      name: "${friendly_name} Tarantula Outlet"
+      area_id: ${area}
+
+wifi:
+  manual_ip:
+    gateway: !secret chaloupkaabode_gateway
+    subnet: !secret chaloupkaabode_subnet
+    static_ip: ${IP}
+    dns1: !secret chaloupkaabode_gateway
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO0
+      mode:
+        input: true
+        pullup: true
+      inverted: true
+    name: "${friendly_name} Button"
+
+output:
+  - platform: gpio
+    pin: GPIO12
+    id: relay_output
+
+switch:
+  - platform: output
+    output: relay_output
+    id: relay
+    name: "${friendly_name} Relay"
+    icon: mdi:printer-3d-nozzle-outline
+    restore_mode: RESTORE_DEFAULT_OFF
+    device_class: outlet
+    device_id: switch_device
+
+status_led:
+  pin:
+    number: GPIO13
+    inverted: true

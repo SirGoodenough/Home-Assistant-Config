@@ -5,16 +5,16 @@ random_color:
       name: Light entity to control
       description: Add the light entity you want to control here
       required: true
-      example: light.grp_kitch
-      default: light.grp_kitch
+      example: light.kitch
+      default: light.kitch
       selector:
         entity:
           domain: light
   variables:
-    light: light.grp_kitch
+    light: light.kitch
   sequence:
     - action: light.turn_on
-      entity_id: light.grp_kitch
+      entity_id: light.kitch
       data:
         hs_color: >-
           {% from 'color_multi_tool.jinja' import random_hs %}

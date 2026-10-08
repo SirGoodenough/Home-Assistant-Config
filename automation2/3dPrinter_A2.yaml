@@ -22,7 +22,7 @@
   triggers:
     trigger: state
     entity_id:
-      - switch.plug2
+      - switch.3d_tarantula_tarantula_outlet_3d_tarantula_relay
       - switch.sonoff_s40lite_switch_2
       - switch.bambino_switch
     from: "on"
@@ -44,7 +44,7 @@
       printhead_temp: sensor.tarantulapro_tool_0_temperature
       octoprint_shutdown: button.tarantulapro_shutdown_system
       printer_power_switch:
-        - switch.plug2
+        - switch.3d_tarantula_tarantula_outlet_3d_tarantula_relay
       fil_feed: 368
       max_y: 240
 
@@ -65,7 +65,7 @@
         - switch.sonoff_s40lite_switch_2
       max_y: 235
       fil_feed: 371
-      
+
 - id: 65396760-bcd7-4e5c-a16e-7441635a2784
   alias: Bambino Turn Off
   initial_state: on
@@ -77,20 +77,20 @@
     printer_running: '{{ states( "binary_sensor.bambu_running") | default("off") }}'
     printer_temperature: '{{ states("sensor.p1s_01p00c4c2100641_nozzle_temperature") | float(0) }}'
   actions:
-  - choose:
-    - conditions:
-        - alias: Printer NOT running
-          condition: template
-          value_template: '{{ printer_running != "on" }}'
-        - alias: Temp is in the zone
-          condition: template
-          value_template: '{{ printer_temperature < 40 }}'
-      sequence:
-        - alias: Hold a bit longer to make sure the all has stopped
-          delay: 00:00:59
-        - alias: Kill the wall plug
-          action: homeassistant.turn_off
-          entity_id: switch.bambino_switch
+    - choose:
+        - conditions:
+            - alias: Printer NOT running
+              condition: template
+              value_template: '{{ printer_running != "on" }}'
+            - alias: Temp is in the zone
+              condition: template
+              value_template: "{{ printer_temperature < 40 }}"
+          sequence:
+            - alias: Hold a bit longer to make sure the all has stopped
+              delay: 00:00:59
+            - alias: Kill the wall plug
+              action: homeassistant.turn_off
+              entity_id: switch.bambino_switch
 #   select printer status list:  failed, finish, idle, init, offline, pause, prepare, running, slicing, unknown, offline
 
 - id: 41241eba-30e7-41fc-83d9-6914b264a7bc

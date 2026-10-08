@@ -1,0 +1,45 @@
+substitutions:
+  name: officetrackmom
+  friendly_name: O-Track Mom
+  board: esp01_1m
+
+packages:
+  device_base: !include packages/sg_8266_base.yaml
+
+esphome:
+  area: office
+  name_add_mac_suffix: false
+
+wifi:
+  manual_ip:
+    gateway: !secret chaloupkaabode_gateway
+    subnet: !secret chaloupkaabode_subnet
+    static_ip: !secret office_track_mom_IP
+    dns1: !secret chaloupkaabode_gateway
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO0
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "${friendly_name} Button"
+    on_press:
+      - light.toggle: light_1
+
+output:
+  - platform: gpio
+    pin: GPIO12
+    id: relay_1
+
+light:
+  - platform: binary
+    name: "${friendly_name} Light"
+    id: light_1
+    output: relay_1
+    restore_mode: RESTORE_DEFAULT_ON
+
+status_led:
+  pin:
+    number: GPIO13
+    inverted: true

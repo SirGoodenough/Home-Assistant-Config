@@ -5,7 +5,7 @@
   max: 100
   triggers:
     - trigger: state
-      entity_id: light.grp_kitch
+      entity_id: light.kitch
       from: "off"
       to: "on"
   actions:
@@ -49,7 +49,7 @@
           sequence:
             - action: light.toggle
               target:
-                entity_id: light.grp_kitch
+                entity_id: light.kitch
               data: {}
         - conditions:
             - condition: trigger
@@ -57,7 +57,7 @@
           sequence:
             - action: light.toggle
               target:
-                entity_id: light.grp_dad_lights
+                entity_id: light.dad_lights
               data: {}
         - conditions:
             - condition: trigger
@@ -65,7 +65,7 @@
           sequence:
             - action: light.turn_on
               target:
-                entity_id: light.grp_kitch
+                entity_id: light.kitch
               data:
                 color_temp_kelvin: 654
                 brightness: 255
@@ -73,8 +73,8 @@
         - action: light.turn_off
           target:
             entity_id:
-              - light.grp_kitch
-              - light.grp_dad_lights
+              - light.kitch
+              - light.dad_lights
           data:
             transition: 4
   mode: queued

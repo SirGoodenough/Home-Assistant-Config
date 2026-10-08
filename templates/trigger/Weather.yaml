@@ -1,9 +1,12 @@
 - triggers:
-  - trigger: state
-    entity_id: sensor.gw2000b_v2_2_4_solar_lux
-  - trigger: homeassistant
-    id: This will update it at HA start
-    event: start
+    - trigger: state
+      entity_id: sensor.gw2000b_v2_2_4_solar_lux
+    - trigger: homeassistant
+      id: This will update it at HA start
+      event: start
+    - trigger: template
+      value_template: >-
+        {{ now().minute % 12 == 0 and is_state('sun.sun', 'below_horizon') }}
   binary_sensor:
     - name: "Dark Outside"
       unique_id: ce7cb6b7-c666-494b-aa3c-4ed79b2f1092

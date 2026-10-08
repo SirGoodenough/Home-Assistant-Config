@@ -11,12 +11,15 @@ esphome:
   name: ${name}
   friendly_name: ${friendly_name}
   name_add_mac_suffix: true
+  project:
+    name: "chaloupkaabode.${name}"
+    version: "1.0.0"
 
 esp32:
   board: ${board}
   framework:
     type: ${frame_type}
-    version: recommended
+    version: latest
 
   # Enable logging
 logger:

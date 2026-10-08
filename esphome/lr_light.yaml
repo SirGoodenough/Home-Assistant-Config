@@ -1,0 +1,75 @@
+substitutions:
+  name: lrlight
+  friendly_name: LR Light
+  board: esp01_1m
+  model: Sonoff Mini
+
+packages:
+  device_base: !include packages/sg_8266_base.yaml
+
+esphome:
+  area: Livingroom
+  name_add_mac_suffix: false
+
+wifi:
+  manual_ip:
+    gateway: !secret chaloupkaabode_gateway
+    subnet: !secret chaloupkaabode_subnet
+    static_ip: !secret lr_light_IP
+    dns1: !secret chaloupkaabode_gateway
+
+binary_sensor:
+  - platform: gpio
+    pin: GPIO00
+    id: reset
+    internal: true
+    filters:
+      - invert:
+      - delayed_off: 10ms
+    on_press:
+      - light.toggle:
+          id: light_id
+
+  - platform: gpio
+    name: "${friendly_name}_relay_toggle"
+    pin: GPIO04
+    id: gpio_light_id
+    on_press:
+      then:
+        - light.toggle:
+            id: light_id
+    on_release:
+      then:
+        - light.toggle:
+            id: light_id
+
+output:
+  - platform: gpio
+    pin: GPIO12
+    id: main_light_relay
+
+  - platform: esp8266_pwm
+    id: blue_led
+    pin:
+      number: GPIO13
+      allow_other_uses: true
+    inverted: True
+
+status_led:
+  pin:
+    number: GPIO13
+    allow_other_uses: true
+    inverted: true
+
+light:
+  - platform: binary
+    name: ${friendly_name}_light
+    output: main_light_relay
+    id: light_id
+    restore_mode: RESTORE_DEFAULT_OFF
+
+  - platform: monochromatic
+    name: ${friendly_name}_blueled
+    output: blue_led
+    entity_category: diagnostic
+  

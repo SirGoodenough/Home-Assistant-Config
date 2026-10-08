@@ -1,0 +1,34 @@
+
+
+# This will sync this light with the state of a Home Assistant Entity
+
+# @{follow_this} is the Home Assistant Entity name to follow
+# ${this_light} is the internal id of the light to control here.
+#           (Mine are usually id: light_1)
+
+
+text_sensor:
+  - platform: homeassistant
+    id: light_state
+    entity_id: ${follow_this}
+    internal: true
+    on_value:
+      - if:
+          condition:
+            lambda: return x == "on";
+          then:
+            - if:
+                condition:
+                  light.is_off: ${this_light}
+                then:
+                  - light.turn_on: ${this_light}
+          else:
+            - if:
+                condition:
+                  lambda: return x == "off";
+                then:
+                  - if:
+                      condition:
+                        light.is_on: ${this_light}
+                      then:
+                        - light.turn_off: ${this_light}

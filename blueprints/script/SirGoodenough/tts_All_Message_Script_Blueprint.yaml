@@ -123,17 +123,17 @@ blueprint:
           selector:
             select:
               options:
-                - tts.amazon_polly_say
+                # - tts.amazon_polly_say
                 - tts.baidu_say
                 - tts.cloud_say
-                - tts.google_cloud_say
+                # - tts.google_cloud_say
                 - tts.google_translate_say
                 - tts.marytts_say
                 - tts.microsoft_say
-                - tts.picotts_say
+                # - tts.pico_tts_en_us
                 - Piper
                 - tts.voicerss_say
-                - tts.watson_tts_say
+                # - tts.watson_tts_say
                 - tts.yandextts_say
               custom_value: true
               multiple: false
@@ -159,6 +159,29 @@ blueprint:
               multiple: true
               filter:
                 - domain: media_player
+    # speaker_gender:
+    #     # The gender option for text-to-speech in the Home Assistant Cloud integration is deprecated
+    #     #   and will be removed. Please update your automations and scripts to replace the gender
+    #     #   option with an option for a supported voice instead.
+    #   name: Speaker Gender
+    #   description: >
+    #     ### Required on SOME \*_say platforms
+
+    #     Select speaker gender male or female.
+    #     May not work with all TTS engines.
+    #   default: []
+    #   selector:
+    #     select:
+    #       options:
+    #       - label: Female
+    #         value: female
+    #       - label: Male
+    #         value: male
+    #       - label: Neutral (Does not work on all flavors)
+    #         value: neutral
+    #       custom_value: false
+    #       multiple: false
+
     baidu_inputs:
       name: Required input for use with tts.baidu_say
       icon: mdi:microphone-message
@@ -1064,6 +1087,20 @@ sequence:
     then: !input "b4_action"
   - alias: "Main TTS Choose Statement"
     choose:
+      # - conditions: '{{ my_tts == "tts.amazon_polly_say" }}'
+      #   sequence:
+      #     - action: tts.amazon_polly_say
+      #       data:
+      #         entity_id: "{{ my_speaker }}"
+      #         message: "{{ my_message }}"
+      - conditions: '{{ my_tts == "tts.baidu_say" }}'
+        sequence:
+          - action: tts.baidu_say
+            data:
+              entity_id: "{{ my_speaker }}"
+              message: "{{ my_message }}"
+              options:
+                person: "{{ my_baidu_person }}"
       - conditions: '{{ my_tts == "tts.cloud_say" }}'
         sequence:
           - action: tts.cloud_say
@@ -1073,32 +1110,39 @@ sequence:
               options:
                 voice: !input nabu_azure_voice
               language: !input nabu_azure_language
-      - conditions: '{{ my_tts == "tts.google_cloud_say" }}'
+      # - conditions: '{{ my_tts == "tts.google_cloud_say" }}'
+      #   sequence:
+      #     - action: tts.google_cloud_say
+      #       data:
+      #         entity_id: "{{ my_speaker }}"
+      #         message: "{{ my_message }}"
+      #         options:
+      #           voice: !input Google_Cloud_Voice
+      #           profiles: !input Google_Cloud_Profile
+      #         language: !input cloud_language
+      - conditions: '{{ my_tts == "tts.marytts_say" }}'
         sequence:
-          - action: tts.speak
-            target:
-              entity_id: tts.home_assistant_cloud
+          - action: tts.marytts_say
             data:
               entity_id: "{{ my_speaker }}"
               message: "{{ my_message }}"
-              options:
-                voice: !input Google_Cloud_Voice
-                profiles: !input Google_Cloud_Profile
-              language: !input cloud_language
-      - conditions: '{{ my_tts == "tts.picotts_say" }}'
+              language: !input marytts_language
+      - conditions: '{{ my_tts == "tts.microsoft_say" }}'
         sequence:
-          - action: tts.speak
-            target:
-              entity_id: tts.pico_tts_en_us
+          - action: tts.microsoft_say
             data:
               entity_id: "{{ my_speaker }}"
               message: "{{ my_message }}"
-              language: !input picotts_language
+      # - conditions: '{{ my_tts == "tts.pico_tts_en_us" }}'
+      #   sequence:
+      #     - action: tts.pico_tts_en_us
+      #       data:
+      #         entity_id: "{{ my_speaker }}"
+      #         message: "{{ my_message }}"
+      #         language: !input picotts_language
       - conditions: '{{ my_tts == "Piper" }}'
         sequence:
           - action: tts.speak
-            target:
-              entity_id: tts.piper
             data:
               media_player_entity_id: "{{ my_speaker }}"
               message: "{{ my_message }}"
@@ -1106,6 +1150,31 @@ sequence:
                 voice: "{{ piper_voice }}"
             target:
               entity_id: tts.piper
+      - conditions: '{{ my_tts == "tts.voicerss_say" }}'
+        sequence:
+          - action: tts.voicerss_say
+            data:
+              entity_id: "{{ my_speaker }}"
+              message: "{{ my_message }}"
+              options:
+                format: !input voicerss_format
+              language: !input voicerss_language
+      # - conditions: '{{ my_tts == "tts.watson_tts_say" }}'
+      #   sequence:
+      #     - action: tts.watson_tts_say
+      #       data:
+      #         entity_id: "{{ my_speaker }}"
+      #         message: "{{ my_message }}"
+      - conditions: '{{ my_tts == "tts.yandextts_say" }}'
+        sequence:
+          - action: tts.yandextts_say
+            data:
+              entity_id: "{{ my_speaker }}"
+              message: "{{ my_message }}"
+              options:
+                voice: !input yandextts_voice
+                emotion: !input yandextts_emotion
+              language: !input yandextts_language
     default:
       - alias: Home Assistant Default tts.google_translate_say selected
         action: tts.google_translate_say

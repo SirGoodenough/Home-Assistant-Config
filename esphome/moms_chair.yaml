@@ -1,0 +1,121 @@
+substitutions:
+  name: momschair
+  friendly_name: Moms Chair
+  board: esp01_1m
+
+packages:
+  device_base: !include packages/sg_8266_base.yaml
+
+esphome:
+  area: Livingroom
+  name_add_mac_suffix: false
+
+wifi:
+  manual_ip:
+    gateway: !secret chaloupkaabode_gateway
+    subnet: !secret chaloupkaabode_subnet
+    static_ip: !secret mom_chair_IP
+    dns1: !secret chaloupkaabode_gateway
+
+binary_sensor:
+  - platform: gpio
+    id: button1
+    pin:
+      number: GPIO10
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "${friendly_name}_button"
+    on_press:
+      lambda: |-
+        static uint32_t press_count = 0;
+        static uint32_t last_press_ms = 0;
+        uint32_t now = millis();
+
+        if (now - last_press_ms > 500) {
+          press_count = 0;
+        }
+        last_press_ms = now;
+        press_count++;
+
+        switch (press_count) {
+          case 1:
+            id(relay).toggle();
+            break;
+          case 2:
+            id(relay2).toggle();
+            press_count = 0;
+            break;
+          default:
+            press_count = 0;
+            break;
+        }
+
+output:
+  - platform: gpio
+    pin: GPIO12
+    id: relay_output
+
+  - platform: gpio
+    pin: GPIO05
+    id: relay2_output
+
+  - platform: esp8266_pwm
+    id: status_flash_output
+    pin:
+      number: GPIO13
+      allow_other_uses: true
+    inverted: true
+
+light:
+  - platform: binary
+    name: "${friendly_name} Light"
+    id: relay
+    output: relay_output
+    on_turn_on:
+      then:
+        - script.execute: flash_status_led_1
+    restore_mode: RESTORE_DEFAULT_OFF
+
+  - platform: monochromatic
+    name: "${friendly_name}_status_flash"
+    id: status_flash
+    output: status_flash_output
+    internal: true
+    entity_category: diagnostic
+
+switch:
+  - platform: output
+    name: "${friendly_name} Chair Control"
+    id: relay2
+    output: relay2_output
+    on_turn_on:
+      then:
+        - script.execute: flash_status_led_2
+    restore_mode: RESTORE_DEFAULT_ON
+
+script:
+  - id: flash_status_led_1
+    then:
+      - lambda: !lambda |-
+          id(status_flash).turn_on();
+          delay(150);
+          id(status_flash).turn_off();
+          delay(100);
+
+  - id: flash_status_led_2
+    then:
+      - lambda: !lambda |-
+          id(status_flash).turn_on();
+          delay(150);
+          id(status_flash).turn_off();
+          delay(100);
+          id(status_flash).turn_on();
+          delay(150);
+          id(status_flash).turn_off();
+          delay(100);
+
+status_led:
+  pin:
+    number: GPIO13
+    allow_other_uses: true
+    inverted: true

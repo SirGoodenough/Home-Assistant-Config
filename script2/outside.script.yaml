@@ -10,11 +10,7 @@ party_time:
         - input_number.outside_delay_minutes
       data:
         value: 612.6
-    - action: light.turn_on
-      metadata: {}
-      target:
-        label_id: outside_lights
-      data: {}
+    - action: script.outside_lights_on
 
 #####################################################
 # Outside & Garage Lights Chill Mode                #
@@ -22,10 +18,12 @@ party_time:
 chill_time:
   alias: Chill Time
   sequence:
-    - alias: Outside Lights to normal mode
+    - alias: Lights to normal mode
       action: script.outside_chill
-    - alias: Garage Lights to normal mode
-      action: script.garage_chill
+    - action: script.garage_chill
+    - alias: All out building Lights off
+      action: script.outside_lights_off
+    - action: script.garage_lights_off
 
 outside_chill:
   alias: Outside Chill
@@ -36,12 +34,6 @@ outside_chill:
         - input_number.outside_delay_minutes
       data:
         value: 7.2
-    - alias: All outside building Lights off
-      action: light.turn_off
-      metadata: {}
-      target:
-        label_id: outside_lights
-      data: {}
 
 garage_chill:
   alias: Garage Chill
@@ -52,9 +44,22 @@ garage_chill:
         - input_number.garage_delay_minutes
       data:
         value: 12.8
-    - alias: All inside building Lights off
-      action: light.turn_off
+
+#####################################################
+# General Light Control                             #
+#####################################################
+outside_lights_on:
+  alias: Garage Outside Lights On
+  sequence:
+    - action: light.turn_on
       metadata: {}
       target:
-        label_id: garage_lights
-      data: {}
+        label_id: outside_lights
+
+outside_lights_off:
+  alias: Garage Outside Lights Off
+  sequence:
+    - action: light.turn_off
+      metadata: {}
+      target:
+        label_id: outside_lights

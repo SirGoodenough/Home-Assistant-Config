@@ -145,7 +145,11 @@
       to: "on"
   actions:
     - action: light.toggle
-      entity_id: light.grp_mom_office
+      metadata: {}
+      target:
+        label_id: mom_office
+      data: {}
+  mode: single
 
 - id: f00ef2fa-fec8-41ee-99a1-6548227b0e69
   alias: Toggle Office Light 2
@@ -156,8 +160,11 @@
       to: "on"
   actions:
     - action: light.toggle
-      entity_id:
-        - light.office_track_jim_bulb
+      metadata: {}
+      target:
+        label_id: office
+      data: {}
+  mode: single
 
 ####################################################
 # Porch / Hall Lights                              #
@@ -197,28 +204,28 @@
         - light.basement_basement_stair_up_light_basement_stair_up_light_light
         - light.basement_basement_stair_down_light_basement_stair_down_light_light
 
-- id: edaafacf-6c34-47d2-9dda-bcea8d4232a4
-  alias: Broadcom Brick Reset
-  description: "Reset the dam RM3 that is mose always offline. POS!"
-  triggers:
-    - trigger: state
-      entity_id:
-        - input_button.broadlink_rm3_reset
-  conditions:
-  actions:
-    - type: turn_off
-      device_id: 26a0f288f760db5d58d9723a73dc9f7d
-      entity_id: switch.sonoff_1000dbf4a6_1
-      domain: switch
-    - action: script.media_player_boink
-      data: {}
-    - delay:
-        hours: 0
-        minutes: 0
-        seconds: 2
-        milliseconds: 0
-    - type: turn_on
-      device_id: 26a0f288f760db5d58d9723a73dc9f7d
-      entity_id: switch.sonoff_1000dbf4a6_1
-      domain: switch
-  mode: single
+# - id: edaafacf-6c34-47d2-9dda-bcea8d4232a4
+#   alias: Broadcom Brick Reset
+#   description: "Reset the dam RM3 that is mose always offline. POS!"
+#   triggers:
+#     - trigger: state
+#       entity_id:
+#         - input_button.broadlink_rm3_reset
+#   conditions:
+#   actions:
+#     - type: turn_off
+#       device_id: 26a0f288f760db5d58d9723a73dc9f7d
+#       entity_id: switch.sonoff_1000dbf4a6_1
+#       domain: switch
+#     - action: script.media_player_boink
+#       data: {}
+#     - delay:
+#         hours: 0
+#         minutes: 0
+#         seconds: 2
+#         milliseconds: 0
+#     - type: turn_on
+#       device_id: 26a0f288f760db5d58d9723a73dc9f7d
+#       entity_id: switch.sonoff_1000dbf4a6_1
+#       domain: switch
+#   mode: single
