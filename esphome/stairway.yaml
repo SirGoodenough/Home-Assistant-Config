@@ -76,6 +76,13 @@ binary_sensor:
     on_press:
       - script.execute: press_button1
 
+
+
+status_led:
+  pin:
+    number: GPIO13
+    inverted: true
+
 output:
   - platform: gpio
     pin: GPIO12
