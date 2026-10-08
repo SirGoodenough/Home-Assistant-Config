@@ -95,3 +95,38 @@ text_sensor:
       - binary_sensor.template.publish:
           id: dark_outside
           state: !lambda 'return x != "off";'
+
+
+output:
+  - platform: gpio
+    pin: GPIO12
+    id: relay_1
+
+light:
+  - platform: binary
+    name: "${friendly_name} Light"
+    id: light_1
+    output: relay_1
+    on_turn_on:
+      - if:
+          condition:
+            lambda: return id(dark_outside).state != "off";
+          then:
+            - script.execute: light_auto_off
+          else:
+            - light.turn_off: light_1
+    restore_mode: RESTORE_DEFAULT_ON
+
+binary_sensor:
+  - platform: gpio
+    id: button_1
+    name: "${friendly_name} Switch"
+    icon: "mdi:light-switch"
+    pin:
+      number: GPIO0
+      mode:
+        input: true
+        pullup: true
+      inverted: true
+    on_press:
+      - light.turn_on: light_1
