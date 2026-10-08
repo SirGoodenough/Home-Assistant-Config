@@ -1,6 +1,8 @@
 substitutions:
   name: backporchlight
   friendly_name: Back Porch Light
+  area: Outside
+  IP: !secret back_porch_IP
   board: esp8285
   this_light: light_1
   num_hlpr_minutes: input_number.outside_delay_minutes
@@ -13,14 +15,20 @@ packages:
   check_dark_out: !include packages/check_dark_out.yaml
 
 esphome:
-  area: Outside
-  name_add_mac_suffix: False
+  area:
+    id: ${area}
+    name: ${area}
+  name_add_mac_suffix: false
+  devices:
+    - id: light_device
+      name: "${friendly_name} Up Stairway"
+      area_id: ${area}
 
 wifi:
   manual_ip:
     gateway: !secret chaloupkaabode_gateway
     subnet: !secret chaloupkaabode_subnet
-    static_ip: !secret back_porch_IP
+    static_ip: ${IP}
     dns1: !secret chaloupkaabode_gateway
 
 status_led:
@@ -47,6 +55,7 @@ light:
           else:
             - light.turn_off: light_1
     restore_mode: RESTORE_DEFAULT_ON
+    device_id: light_device
 
 binary_sensor:
   - platform: gpio
