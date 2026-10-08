@@ -2,6 +2,7 @@ substitutions:
   name: stairway
   friendly_name: Stair Light
   board: esp8285
+  model: Sonodd Slampher
 
 packages:
   device_base: !include packages/sg_8266_base.yaml
