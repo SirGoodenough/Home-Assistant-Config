@@ -49,7 +49,7 @@ binary_sensor:
     name: "${friendly_name} Lock Button"
     icon: "mdi:door-lock"
     filters:
-      - delayed_on: 0.5s
+      - delayed_on: 0.1s
     on_press:
       - lock.lock: side_lock
 
