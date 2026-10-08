@@ -92,7 +92,7 @@ sensor:
           args: ["x"]
 
 
-sensor:
+# sensor:
   - platform: homeassistant
     id: stair_delay_minutes
     entity_id: input_number.stair_delay_minutes
