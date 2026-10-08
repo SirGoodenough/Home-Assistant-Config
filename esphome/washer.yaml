@@ -18,7 +18,7 @@ wifi:
   manual_ip:
     gateway: !secret chaloupkaabode_gateway
     subnet: !secret chaloupkaabode_subnet
-    static_ip: !secret washer_IP
+    static_ip: ${IP}
     dns1: !secret chaloupkaabode_gateway
 
 binary_sensor:
