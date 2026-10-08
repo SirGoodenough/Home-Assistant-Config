@@ -5,9 +5,77 @@ substitutions:
   IP: !secret bmt_stair_down_IP
   board: esp8285
   model: Sonoff Slampher
+  follow_this: light.garage_garage_front_garage_front_light
+  this_light: light_1
+  num_hlpr_minutes: input_number.garage_delay_minutes
 
 packages:
   device_base: !include packages/sg_8266_base.yaml
+  follow_state: !include packages/follow_state.yaml
+  light_auto_off: !include packages/timed_auto_off.yaml
+
+esphome:
+  area: Garage
+  name_add_mac_suffix: false
+
+wifi:
+  manual_ip:
+    gateway: !secret chaloupkaabode_gateway
+    subnet: !secret chaloupkaabode_subnet
+    static_ip: !secret garage_back_IP
+    dns1: !secret chaloupkaabode_gateway
+
+status_led:
+  pin:
+    number: GPIO13
+    inverted: true
+
+output:
+  - platform: gpio
+    pin: GPIO12
+    id: relay_1
+
+light:
+  - platform: binary
+    name: "${friendly_name} Light"
+    id: light_1
+    output: relay_1
+    on_turn_on:
+      - script.execute: light_auto_off
+    on_turn_off:
+      - homeassistant.action:
+          action: script.turn_on
+          data:
+            # Reset the delay to default value when the light is turned off.
+            entity_id: script.garage_chill
+    restore_mode: RESTORE_DEFAULT_ON
+
+binary_sensor:
+  - platform: gpio
+    id: button_1
+    name: "${friendly_name} Switch"
+    icon: "mdi:light-switch"
+    pin:
+      number: GPIO14
+      mode:
+        input: true
+        pullup: true
+      inverted: true
+    on_press:
+      - light.turn_on: light_1
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 esphome:
   area: Basement
