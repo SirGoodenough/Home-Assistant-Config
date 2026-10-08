@@ -3,7 +3,7 @@ substitutions:
   friendly_name: Kitchen
   frame_type: esp-idf
   board: esp32dev
-  model: A crappy ESP32 Dev 
+  model: A crappy ESP32 Dev board from DrZzs that 
 
 packages:
   device_base: !include packages/sg_base.yaml
