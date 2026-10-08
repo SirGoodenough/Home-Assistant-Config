@@ -23,11 +23,6 @@ wifi:
     static_ip: !secret stairway_IP
     dns1: !secret chaloupkaabode_gateway
 
-status_led:
-  pin:
-    number: GPIO13
-    inverted: true
-
 globals:
   - id: button1_enabled
     type: bool
