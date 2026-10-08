@@ -45,7 +45,6 @@ light:
     id: light_1
     output: relay_1
     on_turn_on:
-    on_turn_on:
       - if:
           condition:
             lambda: return id(dark_outside).state != "off";
