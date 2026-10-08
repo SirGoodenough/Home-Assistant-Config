@@ -87,11 +87,6 @@ binary_sensor:
             id(button1_enabled) = false;
 
 
-
-
-
-
-
 output:
   - platform: gpio
     pin: GPIO12
