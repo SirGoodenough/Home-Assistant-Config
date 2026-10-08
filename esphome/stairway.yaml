@@ -68,10 +68,6 @@ sensor:
     id: stair_delay_minutes
     entity_id: input_number.stair_delay_minutes
     internal: true
-    on_value:
-      then:
-        - lambda: |-
-            id(stair_delay_minutes_saved) = x;
 
 text_sensor:
   - platform: homeassistant
