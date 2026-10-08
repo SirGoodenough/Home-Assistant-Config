@@ -21,7 +21,7 @@ esphome:
   name_add_mac_suffix: false
   devices:
     - id: light_device
-      name: "${friendly_name} Up"
+      name: "${friendly_name} Up-"
       area_id: ${area}
   on_boot:
     priority: 600
