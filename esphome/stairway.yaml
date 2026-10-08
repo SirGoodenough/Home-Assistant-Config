@@ -44,18 +44,6 @@ switch:
       - lambda: |-
           id(button1_enabled) = id(dark_outside).state;
 
-script:
-  - id: press_button1
-    then:
-      - if:
-          condition:
-            lambda: return id(button1_enabled);
-          then:
-            - switch.toggle: relay1
-
-
-
-
 
 status_led:
   pin:
