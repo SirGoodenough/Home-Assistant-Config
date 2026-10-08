@@ -76,7 +76,6 @@ binary_sensor:
     on_press:
       - script.execute: press_button1
 
-
 output:
   - platform: gpio
     pin: GPIO12
