@@ -5,7 +5,7 @@ substitutions:
   area: Bedroom
   IP: !secret bedroom_fan_IP
   update_interval: 32s
-  : Sonoff Ifan02
+  comment: Sonoff Ifan02
 
 packages:
   device_base: !include packages/sg_8266_base.yaml
