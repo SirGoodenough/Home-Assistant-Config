@@ -16,7 +16,7 @@ esphome:
   name_add_mac_suffix: false
   devices:
     - id: lock_device
-      name: "${friendly_name} GoSund Outlet"
+      name: "${friendly_name} Lock"
       area_id: ${area}
   on_boot:
     priority: -100
