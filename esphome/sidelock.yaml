@@ -3,6 +3,10 @@ substitutions:
   name: sidelock
   friendly_name: SideLock Door
   update_interval: 207s
+  area: Kitchen
+  IP: !secret kitchen_IP
+  board: esp01_1m
+  model: Gosund WP3 outlet
 
 packages:
   device_base: !include packages/sg_8266_base.yaml
