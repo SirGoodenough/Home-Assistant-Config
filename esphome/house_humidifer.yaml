@@ -3,7 +3,7 @@ substitutions:
   name: househumidifer
   friendly_name: House Humidifier
   update_interval: 30s
-  model: Sonoff SV
+  comment: Sonoff SV
 
 packages:
   device_base: !include packages/sg_8266_base.yaml
