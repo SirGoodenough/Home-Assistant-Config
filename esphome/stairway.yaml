@@ -1,7 +1,7 @@
 substitutions:
   name: stairway
   friendly_name: Stair Light
-  area: Kitchen
+  area: Upstairs
   IP: !secret stairway_IP
   board: esp8285
   this_light: light_1
