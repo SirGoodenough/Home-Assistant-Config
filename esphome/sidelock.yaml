@@ -5,7 +5,6 @@ substitutions:
   update_interval: 207s
   area: Kitchen
   IP: !secret kitchen_IP
-  board: esp01_1m
   model: Gosund WP3 outlet
 
 packages:
