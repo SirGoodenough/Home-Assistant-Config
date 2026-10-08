@@ -2,6 +2,7 @@ substitutions:
   board: esp01_1m
   name: growlight
   friendly_name: GrowLight
+  model: S
 
 packages:
   device_base: !include packages/sg_8266_base.yaml
