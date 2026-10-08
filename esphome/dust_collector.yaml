@@ -4,6 +4,7 @@ substitutions:
   friendly_name: Dust Collector
   board: esp01_1m
   update_interval: 207s
+  
 
 packages:
   device_base: !include packages/sg_8266_base.yaml
