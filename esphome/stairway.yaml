@@ -29,22 +29,6 @@ globals:
     restore_value: no
     initial_value: 'false'
 
-switch:
-  - platform: gpio
-    id: relay1
-    name: "Light"
-    icon: "mdi:lightbulb-night-outline"
-    pin: GPIO12
-    restore_mode: RESTORE_DEFAULT_ON
-    on_turn_on:
-      - lambda: |-
-          id(button1_enabled) = false;
-      - script.execute: relay1_auto_off
-    on_turn_off:
-      - lambda: |-
-          id(button1_enabled) = id(dark_outside).state;
-
-
 status_led:
   pin:
     number: GPIO13
