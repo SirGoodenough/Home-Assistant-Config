@@ -68,7 +68,6 @@ binary_sensor:
           else:
             - lock.lock: side_lock
 
-
   - platform: gpio
     pin:
       number: GPIO5
