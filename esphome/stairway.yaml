@@ -28,10 +28,6 @@ globals:
     type: bool
     restore_value: no
     initial_value: 'false'
-  - id: stair_delay_minutes_saved
-    type: float
-    restore_value: no
-    initial_value: '0.0f'
 
 switch:
   - platform: gpio
