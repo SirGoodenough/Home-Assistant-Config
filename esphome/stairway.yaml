@@ -73,16 +73,6 @@ sensor:
         - lambda: |-
             id(stair_delay_minutes_saved) = x;
 
-  - platform: template
-    id: dark_outside
-    on_press:
-      - lambda: |-
-            id(button1_enabled) = true;
-      - script.execute: press_button1
-    on_release:
-      - lambda: |-
-            id(button1_enabled) = false;
-
 text_sensor:
   - platform: homeassistant
     id: dark_outside_state
