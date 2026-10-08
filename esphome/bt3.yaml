@@ -3,7 +3,7 @@ substitutions:
   friendly_name: Bathroom2
   frame_type: esp-idf
   board: esp32dev
-  model Generic ESP32
+  model: Generic ESP32
 
 packages:
   device_base: !include packages/sg_base.yaml
