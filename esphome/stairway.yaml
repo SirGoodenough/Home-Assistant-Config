@@ -20,7 +20,7 @@ esphome:
     name: ${area}
   name_add_mac_suffix: false
   devices:
-    - id: switch_device
+    - id: light_device
       name: "${friendly_name} GoSund Outlet"
       area_id: ${area}
   on_boot:
