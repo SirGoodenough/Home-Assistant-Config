@@ -33,7 +33,7 @@ status_led:
 output:
   - platform: gpio
     pin: GPIO12
-    id: relay_1o
+    id: relay_1
 
 light:
   - platform: binary
