@@ -2,15 +2,9 @@ substitutions:
   name: stairway
   friendly_name: Stair Light
   board: esp8285
-  this_light: light_1
-  num_hlpr_minutes: input_number.outside_delay_minutes
-  bool_dark_sensor: binary_sensor.dark_outside
-  model: Sonodd Slampher
 
 packages:
   device_base: !include packages/sg_8266_base.yaml
-  light_auto_off: !include packages/timed_auto_off.yaml
-  check_dark_out: !include packages/check_dark_out.yaml
 
 esphome:
   area: Upstairs
@@ -20,6 +14,8 @@ esphome:
     then:
       - lambda: |-
           id(button1_enabled) = true;
+          id(stair_delay_minutes_saved) = id(stair_delay_minutes).state;
+
 wifi:
   manual_ip:
     gateway: !secret chaloupkaabode_gateway
@@ -37,6 +33,10 @@ globals:
     type: bool
     restore_value: no
     initial_value: 'false'
+  - id: stair_delay_minutes_saved
+    type: float
+    restore_value: no
+    initial_value: '0.0f'
 
 switch:
   - platform: gpio
@@ -54,6 +54,16 @@ switch:
           id(button1_enabled) = id(dark_outside).state;
 
 script:
+  - id: relay1_auto_off
+    mode: restart
+    then:
+      - delay: !lambda |-
+          const float minutes = id(stair_delay_minutes_saved);
+          if (isnan(minutes) || minutes <= 0.0f) {
+            return 8UL * 60UL * 1000UL;
+          }
+          return static_cast<uint32_t>(minutes * 60.0f * 1000.0f);
+      - switch.turn_off: relay1
   - id: press_button1
     then:
       - if:
@@ -61,6 +71,16 @@ script:
             lambda: return id(button1_enabled);
           then:
             - switch.toggle: relay1
+
+sensor:
+  - platform: homeassistant
+    id: stair_delay_minutes
+    entity_id: input_number.stair_delay_minutes
+    internal: true
+    on_value:
+      then:
+        - lambda: |-
+            id(stair_delay_minutes_saved) = x;
 
 binary_sensor:
   - platform: gpio
@@ -76,43 +96,22 @@ binary_sensor:
     on_press:
       - script.execute: press_button1
 
-
-
-status_led:
-  pin:
-    number: GPIO13
-    inverted: true
-
-output:
-  - platform: gpio
-    pin: GPIO12
-    id: relay_1
-
-light:
-  - platform: binary
-    name: "${friendly_name} Light"
-    id: light_1
-    output: relay_1
-    on_turn_on:
-      - if:
-          condition:
-            lambda: return id(dark_outside).state != "off";
-          then:
-            - script.execute: light_auto_off
-          else:
-            - light.turn_off: light_1
-    restore_mode: RESTORE_DEFAULT_ON
-
-binary_sensor:
-  - platform: gpio
-    id: button_1
-    name: "${friendly_name} Switch"
-    icon: "mdi:light-switch"
-    pin:
-      number: GPIO0
-      mode:
-        input: true
-        pullup: true
-      inverted: true
+  - platform: template
+    id: dark_outside
     on_press:
-      - light.turn_on: light_1
+      - lambda: |-
+            id(button1_enabled) = true;
+      - script.execute: press_button1
+    on_release:
+      - lambda: |-
+            id(button1_enabled) = false;
+
+text_sensor:
+  - platform: homeassistant
+    id: dark_outside_state
+    entity_id: binary_sensor.dark_outside
+    internal: true
+    on_value:
+      - binary_sensor.template.publish:
+          id: dark_outside
+          state: !lambda 'return x != "off";'
