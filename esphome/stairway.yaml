@@ -15,8 +15,6 @@ esphome:
     then:
       - lambda: |-
           id(button1_enabled) = true;
-          id(stair_delay_minutes_saved) = id(stair_delay_minutes).state;
-
 wifi:
   manual_ip:
     gateway: !secret chaloupkaabode_gateway
