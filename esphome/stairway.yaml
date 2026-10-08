@@ -23,11 +23,7 @@ esphome:
     - id: light_device
       name: "${friendly_name} Up Stairway"
       area_id: ${area}
-  on_boot:
-    priority: 600
-    then:
-      - lambda: |-
-          id(button1_enabled) = true;
+
 wifi:
   manual_ip:
     gateway: !secret chaloupkaabode_gateway
