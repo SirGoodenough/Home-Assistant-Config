@@ -65,7 +65,7 @@ light:
           else:
             - light.turn_off: light_1
     restore_mode: RESTORE_DEFAULT_ON
-    device_id: 
+    device_id: light_device
 
 binary_sensor:
   - platform: gpio
