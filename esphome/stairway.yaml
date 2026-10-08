@@ -63,12 +63,6 @@ script:
           then:
             - switch.toggle: relay1
 
-sensor:
-  - platform: homeassistant
-    id: stair_delay_minutes
-    entity_id: input_number.stair_delay_minutes
-    internal: true
-
 text_sensor:
   - platform: homeassistant
     id: dark_outside_state
