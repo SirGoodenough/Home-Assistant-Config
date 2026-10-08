@@ -50,6 +50,7 @@ globals:
 
 binary_sensor:
   - platform: gpio
+    
     pin:
       number: GPIO14
       mode: INPUT
