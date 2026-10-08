@@ -5,6 +5,7 @@ substitutions:
   follow_this: light.garage_garage_back_garage_back_light
   this_light: light_1
   num_hlpr_minutes: input_number.garage_delay_minutes
+  
 
 packages:
   device_base: !include packages/sg_8266_base.yaml
