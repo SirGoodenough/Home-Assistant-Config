@@ -2,7 +2,7 @@ substitutions:
   name: washer
   friendly_name: Washer
   board: esp01_1m
-  area: Kitchen
+  area: Basement
   IP: !secret washer_IP
   update_interval: 90s
   model: Sonoff Power R2 outlet
