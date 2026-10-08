@@ -4,7 +4,7 @@ substitutions:
   friendly_name: SideLock Door
   area: Basement
   IP: !secret sidelock_IP
-  model: Sonoff SV
+  comment: Sonoff SV
 
 packages:
   device_base: !include packages/sg_8266_base.yaml
