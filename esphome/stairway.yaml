@@ -52,13 +52,6 @@ light:
             - script.execute: light_auto_off
           else:
             - light.turn_off: light_1
-      - if:
-          condition:
-            lambda: return id(dark_outside).state != "off";
-          then:
-            - <turn on your light the way that is needed>
-          else:
-            - light.turn_off: light_1
     restore_mode: RESTORE_DEFAULT_ON
 
 binary_sensor:
