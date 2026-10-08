@@ -3,7 +3,7 @@ substitutions:
   friendly_name: KitchenNabu
   frame_type: esp-idf
   board: esp32dev
-  model: Homebrew ESP
+  model: Homebrew ESP32
 
 packages:
   device_base: !include packages/sg_base.yaml
