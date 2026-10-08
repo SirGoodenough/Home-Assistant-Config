@@ -2,6 +2,7 @@ substitutions:
   name: momschair
   friendly_name: Moms Chair
   board: esp01_1m
+  
 
 packages:
   device_base: !include packages/sg_8266_base.yaml
