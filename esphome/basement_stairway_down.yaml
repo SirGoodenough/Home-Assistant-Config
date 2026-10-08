@@ -2,7 +2,7 @@ substitutions:
   name: bmtdownstairway
   friendly_name: Basement Stair down Light
   board: esp8285
-  comment: Sonoff Slampher
+  model: Sonoff Slampher
 
 packages:
   device_base: !include packages/sg_8266_base.yaml
