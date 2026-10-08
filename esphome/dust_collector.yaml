@@ -4,7 +4,7 @@ substitutions:
   friendly_name: Dust Collector
   board: esp01_1m
   update_interval: 207s
-  model: Sonoff Powe TH
+  model: Sonoff Power TH
 
 packages:
   device_base: !include packages/sg_8266_base.yaml
