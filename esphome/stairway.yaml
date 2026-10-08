@@ -67,7 +67,6 @@ script:
           then:
             - switch.toggle: relay1
 
-
 sensor:
   - platform: homeassistant
     id: stair_delay_minutes
