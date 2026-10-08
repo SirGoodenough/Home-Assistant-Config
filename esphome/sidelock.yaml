@@ -28,7 +28,7 @@ wifi:
   manual_ip:
     gateway: !secret chaloupkaabode_gateway
     subnet: !secret chaloupkaabode_subnet
-    static_ip: !secret ${IP
+    static_ip: !secret ${IP}
     dns1: !secret chaloupkaabode_gateway
 
 mqtt:
