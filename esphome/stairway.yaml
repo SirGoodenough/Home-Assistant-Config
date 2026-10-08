@@ -2,6 +2,10 @@ substitutions:
   name: stairway
   friendly_name: Stair Light
   board: esp8285
+  this_light: light_1
+  num_hlpr_minutes: input_number.outside_delay_minutes
+  bool_dark_sensor: binary_sensor.dark_outside
+  model: Sonoff Slampher
 
 packages:
   device_base: !include packages/sg_8266_base.yaml
