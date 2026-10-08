@@ -3,6 +3,7 @@ substitutions:
   friendly_name: Washer
   board: esp01_1m
   update_interval: 90s
+  model: Sonoff S2X outlet
 
 packages:
   device_base: !include packages/sg_8266_base.yaml
