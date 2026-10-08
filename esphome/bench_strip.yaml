@@ -2,7 +2,7 @@ substitutions:
   name: benchstrip
   friendly_name: Bench Strip
   board: esp8285
-  comment: ZLD-44USA-W
+  model: ZLD-44USA-W
 
 packages:
   device_base: !include packages/sg_8266_base.yaml
