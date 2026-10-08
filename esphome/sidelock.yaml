@@ -14,8 +14,6 @@ esphome:
     id: ${area}
     name: ${area}
   name_add_mac_suffix: false
-  area: Basement
-  name_add_mac_suffix: false
   on_boot:
     priority: -100
     then:
