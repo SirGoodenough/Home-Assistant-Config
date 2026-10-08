@@ -1,6 +1,8 @@
 substitutions:
   name: bmtdownstairway
   friendly_name: Basement Stair down Light
+  area: Outside
+  IP: !secret bmt_stair_down_IP
   board: esp8285
   model: Sonoff Slampher
 
@@ -10,20 +12,12 @@ packages:
 esphome:
   area: Basement
   name_add_mac_suffix: false
-  on_boot:
-    priority: 600
-    then:
-      - logger.log:
-          level: INFO
-          format: "Boot values: dark_outside=%s"
-          args:
-            - 'id(dark_outside).state.c_str()'
 
 wifi:
   manual_ip:
     gateway: !secret chaloupkaabode_gateway
     subnet: !secret chaloupkaabode_subnet
-    static_ip: !secret bmt_stair_down_IP
+    static_ip: ${IP}
     dns1: !secret chaloupkaabode_gateway
 
 status_led:
@@ -50,32 +44,6 @@ output:
           else:
             - output.turn_off: relay_1_gpio
 
-light:
-  - platform: binary
-    name: "${friendly_name} Light"
-    id: light_1
-    output: relay_1
-    on_turn_on:
-      - if:
-          condition:
-            lambda: return id(dark_outside).state != "off";
-          then:
-            - script.execute: light_1_auto_off
-          else:
-            - light.turn_off: light_1
-    restore_mode: RESTORE_DEFAULT_ON
-
-script:
-  - id: light_1_auto_off
-    mode: restart
-    then:
-      - delay: !lambda |-
-          const float minutes = id(stair_delay_minutes).state;
-          if (isnan(minutes) || minutes <= 0.0f) {
-            return 8UL * 60UL * 1000UL;
-          }
-          return static_cast<uint32_t>(minutes * 60.0f * 1000.0f);
-      - light.turn_off: light_1
 
 sensor:
   - platform: homeassistant
