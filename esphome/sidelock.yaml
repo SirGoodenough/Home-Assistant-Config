@@ -10,6 +10,10 @@ packages:
   device_base: !include packages/sg_8266_base.yaml
 
 esphome:
+  area:
+    id: ${area}
+    name: ${area}
+  name_add_mac_suffix: false
   area: Basement
   name_add_mac_suffix: false
   on_boot:
