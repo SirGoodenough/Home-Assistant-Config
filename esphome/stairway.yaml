@@ -86,15 +86,6 @@ binary_sensor:
       - lambda: |-
             id(button1_enabled) = false;
 
-text_sensor:
-  - platform: homeassistant
-    id: dark_outside_state
-    entity_id: binary_sensor.dark_outside
-    internal: true
-    on_value:
-      - binary_sensor.template.publish:
-          id: dark_outside
-          state: !lambda 'return x != "off";'
 
 
 
