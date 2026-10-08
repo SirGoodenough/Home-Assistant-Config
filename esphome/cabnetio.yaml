@@ -2,7 +2,7 @@ substitutions:
   board: esp01_1m
   name: cabnetio
   friendly_name: Cabnetio
-  comment: Sonoff basic
+  model: Sonoff basic
 
 packages:
   device_base: !include packages/sg_8266_base.yaml
