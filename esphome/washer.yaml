@@ -11,7 +11,9 @@ packages:
   device_base: !include packages/sg_8266_base.yaml
 
 esphome:
-  area: Basement
+  area:
+    id: ${area}
+    name: ${area}
   name_add_mac_suffix: False
 
 wifi:
