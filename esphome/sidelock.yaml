@@ -60,7 +60,14 @@ binary_sensor:
     filters:
       - delayed_on: 100ms
     on_press:
-      - lock.lock: side_lock
+      - if:
+          condition:
+            lock.is_locked: side_lock
+          then:
+            - lock.unlock: side_lock
+          else:
+            - lock.lock: side_lock
+
 
   - platform: gpio
     pin:
