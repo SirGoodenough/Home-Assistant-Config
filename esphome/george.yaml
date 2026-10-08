@@ -4,7 +4,7 @@ substitutions:
   area: Jennys_Room
   IP: !secret george_IP
   board: esp8285
-  model: IFAN04 
+  comment: IFAN04 
 
 # PULL-INS FROM LINKS BELOW
   devicename: ${name}
