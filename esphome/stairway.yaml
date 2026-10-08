@@ -73,20 +73,6 @@ sensor:
         - lambda: |-
             id(stair_delay_minutes_saved) = x;
 
-binary_sensor:
-  - platform: gpio
-    id: button1
-    name: "Switch"
-    icon: "mdi:light-switch"
-    pin:
-      number: GPIO0
-      mode:
-        input: true
-        pullup: true
-      inverted: true
-    on_press:
-      - script.execute: press_button1
-
   - platform: template
     id: dark_outside
     on_press:
