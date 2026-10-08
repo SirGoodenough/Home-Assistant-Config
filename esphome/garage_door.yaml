@@ -3,6 +3,7 @@ substitutions:
   name: garagedoor
   friendly_name: Garage Door
   update_interval: 207s
+  model: 
 
 packages:
   device_base: !include packages/sg_8266_base.yaml
