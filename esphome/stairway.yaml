@@ -67,6 +67,31 @@ script:
           then:
             - switch.toggle: relay1
 
+
+script:
+  - id: light_auto_off
+    mode: restart
+    then:
+      - delay: !lambda |-
+          const float minutes = id(delay_minutes).state;
+          if (isnan(minutes) || minutes <= 0.0f) {
+            return 8UL * 60UL * 1000UL;
+          }
+          return static_cast<uint32_t>(minutes * 60.0f * 1000.0f);
+      - light.turn_off: ${this_light}
+
+sensor:
+  - platform: homeassistant
+    id: delay_minutes
+    entity_id: ${num_hlpr_minutes}
+    internal: true
+    on_value:
+      - logger.log:
+          level: INFO
+          format: "garage delay minutes: %.1f"
+          args: ["x"]
+
+
 sensor:
   - platform: homeassistant
     id: stair_delay_minutes
