@@ -15,14 +15,8 @@ packages:
   check_dark_out: !include packages/check_dark_out.yaml
 
 esphome:
-  area:
-    id: ${area}
-    name: ${area}
+  area: Upstairs
   name_add_mac_suffix: false
-  devices:
-    - id: switch_device
-      name: "${friendly_name} GoSund Outlet"
-      area_id: ${area}
   on_boot:
     priority: 600
     then:
