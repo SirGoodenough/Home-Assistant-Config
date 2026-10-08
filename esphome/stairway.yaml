@@ -76,16 +76,6 @@ binary_sensor:
     on_press:
       - script.execute: press_button1
 
-  - platform: template
-    id: dark_outside
-    on_press:
-      - lambda: |-
-            id(button1_enabled) = true;
-      - script.execute: press_button1
-    on_release:
-      - lambda: |-
-            id(button1_enabled) = false;
-
 
 output:
   - platform: gpio
