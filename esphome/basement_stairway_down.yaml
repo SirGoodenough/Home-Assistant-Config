@@ -15,14 +15,20 @@ packages:
   light_auto_off: !include packages/timed_auto_off.yaml
 
 esphome:
-  area: Garage
+  area:
+    id: ${area}
+    name: ${area}
   name_add_mac_suffix: false
+  devices:
+    - id: light_device
+      name: "${friendly_name} Dn Bmt Stairway"
+      area_id: ${area}
 
 wifi:
   manual_ip:
     gateway: !secret chaloupkaabode_gateway
     subnet: !secret chaloupkaabode_subnet
-    static_ip: !secret garage_back_IP
+    static_ip: ${IP}
     dns1: !secret chaloupkaabode_gateway
 
 status_led:
@@ -66,37 +72,6 @@ binary_sensor:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-esphome:
-  area: Basement
-  name_add_mac_suffix: false
-
-wifi:
-  manual_ip:
-    gateway: !secret chaloupkaabode_gateway
-    subnet: !secret chaloupkaabode_subnet
-    static_ip: ${IP}
-    dns1: !secret chaloupkaabode_gateway
-
-status_led:
-  pin:
-    number: GPIO13
-    inverted: true
-
-output:
-  - platform: gpio
-    pin: GPIO12
-    id: relay_1_gpio
 
   - platform: template
     type: binary
