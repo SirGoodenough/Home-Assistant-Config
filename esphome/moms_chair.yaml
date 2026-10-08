@@ -2,7 +2,7 @@ substitutions:
   name: momschair
   friendly_name: Moms Chair
   board: esp01_1m
-  
+  model: Sonoff R2 Dual
 
 packages:
   device_base: !include packages/sg_8266_base.yaml
