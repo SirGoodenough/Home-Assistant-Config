@@ -35,12 +35,6 @@ wifi:
     static_ip: ${IP}
     dns1: !secret chaloupkaabode_gateway
 
-globals:
-  - id: button1_enabled
-    type: bool
-    restore_value: no
-    initial_value: 'false'
-
 status_led:
   pin:
     number: GPIO13
