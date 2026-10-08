@@ -2,7 +2,7 @@ substitutions:
   board: esp01_1m
   name: sidelock
   friendly_name: SideLock Door
-  area: Kitchen
+  area: Basement
   IP: !secret sidelock_IP
   model: Gosund WP3 outlet
 
