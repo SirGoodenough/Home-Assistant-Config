@@ -4,7 +4,7 @@ substitutions:
   friendly_name: SideLock Door
   update_interval: 207s
   area: Kitchen
-  IP: !secret kitchen_IP
+  IP: !secret kitchesidelock_IPn_IP
   model: Gosund WP3 outlet
 
 packages:
