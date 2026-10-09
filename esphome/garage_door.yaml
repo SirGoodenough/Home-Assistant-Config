@@ -14,8 +14,6 @@ esphome:
   area:
     id: ${area}
     name: ${area}
-    id: ${area}
-    name: ${area}
   name_add_mac_suffix: false
   devices:
     - id: cover_device
