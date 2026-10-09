@@ -1,5 +1,7 @@
 substitutions:
   board: esp01_1m
+  area: kitchen
+  IP: !secret cabnetio_IP
   name: cabnetio
   friendly_name: Cabnetio
   model: Sonoff basic
@@ -8,14 +10,20 @@ packages:
   device_base: !include packages/sg_8266_base.yaml
 
 esphome:
-  area: kitchen
+  area:
+    id: ${area}
+    name: ${area}
   name_add_mac_suffix: false
+  devices:
+    - id: light_device
+      name: "${friendly_name} Counter"
+      area_id: ${area}
 
 wifi:
   manual_ip:
     gateway: !secret chaloupkaabode_gateway
     subnet: !secret chaloupkaabode_subnet
-    static_ip: !secret cabnetio_IP
+    static_ip: ${IP}
     dns1: !secret chaloupkaabode_gateway
 
 binary_sensor:
@@ -43,6 +51,7 @@ light:
     id: light_1
     output: relay_1
     restore_mode: RESTORE_DEFAULT_OFF
+    device_id: light_device
 
 status_led:
   pin:
