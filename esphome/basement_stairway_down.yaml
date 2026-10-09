@@ -6,7 +6,7 @@ substitutions:
   board: esp8285
   model: Sonoff Slampher
   follow_this: light.basement_basement_stair_up_light_basement_stair_up_light_light
-  this_thing: light_1
+  this_light: light_1
   num_hlpr_minutes: input_number.stair_delay_minutes
 
 packages:
