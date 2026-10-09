@@ -3,6 +3,8 @@ substitutions:
   name: dustcollector
   friendly_name: Dust Collector
   board: esp01_1m
+  area: Basement
+  IP: !secret dust_collector_IP
   update_interval: 207s
   model: Sonoff Power TH
 
@@ -10,14 +12,20 @@ packages:
   device_base: !include packages/sg_8266_base.yaml
 
 esphome:
-  area: Basement
-  name_add_mac_suffix: False
+  area:
+    id: ${area}
+    name: ${area}
+  name_add_mac_suffix: false
+  devices:
+    - id: switch_device
+      name: "${friendly_name} Outlet"
+      area_id: ${area}
 
 wifi:
   manual_ip:
     gateway: !secret chaloupkaabode_gateway
     subnet: !secret chaloupkaabode_subnet
-    static_ip: !secret dust_collector_IP
+    static_ip: ${IP}
     dns1: !secret chaloupkaabode_gateway
 
 sensor:
@@ -88,3 +96,4 @@ switch:
     on_turn_off:
       - script.stop: relay_max_runtime
       - switch.turn_off: th1x_relay
+    device_id: switch_device
