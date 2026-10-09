@@ -21,7 +21,7 @@ esphome:
   name_add_mac_suffix: false
   devices:
     - id: light_device
-      name: "${friendly_name} Up Stairway"
+      name: "${friendly_name}"
       area_id: ${area}
 
 wifi:
