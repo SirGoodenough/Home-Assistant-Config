@@ -11,9 +11,11 @@ packages:
   device_base: !include packages/sg_8266_base.yaml
 
 esphome:
-  area:
-    id: ${area}
-    name: ${area}
+  areas:
+    - id: ${area}
+      name: "${area}"
+    - id: Outside
+      name: "Outside"
   name_add_mac_suffix: false
   devices:
     - id: cover_device
@@ -88,6 +90,7 @@ switch:
       - delay: 500ms
       - switch.turn_off: pir
     restore_mode: ALWAYS_OFF
+    device_id: pir_device
 
 script:
   - id: pulse_garage_door
