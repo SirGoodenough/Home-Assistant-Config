@@ -4,7 +4,7 @@ substitutions:
   area: Outside
   IP: !secret back_porch_IP
   board: esp8285
-  this_light: light_1
+  this_thing: light_1
   num_hlpr_minutes: input_number.outside_delay_minutes
   bool_dark_sensor: binary_sensor.dark_outside
   model: Sonoff Slampher
