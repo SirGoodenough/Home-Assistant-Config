@@ -3,7 +3,7 @@ substitutions:
   name: garagetop
   friendly_name: Garage Top
   follow_this: light.outside_garage_side_garage_side_light
-  this_light: light_1
+  this_thing: light_1
   num_hlpr_minutes: input_number.outside_delay_minutes
   bool_dark_sensor: binary_sensor.dark_outside
   model: Sonoff Basic
