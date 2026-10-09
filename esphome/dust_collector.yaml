@@ -1,4 +1,3 @@
-# These substitutions allow for easy renaming
 substitutions:
   name: dustcollector
   friendly_name: Dust Collector
