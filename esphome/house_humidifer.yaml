@@ -38,12 +38,6 @@ wifi:
     static_ip: ${IP}
     dns1: !secret chaloupkaabode_gateway
 
-mqtt:
-  broker: !secret MQTT_IP
-  username: !secret MQTT_Login
-  password: !secret MQTT_Password
-  port: !secret MQTT_Port
-
 binary_sensor:
   - platform: gpio
     id: enable_switch
