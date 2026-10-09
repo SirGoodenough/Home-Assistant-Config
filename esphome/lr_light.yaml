@@ -1,5 +1,7 @@
 substitutions:
   name: lrlight
+  area: Livingroom
+  IP: !secret lr_light_IP
   friendly_name: LR Light
   board: esp01_1m
   model: Sonoff Mini
@@ -8,14 +10,20 @@ packages:
   device_base: !include packages/sg_8266_base.yaml
 
 esphome:
-  area: Livingroom
+  area:
+    id: ${area}
+    name: ${area}
   name_add_mac_suffix: false
+  devices:
+    - id: light_device
+      name: "${friendly_name}"
+      area_id: ${area}
 
 wifi:
   manual_ip:
     gateway: !secret chaloupkaabode_gateway
     subnet: !secret chaloupkaabode_subnet
-    static_ip: !secret lr_light_IP
+    static_ip: ${IP}
     dns1: !secret chaloupkaabode_gateway
 
 binary_sensor:
@@ -67,6 +75,7 @@ light:
     output: main_light_relay
     id: light_id
     restore_mode: RESTORE_DEFAULT_OFF
+    device_id: light_device
 
   - platform: monochromatic
     name: ${friendly_name}_blueled
