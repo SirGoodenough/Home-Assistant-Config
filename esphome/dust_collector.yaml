@@ -12,7 +12,7 @@ substitutions:
 
 packages:
   device_base: !include packages/sg_8266_base.yaml
-  light_auto_off: !include packages/timed_auto_off.yaml
+  light_auto_off: !include packages/timed_light_auto_off.yaml
 
 esphome:
   area:
