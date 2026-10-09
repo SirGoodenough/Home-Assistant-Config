@@ -1,6 +1,8 @@
 substitutions:
   name: momschair
   friendly_name: Moms Chair
+  area: Livingroom
+  IP: !secret mom_chair_IP
   board: esp01_1m
   model: Sonoff R2 Dual
 
@@ -8,14 +10,20 @@ packages:
   device_base: !include packages/sg_8266_base.yaml
 
 esphome:
-  area: Livingroom
+  area:
+    id: ${area}
+    name: ${area}
   name_add_mac_suffix: false
+  devices:
+    - id: switch_device
+      name: "${friendly_name} Outlet"
+      area_id: ${area}
 
 wifi:
   manual_ip:
     gateway: !secret chaloupkaabode_gateway
     subnet: !secret chaloupkaabode_subnet
-    static_ip: !secret mom_chair_IP
+    static_ip: ${IP}
     dns1: !secret chaloupkaabode_gateway
 
 binary_sensor:
@@ -76,6 +84,7 @@ light:
       then:
         - script.execute: flash_status_led_1
     restore_mode: RESTORE_DEFAULT_OFF
+    device_id: switch_device
 
   - platform: monochromatic
     name: "${friendly_name}_status_flash"
@@ -93,6 +102,7 @@ switch:
       then:
         - script.execute: flash_status_led_2
     restore_mode: RESTORE_DEFAULT_ON
+    device_id: switch_device
 
 script:
   - id: flash_status_led_1
