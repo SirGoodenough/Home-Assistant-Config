@@ -48,8 +48,6 @@ light:
     output: relay_1
     on_turn_on:
       - script.execute: light_auto_off
-    on_turn_off:
-      - light.turn_off: light_1
     restore_mode: RESTORE_DEFAULT_ON
     device_id: light_device
 
