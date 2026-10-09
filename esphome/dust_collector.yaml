@@ -8,11 +8,11 @@ substitutions:
   update_interval: 207s
   this_switch: th1x_relay
   num_hlpr_minutes: input_number.dust_collector_delay_minutes
-  model: Sonoff Power TH
+  model: Sonoff Power TH1x
 
 packages:
   device_base: !include packages/sg_8266_base.yaml
-  light_auto_off: !include packages/timed_switch_auto_off.yaml
+  switch_auto_off: !include packages/timed_switch_auto_off.yaml
 
 esphome:
   area:
@@ -81,13 +81,6 @@ light:
     restore_mode: RESTORE_DEFAULT_OFF
     output: blue_led
 
-script:
-  - id: relay_max_runtime
-    mode: restart
-    then:
-      - delay: 37min
-      - switch.turn_off: th1x_relay
-
 switch:
   - platform: output
     name: "${friendly_name} Relay"
@@ -95,8 +88,7 @@ switch:
     output: relay
     restore_mode: ALWAYS_OFF
     on_turn_on:
-      - script.execute: relay_max_runtime
+      - script.execute: switch_auto_off
     on_turn_off:
-      - script.stop: relay_max_runtime
       - switch.turn_off: th1x_relay
     device_id: switch_device
