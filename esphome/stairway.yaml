@@ -4,14 +4,14 @@ substitutions:
   area: Upstairs
   IP: !secret stairway_IP
   board: esp8285
-  this_thing: light_1
+  this_light: light_1
   num_hlpr_minutes: input_number.stair_delay_minutes
   bool_dark_sensor: binary_sensor.dark_outside
   model: Sonoff Slampher
 
 packages:
   device_base: !include packages/sg_8266_base.yaml
-  light_auto_off: !include packages/timed_auto_off.yaml
+  light_auto_off: !include packages/timed_light_auto_off.yaml
   check_dark_out: !include packages/check_dark_out.yaml
 
 esphome:
