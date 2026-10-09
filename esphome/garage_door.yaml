@@ -1,6 +1,8 @@
 substitutions:
   board: esp01_1m
   name: garagedoor
+  area: Garage
+  IP: !secret garage_front_IP
   friendly_name: Garage Door
   update_interval: 207s
   model: Sonoff SV
