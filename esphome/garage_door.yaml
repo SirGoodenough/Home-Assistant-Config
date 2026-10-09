@@ -16,9 +16,13 @@ esphome:
     name: ${area}
   name_add_mac_suffix: false
   devices:
-    - id: light_device
+    - id: cover_device
       name: "${friendly_name}"
       area_id: ${area}
+  devices:
+    - id: pir_device
+      name: "${friendly_name}"
+      area_id: Outside
 
 wifi:
   manual_ip:
