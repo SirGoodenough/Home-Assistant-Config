@@ -1,5 +1,7 @@
 substitutions:
   board: esp01_1m
+  area: Outside
+  IP: !secret garage_top_IP
   name: growlight
   friendly_name: GrowLight
   model: Sonoff Basic
