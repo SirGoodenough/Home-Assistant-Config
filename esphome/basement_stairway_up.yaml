@@ -1,4 +1,4 @@
-ubstitutions:
+substitutions:
   name: bmtupstairway
   friendly_name: Basement Stair up Light
   area: Outside
@@ -6,7 +6,7 @@ ubstitutions:
   board: esp8285
   model: Sonoff Slampher
   follow_this: light.basement_basement_stair_down_light_basement_stair_down_light_light
-  this_light: light_1
+  this_thing: light_1
   num_hlpr_minutes: input_number.stair_delay_minutes
 
 packages:
