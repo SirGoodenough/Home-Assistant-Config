@@ -6,7 +6,7 @@ substitutions:
   area: Basement
   IP: !secret dust_collector_IP
   update_interval: 207s
-  this_light: light_1
+  this_thing: light_1
   num_hlpr_minutes: input_number.dust_collector_delay_minutes
   model: Sonoff Power TH
 
