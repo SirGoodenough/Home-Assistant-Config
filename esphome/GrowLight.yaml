@@ -1,7 +1,7 @@
 substitutions:
   board: esp01_1m
-  area: Outside
-  IP: !secret garage_top_IP
+  area: kitchen
+  IP: !secret growlight_IP
   name: growlight
   friendly_name: GrowLight
   model: Sonoff Basic
@@ -10,14 +10,20 @@ packages:
   device_base: !include packages/sg_8266_base.yaml
 
 esphome:
-  area: kitchen
+  area:
+    id: ${area}
+    name: ${area}
   name_add_mac_suffix: false
+  devices:
+    - id: light_device
+      name: "${friendly_name}"
+      area_id: ${area}
 
 wifi:
   manual_ip:
     gateway: !secret chaloupkaabode_gateway
     subnet: !secret chaloupkaabode_subnet
-    static_ip: !secret growlight_IP
+    static_ip: ${IP}
     dns1: !secret chaloupkaabode_gateway
 
 sun:
@@ -120,6 +126,7 @@ light:
           data:
             entity_id: light.jennys_room_grow_window_light
     restore_mode: RESTORE_DEFAULT_OFF
+    device_id: light_device
 
 status_led:
   pin:
