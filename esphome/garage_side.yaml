@@ -1,7 +1,7 @@
 substitutions:
   board: esp8285
   name: garageside
-  area: Garage
+  area: Outside
   IP: !secret garage_side_IP
   friendly_name: Garage Side
   follow_this: light.garage_garage_top_garage_top_light
@@ -17,8 +17,14 @@ packages:
   check_dark_out: !include packages/check_dark_out.yaml
 
 esphome:
-  area: Outside
+  area:
+    id: ${area}
+    name: ${area}
   name_add_mac_suffix: false
+  devices:
+    - id: light_device
+      name: "${friendly_name}"
+      area_id: ${area}
 
 wifi:
   manual_ip:
@@ -57,6 +63,7 @@ light:
             # Reset the delay to default value when the light is turned off.
             entity_id: script.outside_chill
     restore_mode: RESTORE_DEFAULT_ON
+    device_id: light_device
 
 binary_sensor:
   - platform: gpio
