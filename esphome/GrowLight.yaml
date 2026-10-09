@@ -27,10 +27,10 @@ wifi:
     dns1: !secret chaloupkaabode_gateway
 
 sun:
-  id: waukesha_sun
+  id: chaloupkaabode_sun
   time_id: time_homeassistant
   latitude: !secret chaloupkaabode_latitude
-  longitude: !secret
+  longitude: !secret chaloupkaabode_longitude
 
 globals:
   - id: growlight_schedule_on
@@ -61,8 +61,8 @@ interval:
               for (int day_offset = -1; day_offset <= 1; day_offset++) {
                 const auto event_day = esphome::ESPTime::from_epoch_utc(
                     day_start.timestamp + day_offset * 86400);
-                const auto sunrise = id(waukesha_sun).sunrise(event_day, -0.833);
-                const auto sunset = id(waukesha_sun).sunset(event_day, -0.833);
+                const auto sunrise = id(chaloupkaabode_sun).sunrise(event_day, -0.833);
+                const auto sunset = id(chaloupkaabode_sun).sunset(event_day, -0.833);
                 if (!sunrise.has_value() || !sunset.has_value()) {
                   continue;
                 }
