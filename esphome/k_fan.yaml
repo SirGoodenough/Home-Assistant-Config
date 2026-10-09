@@ -1,5 +1,7 @@
 substitutions:
   name: kfan
+  area: Kitchen
+  IP: !secret k_fan_IP
   friendly_name: K Fan
   board: esp01_1m
   model: Sonoff Mini
@@ -8,8 +10,14 @@ packages:
   device_base: !include packages/sg_8266_base.yaml
 
 esphome:
-  area: Kitchen
+  area:
+    id: ${area}
+    name: ${area}
   name_add_mac_suffix: false
+  devices:
+    - id: fan_device
+      name: "${friendly_name}"
+      area_id: ${area}
 
 wifi:
   manual_ip:
@@ -67,6 +75,7 @@ fan:
     output: main_fan_relay_output
     id: main_fan_relay
     restore_mode: RESTORE_DEFAULT_OFF
+    device_id: fan_device
 
 light:
   - platform: monochromatic
