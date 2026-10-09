@@ -1,6 +1,8 @@
 substitutions:
   board: esp01_1m
   name: sidelock
+  area: office
+  IP: !secret office_track_mom_IP
   friendly_name: SideLock Door
   area: Basement
   IP: !secret sidelock_IP
