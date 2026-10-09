@@ -1,6 +1,8 @@
 substitutions:
   board: esp01_1m
   name: househumidifer
+  area: Basement
+  IP: !secret house_humid_IP
   friendly_name: House Humidifier
   update_interval: 30s
   model: Sonoff SV
@@ -27,7 +29,7 @@ wifi:
   manual_ip:
     gateway: !secret chaloupkaabode_gateway
     subnet: !secret chaloupkaabode_subnet
-    static_ip: !secret house_humid_IP
+    static_ip: ${IP}
     dns1: !secret chaloupkaabode_gateway
 
 binary_sensor:
