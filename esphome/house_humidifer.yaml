@@ -11,8 +11,14 @@ packages:
   device_base: !include packages/sg_8266_base.yaml
 
 esphome:
-  area: Basement
+  area:
+    id: ${area}
+    name: ${area}
   name_add_mac_suffix: false
+  devices:
+    - id: switch_device
+      name: "${friendly_name}"
+      area_id: ${area}
   on_boot:
     priority: -100
     then:
@@ -58,6 +64,7 @@ switch:
             switch.is_off: h_enable
           then:
             - switch.turn_off: h_flow
+    device_id: switch_device
 
   - platform: gpio
     pin: GPIO4
@@ -68,12 +75,14 @@ switch:
     on_turn_off:
       - script.stop: run_flow_cycle
       - switch.turn_off: h_flow
+    device_id: switch_device
 
 sensor:
   - platform: homeassistant
     id: duty_cycle_seconds
     entity_id: input_number.humidifer_duty_cycle_seconds
     name: "${friendly_name} Duty Cycle Seconds"
+    device_id: switch_device
 
 globals:
   - id: flow_on_seconds
