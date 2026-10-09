@@ -29,8 +29,8 @@ wifi:
 sun:
   id: waukesha_sun
   time_id: time_homeassistant
-  latitude: 43.0117
-  longitude: -88.2315
+  latitude: !secret chaloupkaabode_latitude
+  longitude: !secret
 
 globals:
   - id: growlight_schedule_on
