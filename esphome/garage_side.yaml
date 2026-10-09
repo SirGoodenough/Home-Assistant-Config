@@ -11,7 +11,7 @@ substitutions:
 packages:
   device_base: !include packages/sg_8266_base.yaml
   follow_state: !include packages/follow_state.yaml
-  light_auto_off: !include packages/timed_auto_off.yaml
+  light_auto_off: !include packages/timed_light_auto_off.yaml
   check_dark_out: !include packages/check_dark_out.yaml
 
 esphome:
