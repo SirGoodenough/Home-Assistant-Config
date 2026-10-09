@@ -6,13 +6,13 @@ substitutions:
   area: Basement
   IP: !secret dust_collector_IP
   update_interval: 207s
-  this_light: light_1
+  this_switch: th1x_relay
   num_hlpr_minutes: input_number.dust_collector_delay_minutes
   model: Sonoff Power TH
 
 packages:
   device_base: !include packages/sg_8266_base.yaml
-  light_auto_off: !include packages/timed_light_auto_off.yaml
+  light_auto_off: !include packages/timed_switch_auto_off.yaml
 
 esphome:
   area:
