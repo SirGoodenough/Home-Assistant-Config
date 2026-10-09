@@ -75,6 +75,7 @@ cover:
       - script.execute: pulse_garage_door
     close_action:
       - script.execute: pulse_garage_door
+    device_id: cover_device
 
 switch:
   - platform: output
