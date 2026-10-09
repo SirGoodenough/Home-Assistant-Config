@@ -1,29 +1,34 @@
-substitutions:
+ubstitutions:
   name: bmtupstairway
   friendly_name: Basement Stair up Light
+  area: Outside
+  IP: !secret bmt_stair_up_IP
   board: esp8285
-  model: Sonodd Slampher
+  model: Sonoff Slampher
+  follow_this: light.basement_basement_stair_down_light_basement_stair_down_light_light
+  this_light: light_1
+  num_hlpr_minutes: input_number.stair_delay_minutes
 
 packages:
   device_base: !include packages/sg_8266_base.yaml
+  follow_state: !include packages/follow_state.yaml
+  light_auto_off: !include packages/timed_auto_off.yaml
 
 esphome:
-  area: Basement
+  area:
+    id: ${area}
+    name: ${area}
   name_add_mac_suffix: false
-  on_boot:
-    priority: 600
-    then:
-      - logger.log:
-          level: INFO
-          format: "Boot values: dark_outside=%s"
-          args:
-            - 'id(dark_outside).state.c_str()'
+  devices:
+    - id: light_device
+      name: "${friendly_name} Dn Bmt Stairway"
+      area_id: ${area}
 
 wifi:
   manual_ip:
     gateway: !secret chaloupkaabode_gateway
     subnet: !secret chaloupkaabode_subnet
-    static_ip: !secret bmt_stair_up_IP
+    static_ip: ${IP}
     dns1: !secret chaloupkaabode_gateway
 
 status_led:
@@ -34,21 +39,7 @@ status_led:
 output:
   - platform: gpio
     pin: GPIO12
-    id: relay_1_gpio
-
-  - platform: template
-    type: binary
     id: relay_1
-    write_action:
-      - if:
-          condition:
-            and:
-              - lambda: return id(dark_outside).state != "off";
-              - lambda: return state;
-          then:
-            - output.turn_on: relay_1_gpio
-          else:
-            - output.turn_off: relay_1_gpio
 
 light:
   - platform: binary
@@ -56,37 +47,11 @@ light:
     id: light_1
     output: relay_1
     on_turn_on:
-      - if:
-          condition:
-            lambda: return id(dark_outside).state != "off";
-          then:
-            - script.execute: light_1_auto_off
-          else:
-            - light.turn_off: light_1
-    restore_mode: RESTORE_DEFAULT_ON
-
-script:
-  - id: light_1_auto_off
-    mode: restart
-    then:
-      - delay: !lambda |-
-          const float minutes = id(stair_delay_minutes).state;
-          if (isnan(minutes) || minutes <= 0.0f) {
-            return 8UL * 60UL * 1000UL;
-          }
-          return static_cast<uint32_t>(minutes * 60.0f * 1000.0f);
+      - script.execute: light_auto_off
+    on_turn_off:
       - light.turn_off: light_1
-
-sensor:
-  - platform: homeassistant
-    id: stair_delay_minutes
-    entity_id: input_number.stair_delay_minutes
-    internal: true
-    on_value:
-      - logger.log:
-          level: INFO
-          format: "Stair delay minutes: %.1f"
-          args: ["x"]
+    restore_mode: RESTORE_DEFAULT_ON
+    device_id: light_device
 
 binary_sensor:
   - platform: gpio
@@ -101,26 +66,3 @@ binary_sensor:
       inverted: true
     on_press:
       - light.turn_on: light_1
-
-text_sensor:
-  - platform: homeassistant
-    id: dark_outside
-    entity_id: binary_sensor.dark_outside
-    internal: true
-
-  - platform: homeassistant
-    id: light_state
-    entity_id: light.basement_basement_stair_down_light_basement_stair_down_light_light
-    internal: true
-    on_value:
-      - if:
-          condition:
-            lambda: return x == "on";
-          then:
-            - light.turn_on: light_1
-          else:
-            - if:
-                condition:
-                  lambda: return x == "off";
-                then:
-                  - light.turn_off: light_1
