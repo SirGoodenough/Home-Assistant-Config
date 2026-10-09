@@ -41,7 +41,6 @@ wifi:
 binary_sensor:
   - platform: gpio
     id: enable_switch
-    internal: true
     pin:
       number: GPIO5
       mode: INPUT_PULLUP
@@ -52,6 +51,7 @@ binary_sensor:
       - switch.turn_on: h_enable
     on_release:
       - switch.turn_off: h_enable
+    device_id: switch_device
 
 switch:
   - platform: gpio
