@@ -1,6 +1,8 @@
 substitutions:
   board: esp8285
   name: garageside
+  area: Garage
+  IP: !secret garage_side_IP
   friendly_name: Garage Side
   follow_this: light.garage_garage_top_garage_top_light
   this_light: light_1
@@ -22,7 +24,7 @@ wifi:
   manual_ip:
     gateway: !secret chaloupkaabode_gateway
     subnet: !secret chaloupkaabode_subnet
-    static_ip: !secret garage_side_IP
+    static_ip: ${IP}
     dns1: !secret chaloupkaabode_gateway
 
 status_led:
