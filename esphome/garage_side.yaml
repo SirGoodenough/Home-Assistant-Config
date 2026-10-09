@@ -3,7 +3,7 @@ substitutions:
   name: garageside
   friendly_name: Garage Side
   follow_this: light.garage_garage_top_garage_top_light
-  this_light: light_1
+  this_thing: light_1
   num_hlpr_minutes: input_number.outside_delay_minutes
   bool_dark_sensor: binary_sensor.dark_outside
   model: Some no name wall switch from DrZzs
