@@ -16,6 +16,9 @@
                   "entity": "fan.k_fan_k_fan_fan"
                 },
                 {
+                  "entity": "light.food_center"
+                },
+                {
                   "entity": "sensor.ethernettest_kitchen_temperature",
                   "secondary_info": "last_updated"
                 },
@@ -92,7 +95,7 @@
                   "entity": "light.kitchen_down_lights"
                 },
                 {
-                  "entity": "light.upstairs_stair_light_light"
+                  "entity": "light.stair_light_up_stairway_stair_light_light"
                 },
                 {
                   "entity": "light.memorial"
@@ -436,6 +439,7 @@
               "icon": "mdi:weather-dust"
             },
             {
+              "color": "state",
               "type": "entities",
               "entities": [
                 {
@@ -449,9 +453,6 @@
                   "hiPercentage": 100,
                   "name": "Bedroom Fan",
                   "type": "custom:fan-percent-button-row"
-                },
-                {
-                  "entity": "sensor.bedroom_fanspeed"
                 },
                 {
                   "entity": "binary_sensor.bedroom"
@@ -482,7 +483,6 @@
                 }
               ],
               "title": "Bedroom",
-              "state_color": true,
               "show_header_toggle": false
             },
             {
@@ -1897,7 +1897,7 @@
                   "entity": "light.bedroom_light_bedroom_light"
                 },
                 {
-                  "entity": "light.upstairs_stair_light_light"
+                  "entity": "light.stair_light_up_stairway_stair_light_light"
                 },
                 {
                   "entity": "binary_sensor.upstairs_pir"

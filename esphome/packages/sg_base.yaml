@@ -6,6 +6,7 @@ substitutions:
   name: chaloupkaabode-esphome
   friendly_name: Another Brick in the Wall
   frame_type: esp-idf
+  model: not specified
 
 esphome:
   name: ${name}
@@ -14,6 +15,7 @@ esphome:
   project:
     name: "chaloupkaabode.${name}"
     version: "1.0.0"
+  comment: "Base hardware: ${model}"
 
 esp32:
   board: ${board}

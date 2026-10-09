@@ -19,4 +19,3 @@ text_sensor:
     id: dark_outside
     entity_id: ${bool_dark_sensor} 
     internal: true
-    

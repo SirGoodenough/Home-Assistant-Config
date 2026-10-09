@@ -108,6 +108,16 @@
         "unit_of_measurement": "sec",
         "step": 1.0,
         "mode": "box"
+      },
+      {
+        "id": "dust_collector_delay_minutes",
+        "min": 5.0,
+        "max": 35.0,
+        "name": "dust_collector_delay_minutes",
+        "icon": "mdi:robot-vacuum-variant",
+        "mode": "box",
+        "unit_of_measurement": "min",
+        "step": 1.0
       }
     ]
   }

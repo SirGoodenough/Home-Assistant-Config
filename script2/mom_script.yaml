@@ -13,28 +13,27 @@ bedtime_button_mom:
       data:
         code: 54241
     - action: light.turn_on
-      entity_id: light.upstairs_stair_light_light
+      entity_id: light.stair_light_up_stairway_stair_light_light
 
     - delay: 00:02:00
 
-    - action: light.turn_off
+    - action: homeassistant.turn_off
       entity_id:
         - light.lr_light_lr_light_light
         - light.moms_chair_moms_chair_light
-    - action: input_boolean.turn_off
-      entity_id:
-        input_boolean.christmas
+        - light.mary_light_light
+        - fan.mary_fan_fan
+        - input_boolean.christmas
 
         # - lock.front_door
         # - lock.side_door
         # - lock.smart_code_with_home_connect_technology
 
-
 #####################################################
 # General Light Control                             #
 #####################################################
 mom_office_lights:
-  alias: Mom Office Lights 
+  alias: Mom Office Lights
   sequence:
     - action: light.toggle
       metadata: {}

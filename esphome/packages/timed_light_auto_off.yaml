@@ -2,15 +2,28 @@
 # This is required to call this package and start the auto-off:
 #       - script.execute: light_auto_off
 # ${num_hlpr_minutes} is the Home Assistant input_number entity that holds the delay in minutes.  This is used to allow changing the delay without having to recompile and upload the ESPHome firmware.
-# ${this_light} is the internal id of the light to control here.
+# ${this_light is the internal id of the light to control here.
 
+
+esphome:
+  on_boot:
+    priority: 600
+    then:
+      - lambda: |-
+          id(delay_minutes_saved) = id(delay_minutes).state;
+
+globals:
+  - id: delay_minutes_saved
+    type: float
+    restore_value: no
+    initial_value: '0.0f'
 
 script:
   - id: light_auto_off
     mode: restart
-    then:
+    then: 
       - delay: !lambda |-
-          const float minutes = id(delay_minutes).state;
+          const float minutes = id(delay_minutes_saved);
           if (isnan(minutes) || minutes <= 0.0f) {
             return 8UL * 60UL * 1000UL;
           }
@@ -23,7 +36,10 @@ sensor:
     entity_id: ${num_hlpr_minutes}
     internal: true
     on_value:
-      - logger.log:
-          level: INFO
-          format: "garage delay minutes: %.1f"
-          args: ["x"]
+      then:
+        - lambda: |-
+            id(delay_minutes_saved) = x;
+        - logger.log:
+            level: INFO
+            format: "Delay minutes: %.1f"
+            args: ["x"]

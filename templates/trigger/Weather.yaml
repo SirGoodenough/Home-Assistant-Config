@@ -12,9 +12,9 @@
       unique_id: ce7cb6b7-c666-494b-aa3c-4ed79b2f1092
       state: >
         {# Create a dead zone to prevent oscillations. #}
-        {%- if states('sensor.gw2000b_v2_2_4_solar_lux') | float(0) > 9004 %}
+        {%- if states('sensor.gw2000b_v2_2_4_solar_lux') | float(0) > 6004 %}
             false
-        {%- elif states('sensor.gw2000b_v2_2_4_solar_lux') | float(0) < 6507 %}
+        {%- elif states('sensor.gw2000b_v2_2_4_solar_lux') | float(0) < 3807 %}
             true
         {% else %}
             {{ states('binary_sensor.dark_outside') }}

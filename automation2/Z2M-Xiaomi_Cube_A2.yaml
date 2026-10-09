@@ -51,7 +51,7 @@
           entity_id: light.d_lights
       slide_face_4:
         - service: light.turn_on
-          entity_id: light.upstairs_stair_light_light
+          entity_id: light.stair_light_up_stairway_stair_light_light
       ## Testing side 5
       slide_face_5:
         - condition: template

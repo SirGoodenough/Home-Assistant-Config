@@ -6,28 +6,26 @@
   alias: 3-Way and Yard Light PIR ON
   initial_state: on
   triggers:
-    - entity_id: switch.garage_garage_door_garage_door_outside_pir
-      trigger: state
+    - trigger: state
+      entity_id: switch.garage_garage_door_garage_door_outside_pir
       to: "on"
       not_from:
         - unknown
         - unavailable
-    - entity_id: binary_sensor.basement_back_porch_light_back_porch_light_switch
-      
-      trigger: state
+    - trigger: state
+      entity_id: binary_sensor.basement_back_porch_light_back_porch_light_switch
       to: "on"
       not_from:
         - unknown
         - unavailable
-    - entity_id: event.back_door_motion
-      
-      trigger: state
+    - trigger: state
+      entity_id: event.back_door_motion
       to: "on"
       not_from:
         - unknown
         - unavailable
-    - entity_id: binary_sensor.garage_side_door_open
-      trigger: state
+    - trigger: state
+      entity_id: binary_sensor.garage_side_door_open
       to: "on"
       not_from:
         - unknown

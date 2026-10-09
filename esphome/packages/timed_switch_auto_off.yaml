@@ -1,0 +1,45 @@
+
+# This is required to call this package and start the auto-off:
+#       - script.execute: switch_auto_off
+# ${num_hlpr_minutes} is the Home Assistant input_number entity that holds the delay in minutes.  This is used to allow changing the delay without having to recompile and upload the ESPHome firmware.
+# ${this_switch is the internal id of the switch to control here.
+
+
+esphome:
+  on_boot:
+    priority: 600
+    then:
+      - lambda: |-
+          id(delay_minutes_saved) = id(delay_minutes).state;
+
+globals:
+  - id: delay_minutes_saved
+    type: float
+    restore_value: no
+    initial_value: '0.0f'
+
+script:
+  - id: switch_auto_off
+    mode: restart
+    then: 
+      - delay: !lambda |-
+          const float minutes = id(delay_minutes_saved);
+          if (isnan(minutes) || minutes <= 0.0f) {
+            return 8UL * 60UL * 1000UL;
+          }
+          return static_cast<uint32_t>(minutes * 60.0f * 1000.0f);
+      - switch.turn_off: ${this_switch}
+
+sensor:
+  - platform: homeassistant
+    id: delay_minutes
+    entity_id: ${num_hlpr_minutes}
+    internal: true
+    on_value:
+      then:
+        - lambda: |-
+            id(delay_minutes_saved) = x;
+        - logger.log:
+            level: INFO
+            format: "Delay minutes: %.1f"
+            args: ["x"]

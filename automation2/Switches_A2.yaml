@@ -5,41 +5,6 @@
 #                                                   #
 #####################################################
 
-#####################################################
-# Basement Hall PIR                                 #
-#####################################################
-# - id: d4556acf-439c-426a-98b7-b58a411c660f
-#   alias: Basement Hall PIR
-#   initial_state: on
-#   triggers:
-#     - trigger: state
-#       entity_id:
-#         - binary_sensor.basement_way_d_pir
-#       to: "on"
-#     - trigger: state
-#       entity_id:
-#         - binary_sensor.basement_way_u_pir
-#       to: "on"
-#   conditions:
-#     - or:
-#       - >
-#         {% from 'availability_template.jinja' import avail %}
-#         {{- not avail( ['binary_sensor.basement_way_u_pir',
-#           'binary_sensor.basement_way_d_pir'] ) | bool -}}
-#       - alias: "Down Socket off ?"
-#         condition: state
-#         entity_id: light.bmt_hall_socketd
-#         state: "off"
-#       - alias: "Up Socket off ?"
-#         condition: state
-#         entity_id: light.bmt_hall_socketu
-#         state: "off"
-#   actions:
-#     - action: mqtt.publish
-#       data:
-#         topic: bhall/cmnd/POWER2
-#         payload: 1
-
 ####################################################
 # DnRemote                                         #
 ####################################################
@@ -52,7 +17,7 @@
       to: "on"
   actions:
     - action: light.toggle
-      entity_id: light.upstairs_stair_light_light
+      entity_id: light.stair_light_up_stairway_stair_light_light
 
 - id: d82bf999-0a81-4761-8192-c1d4fe6a7b1c
   alias: KitchenDown Toggle button_dnremote2
@@ -119,19 +84,6 @@
   actions:
     - action: light.toggle
       entity_id: light.jims_computer_light
-
-#####################################################
-# Kitchen Long Press                                #
-#####################################################
-- id: 47ee67be-946b-4b8a-964a-622884e06f11
-  alias: Kitchen down lights long press
-  initial_state: on
-  triggers:
-    trigger: mqtt
-    topic: KitchenSink/LongToggle
-  actions:
-    - action: light.toggle
-      entity_id: light.kitchen_down_lights
 
 ####################################################
 # Office Light Button                              #
@@ -203,7 +155,6 @@
       entity_id:
         - light.basement_basement_stair_up_light_basement_stair_up_light_light
         - light.basement_basement_stair_down_light_basement_stair_down_light_light
-
 # - id: edaafacf-6c34-47d2-9dda-bcea8d4232a4
 #   alias: Broadcom Brick Reset
 #   description: "Reset the dam RM3 that is mose always offline. POS!"

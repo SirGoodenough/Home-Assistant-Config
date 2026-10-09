@@ -6,6 +6,7 @@ substitutions:
   name: chaloupkaabode-esphome
   friendly_name: Another Brick in the Wall
   frame_type: esp-idf
+  model: not specified
 
 esphome:
   name: ${name}
@@ -14,6 +15,7 @@ esphome:
   project:
     name: "chaloupkaabode.${name}"
     version: "1.0.0"
+  comment: "Base hardware: ${model}"
 
 esp8266:
   board: ${board}
@@ -97,6 +99,12 @@ sensor:
     name: WiFi Signal
     icon: mdi:wifi-strength-2
     update_interval: 228s
+    entity_category: diagnostic
+
+  # VCC Sensor
+  - platform: adc
+    pin: VCC
+    name: "${friendly_name} VCC Voltage"
     entity_category: diagnostic
 
 binary_sensor:
