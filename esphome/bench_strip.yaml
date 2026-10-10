@@ -128,6 +128,7 @@ switch:
     icon: mdi:power-socket-eu
     id: relay1
     restore_mode: ALWAYS_OFF
+    device_id: outlet_strip
 
   - platform: output
     output: relay3_output
@@ -135,6 +136,7 @@ switch:
     icon: mdi:power-socket-eu
     id: relay3
     restore_mode: ALWAYS_OFF
+    device_id: outlet_strip
 
   - platform: output
     output: relay4_output
