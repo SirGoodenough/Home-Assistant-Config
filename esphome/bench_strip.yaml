@@ -142,7 +142,7 @@ switch:
     icon: mdi:power-socket-eu
     id: relay4
     restore_mode: ALWAYS_OFF
-    device_id: 
+    device_id: outlet_strip
 
   - platform: output
     output: relay_usb_output
