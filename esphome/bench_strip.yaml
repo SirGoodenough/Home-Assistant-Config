@@ -49,7 +49,7 @@ binary_sensor:
         static uint32_t last_press_ms = 0;
         uint32_t now = millis();
 
-        if (now - last_press_ms > 500) {
+        if (now - last_press_ms > 900) {
           press_count = 0;
         }
         last_press_ms = now;
