@@ -19,7 +19,7 @@ esphome:
       name: "${friendly_name} Strip"
       area_id: ${area}
     - id: light_device
-      name: "${friendly_name} Strip"
+      name: "${friendly_name} "
       area_id: ${area}
     - id: usb_device
       name: "${friendly_name} USB"
