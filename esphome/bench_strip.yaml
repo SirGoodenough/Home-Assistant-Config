@@ -161,4 +161,3 @@ switch:
     id: relay_usb
     restore_mode: ALWAYS_ON
     device_id: usb_device
-
