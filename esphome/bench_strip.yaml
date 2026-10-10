@@ -3,7 +3,7 @@ substitutions:
   friendly_name: Bench Strip
   board: esp8285
   area: Office
-  IP: !secret bedroom_fan_IP
+  IP: !secret bench_strip_IP
   model: ZLD-44USA-W
 
 packages:
