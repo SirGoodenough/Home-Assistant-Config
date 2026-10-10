@@ -43,6 +43,8 @@ binary_sensor:
     name: "${friendly_name} Button"
     id: button_1
     internal: true
+    filters:
+      - delayed_on_off: 50ms
     on_press:
       lambda: |-
         id(button_press_count)++;
