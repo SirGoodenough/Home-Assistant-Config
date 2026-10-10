@@ -39,7 +39,7 @@ status_led:
 
 binary_sensor:
   - platform: gpio
-    id:
+    id: 
     pin: 3
     name: "${friendly_name} Button"
     id: button_1
