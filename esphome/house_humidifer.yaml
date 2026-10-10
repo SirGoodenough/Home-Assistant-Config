@@ -30,6 +30,10 @@ esphome:
             binary_sensor.is_on: enable_switch
           then:
             - switch.turn_on: h_enable
+      - wait_until:
+          condition:
+            sensor.has_state: duty_cycle_seconds
+      - lambda: id(duty_cycle_seconds_global) = id(duty_cycle_seconds).state;
 
 wifi:
   manual_ip:
@@ -84,6 +88,7 @@ sensor:
     name: "${friendly_name} Duty Cycle Seconds"
     on_value:
       then:
+        - lambda: id(duty_cycle_seconds_global) = x;
         - logger.log:
             level: INFO
             format: "Duty cycle seconds: %.1f"
@@ -91,6 +96,9 @@ sensor:
     device_id: switch_device
 
 globals:
+  - id: duty_cycle_seconds_global
+    type: float
+    initial_value: "0.0"
   - id: flow_on_seconds
     type: float
     initial_value: "0.0"
@@ -104,7 +112,7 @@ script:
             switch.is_on: h_enable
           then:
             - lambda: |-
-                const float requested = id(duty_cycle_seconds).state;
+                const float requested = id(duty_cycle_seconds_global);
                 id(flow_on_seconds) =
                     isnan(requested) || requested < 0.0f || requested > 120.0f
                     ? 0.0f
