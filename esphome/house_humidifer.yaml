@@ -32,7 +32,7 @@ esphome:
             - switch.turn_on: h_enable
       - wait_until:
           condition:
-            sensor.has_state: duty_cycle_seconds
+            lambda: return !isnan(id(duty_cycle_seconds).state);
       - lambda: id(duty_cycle_seconds_global) = id(duty_cycle_seconds).state;
 
 wifi:
