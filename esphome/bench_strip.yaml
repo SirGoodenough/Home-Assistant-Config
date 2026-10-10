@@ -57,7 +57,7 @@ script:
   - id: handle_button_sequence
     mode: restart
     then:
-      - delay: 300ms
+      - delay: 800ms
       - if:
           condition:
             lambda: return id(button_press_count) == 1;
