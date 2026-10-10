@@ -55,7 +55,7 @@ globals:
 
 script:
   - id: handle_button_sequence
-    # mode: restart
+    mode: restart
     then:
       - delay: 800ms
       - if:
