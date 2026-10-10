@@ -149,5 +149,5 @@ switch:
     icon: mdi:usb
     id: relay_usb
     restore_mode: ALWAYS_OFF
-    
+    device_id
 
