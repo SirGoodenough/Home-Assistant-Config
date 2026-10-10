@@ -16,7 +16,7 @@ esphome:
   name_add_mac_suffix: false
   devices:
     - id: outlet_strip
-      name: "${friendly_name} "
+      name: "${friendly_name} Strip"
       area_id: ${area}
     - id: usb_device
       name: "${friendly_name} light"
