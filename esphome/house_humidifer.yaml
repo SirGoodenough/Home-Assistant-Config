@@ -82,6 +82,8 @@ sensor:
     id: duty_cycle_seconds
     entity_id: input_number.humidifer_duty_cycle_seconds
     name: "${friendly_name} Duty Cycle Seconds"
+    on_value:
+      then:
         - logger.log:
             level: INFO
             format: "Delay minutes: %.1f"
