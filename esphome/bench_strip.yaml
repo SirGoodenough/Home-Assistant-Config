@@ -119,7 +119,7 @@ light:
     id: relay2
     output: relay2_output
     restore_mode: RESTORE_DEFAULT_ON
-    
+    device_id: light_device
 
 switch:
   - platform: output
