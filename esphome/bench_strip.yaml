@@ -2,6 +2,8 @@ substitutions:
   name: benchstrip
   friendly_name: Bench Strip
   board: esp8285
+  area: Bedroom
+  IP: !secret bedroom_fan_IP
   model: ZLD-44USA-W
 
 packages:
