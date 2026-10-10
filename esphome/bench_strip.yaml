@@ -60,7 +60,7 @@ binary_sensor:
             id(relay1).toggle();
             break;
           case 2:
-            id(relay2).toggle();
+            id(toggle_relay2).execute();
             break;
           case 3:
             id(relay3).toggle();
@@ -76,6 +76,11 @@ binary_sensor:
             press_count = 0;
             break;
         }
+
+script:
+  - id: toggle_relay2
+    then:
+      - light.toggle: relay2
 
 sensor:
   - platform: adc
