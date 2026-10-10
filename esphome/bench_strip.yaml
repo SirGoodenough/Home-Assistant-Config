@@ -45,42 +45,45 @@ binary_sensor:
     internal: true
     on_press:
       lambda: |-
-        static uint32_t press_count = 0;
-        static uint32_t last_press_ms = 0;
-        uint32_t now = millis();
+        id(button_press_count)++;
+        id(handle_button_sequence).execute();
 
-        if (now - last_press_ms > 300) {
-          press_count = 0;
-        }
-        last_press_ms = now;
-        press_count++;
-
-        switch (press_count) {
-          case 1:
-            id(relay1).toggle();
-            break;
-          case 2:
-            id(toggle_relay2).execute();
-            break;
-          case 3:
-            id(relay3).toggle();
-            break;
-          case 4:
-            id(relay4).toggle();
-            break;
-          case 5:
-            id(relay_usb).toggle();
-            press_count = 0;
-            break;
-          default:
-            press_count = 0;
-            break;
-        }
+globals:
+  - id: button_press_count
+    type: int
+    initial_value: "0"
 
 script:
-  - id: toggle_relay2
+  - id: handle_button_sequence
+    mode: restart
     then:
-      - light.toggle: relay2
+      - delay: 300ms
+      - if:
+          condition:
+            lambda: return id(button_press_count) == 1;
+          then:
+            - switch.toggle: relay1
+      - if:
+          condition:
+            lambda: return id(button_press_count) == 2;
+          then:
+            - light.toggle: relay2
+      - if:
+          condition:
+            lambda: return id(button_press_count) == 3;
+          then:
+            - switch.toggle: relay3
+      - if:
+          condition:
+            lambda: return id(button_press_count) == 4;
+          then:
+            - switch.toggle: relay4
+      - if:
+          condition:
+            lambda: return id(button_press_count) == 5;
+          then:
+            - switch.toggle: relay_usb
+      - lambda: id(button_press_count) = 0;
 
 sensor:
   - platform: adc
