@@ -86,7 +86,7 @@ sensor:
       then:
         - logger.log:
             level: INFO
-            format: "Delay minutes: %.1f"
+            format: "Duty cycle seconds: %.1f"
             args: ["x"]
     device_id: switch_device
 
