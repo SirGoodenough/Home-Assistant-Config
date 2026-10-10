@@ -10,8 +10,17 @@ packages:
   device_base: !include packages/sg_8266_base.yaml
 
 esphome:
-  area: Office
+  area:
+    id: ${area}
+    name: ${area}
   name_add_mac_suffix: false
+  devices:
+    - id: fan_device
+      name: "${friendly_name} Fan"
+      area_id: ${area}
+    - id: light_device
+      name: "${friendly_name} light"
+      area_id: ${area}
 
 wifi:
   manual_ip:
