@@ -18,7 +18,7 @@ esphome:
     - id: fan_device
       name: "${friendly_name} Fan"
       area_id: ${area}
-    - id: light_device
+    - id: _device
       name: "${friendly_name} light"
       area_id: ${area}
 
