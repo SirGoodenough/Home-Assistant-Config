@@ -159,6 +159,6 @@ switch:
     name: "${friendly_name} USB Relay"
     icon: mdi:usb
     id: relay_usb
-    restore_mode: ALWAYS_OFF
+    restore_mode: ALWAYS_ON
     device_id: usb_device
 
