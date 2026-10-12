@@ -98,19 +98,6 @@ switch:
     icon: "mdi:door"
     id: side_door
     on_turn_on:
-      then:
-        - mqtt.publish:
-            topic: SideLock/stat/door
-            payload: OPEN
-            retain: true
-            qos: 2
-    on_turn_off:
-      then:
-        - mqtt.publish:
-            topic: SideLock/stat/door
-            payload: CLOSED
-            retain: true
-            qos: 2
 
 status_led:
   pin:
