@@ -40,22 +40,22 @@
         {% endif %}
     rgb_state_topic: "JensNeb/tele/RESULT"
 
-  - name: "Alarm Display"
-    unique_id: e68bc3cb-e6fe-4c5f-9da4-06427296944e
-    state_topic: "Bedroom_Fan/tele/STATE"
-    command_topic: "Bedroom_Fan/cmnd/POWER1"
-    availability_topic: "Bedroom_Fan/tele/LWT"
-    payload_on: "ON"
-    payload_off: "OFF"
-    payload_available: "Online"
-    payload_not_available: "Offline"
+  # - name: "Alarm Display"
+  #   unique_id: e68bc3cb-e6fe-4c5f-9da4-06427296944e
+  #   state_topic: "Bedroom_Fan/tele/STATE"
+  #   command_topic: "Bedroom_Fan/cmnd/POWER1"
+  #   availability_topic: "Bedroom_Fan/tele/LWT"
+  #   payload_on: "ON"
+  #   payload_off: "OFF"
+  #   payload_available: "Online"
+  #   payload_not_available: "Offline"
 
-  - name: "KneeLight"
-    unique_id: d6199c6d-1ca4-47f0-8200-eed436be9842
-    state_topic: "cabnetlight/tele/STATE"
-    command_topic: "cabnetlight/cmnd/POWER"
-    availability_topic: "cabnetlight/tele/LWT"
-    payload_on: "ON"
-    payload_off: "OFF"
-    payload_available: "Online"
-    payload_not_available: "Offline"
+  # - name: "KneeLight"
+  #   unique_id: d6199c6d-1ca4-47f0-8200-eed436be9842
+  #   state_topic: "cabnetlight/tele/STATE"
+  #   command_topic: "cabnetlight/cmnd/POWER"
+  #   availability_topic: "cabnetlight/tele/LWT"
+  #   payload_on: "ON"
+  #   payload_off: "OFF"
+  #   payload_available: "Online"
+  #   payload_not_available: "Offline"

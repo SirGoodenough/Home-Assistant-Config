@@ -2,44 +2,6 @@
   #####################################################
   # Door Switches (433mhz)                            #
   #####################################################
-  - name: "Back Door"
-    unique_id: d963beae-6b02-490b-b098-0d356c457c79
-    device_class: door
-    device:
-      name: "Back Door Open 433"
-      identifiers: 041c5f6a-072f-4d0c-9c08-b566867e5db4
-      manufacturer: SirGoodenough
-      via_device: RF-Bridge Cluster
-    state_topic: rf433/BackDoorI
-    payload_on: 'ON'
-    payload_off: 'OFF'
-    force_update: false
-    availability_topic: RFBridge2/tele/LWT
-    payload_available: Online
-    payload_not_available: Offline
-
-  - name: "Bathroom"
-    unique_id: 40bc752f-50ef-4b96-81b9-a412f966f489
-    device_class: door
-    state_topic: rf433/Bathroom
-    payload_on: 'ON'
-    payload_off: 'OFF'
-    force_update: false
-    availability_topic: RFBridge2/tele/LWT
-    payload_available: Online
-    payload_not_available: Offline
-
-  - name: "Bedroom"
-    unique_id: 97c94660-1276-4d83-a6b7-8ea1cf8491cb
-    device_class: door
-    state_topic: rf433/Bedroom
-    payload_on: 'ON'
-    payload_off: 'OFF'
-    force_update: false
-    availability_topic: RFBridge2/tele/LWT
-    payload_available: Online
-    payload_not_available: Offline
-
   - name: "Front Door Open"
     unique_id: 3840ef62-5718-4f25-a973-75e39f4f2871
     device_class: door
@@ -48,59 +10,6 @@
     payload_off: 'CLOSED'
     force_update: false
     availability_topic: "FrontLock/tele/LWT"
-    payload_available: Online
-    payload_not_available: Offline
-
-  - name: "Front Door Open 433"
-    unique_id: 9e093b66-7711-4efe-a60a-bfecfc37cb1b
-    device_class: door
-    state_topic: rf433/FrontDoorI
-    payload_on: 'ON'
-    payload_off: 'OFF'
-    force_update: false
-    availability_topic: RFBridge2/tele/LWT
-    payload_available: Online
-    payload_not_available: Offline
-
-  - name: "Garage Door Closed"
-    unique_id: f89a0d17-b290-4faa-b355-8ebabd6efcdf
-    state_topic: rf433/GarageC
-    payload_on: 'ON'
-    payload_off: 'OFF'
-    force_update: false
-    availability_topic: RFBridge/tele/LWT
-    payload_available: Online
-    payload_not_available: Offline
-
-  - name: "Garage Door Open"
-    unique_id: 39300c8f-28ba-435e-8b86-bd6ed8896e0b
-    state_topic: rf433/GarageO
-    payload_on: 'ON'
-    payload_off: 'OFF'
-    force_update: false
-    availability_topic: RFBridge/tele/LWT
-    payload_available: Online
-    payload_not_available: Offline
-
-  - name: "Garage Side Door Open"
-    unique_id: ae0eb578-29d5-4fb8-97a2-f2b570ca2370
-    device_class: door
-    state_topic: rf433/GarageSide
-    payload_on: 'ON'
-    payload_off: 'OFF'
-    force_update: false
-    availability_topic: RFBridge/tele/LWT
-    payload_available: Online
-    payload_not_available: Offline
-
-  - name: "Mailbox"
-    unique_id: 503c8275-879c-4597-9084-b7e922bb992e
-    device_class: opening
-    state_topic: rf433/Mailbox
-    payload_on: 'ON'
-    payload_off: 'OFF'
-    force_update: false
-    availability_topic: RFBridge2/tele/LWT
     payload_available: Online
     payload_not_available: Offline
 
@@ -115,61 +24,152 @@
     payload_available: Online
     payload_not_available: Offline
 
-  - name: "Side Door Open 433"
-    unique_id: 97d7853b-d2d8-4403-8a5e-cb5b65d15345
-    device_class: door
-    state_topic: rf433/SideDoorI
-    payload_on: 'ON'
-    payload_off: 'OFF'
-    force_update: false
-    availability_topic: RFBridge2/tele/LWT
-    payload_available: Online
-    payload_not_available: Offline
+  # - name: "Back Door"
+  #   unique_id: d963beae-6b02-490b-b098-0d356c457c79
+  #   device_class: door
+  #   device:
+  #     name: "Back Door Open 433"
+  #     identifiers: 041c5f6a-072f-4d0c-9c08-b566867e5db4
+  #     manufacturer: SirGoodenough
+  #     via_device: RF-Bridge Cluster
+  #   state_topic: rf433/BackDoorI
+  #   payload_on: 'ON'
+  #   payload_off: 'OFF'
+  #   force_update: false
+  #   availability_topic: RFBridge2/tele/LWT
+  #   payload_available: Online
+  #   payload_not_available: Offline
 
-  - name: "Kitchen Freezer"
-    unique_id: f2e07333-50c4-4813-9677-1e3a4719abff
-    device_class: door
-    device:
-      name: "Kitchen Freezer Open 433"
-      identifiers: 92fe470e-2ee2-40f2-9ddd-a4dbd464949a
-      manufacturer: SirGoodenough
-      via_device: RF-Bridge Cluster
-    state_topic: rf433/KFreezer
-    payload_on: 'ON'
-    payload_off: 'OFF'
-    force_update: false
-    availability_topic: RFBridge2/tele/LWT
-    payload_available: Online
-    payload_not_available: Offline
+  # - name: "Bathroom"
+  #   unique_id: 40bc752f-50ef-4b96-81b9-a412f966f489
+  #   device_class: door
+  #   state_topic: rf433/Bathroom
+  #   payload_on: 'ON'
+  #   payload_off: 'OFF'
+  #   force_update: false
+  #   availability_topic: RFBridge2/tele/LWT
+  #   payload_available: Online
+  #   payload_not_available: Offline
 
-  - name: "Kitchen Fridge"
-    unique_id: e2c574c3-f720-4573-8bc6-81d0c9fc970e
-    device_class: door
-    device:
-      name: "Kitchen Fridge Open 433"
-      identifiers: 09c0b715-8eee-48c5-ba30-b8d8f758c8e3
-      manufacturer: SirGoodenough
-      via_device: RF-Bridge Cluster
-    state_topic: rf433/KFridge
-    payload_on: 'ON'
-    payload_off: 'OFF'
-    force_update: false
-    availability_topic: RFBridge2/tele/LWT
-    payload_available: Online
-    payload_not_available: Offline
+  # - name: "Bedroom"
+  #   unique_id: 97c94660-1276-4d83-a6b7-8ea1cf8491cb
+  #   device_class: door
+  #   state_topic: rf433/Bedroom
+  #   payload_on: 'ON'
+  #   payload_off: 'OFF'
+  #   force_update: false
+  #   availability_topic: RFBridge2/tele/LWT
+  #   payload_available: Online
+  #   payload_not_available: Offline
 
-  - name: "Porch Freezer"
-    unique_id: c534abcc-f181-457b-8755-b602377c907a
-    device_class: door
-    device:
-      name: "Porch Freezer Open 433"
-      identifiers: 1483b8e5-72ca-488c-88c0-7e35150b0caa
-      manufacturer: SirGoodenough
-      via_device: RF-Bridge Cluster
-    state_topic: rf433/PFreezer
-    payload_on: 'ON'
-    payload_off: 'OFF'
-    force_update: false
-    availability_topic: RFBridge2/tele/LWT
-    payload_available: Online
-    payload_not_available: Offline
+  # - name: "Front Door Open 433"
+  #   unique_id: 9e093b66-7711-4efe-a60a-bfecfc37cb1b
+  #   device_class: door
+  #   state_topic: rf433/FrontDoorI
+  #   payload_on: 'ON'
+  #   payload_off: 'OFF'
+  #   force_update: false
+  #   availability_topic: RFBridge2/tele/LWT
+  #   payload_available: Online
+  #   payload_not_available: Offline
+
+  # - name: "Garage Door Closed"
+  #   unique_id: f89a0d17-b290-4faa-b355-8ebabd6efcdf
+  #   state_topic: rf433/GarageC
+  #   payload_on: 'ON'
+  #   payload_off: 'OFF'
+  #   force_update: false
+  #   availability_topic: RFBridge/tele/LWT
+  #   payload_available: Online
+  #   payload_not_available: Offline
+
+  # - name: "Garage Door Open"
+  #   unique_id: 39300c8f-28ba-435e-8b86-bd6ed8896e0b
+  #   state_topic: rf433/GarageO
+  #   payload_on: 'ON'
+  #   payload_off: 'OFF'
+  #   force_update: false
+  #   availability_topic: RFBridge/tele/LWT
+  #   payload_available: Online
+  #   payload_not_available: Offline
+
+  # - name: "Garage Side Door Open"
+  #   unique_id: ae0eb578-29d5-4fb8-97a2-f2b570ca2370
+  #   device_class: door
+  #   state_topic: rf433/GarageSide
+  #   payload_on: 'ON'
+  #   payload_off: 'OFF'
+  #   force_update: false
+  #   availability_topic: RFBridge/tele/LWT
+  #   payload_available: Online
+  #   payload_not_available: Offline
+
+  # - name: "Mailbox"
+  #   unique_id: 503c8275-879c-4597-9084-b7e922bb992e
+  #   device_class: opening
+  #   state_topic: rf433/Mailbox
+  #   payload_on: 'ON'
+  #   payload_off: 'OFF'
+  #   force_update: false
+  #   availability_topic: RFBridge2/tele/LWT
+  #   payload_available: Online
+  #   payload_not_available: Offline
+
+  # - name: "Side Door Open 433"
+  #   unique_id: 97d7853b-d2d8-4403-8a5e-cb5b65d15345
+  #   device_class: door
+  #   state_topic: rf433/SideDoorI
+  #   payload_on: 'ON'
+  #   payload_off: 'OFF'
+  #   force_update: false
+  #   availability_topic: RFBridge2/tele/LWT
+  #   payload_available: Online
+  #   payload_not_available: Offline
+
+  # - name: "Kitchen Freezer"
+  #   unique_id: f2e07333-50c4-4813-9677-1e3a4719abff
+  #   device_class: door
+  #   device:
+  #     name: "Kitchen Freezer Open 433"
+  #     identifiers: 92fe470e-2ee2-40f2-9ddd-a4dbd464949a
+  #     manufacturer: SirGoodenough
+  #     via_device: RF-Bridge Cluster
+  #   state_topic: rf433/KFreezer
+  #   payload_on: 'ON'
+  #   payload_off: 'OFF'
+  #   force_update: false
+  #   availability_topic: RFBridge2/tele/LWT
+  #   payload_available: Online
+  #   payload_not_available: Offline
+
+  # - name: "Kitchen Fridge"
+  #   unique_id: e2c574c3-f720-4573-8bc6-81d0c9fc970e
+  #   device_class: door
+  #   device:
+  #     name: "Kitchen Fridge Open 433"
+  #     identifiers: 09c0b715-8eee-48c5-ba30-b8d8f758c8e3
+  #     manufacturer: SirGoodenough
+  #     via_device: RF-Bridge Cluster
+  #   state_topic: rf433/KFridge
+  #   payload_on: 'ON'
+  #   payload_off: 'OFF'
+  #   force_update: false
+  #   availability_topic: RFBridge2/tele/LWT
+  #   payload_available: Online
+  #   payload_not_available: Offline
+
+  # - name: "Porch Freezer"
+  #   unique_id: c534abcc-f181-457b-8755-b602377c907a
+  #   device_class: door
+  #   device:
+  #     name: "Porch Freezer Open 433"
+  #     identifiers: 1483b8e5-72ca-488c-88c0-7e35150b0caa
+  #     manufacturer: SirGoodenough
+  #     via_device: RF-Bridge Cluster
+  #   state_topic: rf433/PFreezer
+  #   payload_on: 'ON'
+  #   payload_off: 'OFF'
+  #   force_update: false
+  #   availability_topic: RFBridge2/tele/LWT
+  #   payload_available: Online
+  #   payload_not_available: Offline

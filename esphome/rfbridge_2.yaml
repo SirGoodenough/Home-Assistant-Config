@@ -1,0 +1,125 @@
+substitutions:
+  name: rfbridge2
+  area: Home
+  IP: !secret rfbridge_2_IP
+  friendly_name: RF Bridge 2
+  board: esp01_1m
+  update_interval: 189s
+  model: Sonoff RF Bridge rf433 transciever R2V1
+
+packages:
+  device_base: !include packages/sg_8266_base.yaml
+
+esphome:
+  area:
+    id: ${area}
+    name: ${area}
+  name_add_mac_suffix: false
+
+wifi:
+  manual_ip:
+    gateway: !secret chaloupkaabode_gateway
+    subnet: !secret chaloupkaabode_subnet
+    static_ip: ${IP}
+    dns1: !secret chaloupkaabode_gateway
+
+uart:
+  tx_pin: 1
+  rx_pin: 3
+  baud_rate: 19200
+
+logger:
+  baud_rate: 0
+
+remote_receiver:
+  pin: 4
+#  dump: all
+  dump: rc_switch
+  filter: 100us
+  tolerance: 50%
+  idle: 2ms
+
+remote_transmitter:
+  pin: 5
+  carrier_duty_percent: 100%
+
+sensor:
+  - platform: dht
+    model: Si7021
+    pin: GPIO14
+    humidity:
+      name: "${friendly_name} Humidity"
+      id: humidity
+      state_class: measurement
+    temperature:
+      name: "${friendly_name} Temperature"
+      id: temperature
+      state_class: measurement
+    update_interval: ${update_interval}
+
+  - platform: dew_point
+    name: "${friendly_name} Dew Point"
+    temperature: temperature
+    humidity: humidity
+    state_class: measurement
+
+status_led:
+  pin:
+    number: GPIO13
+    inverted: yes
+
+api:
+  actions:  # create actions in HA
+    # Send standard RF using integer values
+    - action: send_rf_code
+      variables:
+        sync: int
+        low: int
+        high: int
+        code: int
+      then:
+        - rf_bridge.send_code:
+            sync: !lambda 'return sync;'
+            low: !lambda 'return low;'
+            high: !lambda 'return high;'
+            code: !lambda 'return code;'
+
+    # send raw RF
+    - action: send_rf_code_raw
+      variables:
+        raw: string
+      then:
+        - rf_bridge.send_raw:
+            raw: !lambda 'return raw;'
+
+    - action: learn
+      then:
+        - rf_bridge.learn
+
+rf_bridge:
+  on_code_received:  # all firmwares, can be reported as integer, hex, or both, as desired.
+    then:
+      - homeassistant.event:
+          event: esphome.rf_code_received
+          data:
+            sync: !lambda 'char buf[5]; return format_hex_to(buf, data.sync);'
+            low: !lambda 'char buf[5]; return format_hex_to(buf, data.low);'
+            high: !lambda 'char buf[5]; return format_hex_to(buf, data.high);'
+            code: !lambda 'char buf[9]; return format_hex_to(buf, data.code);'
+
+      # - homeassistant.event:
+      #       event: esphome.rf_code_received
+      #       data:
+      #         sync: !lambda 'return data.sync;'
+      #         low: !lambda 'return data.low;'
+      #         high: !lambda 'return data.high;'
+      #         code: !lambda 'return data.code;'
+
+  on_advanced_code_received:  # only on Portisch or mightymos firmwares
+    then:
+      - homeassistant.event:
+          event: esphome.rf_advanced_code_received
+          data:
+            length: !lambda 'char buf[3]; return format_hex_to(buf, data.length);'
+            protocol: !lambda 'char buf[3]; return format_hex_to(buf, data.protocol);'
+            code: !lambda 'return data.code;'

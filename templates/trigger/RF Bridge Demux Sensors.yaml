@@ -1,0 +1,686 @@
+- triggers:
+    - trigger: event
+      event_type: esphome.rf_code_received
+    - trigger: event
+      event_type: rf_bridge_code_received
+  binary_sensor:
+    - name: "RF Back Door"
+      unique_id: rf_back_door_esphome_event
+      device_class: door
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ true if rf_code in ['2f780a'] else false if rf_code in ['2f780e'] else this.state == 'on' }}
+
+    - name: "RF Event F1"
+      unique_id: rf_event_f1
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ true if rf_code in ['151557'] else false if rf_code in ['151554'] else this.state == 'on' }}
+
+    - name: "RF Event F2"
+      unique_id: rf_event_f2
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ true if rf_code in ['154557'] else false if rf_code in ['154554'] else this.state == 'on' }}
+
+    - name: "RF Event F3"
+      unique_id: rf_event_f3
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ true if rf_code in ['155157'] else false if rf_code in ['155154'] else this.state == 'on' }}
+
+    - name: "RF Event Mailbox"
+      unique_id: rf_event_mailbox
+      device_class: door
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ true if rf_code in ['2b200a'] else false if rf_code in ['2b200e'] else this.state == 'on' }}
+
+    - name: "RF Event Bedroom"
+      unique_id: rf_event_bedroom
+      device_class: door
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ true if rf_code in ['2b230a'] else false if rf_code in ['2b230e'] else this.state == 'on' }}
+
+    - name: "RF Event GarageC"
+      unique_id: rf_event_garagec
+      device_class: door
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ true if rf_code in ['2b2a0e'] else false if rf_code in ['2b2a0a'] else this.state == 'on' }}
+
+    - name: "RF Event SideDoorI"
+      unique_id: rf_event_sidedoori
+      device_class: door
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ true if rf_code in ['2b930a'] else false if rf_code in ['2b930e'] else this.state == 'on' }}
+
+    - name: "RF Event Bathroom"
+      unique_id: rf_event_bathroom
+      device_class: door
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ true if rf_code in ['2b9d0a'] else false if rf_code in ['2b9d0e'] else this.state == 'on' }}
+
+    - name: "RF Event GarageSide"
+      unique_id: rf_event_garageside
+      device_class: door
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ true if rf_code in ['2bb60a'] else false if rf_code in ['2bb60e'] else this.state == 'on' }}
+
+    - name: "RF Event KFridge"
+      unique_id: rf_event_kfridge
+      device_class: door
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ true if rf_code in ['2cc80a'] else false if rf_code in ['2cc80e'] else this.state == 'on' }}
+
+    - name: "RF Event FrontDoorI"
+      unique_id: rf_event_frontdoori
+      device_class: door
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ true if rf_code in ['2c7f0a'] else false if rf_code in ['2c7f0e'] else this.state == 'on' }}
+
+    - name: "RF Event PFreezer"
+      unique_id: rf_event_pfreezer
+      device_class: door
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ true if rf_code in ['2d1a0a'] else false if rf_code in ['2d1a0e'] else this.state == 'on' }}
+
+    - name: "RF Event GarageO"
+      unique_id: rf_event_garageo
+      device_class: door
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ true if rf_code in ['2d750e'] else false if rf_code in ['2d750a'] else this.state == 'on' }}
+
+    - name: "RF Event KFreezer"
+      unique_id: rf_event_kfreezer
+      device_class: door
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ true if rf_code in ['2e4d0a'] else false if rf_code in ['2e4d0e'] else this.state == 'on' }}
+
+    - name: "RF Event Chromecast"
+      unique_id: rf_event_chromecast
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ true if rf_code in ['472083'] else false if rf_code in ['472082'] else this.state == 'on' }}
+
+    - name: "RF Event D2"
+      unique_id: rf_event_d2
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ true if rf_code in ['472085'] else false if rf_code in ['472084'] else this.state == 'on' }}
+
+    - name: "RF Event D3"
+      unique_id: rf_event_d3
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ true if rf_code in ['472087'] else false if rf_code in ['472086'] else this.state == 'on' }}
+
+    - name: "RF Event Out Christmas"
+      unique_id: rf_event_out_christmas
+      device_class: light
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ true if rf_code in ['b94183'] else false if rf_code in ['b94182'] else this.state == 'on' }}
+
+    - name: "RF Event B2"
+      unique_id: rf_event_b2
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ true if rf_code in ['b94185'] else false if rf_code in ['b94184'] else this.state == 'on' }}
+
+    - name: "RF Event B3"
+      unique_id: rf_event_b3
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ true if rf_code in ['b94187'] else false if rf_code in ['b94186'] else this.state == 'on' }}
+
+    - name: "RF Event C1"
+      unique_id: rf_event_c1
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ true if rf_code in ['cb8883'] else false if rf_code in ['cb8882'] else this.state == 'on' }}
+
+    - name: "RF Event C2"
+      unique_id: rf_event_c2
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ true if rf_code in ['cb8885'] else false if rf_code in ['cb8884'] else this.state == 'on' }}
+
+    - name: "RF Event Kitchen Down Lights"
+      unique_id: rf_event_kitchen_down_lights
+      device_class: light
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ true if rf_code in ['cb8887'] else false if rf_code in ['cb8886'] else this.state == 'on' }}
+
+    - name: "RF Event E1"
+      unique_id: rf_event_e1
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ true if rf_code in ['e8b083'] else false if rf_code in ['e8b082'] else this.state == 'on' }}
+
+    - name: "RF Event E2"
+      unique_id: rf_event_e2
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ true if rf_code in ['e8b085'] else false if rf_code in ['e8b084'] else this.state == 'on' }}
+
+    - name: "RF Event E3"
+      unique_id: rf_event_e3
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ true if rf_code in ['e8b087'] else false if rf_code in ['e8b086'] else this.state == 'on' }}
+
+    - name: "RF Event Battery Low Mailbox"
+      unique_id: rf_event_battery_low_mailbox
+      device_class: battery
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['2b2006'] or this.state == 'on' }}
+
+    - name: "RF Event Battery Low Bedroom"
+      unique_id: rf_event_battery_low_bedroom
+      device_class: battery
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['2b2306'] or this.state == 'on' }}
+
+    - name: "RF Event Battery Low GarageC"
+      unique_id: rf_event_battery_low_garagec
+      device_class: battery
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['2b2a06'] or this.state == 'on' }}
+
+    - name: "RF Event Battery Low SideDoorI"
+      unique_id: rf_event_battery_low_sidedoori
+      device_class: battery
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['2b9306'] or this.state == 'on' }}
+
+    - name: "RF Event Battery Low Bathroom"
+      unique_id: rf_event_battery_low_bathroom
+      device_class: battery
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['2b9d06'] or this.state == 'on' }}
+
+    - name: "RF Event Battery Low GarageSide"
+      unique_id: rf_event_battery_low_garageside
+      device_class: battery
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['2bb606'] or this.state == 'on' }}
+
+    - name: "RF Event Battery Low KFridge"
+      unique_id: rf_event_battery_low_kfridge
+      device_class: battery
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['2cc806'] or this.state == 'on' }}
+
+    - name: "RF Event Battery Low FrontDoorI"
+      unique_id: rf_event_battery_low_frontdoori
+      device_class: battery
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['2c7f06'] or this.state == 'on' }}
+
+    - name: "RF Event Battery Low PFreezer"
+      unique_id: rf_event_battery_low_pfreezer
+      device_class: battery
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['2d1a06'] or this.state == 'on' }}
+
+    - name: "RF Event Battery Low GarageO"
+      unique_id: rf_event_battery_low_garageo
+      device_class: battery
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['2d7506'] or this.state == 'on' }}
+
+    - name: "RF Event Battery Low KFreezer"
+      unique_id: rf_event_battery_low_kfreezer
+      device_class: battery
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['2e4d06'] or this.state == 'on' }}
+
+    - name: "RF Event Battery Low BackDoorI"
+      unique_id: rf_event_battery_low_backdoori
+      device_class: battery
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['2f7806'] or this.state == 'on' }}
+
+    - name: "RF Event Jens Fan 1"
+      unique_id: rf_event_jens_fan_1
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['ea701'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Jens Fan 2"
+      unique_id: rf_event_jens_fan_2
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['ea702'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Jens Fan 3"
+      unique_id: rf_event_jens_fan_3
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['ea703'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Jens Fan 4"
+      unique_id: rf_event_jens_fan_4
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['ea704'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Jens Fan 5"
+      unique_id: rf_event_jens_fan_5
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['ea705'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Jens Fan 8"
+      unique_id: rf_event_jens_fan_8
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['ea708'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Jens Fan 9"
+      unique_id: rf_event_jens_fan_9
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['ea709'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Jens Fan C"
+      unique_id: rf_event_jens_fan_c
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['ea70c'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Dust Collector Button 1"
+      unique_id: rf_event_dust_collector_button_1
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['1145c0'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Dust Collector Button 2"
+      unique_id: rf_event_dust_collector_button_2
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['11450c'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Blue Remote C"
+      unique_id: rf_event_blue_remote_c
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['5e39c1'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Blue Remote A"
+      unique_id: rf_event_blue_remote_a
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['5e39c2'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Blue Remote D"
+      unique_id: rf_event_blue_remote_d
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['5e39c4'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Blue Remote B"
+      unique_id: rf_event_blue_remote_b
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['5e39c8'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Office Light 1"
+      unique_id: rf_event_office_light_1
+      device_class: light
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['67a1d2'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Office Light 2"
+      unique_id: rf_event_office_light_2
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['67a1d4'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Pad 1"
+      unique_id: rf_event_pad_1
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['6af721'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Pad 2"
+      unique_id: rf_event_pad_2
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['6af722'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Pad 3"
+      unique_id: rf_event_pad_3
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['6af723'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Pad 4"
+      unique_id: rf_event_pad_4
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['6af724'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Pad 5"
+      unique_id: rf_event_pad_5
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['6af725'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Pad 8"
+      unique_id: rf_event_pad_8
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['6af728'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Pad 9"
+      unique_id: rf_event_pad_9
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['6af729'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Pad C"
+      unique_id: rf_event_pad_c
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['6af72c'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Mom Call Button"
+      unique_id: rf_event_mom_call_button
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['9ff8c1'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Moms Button 1"
+      unique_id: rf_event_moms_button_1
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['9ff8c2', '8d63a4'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Moms Button 2"
+      unique_id: rf_event_moms_button_2
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['9ff8c8', 'b42fa3', '8d63a1'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Moms Button 3"
+      unique_id: rf_event_moms_button_3
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['9ff8c4'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Pad L Fan 1"
+      unique_id: rf_event_pad_l_fan_1
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['a7f1f1'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Pad L Fan 2"
+      unique_id: rf_event_pad_l_fan_2
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['a7f1f2'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Pad L Fan 3"
+      unique_id: rf_event_pad_l_fan_3
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['a7f1f3'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Pad L Fan 4"
+      unique_id: rf_event_pad_l_fan_4
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['a7f1f4'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Pad L Fan 5"
+      unique_id: rf_event_pad_l_fan_5
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['a7f1f5'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Pad L Fan 6"
+      unique_id: rf_event_pad_l_fan_6
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['a7f1f8'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Pad L Fan 7"
+      unique_id: rf_event_pad_l_fan_7
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['a7f1f9'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Pad L Fan 8"
+      unique_id: rf_event_pad_l_fan_8
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['a7f1fc'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Down Remote 1"
+      unique_id: rf_event_down_remote_1
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['b42fa1'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Down Remote 2"
+      unique_id: rf_event_down_remote_2
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['b42fa2'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Down Remote 4"
+      unique_id: rf_event_down_remote_4
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['b42fa4'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Down Remote 5"
+      unique_id: rf_event_down_remote_5
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['b42fa5'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Down Remote 8"
+      unique_id: rf_event_down_remote_8
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['b42fa8'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Down Remote 9"
+      unique_id: rf_event_down_remote_9
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['b42fa9'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Down Remote C"
+      unique_id: rf_event_down_remote_c
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['b42fac'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Office Fan 1"
+      unique_id: rf_event_office_fan_1
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['bc8691'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Office Fan 2"
+      unique_id: rf_event_office_fan_2
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['bc8692'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Office Fan 3"
+      unique_id: rf_event_office_fan_3
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['bc8693'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Office Fan 4"
+      unique_id: rf_event_office_fan_4
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['bc8694'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Office Fan 5"
+      unique_id: rf_event_office_fan_5
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['bc8695'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Office Fan 8"
+      unique_id: rf_event_office_fan_8
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['bc8698'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Office Fan 9"
+      unique_id: rf_event_office_fan_9
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['bc8699'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Office Fan C"
+      unique_id: rf_event_office_fan_c
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['bc869c'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Basement Smoke Alarm"
+      unique_id: rf_event_basement_smoke_alarm
+      device_class: smoke
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['d9ff96'] or this.state == 'on' }}
+      auto_off: 3600
+
+    - name: "RF Event Basement Way Up PIR"
+      unique_id: rf_event_basement_way_up_pir
+      device_class: motion
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['e9a63e'] or this.state == 'on' }}
+      auto_off: 200
+
+    - name: "RF Event Back Door PIR"
+      unique_id: rf_event_back_door_pir
+      device_class: motion
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['e9b03e'] or this.state == 'on' }}
+      auto_off: 200
+
+    - name: "RF Event Front Door PIR"
+      unique_id: rf_event_front_door_pir
+      device_class: motion
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['e9b04e'] or this.state == 'on' }}
+      auto_off: 200
+
+    - name: "RF Event Upstairs PIR"
+      unique_id: rf_event_upstairs_pir
+      device_class: motion
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['e9bf8e'] or this.state == 'on' }}
+      auto_off: 200
+
+    - name: "RF Event Basement Way Down PIR"
+      unique_id: rf_event_basement_way_down_pir
+      device_class: motion
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['ea284e'] or this.state == 'on' }}
+      auto_off: 200
+
+    - name: "RF Event Stairs Up"
+      unique_id: rf_event_stairs_up
+      device_class: light
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['f949d2'] or this.state == 'on' }}
+      auto_off: 2
+
+    - name: "RF Event Stairs Down"
+      unique_id: rf_event_stairs_down
+      state: >-
+        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
+        {{ rf_code in ['f949d4'] or this.state == 'on' }}
+      auto_off: 2

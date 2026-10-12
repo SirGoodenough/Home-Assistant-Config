@@ -1,0 +1,253 @@
+- switch:
+    - name: "Outside Christmas"
+      unique_id: 526b34ec-7e20-4d88-8a78-07a16ef84029
+      icon: mdi:candycane
+      state: "{{ is_state('binary_sensor.rf_event_out_christmas', 'on') }}"
+      turn_on:
+        - action: esphome.rfbridge2_send_rf_code
+          data:
+            sync: 9540
+            low: 310
+            high: 920
+            code: 0xB94183
+      turn_off:
+        - action: esphome.rfbridge2_send_rf_code
+          data:
+            sync: 9540
+            low: 310
+            high: 920
+            code: 0xB94182
+
+    - name: "B2"
+      unique_id: 43c7a2b9-d591-4c28-8b1e-d1b081dea9b7
+      state: "{{ is_state('binary_sensor.rf_event_b2', 'on') }}"
+      turn_on:
+        - repeat:
+            count: 2
+            sequence:
+              - action: esphome.rfbridge2_send_rf_code
+                data:
+                  sync: 9540
+                  low: 310
+                  high: 920
+                  code: 0xB94185
+      turn_off:
+        - repeat:
+            count: 2
+            sequence:
+              - action: esphome.rfbridge2_send_rf_code
+                data:
+                  sync: 9540
+                  low: 310
+                  high: 920
+                  code: 0xB94184
+
+    - name: "B3"
+      unique_id: 09ea6e97-f6c4-4da1-a243-14881a7d5871
+      state: "{{ is_state('binary_sensor.rf_event_b3', 'on') }}"
+      turn_on:
+        - repeat:
+            count: 2
+            sequence:
+              - action: esphome.rfbridge2_send_rf_code
+                data:
+                  sync: 9540
+                  low: 310
+                  high: 920
+                  code: 0xB94187
+      turn_off:
+        - repeat:
+            count: 2
+            sequence:
+              - action: esphome.rfbridge2_send_rf_code
+                data:
+                  sync: 9540
+                  low: 310
+                  high: 920
+                  code: 0xB94186
+
+    - name: "F1"
+      unique_id: 14e89edb-2856-484b-8ed5-c917396fbc30
+      state: "{{ is_state('binary_sensor.rf_event_f1', 'on') }}"
+      turn_on:
+        - repeat:
+            count: 2
+            sequence:
+              - action: esphome.rfbridge2_send_rf_code
+                data:
+                  sync: 9760
+                  low: 400
+                  high: 980
+                  code: 0x151557
+      turn_off:
+        - repeat:
+            count: 2
+            sequence:
+              - action: esphome.rfbridge2_send_rf_code
+                data:
+                  sync: 9760
+                  low: 400
+                  high: 980
+                  code: 0x151554
+
+    - name: "F2"
+      unique_id: 0ebb4eb6-e7ed-4e61-8a49-028c378b1e9c
+      state: "{{ is_state('binary_sensor.rf_event_f2', 'on') }}"
+      turn_on:
+        - repeat:
+            count: 2
+            sequence:
+              - action: esphome.rfbridge2_send_rf_code
+                data:
+                  sync: 9760
+                  low: 400
+                  high: 980
+                  code: 0x154557
+      turn_off:
+        - repeat:
+            count: 2
+            sequence:
+              - action: esphome.rfbridge2_send_rf_code
+                data:
+                  sync: 9760
+                  low: 400
+                  high: 980
+                  code: 0x154554
+
+    - name: "F3"
+      unique_id: f9c691cf-f6b2-4bcc-8011-c0c85cbe9f02
+      state: "{{ is_state('binary_sensor.rf_event_f3', 'on') }}"
+      turn_on:
+        - repeat:
+            count: 2
+            sequence:
+              - action: esphome.rfbridge2_send_rf_code
+                data:
+                  sync: 9760
+                  low: 400
+                  high: 980
+                  code: 0x155157
+      turn_off:
+        - repeat:
+            count: 2
+            sequence:
+              - action: esphome.rfbridge2_send_rf_code
+                data:
+                  sync: 9760
+                  low: 400
+                  high: 980
+                  code: 0x155154
+
+    - name: "C1"
+      unique_id: e01d7541-c56d-4a46-8f4a-463e444e677e
+      state: "{{ is_state('binary_sensor.rf_event_c1', 'on') }}"
+      turn_on:
+        - action: esphome.rfbridge2_send_rf_code
+          data:
+            sync: 9540
+            low: 310
+            high: 920
+            code: 0xCB8883
+      turn_off:
+        - action: esphome.rfbridge2_send_rf_code
+          data:
+            sync: 9540
+            low: 310
+            high: 920
+            code: 0xCB8882
+
+    - name: "Kitchen D Lights"
+      unique_id: 3646ca58-958f-49b1-a66a-9e01cd1a481a
+      state: "{{ is_state('binary_sensor.rf_event_kitchen_down_lights', 'on') }}"
+      turn_on:
+        - repeat:
+            count: 2
+            sequence:
+              - action: esphome.rfbridge2_send_rf_code
+                data:
+                  sync: 9540
+                  low: 310
+                  high: 920
+                  code: 0xCB8887
+      turn_off:
+        - repeat:
+            count: 2
+            sequence:
+              - action: esphome.rfbridge2_send_rf_code
+                data:
+                  sync: 9540
+                  low: 310
+                  high: 920
+                  code: 0xCB8886
+
+    - name: "Chromecast"
+      unique_id: 83d276c1-a7ec-49fe-b537-35c6055c7ca9
+      state: "{{ is_state('binary_sensor.rf_event_chromecast', 'on') }}"
+      turn_on:
+        - repeat:
+            count: 2
+            sequence:
+              - action: esphome.rfbridge2_send_rf_code
+                data:
+                  sync: 9540
+                  low: 310
+                  high: 920
+                  code: 0x472083
+      turn_off:
+        - repeat:
+            count: 2
+            sequence:
+              - action: esphome.rfbridge2_send_rf_code
+                data:
+                  sync: 9540
+                  low: 310
+                  high: 920
+                  code: 0x472082
+
+    - name: "E2"
+      unique_id: e85c67dc-0141-4479-acb9-a3939ebe4210
+      state: "{{ is_state('binary_sensor.rf_event_e2', 'on') }}"
+      turn_on:
+        - repeat:
+            count: 2
+            sequence:
+              - action: esphome.rfbridge2_send_rf_code
+                data:
+                  sync: 9540
+                  low: 310
+                  high: 920
+                  code: 0xE8B085
+      turn_off:
+        - repeat:
+            count: 2
+            sequence:
+              - action: esphome.rfbridge2_send_rf_code
+                data:
+                  sync: 9540
+                  low: 310
+                  high: 920
+                  code: 0xE8B084
+
+    - name: "E3"
+      unique_id: f2391cc5-899a-4216-99e6-f87944596fca
+      state: "{{ is_state('binary_sensor.rf_event_e3', 'on') }}"
+      turn_on:
+        - repeat:
+            count: 2
+            sequence:
+              - action: esphome.rfbridge2_send_rf_code
+                data:
+                  sync: 9540
+                  low: 310
+                  high: 920
+                  code: 0xE8B087
+      turn_off:
+        - repeat:
+            count: 2
+            sequence:
+              - action: esphome.rfbridge2_send_rf_code
+                data:
+                  sync: 9540
+                  low: 310
+                  high: 920
+                  code: 0xE8B086

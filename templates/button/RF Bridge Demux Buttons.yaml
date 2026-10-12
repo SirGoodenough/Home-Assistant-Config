@@ -1,0 +1,174 @@
+- button:
+    - name: "Blue Remote A"
+      unique_id: 0e9e0b93-5145-4190-bcee-641618d39f83
+      default_entity_id: button.blue_remote_a
+      press:
+        - event: rf_bridge_code_received
+          event_data:
+            code: 5E39C2
+
+    - name: "Blue Remote B"
+      unique_id: 5753fd66-6c90-4c7c-858a-8d08be32425c
+      default_entity_id: button.blue_remote_b
+      press:
+        - event: rf_bridge_code_received
+          event_data:
+            code: 5E39C8
+
+    - name: "Blue Remote C"
+      unique_id: 6b667d56-b83d-4352-b273-7fb1d14d29e0
+      default_entity_id: button.blue_remote_c
+      press:
+        - event: rf_bridge_code_received
+          event_data:
+            code: 5E39C1
+
+    - name: "Blue Remote D"
+      unique_id: 7211d3db-90fe-410c-b047-a7d920aae892
+      default_entity_id: button.blue_remote_d
+      press:
+        - event: rf_bridge_code_received
+          event_data:
+            code: 5E39C4
+
+    - name: "Dust Collector Button1"
+      unique_id: 6a24c825-605a-42b0-812f-88c0e6f696ca
+      default_entity_id: button.dust_collector_button1
+      press:
+        - event: rf_bridge_code_received
+          event_data:
+            code: 1145C0
+
+    - name: "Dust Collector Button2"
+      unique_id: 50d33e24-9777-4688-9b68-8fe13244dbf1
+      default_entity_id: button.dust_collector_button2
+      press:
+        - event: rf_bridge_code_received
+          event_data:
+            code: 11450C
+
+    - name: "DnRemote1"
+      unique_id: fa65fc81-4b7a-4c89-a179-9aa276417d13
+      default_entity_id: button.dnremote1
+      press:
+        - event: rf_bridge_code_received
+          event_data:
+            code: B42FA1
+
+    - name: "DnRemote2"
+      unique_id: 8c84e421-bc16-4a09-9b42-5116dcac5295
+      default_entity_id: button.dnremote2
+      press:
+        - event: rf_bridge_code_received
+          event_data:
+            code: B42FA2
+
+    - name: "DnRemote4"
+      unique_id: 96f8e8cd-037e-4c99-acee-1fcb2666c73b
+      default_entity_id: button.dnremote4
+      press:
+        - event: rf_bridge_code_received
+          event_data:
+            code: B42FA4
+
+    - name: "DnRemote5"
+      unique_id: a492041a-40e1-4c4e-b15e-2922219d93e6
+      default_entity_id: button.dnremote5
+      press:
+        - event: rf_bridge_code_received
+          event_data:
+            code: B42FA5
+
+    - name: "DnRemote8"
+      unique_id: 282cc6bd-3dc4-4def-847f-d21158f177d2
+      default_entity_id: button.dnremote8
+      press:
+        - event: rf_bridge_code_received
+          event_data:
+            code: B42FA8
+
+    - name: "DnRemote9"
+      unique_id: f07b9a8b-d847-47cd-b509-471cab052e59
+      default_entity_id: button.dnremote9
+      press:
+        - event: rf_bridge_code_received
+          event_data:
+            code: B42FA9
+
+    - name: "DnRemoteC"
+      unique_id: d75e501e-8c45-43ec-acc1-fd2ada60f279
+      default_entity_id: button.dnremotec
+      press:
+        - event: rf_bridge_code_received
+          event_data:
+            code: B42FAC
+
+    - name: "Moms GoodNight Button"
+      unique_id: 31794cb5-a46a-45d3-b082-d01760d541d6
+      default_entity_id: button.moms_button1
+      press:
+        - event: rf_bridge_code_received
+          event_data:
+            code: 9FF8C2
+
+    - name: "Moms Lights Toggle"
+      unique_id: e2ecd99c-87f7-46d8-a47b-34864d9857d4
+      default_entity_id: button.moms_button2
+      press:
+        - event: rf_bridge_code_received
+          event_data:
+            code: 9FF8C8
+
+    - name: "Moms Chair Light Toggle"
+      unique_id: 4cfc4522-36a5-4663-a0b1-3769b18b69fa
+      default_entity_id: button.moms_button3
+      press:
+        - event: rf_bridge_code_received
+          event_data:
+            code: 9FF8C4
+
+    - name: "Moms Bed Button Fan Rmt"
+      unique_id: faab5302-f4dc-4dad-b4b9-08c3aa6417b0
+      default_entity_id: button.moms_bed_button_fan_rmt
+      press:
+        - event: rf_bridge_code_received
+          event_data:
+            code: A7F1F3
+
+    - name: "Moms Call Button"
+      unique_id: 4c09ceea-f9aa-418d-913a-2105d0a1d240
+      default_entity_id: button.moms_call_button
+      press:
+        - event: rf_bridge_code_received
+          event_data:
+            code: 9FF8C1
+
+    - name: "Office Light Front"
+      unique_id: 796ed8c1-b3a4-48e1-b934-7101c19b3f7b
+      default_entity_id: button.office_light_1
+      press:
+        - event: rf_bridge_code_received
+          event_data:
+            code: 67A1D2
+
+    - name: "Office Light Back"
+      unique_id: d8c704f8-c108-4238-997e-a8743e18a5f7
+      default_entity_id: button.office_light_2
+      press:
+        - event: rf_bridge_code_received
+          event_data:
+            code: 67A1D4
+
+    - name: "Bathroom Mute"
+      unique_id: 3de89090-97f2-4e58-b89b-beeeced9767c
+      press:
+        - event: rf_bridge_code_received
+          event_data:
+            code: F949D2
+
+    - name: "Stairs Light"
+      unique_id: c4a204ad-0db9-458f-b18e-5c3ba1d3e342
+      press:
+        - event: rf_bridge_code_received
+          event_data:
+            code: F949D4

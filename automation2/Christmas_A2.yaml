@@ -25,7 +25,7 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: binary_sensor.blue_remote_c
+      entity_id: binary_sensor.rf_event_blue_remote_c
       from: "off"
       to: "on"
   conditions:
@@ -41,7 +41,7 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: binary_sensor.blue_remote_d
+      entity_id: binary_sensor.rf_event_blue_remote_d
       from: "off"
       to: "on"
   conditions:
@@ -64,7 +64,7 @@
       from: "off"
       to: "on"
     - trigger: state
-      entity_id: binary_sensor.blue_remote_a
+      entity_id: binary_sensor.rf_event_blue_remote_a
       from: "off"
       to: "on"
   conditions:
@@ -96,7 +96,7 @@
       from: "on"
       to: "off"
     - trigger: state
-      entity_id: binary_sensor.blue_remote_b
+      entity_id: binary_sensor.rf_event_blue_remote_b
       from: "off"
       to: "on"
   actions:

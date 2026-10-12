@@ -196,12 +196,12 @@
               "color": "state",
               "entities": [
                 {
-                  "entity": "sensor.sonoff_rf_bridge_2_si7021_temperature",
+                  "entity": "sensor.rf_bridge_2_rf_bridge_2_temperature",
                   "name": "LivingRoom Temp",
                   "secondary_info": "last_updated"
                 },
                 {
-                  "entity": "sensor.sonoff_rf_bridge_2_si7021_humidity",
+                  "entity": "sensor.rf_bridge_2_rf_bridge_2_humidity",
                   "name": "Living Room Hunidity"
                 },
                 {
@@ -984,25 +984,22 @@
                   "entity": "light.light_light"
                 },
                 {
-                  "entity": "light.office_track_jim_bulb"
+                  "entity": "light.bench_strip_light_bench_strip_o_track_jim"
                 },
                 {
                   "entity": "switch.vacuum_sealer_switch"
                 },
                 {
-                  "entity": "switch.bench_test"
+                  "entity": "switch.bench_strip_strip_bench_strip_bench_test"
                 },
                 {
-                  "entity": "switch.office_usb"
+                  "entity": "switch.bench_strip_usb_bench_strip_usb_relay"
                 },
                 {
-                  "entity": "switch.solder_iron"
+                  "entity": "switch.bench_strip_strip_bench_strip_solder_iron"
                 },
                 {
-                  "entity": "switch.power_supply"
-                },
-                {
-                  "entity": "sensor.benchstrip_rssi"
+                  "entity": "switch.bench_strip_strip_bench_strip_power_supply"
                 },
                 {
                   "entity": "sensor.zha_cube_last_action"
@@ -1447,8 +1444,8 @@
               "icon": "mdi:temperature-fahrenheit"
             },
             {
-              "entity": "sensor.sonoff_rf_bridge_2_si7021_temperature",
               "graph": "line",
+              "entity": "sensor.rf_bridge_2_rf_bridge_2_temperature",
               "type": "sensor",
               "detail": 2,
               "icon": "mdi:seat",
@@ -1614,7 +1611,7 @@
             },
             {
               "type": "humidifier",
-              "entity": "humidifier.house_humidity",
+              "entity": "humidifier.chaloupkaabode_humidifier",
               "features": [
                 {
                   "type": "humidifier-toggle"
@@ -1647,6 +1644,10 @@
               "detail": 2
             },
             {
+              "type": "tile",
+              "entity": "input_number.humidifer_duty_cycle_seconds"
+            },
+            {
               "graph": "line",
               "hours_to_show": 24,
               "entity": "sensor.furnace_return_humidity",
@@ -1656,7 +1657,7 @@
             {
               "graph": "line",
               "hours_to_show": 24,
-              "entity": "sensor.sonoff_rf_bridge_2_si7021_humidity",
+              "entity": "sensor.rf_bridge_2_rf_bridge_2_humidity",
               "type": "sensor",
               "detail": 1,
               "name": "Living Room Humidity"
@@ -2970,31 +2971,43 @@
             {
               "entities": [
                 {
-                  "entity": "binary_sensor.backdoor_low_battery_level"
+                  "entity": "binary_sensor.rf_event_battery_low_backdoori"
                 },
                 {
-                  "entity": "binary_sensor.battery_low_front_door_inside"
+                  "entity": "binary_sensor.rf_event_battery_low_frontdoori"
                 },
                 {
-                  "entity": "binary_sensor.battery_low_side_door_inside"
+                  "entity": "binary_sensor.rf_event_battery_low_sidedoori"
                 },
                 {
-                  "entity": "binary_sensor.battery_low_garage_side_door"
+                  "entity": "binary_sensor.rf_event_battery_low_garageside"
                 },
                 {
-                  "entity": "binary_sensor.battery_low_garage_door_closed"
+                  "entity": "binary_sensor.rf_event_battery_low_garagec"
                 },
                 {
-                  "entity": "binary_sensor.battery_low_garage_door_open"
+                  "entity": "binary_sensor.rf_event_battery_low_garageo"
                 },
                 {
-                  "entity": "binary_sensor.battery_low_bathroom"
+                  "entity": "binary_sensor.rf_event_battery_low_bathroom"
                 },
                 {
-                  "entity": "binary_sensor.battery_low_bedroom_door"
+                  "entity": "binary_sensor.rf_event_battery_low_bedroom"
                 },
                 {
-                  "entity": "binary_sensor.battery_low_mailbox"
+                  "entity": "binary_sensor.rf_event_battery_low_mailbox"
+                },
+                {
+                  "entity": "binary_sensor.rf_event_battery_low_kfreezer"
+                },
+                {
+                  "entity": "binary_sensor.rf_event_battery_low_pfreezer"
+                },
+                {
+                  "entity": "binary_sensor.rf_event_battery_low_kfridge"
+                },
+                {
+                  "entity": "binary_sensor.rf_event_battery_low_kfreezer"
                 },
                 {
                   "entity": "binary_sensor.stairway_smoke_battery_low"
@@ -3010,12 +3023,6 @@
             {
               "type": "entities",
               "entities": [
-                {
-                  "entity": "sensor.back_door_battery"
-                },
-                {
-                  "entity": "sensor.front_door_battery"
-                },
                 {
                   "entity": "sensor.gertle_battery"
                 },

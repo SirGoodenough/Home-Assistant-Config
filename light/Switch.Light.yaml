@@ -5,9 +5,4 @@
 
   - platform: switch
     name: "Kitchen Down Lights"
-    entity_id: switch.kitchen_d_lights
-
-  - platform: switch
-    name: "Office Track Jim Bulb"
-    entity_id: switch.office_track_jim
- 
+    entity_id: switch.kitchen_d_lights 
