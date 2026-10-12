@@ -90,22 +90,6 @@ lock:
     icon: "mdi:door-lock"
     id: side_lock
     device_id: lock_device
-    on_lock:
-      then:
-        - lambda: id(last_side_lock_locked) = true;
-        - mqtt.publish:
-            topic: SideLock/stat/lock
-            payload: LOCKED
-            retain: true
-            qos: 2
-    on_unlock:
-      then:
-        - lambda: id(last_side_lock_locked) = false;
-        - mqtt.publish:
-            topic: SideLock/stat/lock
-            payload: UNLOCKED
-            retain: true
-            qos: 2
 
 switch:
   - platform: output
