@@ -87,19 +87,6 @@ script:
             - switch.toggle: relay_usb
       - lambda: id(button_press_count) = 0;
 
-sensor:
-  - platform: adc
-    pin: GPIO17
-    name: "${friendly_name} ADC Input"
-    update_interval: 147s
-    raw: true
-    unit_of_measurement: V
-    accuracy_decimals: 3
-    filters:
-      - calibrate_linear:
-          - 0.0 -> 0.0
-          - 1023.0 -> 1.0
-
 output:
   - platform: gpio
     pin: 5
