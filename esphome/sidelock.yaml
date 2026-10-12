@@ -97,7 +97,6 @@ switch:
     name: "${friendly_name} Door"
     icon: "mdi:door"
     id: side_door
-    on_turn_on:
 
 status_led:
   pin:
