@@ -4,7 +4,7 @@ substitutions:
   friendly_name: Bedroom
   area: Bedroom
   IP: !secret bedroom_fan_IP
-  update_interval: 32s
+  update_interval: 62s
   model: Sonoff Ifan02
 
 packages:
