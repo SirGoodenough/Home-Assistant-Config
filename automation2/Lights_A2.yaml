@@ -105,7 +105,7 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: binary_sensor.stairs_down
+      entity_id: binary_sensor.rf_event_stairs_up
       to: "on"
   actions:
     - action: light.toggle

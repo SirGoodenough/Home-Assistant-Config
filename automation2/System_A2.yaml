@@ -8,50 +8,50 @@
 # Sonoff Bridge Demultiplexer                      #
 ####################################################
 
-- id: cef2adcb-a4fc-4205-8c13-e3416847bf7b
-  initial_state: on
-  alias: rfbridge_RfReceived_demultiplexer
-  mode: queued
-  # Gets info from RF-Bridges and sends them to the python script to generate
-  #   individual MQTT topics for them.
-  #   RECIEVE
-  triggers:
-    - trigger: mqtt
-      topic: RFBridge/tele/RESULT
-    - trigger: mqtt
-      topic: RFBridge2/tele/RESULT
-  conditions:
-    - condition: template
-      value_template: >
-        {{ trigger.payload_json is defined and
-          trigger.payload_json.RfReceived is defined and 
-          trigger.payload_json.RfReceived.Data is defined }}
-  actions:
-    action: python_script.rfbridge2_demux
-    data:
-      payload: "{{trigger.payload_json.RfReceived.Data}}"
+# - id: cef2adcb-a4fc-4205-8c13-e3416847bf7b
+#   initial_state: on
+#   alias: rfbridge_RfReceived_demultiplexer
+#   mode: queued
+#   # Gets info from RF-Bridges and sends them to the python script to generate
+#   #   individual MQTT topics for them.
+#   #   RECIEVE
+#   triggers:
+#     - trigger: mqtt
+#       topic: RFBridge/tele/RESULT
+#     - trigger: mqtt
+#       topic: RFBridge2/tele/RESULT
+#   conditions:
+#     - condition: template
+#       value_template: >
+#         {{ trigger.payload_json is defined and
+#           trigger.payload_json.RfReceived is defined and 
+#           trigger.payload_json.RfReceived.Data is defined }}
+#   actions:
+#     action: python_script.rfbridge2_demux
+#     data:
+#       payload: "{{trigger.payload_json.RfReceived.Data}}"
 
-- id: d6ad7aff-f806-4c75-ab1e-886cba8ef2f9
-  initial_state: on
-  alias: rfbridge_RfCode_demultiplexer
-  mode: queued
-  # Gets info from RF-Bridges and sends them to the python script to generate
-  #   individual MQTT topics for them.
-  #   SEND
-  triggers:
-    - trigger: mqtt
-      topic: RFBridge/tele/RESULT
-    - trigger: mqtt
-      topic: RFBridge2/tele/RESULT
-  conditions:
-    - condition: template
-      value_template: >
-        {{ trigger.payload_json is defined and
-          trigger.payload_json.RfCode is defined }}
-  actions:
-    action: python_script.rfbridge2_demux
-    data:
-      payload: "{{trigger.payload_json.RfCode}}"
+# - id: d6ad7aff-f806-4c75-ab1e-886cba8ef2f9
+#   initial_state: on
+#   alias: rfbridge_RfCode_demultiplexer
+#   mode: queued
+#   # Gets info from RF-Bridges and sends them to the python script to generate
+#   #   individual MQTT topics for them.
+#   #   SEND
+#   triggers:
+#     - trigger: mqtt
+#       topic: RFBridge/tele/RESULT
+#     - trigger: mqtt
+#       topic: RFBridge2/tele/RESULT
+#   conditions:
+#     - condition: template
+#       value_template: >
+#         {{ trigger.payload_json is defined and
+#           trigger.payload_json.RfCode is defined }}
+#   actions:
+#     action: python_script.rfbridge2_demux
+#     data:
+#       payload: "{{trigger.payload_json.RfCode}}"
 
 ####################################################
 # Dark out?                                        #
@@ -102,14 +102,14 @@
       minutes: "59"
       seconds: "59"
   actions:
-    - alias: Blueprints update
-      action: shell_command.blueprints_update
-      enabled: true
-    - parallel:
-        - alias: pull in new blueprint code if any were loaded
-          action: automation.reload
-        - alias: pull in new blueprint code if any were loaded
-          action: script.reload
+    # - alias: Blueprints update
+    #   action: shell_command.blueprints_update
+    #   enabled: true
+    # - parallel:
+    #     - alias: pull in new blueprint code if any were loaded
+    #       action: automation.reload
+    #     - alias: pull in new blueprint code if any were loaded
+    #       action: script.reload
 
     - alias: MP3 File backup
       action: shell_command.mp3_update

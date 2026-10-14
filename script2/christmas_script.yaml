@@ -13,51 +13,51 @@ inside_christmas:
             {{- true_all( ['sensor.xmas_season_enable'] ) | bool -}}
         sequence:
           - action: switch.turn_on
-            entity_id: switch.b2
+            entity_id: switch.b2_2
           - delay:
               seconds: 1
           - action: switch.turn_on
-            entity_id: switch.b3
+            entity_id: switch.b3_2
           - delay:
               seconds: 1
           - action: switch.turn_on
-            entity_id: switch.e2
+            entity_id: switch.e2_2
           - delay:
               seconds: 1
           - action: switch.turn_on
-            entity_id: switch.e3
+            entity_id: switch.e3_2
           - delay:
               seconds: 1
           - action: switch.turn_on
-            entity_id: switch.f2
+            entity_id: switch.f2_2
           - delay:
               seconds: 1
           - action: switch.turn_on
-            entity_id: switch.f3
+            entity_id: switch.f3_2
           - delay:
               seconds: 1
           - action: switch.turn_on
-            entity_id: switch.b2
+            entity_id: switch.b2_2
           - delay:
               seconds: 1
           - action: switch.turn_on
-            entity_id: switch.b3
+            entity_id: switch.b3_2
           - delay:
               seconds: 1
           - action: switch.turn_on
-            entity_id: switch.e2
+            entity_id: switch.e2_2
           - delay:
               seconds: 1
           - action: switch.turn_on
-            entity_id: switch.e3
+            entity_id: switch.e3_2
           - delay:
               seconds: 1
           - action: switch.turn_on
-            entity_id: switch.f2
+            entity_id: switch.f2_2
           - delay:
               seconds: 1
           - action: switch.turn_on
-            entity_id: switch.f3
+            entity_id: switch.f3_2
           - action: input_boolean.turn_on
             entity_id: input_boolean.christmas
 
@@ -68,50 +68,50 @@ heavenly_peace:
   alias: "Heavenly Peace"
   sequence:
     - action: switch.turn_off
-      entity_id: switch.b2
+      entity_id: switch.b2_2
     - delay:
         seconds: 1
     - action: switch.turn_off
-      entity_id: switch.b3
+      entity_id: switch.b3_2
     - delay:
         seconds: 1
     - action: switch.turn_off
-      entity_id: switch.e2
+      entity_id: switch.e2_2
     - delay:
         seconds: 1
     - action: switch.turn_off
-      entity_id: switch.e3
+      entity_id: switch.e3_2
     - delay:
         seconds: 1
     - action: switch.turn_off
-      entity_id: switch.f2
+      entity_id: switch.f2_2
     - delay:
         seconds: 1
     - action: switch.turn_off
-      entity_id: switch.f3
+      entity_id: switch.f3_2
     - delay:
         seconds: 1
     - action: switch.turn_off
-      entity_id: switch.b2
+      entity_id: switch.b2_2
     - delay:
         seconds: 1
     - action: switch.turn_off
-      entity_id: switch.b3
+      entity_id: switch.b3_2
     - delay:
         seconds: 1
     - action: switch.turn_off
-      entity_id: switch.e2
+      entity_id: switch.e2_2
     - delay:
         seconds: 1
     - action: switch.turn_off
-      entity_id: switch.e3
+      entity_id: switch.e3_2
     - delay:
         seconds: 1
     - action: switch.turn_off
-      entity_id: switch.f2
+      entity_id: switch.f2_2
     - delay:
         seconds: 1
     - action: switch.turn_off
-      entity_id: switch.f3
+      entity_id: switch.f3_2
     - action: input_boolean.turn_off
       entity_id: input_boolean.christmas

@@ -1,22 +1,22 @@
 ---
-reset_nag:
-  alias: Jens button to stop door nags.
-  sequence:
-    - parallel:
-        - action: mqtt.publish
-          data:
-            topic: rf433/KFridge
-            payload: "OFF"
-        - action: mqtt.publish
-          data:
-            topic: rf433/PFreezer
-            payload: "OFF"
-        - action: mqtt.publish
-          data:
-            topic: rf433/KFreezer
-            payload: "OFF"
-        - action: mqtt.publish
-          data:
-            topic: rf433/BackDoorI
-            payload: "OFF"
-    - action: script.media_player_boink
+# reset_nag:
+#   alias: Jens button to stop door nags.
+#   sequence:
+#     - parallel:
+#         - action: mqtt.publish
+#           data:
+#             topic: rf433/KFridge
+#             payload: "OFF"
+#         - action: mqtt.publish
+#           data:
+#             topic: rf433/PFreezer
+#             payload: "OFF"
+#         - action: mqtt.publish
+#           data:
+#             topic: rf433/KFreezer
+#             payload: "OFF"
+#         - action: mqtt.publish
+#           data:
+#             topic: rf433/BackDoorI
+#             payload: "OFF"
+#     - action: script.media_player_boink

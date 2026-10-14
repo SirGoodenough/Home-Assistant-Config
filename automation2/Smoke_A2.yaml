@@ -6,7 +6,7 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: binary_sensor.basement_smoke_alarm
+      entity_id: binary_sensor.rf_event_basement_smoke_alarm
       to: "on"
       id: basement
     - trigger: device

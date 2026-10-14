@@ -9,9 +9,9 @@
   alias: Garage Inside Auto Light
   initial_state: on
   triggers:
-    - entity_id: binary_sensor.garage_side_door_open
+    - entity_id: binary_sensor.rf_event_garageside
       trigger: state
-    - entity_id: binary_sensor.garage_door_open
+    - entity_id: binary_sensor.rf_event_garageo
       trigger: state
   actions:
     - action: script.turn_on

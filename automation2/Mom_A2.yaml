@@ -5,7 +5,7 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: binary_sensor.moms_call_button
+      entity_id: binary_sensor.rf_event_mom_call_button
       to: "on"
   actions:
     - action: script.tts_grandma_in_need
@@ -18,7 +18,7 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: binary_sensor.moms_button1
+      entity_id: binary_sensor.rf_event_moms_button_1
       to: "on"
       from: "off"
   actions:
@@ -29,7 +29,7 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: binary_sensor.moms_button2
+      entity_id: binary_sensor.rf_event_moms_button_2
       to: "on"
   actions:
     - action: >-
@@ -52,7 +52,7 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: binary_sensor.moms_button3
+      entity_id: binary_sensor.rf_event_moms_button_3
       to: "on"
   actions:
     - action: light.toggle

@@ -9,7 +9,7 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: binary_sensor.dust_collector_button1
+      entity_id: button.dust_collector_button1_2
       from: "off"
       to: "on"
   actions:
@@ -17,20 +17,6 @@
       entity_id: switch.basement_dust_collector_dust_collector_relay
     - delay: 00:00:03
 
-- id: ead11d4f-da6c-4bc2-93a3-6500be201114
-  mode: restart
-  alias: Dust Collector Turn On Watchdog
-  initial_state: on
-  triggers:
-    - trigger: state
-      entity_id: switch.basement_dust_collector_dust_collector_relay
-      to: "on"
-  actions:
-    - alias: Dust Collector Watchdog
-      delay:
-        minutes: 45
-    - action: switch.turn_off
-      entity_id: switch.basement_dust_collector_dust_collector_relay
 
 ####################################################
 # Laundry                                          #

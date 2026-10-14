@@ -41,10 +41,10 @@
                   "entity": "sensor.yertle_last_action_a"
                 },
                 {
-                  "entity": "binary_sensor.back_door_pir"
+                  "entity": "binary_sensor.rf_event_back_door_pir"
                 },
                 {
-                  "entity": "binary_sensor.back_door_open_433"
+                  "entity": "binary_sensor.rf_back_door"
                 },
                 {
                   "entity": "switch.house_humidifier_house_humidifier_water_enable"
@@ -92,7 +92,7 @@
                   "entity": "light.kitchen_cabnetio_cabnetio_light"
                 },
                 {
-                  "entity": "light.kitchen_down_lights"
+                  "entity": "switch.kitchen_d_lights_2"
                 },
                 {
                   "entity": "light.stair_light_up_stairway_stair_light_light"
@@ -211,7 +211,7 @@
                   "entity": "climate.living_room_2"
                 },
                 {
-                  "entity": "button.moms_button2"
+                  "entity": "button.moms_button1_2"
                 },
                 {
                   "entity": "light.moms_chair_moms_chair_light"
@@ -220,7 +220,7 @@
                   "entity": "light.lr_light_lr_light_light"
                 },
                 {
-                  "entity": "button.moms_button3"
+                  "entity": "button.moms_button3_2"
                 },
                 {
                   "entity": "fan.mary_fan_fan",
@@ -244,13 +244,19 @@
                   "entity": "light.outside_back_porch_light_back_porch_light_light"
                 },
                 {
-                  "entity": "button.moms_button1"
+                  "entity": "button.moms_button2_2"
                 },
                 {
                   "entity": "sensor.rm02_last_action"
                 },
                 {
                   "entity": "switch.moms_chair_moms_chair_chair_control"
+                },
+                {
+                  "entity": "binary_sensor.rf_event_frontdoori"
+                },
+                {
+                  "entity": "binary_sensor.rf_event_front_door_pir"
                 }
               ],
               "show_header_toggle": true,
@@ -261,14 +267,14 @@
               "show_name": true,
               "show_icon": true,
               "type": "button",
-              "entity": "button.moms_button1",
+              "entity": "button.moms_button1_2",
               "icon": "mdi:sleep",
               "show_state": true,
               "tap_action": {
                 "action": "perform-action",
                 "perform_action": "button.press",
                 "target": {
-                  "entity_id": "button.moms_button1"
+                  "entity_id": "button.moms_button1_2"
                 },
                 "data": {}
               },
@@ -881,6 +887,7 @@
               }
             },
             {
+              "color": "state",
               "entities": [
                 {
                   "entity": "sensor.bt3_bathroom2_temperature"
@@ -892,16 +899,12 @@
                   "entity": "input_boolean.bathroom_heater_auto_on"
                 },
                 {
-                  "entity": "binary_sensor.bathroom"
-                },
-                {
-                  "entity": "button.stairs_up"
+                  "entity": "binary_sensor.rf_event_bathroom"
                 }
               ],
               "show_header_toggle": false,
               "title": "Bathroom",
-              "type": "entities",
-              "state_color": true
+              "type": "entities"
             },
             {
               "color": "state",
@@ -937,22 +940,22 @@
                   "entity": "sensor.garage_garage_door_garage_door_dew_point"
                 },
                 {
-                  "entity": "binary_sensor.yard_light_pir"
+                  "entity": "binary_sensor.garage_garage_door_garage_door_pir_button"
                 },
                 {
-                  "entity": "binary_sensor.garage_side_door_open"
+                  "entity": "binary_sensor.rf_event_garageside"
                 },
                 {
                   "entity": "cover.garage_door"
                 },
                 {
-                  "entity": "binary_sensor.garage_door_open"
+                  "entity": "binary_sensor.rf_event_garagec"
                 },
                 {
-                  "entity": "binary_sensor.garage_door_closed"
+                  "entity": "binary_sensor.rf_event_garageo"
                 },
                 {
-                  "entity": "light.office_track_jim"
+                  "entity": "light.bench_strip_light_bench_strip_o_track_jim"
                 }
               ],
               "show_header_toggle": false,
@@ -1023,10 +1026,10 @@
               "color": "state",
               "entities": [
                 {
-                  "entity": "lock.side_door"
+                  "entity": "lock.basement_sidelock_door_sidelock_door_lock"
                 },
                 {
-                  "entity": "binary_sensor.dust_collector_button1"
+                  "entity": "button.dust_collector_button1_2"
                 },
                 {
                   "entity": "switch.basement_dust_collector_dust_collector_relay"
@@ -1038,19 +1041,19 @@
                   "entity": "light.basement_basement_stair_down_light_basement_stair_down_light_light"
                 },
                 {
-                  "entity": "binary_sensor.side_door_open_2"
+                  "entity": "switch.basement_sidelock_door_sidelock_door_door"
                 },
                 {
-                  "entity": "binary_sensor.side_door_open_433"
+                  "entity": "binary_sensor.rf_event_sidedoori"
                 },
                 {
-                  "entity": "binary_sensor.basement_smoke_alarm"
+                  "entity": "binary_sensor.rf_event_basement_smoke_alarm"
                 },
                 {
-                  "entity": "binary_sensor.basement_way_u_pir"
+                  "entity": "binary_sensor.rf_event_basement_way_up_pir"
                 },
                 {
-                  "entity": "binary_sensor.basement_way_d_pir"
+                  "entity": "binary_sensor.rf_event_basement_way_down_pir"
                 },
                 {
                   "entity": "binary_sensor.washer_running_2"
@@ -1772,9 +1775,6 @@
                   "entity": "light.kitch"
                 },
                 {
-                  "entity": "light.counter_1"
-                },
-                {
                   "entity": "light.counter_2"
                 },
                 {
@@ -1901,10 +1901,10 @@
                   "entity": "light.stair_light_up_stairway_stair_light_light"
                 },
                 {
-                  "entity": "binary_sensor.upstairs_pir"
+                  "entity": "binary_sensor.rf_event_upstairs_pir"
                 },
                 {
-                  "entity": "binary_sensor.stairs_down"
+                  "entity": "binary_sensor.rf_event_basement_way_up_pir"
                 }
               ],
               "theme": "darkish",
@@ -1955,7 +1955,7 @@
                   "entity": "light.o_track_mom_o_track_mom_light"
                 },
                 {
-                  "entity": "light.office_track_jim_bulb"
+                  "entity": "light.bench_strip_light_bench_strip_o_track_jim"
                 },
                 {
                   "entity": "light.light_light"
@@ -3311,7 +3311,7 @@
                 "service_data": {},
                 "target": {}
               },
-              "entity": "switch.b2",
+              "entity": "switch.b2_2",
               "name": "Page DrZzs JIM ONLY",
               "icon": "mdi:youtube",
               "icon_height": "40px"

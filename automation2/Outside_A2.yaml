@@ -19,13 +19,13 @@
         - unknown
         - unavailable
     - trigger: state
-      entity_id: event.back_door_motion
+      entity_id: binary_sensor.rf_event_back_door_pir
       to: "on"
       not_from:
         - unknown
         - unavailable
     - trigger: state
-      entity_id: binary_sensor.garage_side_door_open
+      entity_id: binary_sensor.rf_event_garageside
       to: "on"
       not_from:
         - unknown
@@ -48,7 +48,7 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: binary_sensor.mailbox
+      entity_id: binary_sensor.rf_event_mailbox
       from: "on"
       to: "off"
       for:

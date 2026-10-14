@@ -1,0 +1,148 @@
+substitutions:
+  name: serverstrip
+  friendly_name: Server Strip
+  board: esp8285
+  area: ServerRoom
+  IP: !secret s_strip_IP
+  model: ZLD-44USA-W
+
+packages:
+  device_base: !include packages/sg_8266_base.yaml
+
+esphome:
+  area:
+    id: ${area}
+    name: ${area}
+  name_add_mac_suffix: false
+  devices:
+    - id: outlet_strip
+      name: "${friendly_name} Strip"
+      area_id: ${area}
+    - id: usb_device
+      name: "${friendly_name} USB"
+      area_id: ${area}
+
+wifi:
+  manual_ip:
+    gateway: !secret chaloupkaabode_gateway
+    subnet: !secret chaloupkaabode_subnet
+    static_ip: ${IP}
+    dns1: !secret chaloupkaabode_gateway
+
+status_led:
+  pin:
+    number: GPIO1
+    inverted: true
+
+binary_sensor:
+  - platform: gpio
+    pin: 3
+    name: "${friendly_name} Button"
+    id: button_1
+    internal: true
+    filters:
+      - delayed_on_off: 50ms
+    on_press:
+      lambda: |-
+        id(button_press_count)++;
+        id(handle_button_sequence).execute();
+
+globals:
+  - id: button_press_count
+    type: int
+    initial_value: "0"
+
+script:
+  - id: handle_button_sequence
+    mode: restart
+    then:
+      - delay: 800ms
+      - if:
+          condition:
+            lambda: return id(button_press_count) == 1;
+          then:
+            - switch.toggle: relay1
+      - if:
+          condition:
+            lambda: return id(button_press_count) == 2;
+          then:
+            - switch.toggle: relay2
+      - if:
+          condition:
+            lambda: return id(button_press_count) == 3;
+          then:
+            - switch.toggle: relay3
+      - if:
+          condition:
+            lambda: return id(button_press_count) == 4;
+          then:
+            - switch.toggle: relay4
+      - if:
+          condition:
+            lambda: return id(button_press_count) == 5;
+          then:
+            - switch.toggle: relay_usb
+      - lambda: id(button_press_count) = 0;
+
+output:
+  - platform: gpio
+    pin: 5
+    id: relay1_output
+
+  - platform: gpio
+    pin: 4
+    id: relay2_output
+
+  - platform: gpio
+    pin: 12
+    id: relay3_output
+
+  - platform: gpio
+    pin: 13
+    id: relay4_output
+
+  - platform: gpio
+    pin: 14
+    inverted: true
+    id: relay_usb_output
+
+switch:
+  - platform: output
+    output: relay1_output
+    name: "${friendly_name} 1"
+    icon: mdi:power-socket-eu
+    id: relay1
+    restore_mode: ALWAYS_ON
+    device_id: outlet_strip
+
+  - platform: output
+    output: relay2_output
+    name: "${friendly_name} 2"
+    icon: mdi:power-socket-eu
+    id: relay2
+    restore_mode: ALWAYS_ON
+    device_id: outlet_strip
+
+  - platform: output
+    output: relay3_output
+    name: "${friendly_name} 3"
+    icon: mdi:power-socket-eu
+    id: relay3
+    restore_mode: ALWAYS_ON
+    device_id: outlet_strip
+
+  - platform: output
+    output: relay4_output
+    name: "${friendly_name} 4"
+    icon: mdi:power-socket-eu
+    id: relay4
+    restore_mode: ALWAYS_ON
+    device_id: outlet_strip
+
+  - platform: output
+    output: relay_usb_output
+    name: "${friendly_name} USB"
+    icon: mdi:usb
+    id: relay_usb
+    restore_mode: RESTORE_DEFAULT_OFF
+    device_id: usb_device

@@ -11,37 +11,37 @@
         - service: button.press
           data: {}
           target:
-            entity_id: button.moms_button1
+            entity_id: button.moms_button1_2
       doubletap_1:
         - service: button.press
           data: {}
           target:
-            entity_id: button.moms_button1
+            entity_id: button.moms_button1_2
       hold_1:
         - service: button.press
           data: {}
           target:
-            entity_id: button.moms_button1
+            entity_id: button.moms_button1_2
       tap_2:
         - service: button.press
           data: {}
           target:
-            entity_id: button.moms_button2
+            entity_id: button.moms_button2_2
       doubletap_2:
         - service: button.press
           data: {}
           target:
-            entity_id: button.moms_button2
+            entity_id: button.moms_button2_2
       hold_2:
         - service: button.press
           data: {}
           target:
-            entity_id: button.moms_button2
+            entity_id: button.moms_button2_2
       tap_3:
         - service: button.press
           data: {}
           target:
-            entity_id: button.moms_button3
+            entity_id: button.moms_button3_2
       tap_4:
         - type: toggle
           device_id: cf7c09c94df6660c92db0d8c6514ae61
@@ -56,7 +56,7 @@
         - service: button.press
           data: {}
           target:
-            entity_id: button.moms_call_button
+            entity_id: button.moms_call_button_2
       doubletap_6:
         - service: input_button.press
           target:

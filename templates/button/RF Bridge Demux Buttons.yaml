@@ -105,7 +105,7 @@
 
     - name: "Moms GoodNight Button"
       unique_id: 31794cb5-a46a-45d3-b082-d01760d541d6
-      default_entity_id: button.moms_button1
+      default_entity_id: button.moms_button1_2
       press:
         - event: rf_bridge_code_received
           event_data:

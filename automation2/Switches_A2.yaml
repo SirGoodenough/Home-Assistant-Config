@@ -13,7 +13,7 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: binary_sensor.dnremote1
+      entity_id: binary_sensor.rf_event_down_remote_1
       to: "on"
   actions:
     - action: light.toggle
@@ -24,7 +24,7 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: binary_sensor.dnremote2
+      entity_id: binary_sensor.rf_event_down_remote_2
       to: "on"
   actions:
     - action: light.toggle
@@ -35,7 +35,7 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: binary_sensor.dnremote5
+      entity_id: binary_sensor.rf_event_down_remote_5
       to: "on"
   actions:
     - action: light.toggle
@@ -46,7 +46,7 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: binary_sensor.dnremote4
+      entity_id: binary_sensor.rf_event_down_remote_4
       to: "on"
   actions:
     - action: light.toggle
@@ -57,7 +57,7 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: binary_sensor.dnremote9
+      entity_id: binary_sensor.rf_event_down_remote_9
       to: "on"
   actions:
     - action: light.toggle
@@ -68,7 +68,7 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: binary_sensor.dnremote8
+      entity_id: binary_sensor.rf_event_down_remote_8
       to: "on"
   actions:
     - action: light.toggle
@@ -79,7 +79,7 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: binary_sensor.dnremotec
+      entity_id: binary_sensor.rf_event_down_remote_c
       to: "on"
   actions:
     - action: light.toggle
@@ -93,7 +93,7 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: binary_sensor.office_light_1
+      entity_id: binary_sensor.rf_event_office_light_1
       to: "on"
   actions:
     - action: light.toggle
@@ -108,7 +108,7 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: binary_sensor.office_light_2
+      entity_id: binary_sensor.rf_event_office_light_2
       to: "on"
   actions:
     - action: light.toggle
@@ -126,7 +126,7 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: binary_sensor.front_door_open_433
+      entity_id: binary_sensor.rf_event_frontdoori
       to: "on"
   actions:
     - action: light.turn_on
@@ -137,7 +137,7 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: binary_sensor.back_door_open_433
+      entity_id: binary_sensor.rf_back_door
       to: "on"
   actions:
     - action: light.turn_on
@@ -148,7 +148,7 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: binary_sensor.side_door_open_433
+      entity_id: binary_sensor.rf_event_sidedoori
       to: "on"
   actions:
     - action: light.turn_on

@@ -34,7 +34,7 @@
       ## Side livingroom_lights 3
       doubletap_face_3:
         - service: button.press
-          entity_id: button.moms_button2
+          entity_id: button.moms_button2_2
       rotate_cw_face_3:
         - service: script.cube_long_short_control_bp
           data:
@@ -108,10 +108,10 @@
 # ## Side livingroom_lights 3
 #       doubletap_face_3:
 #         - service: button.press
-#           entity_id: button.moms_button2
+#           entity_id: button.moms_button2_2
 #       3_from_0:
 #         - service: button.press
-#           entity_id: button.moms_button2
+#           entity_id: button.moms_button2_2
 #       rotate_cw_face_3:
 #         - service: script.cube_long_cw_toggle
 #           data:

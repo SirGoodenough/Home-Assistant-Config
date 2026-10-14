@@ -78,7 +78,7 @@
 #     # - trigger: time
 #     #   at: "21:55:37"
 #     - trigger: state
-#       entity_id: button.moms_button1
+#       entity_id: button.moms_button1_2
 #   conditions:
 #     and:
 #       - alias: "Only at bedtime"

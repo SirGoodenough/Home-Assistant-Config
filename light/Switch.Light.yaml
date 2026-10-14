@@ -1,8 +1,8 @@
 ---
-  - platform: switch
-    name: "Jims Computer Light"
-    entity_id: switch.jims_computer_light
+- platform: switch
+  name: "Jims Computer Light"
+  entity_id: switch.jims_computer_light
 
-  - platform: switch
-    name: "Kitchen Down Lights"
-    entity_id: switch.kitchen_d_lights 
+- platform: switch
+  name: "Kitchen Down Lights"
+  entity_id: switch.kitchen_d_lights_2
