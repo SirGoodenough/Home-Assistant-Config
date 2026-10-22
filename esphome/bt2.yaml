@@ -19,8 +19,22 @@ esphome:
   area: garage
   name_add_mac_suffix: false
 
+esp32_ble_tracker:
+
+external_components:
+  - source:
+      type: git
+      url: https://github.com/davidcoulson/esphome-ble-advert-filter
+      ref: v2.0.3
+    components: [ble_advert_filter]
+# From https://community.home-assistant.io/t/ble-advert-filter-filter-ble-adverts-on-the-esphome-proxy-needs-esphome-2026-10/1029764?u=sir_goodenough
+
 bluetooth_proxy:
   active: true
+
+ble_advert_filter:
+  rssi_threshold: -80
+
 
 sensor:
   - platform: dht
