@@ -6,7 +6,7 @@ tts_grandma_in_need:
       TTS: Piper
       speaker_target: media_player.grandma_group
       announcement_message: Grandma in need
-  icon: mdi:lifebuoy/
+  icon: mdi:lifebuoy
 
 tts_bedroom_door:
   alias: TTS Bedroom Door
@@ -24,9 +24,9 @@ mp3_take_your_meds:
     path: SirGoodenough/play_media_file_script.yaml
     input:
       speaker_target:
-      - media_player.basement_speaker
-      - media_player.jennys_room_display
-      - media_player.bathroom_speaker
+        - media_player.basement_speaker
+        - media_player.jennys_room_display
+        - media_player.bathroom_speaker
       file_2_play: media-source://media_source/local/mp3/medicine_time.mp3
   icon: mdi:pill-multiple
 
@@ -55,8 +55,8 @@ media_player_gong:
     path: SirGoodenough/play_media_file_script.yaml
     input:
       speaker_target:
-      - media_player.basement_speaker
-      - media_player.jennys_room_display
+        - media_player.basement_speaker
+        - media_player.jennys_room_display
       file_2_play: media-source://media_source/local/mp3/Metal_Gong-Dianakc-109711828.mp3
 
 tts_printer_off:
@@ -65,11 +65,12 @@ tts_printer_off:
     path: SirGoodenough/tts_All_Message_Script_Blueprint.yaml
     input:
       TTS: Piper
-      announcement_message: Hey, dude. You left the printer on again. I'm turning
+      announcement_message:
+        Hey, dude. You left the printer on again. I'm turning
         it off.
       speaker_target:
-      - media_player.living_room_speaker
-      - media_player.jennys_room_display
+        - media_player.living_room_speaker
+        - media_player.jennys_room_display
   description: announce printer off
   icon: mdi:printer-off
 
@@ -78,9 +79,9 @@ media_player_ships_bell_4:
   use_blueprint:
     path: SirGoodenough/play_media_file_script.yaml
     input:
-      speaker_target: 
-      - media_player.basement_speaker
-      - media_player.jennys_room_display
-      - media_player.garage_speaker
+      speaker_target:
+        - media_player.basement_speaker
+        - media_player.jennys_room_display
+        - media_player.garage_speaker
       file_2_play: media-source://media_source/local/mp3/Ships_Bell_4.mp3
   icon: mdi:ferry

@@ -145,8 +145,7 @@
                 },
                 "entity": "binary_sensor.basement_smoke_alarm",
                 "name": "Basement Smoke Alarm",
-                "icon": "mdi:smoke-detector-alert",
-                "theme": "dark_red"
+                "icon": "mdi:smoke-detector-alert"
               }
             },
             {
@@ -166,8 +165,7 @@
                 },
                 "entity": "binary_sensor.stairway_smoke_smoke",
                 "name": "UpStairs Smoke Alarm",
-                "icon": "mdi:smoke-detector-alert",
-                "theme": "dark_red"
+                "icon": "mdi:smoke-detector-alert"
               }
             },
             {
@@ -330,11 +328,6 @@
                   "conditions": [
                     {
                       "condition": "state",
-                      "entity": "plant.my_cemetery_plant",
-                      "state": "problem"
-                    },
-                    {
-                      "condition": "state",
                       "entity": "plant.my_hoya",
                       "state": "problem"
                     },
@@ -354,8 +347,7 @@
                 },
                 "hold_action": {
                   "action": "none"
-                },
-                "theme": "Dark - Red"
+                }
               }
             },
             {
@@ -946,7 +938,7 @@
                   "entity": "binary_sensor.rf_event_garageside"
                 },
                 {
-                  "entity": "cover.garage_door"
+                  "entity": "cover.garage_garage_door_garage_door_overhead"
                 },
                 {
                   "entity": "binary_sensor.rf_event_garagec"
@@ -1414,7 +1406,6 @@
               "hours_to_show": 24,
               "graph": "line",
               "entity": "sensor.furnace_pellet_firebox_temperature",
-              "theme": "Dark - Red",
               "type": "sensor",
               "detail": 2,
               "icon": "mdi:fireplace"
@@ -1423,7 +1414,6 @@
               "hours_to_show": 24,
               "graph": "line",
               "entity": "sensor.furnace_pellet_top_temperature",
-              "theme": "Dark - Red",
               "type": "sensor",
               "detail": 2,
               "icon": "mdi:fire"
@@ -1432,7 +1422,6 @@
               "hours_to_show": 24,
               "graph": "line",
               "entity": "sensor.furnace_oil_firebox_temperature",
-              "theme": "slate_red",
               "type": "sensor",
               "detail": 2,
               "icon": "mdi:temperature-fahrenheit"
@@ -1441,7 +1430,6 @@
               "hours_to_show": 24,
               "graph": "line",
               "entity": "sensor.furnace_oil_top_temperature",
-              "theme": "slate_red",
               "type": "sensor",
               "detail": 2,
               "icon": "mdi:temperature-fahrenheit"
@@ -1458,7 +1446,6 @@
               "hours_to_show": 24,
               "graph": "line",
               "entity": "sensor.furnace_return_temperature",
-              "theme": "Dark - Green",
               "type": "sensor",
               "detail": 2,
               "icon": "mdi:temperature-fahrenheit"
@@ -1467,7 +1454,6 @@
               "graph": "line",
               "hours_to_show": 24,
               "entity": "sensor.furnace_register_temperature",
-              "theme": "Dark - Green",
               "type": "sensor",
               "detail": 1,
               "icon": "mdi:temperature-fahrenheit"
@@ -1593,7 +1579,6 @@
           ],
           "icon": "mdi:thermometer-lines",
           "path": "temp-central",
-          "theme": "midnight_blue",
           "title": "Temp Central"
         },
         {
@@ -1744,7 +1729,6 @@
             }
           ],
           "icon": "mdi:water-percent",
-          "theme": "slate",
           "title": "Humidity"
         },
         {
@@ -1785,7 +1769,6 @@
                 }
               ],
               "show_header_toggle": true,
-              "theme": "darkish",
               "title": "Kitchen",
               "type": "entities"
             },
@@ -1805,7 +1788,6 @@
                 }
               ],
               "show_header_toggle": true,
-              "theme": "darkish",
               "title": "Garage",
               "type": "entities"
             },
@@ -1819,7 +1801,6 @@
                 }
               ],
               "show_header_toggle": true,
-              "theme": "darkish",
               "title": "Living Room",
               "type": "entities"
             },
@@ -1860,7 +1841,6 @@
                 }
               ],
               "show_header_toggle": true,
-              "theme": "darkish",
               "title": "Outside",
               "type": "entities"
             },
@@ -1874,7 +1854,6 @@
                 }
               ],
               "show_header_toggle": true,
-              "theme": "darkish",
               "title": "Basement",
               "type": "entities"
             },
@@ -1887,7 +1866,6 @@
                   "entity": "light.memorial"
                 }
               ],
-              "theme": "darkish",
               "title": "Jens Room",
               "type": "entities",
               "state_color": true
@@ -1907,7 +1885,6 @@
                   "entity": "binary_sensor.rf_event_basement_way_up_pir"
                 }
               ],
-              "theme": "darkish",
               "title": "Upstairs",
               "type": "entities"
             },
@@ -1915,9 +1892,6 @@
               "entities": [
                 {
                   "entity": "input_boolean.christmas"
-                },
-                {
-                  "entity": "switch.outside_christmas"
                 },
                 {
                   "entity": "script.inside_christmas"
@@ -1994,7 +1968,6 @@
                   "entity": "binary_sensor.aromatherapy_water"
                 }
               ],
-              "theme": "Dark - Blue/Purple",
               "title": "Jens Nebulizer",
               "type": "entities"
             },
@@ -2423,7 +2396,6 @@
               "hours_to_show": 24,
               "graph": "none",
               "entity": "sensor.tarantulapro_bed_temperature",
-              "theme": "Dark - Green",
               "type": "sensor",
               "unit": "°C",
               "detail": 1
@@ -2432,7 +2404,6 @@
               "hours_to_show": 24,
               "graph": "none",
               "entity": "sensor.tarantulapro_tool_0_temperature",
-              "theme": "Dark - Green",
               "type": "sensor",
               "unit": "°C",
               "detail": 1,
@@ -2792,7 +2763,6 @@
               "period": "hour",
               "type": "statistics-graph",
               "entities": [
-                "sensor.chaloupkaabode_weather_soil_moisture_1",
                 "sensor.chaloupkaabode_weather_soil_moisture_2",
                 "sensor.chaloupkaabode_weather_soil_moisture_3",
                 "sensor.moms_hoya_1_soil_moisture",
@@ -3113,21 +3083,6 @@
             {
               "entities": [
                 {
-                  "entity": "switch.eldrad"
-                },
-                {
-                  "entity": "switch.luton"
-                },
-                {
-                  "entity": "switch.serverusb_2"
-                },
-                {
-                  "entity": "switch.switchhub"
-                },
-                {
-                  "entity": "switch.serverstrip"
-                },
-                {
                   "entity": "button.ez_restart_button_tasmota"
                 },
                 {
@@ -3325,6 +3280,27 @@
               "show_header_toggle": false,
               "title": "Doc Alert",
               "type": "entities"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "switch.server_strip_strip_server_strip_1"
+                },
+                {
+                  "entity": "switch.server_strip_strip_server_strip_2"
+                },
+                {
+                  "entity": "switch.server_strip_strip_server_strip_3"
+                },
+                {
+                  "entity": "switch.server_strip_strip_server_strip_4"
+                },
+                {
+                  "entity": "switch.server_strip_usb_server_strip_usb"
+                }
+              ],
+              "title": "Server Strip Strip"
             }
           ],
           "icon": "mdi:brain",
@@ -3336,7 +3312,6 @@
           "title": "YouTube",
           "path": "YouTube",
           "icon": "mdi:youtube",
-          "theme": "dark_red",
           "badges": [],
           "cards": [
             {
@@ -3453,7 +3428,6 @@
           ]
         },
         {
-          "theme": "Backend-selected",
           "subview": true,
           "title": "Tarantula",
           "path": "tarantula",
@@ -3555,7 +3529,6 @@
                 "data": {}
               },
               "type": "button",
-              "theme": "dark_orange",
               "icon_height": "90px"
             },
             {
@@ -3692,7 +3665,6 @@
                   "entity_id": "input_boolean.mist_button"
                 }
               },
-              "theme": "Dark Soft UI Violet",
               "icon_height": "50px"
             },
             {
@@ -4009,7 +3981,6 @@
           "theme": "Fluent Orange"
         },
         {
-          "theme": "Backend-selected",
           "icon": "mdi:remote-off",
           "title": "Remote-PG2",
           "path": "remote-pg2",

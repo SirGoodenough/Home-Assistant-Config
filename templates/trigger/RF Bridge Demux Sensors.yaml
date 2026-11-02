@@ -10,24 +10,28 @@
       state: >-
         {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
         {{ true if rf_code in ['2f780a'] else false if rf_code in ['2f780e'] else this.state == 'on' }}
+      auto_off: 2
 
     - name: "RF Event F1"
       unique_id: rf_event_f1
       state: >-
         {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
         {{ true if rf_code in ['151557'] else false if rf_code in ['151554'] else this.state == 'on' }}
+      auto_off: 2
 
     - name: "RF Event F2"
       unique_id: rf_event_f2
       state: >-
         {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
         {{ true if rf_code in ['154557'] else false if rf_code in ['154554'] else this.state == 'on' }}
+      auto_off: 2
 
     - name: "RF Event F3"
       unique_id: rf_event_f3
       state: >-
         {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
         {{ true if rf_code in ['155157'] else false if rf_code in ['155154'] else this.state == 'on' }}
+      auto_off: 2
 
     - name: "RF Event Mailbox"
       unique_id: rf_event_mailbox
@@ -35,6 +39,7 @@
       state: >-
         {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
         {{ true if rf_code in ['2b200a'] else false if rf_code in ['2b200e'] else this.state == 'on' }}
+      auto_off: 2
 
     - name: "RF Event Bedroom"
       unique_id: rf_event_bedroom
@@ -42,6 +47,7 @@
       state: >-
         {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
         {{ true if rf_code in ['2b230a'] else false if rf_code in ['2b230e'] else this.state == 'on' }}
+      auto_off: 2
 
     - name: "RF Event GarageC"
       unique_id: rf_event_garagec
@@ -49,6 +55,7 @@
       state: >-
         {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
         {{ true if rf_code in ['2b2a0e'] else false if rf_code in ['2b2a0a'] else this.state == 'on' }}
+      auto_off: 2
 
     - name: "RF Event SideDoorI"
       unique_id: rf_event_sidedoori
@@ -56,6 +63,7 @@
       state: >-
         {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
         {{ true if rf_code in ['2b930a'] else false if rf_code in ['2b930e'] else this.state == 'on' }}
+      auto_off: 2
 
     - name: "RF Event Bathroom"
       unique_id: rf_event_bathroom
@@ -63,6 +71,7 @@
       state: >-
         {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
         {{ true if rf_code in ['2b9d0a'] else false if rf_code in ['2b9d0e'] else this.state == 'on' }}
+      auto_off: 2
 
     - name: "RF Event GarageSide"
       unique_id: rf_event_garageside
@@ -70,6 +79,7 @@
       state: >-
         {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
         {{ true if rf_code in ['2bb60a'] else false if rf_code in ['2bb60e'] else this.state == 'on' }}
+      auto_off: 2
 
     - name: "RF Event KFridge"
       unique_id: rf_event_kfridge
@@ -77,6 +87,7 @@
       state: >-
         {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
         {{ true if rf_code in ['2cc80a'] else false if rf_code in ['2cc80e'] else this.state == 'on' }}
+      auto_off: 2
 
     - name: "RF Event FrontDoorI"
       unique_id: rf_event_frontdoori
@@ -84,6 +95,7 @@
       state: >-
         {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
         {{ true if rf_code in ['2c7f0a'] else false if rf_code in ['2c7f0e'] else this.state == 'on' }}
+      auto_off: 2
 
     - name: "RF Event PFreezer"
       unique_id: rf_event_pfreezer
@@ -91,6 +103,7 @@
       state: >-
         {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
         {{ true if rf_code in ['2d1a0a'] else false if rf_code in ['2d1a0e'] else this.state == 'on' }}
+      auto_off: 2
 
     - name: "RF Event GarageO"
       unique_id: rf_event_garageo
@@ -98,6 +111,7 @@
       state: >-
         {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
         {{ true if rf_code in ['2d750e'] else false if rf_code in ['2d750a'] else this.state == 'on' }}
+      auto_off: 2
 
     - name: "RF Event KFreezer"
       unique_id: rf_event_kfreezer
@@ -105,24 +119,28 @@
       state: >-
         {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
         {{ true if rf_code in ['2e4d0a'] else false if rf_code in ['2e4d0e'] else this.state == 'on' }}
+      auto_off: 2
 
     - name: "RF Event Chromecast"
       unique_id: rf_event_chromecast
       state: >-
         {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
         {{ true if rf_code in ['472083'] else false if rf_code in ['472082'] else this.state == 'on' }}
+      auto_off: 2
 
     - name: "RF Event D2"
       unique_id: rf_event_d2
       state: >-
         {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
         {{ true if rf_code in ['472085'] else false if rf_code in ['472084'] else this.state == 'on' }}
+      auto_off: 2
 
     - name: "RF Event D3"
       unique_id: rf_event_d3
       state: >-
         {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
         {{ true if rf_code in ['472087'] else false if rf_code in ['472086'] else this.state == 'on' }}
+      auto_off: 2
 
     - name: "RF Event Out Christmas"
       unique_id: rf_event_out_christmas
@@ -130,30 +148,35 @@
       state: >-
         {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
         {{ true if rf_code in ['b94183'] else false if rf_code in ['b94182'] else this.state == 'on' }}
+      auto_off: 2
 
     - name: "RF Event B2"
       unique_id: rf_event_b2
       state: >-
         {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
         {{ true if rf_code in ['b94185'] else false if rf_code in ['b94184'] else this.state == 'on' }}
+      auto_off: 2
 
     - name: "RF Event B3"
       unique_id: rf_event_b3
       state: >-
         {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
         {{ true if rf_code in ['b94187'] else false if rf_code in ['b94186'] else this.state == 'on' }}
+      auto_off: 2
 
     - name: "RF Event C1"
       unique_id: rf_event_c1
       state: >-
         {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
         {{ true if rf_code in ['cb8883'] else false if rf_code in ['cb8882'] else this.state == 'on' }}
+      auto_off: 2
 
     - name: "RF Event C2"
       unique_id: rf_event_c2
       state: >-
         {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
         {{ true if rf_code in ['cb8885'] else false if rf_code in ['cb8884'] else this.state == 'on' }}
+      auto_off: 2
 
     - name: "RF Event Kitchen Down Lights"
       unique_id: rf_event_kitchen_down_lights
@@ -161,108 +184,28 @@
       state: >-
         {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
         {{ true if rf_code in ['cb8887'] else false if rf_code in ['cb8886'] else this.state == 'on' }}
+      auto_off: 2
 
     - name: "RF Event E1"
       unique_id: rf_event_e1
       state: >-
         {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
         {{ true if rf_code in ['e8b083'] else false if rf_code in ['e8b082'] else this.state == 'on' }}
+      auto_off: 2
 
     - name: "RF Event E2"
       unique_id: rf_event_e2
       state: >-
         {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
         {{ true if rf_code in ['e8b085'] else false if rf_code in ['e8b084'] else this.state == 'on' }}
+      auto_off: 2
 
     - name: "RF Event E3"
       unique_id: rf_event_e3
       state: >-
         {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
         {{ true if rf_code in ['e8b087'] else false if rf_code in ['e8b086'] else this.state == 'on' }}
-
-    - name: "RF Event Battery Low Mailbox"
-      unique_id: rf_event_battery_low_mailbox
-      device_class: battery
-      state: >-
-        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
-        {{ rf_code in ['2b2006'] or this.state == 'on' }}
-
-    - name: "RF Event Battery Low Bedroom"
-      unique_id: rf_event_battery_low_bedroom
-      device_class: battery
-      state: >-
-        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
-        {{ rf_code in ['2b2306'] or this.state == 'on' }}
-
-    - name: "RF Event Battery Low GarageC"
-      unique_id: rf_event_battery_low_garagec
-      device_class: battery
-      state: >-
-        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
-        {{ rf_code in ['2b2a06'] or this.state == 'on' }}
-
-    - name: "RF Event Battery Low SideDoorI"
-      unique_id: rf_event_battery_low_sidedoori
-      device_class: battery
-      state: >-
-        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
-        {{ rf_code in ['2b9306'] or this.state == 'on' }}
-
-    - name: "RF Event Battery Low Bathroom"
-      unique_id: rf_event_battery_low_bathroom
-      device_class: battery
-      state: >-
-        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
-        {{ rf_code in ['2b9d06'] or this.state == 'on' }}
-
-    - name: "RF Event Battery Low GarageSide"
-      unique_id: rf_event_battery_low_garageside
-      device_class: battery
-      state: >-
-        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
-        {{ rf_code in ['2bb606'] or this.state == 'on' }}
-
-    - name: "RF Event Battery Low KFridge"
-      unique_id: rf_event_battery_low_kfridge
-      device_class: battery
-      state: >-
-        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
-        {{ rf_code in ['2cc806'] or this.state == 'on' }}
-
-    - name: "RF Event Battery Low FrontDoorI"
-      unique_id: rf_event_battery_low_frontdoori
-      device_class: battery
-      state: >-
-        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
-        {{ rf_code in ['2c7f06'] or this.state == 'on' }}
-
-    - name: "RF Event Battery Low PFreezer"
-      unique_id: rf_event_battery_low_pfreezer
-      device_class: battery
-      state: >-
-        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
-        {{ rf_code in ['2d1a06'] or this.state == 'on' }}
-
-    - name: "RF Event Battery Low GarageO"
-      unique_id: rf_event_battery_low_garageo
-      device_class: battery
-      state: >-
-        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
-        {{ rf_code in ['2d7506'] or this.state == 'on' }}
-
-    - name: "RF Event Battery Low KFreezer"
-      unique_id: rf_event_battery_low_kfreezer
-      device_class: battery
-      state: >-
-        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
-        {{ rf_code in ['2e4d06'] or this.state == 'on' }}
-
-    - name: "RF Event Battery Low BackDoorI"
-      unique_id: rf_event_battery_low_backdoori
-      device_class: battery
-      state: >-
-        {% set rf_code = trigger.event.data.get('code', '') | string | lower | replace('0x', '') | regex_replace('^0+', '') %}
-        {{ rf_code in ['2f7806'] or this.state == 'on' }}
+      auto_off: 2
 
     - name: "RF Event Jens Fan 1"
       unique_id: rf_event_jens_fan_1

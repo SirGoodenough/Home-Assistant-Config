@@ -3,19 +3,12 @@
     # Weather                                           #
     #####################################################
 
-
     - name: "AC Enabled"
       unique_id: f885f9fd-b280-439b-81f0-3fdd713393f5
       state: >-
-        {% if (
-          states('weather.home') | is_defined ) and
-          states('weather.home.attributes.temperature') | is_defined %}
-            {% set temp = 'weather.home.attributes.temperature' | int( 49 ) %}
-            {% if ( temp > 50 ) %}
-              true
-            {% else %}
-              false
-            {% endif %}
+        {% set temp = state_attr('weather.home', 'temperature') %}
+        {% if temp is not none %}
+          {{ temp | float(49) > 50 }}
         {% else %}
           true
         {% endif %}
@@ -23,11 +16,10 @@
         {# https://github.com/home-assistant/core/blob/70648d6e3b42bb0910e33e5c6a4e1e8c0789d82c/homeassistant/components/met/const.py #}
       availability: >-
         {% from 'availability_template.jinja' import avail %}
-        {{- avail(['weather.home.attributes.temperature']) | bool -}}
+        {{- avail(['weather.home']) | bool -}}
       icon: mdi:snowflake-alert
       attributes:
         friendly_name: "AC Enabled"
-
 
     #####################################################
     # Bat Printer State                                 #
@@ -57,9 +49,6 @@
         {% else %}
           mdi-printer-3d-nozzle-alert-outline
         {% endif %}
-
-
-
 
   # - name: 'Dark Outside'
   #   unique_id: ce7cb6b7-c666-494b-aa3c-4ed79b2f1092

@@ -21,7 +21,7 @@
       unit_of_measurement: "%"
       state: >-
         {%- set elevation = state_attr('sun.sun','elevation') | float %}
-        {%- set cloud_coverage = states('sensor.control_central_cloud_cover') | float %}
+        {%- set cloud_coverage = states('sensor.cloud_cover_average') | float %}
         {%- set cloud_factor = (1 - (0.75 * ( cloud_coverage / 100) ** 3 )) %}
         {%- set min_elevation = -6 %}
         {%- set max_elevation = 60 %}
@@ -35,7 +35,7 @@
         {{ brightness | round }}
       availability: >-
         {% from 'availability_template.jinja' import avail %}
-        {{- avail(['sun.sun','sensor.control_central_cloud_cover']) | bool -}}
+        {{- avail(['sun.sun','sensor.cloud_cover_average']) | bool -}}
       icon: mdi:sun-angle
       attributes:
         friendly_name: "Sunlight Percentage"

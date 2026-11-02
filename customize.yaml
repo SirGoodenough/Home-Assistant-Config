@@ -1,63 +1,66 @@
 ---
-  ####################################################
-  #                                                  #
-  #            Temperatures                          #
-  #                                                  #
-  ####################################################
+####################################################
+#                                                  #
+#            Temperatures                          #
+#                                                  #
+####################################################
 
-  sensor.humidity_group:
-    friendly_name: "House Humidity"
-    icon: mdi:water-percent
-    device_class: humidity
-    unit_of_measurement: '%'
-    
-  ####################################################
-  #                                                  #
-  #            Light                                 #
-  #                                                  #
-  ####################################################
+sensor.humidity_group:
+  friendly_name: "House Humidity"
+  icon: mdi:water-percent
+  device_class: humidity
+  unit_of_measurement: "%"
 
-  sensor.moms_hoya_1_ltr390_light:
-    state_class: measurement
+####################################################
+#                                                  #
+#            Light                                 #
+#                                                  #
+####################################################
 
-  sensor.apollo_plt_1b_89a12c_ltr390_light:
-    state_class: measurement
+sensor.moms_hoya_1_ltr390_light:
+  state_class: measurement
 
-  ####################################################
-  #                                                  #
-  #           Miscellaneous Icons                    #
-  #                                                  #
-  ####################################################
+sensor.apollo_plt_1b_89a12c_ltr390_light:
+  state_class: measurement
 
-  script.upstairs_bath_heater_off:
-    icon: mdi:radiator-off
+media_player.ecotv_a:
+  friendly_name: "EcoTV A Cast"
 
-  script.upstairs_bath_heater_on:
-    icon: mdi:radiator
+####################################################
+#                                                  #
+#           Miscellaneous Icons                    #
+#                                                  #
+####################################################
 
-  script.upstairs_bath_heater_watchdog:
-    icon: mdi:radiator-off
+script.upstairs_bath_heater_off:
+  icon: mdi:radiator-off
 
-  script.inside_christmas:
-    icon: mdi:toggle-switch
+script.upstairs_bath_heater_on:
+  icon: mdi:radiator
 
-  script.heavenly_peace:
-    icon: mdi:toggle-switch-off
+script.upstairs_bath_heater_watchdog:
+  icon: mdi:radiator-off
 
-  script.doors_close_all:
-    icon: mdi:door-closed
+script.inside_christmas:
+  icon: mdi:toggle-switch
 
-  script.garage_inside_lights_on:
-    icon: mdi:garage
+script.heavenly_peace:
+  icon: mdi:toggle-switch-off
 
-  script.garage_inside_lights_off:
-    icon: mdi:garage
+script.doors_close_all:
+  icon: mdi:door-closed
 
-  script.chill_time:
-    icon: mdi:home-lightbulb
+script.garage_inside_lights_on:
+  icon: mdi:garage
 
-  script.work_time:
-    icon: mdi:home-lightbulb
+script.garage_inside_lights_off:
+  icon: mdi:garage
 
-  script.party_time:
-    icon: mdi:home-lightbulb
+script.chill_time:
+  icon: mdi:home-lightbulb
+
+script.work_time:
+  icon: mdi:home-lightbulb
+
+script.party_time:
+  icon: mdi:home-lightbulb

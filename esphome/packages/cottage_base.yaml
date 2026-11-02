@@ -6,6 +6,7 @@ substitutions:
   name: cottage-esphome
   friendly_name: Another Brick in the Wall
   frame_type: esp-idf
+
 esphome:
   name: ${name}
   friendly_name: ${friendly_name}
