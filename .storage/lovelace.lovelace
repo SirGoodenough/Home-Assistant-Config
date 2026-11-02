@@ -3315,28 +3315,6 @@
           "badges": [],
           "cards": [
             {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "sensor.lumi_lumi_sensor_cube_aqgl01_device_temperature",
-                  "name": "Device temperature"
-                },
-                {
-                  "entity": "button.lumi_lumi_sensor_cube_identify",
-                  "name": "Identify"
-                },
-                {
-                  "entity": "sensor.lumi_lumi_sensor_cube_lqi",
-                  "name": "LQI"
-                },
-                {
-                  "entity": "sensor.lumi_lumi_sensor_cube_rssi",
-                  "name": "RSSI"
-                }
-              ],
-              "title": "Gertle"
-            },
-            {
               "entities": [
                 {
                   "entity": "light.outside_back_porch_light_back_porch_light_light"

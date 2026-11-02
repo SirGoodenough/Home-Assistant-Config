@@ -44,10 +44,21 @@
       unique_id: 975cd394-17f3-4b88-b311-74d5f87be892
       unit_of_measurement: "UV-Risk"
       state: >-
-        {{ state_attr('sensor.control_central_uv_index','level') }}
-      # availability: >-
-      #   {% from 'availability_template.jinja' import avail %}
-      #   {{- avail(['sensor.control_central_uv_index']) | bool -}}
+        {% set uv_index = states('sensor.gw2000b_v2_2_4_uv_index') | float(0) %}
+        {% if uv_index < 3 %}
+          Low
+        {% elif uv_index < 6 %}
+          Moderate
+        {% elif uv_index < 8 %}
+          High
+        {% elif uv_index < 11 %}
+          Very High
+        {% else %}
+          Extreme
+        {% endif %}
+      availability: >-
+        {% from 'availability_template.jinja' import avail %}
+        {{- avail(['sensor.gw2000b_v2_2_4_uv_index']) | bool -}}
       icon: mdi:sun-wireless
       attributes:
         friendly_name: "Sunburn Risk UV-R"

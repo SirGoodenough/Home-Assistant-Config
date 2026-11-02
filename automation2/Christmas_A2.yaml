@@ -73,19 +73,19 @@
       {{- true_all( ['sensor.xmas_season_enable'] ) | bool -}}
   actions:
     - action: switch.turn_on
-      entity_id: switch.outside_christmas
+      entity_id: switch.outside_christmas_2
     - delay: "00:00:30"
     - action: switch.turn_on
-      entity_id: switch.outside_christmas
+      entity_id: switch.outside_christmas_2
     - delay: "00:00:30"
     - action: switch.turn_on
-      entity_id: switch.outside_christmas
+      entity_id: switch.outside_christmas_2
     - delay: "00:00:30"
     - action: switch.turn_on
-      entity_id: switch.outside_christmas
+      entity_id: switch.outside_christmas_2
     - delay: "00:00:30"
     - action: switch.turn_on
-      entity_id: switch.outside_christmas
+      entity_id: switch.outside_christmas_2
 
 - id: e457e864-1b80-42e1-991b-902f62109afe
   alias: Turn off Christmas lights at dawn
@@ -101,19 +101,19 @@
       to: "on"
   actions:
     - action: switch.turn_off
-      entity_id: switch.outside_christmas
+      entity_id: switch.outside_christmas_2
     - delay: "00:00:30"
     - action: switch.turn_off
-      entity_id: switch.outside_christmas
+      entity_id: switch.outside_christmas_2
     - delay: "00:00:30"
     - action: switch.turn_off
-      entity_id: switch.outside_christmas
+      entity_id: switch.outside_christmas_2
     - delay: "00:00:30"
     - action: switch.turn_off
-      entity_id: switch.outside_christmas
+      entity_id: switch.outside_christmas_2
     - delay: "00:00:30"
     - action: switch.turn_off
-      entity_id: switch.outside_christmas
+      entity_id: switch.outside_christmas_2
 
 - id: 6fb0180a-e42e-45fc-a550-fa95a2726148
   alias: Power state on HA start-up outside christmas dark
@@ -128,19 +128,19 @@
         'binary_sensor.dark_outside'] ) | bool -}}
   actions:
     - action: switch.turn_on
-      entity_id: switch.outside_christmas
+      entity_id: switch.outside_christmas_2
     - delay: "00:00:30"
     - action: switch.turn_on
-      entity_id: switch.outside_christmas
+      entity_id: switch.outside_christmas_2
     - delay: "00:00:30"
     - action: switch.turn_on
-      entity_id: switch.outside_christmas
+      entity_id: switch.outside_christmas_2
     - delay: "00:00:30"
     - action: switch.turn_on
-      entity_id: switch.outside_christmas
+      entity_id: switch.outside_christmas_2
     - delay: "00:00:30"
     - action: switch.turn_on
-      entity_id: switch.outside_christmas
+      entity_id: switch.outside_christmas_2
 
 - id: 221db31c-ea90-4db1-9dd4-4ad3f3cd3452
   alias: Power state on HA start-up outside christmas day
@@ -154,19 +154,19 @@
       {{- false_all( ['binary_sensor.dark_outside'] ) | bool -}}
   actions:
     - action: switch.turn_off
-      entity_id: switch.outside_christmas
+      entity_id: switch.outside_christmas_2
     - delay: "00:00:30"
     - action: switch.turn_off
-      entity_id: switch.outside_christmas
+      entity_id: switch.outside_christmas_2
     - delay: "00:00:30"
     - action: switch.turn_off
-      entity_id: switch.outside_christmas
+      entity_id: switch.outside_christmas_2
     - delay: "00:00:30"
     - action: switch.turn_off
-      entity_id: switch.outside_christmas
+      entity_id: switch.outside_christmas_2
     - delay: "00:00:30"
     - action: switch.turn_off
-      entity_id: switch.outside_christmas
+      entity_id: switch.outside_christmas_2
 
 ####################################################
 # Seasonally Allow Automations                     #
