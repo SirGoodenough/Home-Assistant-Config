@@ -34,30 +34,45 @@ binary_sensor:
       mode: INPUT_PULLUP
       inverted: True
     name: "${friendly_name}_button"
-    on_press:
-      lambda: |-
-        static uint32_t press_count = 0;
-        static uint32_t last_press_ms = 0;
-        uint32_t now = millis();
+    on_multi_click:
+      - timing:
+          - ON for 50ms to 500ms
+          - OFF for at least 500ms
+        then:
+          - light.toggle: relay
 
-        if (now - last_press_ms > 500) {
-          press_count = 0;
-        }
-        last_press_ms = now;
-        press_count++;
+      - timing:
+          - ON for 50ms to 500ms
+          - OFF for 50ms to 300ms
+          - ON for 50ms to 500ms
+          - OFF for at least 500ms
+        then:
+          - switch.toggle: relay2
 
-        switch (press_count) {
-          case 1:
-            id(relay).toggle();
-            break;
-          case 2:
-            id(relay2).toggle();
-            press_count = 0;
-            break;
-          default:
-            press_count = 0;
-            break;
-        }
+    # on_press:
+    #   lambda: |-
+    #     static uint32_t press_count = 0;
+    #     static uint32_t last_press_ms = 0;
+    #     uint32_t now = millis();
+
+    #     if (now - last_press_ms > 500) {
+    #       press_count = 0;
+    #     }
+    #     last_press_ms = now;
+    #     press_count++;
+
+    #     switch (press_count) {
+    #       case 1:
+    #         id(relay).toggle();
+    #         break;
+    #       case 2:
+    #         id(relay2).toggle();
+    #         press_count = 0;
+    #         break;
+    #       default:
+    #         press_count = 0;
+    #         break;
+    #     }
 
 output:
   - platform: gpio
@@ -83,7 +98,7 @@ light:
     on_turn_on:
       then:
         - script.execute: flash_status_led_1
-    restore_mode: RESTORE_DEFAULT_OFF
+    restore_mode: RESTORE_DEFAULT_ON
     device_id: chair_device
 
   - platform: monochromatic

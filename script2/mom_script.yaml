@@ -35,15 +35,35 @@ bedtime_button_mom:
 mom_office_lights:
   alias: Mom Office Lights
   sequence:
-    - action: light.toggle
-      metadata: {}
-      target:
-        label_id: mom_office
+    - choose:
+        - conditions:
+            - condition: template
+              value_template: >-
+                {{ expand(label_entities('mom_office'))
+                  | selectattr('state', 'eq', 'on') | list | count > 0 }}
+          sequence:
+            - action: light.turn_off
+              target:
+                label_id: mom_office
+      default:
+        - action: light.turn_on
+          target:
+            label_id: mom_office
 
 office_lights:
   alias: Office Lights
   sequence:
-    - action: light.toggle
-      metadata: {}
-      target:
-        label_id: office
+    - choose:
+        - conditions:
+            - condition: template
+              value_template: >-
+                {{ expand(label_entities('office'))
+                  | selectattr('state', 'eq', 'on') | list | count > 0 }}
+          sequence:
+            - action: light.turn_off
+              target:
+                label_id: office
+      default:
+        - action: light.turn_on
+          target:
+            label_id: office
