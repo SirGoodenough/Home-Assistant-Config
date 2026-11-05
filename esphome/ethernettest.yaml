@@ -1,6 +1,6 @@
 substitutions:
   name: "ethernettest"
-  friendly_name: Kitchen
+  friendly_name: Food C
   frame_type: esp-idf
   board: esp32dev
   model: A crappy ESP32 Dev board from DrZzs that mostly don't work

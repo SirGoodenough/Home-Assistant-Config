@@ -7,7 +7,7 @@
   initial_state: on
   triggers:
     - trigger: state
-      entity_id: switch.garage_garage_door_garage_door_outside_pir
+      entity_id: switch.g_door_g_door_outside_pir
       to: "on"
       not_from:
         - unknown

@@ -1,6 +1,6 @@
 substitutions:
   name: "kitchennabu"
-  friendly_name: KitchenNabu
+  friendly_name: K Nabu
   frame_type: esp-idf
   board: esp32dev
   model: Homebrew ESP32

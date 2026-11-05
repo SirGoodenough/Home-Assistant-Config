@@ -12,7 +12,7 @@
       moisture: sensor.chaloupkaabode_weather_soil_moisture_2
       battery: sensor.compensation_sensor_chaloupkaabode_weather_soil_battery_2
       temperature: sensor.hoya_temp_temperature
-      brightness: sensor.hoya_lux_illuminance
+      brightness: sensor.0xa4c1389a92338d94_illuminance
     min_moisture: 12
     max_moisture: 50
     min_temperature: 50
@@ -21,7 +21,7 @@
   my_pothos:
     sensors:
       moisture: sensor.chaloupkaabode_weather_soil_moisture_3
-      battery: sensor.compensation_sensor_chaloupkaabode_weather_soil_battery_3
+      battery: sensor.compensation_sensor_chaloupkaabode_weather_soil_battery_1
       temperature: sensor.pothos_temp_temperature
       brightness: sensor.pothos_lux_illuminance
     min_moisture: 10

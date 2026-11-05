@@ -19,17 +19,17 @@
                   "entity": "light.food_center"
                 },
                 {
-                  "entity": "sensor.ethernettest_kitchen_temperature",
+                  "entity": "sensor.food_c_food_c_temperature",
                   "secondary_info": "last_updated"
                 },
                 {
                   "entity": "sensor.yertle_device_temperature"
                 },
                 {
-                  "entity": "sensor.ethernettest_kitchen_humidity"
+                  "entity": "sensor.food_c_food_c_humidity"
                 },
                 {
-                  "entity": "sensor.ethernettest_kitchen_co2"
+                  "entity": "sensor.food_c_food_c_co2"
                 },
                 {
                   "entity": "sensor.chaloupkaabode_weather_pm2_5_1"
@@ -68,7 +68,7 @@
                   "entity": "script.reset_nag"
                 },
                 {
-                  "entity": "binary_sensor.kitchennabu_9907cc_kitchennabu_pir_sensor"
+                  "entity": "binary_sensor.k_nabu_k_nabu_pir_sensor"
                 },
                 {
                   "entity": "binary_sensor.thermopi_furnace_pellet_stove_disable_2"
@@ -80,37 +80,42 @@
             },
             {
               "color": "state",
-              "type": "entities",
               "entities": [
                 {
-                  "entity": "light.kitchen_window"
+                  "entity": "button.moms_button2_2"
                 },
                 {
-                  "entity": "light.jims_computer_light"
+                  "entity": "button.moms_button3_2"
                 },
                 {
-                  "entity": "light.kitchen_cabnetio_cabnetio_light"
+                  "entity": "button.moms_button1_2"
                 },
                 {
-                  "entity": "switch.kitchen_d_lights_2"
+                  "entity": "light.moms_chair_moms_chair_light"
                 },
                 {
-                  "entity": "light.stair_light_up_stairway_stair_light_light"
+                  "entity": "light.lr_light_lr_light_light"
                 },
                 {
-                  "entity": "light.memorial"
+                  "entity": "switch.moms_chair_moms_chair_chair_control"
                 },
                 {
-                  "entity": "switch.kitchen_gosund_for_testing_gosund_for_testing_relay"
+                  "entity": "sensor.rf_bridge_2_rf_bridge_2_temperature",
+                  "name": "LivingRoom Temp",
+                  "secondary_info": "last_updated"
                 },
                 {
-                  "entity": "light.dad_lights"
+                  "entity": "sensor.rf_bridge_2_rf_bridge_2_humidity",
+                  "name": "Living Room Hunidity"
                 },
                 {
-                  "entity": "fan.jens_mist"
+                  "entity": "switch.downstairs_printer"
                 },
                 {
-                  "entity": "fan.george_fan_fan",
+                  "entity": "climate.living_room_2"
+                },
+                {
+                  "entity": "fan.mary_fan_fan",
                   "IsOffColor": "#2E253F",
                   "IsOnHiColor": "#D3C5EC",
                   "IsOnLowColor": "#6A2FD3",
@@ -118,14 +123,31 @@
                   "customTheme": true,
                   "customSetpoints": true,
                   "hiPercentage": 100,
-                  "name": "George",
+                  "name": "Mary",
                   "type": "custom:fan-percent-button-row"
                 },
                 {
-                  "entity": "light.george_light_light"
+                  "entity": "light.mary_light_light"
+                },
+                {
+                  "entity": "light.outside_front_porch_light_front_porch_light_light"
+                },
+                {
+                  "entity": "light.outside_back_porch_light_back_porch_light_light"
+                },
+                {
+                  "entity": "sensor.rm02_last_action"
+                },
+                {
+                  "entity": "binary_sensor.rf_event_frontdoori"
+                },
+                {
+                  "entity": "binary_sensor.rf_event_front_door_pir"
                 }
               ],
-              "title": "Kitchen Lights"
+              "show_header_toggle": true,
+              "title": "Living Room",
+              "type": "entities"
             },
             {
               "type": "conditional",
@@ -191,77 +213,6 @@
               }
             },
             {
-              "color": "state",
-              "entities": [
-                {
-                  "entity": "sensor.rf_bridge_2_rf_bridge_2_temperature",
-                  "name": "LivingRoom Temp",
-                  "secondary_info": "last_updated"
-                },
-                {
-                  "entity": "sensor.rf_bridge_2_rf_bridge_2_humidity",
-                  "name": "Living Room Hunidity"
-                },
-                {
-                  "entity": "switch.downstairs_printer"
-                },
-                {
-                  "entity": "climate.living_room_2"
-                },
-                {
-                  "entity": "button.moms_button1_2"
-                },
-                {
-                  "entity": "light.moms_chair_moms_chair_light"
-                },
-                {
-                  "entity": "light.lr_light_lr_light_light"
-                },
-                {
-                  "entity": "button.moms_button3_2"
-                },
-                {
-                  "entity": "fan.mary_fan_fan",
-                  "IsOffColor": "#2E253F",
-                  "IsOnHiColor": "#D3C5EC",
-                  "IsOnLowColor": "#6A2FD3",
-                  "IsOnMedColor": "#9F7BDF",
-                  "customTheme": true,
-                  "customSetpoints": true,
-                  "hiPercentage": 100,
-                  "name": "Mary",
-                  "type": "custom:fan-percent-button-row"
-                },
-                {
-                  "entity": "light.mary_light_light"
-                },
-                {
-                  "entity": "light.outside_front_porch_light_front_porch_light_light"
-                },
-                {
-                  "entity": "light.outside_back_porch_light_back_porch_light_light"
-                },
-                {
-                  "entity": "button.moms_button2_2"
-                },
-                {
-                  "entity": "sensor.rm02_last_action"
-                },
-                {
-                  "entity": "switch.moms_chair_moms_chair_chair_control"
-                },
-                {
-                  "entity": "binary_sensor.rf_event_frontdoori"
-                },
-                {
-                  "entity": "binary_sensor.rf_event_front_door_pir"
-                }
-              ],
-              "show_header_toggle": true,
-              "title": "Living Room",
-              "type": "entities"
-            },
-            {
               "show_name": true,
               "show_icon": true,
               "type": "button",
@@ -297,6 +248,55 @@
                   "theme": "Dark Pink"
                 }
               ]
+            },
+            {
+              "color": "state",
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "light.kitchen_window"
+                },
+                {
+                  "entity": "light.jims_computer_light"
+                },
+                {
+                  "entity": "light.kitchen_cabnetio_cabnetio_light"
+                },
+                {
+                  "entity": "switch.kitchen_d_lights_2"
+                },
+                {
+                  "entity": "light.stair_light_up_stairway_stair_light_light"
+                },
+                {
+                  "entity": "light.memorial"
+                },
+                {
+                  "entity": "switch.kitchen_gosund_for_testing_gosund_for_testing_relay"
+                },
+                {
+                  "entity": "light.dad_lights"
+                },
+                {
+                  "entity": "fan.jens_mist"
+                },
+                {
+                  "entity": "fan.george_fan_fan",
+                  "IsOffColor": "#2E253F",
+                  "IsOnHiColor": "#D3C5EC",
+                  "IsOnLowColor": "#6A2FD3",
+                  "IsOnMedColor": "#9F7BDF",
+                  "customTheme": true,
+                  "customSetpoints": true,
+                  "hiPercentage": 100,
+                  "name": "George",
+                  "type": "custom:fan-percent-button-row"
+                },
+                {
+                  "entity": "light.george_light_light"
+                }
+              ],
+              "title": "Kitchen Lights"
             },
             {
               "type": "conditional",
@@ -369,7 +369,7 @@
                   "entity": "lock.front_door_lock"
                 },
                 {
-                  "entity": "lock.side_door"
+                  "entity": "lock.basement_sidelock_door_sidelock_door_lock"
                 },
                 {
                   "entity": "lock.backdoor"
@@ -399,7 +399,7 @@
                   "entity": "light.outside_garage_side_garage_side_light"
                 },
                 {
-                  "entity": "switch.garage_garage_door_garage_door_outside_pir"
+                  "entity": "switch.g_door_g_door_outside_pir"
                 }
               ],
               "title": "Glance",
@@ -429,19 +429,11 @@
               ]
             },
             {
-              "graph": "line",
-              "type": "sensor",
-              "entity": "sensor.winix_dining_room_air_qvalue",
-              "detail": 2,
-              "hours_to_show": 48,
-              "icon": "mdi:weather-dust"
-            },
-            {
               "color": "state",
               "type": "entities",
               "entities": [
                 {
-                  "entity": "fan.bedroom_fan_bedroom_fan",
+                  "entity": "fan.bed_fan_bed_fan",
                   "IsOffColor": "#F88416",
                   "IsOnLowColor": "#E78E85",
                   "IsOnMedColor": "#E54234",
@@ -456,7 +448,7 @@
                   "entity": "binary_sensor.bedroom"
                 },
                 {
-                  "entity": "light.bedroom_light_bedroom_light"
+                  "entity": "light.bed_light_bed_light"
                 },
                 {
                   "entity": "input_boolean.bedroom_cool"
@@ -471,10 +463,10 @@
                   "entity": "input_number.bedroom_auto_temp"
                 },
                 {
-                  "entity": "sensor.bedroom_bedroom_temperature"
+                  "entity": "sensor.bed_bed_temperature"
                 },
                 {
-                  "entity": "sensor.bedroom_bedroom_humidity"
+                  "entity": "sensor.bed_bed_humidity"
                 },
                 {
                   "entity": "input_boolean.ac_enabled"
@@ -501,7 +493,7 @@
             {
               "graph": "line",
               "type": "sensor",
-              "entity": "sensor.ethernettest_kitchen_co2",
+              "entity": "sensor.food_c_food_c_co2",
               "detail": 2,
               "hours_to_show": 48,
               "unit": "ppm"
@@ -902,10 +894,10 @@
               "color": "state",
               "entities": [
                 {
-                  "entity": "light.garage_garage_front_garage_front_light"
+                  "entity": "light.g_front_g_front_light"
                 },
                 {
-                  "entity": "light.garage_garage_back_garage_back_light"
+                  "entity": "light.g_back_g_back_light"
                 },
                 {
                   "entity": "light.outside_back_porch_light_back_porch_light_light"
@@ -920,25 +912,25 @@
                   "entity": "sensor.garage_temperature"
                 },
                 {
-                  "entity": "sensor.garage_garage_door_garage_door_temperature"
+                  "entity": "sensor.g_door_g_door_temperature"
                 },
                 {
                   "entity": "sensor.garage_humidity"
                 },
                 {
-                  "entity": "sensor.garage_garage_door_garage_door_humidity"
+                  "entity": "sensor.g_door_g_door_humidity"
                 },
                 {
-                  "entity": "sensor.garage_garage_door_garage_door_dew_point"
+                  "entity": "sensor.g_door_g_door_dew_point"
                 },
                 {
-                  "entity": "binary_sensor.garage_garage_door_garage_door_pir_button"
+                  "entity": "binary_sensor.g_door_g_door_pir_button"
                 },
                 {
                   "entity": "binary_sensor.rf_event_garageside"
                 },
                 {
-                  "entity": "cover.garage_garage_door_garage_door_overhead"
+                  "entity": "cover.g_door_g_door_overhead"
                 },
                 {
                   "entity": "binary_sensor.rf_event_garagec"
@@ -1027,10 +1019,10 @@
                   "entity": "switch.basement_dust_collector_dust_collector_relay"
                 },
                 {
-                  "entity": "light.basement_basement_stair_up_light_basement_stair_up_light_light"
+                  "entity": "light.b_stair_up_light_dn_bmt_stairway_b_stair_up_light_light"
                 },
                 {
-                  "entity": "light.basement_basement_stair_down_light_basement_stair_down_light_light"
+                  "entity": "light.b_stair_down_light_dn_bmt_stairway_b_stair_down_light_light"
                 },
                 {
                   "entity": "switch.basement_sidelock_door_sidelock_door_door"
@@ -1347,7 +1339,7 @@
                       "hours_to_show": 24,
                       "graph": "line",
                       "type": "sensor",
-                      "entity": "sensor.bedroom_bedroom_temperature",
+                      "entity": "sensor.bed_bed_temperature",
                       "name": "Bedroom Ceiling Temperature",
                       "detail": 2
                     }
@@ -1475,13 +1467,13 @@
             {
               "graph": "line",
               "hours_to_show": 24,
-              "entity": "sensor.ethernettest_kitchen_temperature",
+              "entity": "sensor.food_c_food_c_temperature",
               "type": "sensor",
               "detail": 2,
               "icon": "mdi:stove"
             },
             {
-              "entity": "sensor.bedroom_bedroom_temperature",
+              "entity": "sensor.bed_bed_temperature",
               "graph": "line",
               "type": "sensor",
               "detail": 2,
@@ -1499,7 +1491,7 @@
             {
               "graph": "line",
               "hours_to_show": 24,
-              "entity": "sensor.garage_garage_door_garage_door_temperature",
+              "entity": "sensor.g_door_g_door_temperature",
               "theme": "Dark Yellow",
               "type": "sensor",
               "detail": 2,
@@ -1627,7 +1619,7 @@
             {
               "graph": "line",
               "hours_to_show": 24,
-              "entity": "sensor.ethernettest_kitchen_humidity",
+              "entity": "sensor.food_c_food_c_humidity",
               "type": "sensor",
               "detail": 2
             },
@@ -1653,7 +1645,7 @@
             {
               "graph": "line",
               "hours_to_show": 24,
-              "entity": "sensor.bedroom_bedroom_humidity",
+              "entity": "sensor.bed_bed_humidity",
               "type": "sensor",
               "detail": 1,
               "name": "Bedroom Humidity"
@@ -1691,7 +1683,7 @@
             {
               "graph": "line",
               "hours_to_show": 24,
-              "entity": "sensor.garage_garage_door_garage_door_dew_point",
+              "entity": "sensor.g_door_g_door_dew_point",
               "type": "sensor",
               "detail": 1,
               "name": "Garage Dewpoint",
@@ -1701,7 +1693,7 @@
               "graph": "line",
               "hours_to_show": 24,
               "type": "sensor",
-              "entity": "sensor.garage_garage_door_garage_door_humidity",
+              "entity": "sensor.g_door_g_door_humidity",
               "detail": 1,
               "theme": "Dark Yellow"
             },
@@ -1775,10 +1767,10 @@
             {
               "entities": [
                 {
-                  "entity": "light.garage_garage_front_garage_front_light"
+                  "entity": "light.g_front_g_front_light"
                 },
                 {
-                  "entity": "light.garage_garage_back_garage_back_light"
+                  "entity": "light.g_back_g_back_light"
                 },
                 {
                   "entity": "script.chill_time"
@@ -1828,7 +1820,7 @@
                   "entity": "binary_sensor.basement_back_porch_light_back_porch_light_switch"
                 },
                 {
-                  "entity": "switch.garage_garage_door_garage_door_outside_pir"
+                  "entity": "switch.g_door_g_door_outside_pir"
                 },
                 {
                   "entity": "binary_sensor.back_door_motion"
@@ -1847,10 +1839,10 @@
             {
               "entities": [
                 {
-                  "entity": "light.basement_basement_stair_up_light_basement_stair_up_light_light"
+                  "entity": "light.b_stair_up_light_dn_bmt_stairway_b_stair_up_light_light"
                 },
                 {
-                  "entity": "light.basement_basement_stair_down_light_basement_stair_down_light_light"
+                  "entity": "light.b_stair_down_light_dn_bmt_stairway_b_stair_down_light_light"
                 }
               ],
               "show_header_toggle": true,
@@ -1873,7 +1865,7 @@
             {
               "entities": [
                 {
-                  "entity": "light.bedroom_light_bedroom_light"
+                  "entity": "light.bed_light_bed_light"
                 },
                 {
                   "entity": "light.stair_light_up_stairway_stair_light_light"
@@ -1975,7 +1967,7 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "light.bedroom_light_bedroom_light"
+                  "entity": "light.bed_light_bed_light"
                 },
                 {
                   "entity": "sensor.bedroom_fanspeed"
@@ -2068,16 +2060,16 @@
                   "entity": "lock.basement_sidelock_door_sidelock_door_lock"
                 },
                 {
-                  "entity": "light.basement_basement_stair_up_light_basement_stair_up_light_light"
+                  "entity": "light.b_stair_up_light_dn_bmt_stairway_b_stair_up_light_light"
                 },
                 {
-                  "entity": "light.basement_basement_stair_down_light_basement_stair_down_light_light"
+                  "entity": "light.b_stair_down_light_dn_bmt_stairway_b_stair_down_light_light"
                 },
                 {
-                  "entity": "binary_sensor.basement_basement_stair_up_light_basement_stair_up_light_switch"
+                  "entity": "binary_sensor.b_stair_up_light_b_stair_up_light_switch"
                 },
                 {
-                  "entity": "binary_sensor.basement_basement_stair_down_light_basement_stair_down_light_switch"
+                  "entity": "binary_sensor.b_stair_down_light_b_stair_down_light_switch"
                 },
                 {
                   "entity": "binary_sensor.side_door_visitor"
@@ -2818,22 +2810,22 @@
               ]
             },
             {
-              "chart_type": "line",
-              "period": "hour",
               "type": "statistics-graph",
               "entities": [
                 "sensor.cemetary_lux_illuminance",
                 "sensor.pothos_lux_illuminance",
-                "sensor.hoya_lux_illuminance",
+                "sensor.0xa4c1389a92338d94_illuminance",
                 "sensor.gw2000b_v2_2_4_solar_lux",
                 "sensor.apollo_plt_1b_89a12c_ltr390_light",
                 "sensor.moms_hoya_1_ltr390_light"
               ],
+              "title": "light",
+              "days_to_show": 3,
+              "period": "hour",
+              "chart_type": "line",
               "stat_types": [
                 "mean"
               ],
-              "title": "light",
-              "days_to_show": 3,
               "hide_legend": true,
               "logarithmic_scale": false,
               "max_y_axis": 10000
@@ -3339,7 +3331,7 @@
                   "entity": "binary_sensor.back_door_motion"
                 },
                 {
-                  "entity": "switch.garage_garage_door_garage_door_outside_pir",
+                  "entity": "switch.g_door_g_door_outside_pir",
                   "secondary_info": "last_changed"
                 },
                 {

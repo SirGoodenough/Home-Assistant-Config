@@ -1,7 +1,7 @@
 substitutions:
   board: esp01_1m
   name: bedroomfan
-  friendly_name: Bedroom
+  friendly_name: Bed
   area: Bedroom
   IP: !secret bedroom_fan_IP
   update_interval: 62s

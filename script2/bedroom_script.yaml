@@ -7,7 +7,7 @@ bedroom_temp_control:
   variables:
     target_temp: "{{ states('input_number.bedroom_auto_temp') | float(73.2) }}"
     bat: "{{ target_temp -1.3 }}"
-    bte: "{{ states('sensor.bedroom_bedroom_temperature') | float(bat) }}"
+    bte: "{{ states('sensor.bed_bed_temperature') | float(bat) }}"
     ac_enable: "{{ states('input_boolean.ac_enabled') }}"
     set_temp: "{{ state_attr('climate.gemodule5384_window_ac', 'temperature') | float(73.1) }}"
   sequence:

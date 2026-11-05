@@ -7,6 +7,22 @@
           event_data:
             code: 9FF8C2
 
+    - name: "Moms Lights Toggle"
+      unique_id: e2ecd99c-87f7-46d8-a47b-34864d9857d4
+      default_entity_id: button.moms_button2_2
+      press:
+        - event: rf_bridge_code_received
+          event_data:
+            code: 9FF8C8
+
+    - name: "Moms Chair Light Toggle"
+      unique_id: 4cfc4522-36a5-4663-a0b1-3769b18b69fa
+      default_entity_id: button.moms_button3_2
+      press:
+        - event: rf_bridge_code_received
+          event_data:
+            code: 9FF8C4
+
     - name: "Bathroom Mute"
       unique_id: 3de89090-97f2-4e58-b89b-beeeced9767c
       press:

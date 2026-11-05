@@ -61,7 +61,7 @@
       to: "on"
   actions:
     - action: light.toggle
-      entity_id: light.garage_garage_front_garage_front_light
+      entity_id: light.g_front_g_front_light
 
 - id: b013a8fc-eacf-4249-96cf-bf0cfb8b8e87
   alias: Cabinet_light
@@ -153,8 +153,8 @@
   actions:
     - action: light.turn_on
       entity_id:
-        - light.basement_basement_stair_up_light_basement_stair_up_light_light
-        - light.basement_basement_stair_down_light_basement_stair_down_light_light
+        - light.b_stair_up_light_dn_bmt_stairway_b_stair_up_light_light
+        - light.b_stair_down_light_dn_bmt_stairway_b_stair_down_light_light
 # - id: edaafacf-6c34-47d2-9dda-bcea8d4232a4
 #   alias: Broadcom Brick Reset
 #   description: "Reset the dam RM3 that is mose always offline. POS!"

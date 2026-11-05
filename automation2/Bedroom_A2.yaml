@@ -20,7 +20,7 @@
         state: "on"
       - alias: Its warmer than the room setting
         condition: numeric_state
-        entity_id: sensor.bedroom_bedroom_temperature
+        entity_id: sensor.bed_bed_temperature
         above: input_number.bedroom_auto_temp
       - alias: This is turned off in the fall winter to disable everything
         condition: state
@@ -50,9 +50,9 @@
   use_blueprint:
     path: SirGoodenough/AutoFanControl_HA_fan.yaml
     input:
-      fan: fan.bedroom_fan_bedroom_fan
+      fan: fan.bed_fan_bed_fan
       fan_control: input_boolean.bedroom_auto_fan
-      room_temp_now: sensor.bedroom_bedroom_temperature
+      room_temp_now: sensor.bed_bed_temperature
       room_set_temp: input_number.bedroom_auto_temp
       loop_action:
         - variables:
@@ -98,7 +98,7 @@
 #     input:
 #       fan_off_time: "08:12:42"
 #       fan_control: input_boolean.bedroom_auto_fan
-#       room_temp_now: sensor.bedroom_bedroom_temperature
+#       room_temp_now: sensor.bed_bed_temperature
 #       room_set_temp: input_number.bedroom_auto_temp
 #       fan_on_time: "20:37:00"
 #       temp_gap_2_to_3: 6.7
@@ -137,7 +137,7 @@
   triggers:
     - id: temperature change trigger
       trigger: state
-      entity_id: sensor.bedroom_bedroom_temperature
+      entity_id: sensor.bed_bed_temperature
     - id: enable when target changes
       trigger: state
       entity_id: input_number.bedroom_auto_temp

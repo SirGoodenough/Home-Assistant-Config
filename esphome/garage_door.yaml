@@ -3,7 +3,7 @@ substitutions:
   name: garagedoor
   area: Garage
   IP: !secret garage_door_IP
-  friendly_name: Garage Door
+  friendly_name: G Door
   update_interval: 207s
   model: Sonoff SV
 

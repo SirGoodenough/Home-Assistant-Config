@@ -5,22 +5,22 @@
   "data": {
     "items": [
       {
-        "url": "/hacsfiles/HA-Firemote/HA-Firemote.js?hacstag=536329656419",
+        "url": "/local/community/HA-Firemote/HA-Firemote.js?v=536329656419",
         "type": "module",
         "id": "b1e6ba845bf24b3ea2936b4829a77b03"
       },
       {
-        "url": "/hacsfiles/fan-percent-button-row/fan-percent-button-row.js?hacstag=34575320540",
+        "url": "/local/community/fan-percent-button-row/fan-percent-button-row.js?v=34575320540",
         "type": "module",
         "id": "f0dc140698174f878e5e5ac3c8636763"
       },
       {
-        "url": "/hacsfiles/flipdown-timer-card/flipdown-timer-card.js?hacstag=42308207104",
+        "url": "/local/community/flipdown-timer-card/flipdown-timer-card.js?v=42308207104",
         "type": "module",
         "id": "6dbf3e5e8c5c4596b32b8e3813938280"
       },
       {
-        "url": "/hacsfiles/toggle-control-button-row/toggle-control-button-row.js?hacstag=32603392140",
+        "url": "/local/community/toggle-control-button-row/toggle-control-button-row.js?v=32603392140",
         "type": "module",
         "id": "ab4e1b28490c4c1884224d6584c37819"
       },

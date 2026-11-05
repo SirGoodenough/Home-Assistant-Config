@@ -62,7 +62,6 @@
       data:
         transition: 2.5
 
-
 ####################################################
 # CO2 Detector                                     #
 ####################################################
@@ -73,7 +72,7 @@
   triggers:
     - trigger: numeric_state
       entity_id:
-        - sensor.ethernettest_kitchen_co2
+        - sensor.food_c_food_c_co2
       above: 1000
       for:
         hours: 0
@@ -96,7 +95,7 @@
   triggers:
     - trigger: numeric_state
       entity_id:
-        - sensor.ethernettest_kitchen_co2
+        - sensor.food_c_food_c_co2
       above: 2000
   conditions:
   actions:

@@ -3,8 +3,8 @@ substitutions:
   name: garageback
   area: Garage
   IP: !secret garage_back_IP
-  friendly_name: Garage Back
-  follow_this: light.garage_garage_front_garage_front_light
+  friendly_name: G Back
+  follow_this: light.g_front_g_front_light
   this_light: light_1
   num_hlpr_minutes: input_number.garage_delay_minutes
   model: Sonoff Basic

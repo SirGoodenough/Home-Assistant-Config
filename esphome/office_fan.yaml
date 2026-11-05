@@ -1,6 +1,6 @@
 substitutions:
   name: officefan
-  friendly_name: Office Fan
+  friendly_name: O Fan
   area: Office
   IP: !secret office_fan_IP
   board: esp8285

@@ -1,21 +1,22 @@
 ---
-  # people_stack:
-  #   name: People
-  #   entities:
-  #     - device_tracker.life360_sirius_goodenough
-  #     - device_tracker.life360_supreme_leader_chaloupka
-  #     - device_tracker.life360_jen_chaloupka
+# people_stack:
+#   name: People
+#   entities:
+#     - device_tracker.life360_sirius_goodenough
+#     - device_tracker.life360_supreme_leader_chaloupka
+#     - device_tracker.life360_jen_chaloupka
 
-  Christmas Enable:
-    name: Xmas
-    entities:
-      - automation.power_state_on_ha_start_up_outside_christmas_day
-      - automation.power_state_on_ha_start_up_outside_christmas_dark
-      - automation.turn_off_christmas_lights_at_dawn
-      - automation.turn_on_christmas_lights_at_dark
+Christmas Enable:
+  name: Xmas
+  entities:
+    - automation.power_state_on_ha_start_up_outside_christmas_day
+    - automation.power_state_on_ha_start_up_outside_christmas_dark
+    - automation.turn_off_christmas_lights_at_dawn
+    - automation.turn_on_christmas_lights_at_dark
 
-  esphome_restart:
-    name: ehrestart
-      - button.bt2_restart_bt2_garage
-      - button.bt3_restart_bt3_bathroom2
-      - button.ethernettest_restart_ethernettest_kitchen
+esphome_restart:
+  name: ehrestart
+  entities:
+    - button.bt2_restart_bt2_garage
+    - button.bt3_restart_bt3_bathroom2
+    - button.food_c_restart_ethernettest_food_c

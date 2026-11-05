@@ -47,7 +47,7 @@ binary_sensor:
     id: lock_button
     pin:
       number: GPIO14
-      mode: INPUT
+      mode: INPUT_PULLUP
       inverted: true
     name: "${friendly_name} Lock Button"
     icon: "mdi:door-lock"

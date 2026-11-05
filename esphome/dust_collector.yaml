@@ -29,6 +29,10 @@ wifi:
     subnet: !secret chaloupkaabode_subnet
     static_ip: ${IP}
     dns1: !secret chaloupkaabode_gateway
+  on_connect:
+    - light.turn_on: bblue_led
+  on_disconnect:
+    - light.turn_off: bblue_led
 
 sensor:
   - platform: dht
@@ -54,11 +58,14 @@ sensor:
 
 binary_sensor:
   - platform: gpio
+    id: button1
     pin:
       number: GPIO0
       mode: INPUT_PULLUP
       inverted: True
     name: "${friendly_name} Button_1"
+    filters:
+      - delayed_on_off: 50ms
     on_press:
       - switch.toggle: th1x_relay
 
@@ -77,7 +84,7 @@ light:
   - platform: monochromatic
     name: "${friendly_name} Blue LED"
     id: bblue_led
-    restore_mode: RESTORE_DEFAULT_OFF
+    restore_mode: ALWAYS_OFF
     output: blue_led
 
 switch:

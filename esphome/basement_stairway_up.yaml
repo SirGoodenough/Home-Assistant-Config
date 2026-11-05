@@ -1,11 +1,11 @@
 substitutions:
   name: bmtupstairway
-  friendly_name: Basement Stair up Light
+  friendly_name: B Stair up Light
   area: Outside
   IP: !secret bmt_stair_up_IP
   board: esp8285
   model: Sonoff Slampher
-  follow_this: light.basement_basement_stair_down_light_basement_stair_down_light_light
+  follow_this: light.b_stair_down_light_dn_bmt_stairway_b_stair_down_light_light
   this_light: light_1
   num_hlpr_minutes: input_number.stair_delay_minutes
 
